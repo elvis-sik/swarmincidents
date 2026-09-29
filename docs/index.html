@@ -469,7 +469,14 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
   .pane{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:none;height:min(86dvh,760px);z-index:60;background:var(--panel);border-top:1px solid var(--line-2);border-radius:14px 14px 0 0;box-shadow:var(--shadow);transform:translateY(105%);transition:transform .22s ease-out;visibility:hidden}
   .pane.open{transform:none;visibility:visible}
   .pane-empty{display:none}
-  .grab{display:block;width:36px;height:4px;border-radius:2px;background:var(--line-2);margin:8px auto -2px}
+  /* sheet handle: drag down to close, drag up to fill the screen, tap to toggle */
+  .grab{display:block;position:sticky;top:0;z-index:3;width:100%;height:24px;margin-bottom:-6px;border:0;padding:0;background:var(--panel);cursor:grab;touch-action:none}
+  .grab::before{content:"";display:block;width:40px;height:5px;border-radius:3px;background:var(--line-2);margin:10px auto 0}
+  .grab:focus-visible{outline-offset:-3px}
+  .det-top{touch-action:none}
+  .pane{transition:transform .22s ease-out,height .22s ease-out,border-radius .22s,visibility .22s}
+  .pane.full{height:100dvh;border-radius:0;padding-top:env(safe-area-inset-top,0px)}
+  .pane.dragging{transition:none}
   .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:59;opacity:0;pointer-events:none;transition:opacity .2s}
   .scrim.open{opacity:1;pointer-events:auto}
   .foot{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;gap:6px 14px}
@@ -525,7 +532,7 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
         <div class="drag" id="drag" role="separator" aria-orientation="vertical" aria-label="Resize details panel" aria-controls="pane" tabindex="0" data-tip="Drag to resize · double-click to reset"><span class="grip" aria-hidden="true"></span></div>
         <div class="pane-wrap">
           <div class="pane" id="pane">
-            <div class="grab" aria-hidden="true"></div>
+            <button class="grab" id="grab" type="button" aria-label="Expand to full screen"></button>
             <div class="pane-empty" id="pane-empty">Select an incident to see what happened, who found it, and the sources.</div>
             <div id="det" hidden></div>
           </div>
@@ -2036,7 +2043,7 @@ function clearSel(opts = {}) {
   markSelected();
   $('#det').hidden = true; $('#pane-empty').hidden = false;
   $('#main').classList.remove('open');
-  pane.classList.remove('open'); scrim.classList.remove('open');
+  pane.classList.remove('open', 'full'); scrim.classList.remove('open'); syncGrab();
   hideTip();
   const viewHash = state.view === 'timeline' ? '' : state.view;
   if (state.pushed && !opts.fromRoute) {
@@ -2049,6 +2056,48 @@ function clearSel(opts = {}) {
   if (row && !mobileMQ.matches) row.focus({ preventScroll: true });
 }
 scrim.addEventListener('click', clearSel);
+/* phones: the details card is a bottom sheet. Drag its handle (or its top row) down to close it,
+   up to fill the screen; tap the handle to switch between the two heights */
+const grab = $('#grab');
+function syncGrab() {
+  const full = pane.classList.contains('full');
+  grab.setAttribute('aria-label', full ? 'Shrink details' : 'Expand details to full screen');
+  grab.setAttribute('aria-expanded', String(full));
+}
+function setFull(on) { pane.classList.toggle('full', on); syncGrab(); }
+let sh = null;
+pane.addEventListener('pointerdown', ev => {
+  if (!mobileMQ.matches || !pane.classList.contains('open')) return;
+  const zone = ev.target.closest('.grab,.det-top');
+  if (!zone || (zone !== grab && ev.target.closest('button,a,input,select'))) return;
+  sh = { y: ev.clientY, h: pane.getBoundingClientRect().height, t: performance.now(), dy: 0, moved: false, id: ev.pointerId, zone };
+  try { zone.setPointerCapture(ev.pointerId); } catch (e) { /* pointer already gone */ }
+});
+pane.addEventListener('pointermove', ev => {
+  if (!sh || ev.pointerId !== sh.id) return;
+  const dy = ev.clientY - sh.y;
+  if (!sh.moved && Math.abs(dy) < 5) return;
+  if (!sh.moved) { sh.moved = true; pane.classList.add('dragging'); hideTip(); }
+  sh.dy = dy;
+  if (dy >= 0) { pane.style.height = ''; pane.style.transform = `translateY(${dy}px)`; }
+  else { pane.style.transform = 'none'; pane.style.height = Math.min(innerHeight, sh.h - dy) + 'px'; }
+});
+const sheetEnd = ev => {
+  if (!sh || ev.pointerId !== sh.id) return;
+  const { dy, moved, t, zone } = sh; sh = null;
+  const v = dy / Math.max(1, performance.now() - t);   /* px per ms; positive is downward */
+  pane.classList.remove('dragging'); pane.style.transform = ''; pane.style.height = '';
+  if (!moved) { if (zone === grab && ev.type === 'pointerup') setFull(!pane.classList.contains('full')); return; }
+  const full = pane.classList.contains('full');
+  if (dy > 0) {
+    if (full && dy < innerHeight * 0.4 && v < 0.9) setFull(false);
+    else if (dy > 90 || v > 0.6) clearSel();
+  } else if (dy < -40 || v < -0.4) setFull(true);
+};
+pane.addEventListener('pointerup', sheetEnd);
+pane.addEventListener('pointercancel', sheetEnd);
+grab.addEventListener('click', ev => { if (ev.detail === 0) setFull(!pane.classList.contains('full')); });   /* keyboard */
+syncGrab();
 document.addEventListener('keydown', ev => {
   if (about.open) return;
   if (ev.key === 'Escape' && ev.target && ev.target.matches && ev.target.matches('input') && ev.target.value) return;
