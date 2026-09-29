@@ -2282,7 +2282,7 @@ function measure() {
   app.style.setProperty('--footH', footH + 'px');
   /* fill the whole viewport (the page's bottom padding included) so the legend stays pinned to the bottom edge however short the list */
   const fill = innerHeight - app.offsetTop - barH - footH;
-  $('#main').style.minHeight = m ? '' : Math.max(320, fill) + 'px';
+  $('#main').style.minHeight = Math.max(320, fill) + 'px';
 }
 let lastW = 0, roRaf = 0, rescroll = false;
 new ResizeObserver(() => {
