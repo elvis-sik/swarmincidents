@@ -14,7 +14,7 @@
 const DATA = {
   updated: '2026-09-28',
   version: '1.3',
-  contact: 'hello@elvissikora.com',
+  contact: '', // set to the @swarmincidents.com alias once it exists
   incidents: [
     {
       id: 'hugging-face',
