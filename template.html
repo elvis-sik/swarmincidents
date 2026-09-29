@@ -1617,7 +1617,8 @@ function selectRsp(id, opts = {}) {
     h('p', { text: r.text }),
     incs.length ? [h('h3', { text: incs.length === 1 ? 'Incident' : 'Incidents' }), incs.map(e => relIncBlock(e, r))] : null,
     others.length ? [h('h3', { text: `Other responses to ${incs.length === 1 ? 'this incident' : 'these incidents'}` }),
-      h('ul', { class: 'rlist' }, others.map(o => h('li', {}, h('b', { text: o.label || fmt(o.d) }), h('span', { class: `dot g-${RESP_DOT[o.who]}`, 'data-tip': RESP_WHO[o.who] }), rspLink(o.id))))] : null));
+      h('ul', { class: 'rlist' }, others.map(o => h('li', {}, h('b', { text: o.label || fmt(o.d) }), h('span', { class: `dot g-${RESP_DOT[o.who]}`, 'data-tip': RESP_WHO[o.who] }), rspLink(o.id))))] : null,
+    r.src && r.src.length ? [h('h3', { text: 'Sources' }), h('ol', { class: 'srcs' }, r.src.map(([st, sp, su]) => h('li', {}, h('a', { href: su, target: '_blank', rel: 'noopener noreferrer', text: st }), h('span', { text: ` · ${sp}` }))))] : null));
   finishCard('response/' + id, document.querySelector(`[data-rsp-row="${id}"]`), opts, hadCard);
 }
 function clearSel(opts = {}) {
