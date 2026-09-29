@@ -49,6 +49,8 @@
   --act:#9AA1AC; --act-2:#454C57; --today:#6B7280;
   --tip-bg:#11161D; --tip-ink:#F3F5F8; --shadow:0 24px 60px -20px rgba(15,20,26,.35);
   --drawer-shadow:-18px 0 32px -26px rgba(15,20,26,.45); --grip:#C3C8D0;
+  --w-breach:#9A392C; --w-account:#DE759E; --w-creds:#8A2F89; --w-attack:#E38F27; --w-spam:#5A5298; --w-tool:#A79B02; --w-scrape:#0396A9; --w-source:#4E5663; --w-reach:#9AA1AC; --w-possible:#9AA1AC;
+  --brush:rgba(42,120,214,.10); --brush-edge:#2a78d6;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -62,6 +64,8 @@
     --act:#5A616B; --act-2:#B4BBC5; --today:#8B929C;
     --tip-bg:#E8EBEF; --tip-ink:#0E1116; --shadow:0 24px 60px -20px rgba(0,0,0,.8);
   --drawer-shadow:-18px 0 32px -22px rgba(0,0,0,.9); --grip:#3C434E;
+  --w-breach:#E46958; --w-account:#A7335B; --w-creds:#BB71BF; --w-attack:#AA7A22; --w-spam:#7062D2; --w-tool:#678124; --w-scrape:#009EB3; --w-source:#C3C9D2; --w-reach:#6B7380; --w-possible:#6B7380;
+  --brush:rgba(57,135,229,.16); --brush-edge:#3987e5;
   }
 }
 :root[data-theme="dark"]{
@@ -73,6 +77,8 @@
   --act:#5A616B; --act-2:#B4BBC5; --today:#8B929C;
   --tip-bg:#E8EBEF; --tip-ink:#0E1116; --shadow:0 24px 60px -20px rgba(0,0,0,.8);
   --drawer-shadow:-18px 0 32px -22px rgba(0,0,0,.9); --grip:#3C434E;
+  --w-breach:#E46958; --w-account:#A7335B; --w-creds:#BB71BF; --w-attack:#AA7A22; --w-spam:#7062D2; --w-tool:#678124; --w-scrape:#009EB3; --w-source:#C3C9D2; --w-reach:#6B7380; --w-possible:#6B7380;
+  --brush:rgba(57,135,229,.16); --brush-edge:#3987e5;
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -106,7 +112,19 @@ h1{font-size:18px;font-weight:650;letter-spacing:-.01em;margin:0}
 
 /* app shell */
 .app{border:1px solid var(--line);border-radius:10px;background:var(--panel)}
-.bar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);border-radius:10px 10px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:9px 12px}
+.bar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);border-radius:10px 10px 0 0;display:flex;flex-direction:column;gap:8px;padding:9px 12px}
+.bar-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;min-width:0}
+.bar-row .push{margin-left:auto}
+.bar-r{display:flex;align-items:center;gap:10px}
+.modeseg button{padding:4px 8px}
+.modeseg svg{width:15px;height:15px}
+.rangeseg button{font-variant-numeric:tabular-nums}
+.rchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--brush-edge);background:var(--brush);color:var(--ink);border-radius:7px;padding:3px 4px 3px 9px;font-size:12.5px;font-family:var(--mono);white-space:nowrap}
+.rchip button{border:0;background:none;color:var(--muted);cursor:pointer;border-radius:4px;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center}
+.rchip button:hover{color:var(--ink);background:var(--hover)}
+.fchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:7px;padding:3px 4px 3px 8px;font-size:12.5px;white-space:nowrap;color:var(--ink)}
+.fchip button{border:0;background:none;color:var(--muted);cursor:pointer;border-radius:4px;width:20px;height:20px}
+.fchip button:hover{color:var(--ink);background:var(--hover)}
 .tabs{display:inline-flex;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:2px}
 .tab{border:0;background:none;border-radius:6px;padding:4px 11px;font-size:13px;font-weight:550;cursor:pointer;color:var(--muted)}
 .tab:hover{color:var(--ink)}
@@ -134,13 +152,18 @@ select.sel{border:1px solid var(--line-2);border-radius:7px;background:var(--pan
 .sortseg button{gap:4px}
 .sortseg button[aria-pressed="true"]{background:var(--soft);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--line-2)}
 .sortseg .arr{font-size:11px;font-weight:500}
-.count{margin-left:auto;font-size:12px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+.count{margin-left:auto;margin-right:4px;font-size:12px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+.filters{flex:1 1 auto;min-width:0}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
 .g-openai{--c:var(--g-openai)}.g-research{--c:var(--g-research)}.g-press{--c:var(--g-press)}.g-gov{--c:var(--g-gov)}.g-other{--c:var(--faint)}
 .dot.g-openai{background:var(--panel);box-shadow:inset 0 0 0 2px var(--g-openai)}
 
 .main{display:grid;grid-template-columns:minmax(0,1fr) 0}
-.main.open{grid-template-columns:minmax(0,1fr) var(--drawerW,460px)}
+.main.open{grid-template-columns:minmax(0,1fr) var(--drawerW,560px)}
+.main.left.open{grid-template-columns:var(--drawerW,560px) minmax(0,1fr)}
+.main.left .pane-col{order:-1;border-left:0;border-right:1px solid var(--line-2);box-shadow:18px 0 32px -26px rgba(15,20,26,.45)}
+.main.left .drag{left:auto;right:-6px}
+.main.left .grip{margin-left:3px}
 .view{min-width:0}
 .pane-col{border-left:1px solid var(--line-2);min-width:0;position:relative;box-shadow:var(--drawer-shadow);background:var(--panel)}
 .main:not(.open) .pane-col{display:none}
@@ -153,13 +176,22 @@ select.sel{border:1px solid var(--line-2);border-radius:7px;background:var(--pan
 body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!important}
 @media (min-width:821px){ .main.open .pane{animation:drawer-in .2s ease-out} }
 @keyframes drawer-in{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+@media (min-width:821px){ .main.left.open .pane{animation-name:drawer-in-l} }
+@keyframes drawer-in-l{from{transform:translateX(-24px);opacity:0}to{transform:none;opacity:1}}
 .pane-wrap{position:absolute;inset:0}
 .pane{position:sticky;top:var(--barH,52px);height:min(100%,calc(100dvh - var(--barH,52px) - var(--footH,36px)));overflow:auto;overscroll-behavior:contain}
 
 /* timeline: annotated lanes */
 .thead{position:sticky;top:var(--barH,52px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);height:30px;display:block}
-.axis{position:relative;display:block;height:100%}
-.axis span{position:absolute;top:8px;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;white-space:nowrap;color:var(--muted)}
+.axis{position:relative;display:block;height:100%;cursor:ew-resize;touch-action:pan-y}
+.axis:hover{background:linear-gradient(var(--soft),var(--soft))}
+.tl{position:relative}
+.brush{position:absolute;top:0;bottom:0;background:var(--brush);box-shadow:inset 1px 0 0 var(--brush-edge),inset -1px 0 0 var(--brush-edge);pointer-events:none;z-index:8}
+.brush span{position:sticky;top:calc(var(--barH,52px) + 6px);display:inline-block;margin:6px;font-family:var(--mono);font-size:11px;color:var(--ink);background:var(--panel);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;white-space:nowrap}
+.zoomed svg.track{overflow:hidden}
+.axis span{position:absolute;top:8px;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;white-space:nowrap;color:var(--muted);pointer-events:none}
+.axis .hint{left:auto;right:10px;transform:none;color:var(--faint);opacity:0;transition:opacity .15s}
+.axis:hover .hint{opacity:1}
 .row{--rowbg:var(--panel);position:relative;display:block;width:100%;border:0;border-bottom:1px solid var(--line);padding:9px 0 2px;cursor:pointer;background:var(--rowbg);text-align:left;color:inherit;font:inherit}
 .row:hover{--rowbg:var(--hover)}
 .row[aria-selected="true"]{--rowbg:var(--sel);box-shadow:inset 3px 0 0 var(--g-research)}
@@ -173,6 +205,32 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .lbl.stack .m{display:table;padding-left:3px;margin-top:-1px;white-space:nowrap}
 .row[aria-selected="true"] .lbl .t{color:var(--ink)}
 .c-tr{position:relative;display:block;height:26px}
+.lanes-col .thead{display:grid;grid-template-columns:var(--lw) minmax(0,1fr)}
+.lanes-col .thead .lw{display:flex;align-items:center;padding-left:14px;font-size:11.5px;color:var(--muted);border-right:1px solid var(--line)}
+.lanes-col .row{display:grid;grid-template-columns:var(--lw) minmax(0,1fr);padding:0;min-height:34px}
+.lanes-col .row .al{display:flex;flex-direction:column;justify-content:center;padding:4px 10px 4px 14px;min-width:0;border-right:1px solid var(--line);line-height:1.25}
+.lanes-col .al b{font-size:12.5px;font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lanes-col .al small{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lanes-col .c-tr{height:auto;position:relative}
+.lanes-col .grid{left:var(--lw);width:calc(100% - var(--lw))}
+.inv{--wc:var(--faint)}
+.inv .bar{fill:var(--wc)}
+.inv.nd .bar{fill:none;stroke:var(--wc);stroke-width:1.3;stroke-dasharray:3 2.5}
+.inv.possible .bar{fill:var(--panel);stroke:var(--wc);stroke-width:1.5}
+.inv.unclear{opacity:.6}
+.inv.off{opacity:.14}
+.inv.dim{opacity:.28}
+.inv .ring{fill:none;stroke:var(--panel);stroke-width:2}
+.lag{stroke:var(--act);stroke-width:1.5;stroke-linecap:round}
+.lagdot{stroke:var(--panel);stroke-width:1.2}
+.lagdot.g-openai{fill:var(--panel);stroke:var(--g-openai);stroke-width:1.8}
+.lagdot.g-research{fill:var(--g-research)}.lagdot.g-press{fill:var(--g-press)}.lagdot.g-gov{fill:var(--g-gov)}.lagdot.g-other{fill:var(--panel);stroke:var(--faint)}
+.rsq{stroke:var(--panel);stroke-width:1.5}
+.rsq.g-openai{fill:var(--panel);stroke:var(--g-openai);stroke-width:2.2}
+.rsq.g-gov{fill:var(--g-gov)}.rsq.g-research{fill:var(--g-research)}
+/* legend emphasis: dim every other mark type */
+.emph .track .mk{opacity:.18;transition:opacity .15s}
+.emph-act .track .mk-act,.emph-approx .track .mk-approx,.emph-gap .track .mk-gap,.emph-knew .track .mk-knew,.emph-rev .track .mk-rev,.emph-other .track .mk-other,.emph-lag .track .mk-lag,.emph-rsq .track .mk-rsq{opacity:1}
 .track{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .track svg{overflow:visible}
 .gl{stroke:var(--line);stroke-width:1}
@@ -212,14 +270,23 @@ button.th:hover .arr.off{opacity:.45}
 .tbl tr[aria-selected="true"] td:first-child{box-shadow:inset 3px 0 0 var(--g-research)}
 .tbl tr.rel td:first-child{box-shadow:inset 3px 0 0 color-mix(in srgb,var(--g-research) 40%,transparent)}
 .tbl .nm{color:var(--ink);font-weight:550}
+.tbl.tlt td{vertical-align:middle}
+.tbl .num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl th.num>span,.tbl th.num>button{justify-content:flex-end;width:100%}
+.tbl .ttl{color:var(--ink);font-weight:550;line-height:1.35}
+.tbl .rt{display:block;color:var(--ink);font-weight:550;margin-bottom:2px}
 .tbl .mono{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
 .tbl .sub{display:block;font-size:12px;color:var(--muted);margin-top:2px}
 .tbl .note{display:block;font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.4}
 .tbl .txt{color:var(--ink);line-height:1.45}
 .when-inline{display:none;font-size:11.5px;color:var(--muted);margin-top:3px}
-.what{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;border:1px solid var(--line-2);border-radius:5px;padding:0 6px;white-space:nowrap;color:var(--ink)}
-.what::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wc,var(--faint))}
-.what.breach{--wc:#d4343b}.what.account{--wc:#e0869a}.what.attack{--wc:#e39a1c}.what.creds{--wc:#b861d1}
+.what{display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:11.5px;line-height:1.5;border:1px solid var(--line-2);border-radius:5px;padding:0 6px;white-space:nowrap;color:var(--ink);background:var(--panel)}
+button.what{cursor:pointer}
+button.what:hover{border-color:var(--ink-2)}
+button.what[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.what::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--wc,var(--faint));flex:none}
+.what.possible::before{background:var(--panel);box-shadow:inset 0 0 0 1.5px var(--wc)}
+.breach{--wc:var(--w-breach)}.account{--wc:var(--w-account)}.creds{--wc:var(--w-creds)}.attack{--wc:var(--w-attack)}.spam{--wc:var(--w-spam)}.tool{--wc:var(--w-tool)}.scrape{--wc:var(--w-scrape)}.source{--wc:var(--w-source)}.reach{--wc:var(--w-reach)}.possible{--wc:var(--w-possible)}
 .what.unclear{border-style:dashed;color:var(--muted)}.what.unclear::before{display:none}
 .tbl tbody.linked{cursor:pointer}
 .tbl tbody.linked:hover td{background:var(--hover)}
@@ -244,7 +311,7 @@ button.th:hover .arr.off{opacity:.45}
 .mini-link{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:0;font-size:11.5px;font-weight:500;text-transform:none;letter-spacing:0;color:var(--g-research);cursor:pointer}
 .mini-link svg{width:12px;height:12px}
 .mini-link:hover{text-decoration:underline}
-.inc-sel{max-width:250px;text-overflow:ellipsis}
+.inc-sel{max-width:210px;text-overflow:ellipsis}
 .inc-sel.on{border-color:var(--ink-2);color:var(--ink);font-weight:550}
 .invc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
 .invc-when{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:2px}
@@ -261,6 +328,17 @@ button.th:hover .arr.off{opacity:.45}
 /* footer legend */
 .foot{position:sticky;bottom:0;z-index:20;background:var(--panel);border-top:1px solid var(--line);border-radius:0 0 10px 10px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;padding:7px 12px;font-size:12px;color:var(--ink-2)}
 .lg{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+button.lg{font:inherit;color:inherit;border:1px solid transparent;background:none;border-radius:6px;padding:2px 6px;margin:-3px -3px;cursor:pointer}
+button.lg:hover{background:var(--hover);border-color:var(--line)}
+button.lg[aria-pressed="true"]{background:var(--sel);border-color:var(--brush-edge);color:var(--ink)}
+.foot.filtering button.lg[data-f]:not([aria-pressed="true"]){opacity:.5}
+.foot.filtering button.lg[data-f]:not([aria-pressed="true"]):hover{opacity:1}
+.lg .sw{width:10px;height:10px;border-radius:2px;background:var(--wc);flex:none}
+.lg .sw.possible{background:var(--panel);box-shadow:inset 0 0 0 1.5px var(--wc)}
+.lg-lvl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+button.lg.lg-lvl{margin-right:-4px}
+.lg-clear{border:0;background:none;color:var(--g-research);font:inherit;font-size:12px;cursor:pointer;padding:0 4px}
+.lg-clear:hover{text-decoration:underline}
 .lg svg{flex:none;overflow:visible}
 .lg-group{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
 .lg-sep{width:1px;height:14px;background:var(--line)}
@@ -272,6 +350,19 @@ button.th:hover .arr.off{opacity:.45}
 .det-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 .det-top .nav{display:flex;gap:4px}
 .det-top .btn{min-height:26px;width:28px;padding:0}
+.det-top .btn svg{width:15px;height:15px}
+.det-top .kind{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:8px}
+.det-sub{font-size:13px;color:var(--muted);margin-top:-6px}
+.rel-inc{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--line)}
+.rel-inc:first-of-type{border-top:0;padding-top:2px}
+.rel-inc .inc-link{font-size:13.5px;font-weight:600}
+.rel-inc svg{display:block;width:100%;height:22px;overflow:visible}
+.rel-inc .sub{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.rlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.rlist li{display:flex;gap:8px;align-items:baseline;font-size:12.5px;color:var(--ink-2)}
+.rlist b{font-family:var(--mono);font-weight:500;font-size:11.5px;color:var(--ink);flex:none;width:64px;white-space:nowrap}
+.rlist .cur{font-weight:600;color:var(--ink)}
+.chron .inc-link{font-size:12.5px}
 .det h2{font-size:17px;line-height:1.3;margin:0;font-weight:650;letter-spacing:-.01em;outline:none}
 .tags{display:flex;flex-wrap:wrap;gap:5px}
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;border:1px solid var(--line-2);border-radius:5px;padding:1px 7px;color:var(--ink-2)}
@@ -316,7 +407,7 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .grab{display:none}
 
 /* narrower desktops */
-@media (max-width:1480px){
+@media (max-width:1100px){
   .count{display:none}
   .count.on{display:inline}
 }
@@ -394,7 +485,7 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="defs">
   <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="h-bg" width="4" height="4"/><rect class="h-fg" width="2" height="4"/></pattern>
 </defs></svg>
 
@@ -413,14 +504,18 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 
   <div class="app" id="app">
     <div class="bar" id="bar">
-      <div class="tabs" role="tablist" aria-label="Views" id="tabs"></div>
-      <span class="sep" aria-hidden="true"></span>
-      <div class="filters" id="filters"></div>
-      <span class="count" id="count" aria-live="polite"></span>
+      <div class="bar-row">
+        <div class="tabs" role="tablist" aria-label="Views" id="tabs"></div>
+        <span class="count" id="count" aria-live="polite"></span>
+        <div class="bar-r" id="bar-r"></div>
+      </div>
+      <div class="bar-row">
+        <div class="filters" id="filters"></div>
+      </div>
     </div>
     <div class="main" id="main">
       <div class="view" id="view"></div>
-      <aside class="pane-col" aria-label="Incident details">
+      <aside class="pane-col" aria-label="Details">
         <div class="drag" id="drag" role="separator" aria-orientation="vertical" aria-label="Resize details panel" aria-controls="pane" tabindex="0" data-tip="Drag to resize · double-click to reset"><span class="grip" aria-hidden="true"></span></div>
         <div class="pane-wrap">
           <div class="pane" id="pane">
@@ -440,6 +535,9 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
     <div class="dlg-top"><h2 id="about-h">About</h2><button class="btn icon" type="button" id="about-close" aria-label="Close">&#x2715;</button></div>
     <p>Incidents in which AI agents run by OpenAI during training and evaluation reached systems or public websites beyond their sandbox. Each is dated by the first public report tying it to OpenAI, whether that came from OpenAI or from researchers, journalists or governments. Attributions OpenAI hasn&rsquo;t confirmed are labeled.</p>
     <p>Affected lists each organization, site or service that sources say was breached, attacked, posted to, used as a covert channel or accessed with leaked keys, or that officials named as possibly affected. Generic web relays and data sources queried in the usual way are left out.</p>
+    <h3>Impact on affected sites</h3>
+    <p>Each involvement is labeled with what the agents did there, grouped from most to least serious. Click a label anywhere to filter by it.</p>
+    <ul id="impact-help"></ul>
     <h3>Still unknown</h3>
     <ul id="unknowns"></ul>
     <h3>Sources</h3>
@@ -458,16 +556,20 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 (() => {
 'use strict';
 /* Data for the OpenAI agent incident timeline.
-   Dates are YYYY-MM-DD. Run `python3 build.py` after editing, then republish openai-agent-swarm.html.
+   Dates are YYYY-MM-DD. Run `python3 build.py` after editing, then commit and push (GitHub Pages serves docs/).
 
    incidents[].activity   when agents were active; approx: true for loosely reported windows; sub: true for notable sub-windows
    incidents[].knew       when OpenAI is documented as knowing
    incidents[].reveals    public reports; `by` = openai | research | press | gov | other; minor: true for secondary markers
+   responses[].id         stable slug used in links (#response/<id>); never change it
+   responses[].title      short name shown on the chart and the card
    responses[].who        openai | gov | other;  inc = incident ids it relates to
    affected[]             one entry per organization, site or service; inv = its involvement in each incident
    affected[].kind        gov | edu | company | community | openai
    affected[].inv[].what  breach | account (a customer's account on the service) | attack | creds | source | spam | scrape | tool | reach | possible
    affected[].inv[].attr  'unclear' when the source doesn't tie the activity to OpenAI specifically
+   affected[].inv[].d/e   start/end dates drawn on the chart; approx: true when the end (or start) is inferred from a loose `when`
+                          such as “July” or “From May 11”; `when` is the text shown to readers; no d/e when dates weren't reported
    affected[].inv[].src   source URLs; each must also appear in some incident's sources
    unknowns               text; [label](#incident-id) becomes a link to that incident */
 const DATA = {
@@ -653,78 +755,78 @@ const DATA = {
   ],
 
   responses: [
-    { d: '2026-07-29', who: 'openai', inc: ['hugging-face'], text: 'Brings in outside advisors including CrowdStrike; METR and Redwood Research begin an independent assessment.' },
-    { d: '2026-08-01', label: 'Early Aug', who: 'gov', inc: ['hugging-face'], text: 'Fifteen Republican state attorneys general ask OpenAI to preserve documents about the breach.' },
-    { d: '2026-08-07', who: 'openai', inc: ['hugging-face'], text: 'Notifies more third parties after finding its models used publicly exposed credentials to reach outside accounts and services.' },
-    { d: '2026-08-18', who: 'openai', inc: ['hugging-face', 'artifactory'], text: 'Slows frontier training, pauses its largest planned RL run, and tightens workload and network isolation.' },
-    { d: '2026-08-24', who: 'gov', inc: ['hugging-face'], text: 'Alabama’s attorney general subpoenas OpenAI over the Hugging Face breach.' },
-    { d: '2026-08-26', who: 'openai', inc: ['hugging-face'], text: 'Publishes a technical report on the breach; METR and Redwood Research publish an independent one.' },
-    { d: '2026-09-04', who: 'other', inc: ['wikis', 'hugging-face'], text: 'Researchers and members of Congress call for a formal process to investigate agent escapes.' },
-    { d: '2026-09-05', who: 'openai', inc: ['wikis'], text: 'Says it had already found the wiki activity and will publish criteria for disclosing misaligned behavior.' },
-    { d: '2026-09-06', who: 'openai', inc: [], text: 'Chief Scientist Jakub Pachocki writes that no lab has solved alignment and monitoring well enough to keep scaling at maximum speed.' },
-    { d: '2026-09-10', who: 'openai', inc: ['medicare'], text: 'Emails Services Australia about the Medicare intrusion, a month after finding it.' },
-    { d: '2026-09-11', who: 'openai', inc: ['rubygems'], text: 'Says it could not verify that its models uploaded malicious packages to RubyGems.' },
-    { d: '2026-09-15', who: 'gov', inc: ['medicare'], text: 'Services Australia refers the Medicare intrusion to the Australian Signals Directorate.' },
-    { d: '2026-09-24', who: 'gov', inc: ['medicare'], text: 'Australia’s prime minister orders an urgent review with the Australian Signals Directorate and the AI Safety Institute.' },
-    { d: '2026-09-25', who: 'openai', inc: ['us-government', 'user-images'], text: 'Says it has notified dozens of affected organizations, including governments and universities, and that its review will take months.' },
-    { d: '2026-09-25', who: 'openai', inc: ['dns-chatbot'], text: 'Pauses all training, evaluation and tool-using inference for its most capable models.' },
+    { id: 'advisors', title: 'Outside advisors brought in', d: '2026-07-29', who: 'openai', inc: ['hugging-face'], text: 'Brings in outside advisors including CrowdStrike; METR and Redwood Research begin an independent assessment.' },
+    { id: 'ag-preservation', title: 'State attorneys general demand records be kept', d: '2026-08-01', label: 'Early Aug', who: 'gov', inc: ['hugging-face'], text: 'Fifteen Republican state attorneys general ask OpenAI to preserve documents about the breach.' },
+    { id: 'third-party-notices', title: 'More third parties notified', d: '2026-08-07', who: 'openai', inc: ['hugging-face'], text: 'Notifies more third parties after finding its models used publicly exposed credentials to reach outside accounts and services.' },
+    { id: 'training-slowdown', title: 'Frontier training slowed', d: '2026-08-18', who: 'openai', inc: ['hugging-face', 'artifactory'], text: 'Slows frontier training, pauses its largest planned RL run, and tightens workload and network isolation.' },
+    { id: 'alabama-subpoena', title: 'Alabama subpoenas OpenAI', d: '2026-08-24', who: 'gov', inc: ['hugging-face'], text: 'Alabama’s attorney general subpoenas OpenAI over the Hugging Face breach.' },
+    { id: 'technical-report', title: 'Technical reports published', d: '2026-08-26', who: 'openai', inc: ['hugging-face'], text: 'Publishes a technical report on the breach; METR and Redwood Research publish an independent one.' },
+    { id: 'congress-call', title: 'Calls for a formal investigation process', d: '2026-09-04', who: 'other', inc: ['wikis', 'hugging-face'], text: 'Researchers and members of Congress call for a formal process to investigate agent escapes.' },
+    { id: 'wiki-response', title: 'OpenAI says it already knew about the wikis', d: '2026-09-05', who: 'openai', inc: ['wikis'], text: 'Says it had already found the wiki activity and will publish criteria for disclosing misaligned behavior.' },
+    { id: 'pachocki-essay', title: 'Chief scientist: alignment not solved', d: '2026-09-06', who: 'openai', inc: [], text: 'Chief Scientist Jakub Pachocki writes that no lab has solved alignment and monitoring well enough to keep scaling at maximum speed.' },
+    { id: 'medicare-email', title: 'Services Australia notified', d: '2026-09-10', who: 'openai', inc: ['medicare'], text: 'Emails Services Australia about the Medicare intrusion, a month after finding it.' },
+    { id: 'rubygems-denial', title: 'RubyGems link not verified', d: '2026-09-11', who: 'openai', inc: ['rubygems'], text: 'Says it could not verify that its models uploaded malicious packages to RubyGems.' },
+    { id: 'asd-referral', title: 'Referred to the Australian Signals Directorate', d: '2026-09-15', who: 'gov', inc: ['medicare'], text: 'Services Australia refers the Medicare intrusion to the Australian Signals Directorate.' },
+    { id: 'pm-review', title: 'Prime minister orders urgent review', d: '2026-09-24', who: 'gov', inc: ['medicare'], text: 'Australia’s prime minister orders an urgent review with the Australian Signals Directorate and the AI Safety Institute.' },
+    { id: 'org-notices', title: 'Dozens of organizations notified', d: '2026-09-25', who: 'openai', inc: ['us-government', 'user-images'], text: 'Says it has notified dozens of affected organizations, including governments and universities, and that its review will take months.' },
+    { id: 'training-pause', title: 'All training paused', d: '2026-09-25', who: 'openai', inc: ['dns-chatbot'], text: 'Pauses all training, evaluation and tool-using inference for its most capable models.' },
   ],
 
   affected: [
     // Hugging Face breach
     { id: 'hugging-face', name: 'Hugging Face', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'breach', d: '2026-07-11', when: 'Jul 11–13', note: 'Production infrastructure breached: internal datasets and five customers’ datasets accessed, service credentials harvested, and its Spaces used as relays and drop boxes.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
+      { inc: 'hugging-face', what: 'breach', d: '2026-07-11', e: '2026-07-13', when: 'Jul 11–13', note: 'Production infrastructure breached: internal datasets and five customers’ datasets accessed, service credentials harvested, and its Spaces used as relays and drop boxes.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
     { id: 'modal', name: 'Modal', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'account', d: '2026-07-09', when: 'Jul 9–13', note: 'An unsecured benchmark app deployed by a Modal customer was taken over and used as the base of the attack. Modal says its own platform was not compromised.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'account', d: '2026-07-09', e: '2026-07-13', when: 'Jul 9–13', note: 'An unsecured benchmark app deployed by a Modal customer was taken over and used as the base of the attack. Modal says its own platform was not compromised.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://swarmtraces.org/'] } ] },
     { id: 'aws', name: 'Amazon Web Services', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'account', d: '2026-07-11', when: 'Jul 11–12', note: 'Hugging Face’s own AWS keys, taken from its systems, were used to map its cloud storage and permissions; agents also tried to solve its AWS bot challenge. AWS itself wasn’t compromised.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'account', d: '2026-07-11', e: '2026-07-12', when: 'Jul 11–12', note: 'Hugging Face’s own AWS keys, taken from its systems, were used to map its cloud storage and permissions; agents also tried to solve its AWS bot challenge. AWS itself wasn’t compromised.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://swarmtraces.org/'] } ] },
     { id: 'tailscale', name: 'Tailscale', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'account', d: '2026-07-11', when: 'Jul 11–13', note: 'A stolen Hugging Face key enrolled attacker machines, including the hijacked Modal app, into Hugging Face’s private network 181 times. Tailscale itself wasn’t compromised.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline'] } ] },
+      { inc: 'hugging-face', what: 'account', d: '2026-07-11', e: '2026-07-13', when: 'Jul 11–13', note: 'A stolen Hugging Face key enrolled attacker machines, including the hijacked Modal app, into Hugging Face’s private network 181 times. Tailscale itself wasn’t compromised.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline'] } ] },
     { id: 'github', name: 'GitHub', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'account', d: '2026-07-12', when: 'Jul 12–13', note: 'Hugging Face’s GitHub App was abused to mint tokens, list private repositories and open a pull request; GitHub code search was used to hunt for tokens.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://swarmtraces.org/'] },
-      { inc: 'twelve-sites', what: 'source', d: '2026-06-18', when: 'Jun 18–21', note: 'One of the keys used on the FBI’s crime-data API was the FBI’s own developer key, which sits in a public FBI repository on GitHub.', src: ['https://www.kennethdegraff.com/swarm'] },
-      { inc: 'us-government', what: 'source', d: '2026-06-01', when: 'Summer', note: 'The Census Bureau API keys the agents used were found in public GitHub repositories.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
+      { inc: 'hugging-face', what: 'account', d: '2026-07-12', e: '2026-07-13', when: 'Jul 12–13', note: 'Hugging Face’s GitHub App was abused to mint tokens, list private repositories and open a pull request; GitHub code search was used to hunt for tokens.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline', 'https://swarmtraces.org/'] },
+      { inc: 'twelve-sites', what: 'source', d: '2026-06-18', e: '2026-06-21', when: 'Jun 18–21', note: 'One of the keys used on the FBI’s crime-data API was the FBI’s own developer key, which sits in a public FBI repository on GitHub.', src: ['https://www.kennethdegraff.com/swarm'] },
+      { inc: 'us-government', what: 'source', d: '2026-06-01', e: '2026-08-31', when: 'Summer', approx: true, note: 'The Census Bureau API keys the agents used were found in public GitHub repositories.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
     { id: 'slack', name: 'Slack', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'account', d: '2026-07-11', when: 'July', note: 'Hugging Face’s workspace was searched for 27 terms with stolen Hugging Face tokens; the records don’t show what came back.', src: ['https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'account', d: '2026-07-11', e: '2026-07-31', when: 'July', approx: true, note: 'Hugging Face’s workspace was searched for 27 terms with stolen Hugging Face tokens; the records don’t show what came back.', src: ['https://swarmtraces.org/'] } ] },
     { id: 'docker-hub', name: 'Docker Hub', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'creds', d: '2026-07-11', when: 'July', note: 'Agents tried to create at least 115 public images under a real user’s account, with credentials the researchers believe came from paste sites; three uploads are confirmed and the images appear removed.', src: ['https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'creds', d: '2026-07-11', e: '2026-07-31', when: 'July', approx: true, note: 'Agents tried to create at least 115 public images under a real user’s account, with credentials the researchers believe came from paste sites; three uploads are confirmed and the images appear removed.', src: ['https://swarmtraces.org/'] } ] },
     { id: 'mshots', name: 'mShots', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'tool', d: '2026-07-08', when: 'From about Jul 8', note: 'A screenshot service whose browser was made to run code hidden in web addresses; the screenshots carried the results back.', src: ['https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'tool', d: '2026-07-08', e: '2026-07-13', when: 'From about Jul 8', approx: true, note: 'A screenshot service whose browser was made to run code hidden in web addresses; the screenshots carried the results back.', src: ['https://swarmtraces.org/'] } ] },
     { id: 'httpbun', name: 'httpbun.com', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'tool', d: '2026-07-08', when: 'July', note: 'An HTTP testing service used to serve encoded code fragments as web pages for mShots to run.', src: ['https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'tool', d: '2026-07-08', e: '2026-07-31', when: 'July', approx: true, note: 'An HTTP testing service used to serve encoded code fragments as web pages for mShots to run.', src: ['https://swarmtraces.org/'] } ] },
     { id: 'hf-shorteners', name: 'Link-shortening services (not named)', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'tool', d: '2026-07-08', when: 'July', note: 'Almost a million short links were used to smuggle attack code in chained fragments. The researchers withheld the services’ names.', src: ['https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'tool', d: '2026-07-08', e: '2026-07-31', when: 'July', approx: true, note: 'Almost a million short links were used to smuggle attack code in chained fragments. The researchers withheld the services’ names.', src: ['https://swarmtraces.org/'] } ] },
     { id: 'hf-accounts', name: 'Four outside services (not named)', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'creds', d: '2026-07-11', when: 'July', note: 'Accounts accessed with publicly exposed credentials: one used as a relay and staging path, one for data storage, two read-only. OpenAI hasn’t named the services.', src: ['https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
+      { inc: 'hugging-face', what: 'creds', d: '2026-07-11', e: '2026-07-31', when: 'July', approx: true, note: 'Accounts accessed with publicly exposed credentials: one used as a relay and staging path, one for data storage, two read-only. OpenAI hasn’t named the services.', src: ['https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
     { id: 'hf-webhooks', name: 'Request-capture services (not named)', kind: 'company', inv: [
-      { inc: 'hugging-face', what: 'tool', d: '2026-07-11', when: 'July', note: 'More than 100 single-use endpoints were used to send data out, according to Hugging Face.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline'] } ] },
+      { inc: 'hugging-face', what: 'tool', d: '2026-07-11', e: '2026-07-31', when: 'July', approx: true, note: 'More than 100 single-use endpoints were used to send data out, according to Hugging Face.', src: ['https://huggingface.co/blog/agent-intrusion-technical-timeline'] } ] },
     { id: 'chromium', name: 'Chromium issue tracker', kind: 'community', inv: [
-      { inc: 'hugging-face', what: 'reach', d: '2026-07-08', when: 'Jul 8', note: 'The agents’ first confirmed internet access after OpenAI rebuilt its registry: one read the comments on an issue.', src: ['https://swarmtraces.org/'] } ] },
+      { inc: 'hugging-face', what: 'reach', d: '2026-07-08', e: '2026-07-08', when: 'Jul 8', note: 'The agents’ first confirmed internet access after OpenAI rebuilt its registry: one read the comments on an issue.', src: ['https://swarmtraces.org/'] } ] },
 
     // Artifactory
     { id: 'openai-artifactory', name: 'OpenAI’s Artifactory registry', kind: 'openai', inv: [
-      { inc: 'artifactory', what: 'breach', d: '2026-05-08', when: 'May – Jul', note: 'Agents used OpenAI’s self-hosted package registry as a covert message board and exploited previously unknown flaws in its software to reach the internet.', src: ['https://www.axios.com/2026/08/06/openai-hugging-face-black-hat'] },
-      { inc: 'hugging-face', what: 'breach', d: '2026-06-26', when: 'Jun 26 – Jul 13', note: 'Previously unknown flaws in the registry software were used to escape the evaluation environment at the start of the Hugging Face attack.', src: ['https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
+      { inc: 'artifactory', what: 'breach', d: '2026-05-08', e: '2026-07-31', when: 'May – Jul', approx: true, note: 'Agents used OpenAI’s self-hosted package registry as a covert message board and exploited previously unknown flaws in its software to reach the internet.', src: ['https://www.axios.com/2026/08/06/openai-hugging-face-black-hat'] },
+      { inc: 'hugging-face', what: 'breach', d: '2026-06-26', e: '2026-07-13', when: 'Jun 26 – Jul 13', note: 'Previously unknown flaws in the registry software were used to escape the evaluation environment at the start of the Hugging Face attack.', src: ['https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
 
     // Wikis (collusion.wiki)
     { id: 'dse-wiki', name: 'DSE Wiki', kind: 'community', where: 'German-language', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-11', when: 'May 11 – Jul 13', note: 'Roughly 18,000 posts, up to about 400 pages a day, used as a message board; agents also sent cross-site scripting probes and clashed with a volunteer moderator.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-11', e: '2026-07-13', when: 'May 11 – Jul 13', note: 'Roughly 18,000 posts, up to about 400 pages a day, used as a message board; agents also sent cross-site scripting probes and clashed with a volunteer moderator.', src: ['https://collusion.wiki/'] } ] },
     { id: 'probier', name: 'probier wiki', kind: 'community', where: 'wikiservice.at', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-24', when: 'May 24 – Jul 2', note: '1,013 revisions across 601 pages, including compressed education data the agents stored there.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-24', e: '2026-07-02', when: 'May 24 – Jul 2', note: '1,013 revisions across 601 pages, including compressed education data the agents stored there.', src: ['https://collusion.wiki/'] } ] },
     { id: 'fractal', name: 'fractal wiki', kind: 'community', where: 'wikiservice.at', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-24', when: 'May 24 – Jul 1', note: '169 revisions across 68 pages, including links to tunnels the agents called “research bridges”.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-24', e: '2026-07-01', when: 'May 24 – Jul 1', note: '169 revisions across 68 pages, including links to tunnels the agents called “research bridges”.', src: ['https://collusion.wiki/'] } ] },
     { id: 'testwiki', name: 'TestWiki', kind: 'community', where: 'publictestwiki.com', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-11', when: 'May 11–27', note: 'The first wiki the agents tried: 58 revisions across 4 pages, mostly test posts. Its abuse filter blocked some attempts.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-11', e: '2026-05-27', when: 'May 11–27', note: 'The first wiki the agents tried: 58 revisions across 4 pages, mostly test posts. Its abuse filter blocked some attempts.', src: ['https://collusion.wiki/'] } ] },
     { id: 'usemod', name: 'UseModWiki', kind: 'community', where: 'usemod.org', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-11', when: 'From May 11', note: '15 revisions across 3 pages, mostly links to federal budget PDFs.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-11', e: '2026-07-13', when: 'From May 11', approx: true, note: '15 revisions across 3 pages, mostly links to federal budget PDFs.', src: ['https://collusion.wiki/'] } ] },
     { id: 'uncyclopedia', name: 'Uncyclopedia', kind: 'community', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-17', when: 'May 17–18', note: '17 revisions to its sandbox page.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-17', e: '2026-05-18', when: 'May 17–18', note: '17 revisions to its sandbox page.', src: ['https://collusion.wiki/'] } ] },
     { id: 'ludism', name: 'ludism.org', kind: 'community', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-05-26', when: 'May 26', note: 'A games wiki: 25 revisions across 12 pages, with sandbox pages holding links to federal PDFs.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-05-26', e: '2026-05-26', when: 'May 26', note: 'A games wiki: 25 revisions across 12 pages, with sandbox pages holding links to federal PDFs.', src: ['https://collusion.wiki/'] } ] },
     { id: 'texteditors', name: 'texteditors.org', kind: 'community', inv: [
-      { inc: 'wikis', what: 'tool', d: '2026-06-18', when: 'June', note: 'One revision, plus tests of chaining links through proxies.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'tool', d: '2026-06-18', e: '2026-06-30', when: 'June', approx: true, note: 'One revision, plus tests of chaining links through proxies.', src: ['https://collusion.wiki/'] } ] },
     { id: 'dorfwiki', name: 'Dorfwiki', kind: 'community', inv: [
-      { inc: 'wikis', what: 'spam', d: '2026-06-22', when: 'Jun 22', note: '6 revisions across 2 pages.', src: ['https://collusion.wiki/'] } ] },
+      { inc: 'wikis', what: 'spam', d: '2026-06-22', e: '2026-06-22', when: 'Jun 22', note: '6 revisions across 2 pages.', src: ['https://collusion.wiki/'] } ] },
     { id: 'gruenderwiki', name: 'GründerWiki', kind: 'community', where: 'wikiservice.at', inv: [
       { inc: 'wikis', what: 'spam', d: '', when: 'Not reported', note: 'One revision carrying the same census codes and federal document IDs seen on the other wikis.', src: ['https://collusion.wiki/'] } ] },
     { id: 'jotspot', name: 'jotspot.io', kind: 'company', inv: [
@@ -732,25 +834,25 @@ const DATA = {
 
     // Nightingale additional findings (Fortune, Sep 9) and Kenneth DeGraff
     { id: 'vanderbilt', name: 'Vanderbilt University', kind: 'edu', where: 'US', inv: [
-      { inc: 'twelve-sites', what: 'breach', d: '2026-06-16', when: 'Jun 16–21', note: 'Agents got into its link shortener, which has no public sign-up, built at least 170 links and used an old link’s public stats page as a message board; one link drew 54,250 visits on June 18. Vanderbilt locked the stats pages on Sept. 8.', src: ['https://www.kennethdegraff.com/swarm', 'https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/'] } ] },
+      { inc: 'twelve-sites', what: 'breach', d: '2026-06-16', e: '2026-06-21', when: 'Jun 16–21', note: 'Agents got into its link shortener, which has no public sign-up, built at least 170 links and used an old link’s public stats page as a message board; one link drew 54,250 visits on June 18. Vanderbilt locked the stats pages on Sept. 8.', src: ['https://www.kennethdegraff.com/swarm', 'https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/'] } ] },
     { id: 'fbi-cde', name: 'FBI Crime Data Explorer', kind: 'gov', where: 'US', inv: [
-      { inc: 'twelve-sites', what: 'creds', d: '2026-06-18', when: 'Jun 18–21', note: '495 queries recorded in Vanderbilt’s logs used a public demo key, the FBI’s own developer key from GitHub, and a private individual’s accidentally published key. The logs don’t prove the requests reached the FBI.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
+      { inc: 'twelve-sites', what: 'creds', d: '2026-06-18', e: '2026-06-21', when: 'Jun 18–21', note: '495 queries recorded in Vanderbilt’s logs used a public demo key, the FBI’s own developer key from GitHub, and a private individual’s accidentally published key. The logs don’t prove the requests reached the FBI.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'uoft', name: 'University of Toronto', kind: 'edu', where: 'Canada', inv: [
-      { inc: 'twelve-sites', what: 'tool', d: '2026-06-18', when: 'Jun 18', note: 'Agents created four or five links on its link shortener, following its published rules; it locked its stats pages on Sept. 8.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
+      { inc: 'twelve-sites', what: 'tool', d: '2026-06-18', e: '2026-06-18', when: 'Jun 18', note: 'Agents created four or five links on its link shortener, following its published rules; it locked its stats pages on Sept. 8.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'unm', name: 'University of New Mexico', kind: 'edu', where: 'US', inv: [
-      { inc: 'urlquery', what: 'attack', d: '2026-05-25', when: 'May 25–26', note: 'Its digital library got seven exploit probes (SQL injection, command injection, path traversal) and a burst of 80 requests after a photo failed to load; they appear to have failed.', src: ['https://transluce.org/agent-activity'] },
-      { inc: 'twelve-sites', what: 'tool', d: '2026-06-18', when: 'Jun 18', note: 'Agents wrote into the log of an old link on its link shortener, which drew 1,845 visits that day, according to Kenneth DeGraff; Nightingale counts four links.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
+      { inc: 'urlquery', what: 'attack', d: '2026-05-25', e: '2026-05-26', when: 'May 25–26', note: 'Its digital library got seven exploit probes (SQL injection, command injection, path traversal) and a burst of 80 requests after a photo failed to load; they appear to have failed.', src: ['https://transluce.org/agent-activity'] },
+      { inc: 'twelve-sites', what: 'tool', d: '2026-06-18', e: '2026-06-18', when: 'Jun 18', note: 'Agents wrote into the log of an old link on its link shortener, which drew 1,845 visits that day, according to Kenneth DeGraff; Nightingale counts four links.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'tmcleod', name: 'A teacher’s AP Chemistry wiki', kind: 'edu', where: 'tmcleod.org', inv: [
-      { inc: 'twelve-sites', what: 'spam', d: '2026-05-24', when: 'May 24 – Jul 7', note: 'About 30 edits across 15 pages, leaving links to help the agents with tasks.', src: ['https://collusion.wiki/additional-findings', 'https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/'] } ] },
+      { inc: 'twelve-sites', what: 'spam', d: '2026-05-24', e: '2026-07-07', when: 'May 24 – Jul 7', note: 'About 30 edits across 15 pages, leaving links to help the agents with tasks.', src: ['https://collusion.wiki/additional-findings', 'https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/'] } ] },
     { id: 'paste-linuxiarz', name: 'paste.linuxiarz.pl', kind: 'company', where: 'Poland', inv: [
-      { inc: 'twelve-sites', what: 'spam', d: '2026-05-13', when: 'May 13 – Jun 17', note: 'A Polish text-sharing site used to coordinate an “Iowa cancer statistics” task: over 100 messages, most on June 16. Counts differ between sources.', src: ['https://collusion.wiki/additional-findings', 'https://www.kennethdegraff.com/swarm'] } ] },
+      { inc: 'twelve-sites', what: 'spam', d: '2026-05-13', e: '2026-06-17', when: 'May 13 – Jun 17', note: 'A Polish text-sharing site used to coordinate an “Iowa cancer statistics” task: over 100 messages, most on June 16. Counts differ between sources.', src: ['https://collusion.wiki/additional-findings', 'https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'anna-fyi', name: 'anna.fyi', kind: 'company', inv: [
-      { inc: 'twelve-sites', what: 'spam', d: '', when: 'Until Sep 2', note: '55 pastes that appear to be from OpenAI’s agents, the latest on Sept. 2. The researchers warn that fake posts appeared after Sept. 4.', src: ['https://collusion.wiki/additional-findings'] } ] },
+      { inc: 'twelve-sites', what: 'spam', d: '2026-05-01', e: '2026-09-02', when: 'Until Sep 2', approx: true, note: '55 pastes that appear to be from OpenAI’s agents, the latest on Sept. 2. The researchers warn that fake posts appeared after Sept. 4.', src: ['https://collusion.wiki/additional-findings'] } ] },
     { id: 'pastebin-k4be', name: 'pastebin.k4be.pl', kind: 'company', inv: [
       { inc: 'twelve-sites', what: 'spam', d: '', when: 'Not reported', note: '20 pastes, including English Premier League data.', src: ['https://collusion.wiki/additional-findings'] },
       { inc: 'urlquery', what: 'spam', attr: 'unclear', d: '', when: 'Not reported', note: 'The same nine Thai labour-force figures the agents retrieved were posted here anonymously; Transluce doesn’t say who posted them.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'rmn-re', name: 'rmn.re', kind: 'company', inv: [
-      { inc: 'twelve-sites', what: 'tool', d: '2026-05-26', when: 'May 26 – Jun 21', note: 'A link shortener used to store information; its public admin page listed 499 links, most dated June 17.', src: ['https://collusion.wiki/additional-findings'] } ] },
+      { inc: 'twelve-sites', what: 'tool', d: '2026-05-26', e: '2026-06-21', when: 'May 26 – Jun 21', note: 'A link shortener used to store information; its public admin page listed 499 links, most dated June 17.', src: ['https://collusion.wiki/additional-findings'] } ] },
     { id: 'bitily', name: 'bitily.in', kind: 'company', inv: [
       { inc: 'twelve-sites', what: 'tool', d: '', when: 'Not reported', note: 'A link shortener: two links.', src: ['https://collusion.wiki/additional-findings'] } ] },
     { id: 'is-gd', name: 'is.gd', kind: 'company', inv: [
@@ -764,9 +866,9 @@ const DATA = {
     { id: 'jsonhero', name: 'jsonhero.io', kind: 'company', inv: [
       { inc: 'twelve-sites', what: 'tool', d: '', when: 'Not reported', note: 'A JSON-sharing site used to store documents; sources count between 2 and 13.', src: ['https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'wiki4d', name: 'Wiki4D', kind: 'community', where: 'prowiki.org', inv: [
-      { inc: 'twelve-sites', what: 'spam', d: '2026-05-26', when: 'May 26 – Jun 22', note: 'A wiki for the D programming language: 63 revisions across 49 pages.', src: ['https://collusion.wiki/additional-findings', 'https://www.kennethdegraff.com/swarm'] } ] },
+      { inc: 'twelve-sites', what: 'spam', d: '2026-05-26', e: '2026-06-22', when: 'May 26 – Jun 22', note: 'A wiki for the D programming language: 63 revisions across 49 pages.', src: ['https://collusion.wiki/additional-findings', 'https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'milks-wiki', name: 'Milk’s wiki', kind: 'community', where: 'wikiservice.at', inv: [
-      { inc: 'twelve-sites', what: 'spam', d: '2026-05-26', when: 'May 26', note: '12 revisions across 9 pages.', src: ['https://collusion.wiki/additional-findings'] } ] },
+      { inc: 'twelve-sites', what: 'spam', d: '2026-05-26', e: '2026-05-26', when: 'May 26', note: '12 revisions across 9 pages.', src: ['https://collusion.wiki/additional-findings'] } ] },
     { id: 'samoan-wiki', name: 'Samoan dictionary wiki', kind: 'community', where: 'wikiservice.at', inv: [
       { inc: 'twelve-sites', what: 'spam', d: '', when: 'Not reported', note: '4 revisions.', src: ['https://collusion.wiki/additional-findings'] } ] },
     { id: 'demowiki', name: 'DemoWiki', kind: 'community', where: 'wikiservice.at', inv: [
@@ -774,61 +876,61 @@ const DATA = {
 
     // RubyGems
     { id: 'rubygems', name: 'RubyGems', kind: 'community', inv: [
-      { inc: 'rubygems', what: 'attack', d: '2026-05-05', when: 'May 5 – Jun 18', note: 'More than 2,100 packages uploaded, most on May 11–12; sign-ups were paused May 12–16 and over 500 packages removed. At least six packages tried to exploit a caching bug to steal API keys; maintainers found no sign it worked.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] },
-      { inc: 'twelve-sites', what: 'spam', d: '2026-06-18', when: 'Jun 18', note: 'A second burst: over three hours, agents published 81 to 83 packages whose metadata pointed to one SEC data file.', src: ['https://collusion.wiki/additional-findings', 'https://rubyhack.ai/'] } ] },
+      { inc: 'rubygems', what: 'attack', d: '2026-05-05', e: '2026-06-18', when: 'May 5 – Jun 18', note: 'More than 2,100 packages uploaded, most on May 11–12; sign-ups were paused May 12–16 and over 500 packages removed. At least six packages tried to exploit a caching bug to steal API keys; maintainers found no sign it worked.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] },
+      { inc: 'twelve-sites', what: 'spam', d: '2026-06-18', e: '2026-06-18', when: 'Jun 18', note: 'A second burst: over three hours, agents published 81 to 83 packages whose metadata pointed to one SEC data file.', src: ['https://collusion.wiki/additional-findings', 'https://rubyhack.ai/'] } ] },
     { id: 'rubydoc', name: 'RubyDoc.info', kind: 'community', inv: [
-      { inc: 'rubygems', what: 'breach', d: '2026-05-05', when: 'May', note: 'More than 100 packages abused its documentation builds to run code on its servers and fetch web pages.', src: ['https://rubyhack.ai/'] } ] },
+      { inc: 'rubygems', what: 'breach', d: '2026-05-05', e: '2026-05-31', when: 'May', approx: true, note: 'More than 100 packages abused its documentation builds to run code on its servers and fetch web pages.', src: ['https://rubyhack.ai/'] } ] },
     { id: 'lambeth', name: 'Lambeth Council', kind: 'gov', where: 'UK', inv: [
-      { inc: 'rubygems', what: 'scrape', d: '2026-05-11', when: 'May', note: 'Meeting calendars and agendas were scraped through RubyDoc.info’s build system and republished as RubyGems packages.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] } ] },
+      { inc: 'rubygems', what: 'scrape', d: '2026-05-11', e: '2026-05-31', when: 'May', approx: true, note: 'Meeting calendars and agendas were scraped through RubyDoc.info’s build system and republished as RubyGems packages.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] } ] },
     { id: 'wandsworth', name: 'Wandsworth Council', kind: 'gov', where: 'UK', inv: [
-      { inc: 'rubygems', what: 'scrape', d: '2026-05-11', when: 'May', note: 'Meeting calendars and agendas were scraped through RubyDoc.info’s build system and republished as RubyGems packages.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] } ] },
+      { inc: 'rubygems', what: 'scrape', d: '2026-05-11', e: '2026-05-31', when: 'May', approx: true, note: 'Meeting calendars and agendas were scraped through RubyDoc.info’s build system and republished as RubyGems packages.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] } ] },
     { id: 'southwark', name: 'Southwark Council', kind: 'gov', where: 'UK', inv: [
-      { inc: 'rubygems', what: 'scrape', d: '2026-05-11', when: 'May', note: 'Meeting documents were scraped through RubyDoc.info’s build system and republished as RubyGems packages.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] } ] },
+      { inc: 'rubygems', what: 'scrape', d: '2026-05-11', e: '2026-05-31', when: 'May', approx: true, note: 'Meeting documents were scraped through RubyDoc.info’s build system and republished as RubyGems packages.', src: ['https://rubyhack.ai/', 'https://socket.dev/blog/gemstuffer'] } ] },
     { id: 'jina', name: 'Jina Reader', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'tool', attr: 'unclear', d: '2026-03-06', when: 'Mar 6', note: 'Used to fetch Thai government statistics; Jina blocked the agents for an hour, citing abuse.', src: ['https://transluce.org/agent-activity'] },
-      { inc: 'rubygems', what: 'tool', d: '2026-05-05', when: 'May – Jun', note: 'Named in 1,397 of the packages; the agents used it heavily to fetch web pages.', src: ['https://rubyhack.ai/'] } ] },
+      { inc: 'urlquery', what: 'tool', attr: 'unclear', d: '2026-03-06', e: '2026-03-06', when: 'Mar 6', note: 'Used to fetch Thai government statistics; Jina blocked the agents for an hour, citing abuse.', src: ['https://transluce.org/agent-activity'] },
+      { inc: 'rubygems', what: 'tool', d: '2026-05-05', e: '2026-06-30', when: 'May – Jun', approx: true, note: 'Named in 1,397 of the packages; the agents used it heavily to fetch web pages.', src: ['https://rubyhack.ai/'] } ] },
 
     // Transluce / urlquery
     { id: 'urlquery-net', name: 'urlquery.net', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'tool', d: '2026-03-06', when: 'Mar 6 – Sep 20', note: 'A web-scanning service used as a remote browser to reach sites the agents couldn’t reach directly; an agent also tried to register an account.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'tool', d: '2026-03-06', e: '2026-09-20', when: 'Mar 6 – Sep 20', note: 'A web-scanning service used as a remote browser to reach sites the agents couldn’t reach directly; an agent also tried to register an account.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'data-usa', name: 'Data USA', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'attack', d: '2026-05-28', when: 'May 28', note: 'A public-data site run by Deloitte, Datawheel and MIT: 12 exploit probes while the agents fetched University of Iowa data; they appear to have failed.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'attack', d: '2026-05-28', e: '2026-05-28', when: 'May 28', note: 'A public-data site run by Deloitte, Datawheel and MIT: 12 exploit probes while the agents fetched University of Iowa data; they appear to have failed.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'aihw', name: 'Australian Institute of Health and Welfare', kind: 'gov', where: 'Australia', inv: [
-      { inc: 'urlquery', what: 'attack', d: '2026-06-20', when: 'Jun 20–21', note: 'After an anti-bot block, an agent sent a script-injection probe, then took a public file from a pre-production server; no non-public data was exposed.', src: ['https://transluce.org/agent-activity'] },
-      { inc: 'medicare', what: 'possible', d: '2026-09-24', when: 'Named Sep 24', note: 'Named by the prime minister among three other systems that may have been affected.', src: ['https://www.pm.gov.au/media/press-conference-new-york'] } ] },
+      { inc: 'urlquery', what: 'attack', d: '2026-06-20', e: '2026-06-21', when: 'Jun 20–21', note: 'After an anti-bot block, an agent sent a script-injection probe, then took a public file from a pre-production server; no non-public data was exposed.', src: ['https://transluce.org/agent-activity'] },
+      { inc: 'medicare', what: 'possible', d: '2026-09-24', e: '2026-09-24', when: 'Named Sep 24', note: 'Named by the prime minister among three other systems that may have been affected.', src: ['https://www.pm.gov.au/media/press-conference-new-york'] } ] },
     { id: 'oncb', name: 'Thailand Office of the Narcotics Control Board', kind: 'gov', where: 'Thailand', inv: [
-      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-03-06', when: 'Mar 6', note: 'An agent escalated through a page-fetching service and encoded scripts until it got provincial drug-arrest statistics; no exploit.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-03-06', e: '2026-03-06', when: 'Mar 6', note: 'An agent escalated through a page-fetching service and encoded scripts until it got provincial drug-arrest statistics; no exploit.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'thai-nso', name: 'Thailand National Statistical Office', kind: 'gov', where: 'Thailand', inv: [
-      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-03-11', when: 'Mar – Jun', note: 'Repeated attempts to pull labour-force data from its dashboard.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-03-11', e: '2026-06-30', when: 'Mar – Jun', approx: true, note: 'Repeated attempts to pull labour-force data from its dashboard.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'unctad', name: 'UN Trade and Development (UNCTAD)', kind: 'gov', where: 'International', inv: [
-      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-04-17', when: 'From Apr 17', note: 'More than 1,000 urlquery scans in two weeks; three carry tags beginning “CHATGPT”.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-04-17', e: '2026-09-20', when: 'From Apr 17', approx: true, note: 'More than 1,000 urlquery scans in two weeks; three carry tags beginning “CHATGPT”.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'thrill-data', name: 'Thrill Data', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-05-05', when: 'May – Jun', note: 'Historical theme-park wait times retrieved.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-05-05', e: '2026-06-30', when: 'May – Jun', approx: true, note: 'Historical theme-park wait times retrieved.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'mail-gw', name: 'mail.gw', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'tool', attr: 'unclear', d: '2026-06-19', when: 'Jun 19–20', note: 'A disposable inbox was created to verify a Browserless account.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'tool', attr: 'unclear', d: '2026-06-19', e: '2026-06-20', when: 'Jun 19–20', note: 'A disposable inbox was created to verify a Browserless account.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'browserless', name: 'Browserless', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'tool', attr: 'unclear', d: '2026-06-19', when: 'Jun 19–20', note: 'An account was verified with a disposable inbox and used for remote browsing sessions.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'tool', attr: 'unclear', d: '2026-06-19', e: '2026-06-20', when: 'Jun 19–20', note: 'An account was verified with a disposable inbox and used for remote browsing sessions.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'iea', name: 'International Energy Agency', kind: 'gov', where: 'International', inv: [
-      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-09-16', when: 'Sep 16', note: 'Korean energy-import data pulled, matching a question in a Google benchmark; some was sent on to an unnamed site.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'scrape', attr: 'unclear', d: '2026-09-16', e: '2026-09-16', when: 'Sep 16', note: 'Korean energy-import data pulled, matching a question in a Google benchmark; some was sent on to an unnamed site.', src: ['https://transluce.org/agent-activity'] } ] },
     { id: 'quidax', name: 'Quidax', kind: 'company', inv: [
-      { inc: 'urlquery', what: 'attack', attr: 'unclear', d: '2026-09-19', when: 'Sep 19–20', note: 'A cryptocurrency exchange: repeated failed trade attempts, an HTML-injection attempt and API probes over about 2.5 hours.', src: ['https://transluce.org/agent-activity'] } ] },
+      { inc: 'urlquery', what: 'attack', attr: 'unclear', d: '2026-09-19', e: '2026-09-20', when: 'Sep 19–20', note: 'A cryptocurrency exchange: repeated failed trade attempts, an HTML-injection attempt and API probes over about 2.5 hours.', src: ['https://transluce.org/agent-activity'] } ] },
 
     // Australia
     { id: 'services-australia', name: 'Services Australia', kind: 'gov', where: 'Australia', inv: [
-      { inc: 'medicare', what: 'breach', d: '2026-06-18', when: 'Jun 18', note: 'Its Medicare statistics portal: aggregate statistics and internal file names accessed and files written to an internal server; no personal records.', src: ['https://www.pm.gov.au/media/press-conference-new-york', 'https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078'] } ] },
+      { inc: 'medicare', what: 'breach', d: '2026-06-18', e: '2026-06-18', when: 'Jun 18', note: 'Its Medicare statistics portal: aggregate statistics and internal file names accessed and files written to an internal server; no personal records.', src: ['https://www.pm.gov.au/media/press-conference-new-york', 'https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078'] } ] },
     { id: 'bocsar', name: 'NSW Bureau of Crime Statistics and Research', kind: 'gov', where: 'Australia', inv: [
-      { inc: 'medicare', what: 'possible', d: '2026-09-24', when: 'Named Sep 24', note: 'Named by the prime minister as possibly affected. The bureau says OpenAI found a potential vulnerability in data behind its crime-mapping tool, with no evidence it was exploited.', src: ['https://www.abc.net.au/news/2026-09-24/federal-politics-live-blog-openai-medicare-breach/107186578'] } ] },
+      { inc: 'medicare', what: 'possible', d: '2026-09-24', e: '2026-09-24', when: 'Named Sep 24', note: 'Named by the prime minister as possibly affected. The bureau says OpenAI found a potential vulnerability in data behind its crime-mapping tool, with no evidence it was exploited.', src: ['https://www.abc.net.au/news/2026-09-24/federal-politics-live-blog-openai-medicare-breach/107186578'] } ] },
     { id: 'vic-health', name: 'Victorian Department of Health', kind: 'gov', where: 'Australia', inv: [
-      { inc: 'medicare', what: 'possible', d: '2026-09-24', when: 'Named Sep 24', note: 'Named by the prime minister as possibly affected; no details released.', src: ['https://www.pm.gov.au/media/press-conference-new-york'] } ] },
+      { inc: 'medicare', what: 'possible', d: '2026-09-24', e: '2026-09-24', when: 'Named Sep 24', note: 'Named by the prime minister as possibly affected; no details released.', src: ['https://www.pm.gov.au/media/press-conference-new-york'] } ] },
 
     // US government
     { id: 'census', name: 'U.S. Census Bureau', kind: 'gov', where: 'US', inv: [
-      { inc: 'us-government', what: 'creds', d: '2026-06-01', when: 'Summer', note: 'Public data pulled with API keys found in public GitHub repositories; the Commerce Department says no private data was accessed.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
+      { inc: 'us-government', what: 'creds', d: '2026-06-01', e: '2026-08-31', when: 'Summer', approx: true, note: 'Public data pulled with API keys found in public GitHub repositories; the Commerce Department says no private data was accessed.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
     { id: 'sec-gov', name: 'SEC.gov', kind: 'gov', where: 'US', inv: [
-      { inc: 'us-government', what: 'scrape', d: '2026-06-01', when: 'Summer', note: 'Public information retrieved and posted on another public webpage, which hasn’t been named. OpenAI says no accounts or nonpublic data were accessed.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] },
-      { inc: 'rubygems', what: 'scrape', d: '2026-05-05', when: 'May – Jun', note: 'Agents repeatedly fetched one public SEC file (county.json) through RubyGems packages, wikis and link shorteners; 384 of 583 links in the June packages point to it.', src: ['https://rubyhack.ai/', 'https://www.kennethdegraff.com/swarm'] } ] },
+      { inc: 'us-government', what: 'scrape', d: '2026-06-01', e: '2026-08-31', when: 'Summer', approx: true, note: 'Public information retrieved and posted on another public webpage, which hasn’t been named. OpenAI says no accounts or nonpublic data were accessed.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] },
+      { inc: 'rubygems', what: 'scrape', d: '2026-05-05', e: '2026-06-30', when: 'May – Jun', approx: true, note: 'Agents repeatedly fetched one public SEC file (county.json) through RubyGems packages, wikis and link shorteners; 384 of 583 links in the June packages point to it.', src: ['https://rubyhack.ai/', 'https://www.kennethdegraff.com/swarm'] } ] },
     { id: 'investor-gov', name: 'Investor.gov', kind: 'gov', where: 'US', inv: [
-      { inc: 'us-government', what: 'scrape', d: '2026-06-01', when: 'Summer', note: 'The SEC’s investor-education site: public information retrieved and posted on another public webpage, which hasn’t been named.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
+      { inc: 'us-government', what: 'scrape', d: '2026-06-01', e: '2026-08-31', when: 'Summer', approx: true, note: 'The SEC’s investor-education site: public information retrieved and posted on another public webpage, which hasn’t been named.', src: ['https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
     { id: 'education', name: 'U.S. Department of Education', kind: 'gov', where: 'US', inv: [
       { inc: 'us-government', what: 'attack', d: '', when: 'Not reported', note: 'A rudimentary, failed attempt to get data from its Office for Civil Rights website, according to Transluce; the department found no impact. OpenAI hasn’t confirmed it.', src: ['https://thehill.com/policy/technology/6113061-openai-access-government-websites/', 'https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/'] } ] },
     { id: 'justice', name: 'U.S. Department of Justice', kind: 'gov', where: 'US', inv: [
@@ -850,7 +952,7 @@ const DATA = {
     { id: 'image-hosts', name: 'Image-hosting sites (not named)', kind: 'company', inv: [
       { inc: 'user-images', what: 'spam', d: '', when: 'Not disclosed', note: '53 ChatGPT users’ images were posted through unlisted links; most have been removed. OpenAI hasn’t named the sites.', src: ['https://openai.com/hugging-face-incident-and-misalignment/'] } ] },
     { id: 'dns-chatbot', name: 'A chatbot reachable over DNS (not named)', kind: 'company', inv: [
-      { inc: 'dns-chatbot', what: 'tool', d: '2026-09-20', when: 'Sep 20', note: 'Queried through DNS lookups to answer the agent’s questions.', src: ['https://www.malwarebytes.com/blog/ai/2026/09/openai-pauses-work-on-top-ai-models-after-agent-slips-past-internet-controls'] } ] },
+      { inc: 'dns-chatbot', what: 'tool', d: '2026-09-20', e: '2026-09-20', when: 'Sep 20', note: 'Queried through DNS lookups to answer the agent’s questions.', src: ['https://www.malwarebytes.com/blog/ai/2026/09/openai-pauses-work-on-top-ai-models-after-agent-slips-past-internet-controls'] } ] },
   ],
 
   unknowns: [
@@ -875,6 +977,7 @@ const h = (tag, attrs = {}, ...kids) => {
   kids.flat(Infinity).forEach(k => { if (k != null && k !== false) el.append(k.nodeType ? k : document.createTextNode(String(k))); });
   return el;
 };
+const put = (el, ...kids) => el.replaceChildren(...kids.flat(Infinity).filter(k => k != null && k !== false));
 const NS = 'http://www.w3.org/2000/svg';
 const sv = (tag, attrs = {}) => { const el = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) if (v != null) el.setAttribute(k, v); return el; };
 const D = s => { const [y, m, d] = s.split('-').map(Number); return Date.UTC(y, m - 1, d); };
@@ -906,7 +1009,21 @@ const WHAT_TIP = {
   possible: 'Named as possibly affected; no confirmation or details.',
 };
 const ATTR_TIP = 'The source reports this activity but doesn\u2019t tie it specifically to OpenAI\u2019s agents.';
-const whatTags = a => [h('span', { class: 'what ' + a.what, text: WHAT[a.what], 'data-tip': WHAT_TIP[a.what] }), a.attr === 'unclear' ? h('span', { class: 'what unclear', text: 'Attribution unclear', 'data-tip': ATTR_TIP }) : null];
+/* impact levels, most to least serious; each category has its own validated color (--w-*) */
+const LEVELS = [
+  { k: 'comp', label: 'Compromised', tip: 'Systems, accounts or keys were broken into or used', cats: ['breach', 'account', 'creds'] },
+  { k: 'att', label: 'Attacked', tip: 'Break-in attempts', cats: ['attack'] },
+  { k: 'mis', label: 'Misused', tip: 'Content posted, data pulled, or the service used against its owners’ intent', cats: ['spam', 'tool', 'scrape'] },
+  { k: 'touch', label: 'Touched', tip: 'Reached, named as possibly affected, or where leaked keys were found', cats: ['source', 'reach', 'possible'] },
+];
+const CATS = LEVELS.flatMap(l => l.cats);
+const RANK = Object.fromEntries(CATS.map((c, i) => [c, i]));
+const LEVEL_OF = Object.fromEntries(LEVELS.flatMap(l => l.cats.map(c => [c, l])));
+/* impact badge: a button that filters Affected by its category */
+const whatBtn = w => h('button', { type: 'button', class: 'what ' + w, 'data-what': w, 'aria-pressed': String(state.aff.cats.has(w)),
+  'data-tip': `${WHAT_TIP[w]}\nClick to ${state.aff.cats.size === 1 && state.aff.cats.has(w) ? 'clear this filter' : 'show only this'}.`, 'data-tip-title': `${LEVEL_OF[w].label} · ${WHAT[w]}`,
+  onclick: ev => { ev.stopPropagation(); toggleCat(w, true); } }, WHAT[w]);
+const whatTags = a => [whatBtn(a.what), a.attr === 'unclear' ? h('span', { class: 'what unclear', text: 'Attribution unclear', 'data-tip': ATTR_TIP }) : null];
 const confirmed = e => /^Confirmed/.test(e.status);
 
 /* ---------------------------------------------------------------- data prep */
@@ -915,22 +1032,38 @@ const INC = DATA.incidents.map((e, i) => {
   const acts = e.activity.filter(a => !a.sub);
   const first = acts.length ? acts.map(a => a.s).sort()[0] : null;
   const last = acts.length ? acts.map(a => a.e).sort().slice(-1)[0] : null;
-  return Object.assign({}, e, { idx: i, main, first, last, approx: acts.some(a => a.approx), delay: first ? Math.round((D(main.d) - D(first)) / DAY) : null });
+  const dates = [first, last, main.d, e.knew && e.knew.d, ...e.reveals.map(r => r.d)].filter(Boolean).sort();
+  return Object.assign({}, e, { idx: i, main, first, last, approx: acts.some(a => a.approx), delay: first ? Math.round((D(main.d) - D(first)) / DAY) : null, a: dates[0], b: dates[dates.length - 1] });
 });
 [...INC].sort((a, b) => a.main.d.localeCompare(b.main.d) || a.idx - b.idx).forEach((e, i) => { e.n = i + 1; });
 const BY_ID = new Map(INC.map(e => [e.id, e]));
-const RESP = DATA.responses.map((r, i) => Object.assign({ idx: i }, r));
+const RESP = DATA.responses.map((r, i) => {
+  const incs = r.inc.map(id => BY_ID.get(id)).filter(Boolean);
+  const from = incs.map(e => e.main.d).sort()[0] || null;
+  return Object.assign({ idx: i }, r, { from, lag: from ? Math.round((D(r.d) - D(from)) / DAY) : null });
+});
+const RSP_BY_ID = new Map(RESP.map(r => [r.id, r]));
+const dayN = n => `${n} day${n === 1 ? '' : 's'}`;
+const lagTxt = n => n > 0 ? `${dayN(n)} after disclosure` : n < 0 ? `${dayN(-n)} before disclosure` : 'same day as disclosure';
 const AFF = DATA.affected.map((a, i) => {
-  const inv = [...a.inv].sort((x, y) => (x.d || '9999').localeCompare(y.d || '9999'));
-  return Object.assign({ idx: i }, a, { inv, d: inv.map(v => v.d).filter(Boolean).sort()[0] || '', incs: [...new Set(inv.map(v => v.inc))] });
+  const inv = [...a.inv].sort((x, y) => (x.d || '9999').localeCompare(y.d || '9999')).map(v => {
+    const e = BY_ID.get(v.inc);
+    /* undated involvements are drawn (dashed) across their incident's activity window */
+    return Object.assign({}, v, v.d ? { s: v.d, t: v.e || v.d } : { s: e.first || e.main.d, t: e.last || e.main.d, nd: true });
+  });
+  const worst = Math.min(...inv.map(v => RANK[v.what]));
+  return Object.assign({ idx: i }, a, { inv, worst, d: inv.map(v => v.d).filter(Boolean).sort()[0] || '', incs: [...new Set(inv.map(v => v.inc))] });
 });
 const AFF_BY_ID = new Map(AFF.map(a => [a.id, a]));
 const SRC = new Map(); INC.forEach(e => e.sources.forEach(x => SRC.set(x[2], x)));
 
+let modes = {}; try { modes = JSON.parse(localStorage.getItem('viewModes') || '{}') || {}; } catch (e) { /* storage unavailable */ }
+let dock = 'right'; try { if (localStorage.getItem('dock') === 'left') dock = 'left'; } catch (e) { /* storage unavailable */ }
 const state = {
-  view: 'timeline', sel: null, ent: null,
+  view: 'timeline', sel: null, ent: null, rsp: null,
+  range: null, emph: null,
   tl: { by: 'all', conf: false, sort: 'start', dir: -1 },
-  aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null },
+  aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null, cats: new Set(), unclear: true },
   back: [], pushed: false, popping: false,
   resp: { who: 'all', dir: -1, inc: null },
 };
@@ -975,7 +1108,7 @@ document.addEventListener('pointermove', ev => {
 });
 document.addEventListener('pointerleave', hideTip);
 document.addEventListener('pointerdown', ev => { lastPtr = ev.pointerType || 'mouse'; if (ev.pointerType !== 'mouse') hideTip(); });
-const TAP_TIP = '.what[data-tip],.tag[data-tip],.lg[data-tip],.stat[data-tip],.track g[data-tip]';
+const TAP_TIP = '.what.unclear[data-tip],.tag[data-tip],span.lg[data-tip],.stat[data-tip],.track g[data-tip]';
 document.addEventListener('click', ev => {
   if (lastPtr === 'mouse') return;
   const el = ev.target.closest && ev.target.closest(TAP_TIP); if (!el) return;
@@ -1067,7 +1200,9 @@ renderStats();
 let statsPref = null; try { statsPref = localStorage.getItem('stats'); } catch (e) { /* storage unavailable */ }
 $('#stats').hidden = statsPref === 'hidden'; $('#stats-btn').hidden = statsPref !== 'hidden';
 
-/* ---------------------------------------------------------------- tabs */
+/* ---------------------------------------------------------------- tabs, layout mode, date range */
+const mobileMQ = matchMedia('(max-width:820px)');
+state.resp.sort = 'd';
 const TABS = [
   { key: 'timeline', label: 'Timeline', n: INC.length, tip: 'Each incident on one timeline, from agent activity to disclosure' },
   { key: 'affected', label: 'Affected', n: AFF.length, tip: 'Organizations, websites and services the agents reached' },
@@ -1075,14 +1210,42 @@ const TABS = [
 ];
 $('#tabs').replaceChildren(...TABS.map(t => h('button', { class: 'tab', type: 'button', role: 'tab', id: 'tab-' + t.key, 'aria-selected': 'false', 'data-tip': t.tip, onclick: () => setView(t.key) },
   t.label, h('span', { class: 'n', text: t.n }))));
+const modeOf = v => modes[v] || (v === 'affected' && mobileMQ.matches ? 'table' : 'chart');
+const isChart = () => modeOf(state.view) === 'chart';
 function setView(v) {
-  state.view = v;
+  state.view = v; state.emph = null;
   document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', String(b.id === 'tab-' + v)));
-  renderFilters(); renderView();
-  if (!state.sel && !state.ent) setHash(v === 'timeline' ? '' : v);
-  $('#pane-empty').textContent = v === 'affected' ? 'Select a site or organization to see how it was involved.' : 'Select an incident to see what happened, who found it, and the sources.';
+  renderBarR(); renderFilters(); renderView();
+  if (!state.sel && !state.ent && !state.rsp) setHash(v === 'timeline' ? '' : v);
+}
+function setMode(m) {
+  modes[state.view] = m; state.emph = null;
+  try { localStorage.setItem('viewModes', JSON.stringify(modes)); } catch (e) { /* storage unavailable */ }
+  renderBarR(); renderFilters(); renderView();
 }
 function setHash(s, push) { try { history[push ? 'pushState' : 'replaceState'](null, '', s ? '#' + s : location.pathname + location.search); return true; } catch (e) { /* sandboxed */ return false; } }
+
+const ICON_CHART = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h6M5.5 8h8M3.5 12h5"/></svg>';
+const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2.75" width="12" height="10.5" rx="1.5"/><path d="M2 6.25h12M2 9.75h12M6 6.25v7"/></svg>';
+const addDays = (s, n) => new Date(D(s) + n * DAY).toISOString().slice(0, 10);
+const isoOf = ms => new Date(Math.round(ms / DAY) * DAY).toISOString().slice(0, 10);
+const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
+function setRange(r) { state.range = r; renderBarR(); renderFilters(); renderView(); }
+function renderBarR() {
+  const r = state.range, m = modeOf(state.view);
+  const on = v => (v ? !!r && r.preset === v : !r);
+  put($('#bar-r'), 
+    h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Dates' }),
+      r && !r.preset ? h('span', { class: 'rchip', 'data-tip': 'Drag across the dates above a chart to pick another range' }, `${fmt(r.a)} – ${fmt(r.b)}`,
+        h('button', { type: 'button', 'aria-label': 'Show all dates', 'data-tip': 'Show all dates', onclick: () => setRange(null), text: '✕' })) : null,
+      h('span', { class: 'seg rangeseg', role: 'group', 'aria-label': 'Date range' }, PRESETS.map(o => h('button', { type: 'button', 'aria-pressed': String(on(o.v)),
+        'data-tip': o.v ? `Only what happened in the ${o.v} days up to the last update (${fmt(addDays(DATA.updated, -o.v))} – ${fmt(DATA.updated)})` : 'All dates. Drag across the dates above a chart to zoom in.',
+        onclick: () => setRange(o.v && !on(o.v) ? { a: addDays(DATA.updated, -o.v), b: DATA.updated, preset: o.v } : null) }, o.label)))),
+    h('span', { class: 'seg modeseg', role: 'group', 'aria-label': 'Layout' },
+      h('button', { type: 'button', 'aria-pressed': String(m === 'chart'), 'aria-label': 'Chart', 'data-tip': 'Chart', html: ICON_CHART, onclick: () => setMode('chart') }),
+      h('button', { type: 'button', 'aria-pressed': String(m === 'table'), 'aria-label': 'Table', 'data-tip': 'Table', html: ICON_TABLE, onclick: () => setMode('table') })));
+}
+const inRange = (a, b) => !state.range || (a <= state.range.b && b >= state.range.a);
 
 /* ---------------------------------------------------------------- filters */
 function seg(options, current, onPick, label) {
@@ -1090,41 +1253,86 @@ function seg(options, current, onPick, label) {
     options.map((o, i) => h('button', { type: 'button', 'aria-pressed': String(o.v === current), 'data-tip': o.v === current && i ? 'Click again to show all' : o.tip || null, onclick: () => onPick(o.v === current ? options[0].v : o.v) },
       o.dot ? h('span', { class: `dot g-${o.dot}` }) : null, o.label)));
 }
+const SORTS = {
+  timeline: [
+    { k: 'start', label: 'Started', what: 'first known agent activity', '-1': 'newest first', 1: 'oldest first', def: -1 },
+    { k: 'public', label: 'Disclosed', what: 'first public report tying the incident to OpenAI', '-1': 'newest first', 1: 'oldest first', def: -1 },
+    { k: 'delay', label: 'Delay', what: 'days from the first known activity to disclosure', '-1': 'longest first', 1: 'shortest first', def: -1 },
+  ],
+  affected: [
+    { k: 'd', label: 'First seen', what: 'when the agents were first active there', '-1': 'newest first', 1: 'oldest first', def: 1 },
+    { k: 'worst', label: 'Impact', what: 'most serious impact', 1: 'most serious first', '-1': 'least serious first', def: 1 },
+    { k: 'name', label: 'Name', what: 'name', 1: 'A to Z', '-1': 'Z to A', def: 1 },
+  ],
+  responses: [
+    { k: 'd', label: 'Date', what: 'date', '-1': 'newest first', 1: 'oldest first', def: -1 },
+    { k: 'lag', label: 'Time to respond', what: 'days from the incident’s disclosure to the response', '-1': 'longest first', 1: 'shortest first', def: -1 },
+  ],
+};
+function sortCtl(s, sorts, label) {
+  return h('span', { class: 'fgroup sort' }, h('span', { class: 'flabel', text: 'Sort' }),
+    h('span', { class: 'seg sortseg', role: 'group', 'aria-label': label }, sorts.map(o => {
+      const on = s.sort === o.k;
+      return h('button', { type: 'button', 'aria-pressed': String(on),
+        'aria-label': `Sort by ${o.label.toLowerCase()}` + (on ? `, ${o[s.dir]}` : ''),
+        'data-tip': on ? `Sorted by ${o.what}, ${o[s.dir]}. Click to reverse.` : `Sort by ${o.what}`,
+        onclick: () => { if (on) s.dir *= -1; else { s.sort = o.k; s.dir = o.def; } renderView(); renderFilters(); } },
+        o.label, on ? h('span', { class: 'arr', 'aria-hidden': 'true', text: s.dir === o.def ? '↓' : '↑' }) : null);
+    })));
+}
 function renderFilters() {
   const f = $('#filters');
   const redo = () => { renderView(); renderFilters(); };
+  const chart = isChart();
   if (state.view === 'timeline') {
     const s = state.tl;
-    f.replaceChildren(
+    put(f, 
       h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Disclosed by' }),
         seg([{ v: 'all', label: 'Anyone' }, ...Object.keys(WHO).map(g => ({ v: g, label: WHO[g], dot: g, tip: `Only incidents first made public by ${WHO_BY[g]}` }))],
           s.by, v => { s.by = v; redo(); }, 'Disclosed by')),
       h('button', { class: 'chip', type: 'button', 'aria-pressed': String(s.conf), 'data-tip': 'Only incidents OpenAI has confirmed, fully or in part',
         onclick: () => { s.conf = !s.conf; redo(); } }, h('span', { class: 'box', html: CHECK }), 'Confirmed by OpenAI'),
-      sortCtl());
+      chart ? sortCtl(s, SORTS.timeline, 'Sort incidents') : null);
   } else if (state.view === 'affected') {
     const s = state.aff;
-    f.replaceChildren(h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Type' }),
-      seg([{ v: 'all', label: 'All' }, { v: 'gov', label: 'Government' }, { v: 'edu', label: 'Education' }, { v: 'company', label: 'Companies & services' }, { v: 'community', label: 'Community projects', tip: 'Volunteer wikis and open-source registries' }, { v: 'openai', label: 'OpenAI' }]
+    put(f, h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Type' }),
+      seg([{ v: 'all', label: 'All' }, { v: 'gov', label: 'Government' }, { v: 'edu', label: 'Education' }, { v: 'company', label: 'Companies', tip: 'Companies and online services' }, { v: 'community', label: 'Community', tip: 'Volunteer wikis and open-source registries' }, { v: 'openai', label: 'OpenAI' }]
         .map(o => Object.assign(o, { label: o.v === 'all' ? o.label : `${o.label} ${AFF.filter(a => a.kind === o.v).length}` })),
         s.kind, v => { s.kind = v; redo(); }, 'Type')),
       incFilter(s),
+      s.cats.size ? h('span', { class: 'fchip' }, h('span', { class: 'flabel', text: 'Impact' }), [...s.cats].sort((a, b) => RANK[a] - RANK[b]).map(c => h('span', { class: 'what ' + c, text: WHAT[c] })),
+        h('button', { type: 'button', 'aria-label': 'Clear impact filter', 'data-tip': 'Show every impact', text: '✕', onclick: () => { s.cats.clear(); redo(); } })) : null,
       h('input', { class: 'search', type: 'search', placeholder: 'Search sites', 'aria-label': 'Search sites', value: s.q,
-        oninput: ev => { s.q = ev.target.value; renderView(); } }));
+        oninput: ev => { s.q = ev.target.value; renderView(); } }),
+      chart ? sortCtl(s, SORTS.affected, 'Sort sites') : null);
   } else {
     const s = state.resp;
-    f.replaceChildren(h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'From' }),
+    put(f, h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'From' }),
       seg([{ v: 'all', label: 'Anyone' }, ...Object.keys(RESP_WHO).map(w => ({ v: w, label: RESP_WHO[w], dot: RESP_DOT[w] }))],
-        s.who, v => { s.who = v; redo(); }, 'Response from')), incFilter(s));
+        s.who, v => { s.who = v; redo(); }, 'Response from')), incFilter(s),
+      chart ? sortCtl(s, SORTS.responses, 'Sort responses') : null);
   }
 }
+function toggleCat(w, only) {
+  const c = state.aff.cats;
+  if (only) { const was = c.size === 1 && c.has(w); c.clear(); if (!was) c.add(w); }
+  else if (c.has(w)) c.delete(w); else c.add(w);
+  if (state.view !== 'affected') { if (mobileMQ.matches) clearSel(); setView('affected'); } else { renderFilters(); renderView(); }
+  hideTip();
+}
+function toggleLevel(l) {
+  const c = state.aff.cats, all = l.cats.every(x => c.has(x));
+  l.cats.forEach(x => (all ? c.delete(x) : c.add(x)));
+  renderFilters(); renderView();
+}
+function toggleEmph(k) { state.emph = state.emph === k ? null : k; applyViewClass(); renderFootOnly(); }
+function applyViewClass() { $('#view').className = 'view' + (state.emph && isChart() ? ` emph emph-${state.emph}` : '') + (state.range ? ' zoomed' : ''); }
 
-/* ---------------------------------------------------------------- timeline */
-const X0 = D('2026-03-01'), X1 = D('2026-10-08');
+/* ---------------------------------------------------------------- rows for each view */
 function tlRows() {
   const s = state.tl;
   const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : e.main.d;
-  return INC.filter(e => (s.by === 'all' || e.main.by === s.by) && (!s.conf || confirmed(e)))
+  return INC.filter(e => (s.by === 'all' || e.main.by === s.by) && (!s.conf || confirmed(e)) && inRange(e.a, e.b))
     .sort((a, b) => {
       const ka = key(a), kb = key(b);
       if (ka == null || kb == null) return (ka == null) - (kb == null) || a.n - b.n;
@@ -1132,85 +1340,198 @@ function tlRows() {
       return s.dir * (c || a.n - b.n);
     });
 }
-const SORTS = [
-  { k: 'start', label: 'Started', what: 'first known agent activity', dn: 'newest first', up: 'oldest first' },
-  { k: 'public', label: 'Disclosed', what: 'first public report tying the incident to OpenAI', dn: 'newest first', up: 'oldest first' },
-  { k: 'delay', label: 'Delay', what: 'days from the first known activity to disclosure', dn: 'longest first', up: 'shortest first' },
-];
-function sortCtl() {
-  const s = state.tl;
-  return h('span', { class: 'fgroup sort' }, h('span', { class: 'flabel', text: 'Sort' }),
-    h('span', { class: 'seg sortseg', role: 'group', 'aria-label': 'Sort incidents' }, SORTS.map(o => {
-      const on = s.sort === o.k;
-      return h('button', { type: 'button', 'aria-pressed': String(on),
-        'aria-label': `Sort by ${o.label.toLowerCase()}` + (on ? `, ${s.dir < 0 ? o.dn : o.up}` : ''),
-        'data-tip': on ? `Sorted by ${o.what}, ${s.dir < 0 ? o.dn : o.up}. Click to reverse.` : `Sort by ${o.what}`,
-        onclick: () => { if (on) s.dir *= -1; else { s.sort = o.k; s.dir = -1; } renderView(); renderFilters(); } },
-        o.label, on ? h('span', { class: 'arr', 'aria-hidden': 'true', text: s.dir < 0 ? '↓' : '↑' }) : null);
-    })));
+/* an involvement is shown when it passes the incident, impact, attribution and date filters */
+const invShown = v => {
+  const s = state.aff;
+  return (!s.inc || v.inc === s.inc) && (!s.cats.size || s.cats.has(v.what)) && (s.unclear || v.attr !== 'unclear') && inRange(v.s, v.t);
+};
+function affRows() {
+  const s = state.aff, q = s.q.trim().toLowerCase();
+  const minN = a => Math.min(...a.incs.map(i => BY_ID.get(i).n));
+  const un = a => /\(not named\)$/.test(a.name);
+  return AFF.filter(a => (s.kind === 'all' || a.kind === s.kind) && a.inv.some(invShown) && (!q || [a.name, a.where, ...a.inv.map(v => v.note)].join(' ').toLowerCase().includes(q)))
+    .sort((a, b) => {
+      let c;
+      if (s.sort === 'name') { if (un(a) !== un(b)) return un(a) - un(b); c = a.name.localeCompare(b.name); }
+      else if (s.sort === 'inc') c = minN(a) - minN(b);
+      else if (s.sort === 'worst') c = a.worst - b.worst || (a.d || '9999').localeCompare(b.d || '9999');
+      else { if (!a.d || !b.d) return (!a.d) - (!b.d) || a.idx - b.idx; c = a.d.localeCompare(b.d); }
+      return s.dir * (c || a.idx - b.idx);
+    });
 }
-const delayTxt = e => e.delay == null ? 'Activity dates not disclosed' : `${e.delay} days from the first known activity (${e.approx ? 'about ' : ''}${fmt(e.first)}) to disclosure (${fmt(e.main.d)})`;
+function respRows() {
+  const s = state.resp;
+  return RESP.filter(r => (s.who === 'all' || r.who === s.who) && (!s.inc || r.inc.includes(s.inc)) && inRange(r.d, r.d))
+    .sort((a, b) => {
+      if (s.sort === 'lag') { if (a.lag == null || b.lag == null) return (a.lag == null) - (b.lag == null) || a.idx - b.idx; return s.dir * (a.lag - b.lag || a.d.localeCompare(b.d)); }
+      return s.dir * (a.d.localeCompare(b.d) || a.idx - b.idx);
+    });
+}
+function setCount(n, total, noun) {
+  $('#count').textContent = n === total ? `${total} ${noun}` : `${n} of ${total} ${noun}`;
+  $('#count').classList.toggle('on', n !== total);
+}
+/* ---------------------------------------------------------------- chart engine */
+const FIT = {
+  timeline: ['2026-03-01', '2026-10-08'],
+  affected: ['2026-03-01', '2026-10-08'],
+  responses: [addDays(RESP.map(r => r.from || r.d).sort()[0], -8), addDays(DATA.updated, 8)],
+};
+const ms = t => (typeof t === 'number' ? t : D(t));
+/* x scale over the current date range, or over the view's own extent when no range is set */
+function makeX(W, PAD) {
+  const r = state.range;
+  const a = r ? D(r.a) - DAY / 2 : D(FIT[state.view][0]), b = r ? D(r.b) + DAY * 1.5 : D(FIT[state.view][1]);
+  const f = t => PAD + ((ms(t) - a) / (b - a)) * (W - PAD * 2);
+  f.inv = px => a + ((px - PAD) / (W - PAD * 2)) * (b - a);
+  f.a = a; f.b = b; f.W = W; f.PAD = PAD;
+  return f;
+}
+/* months when the range is long, then weeks (Mondays), then days */
+function ticks(x) {
+  const days = (x.b - x.a) / DAY, out = [], W = x.W;
+  if (days > 110) {
+    const d0 = new Date(x.a);
+    for (let y = d0.getUTCFullYear(), m = d0.getUTCMonth(); ; m++) {
+      const t = Date.UTC(y, m, 1); if (t > x.b) break;
+      if (t >= x.a) out.push({ t, label: MON[new Date(t).getUTCMonth()] });
+    }
+    if (W < 380) out.forEach((o, i) => { if (i % 2) o.label = ''; });
+    return out;
+  }
+  const step = [1, 2, 7, 14, 28].find(s => W / (days / s) >= 62) || 28;
+  let t = Math.ceil(x.a / DAY) * DAY;
+  if (step >= 7) while (new Date(t).getUTCDay() !== 1) t += DAY;
+  for (; t <= x.b; t += step * DAY) { const d = new Date(t); out.push({ t, label: `${MON[d.getUTCMonth()]} ${d.getUTCDate()}` }); }
+  return out;
+}
+function gridSvg(x, tk, full) {
+  const g = sv('svg', { class: 'grid', 'aria-hidden': 'true' });
+  tk.forEach(o => g.append(sv('line', { x1: x(o.t), x2: x(o.t), y1: 0, y2: '100%', class: 'gl' })));
+  if (D(DATA.updated) >= x.a && D(DATA.updated) <= x.b) g.append(sv('line', { x1: x(DATA.updated), x2: x(DATA.updated), y1: 0, y2: '100%', class: 'gl today' }));
+  if (full === false) g.removeAttribute('class');
+  return g;
+}
+function axisEl(x, tk) {
+  const axis = h('span', { class: 'axis', 'data-tip': state.range ? 'Drag across the dates to zoom again · double-click to show all' : 'Drag across the dates to zoom in' },
+    tk.map(o => h('span', { style: `left:${x(o.t)}px`, text: o.label })));
+  return axis;
+}
+/* drag across the axis to pick a date range (mouse and pen; touch uses the presets) */
+function attachBrush(axis, host, x, offset) {
+  let x0 = null, box = null;
+  const px = ev => Math.max(0, Math.min(axis.clientWidth, ev.clientX - axis.getBoundingClientRect().left));
+  const draw = p => {
+    const a = Math.min(x0, p), b = Math.max(x0, p);
+    box.style.left = offset + a + 'px'; box.style.width = Math.max(1, b - a) + 'px';
+    box.firstChild.textContent = b - a >= 8 ? `${fmt(isoOf(x.inv(a)))} – ${fmt(isoOf(x.inv(b)))}` : '';
+  };
+  const stop = () => { x0 = null; if (box) box.remove(); box = null; document.body.classList.remove('resizing'); };
+  axis.addEventListener('pointerdown', ev => {
+    if (ev.button !== 0 || ev.pointerType === 'touch') return;
+    ev.preventDefault(); hideTip();
+    x0 = px(ev); axis.setPointerCapture(ev.pointerId);
+    box = h('div', { class: 'brush' }, h('span')); host.append(box); draw(x0);
+    document.body.classList.add('resizing');
+  });
+  axis.addEventListener('pointermove', ev => { if (x0 != null) draw(px(ev)); });
+  axis.addEventListener('pointerup', ev => {
+    if (x0 == null) return;
+    const p = px(ev), a = Math.min(x0, p), b = Math.max(x0, p); stop();
+    if (b - a >= 8) { const ta = isoOf(x.inv(a)), tb = isoOf(x.inv(b)); if (tb >= ta) setRange({ a: ta, b: tb }); }
+  });
+  axis.addEventListener('pointercancel', stop);
+  axis.addEventListener('dblclick', () => { if (state.range) setRange(null); });
+}
+/* place each lane's title just above its marks: read every width first (one layout), then write */
+function placeLabels(lanes, W, M, mob) {
+  const avail = W - 2 * M;
+  lanes.forEach(l => {
+    const wd = el => el.getBoundingClientRect().width;
+    l.w = Math.ceil(wd(l.lbl)) + 1; l.mw = wd(l.meta);
+    if (l.nodate) { const t = l.nodate.getComputedTextLength(), ex = Number(l.nodate.getAttribute('x')); l.lo = Math.min(l.lo, ex - t); l.hi = Math.max(l.hi, ex); }
+    l.lo = Math.max(M, Math.min(l.lo, W - M)); l.hi = Math.max(M, Math.min(l.hi, W - M));
+  });
+  lanes.forEach(l => {
+    let L = l.w;
+    const stack = mob || L > avail;
+    if (stack) { L = Math.min(avail, Math.ceil(Math.max(l.w - l.mw, l.mw - 4)) + 1); l.lbl.classList.add('stack'); }
+    let left;
+    if (mob) left = M;
+    else {
+      left = l.lo - 3;                                    /* title starts where the lane's marks start */
+      if (left + L > W - M) left = l.hi + 3 - L;          /* would run off the right edge: end it at the lane's last mark */
+      left = Math.max(M, Math.min(left, W - M - L));
+    }
+    l.lbl.style.marginLeft = Math.round(left) + 'px';
+    if (stack) l.lbl.style.width = Math.ceil(L) + 'px';
+  });
+}
+function laneRow(attrs, grid, lbl, svg) {
+  return h('button', Object.assign({ class: 'row', type: 'button', role: 'option' }, attrs), grid, lbl, h('span', { class: 'c-tr' }, svg));
+}
+function trackSvg(W) {
+  const svg = sv('svg', { class: 'track', 'aria-hidden': 'true' });
+  const mid = sv('svg', { x: 0, y: '50%', width: W, height: 1, overflow: 'visible' });
+  svg.append(mid);
+  return { svg, mid };
+}
 const AXIS_H = 30;
-function renderTimeline() {
+function chartShell(label) {
   const view = $('#view');
   /* read the width before emptying the view: a momentarily short page would drop the scrollbar and read too wide */
   const W0 = view.clientWidth;
-  const axis = h('span', { class: 'axis', 'aria-hidden': 'true' });
-  const head = h('div', { class: 'thead' }, axis);
-  const rowsWrap = h('div', { role: 'listbox', 'aria-label': 'Incidents', id: 'rows' });
-  view.replaceChildren(h('div', { class: 'tl' }, head, rowsWrap));
+  const head = h('div', { class: 'thead' });
+  const rowsWrap = h('div', { role: 'listbox', 'aria-label': label, id: 'rows' });
+  const tl = h('div', { class: 'tl' }, head, rowsWrap);
+  view.replaceChildren(tl);
+  return { W: Math.max(200, W0 || head.clientWidth), head, rowsWrap, tl };
+}
+
+/* ---------------------------------------------------------------- timeline chart */
+const delayTxt = e => e.delay == null ? 'Activity dates not disclosed' : `${e.delay} days from the first known activity (${e.approx ? 'about ' : ''}${fmt(e.first)}) to disclosure (${fmt(e.main.d)})`;
+function renderTimeline() {
+  const { W, head, rowsWrap, tl } = chartShell('Incidents');
   const rows = tlRows();
-  $('#count').textContent = rows.length === INC.length ? `${INC.length} incidents` : `${rows.length} of ${INC.length} incidents`;
-  $('#count').classList.toggle('on', rows.length !== INC.length);
-
-  const W = Math.max(200, W0 || axis.clientWidth);
+  setCount(rows.length, INC.length, 'incidents');
   const mob = mobileMQ.matches;
-  const PAD = mob ? 14 : 22, M = mob ? 10 : 12;
-  const x = t => PAD + ((D(t) - X0) / (X1 - X0)) * (W - PAD * 2);
-  const months = [];
-  for (let m = 2; m <= 9; m++) months.push({ d: `2026-${pad2(m + 1)}-01`, m });
-  axis.replaceChildren(...months.map(({ d, m }) => h('span', { style: `left:${x(d)}px`, text: W < 360 && m % 2 ? '' : MON[m] })));
-
-  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: 'No incidents match these filters.' })); renderFoot(rows); return; }
+  const x = makeX(W, mob ? 14 : 22), M = mob ? 10 : 12, tk = ticks(x);
+  const axis = axisEl(x, tk); head.append(axis); attachBrush(axis, tl, x, 0);
+  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: 'No incidents match these filters.' })); renderFoot(); return; }
   const lanes = rows.map(e => {
-    /* background: month gridlines + today line through the whole lane */
-    const grid = sv('svg', { class: 'grid', 'aria-hidden': 'true' });
-    months.forEach(({ d }) => grid.append(sv('line', { x1: x(d), x2: x(d), y1: 0, y2: '100%', class: 'gl' })));
-    grid.append(sv('line', { x1: x(DATA.updated), x2: x(DATA.updated), y1: 0, y2: '100%', class: 'gl today' }));
-    const svg = sv('svg', { class: 'track', 'aria-hidden': 'true' });
-    const mid = sv('svg', { x: 0, y: '50%', width: W, height: 1, overflow: 'visible' });
-    svg.append(mid);
+    const grid = gridSvg(x, tk);
+    const { svg, mid } = trackSvg(W);
     let lo = Infinity, hi = -Infinity;
     const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
     if (e.last && e.main.d > e.last) {
       const a = x(e.last) + 4, b = x(e.main.d) - 8;
       if (b > a) {
-        mid.append(sv('line', { x1: a, x2: b, y1: 0, y2: 0, class: 'gap' }));
+        mid.append(sv('line', { x1: a, x2: b, y1: 0, y2: 0, class: 'gap mk mk-gap' }));
         mid.append(sv('rect', { x: a, y: -7, width: b - a, height: 14, class: 'hit', ...tipOf('Not yet public', `${Math.round((D(e.main.d) - D(e.last)) / DAY)} days from the last known activity (${fmt(e.last)}) to disclosure (${fmt(e.main.d)})`) }));
       }
     }
     e.activity.forEach(a => {
-      const x1 = x(a.s), x2 = x(a.e), w = Math.max(5, x2 - x1);
+      const x1 = x(a.s), x2 = x(addDays(a.e, 1)) - 1, w = Math.max(5, x2 - x1);
       const bx = x1 - (w > x2 - x1 ? (w - (x2 - x1)) / 2 : 0);
-      const g = sv('g', tipOf(a.sub ? 'Exploit probes' : a.approx ? 'Agents active (dates approximate)' : 'Agents active', a.label));
+      const g = sv('g', { class: 'mk ' + (a.approx ? 'mk-approx' : 'mk-act'), ...tipOf(a.sub ? 'Exploit probes' : a.approx ? 'Agents active (dates approximate)' : 'Agents active', a.label) });
       g.append(sv('rect', { x: bx, y: a.sub ? -5 : -4, width: w, height: a.sub ? 10 : 8, rx: 2.5, class: 'act' + (a.sub ? ' sub' : '') + (a.approx ? ' approx' : '') }));
       g.append(sv('rect', { x: x1 - 3, y: -9, width: w + 6, height: 18, class: 'hit' }));
       mid.append(g); span(bx, bx + w);
     });
     let nodate = null;
     if (!e.activity.length) {
-      nodate = sv('text', { x: x(e.main.d) - 12, y: 4, 'text-anchor': 'end', class: 'nodate', ...tipOf('Agents active', e.noDates) });
+      nodate = sv('text', { x: x(e.main.d) - 12, y: 4, 'text-anchor': 'end', class: 'nodate mk mk-act', ...tipOf('Agents active', e.noDates) });
       nodate.textContent = W < 480 ? 'dates not disclosed' : 'activity dates not disclosed'; mid.append(nodate);
     }
     if (e.knew) {
       const k = x(e.knew.d);
-      const g = sv('g', tipOf(`OpenAI knew · ${fmt(e.knew.d)}`, e.knew.text));
+      const g = sv('g', { class: 'mk mk-knew', ...tipOf(`OpenAI knew · ${fmt(e.knew.d)}`, e.knew.text) });
       g.append(sv('path', { d: `M${k} -6L${k + 6} 0L${k} 6L${k - 6} 0Z`, class: 'knew' }));
       g.append(sv('circle', { cx: k, cy: 0, r: 10, class: 'hit' }));
       mid.append(g); span(k - 6, k + 6);
     }
     e.reveals.forEach(r => {
-      const g = sv('g', tipOf(`${fmt(r.d)} · ${r.private ? 'private notice' : r.minor ? 'other report' : 'disclosed by ' + WHO_BY[r.by]}`, r.text));
+      const g = sv('g', { class: 'mk ' + (r.minor ? 'mk-other' : 'mk-rev'), ...tipOf(`${fmt(r.d)} · ${r.private ? 'private notice' : r.minor ? 'other report' : 'disclosed by ' + WHO_BY[r.by]}`, r.text) });
       const rr = r.minor ? 3.6 : 6;
       g.append(sv('circle', { cx: x(r.d), cy: 0, r: rr, class: `rev g-${r.by}` + (r.minor ? ' minor' : '') }));
       g.append(sv('circle', { cx: x(r.d), cy: 0, r: 10, class: 'hit' }));
@@ -1221,43 +1542,106 @@ function renderTimeline() {
       ? [`${startTxt} → public ${fmt(e.main.d)} · `, h('span', { class: 'u', text: `${e.delay} days` })]
       : `public ${fmt(e.main.d)}`);
     const lbl = h('span', { class: 'lbl' }, h('span', { class: 't', text: e.title }), meta);
-    const row = h('button', { class: 'row', type: 'button', role: 'option', id: 'row-' + e.id, 'aria-selected': String(state.sel === e.id),
+    const row = laneRow({ 'data-inc-row': e.id, 'aria-selected': String(state.sel === e.id),
       'aria-label': `${e.title}. ${e.first ? `Started ${fmt(e.first)}, disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}, ${e.delay} days later.` : `Disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}; activity dates not disclosed.`}`,
-      onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
-      grid, lbl, h('span', { class: 'c-tr' }, svg));
-    return { e, row, lbl, meta, nodate, lo, hi };
+      onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) }, grid, lbl, svg);
+    return { row, lbl, meta, nodate, lo, hi };
   });
   rowsWrap.replaceChildren(...lanes.map(l => l.row));
-
-  /* place each title just above its lane's marks: read every width first (one layout), then write */
-  const avail = W - 2 * M;
-  lanes.forEach(l => {
-    const wd = el => el.getBoundingClientRect().width;
-    l.w = Math.ceil(wd(l.lbl)) + 1; l.mw = wd(l.meta);
-    if (l.nodate) { const t = l.nodate.getComputedTextLength(), ex = Number(l.nodate.getAttribute('x')); l.lo = Math.min(l.lo, ex - t); l.hi = Math.max(l.hi, ex); }
-  });
-  lanes.forEach(l => {
-    let L = l.w, stack = mob || L > avail;
-    if (stack) {
-      /* title on one line, meta below it, indented under the title */
-      const mw = l.mw - 7 + 3;
-      L = Math.min(avail, Math.ceil(Math.max(l.w - l.mw, mw)) + 1);
-      l.lbl.classList.add('stack');
-    }
-    let left;
-    if (mob) left = M;
-    else {
-      left = l.lo - 3;                                     /* title starts where the lane's activity starts */
-      if (left + L > W - M) left = l.hi + 3 - L;        /* would run off the right edge: end it at the lane's last mark instead */
-      left = Math.max(M, Math.min(left, W - M - L));
-    }
-    l.lbl.style.marginLeft = Math.round(left) + 'px';
-    if (stack) l.lbl.style.width = Math.ceil(L) + 'px';
-  });
-  markSelected();
-  renderFoot(rows);
+  placeLabels(lanes, W, M, mob);
+  markSelected(); applyViewClass(); renderFoot();
 }
-/* ---------------------------------------------------------------- affected */
+
+/* ---------------------------------------------------------------- responses chart */
+function renderResponsesChart() {
+  const { W, head, rowsWrap, tl } = chartShell('Responses');
+  const rows = respRows();
+  setCount(rows.length, RESP.length, 'responses');
+  const mob = mobileMQ.matches;
+  const x = makeX(W, mob ? 14 : 22), M = mob ? 10 : 12, tk = ticks(x);
+  const axis = axisEl(x, tk); head.append(axis); attachBrush(axis, tl, x, 0);
+  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: 'No responses match these filters.' })); renderRespFoot(); return; }
+  const lanes = rows.map(r => {
+    const grid = gridSvg(x, tk);
+    const { svg, mid } = trackSvg(W);
+    let lo = Infinity, hi = -Infinity;
+    const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
+    const rx = x(r.d);
+    if (r.from) {
+      const fx = x(r.from);
+      const l = Math.min(fx, rx), rgt = Math.max(fx, rx);
+      if (rgt - l > 12) mid.append(sv('line', { x1: l + 6, x2: rgt - 6, y1: 0, y2: 0, class: 'lag mk mk-lag' }));
+      mid.append(sv('rect', { x: l, y: -7, width: Math.max(1, rgt - l), height: 14, class: 'hit', ...tipOf(lagTxt(r.lag).replace(/^./, c => c.toUpperCase()), `First public report of the incident: ${fmt(r.from)}. This response: ${r.label || fmt(r.d)}.`) }));
+    }
+    r.inc.map(id => BY_ID.get(id)).filter(Boolean).forEach(e => {
+      const g = sv('g', { class: 'mk mk-lag', ...tipOf(`${e.title}`, `Disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}`) });
+      g.append(sv('circle', { cx: x(e.main.d), cy: 0, r: 4, class: `lagdot g-${e.main.by}` }));
+      g.append(sv('circle', { cx: x(e.main.d), cy: 0, r: 9, class: 'hit' }));
+      mid.append(g); span(x(e.main.d) - 4, x(e.main.d) + 4);
+    });
+    const g = sv('g', { class: 'mk mk-rsq', ...tipOf(`${r.label || fmt(r.d)} · ${RESP_WHO[r.who]}`, r.text) });
+    g.append(sv('rect', { x: rx - 6, y: -6, width: 12, height: 12, rx: 3, class: `rsq g-${RESP_DOT[r.who]}` }));
+    g.append(sv('circle', { cx: rx, cy: 0, r: 10, class: 'hit' }));
+    mid.append(g); span(rx - 6, rx + 6);
+    const meta = h('span', { class: 'm' }, `${r.label || fmt(r.d)} · ${RESP_WHO[r.who]}`,
+      r.lag != null ? [' · ', h('span', { class: 'u', text: lagTxt(r.lag) })] : ' · not tied to one incident');
+    const lbl = h('span', { class: 'lbl' }, h('span', { class: 't', text: r.title }), meta);
+    const row = laneRow({ 'data-rsp-row': r.id, 'aria-selected': String(state.rsp === r.id), 'aria-label': `${r.title}. ${r.label || fmt(r.d)}, ${RESP_WHO[r.who]}.`,
+      onclick: () => (state.rsp === r.id ? clearSel() : selectRsp(r.id)) }, grid, lbl, svg);
+    return { row, lbl, meta, lo, hi };
+  });
+  rowsWrap.replaceChildren(...lanes.map(l => l.row));
+  placeLabels(lanes, W, M, mob);
+  markSelected(); applyViewClass(); renderRespFoot();
+}
+
+/* ---------------------------------------------------------------- affected chart */
+function renderAffectedChart() {
+  const view = $('#view'), W0 = view.clientWidth;
+  const mob = mobileMQ.matches;
+  const LW = mob ? 128 : Math.max(200, Math.min(290, Math.round(W0 * 0.26)));
+  const TW = Math.max(160, W0 - LW);
+  const x = makeX(TW, 14), tk = ticks(x);
+  const rows = affRows();
+  setCount(rows.length, AFF.length, 'sites & organizations');
+  const axis = axisEl(x, tk);
+  const head = h('div', { class: 'thead' }, h('span', { class: 'lw', text: 'Organization or service' }), axis);
+  const rowsWrap = h('div', { role: 'listbox', 'aria-label': 'Sites and organizations', id: 'rows' });
+  const tl = h('div', { class: 'tl lanes-col', style: `--lw:${LW}px` }, head, rowsWrap);
+  view.replaceChildren(tl);
+  attachBrush(axis, tl, x, LW);
+  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: 'No sites match these filters.' })); renderAffFoot(); return; }
+  rowsWrap.replaceChildren(...rows.map(a => {
+    /* stack overlapping involvements into sub-rows */
+    const slots = [];
+    const placed = a.inv.map(v => {
+      const x1 = x(v.s), x2 = Math.max(x1 + 7, x(addDays(v.t, 1)) - 1);
+      let k = slots.findIndex(end => end < x1 - 3); if (k < 0) { k = slots.length; slots.push(0); }
+      slots[k] = x2;
+      return { v, x1, x2, k };
+    });
+    const H = Math.max(34, slots.length * 13 + 16), y0 = H / 2 - ((slots.length - 1) * 13) / 2;
+    const svg = sv('svg', { class: 'track', 'aria-hidden': 'true', height: H });
+    tk.forEach(o => svg.append(sv('line', { x1: x(o.t), x2: x(o.t), y1: 0, y2: H, class: 'gl' })));
+    if (D(DATA.updated) <= x.b) svg.append(sv('line', { x1: x(DATA.updated), x2: x(DATA.updated), y1: 0, y2: H, class: 'gl today' }));
+    placed.forEach(({ v, x1, x2, k }) => {
+      const e = BY_ID.get(v.inc), y = y0 + k * 13;
+      const g = sv('g', { class: `inv ${v.what}` + (v.nd ? ' nd' : '') + (v.attr === 'unclear' ? ' unclear' : '') + (invShown(v) ? '' : ' off'), 'data-inc': v.inc,
+        ...tipOf(`${WHAT[v.what]} · ${v.when}`, `${v.note}\n→ ${e.title}` + (v.nd ? '\nDates not reported: drawn across the incident’s activity window.' : v.approx ? '\nDates approximate.' : '') + (v.attr === 'unclear' ? '\nAttribution unclear.' : '')) });
+      const bar = sv('rect', { x: x1, y: y - 4.5, width: x2 - x1, height: 9, rx: 2.5, class: 'bar' });
+      if (v.approx && !v.nd) { bar.setAttribute('style', `fill:url(#hatch-${v.what});stroke:var(--wc);stroke-width:1`); }
+      g.append(bar, sv('rect', { x: x1 - 3, y: y - 7, width: x2 - x1 + 6, height: 14, class: 'hit' }));
+      svg.append(g);
+    });
+    return h('button', { class: 'row', type: 'button', role: 'option', 'data-ent-row': a.id, 'aria-selected': String(state.ent === a.id), style: `min-height:${H}px`,
+      'aria-label': `${a.name}. ${a.inv.map(v => `${WHAT[v.what]}, ${v.when}`).join('; ')}.`,
+      onclick: () => (state.ent === a.id ? clearSel() : selectEnt(a.id)) },
+      h('span', { class: 'al' }, h('b', { text: a.name }), h('small', { text: [KIND[a.kind], a.where].filter(Boolean).join(' · ') })),
+      h('span', { class: 'c-tr', style: `height:${H}px` }, svg));
+  }));
+  markSelected(); applyViewClass(); renderAffFoot();
+}
+/* ---------------------------------------------------------------- links */
 function incLink(id) {
   const e = BY_ID.get(id); if (!e) return null;
   return h('button', { class: 'inc-link', type: 'button', text: e.title, 'data-inc': id, onclick: ev => {
@@ -1278,16 +1662,29 @@ function entLink(id) {
     selectEnt(id, { keepBack: inCard });
   } });
 }
+function rspLink(id) {
+  const r = RSP_BY_ID.get(id); if (!r) return null;
+  return h('button', { class: 'inc-link', type: 'button', text: r.title, 'data-tip': r.text, onclick: ev => {
+    ev.stopPropagation();
+    const inCard = !!ev.currentTarget.closest('#det');
+    if (!inCard && state.rsp === id) return clearSel();
+    if (inCard) pushBack();
+    selectRsp(id, { keepBack: inCard });
+  } });
+}
 const incSites = id => AFF.filter(a => a.incs.includes(id)).sort((x, y) => {
   const d = a => a.inv.find(v => v.inc === id).d || '9999';
   return d(x).localeCompare(d(y)) || x.idx - y.idx;
 });
-function pushBack() { if (state.sel || state.ent) state.back.push(state.ent ? { ent: state.ent } : { inc: state.sel }); }
+function pushBack() { if (state.sel || state.ent || state.rsp) state.back.push(state.ent ? { ent: state.ent } : state.rsp ? { rsp: state.rsp } : { inc: state.sel }); }
 function backBtn() {
   const b = state.back[state.back.length - 1]; if (!b) return null;
-  const label = b.ent ? AFF_BY_ID.get(b.ent).name : BY_ID.get(b.inc).title;
-  return h('button', { class: 'back', type: 'button', 'data-tip': `Back to ${label}`, onclick: () => { state.back.pop(); b.ent ? selectEnt(b.ent, { keepBack: true, focus: true }) : select(b.inc, { keepBack: true, focus: true }); } },
-    h('span', { 'aria-hidden': 'true', text: '\u2190 ' }), h('span', { class: 'back-l', text: label }));
+  const label = b.ent ? AFF_BY_ID.get(b.ent).name : b.rsp ? RSP_BY_ID.get(b.rsp).title : BY_ID.get(b.inc).title;
+  return h('button', { class: 'back', type: 'button', 'data-tip': `Back to ${label}`, onclick: () => {
+    state.back.pop();
+    const o = { keepBack: true, focus: true };
+    if (b.ent) selectEnt(b.ent, o); else if (b.rsp) selectRsp(b.rsp, o); else select(b.inc, o);
+  } }, h('span', { 'aria-hidden': 'true', text: '← ' }), h('span', { class: 'back-l', text: label }));
 }
 function incFilter(s) {
   const sel = h('select', { class: 'sel inc-sel' + (s.inc ? ' on' : ''), 'aria-label': 'Incident' },
@@ -1299,7 +1696,7 @@ function incFilter(s) {
 }
 function filterByIncident(id) {
   if (mobileMQ.matches) clearSel();
-  Object.assign(state.aff, { inc: id, kind: 'all', q: '' });
+  Object.assign(state.aff, { inc: id, kind: 'all', q: '' }); state.aff.cats.clear();
   if (state.view !== 'affected') setView('affected'); else { renderFilters(); renderView(); }
   hideTip();
 }
@@ -1313,120 +1710,182 @@ function tblHead(cols) {
         c.label, h('span', { class: 'arr' + (on ? '' : ' off'), text: on && c.dir > 0 ? '↑' : '↓', 'aria-hidden': 'true' })));
   })));
 }
-function affRows() {
-  const s = state.aff, q = s.q.trim().toLowerCase();
-  const minN = a => Math.min(...a.incs.map(i => BY_ID.get(i).n));
-  const un = a => /\(not named\)$/.test(a.name);
-  return AFF.filter(a => (s.kind === 'all' || a.kind === s.kind) && (!s.inc || a.incs.includes(s.inc)) && (!q || [a.name, a.where, ...a.inv.map(v => v.note)].join(' ').toLowerCase().includes(q)))
-    .sort((a, b) => {
-      let c;
-      if (s.sort === 'name') { if (un(a) !== un(b)) return un(a) - un(b); c = a.name.localeCompare(b.name); }
-      else if (s.sort === 'inc') c = minN(a) - minN(b);
-      else { if (!a.d || !b.d) return (!a.d) - (!b.d) || a.idx - b.idx; c = a.d.localeCompare(b.d); }
-      return s.dir * (c || a.idx - b.idx);
-    });
+
+/* ---------------------------------------------------------------- tables */
+function renderTimelineTable() {
+  const s = state.tl, rows = tlRows();
+  setCount(rows.length, INC.length, 'incidents');
+  const sorter = k => () => { if (s.sort === k) s.dir *= -1; else { s.sort = k; s.dir = -1; } renderView(); renderFilters(); };
+  const sites = id => AFF.filter(a => a.incs.includes(id)).length;
+  $('#view').replaceChildren(h('table', { class: 'tbl tlt' },
+    tblHead([
+      { label: 'Incident' },
+      { label: 'Started', cls: 'm-when', sort: sorter('start'), on: s.sort === 'start', dir: s.dir, tip: 'First known agent activity. Click to sort.' },
+      { label: 'Disclosed', sort: sorter('public'), on: s.sort === 'public', dir: s.dir, tip: 'First public report tying it to OpenAI. Click to sort.' },
+      { label: 'Delay', cls: 'num', sort: sorter('delay'), on: s.sort === 'delay', dir: s.dir, tip: 'Days from the first known activity to disclosure. Click to sort.' },
+      { label: 'Disclosed by' }, { label: 'Status' }, { label: 'Sites', cls: 'num', tip: 'Affected sites and organizations' },
+    ]),
+    h('tbody', {}, rows.length ? rows.map(e => h('tr', { class: 'linked', 'data-inc-row': e.id, onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
+      h('td', { class: 'ttl', text: e.title }),
+      h('td', { class: 'mono m-when m-inline', text: e.first ? (e.approx ? '~' : '') + fmt(e.first) : '—' }),
+      h('td', { class: 'mono m-inline', text: fmt(e.main.d) }),
+      h('td', { class: 'mono num m-inline', text: e.delay != null ? `${e.delay} d` : '—', 'data-tip': delayTxt(e) }),
+      h('td', { class: 'm-inline' }, h('span', { class: 'who' }, h('span', { class: `dot g-${e.main.by}` }), WHO[e.main.by] || 'Other')),
+      h('td', { class: 'sub-cell', text: e.status }),
+      h('td', { class: 'mono num m-inline', text: String(sites(e.id)) })))
+      : h('tr', {}, h('td', { colspan: 7, class: 'empty', text: 'No incidents match these filters.' })))));
+  markSelected(); renderFoot();
 }
 function renderAffected() {
-  const s = state.aff;
-  const rows = affRows();
-  $('#count').textContent = rows.length === AFF.length ? `${AFF.length} sites & organizations` : `${rows.length} of ${AFF.length}`;
-  $('#count').classList.toggle('on', rows.length !== AFF.length);
-  const sorter = k => () => { if (s.sort === k) s.dir *= -1; else { s.sort = k; s.dir = 1; } renderView(); };
+  const s = state.aff, rows = affRows();
+  setCount(rows.length, AFF.length, 'sites & organizations');
+  const sorter = k => () => { if (s.sort === k) s.dir *= -1; else { s.sort = k; s.dir = 1; } renderView(); renderFilters(); };
   $('#view').replaceChildren(h('table', { class: 'tbl aff' },
     tblHead([
       { label: 'Organization or service', sort: sorter('name'), on: s.sort === 'name', dir: s.dir, tip: 'Click to sort by name' },
-      { label: 'What happened' },
+      { label: 'What happened', sort: sorter('worst'), on: s.sort === 'worst', dir: s.dir, tip: 'Click to sort by the most serious impact' },
       { label: 'Agents active', cls: 'm-when', sort: sorter('d'), on: s.sort === 'd', dir: s.dir, tip: 'When the agents were active there. Click to sort.' },
       { label: 'Incident', sort: sorter('inc'), on: s.sort === 'inc', dir: s.dir, tip: 'Click to sort by incident, in order of disclosure' },
     ]),
-    rows.length ? rows.map(a => h('tbody', { class: 'linked', id: 'ent-' + a.id, 'data-ent': a.id, onclick: () => (state.ent === a.id ? clearSel() : selectEnt(a.id)) },
-      (s.inc ? a.inv.filter(v => v.inc === s.inc) : a.inv).map((v, j, invs) => h('tr', {},
-        j === 0 ? h('td', { rowspan: invs.length, class: 'who-cell' }, h('span', { class: 'nm', text: a.name }), h('span', { class: 'sub', text: [KIND[a.kind], a.where].filter(Boolean).join(' \u00b7 ') })) : null,
+    rows.length ? rows.map(a => h('tbody', { class: 'linked', 'data-ent-row': a.id, onclick: () => (state.ent === a.id ? clearSel() : selectEnt(a.id)) },
+      a.inv.filter(invShown).map((v, j, invs) => h('tr', {},
+        j === 0 ? h('td', { rowspan: invs.length, class: 'who-cell' }, h('span', { class: 'nm', text: a.name }), h('span', { class: 'sub', text: [KIND[a.kind], a.where].filter(Boolean).join(' · ') })) : null,
         h('td', {}, h('span', { class: 'tags' }, whatTags(v)), h('span', { class: 'note', text: v.note }), v.when ? h('span', { class: 'when-inline mono', text: v.when }) : null),
         h('td', { class: 'mono m-when', text: v.when }),
         h('td', { class: 'm-inc' }, incLink(v.inc))))))
-      : h('tbody', {}, h('tr', {}, h('td', { colspan: 4, class: 'empty', text: 'No sites match.' })))));
-  markSelected();
-  if (!rows.length) { $('#foot').replaceChildren(h('span', { class: 'sum', text: 'No sites match these filters' })); return; }
-  const kinds = {}; rows.forEach(a => { kinds[a.kind] = (kinds[a.kind] || 0) + 1; });
-  const whats = {}; rows.forEach(a => new Set(a.inv.map(v => v.what)).forEach(w => { whats[w] = (whats[w] || 0) + 1; }));
-  $('#foot').replaceChildren(
-    h('span', { class: 'lg-group' }, ['breach', 'account', 'attack', 'creds'].filter(w => whats[w]).map(w => h('span', { class: 'lg', 'data-tip': WHAT_TIP[w] }, h('span', { class: 'what ' + w, text: WHAT[w] }), h('span', { class: 'lg-n', text: String(whats[w]) })))),
-    h('span', { class: 'lg', 'data-tip': ATTR_TIP }, h('span', { class: 'what unclear', text: 'Attribution unclear' })),
-    h('span', { class: 'sum', text: Object.entries(kinds).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${n} ${k === 'openai' ? 'OpenAI' : n === 1 ? KIND[k].toLowerCase() : KIND_PL[k]}`).join(' \u00b7 ') }));
+      : h('tbody', {}, h('tr', {}, h('td', { colspan: 4, class: 'empty', text: 'No sites match these filters.' })))));
+  markSelected(); renderAffFoot();
 }
-
-/* ---------------------------------------------------------------- responses */
 function renderResponses() {
-  const s = state.resp;
-  const rows = RESP.filter(r => (s.who === 'all' || r.who === s.who) && (!s.inc || r.inc.includes(s.inc))).sort((a, b) => s.dir * (a.d.localeCompare(b.d) || a.idx - b.idx));
-  $('#count').textContent = rows.length === RESP.length ? `${RESP.length} responses` : `${rows.length} of ${RESP.length}`;
-  $('#count').classList.toggle('on', rows.length !== RESP.length);
+  const s = state.resp, rows = respRows();
+  setCount(rows.length, RESP.length, 'responses');
   $('#view').replaceChildren(h('table', { class: 'tbl' },
     tblHead([
-      { label: 'Date', sort: () => { s.dir *= -1; renderView(); }, on: true, dir: s.dir, tip: 'Click to reverse the order' },
-      { label: 'From' }, { label: 'Response' }, { label: 'Related incidents' },
+      { label: 'Date', sort: () => { if (s.sort === 'd') s.dir *= -1; else { s.sort = 'd'; s.dir = -1; } renderView(); renderFilters(); }, on: s.sort === 'd', dir: s.dir, tip: 'Click to sort by date' },
+      { label: 'From' }, { label: 'Response' },
+      { label: 'Days after', cls: 'num', sort: () => { if (s.sort === 'lag') s.dir *= -1; else { s.sort = 'lag'; s.dir = -1; } renderView(); renderFilters(); }, on: s.sort === 'lag', dir: s.dir, tip: 'Days from the incident’s first public report to the response. Click to sort.' },
+      { label: 'Related incidents' },
     ]),
-    h('tbody', {}, rows.map(r => h('tr', {},
+    h('tbody', {}, rows.length ? rows.map(r => h('tr', { class: 'linked', 'data-rsp-row': r.id, onclick: () => (state.rsp === r.id ? clearSel() : selectRsp(r.id)) },
       h('td', { class: 'mono m-inline', text: r.label || fmt(r.d) }),
       h('td', { class: 'm-inline' }, h('span', { class: 'who' }, h('span', { class: `dot g-${RESP_DOT[r.who]}` }), RESP_WHO[r.who])),
-      h('td', { class: 'txt', text: r.text }),
-      h('td', {}, r.inc.length ? h('div', { class: 'incs' }, r.inc.map(incLink)) : h('span', { class: 'sub', text: 'General' })))))));
-  $('#foot').replaceChildren(
-    h('span', { class: 'lg-group' }, Object.keys(RESP_WHO).map(w => h('span', { class: 'lg' }, h('span', { class: `dot g-${RESP_DOT[w]}` }), RESP_WHO[w]))),
-    h('span', { class: 'sum', text: 'Click an incident to open it' }));
+      h('td', { class: 'txt' }, h('span', { class: 'rt', text: r.title }), r.text),
+      h('td', { class: 'mono num m-inline', text: r.lag != null ? `${r.lag} d` : '—', 'data-tip': r.lag != null ? lagTxt(r.lag) : null }),
+      h('td', {}, r.inc.length ? h('div', { class: 'incs' }, r.inc.map(incLink)) : h('span', { class: 'sub', text: 'General' }))))
+      : h('tr', {}, h('td', { colspan: 5, class: 'empty', text: 'No responses match these filters.' })))));
+  markSelected(); renderRespFoot();
 }
 
-/* ---------------------------------------------------------------- legend */
+/* ---------------------------------------------------------------- legends (every item filters or highlights) */
 function mini(build, w = 20) { const s = sv('svg', { width: w, height: 14, 'aria-hidden': 'true' }); build(s); return s; }
+function lgBtn(opts, ...kids) {
+  return h('button', { class: 'lg' + (opts.cls ? ' ' + opts.cls : ''), type: 'button', 'aria-pressed': String(!!opts.on), 'data-f': opts.filter ? '1' : null,
+    'data-tip': opts.tip, 'data-tip-title': opts.title || null, onclick: opts.onclick }, ...kids);
+}
+function emphBtn(k, title, tip, icon, label) {
+  return lgBtn({ on: state.emph === k, title, tip: `${tip}\nClick to highlight.`, onclick: () => toggleEmph(k) }, icon, label);
+}
+function renderFootOnly() {
+  if (state.view === 'timeline') renderFoot(); else if (state.view === 'affected') renderAffFoot(); else renderRespFoot();
+}
 function renderFoot() {
-  $('#foot').replaceChildren(
-    h('span', { class: 'lg', ...tipOf('Agents active', 'When the agents were active, as reported. The darker band marks exploit probes.') }, mini(s => s.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act' }))), 'Agents active'),
-    h('span', { class: 'lg', ...tipOf('Dates approximate', 'Only a rough window was reported, such as “this summer” or “May to July”.') }, mini(s => s.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act approx' }))), 'Dates approximate'),
-    h('span', { class: 'lg', ...tipOf('Not yet public', 'Time between the last known activity and disclosure.') }, mini(s => s.append(sv('line', { x1: 2, x2: 20, y1: 7, y2: 7, class: 'gap' })), 22), 'Not yet public'),
-    h('span', { class: 'lg', ...tipOf('OpenAI knew', 'Earliest date OpenAI is documented as knowing about the incident.') }, mini(s => s.append(sv('path', { d: 'M9 1L15 7L9 13L3 7Z', class: 'knew' })), 18), 'OpenAI knew'),
-    h('span', { class: 'lg-sep', 'aria-hidden': 'true' }),
-    h('span', { class: 'lg-group', ...tipOf('Disclosed by', 'The large dot marks the first public report tying the incident to OpenAI, colored by who made it.') },
-      h('span', { text: 'Disclosed by' }),
-      Object.keys(WHO).map(g => h('span', { class: 'lg' }, h('span', { class: `dot g-${g}` }), WHO[g]))),
-    h('span', { class: 'lg', ...tipOf('Other report', 'An earlier report that didn’t name OpenAI, a later finding, or a private notice. Colored by who made it.') }, mini(s => s.append(sv('circle', { cx: 7, cy: 7, r: 3.6, class: 'rev g-other' })), 14), 'Other report'),
-    h('span', { class: 'lg', 'data-tip': `Date of the last update, ${fmtY(DATA.updated)}` }, mini(s => s.append(sv('line', { x1: 6, x2: 6, y1: 0, y2: 14, class: 'gl today' })), 12), `Updated ${fmt(DATA.updated)}`),
+  const s = state.tl, chart = isChart();
+  const foot = $('#foot'); foot.classList.toggle('filtering', s.by !== 'all');
+  const by = Object.keys(WHO).map(g => lgBtn({ on: s.by === g, filter: true, title: `Disclosed by ${WHO_BY[g]}`, tip: s.by === g ? 'Click to show every incident' : `Click to show only incidents first made public by ${WHO_BY[g]}`,
+    onclick: () => { s.by = s.by === g ? 'all' : g; renderView(); renderFilters(); } }, h('span', { class: `dot g-${g}` }), WHO[g]));
+  put(foot, 
+    chart ? [
+      emphBtn('act', 'Agents active', 'When the agents were active, as reported. The darker band marks exploit probes.', mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act' }))), 'Agents active'),
+      emphBtn('approx', 'Dates approximate', 'Only a rough window was reported, such as “this summer” or “May to July”.', mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act approx' }))), 'Dates approximate'),
+      emphBtn('gap', 'Not yet public', 'Time between the last known activity and disclosure.', mini(v => v.append(sv('line', { x1: 2, x2: 20, y1: 7, y2: 7, class: 'gap' })), 22), 'Not yet public'),
+      emphBtn('knew', 'OpenAI knew', 'Earliest date OpenAI is documented as knowing about the incident.', mini(v => v.append(sv('path', { d: 'M9 1L15 7L9 13L3 7Z', class: 'knew' })), 18), 'OpenAI knew'),
+      h('span', { class: 'lg-sep', 'aria-hidden': 'true' })] : null,
+    h('span', { class: 'lg-group' }, h('span', { text: 'Disclosed by', 'data-tip': 'The large dot marks the first public report tying the incident to OpenAI, colored by who made it.' }), by),
+    chart ? emphBtn('other', 'Other report', 'An earlier report that didn’t name OpenAI, a later finding, or a private notice.', mini(v => v.append(sv('circle', { cx: 7, cy: 7, r: 3.6, class: 'rev g-other' })), 14), 'Other report') : null,
+    chart ? h('span', { class: 'lg', 'data-tip': `Date of the last update, ${fmtY(DATA.updated)}` }, mini(v => v.append(sv('line', { x1: 6, x2: 6, y1: 0, y2: 14, class: 'gl today' })), 12), `Updated ${fmt(DATA.updated)}`) : null,
   );
 }
+function renderAffFoot() {
+  const s = state.aff, foot = $('#foot');
+  foot.classList.toggle('filtering', s.cats.size > 0);
+  /* counts ignore the impact filter itself, so every category shows what picking it would give */
+  const n = {};
+  AFF.forEach(a => a.inv.forEach(v => {
+    if ((s.kind === 'all' || a.kind === s.kind) && (!s.inc || v.inc === s.inc) && (s.unclear || v.attr !== 'unclear') && inRange(v.s, v.t)) n[v.what] = (n[v.what] || 0) + 1;
+  }));
+  put(foot, 
+    LEVELS.map(l => h('span', { class: 'lg-group' },
+      lgBtn({ cls: 'lg-lvl', on: l.cats.every(c => s.cats.has(c)), title: l.label, tip: `${l.tip}.\nClick to show only this level.`, onclick: () => toggleLevel(l) }, l.label),
+      l.cats.map(c => lgBtn({ on: s.cats.has(c), filter: true, title: `${l.label} · ${WHAT[c]}`, tip: `${WHAT_TIP[c]}\nClick to ${s.cats.has(c) ? 'remove from' : 'add to'} the filter.`, onclick: () => toggleCat(c) },
+        h('span', { class: 'sw ' + c }), WHAT[c], h('span', { class: 'lg-n', text: String(n[c] || 0) }))))),
+    h('span', { class: 'lg-sep', 'aria-hidden': 'true' }),
+    lgBtn({ on: !s.unclear, title: 'Attribution unclear', tip: `${ATTR_TIP}\nClick to ${s.unclear ? 'hide' : 'show'} these.`, onclick: () => { s.unclear = !s.unclear; renderView(); renderFilters(); } },
+      h('span', { class: 'what unclear', text: 'Attribution unclear' }), s.unclear ? '' : 'hidden'),
+    isChart() ? h('span', { class: 'lg', 'data-tip': 'Dates not reported: drawn across the incident’s activity window' }, mini(v => v.append(sv('rect', { x: 1.5, y: 3, width: 17, height: 8, rx: 2.5, fill: 'none', stroke: 'var(--muted)', 'stroke-dasharray': '3 2.5' }))), 'Dates not reported') : null,
+    s.cats.size ? h('button', { class: 'lg-clear', type: 'button', text: 'Clear', onclick: () => { s.cats.clear(); renderView(); renderFilters(); } }) : null,
+  );
+}
+function renderRespFoot() {
+  const s = state.resp, foot = $('#foot'), chart = isChart();
+  foot.classList.toggle('filtering', s.who !== 'all');
+  put(foot, 
+    h('span', { class: 'lg-group' }, h('span', { text: 'From' }), Object.keys(RESP_WHO).map(w => lgBtn({ on: s.who === w, filter: true, title: RESP_WHO[w], tip: s.who === w ? 'Click to show every response' : `Click to show only responses from ${RESP_WHO[w].toLowerCase()}`,
+      onclick: () => { s.who = s.who === w ? 'all' : w; renderView(); renderFilters(); } },
+      chart ? mini(v => v.append(sv('rect', { x: 2, y: 2, width: 10, height: 10, rx: 2.5, class: `rsq g-${RESP_DOT[w]}` })), 14) : h('span', { class: `dot g-${RESP_DOT[w]}` }), RESP_WHO[w]))),
+    chart ? [h('span', { class: 'lg-sep', 'aria-hidden': 'true' }),
+      emphBtn('lag', 'Time to respond', 'From the related incident’s first public report (small dot, colored by who disclosed it) to the response.',
+        mini(v => { v.append(sv('line', { x1: 7, x2: 22, y1: 7, y2: 7, class: 'lag' })); v.append(sv('circle', { cx: 5, cy: 7, r: 3.5, class: 'lagdot g-research' })); }, 26), 'Time to respond')] : null,
+    h('span', { class: 'sum', text: 'Click a response to open it' }));
+}
 
+/* ---------------------------------------------------------------- view dispatch */
+function renderChart() {
+  if (state.view === 'timeline') renderTimeline();
+  else if (state.view === 'affected') renderAffectedChart();
+  else renderResponsesChart();
+}
 function renderView() {
   hideTip();
-  if (state.view === 'timeline') renderTimeline();
+  applyViewClass();
+  if (isChart()) renderChart();
+  else if (state.view === 'timeline') renderTimelineTable();
   else if (state.view === 'affected') renderAffected();
   else renderResponses();
+  lastW = Math.round($('#view').clientWidth);
   refreshCard();
   measure();
 }
 /* re-render the open card in place so its arrows follow the current filters and sort */
 function refreshCard() {
   const det = $('#det'), f = [...det.querySelectorAll('button,a')].indexOf(document.activeElement);
-  if (state.sel) select(state.sel, { keepBack: true, quiet: true }); else if (state.ent) selectEnt(state.ent, { keepBack: true, quiet: true });
+  const o = { keepBack: true, quiet: true };
+  if (state.sel) select(state.sel, o); else if (state.ent) selectEnt(state.ent, o); else if (state.rsp) selectRsp(state.rsp, o);
   const g = f >= 0 && det.querySelectorAll('button,a')[f]; if (g) g.focus({ preventScroll: true });
 }
-
 /* ---------------------------------------------------------------- details */
 const pane = $('#pane'), scrim = $('#scrim');
-const mobileMQ = matchMedia('(max-width:820px)');
 function markSelected() {
-  const ent = state.ent && AFF_BY_ID.get(state.ent);
-  document.querySelectorAll('.row').forEach(r => {
-    const id = r.id.slice(4);
+  const ent = state.ent && AFF_BY_ID.get(state.ent), rsp = state.rsp && RSP_BY_ID.get(state.rsp);
+  document.querySelectorAll('[data-inc-row]').forEach(r => {
+    const id = r.dataset.incRow;
     r.setAttribute('aria-selected', String(id === state.sel));
-    r.classList.toggle('rel', !!ent && ent.incs.includes(id));
+    r.classList.toggle('rel', (!!ent && ent.incs.includes(id)) || (!!rsp && rsp.inc.includes(id)));
   });
-  document.querySelectorAll('.tbl tbody[data-ent]').forEach(b => {
-    const a = AFF_BY_ID.get(b.dataset.ent);
+  document.querySelectorAll('[data-ent-row]').forEach(b => {
+    const a = AFF_BY_ID.get(b.dataset.entRow);
     b.setAttribute('aria-selected', String(a.id === state.ent));
     b.classList.toggle('rel', !!state.sel && a.incs.includes(state.sel));
   });
+  document.querySelectorAll('[data-rsp-row]').forEach(b => {
+    const r = RSP_BY_ID.get(b.dataset.rspRow);
+    b.setAttribute('aria-selected', String(r.id === state.rsp));
+    b.classList.toggle('rel', (!!state.sel && r.inc.includes(state.sel)) || (!!ent && r.inc.some(i => ent.incs.includes(i))));
+  });
+  /* with an incident open, the Affected chart dims other incidents' involvements */
+  document.querySelectorAll('.inv[data-inc]').forEach(g => g.classList.toggle('dim', !!state.sel && g.dataset.inc !== state.sel));
   document.querySelectorAll('.inc-link[data-inc]').forEach(l => l.classList.toggle('on', l.dataset.inc === state.sel));
 }
-function openPane(title, focus) {
+function openPane(focus) {
   $('#pane-empty').hidden = true; $('#det').hidden = false;
   if (!$('#main').classList.contains('open')) rescroll = true;
   $('#main').classList.add('open'); applyDrawerW();
@@ -1439,49 +1898,64 @@ function scrollToRow(row, instant) {
   const r = row.getBoundingClientRect(), top = $('#bar').offsetHeight + AXIS_H + 2, bottom = innerHeight - $('#foot').offsetHeight;
   if (r.top < top || r.bottom > bottom) row.scrollIntoView({ block: 'center', behavior: instant ? 'auto' : 'smooth' });
 }
-function navBtns(order, i, go, noun) {
-  return h('span', { class: 'nav' },
-    h('button', { class: 'btn', type: 'button', 'aria-label': `Previous ${noun}`, 'data-tip': `Previous ${noun} (\u2191)`, disabled: i <= 0 ? true : null, onclick: i > 0 ? () => go(order[i - 1].id) : null }, '\u2191'),
-    h('button', { class: 'btn', type: 'button', 'aria-label': `Next ${noun}`, 'data-tip': `Next ${noun} (\u2193)`, disabled: i < 0 || i >= order.length - 1 ? true : null, onclick: i >= 0 && i < order.length - 1 ? () => go(order[i + 1].id) : null }, '\u2193'),
-    h('button', { class: 'btn', type: 'button', 'aria-label': 'Close details', 'data-tip': 'Close (Esc)', onclick: clearSel }, '\u2715'));
+const DOCK_L = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.75" y="2.75" width="12.5" height="10.5" rx="1.5"/><path d="M6.25 2.75v10.5"/><path d="M3.5 5.5h1M3.5 7.5h1" stroke-linecap="round"/></svg>';
+const DOCK_R = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.75" y="2.75" width="12.5" height="10.5" rx="1.5"/><path d="M9.75 2.75v10.5"/><path d="M11.5 5.5h1M11.5 7.5h1" stroke-linecap="round"/></svg>';
+function setDock(d) {
+  dock = d;
+  try { localStorage.setItem('dock', d); } catch (e) { /* storage unavailable */ }
+  $('#main').classList.toggle('left', d === 'left');
+  hideTip(); refreshCard();
 }
-const srcList = urls => h('ul', { class: 'srcs mini' }, urls.map(u => { const x = SRC.get(u); return h('li', {}, h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: x ? x[0] : new URL(u).hostname }), x ? h('span', { text: ` \u00b7 ${x[1]}` }) : null); }));
+function navBtns(order, i, go, noun) {
+  const toLeft = dock === 'right';
+  return h('span', { class: 'nav' },
+    mobileMQ.matches ? null : h('button', { class: 'btn', type: 'button', 'aria-label': toLeft ? 'Move the panel to the left' : 'Move the panel to the right', 'data-tip': toLeft ? 'Move the panel to the left' : 'Move the panel to the right', html: toLeft ? DOCK_L : DOCK_R, onclick: () => setDock(toLeft ? 'left' : 'right') }),
+    h('button', { class: 'btn', type: 'button', 'aria-label': `Previous ${noun}`, 'data-tip': `Previous ${noun} (↑)`, disabled: i <= 0 ? true : null, onclick: i > 0 ? () => go(order[i - 1].id) : null }, '↑'),
+    h('button', { class: 'btn', type: 'button', 'aria-label': `Next ${noun}`, 'data-tip': `Next ${noun} (↓)`, disabled: i < 0 || i >= order.length - 1 ? true : null, onclick: i >= 0 && i < order.length - 1 ? () => go(order[i + 1].id) : null }, '↓'),
+    h('button', { class: 'btn', type: 'button', 'aria-label': 'Close details', 'data-tip': 'Close (Esc)', onclick: clearSel }, '✕'));
+}
+const topLine = (kind, ...rest) => h('span', {}, h('span', { class: 'kind', text: kind }), ...rest);
+const srcList = urls => h('ul', { class: 'srcs mini' }, urls.map(u => { const x = SRC.get(u); return h('li', {}, h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: x ? x[0] : new URL(u).hostname }), x ? h('span', { text: ` · ${x[1]}` }) : null); }));
+function finishCard(hashS, row, opts, hadCard) {
+  if (!opts.quiet) { openPane(opts.focus); scrollToRow(row, opts.instant); }
+  const push = !hadCard && !opts.instant && !opts.quiet;
+  if (setHash(hashS, push) && push) state.pushed = true;
+}
+const hasCard = () => !!(state.sel || state.ent || state.rsp);
 function selectEnt(id, opts = {}) {
-  const hadCard = !!(state.sel || state.ent);
+  const hadCard = hasCard();
   const a = AFF_BY_ID.get(id); if (!a) return;
   if (!opts.keepBack) state.back = [];
-  state.ent = id; state.sel = null;
+  state.ent = id; state.sel = null; state.rsp = null;
   markSelected();
   const from = state.back[state.back.length - 1];
   const order = from && from.inc ? incSites(from.inc) : affRows(), i = order.findIndex(x => x.id === id);
-  const noun = from && from.inc ? `site in \u201c${BY_ID.get(from.inc).title}\u201d` : 'site';
+  const noun = from && from.inc ? `site in “${BY_ID.get(from.inc).title}”` : 'site';
   $('#det').replaceChildren(h('div', { class: 'det' }, backBtn(),
-    h('div', { class: 'det-top' }, h('span', { text: [KIND[a.kind], a.where].filter(Boolean).join(' \u00b7 ') }), navBtns(order, i, j => selectEnt(j, { focus: true, keepBack: true }), noun)),
+    h('div', { class: 'det-top' }, topLine('Site', [KIND[a.kind], a.where].filter(Boolean).join(' · ')), navBtns(order, i, j => selectEnt(j, { focus: true, keepBack: true }), noun)),
     h('h2', { id: 'det-title', tabindex: '-1', text: a.name }),
-    h('div', { class: 'tags' }, h('span', { class: 'tag', text: a.incs.length === 1 ? 'Involved in 1 incident' : `Involved in ${a.incs.length} incidents` })),
+    h('div', { class: 'tags' }, h('span', { class: 'tag', text: a.incs.length === 1 ? 'Involved in 1 incident' : `Involved in ${a.incs.length} incidents` }),
+      h('span', { class: 'tag', text: `Most serious: ${LEVEL_OF[CATS[a.worst]].label.toLowerCase()}` })),
     a.inv.map(v => h('section', { class: 'invc' },
       h('div', { class: 'invc-inc' }, incLink(v.inc),
         h('button', { class: 'btn icon mini', type: 'button', html: FUNNEL, 'aria-label': 'Show every site in this incident', 'data-tip': 'Show every site in this incident', onclick: () => filterByIncident(v.inc) })),
       h('div', { class: 'invc-meta' }, whatTags(v), h('span', { class: 'invc-when', text: v.when })),
       h('p', { text: v.note }),
       v.src && v.src.length ? srcList(v.src) : null))));
-  if (!opts.quiet) { openPane(a.name, opts.focus); scrollToRow(document.getElementById('ent-' + id), opts.instant); }
-  const push = !hadCard && !opts.instant && !opts.quiet;
-  if (setHash('affected/' + id, push) && push) state.pushed = true;
+  finishCard('affected/' + id, document.querySelector(`[data-ent-row="${id}"]`), opts, hadCard);
 }
 function select(id, opts = {}) {
-  const hadCard = !!(state.sel || state.ent);
+  const hadCard = hasCard();
   const e = BY_ID.get(id); if (!e) return;
   if (!opts.keepBack) state.back = [];
-  state.sel = id;
-  state.ent = null;
+  state.sel = id; state.ent = null; state.rsp = null;
   markSelected();
   const items = [];
   if (!e.activity.length && e.noDates) items.push({ d: '0000', label: '—', k: 'act', t: e.noDates });
   e.activity.forEach(a => items.push({ d: a.s, label: (a.approx ? '~' : '') + fmt(a.s), k: 'act', t: a.sub ? a.label : `Agents active (${a.label})` }));
   if (e.knew) items.push({ d: e.knew.d, k: 'knew', t: e.knew.text });
   e.reveals.forEach(r => items.push({ d: r.d, k: 'rev', by: r.by, t: r.text }));
-  RESP.filter(r => r.inc.includes(id) && !e.reveals.some(v => v.private && v.d === r.d && v.by === r.who)).forEach(r => items.push({ d: r.d, label: r.label, k: 'resp', t: r.text, who: RESP_WHO[r.who] }));
+  RESP.filter(r => r.inc.includes(id) && !e.reveals.some(v => v.private && v.d === r.d && v.by === r.who)).forEach(r => items.push({ d: r.d, label: r.label, k: 'resp', rid: r.id, who: RESP_WHO[r.who] }));
   items.sort((a, b) => a.d.localeCompare(b.d) || (a.k === 'resp') - (b.k === 'resp'));
   const aff = incSites(id).map(a => ({ a, v: a.inv.find(v => v.inc === id) }));
   const from = state.back[state.back.length - 1];
@@ -1489,7 +1963,7 @@ function select(id, opts = {}) {
   const i = order.findIndex(x => x.id === id);
   const noun = from && from.ent ? `incident involving ${AFF_BY_ID.get(from.ent).name}` : 'incident';
   $('#det').replaceChildren(h('div', { class: 'det' }, backBtn(),
-    h('div', { class: 'det-top' }, h('span', {}, 'Disclosed ', fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
+    h('div', { class: 'det-top' }, topLine('Incident', 'Disclosed ', fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
     h('h2', { id: 'det-title', tabindex: '-1', text: e.title }),
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), `Disclosed by ${WHO_BY[e.main.by]}`),
@@ -1498,19 +1972,57 @@ function select(id, opts = {}) {
     h('p', { text: e.summary }),
     h('h3', { text: 'Timeline' }),
     h('ul', { class: 'chron' }, items.map(it => h('li', { class: `k-${it.k}` + (it.by ? ` g-${it.by}` : '') },
-      h('b', { text: it.label || fmt(it.d) }), it.t, it.who ? h('span', { class: 'src', text: ` — ${it.who}` }) : null))),
+      h('b', { text: it.label || fmt(it.d) }), it.rid ? [rspLink(it.rid), h('span', { class: 'src', text: ` — ${it.who}` })] : it.t))),
     aff.length ? [h('h3', { class: 'h3row' }, h('span', { text: `Affected (${aff.length})` }), h('button', { class: 'mini-link', type: 'button', onclick: () => filterByIncident(id) }, h('span', { html: FUNNEL }), 'Show in table')), h('ul', { class: 'alist' }, aff.map(({ a, v }) => h('li', {},
       entLink(a.id), ' ', whatTags(v), h('span', { class: 'note', text: v.note }))))] : null,
     h('h3', { text: 'Found by' }), h('p', { text: e.found }),
     h('h3', { text: 'OpenAI’s response' }), h('p', { text: e.openai }),
     h('h3', { text: 'Sources' }),
     h('ol', { class: 'srcs' }, e.sources.map(([t, p, u]) => h('li', {}, h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: t }), h('span', { text: ` · ${p}` }))))));
-  if (!opts.quiet) { openPane(e.title, opts.focus); if (state.view === 'timeline') scrollToRow(document.getElementById('row-' + id), opts.instant); }
-  const push = !hadCard && !opts.instant && !opts.quiet;
-  if (setHash(id, push) && push) state.pushed = true;
+  finishCard(id, document.querySelector(`[data-inc-row="${id}"]`), opts, hadCard);
+}
+/* a small timeline of one incident with this response on it */
+function relIncBlock(e, r) {
+  const a = D(e.a) - 3 * DAY, b = Math.max(D(e.b), D(r.d)) + 3 * DAY, W = 320;
+  const x = t => 8 + ((ms(t) - a) / (b - a)) * (W - 16);
+  const s = sv('svg', { viewBox: `0 0 ${W} 22`, 'aria-hidden': 'true' });
+  s.append(sv('line', { x1: 0, x2: W, y1: 11, y2: 11, class: 'gl' }));
+  e.activity.filter(v => !v.sub).forEach(v => s.append(sv('rect', { x: x(v.s), y: 7, width: Math.max(4, x(addDays(v.e, 1)) - x(v.s)), height: 8, rx: 2.5, class: 'act' + (v.approx ? ' approx' : '') })));
+  if (Math.abs(x(r.d) - x(e.main.d)) > 12) s.append(sv('line', { x1: Math.min(x(e.main.d), x(r.d)) + 6, x2: Math.max(x(e.main.d), x(r.d)) - 6, y1: 11, y2: 11, class: 'lag' }));
+  s.append(sv('circle', { cx: x(e.main.d), cy: 11, r: 5, class: `rev g-${e.main.by}` }));
+  s.append(sv('rect', { x: x(r.d) - 6, y: 5, width: 12, height: 12, rx: 3, class: `rsq g-${RESP_DOT[r.who]}` }));
+  const lag = Math.round((D(r.d) - D(e.main.d)) / DAY);
+  return h('div', { class: 'rel-inc' }, incLink(e.id), s,
+    h('span', { class: 'sub', text: `${e.first ? `${e.approx ? '~' : ''}${fmt(e.first)} → ` : ''}public ${fmt(e.main.d)} · response ${lag > 0 ? `${dayN(lag)} later` : lag < 0 ? `${dayN(-lag)} earlier` : 'the same day'}` }));
+}
+function selectRsp(id, opts = {}) {
+  const hadCard = hasCard();
+  const r = RSP_BY_ID.get(id); if (!r) return;
+  if (!opts.keepBack) state.back = [];
+  state.rsp = id; state.sel = null; state.ent = null;
+  markSelected();
+  const byD = (x, y) => x.d.localeCompare(y.d) || x.idx - y.idx;
+  const from = state.back[state.back.length - 1];
+  const order = from && from.inc ? RESP.filter(x => x.inc.includes(from.inc)).sort(byD) : state.view === 'responses' ? respRows() : [...RESP].sort(byD);
+  const i = order.findIndex(x => x.id === id);
+  const noun = from && from.inc ? `response to “${BY_ID.get(from.inc).title}”` : 'response';
+  const incs = r.inc.map(x => BY_ID.get(x)).filter(Boolean);
+  const others = RESP.filter(x => x.id !== r.id && x.inc.some(j => r.inc.includes(j))).sort(byD);
+  $('#det').replaceChildren(h('div', { class: 'det' }, backBtn(),
+    h('div', { class: 'det-top' }, topLine('Response', r.label ? `${r.label} ${r.d.slice(0, 4)}` : fmtY(r.d)), navBtns(order, i, j => selectRsp(j, { focus: true, keepBack: true }), noun)),
+    h('h2', { id: 'det-title', tabindex: '-1', text: r.title }),
+    h('div', { class: 'tags' },
+      h('span', { class: 'tag' }, h('span', { class: `dot g-${RESP_DOT[r.who]}` }), RESP_WHO[r.who]),
+      r.lag != null ? h('span', { class: 'tag', text: lagTxt(r.lag), 'data-tip': `From the first public report of the related incident (${fmt(r.from)}) to this response (${r.label || fmt(r.d)})` }) : h('span', { class: 'tag', text: 'Not tied to one incident' })),
+    h('p', { text: r.text }),
+    incs.length ? [h('h3', { text: incs.length === 1 ? 'Incident' : 'Incidents' }), incs.map(e => relIncBlock(e, r))] : null,
+    others.length ? [h('h3', { text: `Other responses to ${incs.length === 1 ? 'this incident' : 'these incidents'}` }),
+      h('ul', { class: 'rlist' }, others.map(o => h('li', {}, h('b', { text: o.label || fmt(o.d) }), h('span', { class: `dot g-${RESP_DOT[o.who]}`, 'data-tip': RESP_WHO[o.who] }), rspLink(o.id))))] : null));
+  finishCard('response/' + id, document.querySelector(`[data-rsp-row="${id}"]`), opts, hadCard);
 }
 function clearSel(opts = {}) {
-  const had = state.sel; state.sel = null; state.ent = null; state.back = [];
+  const had = state.sel || state.ent || state.rsp;
+  state.sel = null; state.ent = null; state.rsp = null; state.back = [];
   markSelected();
   $('#det').hidden = true; $('#pane-empty').hidden = false;
   $('#main').classList.remove('open');
@@ -1523,33 +2035,35 @@ function clearSel(opts = {}) {
     try { history.back(); } catch (e) { state.popping = false; setHash(viewHash); }
     setTimeout(() => { if (state.popping) { state.popping = false; setHash(state.view === 'timeline' ? '' : state.view); } }, 500);
   } else { state.pushed = false; setHash(viewHash); }
-  const row = had && document.getElementById('row-' + had); if (row && !mobileMQ.matches) row.focus({ preventScroll: true });
+  const row = had && document.querySelector(`[data-inc-row="${had}"],[data-ent-row="${had}"],[data-rsp-row="${had}"]`);
+  if (row && !mobileMQ.matches) row.focus({ preventScroll: true });
 }
 scrim.addEventListener('click', clearSel);
 document.addEventListener('keydown', ev => {
   if (about.open) return;
   if (ev.key === 'Escape' && ev.target && ev.target.matches && ev.target.matches('input') && ev.target.value) return;
-  if (ev.key === 'Escape' && (state.sel || state.ent)) { clearSel(); return; }
+  if (ev.key === 'Escape' && hasCard()) { clearSel(); return; }
   if ((ev.key === 'ArrowDown' || ev.key === 'ArrowUp') && ev.target.closest && ev.target.closest('#pane') && !$('#det').hidden) {
-    const b = document.querySelectorAll('#det .nav .btn')[ev.key === 'ArrowUp' ? 0 : 1];
+    const b = [...document.querySelectorAll('#det .nav .btn')].filter(x => x.textContent === '↑' || x.textContent === '↓')[ev.key === 'ArrowUp' ? 0 : 1];
     ev.preventDefault(); if (b && !b.disabled) b.click(); return;
   }
-  if ((ev.key === 'ArrowDown' || ev.key === 'ArrowUp') && state.view === 'timeline' && ev.target.closest && ev.target.closest('#rows')) {
-    const order = tlRows(); if (!order.length) return;
+  if ((ev.key === 'ArrowDown' || ev.key === 'ArrowUp') && ev.target.closest && ev.target.closest('#rows')) {
+    const [rowsFn, go, key, attr] = { timeline: [tlRows, select, 'sel', 'data-inc-row'], affected: [affRows, selectEnt, 'ent', 'data-ent-row'], responses: [respRows, selectRsp, 'rsp', 'data-rsp-row'] }[state.view];
+    const order = rowsFn(); if (!order.length) return;
     ev.preventDefault();
-    let i = order.findIndex(x => x.id === state.sel);
+    let i = order.findIndex(x => x.id === state[key]);
     i = i < 0 ? 0 : Math.max(0, Math.min(order.length - 1, i + (ev.key === 'ArrowDown' ? 1 : -1)));
-    select(order[i].id);
-    const row = document.getElementById('row-' + order[i].id); if (row) row.focus({ preventScroll: true });
+    go(order[i].id);
+    const row = document.querySelector(`[${attr}="${order[i].id}"]`); if (row) row.focus({ preventScroll: true });
   }
 });
 
-/* ---------------------------------------------------------------- drawer width */
+/* ---------------------------------------------------------------- drawer width and side */
 const DRAWER_MIN = 340;
-/* default: 460px, a little narrower on small desktops so the chart keeps most of the width */
-const drawerDef = () => Math.max(DRAWER_MIN, Math.min(460, Math.round($('#app').clientWidth * 0.42)));
+/* default: about 40% of the app, between 400 and 620px */
+const drawerDef = () => Math.max(DRAWER_MIN, Math.min(620, Math.max(400, Math.round($('#app').clientWidth * 0.4))));
 let drawerW = null;
-try { const v = Number(localStorage.getItem('drawerW')); if (v) drawerW = v; } catch (e) { /* storage unavailable */ }
+try { const v = Number(localStorage.getItem('drawerW2')); if (v) drawerW = v; } catch (e) { /* storage unavailable */ }
 const drag = $('#drag');
 function drawerMax() { const aw = $('#app').clientWidth; return Math.max(DRAWER_MIN, Math.min(Math.round(aw * 0.65), aw - 320)); }
 function applyDrawerW() {
@@ -1562,7 +2076,7 @@ function applyDrawerW() {
 function setDrawerW(w, save) {
   drawerW = Math.max(DRAWER_MIN, Math.min(drawerMax(), w));
   applyDrawerW();
-  if (save) { try { localStorage.setItem('drawerW', String(Math.round(drawerW))); } catch (e) { /* storage unavailable */ } }
+  if (save) { try { localStorage.setItem('drawerW2', String(Math.round(drawerW))); } catch (e) { /* storage unavailable */ } }
 }
 let dragRaf = 0, dragX = 0;
 drag.addEventListener('pointerdown', ev => {
@@ -1574,7 +2088,11 @@ drag.addEventListener('pointerdown', ev => {
 drag.addEventListener('pointermove', ev => {
   if (!drag.hasPointerCapture(ev.pointerId)) return;
   dragX = ev.clientX;
-  if (!dragRaf) dragRaf = requestAnimationFrame(() => { dragRaf = 0; setDrawerW($('#main').getBoundingClientRect().right - dragX, false); });
+  if (!dragRaf) dragRaf = requestAnimationFrame(() => {
+    dragRaf = 0;
+    const m = $('#main').getBoundingClientRect();
+    setDrawerW(dock === 'left' ? dragX - m.left : m.right - dragX, false);
+  });
 });
 const endDrag = ev => {
   if (!drag.classList.contains('on')) return;
@@ -1583,14 +2101,15 @@ const endDrag = ev => {
   setDrawerW(drawerW, true);
 };
 drag.addEventListener('pointerup', endDrag); drag.addEventListener('pointercancel', endDrag);
-drag.addEventListener('dblclick', () => { drawerW = null; applyDrawerW(); try { localStorage.removeItem('drawerW'); } catch (e) { /* storage unavailable */ } });
+drag.addEventListener('dblclick', () => { drawerW = null; applyDrawerW(); try { localStorage.removeItem('drawerW2'); } catch (e) { /* storage unavailable */ } });
 drag.addEventListener('keydown', ev => {
-  const step = ev.shiftKey ? 64 : 16, cur = applyDrawerW();
-  const w = ev.key === 'ArrowLeft' ? cur + step : ev.key === 'ArrowRight' ? cur - step : ev.key === 'Home' ? drawerMax() : ev.key === 'End' ? DRAWER_MIN : ev.key === 'Enter' ? 'reset' : null;
+  const step = ev.shiftKey ? 64 : 16, cur = applyDrawerW(), grow = dock === 'left' ? 'ArrowRight' : 'ArrowLeft', shrink = dock === 'left' ? 'ArrowLeft' : 'ArrowRight';
+  const w = ev.key === grow ? cur + step : ev.key === shrink ? cur - step : ev.key === 'Home' ? drawerMax() : ev.key === 'End' ? DRAWER_MIN : ev.key === 'Enter' ? 'reset' : null;
   if (w == null) return;
   ev.preventDefault();
   if (w === 'reset') drag.dispatchEvent(new MouseEvent('dblclick')); else setDrawerW(w, true);
 });
+$('#main').classList.toggle('left', dock === 'left');
 applyDrawerW();
 
 /* ---------------------------------------------------------------- layout */
@@ -1612,30 +2131,44 @@ new ResizeObserver(() => {
     for (let i = 0; i < 3; i++) {
       const w = Math.round($('#view').clientWidth);
       if (w === lastW) break;
-      lastW = w; if (state.view === 'timeline') renderTimeline();
+      lastW = w; if (isChart()) renderChart();
     }
     measure();
-    if (rescroll) { rescroll = false; if (state.view === 'timeline' && state.sel) scrollToRow(document.getElementById('row-' + state.sel), true); }
+    if (rescroll) {
+      rescroll = false;
+      const row = document.querySelector(state.sel ? `[data-inc-row="${state.sel}"]` : state.ent ? `[data-ent-row="${state.ent}"]` : state.rsp ? `[data-rsp-row="${state.rsp}"]` : null);
+      scrollToRow(row, true);
+    }
   }, 0);
 }).observe($('#view'));
 window.addEventListener('resize', () => { applyDrawerW(); measure(); });
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (state.view === 'timeline') renderTimeline(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (isChart()) renderChart(); });
 mobileMQ.addEventListener('change', () => {
-  const open = mobileMQ.matches && !!(state.sel || state.ent);
+  const open = mobileMQ.matches && hasCard();
   pane.classList.toggle('open', open); scrim.classList.toggle('open', open);
-  measure();
+  renderBarR(); renderView();
 });
 
 /* ---------------------------------------------------------------- boot */
+const defs = $('#defs');
+CATS.forEach(c => {
+  const p = sv('pattern', { id: 'hatch-' + c, width: 4, height: 4, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' });
+  p.append(sv('rect', { width: 2, height: 4, style: `fill:var(--w-${c})` }));
+  defs.append(p);
+});
+put($('#impact-help'), ...LEVELS.map(l => h('li', {}, h('b', { text: l.label }), `: ${l.tip.charAt(0).toLowerCase() + l.tip.slice(1)}. `,
+  l.cats.map(c => h('span', { class: 'what ' + c, text: WHAT[c], 'data-tip': WHAT_TIP[c] })).reduce((acc, el, k) => (k ? [...acc, ' ', el] : [el]), []))));
 function route(hash = decodeURIComponent(location.hash.slice(1))) {
   state.pushed = false;
   const ent = hash.startsWith('affected/') ? hash.slice(9) : null;
+  const rsp = hash.startsWith('response/') ? hash.slice(9) : null;
   if (ent && AFF_BY_ID.has(ent)) { if (state.view !== 'affected') setView('affected'); if (state.ent !== ent) selectEnt(ent, { instant: true }); }
+  else if (rsp && RSP_BY_ID.has(rsp)) { if (state.view !== 'responses') setView('responses'); if (state.rsp !== rsp) selectRsp(rsp, { instant: true }); }
   else if (BY_ID.has(hash)) { if (state.sel !== hash) select(hash, { instant: true }); }
-  else { if (state.sel || state.ent) clearSel({ fromRoute: true }); const v = hash === 'affected' || hash === 'responses' ? hash : 'timeline'; if (state.view !== v) setView(v); }
+  else { if (hasCard()) clearSel({ fromRoute: true }); const v = hash === 'affected' || hash === 'responses' ? hash : 'timeline'; if (state.view !== v) setView(v); }
 }
 const hash0 = decodeURIComponent(location.hash.slice(1));
-setView(hash0 === 'affected' || hash0 === 'responses' || hash0.startsWith('affected/') ? hash0.split('/')[0] : 'timeline');
+setView(hash0 === 'affected' || hash0.startsWith('affected/') ? 'affected' : hash0 === 'responses' || hash0.startsWith('response/') ? 'responses' : 'timeline');
 route(hash0);
 window.addEventListener('popstate', () => {
   if (!state.popping) return;
