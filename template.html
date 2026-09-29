@@ -48,6 +48,7 @@
   --g-openai:#5B6472; --g-research:#2a78d6; --g-press:#eb6834; --g-gov:#1baf7a;
   --act:#9AA1AC; --act-2:#454C57; --today:#6B7280;
   --tip-bg:#11161D; --tip-ink:#F3F5F8; --shadow:0 24px 60px -20px rgba(15,20,26,.35);
+  --drawer-shadow:-18px 0 32px -26px rgba(15,20,26,.45); --grip:#C3C8D0;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -60,6 +61,7 @@
     --g-openai:#9AA3B0; --g-research:#3987e5; --g-press:#d95926; --g-gov:#199e70;
     --act:#5A616B; --act-2:#B4BBC5; --today:#8B929C;
     --tip-bg:#E8EBEF; --tip-ink:#0E1116; --shadow:0 24px 60px -20px rgba(0,0,0,.8);
+  --drawer-shadow:-18px 0 32px -22px rgba(0,0,0,.9); --grip:#3C434E;
   }
 }
 :root[data-theme="dark"]{
@@ -70,6 +72,7 @@
   --g-openai:#9AA3B0; --g-research:#3987e5; --g-press:#d95926; --g-gov:#199e70;
   --act:#5A616B; --act-2:#B4BBC5; --today:#8B929C;
   --tip-bg:#E8EBEF; --tip-ink:#0E1116; --shadow:0 24px 60px -20px rgba(0,0,0,.8);
+  --drawer-shadow:-18px 0 32px -22px rgba(0,0,0,.9); --grip:#3C434E;
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -128,41 +131,48 @@ h1{font-size:18px;font-weight:650;letter-spacing:-.01em;margin:0}
 .chip[aria-pressed="true"] .box{background:var(--on);border-color:var(--on);color:var(--on-ink)}
 .chip[aria-pressed="true"] .box svg{opacity:1}
 select.sel{border:1px solid var(--line-2);border-radius:7px;background:var(--panel);padding:4px 6px;font-size:12.5px;color:var(--ink-2);min-height:28px}
+.sortseg button{gap:4px}
+.sortseg button[aria-pressed="true"]{background:var(--soft);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--line-2)}
+.sortseg .arr{font-size:11px;font-weight:500}
 .count{margin-left:auto;font-size:12px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
 .g-openai{--c:var(--g-openai)}.g-research{--c:var(--g-research)}.g-press{--c:var(--g-press)}.g-gov{--c:var(--g-gov)}.g-other{--c:var(--faint)}
 .dot.g-openai{background:var(--panel);box-shadow:inset 0 0 0 2px var(--g-openai)}
 
-.main{display:grid;grid-template-columns:minmax(0,1fr) 380px}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 0}
+.main.open{grid-template-columns:minmax(0,1fr) var(--drawerW,460px)}
 .view{min-width:0}
-.pane-col{border-left:1px solid var(--line);min-width:0;position:relative}
+.pane-col{border-left:1px solid var(--line-2);min-width:0;position:relative;box-shadow:var(--drawer-shadow);background:var(--panel)}
+.main:not(.open) .pane-col{display:none}
+/* drawer resize handle */
+.drag{position:absolute;top:0;bottom:0;left:-6px;width:11px;z-index:7;cursor:col-resize;touch-action:none;outline:none}
+.drag::before{content:"";position:absolute;top:0;bottom:0;left:5px;width:1px;background:transparent;transition:background .12s}
+.drag:hover::before,.drag.on::before,.drag:focus-visible::before{background:var(--g-research);width:2px;left:4.5px}
+.grip{position:sticky;top:calc(var(--barH,52px) + 40vh);display:block;width:5px;height:34px;margin-left:3px;border-radius:3px;background:var(--grip);transition:background .12s}
+.drag:hover .grip,.drag.on .grip,.drag:focus-visible .grip{background:var(--g-research)}
+body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!important}
+@media (min-width:821px){ .main.open .pane{animation:drawer-in .2s ease-out} }
+@keyframes drawer-in{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
 .pane-wrap{position:absolute;inset:0}
 .pane{position:sticky;top:var(--barH,52px);height:min(100%,calc(100dvh - var(--barH,52px) - var(--footH,36px)));overflow:auto;overscroll-behavior:contain}
 
-/* timeline table */
-.thead,.row{display:grid;grid-template-columns:36px minmax(220px,1.5fr) 70px 70px 82px minmax(260px,2.7fr);align-items:center}
-.thead{position:sticky;top:var(--barH,52px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);height:32px}
-.th{background:none;border:0;padding:0 8px;text-align:left;font-size:11.5px;font-weight:500;color:var(--muted);height:100%;display:flex;align-items:center;gap:4px;white-space:nowrap}
-.th.c-n{padding-left:12px}
-.th.c-g{justify-content:flex-end;padding-right:14px}
-button.th{cursor:pointer}
-button.th:hover{color:var(--ink)}
-.th[aria-sort="ascending"],.th[aria-sort="descending"]{color:var(--ink);font-weight:600}
-.th .arr{font-size:10px}
-.th .arr.off{opacity:0}
-button.th:hover .arr.off{opacity:.45}
-.axis{position:relative;height:100%}
-.axis span{position:absolute;top:9px;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;white-space:nowrap;color:var(--muted)}
-.row{border:0;border-bottom:1px solid var(--line);min-height:54px;cursor:pointer;background:none;padding:0;width:100%;text-align:left;color:inherit;font:inherit}
-.row:hover{background:var(--hover)}
-.row[aria-selected="true"]{background:var(--sel);box-shadow:inset 3px 0 0 var(--g-research)}
-.c-n{font-family:var(--mono);font-size:11px;color:var(--faint);padding-left:12px}
-.c-t{padding:8px;font-size:13px;font-weight:550;line-height:1.3}
-.c-m{display:none}
-.c-s,.c-d,.c-g{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);padding:0 8px;white-space:nowrap}
-.c-g{text-align:right;padding-right:14px}
-.c-g .u{color:var(--muted)}
-.c-tr{align-self:stretch;position:relative;min-height:40px}
+/* timeline: annotated lanes */
+.thead{position:sticky;top:var(--barH,52px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);height:30px;display:block}
+.axis{position:relative;display:block;height:100%}
+.axis span{position:absolute;top:8px;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;white-space:nowrap;color:var(--muted)}
+.row{--rowbg:var(--panel);position:relative;display:block;width:100%;border:0;border-bottom:1px solid var(--line);padding:9px 0 2px;cursor:pointer;background:var(--rowbg);text-align:left;color:inherit;font:inherit}
+.row:hover{--rowbg:var(--hover)}
+.row[aria-selected="true"]{--rowbg:var(--sel);box-shadow:inset 3px 0 0 var(--g-research)}
+.grid{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.lbl{position:relative;z-index:1;display:block;width:max-content;line-height:18px;white-space:nowrap;pointer-events:none}
+.lbl>span{background:var(--rowbg);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lbl .t{font-size:13px;font-weight:550;color:var(--ink);padding:1px 3px}
+.lbl .m{font-family:var(--mono);font-size:11px;color:var(--muted);padding:1px 3px 1px 7px}
+.lbl .m .u{color:var(--ink-2)}
+.lbl.stack{white-space:normal}
+.lbl.stack .m{display:table;padding-left:3px;margin-top:-1px;white-space:nowrap}
+.row[aria-selected="true"] .lbl .t{color:var(--ink)}
+.c-tr{position:relative;display:block;height:26px}
 .track{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .track svg{overflow:visible}
 .gl{stroke:var(--line);stroke-width:1}
@@ -183,6 +193,13 @@ button.th:hover .arr.off{opacity:.45}
 .empty{padding:48px 16px;text-align:center;color:var(--muted)}
 
 /* list tables (affected, responses) */
+.th{background:none;border:0;padding:0 8px;text-align:left;font-size:11.5px;font-weight:500;color:var(--muted);height:100%;display:flex;align-items:center;gap:4px;white-space:nowrap}
+button.th{cursor:pointer}
+button.th:hover{color:var(--ink)}
+.th[aria-sort="ascending"],.th[aria-sort="descending"]{color:var(--ink);font-weight:600}
+.th .arr{font-size:10px}
+.th .arr.off{opacity:0}
+button.th:hover .arr.off{opacity:.45}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}
 .tbl th{position:sticky;top:var(--barH,52px);z-index:5;background:var(--panel);text-align:left;font-weight:500;font-size:11.5px;color:var(--muted);padding:0;border-bottom:1px solid var(--line);height:32px;white-space:nowrap;box-shadow:0 1px 0 var(--line)}
 .tbl th>span{display:flex;align-items:center;height:100%;padding:0 10px}
@@ -299,20 +316,11 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .grab{display:none}
 
 /* narrower desktops */
-.narrow-only{display:none!important}
-@media (max-width:1250px){
-  .thead,.row{grid-template-columns:34px minmax(190px,1.4fr) 70px 82px minmax(240px,2.6fr)}
-  .c-s{display:none}
-  .narrow-only{display:inline-flex!important}
+@media (max-width:1480px){
   .count{display:none}
   .count.on{display:inline}
-  .det-top .w-disc{display:none}
-  .main{grid-template-columns:minmax(0,1fr) 340px}
 }
 @media (max-width:1060px){
-  .thead,.row{grid-template-columns:32px minmax(150px,1fr) 84px minmax(200px,2fr)}
-  .c-g{display:none}
-  .main{grid-template-columns:minmax(0,1fr) 300px}
   .meta{display:none}
   .tbl.aff .m-when{display:none}
   .tbl.aff .when-inline{display:block}
@@ -332,19 +340,14 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
   .filters>*{flex:none}
   .flabel{display:none}
   .count,.count.on{display:none}
-  .main{grid-template-columns:1fr}
-  .pane-col{border:0;position:static}
+  .main,.main.open{grid-template-columns:1fr}
+  .pane-col,.main:not(.open) .pane-col{display:block;border:0;position:static;box-shadow:none;background:none}
   .pane-wrap{position:static}
-  .thead{top:0;grid-template-columns:1fr;height:28px}
-  .thead>.th{display:none}
-  .axis{margin:0 6px}
-  .row{grid-template-columns:30px minmax(0,1fr) auto;grid-template-areas:"n t d" "n m m" "tr tr tr";min-height:0;padding-bottom:4px;align-items:start}
-  .c-n{grid-area:n;padding-left:10px;padding-top:11px}
-  .c-t{grid-area:t;padding:9px 6px 0 0}
-  .c-d{grid-area:d;padding:10px 12px 0 0;color:var(--muted)}
-  .c-m{grid-area:m;display:block;font-size:11.5px;color:var(--muted);padding:2px 12px 0 0}
-  .c-s,.c-g{display:none}
-  .c-tr{grid-area:tr;min-height:32px;margin:0 6px}
+  .drag{display:none}
+  .thead{top:0;height:28px}
+  .fgroup.sort .flabel{display:inline}
+  .row{padding-top:8px}
+  .lbl .t{font-size:13px}
   .tbl th{position:static}
   .tbl thead{display:none}
   .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
@@ -418,6 +421,7 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
     <div class="main" id="main">
       <div class="view" id="view"></div>
       <aside class="pane-col" aria-label="Incident details">
+        <div class="drag" id="drag" role="separator" aria-orientation="vertical" aria-label="Resize details panel" aria-controls="pane" tabindex="0" data-tip="Drag to resize · double-click to reset"><span class="grip" aria-hidden="true"></span></div>
         <div class="pane-wrap">
           <div class="pane" id="pane">
             <div class="grab" aria-hidden="true"></div>
@@ -561,7 +565,7 @@ function showTipOver(el) {
 }
 function hideTip() { tip.hidden = true; tipEl = null; clearTimeout(tipTimer); }
 document.addEventListener('pointermove', ev => {
-  if (ev.pointerType && ev.pointerType !== 'mouse') return;
+  if ((ev.pointerType && ev.pointerType !== 'mouse') || document.body.classList.contains('resizing')) return;
   const el = ev.target.closest && ev.target.closest('[data-tip]');
   if (el) showTipFor(el, ev.clientX, ev.clientY); else if (!tip.hidden) hideTip();
 });
@@ -687,17 +691,13 @@ function renderFilters() {
   const redo = () => { renderView(); renderFilters(); };
   if (state.view === 'timeline') {
     const s = state.tl;
-    const sortSel = h('select', { class: 'sel', 'aria-label': 'Sort' },
-      [['public:-1', 'Latest disclosed'], ['public:1', 'Earliest disclosed'], ['start:-1', 'Latest started'], ['start:1', 'Earliest started'], ['delay:-1', 'Longest delay'], ['delay:1', 'Shortest delay']].map(([v, t]) => h('option', { value: v, text: t })));
-    sortSel.value = `${s.sort}:${s.dir}`;
-    sortSel.addEventListener('change', () => { const [k, d] = sortSel.value.split(':'); s.sort = k; s.dir = Number(d); renderView(); });
     f.replaceChildren(
       h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Disclosed by' }),
         seg([{ v: 'all', label: 'Anyone' }, ...Object.keys(WHO).map(g => ({ v: g, label: WHO[g], dot: g, tip: `Only incidents first made public by ${WHO_BY[g]}` }))],
           s.by, v => { s.by = v; redo(); }, 'Disclosed by')),
       h('button', { class: 'chip', type: 'button', 'aria-pressed': String(s.conf), 'data-tip': 'Only incidents OpenAI has confirmed, fully or in part',
         onclick: () => { s.conf = !s.conf; redo(); } }, h('span', { class: 'box', html: CHECK }), 'Confirmed by OpenAI'),
-      h('label', { class: 'fgroup narrow-only' }, h('span', { class: 'flabel', text: 'Sort' }), sortSel));
+      sortCtl());
   } else if (state.view === 'affected') {
     const s = state.aff;
     f.replaceChildren(h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Type' }),
@@ -728,43 +728,56 @@ function tlRows() {
       return s.dir * (c || a.n - b.n);
     });
 }
-function sortHead(k, label, cls, tipText) {
-  const s = state.tl; const on = s.sort === k;
-  return h('button', { class: `th ${cls}`, type: 'button', 'aria-sort': on ? (s.dir < 0 ? 'descending' : 'ascending') : 'none', 'data-tip': tipText,
-    onclick: () => { if (on) s.dir *= -1; else { s.sort = k; s.dir = -1; } renderView(); renderFilters(); } },
-    label, h('span', { class: 'arr' + (on ? '' : ' off'), text: on && s.dir > 0 ? '↑' : '↓', 'aria-hidden': 'true' }));
+const SORTS = [
+  { k: 'start', label: 'Started', what: 'first known agent activity', dn: 'newest first', up: 'oldest first' },
+  { k: 'public', label: 'Disclosed', what: 'first public report tying the incident to OpenAI', dn: 'newest first', up: 'oldest first' },
+  { k: 'delay', label: 'Delay', what: 'days from the first known activity to disclosure', dn: 'longest first', up: 'shortest first' },
+];
+function sortCtl() {
+  const s = state.tl;
+  return h('span', { class: 'fgroup sort' }, h('span', { class: 'flabel', text: 'Sort' }),
+    h('span', { class: 'seg sortseg', role: 'group', 'aria-label': 'Sort incidents' }, SORTS.map(o => {
+      const on = s.sort === o.k;
+      return h('button', { type: 'button', 'aria-pressed': String(on),
+        'aria-label': `Sort by ${o.label.toLowerCase()}` + (on ? `, ${s.dir < 0 ? o.dn : o.up}` : ''),
+        'data-tip': on ? `Sorted by ${o.what}, ${s.dir < 0 ? o.dn : o.up}. Click to reverse.` : `Sort by ${o.what}`,
+        onclick: () => { if (on) s.dir *= -1; else { s.sort = o.k; s.dir = -1; } renderView(); renderFilters(); } },
+        o.label, on ? h('span', { class: 'arr', 'aria-hidden': 'true', text: s.dir < 0 ? '↓' : '↑' }) : null);
+    })));
 }
 const delayTxt = e => e.delay == null ? 'Activity dates not disclosed' : `${e.delay} days from the first known activity (${e.approx ? 'about ' : ''}${fmt(e.first)}) to disclosure (${fmt(e.main.d)})`;
+const AXIS_H = 30;
 function renderTimeline() {
   const view = $('#view');
+  /* read the width before emptying the view: a momentarily short page would drop the scrollbar and read too wide */
+  const W0 = view.clientWidth;
   const axis = h('span', { class: 'axis', 'aria-hidden': 'true' });
-  const head = h('div', { class: 'thead' },
-    h('span', { class: 'th c-n', text: '#', 'data-tip': 'Numbered in the order the incidents became public' }),
-    h('span', { class: 'th', text: 'Incident' }),
-    sortHead('start', 'Started', 'c-s', 'First known agent activity. Click to sort.'),
-    sortHead('public', 'Disclosed', 'c-d', 'First public report tying the incident to OpenAI. Click to sort.'),
-    sortHead('delay', 'Delay', 'c-g', 'Days from the first known agent activity to disclosure. Click to sort.'),
-    axis);
+  const head = h('div', { class: 'thead' }, axis);
   const rowsWrap = h('div', { role: 'listbox', 'aria-label': 'Incidents', id: 'rows' });
   view.replaceChildren(h('div', { class: 'tl' }, head, rowsWrap));
   const rows = tlRows();
   $('#count').textContent = rows.length === INC.length ? `${INC.length} incidents` : `${rows.length} of ${INC.length} incidents`;
   $('#count').classList.toggle('on', rows.length !== INC.length);
 
-  const W = Math.max(160, axis.clientWidth);
-  const PAD = 18;
+  const W = Math.max(200, W0 || axis.clientWidth);
+  const mob = mobileMQ.matches;
+  const PAD = mob ? 14 : 22, M = mob ? 10 : 12;
   const x = t => PAD + ((D(t) - X0) / (X1 - X0)) * (W - PAD * 2);
   const months = [];
   for (let m = 2; m <= 9; m++) months.push({ d: `2026-${pad2(m + 1)}-01`, m });
-  axis.replaceChildren(...months.map(({ d, m }) => h('span', { style: `left:${x(d)}px`, text: W < 300 && m % 2 ? '' : MON[m] })));
+  axis.replaceChildren(...months.map(({ d, m }) => h('span', { style: `left:${x(d)}px`, text: W < 360 && m % 2 ? '' : MON[m] })));
 
   if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: 'No incidents match these filters.' })); renderFoot(rows); return; }
-  rowsWrap.replaceChildren(...rows.map(e => {
+  const lanes = rows.map(e => {
+    /* background: month gridlines + today line through the whole lane */
+    const grid = sv('svg', { class: 'grid', 'aria-hidden': 'true' });
+    months.forEach(({ d }) => grid.append(sv('line', { x1: x(d), x2: x(d), y1: 0, y2: '100%', class: 'gl' })));
+    grid.append(sv('line', { x1: x(DATA.updated), x2: x(DATA.updated), y1: 0, y2: '100%', class: 'gl today' }));
     const svg = sv('svg', { class: 'track', 'aria-hidden': 'true' });
-    months.forEach(({ d }) => svg.append(sv('line', { x1: x(d), x2: x(d), y1: 0, y2: '100%', class: 'gl' })));
-    svg.append(sv('line', { x1: x(DATA.updated), x2: x(DATA.updated), y1: 0, y2: '100%', class: 'gl today' }));
     const mid = sv('svg', { x: 0, y: '50%', width: W, height: 1, overflow: 'visible' });
     svg.append(mid);
+    let lo = Infinity, hi = -Infinity;
+    const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
     if (e.last && e.main.d > e.last) {
       const a = x(e.last) + 4, b = x(e.main.d) - 8;
       if (b > a) {
@@ -774,43 +787,72 @@ function renderTimeline() {
     }
     e.activity.forEach(a => {
       const x1 = x(a.s), x2 = x(a.e), w = Math.max(5, x2 - x1);
+      const bx = x1 - (w > x2 - x1 ? (w - (x2 - x1)) / 2 : 0);
       const g = sv('g', tipOf(a.sub ? 'Exploit probes' : a.approx ? 'Agents active (dates approximate)' : 'Agents active', a.label));
-      g.append(sv('rect', { x: x1 - (w > x2 - x1 ? (w - (x2 - x1)) / 2 : 0), y: a.sub ? -5 : -4, width: w, height: a.sub ? 10 : 8, rx: 2.5, class: 'act' + (a.sub ? ' sub' : '') + (a.approx ? ' approx' : '') }));
+      g.append(sv('rect', { x: bx, y: a.sub ? -5 : -4, width: w, height: a.sub ? 10 : 8, rx: 2.5, class: 'act' + (a.sub ? ' sub' : '') + (a.approx ? ' approx' : '') }));
       g.append(sv('rect', { x: x1 - 3, y: -9, width: w + 6, height: 18, class: 'hit' }));
-      mid.append(g);
+      mid.append(g); span(bx, bx + w);
     });
+    let nodate = null;
     if (!e.activity.length) {
-      const t = sv('text', { x: x(e.main.d) - 12, y: 4, 'text-anchor': 'end', class: 'nodate', ...tipOf('Agents active', e.noDates) });
-      t.textContent = W < 420 ? 'dates not disclosed' : 'activity dates not disclosed'; mid.append(t);
+      nodate = sv('text', { x: x(e.main.d) - 12, y: 4, 'text-anchor': 'end', class: 'nodate', ...tipOf('Agents active', e.noDates) });
+      nodate.textContent = W < 480 ? 'dates not disclosed' : 'activity dates not disclosed'; mid.append(nodate);
     }
     if (e.knew) {
       const k = x(e.knew.d);
       const g = sv('g', tipOf(`OpenAI knew · ${fmt(e.knew.d)}`, e.knew.text));
       g.append(sv('path', { d: `M${k} -6L${k + 6} 0L${k} 6L${k - 6} 0Z`, class: 'knew' }));
       g.append(sv('circle', { cx: k, cy: 0, r: 10, class: 'hit' }));
-      mid.append(g);
+      mid.append(g); span(k - 6, k + 6);
     }
     e.reveals.forEach(r => {
       const g = sv('g', tipOf(`${fmt(r.d)} · ${r.private ? 'private notice' : r.minor ? 'other report' : 'disclosed by ' + WHO_BY[r.by]}`, r.text));
-      g.append(sv('circle', { cx: x(r.d), cy: 0, r: r.minor ? 3.6 : 6, class: `rev g-${r.by}` + (r.minor ? ' minor' : '') }));
+      const rr = r.minor ? 3.6 : 6;
+      g.append(sv('circle', { cx: x(r.d), cy: 0, r: rr, class: `rev g-${r.by}` + (r.minor ? ' minor' : '') }));
       g.append(sv('circle', { cx: x(r.d), cy: 0, r: 10, class: 'hit' }));
-      mid.append(g);
+      mid.append(g); span(x(r.d) - rr, x(r.d) + rr);
     });
-    const startTxt = e.first ? (e.approx ? '~' : '') + fmt(e.first) : '—';
-    return h('button', { class: 'row', type: 'button', role: 'option', id: 'row-' + e.id, 'aria-selected': String(state.sel === e.id),
-      'aria-label': `${e.title}. Disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}.`, onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
-      h('span', { class: 'c-n', text: pad2(e.n) }),
-      h('span', { class: 'c-t', text: e.title }),
-      h('span', { class: 'c-s', text: startTxt, ...tipOf(e.approx ? 'Approximate' : 'First known activity', e.first ? e.activity.filter(a => !a.sub)[0].label : e.noDates) }),
-      h('span', { class: 'c-d', text: fmt(e.main.d), ...tipOf(`Disclosed by ${WHO_BY[e.main.by]}`, e.main.text + (e.delay != null ? `. ${e.delay} days after the first known activity.` : '')) }),
-      h('span', { class: 'c-g', 'data-tip': delayTxt(e) }, e.delay != null ? [String(e.delay), h('span', { class: 'u', text: ' days' })] : '—'),
-      h('span', { class: 'c-m', text: e.first ? `Started ${startTxt}${e.delay != null ? ` · public ${e.delay} days later` : ''}` : 'Activity dates not disclosed' }),
-      h('span', { class: 'c-tr' }, svg));
-  }));
+    const startTxt = e.first ? (e.approx ? '~' : '') + fmt(e.first) : null;
+    const meta = h('span', { class: 'm' }, startTxt
+      ? [`${startTxt} → public ${fmt(e.main.d)} · `, h('span', { class: 'u', text: `${e.delay} days` })]
+      : `public ${fmt(e.main.d)}`);
+    const lbl = h('span', { class: 'lbl' }, h('span', { class: 't', text: e.title }), meta);
+    const row = h('button', { class: 'row', type: 'button', role: 'option', id: 'row-' + e.id, 'aria-selected': String(state.sel === e.id),
+      'aria-label': `${e.title}. ${e.first ? `Started ${fmt(e.first)}, disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}, ${e.delay} days later.` : `Disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}; activity dates not disclosed.`}`,
+      onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
+      grid, lbl, h('span', { class: 'c-tr' }, svg));
+    return { e, row, lbl, meta, nodate, lo, hi };
+  });
+  rowsWrap.replaceChildren(...lanes.map(l => l.row));
+
+  /* place each title just above its lane's marks: read every width first (one layout), then write */
+  const avail = W - 2 * M;
+  lanes.forEach(l => {
+    const wd = el => el.getBoundingClientRect().width;
+    l.w = Math.ceil(wd(l.lbl)) + 1; l.mw = wd(l.meta);
+    if (l.nodate) { const t = l.nodate.getComputedTextLength(), ex = Number(l.nodate.getAttribute('x')); l.lo = Math.min(l.lo, ex - t); l.hi = Math.max(l.hi, ex); }
+  });
+  lanes.forEach(l => {
+    let L = l.w, stack = mob || L > avail;
+    if (stack) {
+      /* title on one line, meta below it, indented under the title */
+      const mw = l.mw - 7 + 3;
+      L = Math.min(avail, Math.ceil(Math.max(l.w - l.mw, mw)) + 1);
+      l.lbl.classList.add('stack');
+    }
+    let left;
+    if (mob) left = M;
+    else {
+      left = l.lo - 3;                                     /* title starts where the lane's activity starts */
+      if (left + L > W - M) left = l.hi + 3 - L;        /* would run off the right edge: end it at the lane's last mark instead */
+      left = Math.max(M, Math.min(left, W - M - L));
+    }
+    l.lbl.style.marginLeft = Math.round(left) + 'px';
+    if (stack) l.lbl.style.width = Math.ceil(L) + 'px';
+  });
   markSelected();
   renderFoot(rows);
 }
-
 /* ---------------------------------------------------------------- affected */
 function incLink(id) {
   const e = BY_ID.get(id); if (!e) return null;
@@ -846,7 +888,7 @@ function backBtn() {
 function incFilter(s) {
   const sel = h('select', { class: 'sel inc-sel' + (s.inc ? ' on' : ''), 'aria-label': 'Incident' },
     h('option', { value: '', text: 'All incidents' }),
-    [...INC].sort((a, b) => a.n - b.n).map(e => h('option', { value: e.id, text: `#${pad2(e.n)} ${e.title}` })));
+    [...INC].sort((a, b) => a.n - b.n).map(e => h('option', { value: e.id, text: e.title })));
   sel.value = s.inc || '';
   sel.addEventListener('change', () => { s.inc = sel.value || null; renderView(); renderFilters(); });
   return sel;
@@ -982,13 +1024,15 @@ function markSelected() {
 }
 function openPane(title, focus) {
   $('#pane-empty').hidden = true; $('#det').hidden = false;
+  if (!$('#main').classList.contains('open')) rescroll = true;
+  $('#main').classList.add('open'); applyDrawerW();
   pane.scrollTop = 0;
   if (mobileMQ.matches) { pane.classList.add('open'); scrim.classList.add('open'); }
   if (focus) $('#det-title').focus({ preventScroll: true });
 }
 function scrollToRow(row, instant) {
   if (!row || mobileMQ.matches) return;
-  const r = row.getBoundingClientRect(), top = $('#bar').offsetHeight + 32, bottom = innerHeight - $('#foot').offsetHeight;
+  const r = row.getBoundingClientRect(), top = $('#bar').offsetHeight + AXIS_H + 2, bottom = innerHeight - $('#foot').offsetHeight;
   if (r.top < top || r.bottom > bottom) row.scrollIntoView({ block: 'center', behavior: instant ? 'auto' : 'smooth' });
 }
 function navBtns(order, i, go, noun) {
@@ -1041,7 +1085,7 @@ function select(id, opts = {}) {
   const i = order.findIndex(x => x.id === id);
   const noun = from && from.ent ? `incident involving ${AFF_BY_ID.get(from.ent).name}` : 'incident';
   $('#det').replaceChildren(h('div', { class: 'det' }, backBtn(),
-    h('div', { class: 'det-top' }, h('span', {}, `#${pad2(e.n)} \u00b7 `, h('span', { class: 'w-disc', text: 'disclosed ' }), fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
+    h('div', { class: 'det-top' }, h('span', {}, 'Disclosed ', fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
     h('h2', { id: 'det-title', tabindex: '-1', text: e.title }),
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), `Disclosed by ${WHO_BY[e.main.by]}`),
@@ -1065,6 +1109,7 @@ function clearSel(opts = {}) {
   const had = state.sel; state.sel = null; state.ent = null; state.back = [];
   markSelected();
   $('#det').hidden = true; $('#pane-empty').hidden = false;
+  $('#main').classList.remove('open');
   pane.classList.remove('open'); scrim.classList.remove('open');
   hideTip();
   const viewHash = state.view === 'timeline' ? '' : state.view;
@@ -1095,6 +1140,55 @@ document.addEventListener('keydown', ev => {
   }
 });
 
+/* ---------------------------------------------------------------- drawer width */
+const DRAWER_MIN = 340;
+/* default: 460px, a little narrower on small desktops so the chart keeps most of the width */
+const drawerDef = () => Math.max(DRAWER_MIN, Math.min(460, Math.round($('#app').clientWidth * 0.42)));
+let drawerW = null;
+try { const v = Number(localStorage.getItem('drawerW')); if (v) drawerW = v; } catch (e) { /* storage unavailable */ }
+const drag = $('#drag');
+function drawerMax() { const aw = $('#app').clientWidth; return Math.max(DRAWER_MIN, Math.min(Math.round(aw * 0.65), aw - 320)); }
+function applyDrawerW() {
+  const max = drawerMax(), w = Math.round(Math.max(DRAWER_MIN, Math.min(max, drawerW == null ? drawerDef() : drawerW)));
+  $('#main').style.setProperty('--drawerW', w + 'px');
+  drag.setAttribute('aria-valuemin', DRAWER_MIN); drag.setAttribute('aria-valuemax', max); drag.setAttribute('aria-valuenow', w);
+  drag.setAttribute('aria-valuetext', `${w} pixels wide`);
+  return w;
+}
+function setDrawerW(w, save) {
+  drawerW = Math.max(DRAWER_MIN, Math.min(drawerMax(), w));
+  applyDrawerW();
+  if (save) { try { localStorage.setItem('drawerW', String(Math.round(drawerW))); } catch (e) { /* storage unavailable */ } }
+}
+let dragRaf = 0, dragX = 0;
+drag.addEventListener('pointerdown', ev => {
+  if (ev.button !== 0) return;
+  ev.preventDefault(); hideTip(); drag.focus({ preventScroll: true });
+  drag.setPointerCapture(ev.pointerId); drag.classList.add('on'); document.body.classList.add('resizing');
+  drawerW = applyDrawerW();
+});
+drag.addEventListener('pointermove', ev => {
+  if (!drag.hasPointerCapture(ev.pointerId)) return;
+  dragX = ev.clientX;
+  if (!dragRaf) dragRaf = requestAnimationFrame(() => { dragRaf = 0; setDrawerW($('#main').getBoundingClientRect().right - dragX, false); });
+});
+const endDrag = ev => {
+  if (!drag.classList.contains('on')) return;
+  drag.classList.remove('on'); document.body.classList.remove('resizing');
+  try { drag.releasePointerCapture(ev.pointerId); } catch (e) { /* already released */ }
+  setDrawerW(drawerW, true);
+};
+drag.addEventListener('pointerup', endDrag); drag.addEventListener('pointercancel', endDrag);
+drag.addEventListener('dblclick', () => { drawerW = null; applyDrawerW(); try { localStorage.removeItem('drawerW'); } catch (e) { /* storage unavailable */ } });
+drag.addEventListener('keydown', ev => {
+  const step = ev.shiftKey ? 64 : 16, cur = applyDrawerW();
+  const w = ev.key === 'ArrowLeft' ? cur + step : ev.key === 'ArrowRight' ? cur - step : ev.key === 'Home' ? drawerMax() : ev.key === 'End' ? DRAWER_MIN : ev.key === 'Enter' ? 'reset' : null;
+  if (w == null) return;
+  ev.preventDefault();
+  if (w === 'reset') drag.dispatchEvent(new MouseEvent('dblclick')); else setDrawerW(w, true);
+});
+applyDrawerW();
+
 /* ---------------------------------------------------------------- layout */
 function measure() {
   const app = $('#app'), m = mobileMQ.matches;
@@ -1104,13 +1198,24 @@ function measure() {
   const fill = innerHeight - app.offsetTop - barH - footH - 2 - (m ? 8 : 16);
   $('#main').style.minHeight = m ? '' : Math.max(320, fill) + 'px';
 }
-let lastW = 0;
+let lastW = 0, roRaf = 0, rescroll = false;
 new ResizeObserver(() => {
-  const w = Math.round($('#view').clientWidth);
-  if (w !== lastW) { lastW = w; if (state.view === 'timeline') renderTimeline(); }
-  measure();
+  /* re-lay-out the chart on the next frame (the drawer opening or being dragged changes the width) */
+  if (roRaf) return;
+  roRaf = setTimeout(() => {
+    roRaf = 0;
+    /* re-rendering can add or remove the page scrollbar, which changes the width again: settle it here */
+    for (let i = 0; i < 3; i++) {
+      const w = Math.round($('#view').clientWidth);
+      if (w === lastW) break;
+      lastW = w; if (state.view === 'timeline') renderTimeline();
+    }
+    measure();
+    if (rescroll) { rescroll = false; if (state.view === 'timeline' && state.sel) scrollToRow(document.getElementById('row-' + state.sel), true); }
+  }, 0);
 }).observe($('#view'));
-window.addEventListener('resize', measure);
+window.addEventListener('resize', () => { applyDrawerW(); measure(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (state.view === 'timeline') renderTimeline(); });
 mobileMQ.addEventListener('change', () => {
   const open = mobileMQ.matches && !!(state.sel || state.ent);
   pane.classList.toggle('open', open); scrim.classList.toggle('open', open);
