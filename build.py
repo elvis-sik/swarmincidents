@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Build the agent-incident timeline: inject incidents.js into template.html, write docs/ (the GitHub Pages site)."""
-import re
+"""Build the agent-incident timeline: inject incidents.json into template.html, write docs/ (the GitHub Pages site)."""
+import json
 from pathlib import Path
 here = Path(__file__).parent
-data = (here / "incidents.js").read_text()
-updated = re.search(r"updated: '([^']+)'", data)[1]
-version = re.search(r"version: '([^']+)'", data)[1]
-page = (here / "template.html").read_text().replace("/*__DATA__*/", data.replace("</", "<\\/"))
+data = json.loads((here / "incidents.json").read_text(encoding="utf-8"))
+updated, version = data["updated"], data["version"]
+js = "const DATA = " + json.dumps(data, ensure_ascii=False) + ";"
+page = (here / "template.html").read_text().replace("/*__DATA__*/", js.replace("</", "<\\/"))
 page = page.replace("__UPDATED__", updated).replace("__VERSION__", version)
 (here / "openai-agent-swarm.html").write_text(page)
+(here / "brand" / "data.js").write_text(js + "\n")  # for brand/og.html
 docs = here / "docs"
 docs.mkdir(exist_ok=True)
 (docs / "index.html").write_text(page)
