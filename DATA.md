@@ -1,6 +1,6 @@
 # Data format
 
-`incidents.json` holds everything the site shows. Dates are `YYYY-MM-DD`. It is edited in the private ops repo, where pipeline proposals are reviewed as pull requests, and copied here on merge. Run `python3 build.py` after any change.
+`incidents.json` holds everything the site shows. Dates are `YYYY-MM-DD`. It is edited in the private ops repo, where pipeline proposals are reviewed as pull requests, and copied here on merge, together with this file. Run `python3 build.py` after any change.
 
 ## Top level
 
