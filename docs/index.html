@@ -120,6 +120,66 @@ h1{font-size:18px;font-weight:650;letter-spacing:-.01em;margin:0}
 .modeseg svg{width:15px;height:15px}
 .rangeseg button{font-variant-numeric:tabular-nums}
 .rchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--brush-edge);background:var(--brush);color:var(--ink);border-radius:7px;padding:3px 4px 3px 9px;font-size:12.5px;font-family:var(--mono);white-space:nowrap}
+.bar-r{position:relative}
+.rchip .rchip-t{width:auto;height:auto;padding:0 2px;font:inherit;color:inherit}
+.rpop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;background:var(--panel);border:1px solid var(--line-2);border-radius:10px;box-shadow:var(--shadow);padding:12px;display:flex;flex-direction:column;gap:10px;width:min(330px,calc(100vw - 32px))}
+.rpop-f{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rpop label{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted)}
+.rpop input{font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:7px;padding:5px 7px;min-height:32px;color-scheme:light dark;min-width:0}
+.rpop input:focus-visible{outline:2px solid var(--focus,var(--ink));outline-offset:1px}
+.rpop-q{display:flex;flex-wrap:wrap;gap:6px}
+.rpop-q .chip{font-size:12px}
+.rpop-err{margin:0;font-size:12px;color:var(--w-breach)}
+.rpop-err:empty{display:none}
+.rpop-b{display:flex;justify-content:flex-end;gap:8px}
+.btn.primary{background:var(--on);color:var(--on-ink);border-color:var(--on)}
+.btn.primary:hover{filter:brightness(1.1)}
+.rhead{display:flex;align-items:center;padding:0 16px;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.rhead.two{display:grid;grid-template-columns:1fr 28px 1fr;padding:0 16px}
+.rhead span{display:inline-flex;align-items:center;gap:6px}
+.rh-l{justify-content:flex-end}
+.rspine{position:relative;padding:14px 16px 28px;--sx:26px}
+.rspine.two{--sx:50%}
+.rspine::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--sx) - 1px);width:2px;background:var(--line)}
+.rspine:not(.two)::before{left:calc(16px + 13px)}
+.r-item{position:relative;display:grid;grid-template-columns:28px 1fr;align-items:center;width:100%;border:0;background:none;padding:0;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.rspine.two .r-item{grid-template-columns:1fr 28px 1fr}
+.rspine:not(.two) .r-item>span:first-child{display:none}
+.rspine:not(.two) .r-item{grid-template-columns:28px 1fr}
+.r-node{display:flex;justify-content:center;align-items:center;align-self:stretch;position:relative;z-index:1}
+.rdot{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);flex:none}
+.rdot.g-openai{background:var(--panel);box-shadow:inset 0 0 0 2px var(--g-openai)}
+.r-node .rdot{box-shadow:0 0 0 3px var(--panel)}
+.r-node .rdot.g-openai{box-shadow:inset 0 0 0 2px var(--g-openai),0 0 0 3px var(--panel)}
+.r-card{position:relative;display:flex;flex-direction:column;gap:1px;padding:7px 11px 8px;margin:3px 0;border:1px solid var(--line);border-radius:9px;background:var(--panel);max-width:440px;transition:border-color .12s,background .12s}
+.side-l .r-card{justify-self:end;text-align:right;align-items:flex-end}
+.r-card::after{content:"";position:absolute;top:50%;width:12px;height:1px;background:var(--line-2)}
+.side-r .r-card{margin-left:4px;justify-self:start}.side-r .r-card::after{right:100%}
+.side-l .r-card{margin-right:4px}.side-l .r-card::after{left:100%}
+.r-item:hover .r-card{background:var(--hover);border-color:var(--line-2)}
+.r-item[aria-selected="true"] .r-card{background:var(--sel);border-color:var(--g-research);box-shadow:0 0 0 1px var(--g-research)}
+.r-item.rel .r-card{border-color:color-mix(in srgb,var(--g-research) 45%,var(--line))}
+.r-item:focus-visible{outline:none}.r-item:focus-visible .r-card{outline:2px solid var(--g-research);outline-offset:1px}
+.r-top{display:flex;gap:8px;align-items:baseline;font-size:11.5px;color:var(--muted)}
+.side-l .r-top{flex-direction:row-reverse}
+.r-date{font-family:var(--mono);color:var(--ink-2)}
+.r-t{font-weight:600;font-size:13.5px;line-height:1.3;color:var(--ink)}
+.r-m{font-size:12px;color:var(--muted)}
+.r-mo{position:relative;z-index:1;display:flex;padding:14px 0 6px}
+.rspine.two .r-mo{justify-content:center}
+.r-mo span{background:var(--panel);padding:2px 0;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rspine:not(.two) .r-mo span{margin-left:0}
+.r-disc{position:relative;z-index:1;display:flex;padding:3px 0}
+.rspine.two .r-disc{justify-content:center}
+.rspine:not(.two) .r-disc{padding-left:7px}
+.r-disc-b{display:inline-flex;align-items:center;gap:7px;max-width:min(560px,100%);border:1px dashed var(--line-2);background:var(--panel);border-radius:999px;padding:3px 11px 3px 6px;font:inherit;font-size:12px;color:var(--ink-2);cursor:pointer;min-width:0}
+.r-disc-b:hover{border-style:solid;color:var(--ink);background:var(--hover)}
+.r-disc-b[aria-selected="true"]{border:1px solid var(--g-research);background:var(--sel);color:var(--ink)}
+.r-disc-b.rel{border-style:solid;border-color:color-mix(in srgb,var(--g-research) 55%,var(--line));color:var(--ink)}
+.r-dd{font-family:var(--mono);color:var(--muted);flex:none}
+.r-dt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.r-ring{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.r-ring.g-openai{background:var(--panel);box-shadow:inset 0 0 0 2px var(--g-openai)}
 .rchip button{border:0;background:none;color:var(--muted);cursor:pointer;border-radius:4px;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center}
 .rchip button:hover{color:var(--ink);background:var(--hover)}
 .fchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:7px;padding:3px 4px 3px 8px;font-size:12.5px;white-space:nowrap;color:var(--ink)}
@@ -1079,7 +1139,7 @@ const state = {
   tl: { by: 'all', conf: false, sort: 'start', dir: -1 },
   aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null, cats: new Set(), unclear: true },
   back: [], pushed: false, popping: false,
-  resp: { who: 'all', dir: -1, inc: null },
+  resp: { who: 'all', dir: -1, inc: null, disc: true },
 };
 
 /* ---------------------------------------------------------------- tooltip */
@@ -1244,6 +1304,7 @@ const ICON_CHART = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" s
 const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2.75" width="12" height="10.5" rx="1.5"/><path d="M2 6.25h12M2 9.75h12M6 6.25v7"/></svg>';
 const addDays = (s, n) => new Date(D(s) + n * DAY).toISOString().slice(0, 10);
 const isoOf = ms => new Date(Math.round(ms / DAY) * DAY).toISOString().slice(0, 10);
+const FIT_MIN = '2026-03-01';
 const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
 function setRange(r) { state.range = r; renderBarR(); renderFilters(); renderView(); }
 function renderBarR() {
@@ -1251,14 +1312,48 @@ function renderBarR() {
   const on = v => (v ? !!r && r.preset === v : !r);
   put($('#bar-r'), 
     h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Dates' }),
-      r && !r.preset ? h('span', { class: 'rchip', 'data-tip': 'Drag across the dates above a chart to pick another range' }, `${fmt(r.a)} – ${fmt(r.b)}`,
+      r && !r.preset ? h('span', { class: 'rchip' }, h('button', { class: 'rchip-t', type: 'button', 'aria-label': `Dates ${fmt(r.a)} to ${fmt(r.b)}. Change`, 'data-tip': 'Click to change the dates', onclick: openRangePop, text: `${fmt(r.a)} – ${fmt(r.b)}` }),
         h('button', { type: 'button', 'aria-label': 'Show all dates', 'data-tip': 'Show all dates', onclick: () => setRange(null), text: '✕' })) : null,
       h('span', { class: 'seg rangeseg', role: 'group', 'aria-label': 'Date range' }, PRESETS.map(o => h('button', { type: 'button', 'aria-pressed': String(on(o.v)),
         'data-tip': o.v ? `Only what happened in the ${o.v} days up to the last update (${fmt(addDays(DATA.updated, -o.v))} – ${fmt(DATA.updated)})` : 'All dates. Drag across the dates above a chart to zoom in.',
-        onclick: () => setRange(o.v && !on(o.v) ? { a: addDays(DATA.updated, -o.v), b: DATA.updated, preset: o.v } : null) }, o.label)))),
+        onclick: () => setRange(o.v && !on(o.v) ? { a: addDays(DATA.updated, -o.v), b: DATA.updated, preset: o.v } : null) }, o.label)),
+        h('button', { type: 'button', id: 'range-custom', 'aria-pressed': String(!!r && !r.preset), 'aria-haspopup': 'dialog', 'data-tip': 'Pick any start and end date. You can also drag across the dates above a chart.', onclick: openRangePop }, 'Custom'))),
     h('span', { class: 'seg modeseg', role: 'group', 'aria-label': 'Layout' },
       h('button', { type: 'button', 'aria-pressed': String(m === 'chart'), 'aria-label': 'Chart', 'data-tip': 'Chart', html: ICON_CHART, onclick: () => setMode('chart') }),
       h('button', { type: 'button', 'aria-pressed': String(m === 'table'), 'aria-label': 'Table', 'data-tip': 'Table', html: ICON_TABLE, onclick: () => setMode('table') })));
+}
+/* custom range: a small popover with two date fields */
+const RANGE_MIN = FIT_MIN, RANGE_MAX = DATA.updated;
+function openRangePop(ev) {
+  if (ev) ev.stopPropagation();
+  closeRangePop();
+  const r = state.range;
+  const field = (lab, v) => { const i = h('input', { type: 'date', min: RANGE_MIN, max: RANGE_MAX, value: v, required: true }); return [h('label', {}, h('span', { text: lab }), i), i]; };
+  const [la, ia] = field('From', r ? r.a : RANGE_MIN), [lb, ib] = field('To', r ? r.b : RANGE_MAX);
+  const err = h('p', { class: 'rpop-err', 'aria-live': 'polite' });
+  const apply = () => {
+    let a = ia.value, b = ib.value;
+    if (!a || !b) { err.textContent = 'Enter both dates.'; return; }
+    if (a > b) [a, b] = [b, a];
+    closeRangePop(); setRange({ a, b });
+  };
+  const pop = h('form', { class: 'rpop', id: 'rpop', role: 'dialog', 'aria-label': 'Custom date range',
+    onsubmit: e => { e.preventDefault(); apply(); },
+    onkeydown: e => { if (e.key === 'Escape') { e.stopPropagation(); e.preventDefault(); closeRangePop(true); } } },
+    h('div', { class: 'rpop-f' }, la, lb),
+    h('div', { class: 'rpop-q' }, [['Jul 2026 onward', '2026-07-01', RANGE_MAX], ['September', '2026-09-01', '2026-09-30'], ['August', '2026-08-01', '2026-08-31']].map(([t, a, b]) =>
+      h('button', { type: 'button', class: 'chip', text: t, onclick: () => { ia.value = a; ib.value = b < RANGE_MAX ? b : RANGE_MAX; err.textContent = ''; } }))),
+    err,
+    h('div', { class: 'rpop-b' }, h('button', { type: 'button', class: 'btn', text: 'Cancel', onclick: () => closeRangePop(true) }), h('button', { type: 'submit', class: 'btn primary', text: 'Apply' })));
+  $('#bar-r').append(pop);
+  ia.focus();
+  setTimeout(() => document.addEventListener('pointerdown', outsideRangePop, true));
+}
+function outsideRangePop(e) { const p = $('#rpop'); if (p && !p.contains(e.target) && !e.target.closest('#range-custom,.rchip-t')) closeRangePop(); }
+function closeRangePop(refocus) {
+  const p = $('#rpop'); document.removeEventListener('pointerdown', outsideRangePop, true);
+  if (!p) return; p.remove();
+  if (refocus) { const b = $('#range-custom'); if (b) b.focus(); }
 }
 const inRange = (a, b) => !state.range || (a <= state.range.b && b >= state.range.a);
 
@@ -1325,7 +1420,7 @@ function renderFilters() {
     put(f, h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'From' }),
       seg([{ v: 'all', label: 'Anyone' }, ...Object.keys(RESP_WHO).map(w => ({ v: w, label: RESP_WHO[w], dot: RESP_DOT[w] }))],
         s.who, v => { s.who = v; redo(); }, 'Response from')), incFilter(s),
-      chart ? sortCtl(s, SORTS.responses, 'Sort responses') : null);
+      chart ? sortCtl(s, SORTS.responses.filter(o => o.k === 'd'), 'Sort responses') : null);
   }
 }
 function toggleCat(w, only) {
@@ -1388,8 +1483,8 @@ function setCount(n, total, noun) {
 }
 /* ---------------------------------------------------------------- chart engine */
 const FIT = {
-  timeline: ['2026-03-01', '2026-10-08'],
-  affected: ['2026-03-01', '2026-10-08'],
+  timeline: [FIT_MIN, '2026-10-08'],
+  affected: [FIT_MIN, '2026-10-08'],
   responses: [addDays(RESP.map(r => r.from || r.d).sort()[0], -8), addDays(DATA.updated, 8)],
 };
 const ms = t => (typeof t === 'number' ? t : D(t));
@@ -1567,46 +1662,54 @@ function renderTimeline() {
   markSelected(); applyViewClass(); renderFoot();
 }
 
-/* ---------------------------------------------------------------- responses chart */
+/* ---------------------------------------------------------------- responses chart
+   Each response is one dated event, so this view is a vertical chronology rather than lanes:
+   OpenAI on one side of the spine, governments, researchers and lawmakers on the other, and each
+   incident's first public report as a marker on the spine. The space between events grows with the time between them. */
 function renderResponsesChart() {
-  const { W, head, rowsWrap, tl } = chartShell('Responses');
+  const s = state.resp, view = $('#view');
+  if (s.sort !== 'd') { s.sort = 'd'; s.dir = -1; }
   const rows = respRows();
   setCount(rows.length, RESP.length, 'responses');
-  const mob = mobileMQ.matches;
-  const x = makeX(W, mob ? 14 : 22), M = mob ? 10 : 12, tk = ticks(x);
-  const axis = axisEl(x, tk); head.append(axis); attachBrush(axis, tl, x, 0);
+  const discs = s.disc === false ? [] : INC.filter(e => (!s.inc || e.id === s.inc) && inRange(e.main.d, e.main.d));
+  const sides = new Set(rows.map(r => (r.who === 'openai' ? 'l' : 'r')));
+  const two = view.clientWidth >= 720 && sides.size > 1;
+  const head = h('div', { class: 'thead rhead' + (two ? ' two' : '') },
+    two ? [h('span', { class: 'rh-l' }, h('span', { class: 'rdot g-openai' }), 'OpenAI'), h('span'), h('span', { class: 'rh-r' }, h('span', { class: 'rdot g-gov' }), h('span', { class: 'rdot g-research' }), 'Governments, researchers & lawmakers')]
+      : h('span', { class: 'rh-1', text: s.dir === -1 ? 'Newest first' : 'Oldest first' }));
+  const rowsWrap = h('div', { role: 'listbox', 'aria-label': 'Responses', id: 'rows', class: 'rspine' + (two ? ' two' : '') });
+  view.replaceChildren(h('div', { class: 'tl rtl' }, head, rowsWrap));
   if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: 'No responses match these filters.' })); renderRespFoot(); return; }
-  const lanes = rows.map(r => {
-    const grid = gridSvg(x, tk);
-    const { svg, mid } = trackSvg(W);
-    let lo = Infinity, hi = -Infinity;
-    const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
-    const rx = x(r.d);
-    if (r.from) {
-      const fx = x(r.from);
-      const l = Math.min(fx, rx), rgt = Math.max(fx, rx);
-      if (rgt - l > 12) mid.append(sv('line', { x1: l + 6, x2: rgt - 6, y1: 0, y2: 0, class: 'lag mk mk-lag' }));
-      mid.append(sv('rect', { x: l, y: -7, width: Math.max(1, rgt - l), height: 14, class: 'hit', ...tipOf(lagTxt(r.lag).replace(/^./, c => c.toUpperCase()), `First public report of the incident: ${fmt(r.from)}. This response: ${r.label || fmt(r.d)}.`) }));
+  /* one chronological stream of events; on the same day a disclosure comes before the responses to it */
+  const ev = [...discs.map(e => ({ d: e.main.d, k: 0, i: e.n, e })), ...rows.map(r => ({ d: r.d, k: 1, i: r.idx, r }))]
+    .sort((a, b) => a.d.localeCompare(b.d) || a.k - b.k || a.i - b.i);
+  if (s.dir === -1) ev.reverse();
+  const out = []; let prev = null, mo = null;
+  ev.forEach(x => {
+    const m = x.d.slice(0, 7);
+    if (m !== mo) { mo = m; out.push(h('div', { class: 'r-mo', 'aria-hidden': 'true' }, h('span', { text: `${MON[+m.slice(5) - 1]} ${m.slice(0, 4)}` }))); prev = null; }
+    const gap = prev ? Math.min(34, Math.abs(D(x.d) - D(prev)) / DAY * 3) : 0; prev = x.d;
+    const style = gap ? `margin-top:${Math.round(gap)}px` : null;
+    if (x.e) {
+      const e = x.e;
+      out.push(h('div', { class: 'r-disc', style }, h('button', { type: 'button', class: 'r-disc-b', tabindex: '-1', 'data-inc-row': e.id,
+        'data-tip-title': `${fmt(e.main.d)} · made public by ${WHO_BY[e.main.by]}`, 'data-tip': `${e.title}\nClick to open the incident.`,
+        onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
+        h('span', { class: `r-ring g-${e.main.by}` }), h('span', { class: 'r-dd', text: fmt(e.main.d) }), h('span', { class: 'r-dt', text: e.title }))));
+      return;
     }
-    r.inc.map(id => BY_ID.get(id)).filter(Boolean).forEach(e => {
-      const g = sv('g', { class: 'mk mk-lag', ...tipOf(`${e.title}`, `Disclosed ${fmt(e.main.d)} by ${WHO_BY[e.main.by]}`) });
-      g.append(sv('circle', { cx: x(e.main.d), cy: 0, r: 4, class: `lagdot g-${e.main.by}` }));
-      g.append(sv('circle', { cx: x(e.main.d), cy: 0, r: 9, class: 'hit' }));
-      mid.append(g); span(x(e.main.d) - 4, x(e.main.d) + 4);
-    });
-    const g = sv('g', { class: 'mk mk-rsq', ...tipOf(`${r.label || fmt(r.d)} · ${RESP_WHO[r.who]}`, r.text) });
-    g.append(sv('rect', { x: rx - 6, y: -6, width: 12, height: 12, rx: 3, class: `rsq g-${RESP_DOT[r.who]}` }));
-    g.append(sv('circle', { cx: rx, cy: 0, r: 10, class: 'hit' }));
-    mid.append(g); span(rx - 6, rx + 6);
-    const meta = h('span', { class: 'm' }, `${r.label || fmt(r.d)} · ${RESP_WHO[r.who]}`,
-      r.lag != null ? [' · ', h('span', { class: 'u', text: lagTxt(r.lag) })] : ' · not tied to one incident');
-    const lbl = h('span', { class: 'lbl' }, h('span', { class: 't', text: r.title }), meta);
-    const row = laneRow({ 'data-rsp-row': r.id, 'aria-selected': String(state.rsp === r.id), 'aria-label': `${r.title}. ${r.label || fmt(r.d)}, ${RESP_WHO[r.who]}.`,
-      onclick: () => (state.rsp === r.id ? clearSel() : selectRsp(r.id)) }, grid, lbl, svg);
-    return { row, lbl, meta, lo, hi };
+    const r = x.r, side = two ? (r.who === 'openai' ? 'l' : 'r') : 'r';
+    const when = r.label || fmt(r.d);
+    const card = h('span', { class: 'r-card' },
+      h('span', { class: 'r-top' }, h('span', { class: 'r-date', text: when }), h('span', { class: 'r-who', text: RESP_WHO[r.who] })),
+      h('span', { class: 'r-t', text: r.title }),
+      h('span', { class: 'r-m', text: r.lag != null ? lagTxt(r.lag) : 'Not tied to one incident' }));
+    out.push(h('button', { class: `r-item side-${side}`, type: 'button', role: 'option', style, 'data-rsp-row': r.id, 'aria-selected': String(state.rsp === r.id),
+      'aria-label': `${r.title}. ${when}, ${RESP_WHO[r.who]}${r.lag != null ? ', ' + lagTxt(r.lag) : ''}.`,
+      onclick: () => (state.rsp === r.id ? clearSel() : selectRsp(r.id)) },
+      side === 'l' ? card : h('span'), h('span', { class: 'r-node' }, h('span', { class: `rdot g-${RESP_DOT[r.who]}` })), side === 'r' ? card : h('span')));
   });
-  rowsWrap.replaceChildren(...lanes.map(l => l.row));
-  placeLabels(lanes, W, M, mob);
+  rowsWrap.replaceChildren(...out);
   markSelected(); applyViewClass(); renderRespFoot();
 }
 
@@ -1836,9 +1939,9 @@ function renderAffFoot() {
         h('span', { class: 'sw ' + c }), WHAT[c], h('span', { class: 'lg-n', text: String(n[c] || 0) }))))),
     h('span', { class: 'lg-sep', 'aria-hidden': 'true' }),
     lgBtn({ on: !s.unclear, title: 'Attribution unclear', tip: `${ATTR_TIP}\nClick to ${s.unclear ? 'hide' : 'show'} these.`, onclick: () => { s.unclear = !s.unclear; renderView(); renderFilters(); } },
-      h('span', { class: 'what unclear', text: 'Attribution unclear' }), s.unclear ? '' : 'hidden'),
+      h('span', { class: 'what unclear', text: 'Attribution unclear' }), h('span', { text: 'hidden', style: s.unclear ? 'visibility:hidden' : null })),
     isChart() ? h('span', { class: 'lg', 'data-tip': 'Dates not reported: drawn across the incident’s activity window' }, mini(v => v.append(sv('rect', { x: 1.5, y: 3, width: 17, height: 8, rx: 2.5, fill: 'none', stroke: 'var(--muted)', 'stroke-dasharray': '3 2.5' }))), 'Dates not reported') : null,
-    s.cats.size ? h('button', { class: 'lg-clear', type: 'button', text: 'Clear', onclick: () => { s.cats.clear(); renderView(); renderFilters(); } }) : null,
+    h('button', { class: 'lg-clear', type: 'button', text: 'Clear', style: s.cats.size ? null : 'visibility:hidden', tabindex: s.cats.size ? null : '-1', onclick: () => { s.cats.clear(); renderView(); renderFilters(); } }),
   );
 }
 function renderRespFoot() {
@@ -1847,11 +1950,11 @@ function renderRespFoot() {
   put(foot, 
     h('span', { class: 'lg-group' }, h('span', { text: 'From' }), Object.keys(RESP_WHO).map(w => lgBtn({ on: s.who === w, filter: true, title: RESP_WHO[w], tip: s.who === w ? 'Click to show every response' : `Click to show only responses from ${RESP_WHO[w].toLowerCase()}`,
       onclick: () => { s.who = s.who === w ? 'all' : w; renderView(); renderFilters(); } },
-      chart ? mini(v => v.append(sv('rect', { x: 2, y: 2, width: 10, height: 10, rx: 2.5, class: `rsq g-${RESP_DOT[w]}` })), 14) : h('span', { class: `dot g-${RESP_DOT[w]}` }), RESP_WHO[w]))),
+      chart ? h('span', { class: `rdot g-${RESP_DOT[w]}` }) : h('span', { class: `dot g-${RESP_DOT[w]}` }), RESP_WHO[w]))),
     chart ? [h('span', { class: 'lg-sep', 'aria-hidden': 'true' }),
-      emphBtn('lag', 'Time to respond', 'From the related incident’s first public report (small dot, colored by who disclosed it) to the response.',
-        mini(v => { v.append(sv('line', { x1: 7, x2: 22, y1: 7, y2: 7, class: 'lag' })); v.append(sv('circle', { cx: 5, cy: 7, r: 3.5, class: 'lagdot g-research' })); }, 26), 'Time to respond')] : null,
-    h('span', { class: 'sum', text: 'Click a response to open it' }));
+      lgBtn({ on: s.disc, title: 'Incident made public', tip: `An incident’s first public report, ringed in the color of who made it. Click one to open the incident.\nClick to ${s.disc ? 'hide' : 'show'} these.`,
+        onclick: () => { s.disc = !s.disc; renderView(); } }, h('span', { class: 'r-ring g-research' }), 'Incident made public')] : null,
+    h('span', { class: 'sum', text: chart ? 'Spacing grows with the time between events' : 'Click a response to open it' }));
 }
 
 /* ---------------------------------------------------------------- view dispatch */
@@ -2177,7 +2280,8 @@ function measure() {
   const barH = $('#bar').offsetHeight, footH = $('#foot').offsetHeight;
   app.style.setProperty('--barH', (m ? 0 : barH) + 'px');
   app.style.setProperty('--footH', footH + 'px');
-  const fill = innerHeight - app.offsetTop - barH - footH - 2 - (m ? 8 : 16);
+  /* fill the whole viewport (the page's bottom padding included) so the legend stays pinned to the bottom edge however short the list */
+  const fill = innerHeight - app.offsetTop - barH - footH;
   $('#main').style.minHeight = m ? '' : Math.max(320, fill) + 'px';
 }
 let lastW = 0, roRaf = 0, rescroll = false;
