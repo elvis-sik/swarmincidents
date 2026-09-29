@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+body{background:#0A0C10;color:#E8EBEF;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;position:relative}
+.glow{position:absolute;right:-180px;top:-220px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(235,104,52,.20),rgba(235,104,52,0) 62%)}
+.in{position:absolute;inset:0;padding:64px 72px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:14px;font:500 22px/1 "JetBrains Mono",monospace;color:#B4BBC5}
+.brand img{width:40px;height:40px}
+h1{font-size:68px;line-height:1.04;letter-spacing:-.025em;font-weight:700;margin:52px 0 0;max-width:900px}
+p{font-size:26px;line-height:1.4;color:#8B929C;margin:22px 0 0;max-width:860px}
+svg.tl{position:absolute;left:72px;right:72px;bottom:56px;width:1056px;height:120px}
+</style></head><body>
+<div class="glow"></div>
+<div class="in">
+  <div class="brand"><img src="icon.svg" alt="">swarmincidents.com</div>
+  <h1>Timeline of OpenAI agent incidents</h1>
+  <p>When AI agents reached systems and websites beyond their sandbox, with sources.</p>
+</div>
+<svg class="tl" id="tl" viewBox="0 0 1056 120"></svg>
+<script src="../incidents.js"></script>
+<script>
+// Decorative strip drawn from the real data: one thin bar per activity window, disclosures as dots.
+const t0 = Date.parse('2026-03-01'), t1 = Date.parse('2026-10-01'), W = 1056;
+const x = d => (Date.parse(d) - t0) / (t1 - t0) * W;
+const rows = DATA.incidents.filter(i => i.activity.length).sort((a, b) => a.activity[0].s.localeCompare(b.activity[0].s));
+const gap = 120 / rows.length;
+let s = '';
+['2026-04-01','2026-05-01','2026-06-01','2026-07-01','2026-08-01','2026-09-01'].forEach(d => s += `<line x1="${x(d)}" x2="${x(d)}" y1="0" y2="120" stroke="#22272E" stroke-width="1"/>`);
+rows.forEach((inc, r) => {
+  const y = r * gap + gap / 2;
+  inc.activity.filter(a => !a.sub).forEach(a => {
+    const a0 = x(a.s), a1 = Math.max(x(a.e || a.s), a0 + 6);
+    s += `<rect x="${a0}" y="${y - 2.5}" width="${a1 - a0}" height="5" rx="2.5" fill="#5A616B"/>`;
+  });
+  const rev = inc.reveals.filter(v => !v.minor)[0];
+  const end = Math.max(...inc.activity.map(a => x(a.e || a.s)));
+  if (rev && x(rev.d) - end > 12) s += `<line x1="${end + 6}" x2="${x(rev.d) - 8}" y1="${y}" y2="${y}" stroke="#3A414B" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/>`;
+  if (rev) s += `<circle cx="${x(rev.d)}" cy="${y}" r="5" fill="#EB6834"/>`;
+});
+document.getElementById('tl').innerHTML = s;
+</script>
+</body></html>

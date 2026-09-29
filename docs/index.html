@@ -1,12 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>OpenAI Agent Incidents</title>
-<meta name="description" content="Timeline of incidents in which OpenAI's AI agents reached systems and websites beyond their sandbox during training and evaluation.">
+<title>Timeline of OpenAI agent incidents</title>
+<meta name="description" content="A sourced timeline of incidents in which OpenAI's AI agents reached systems and websites beyond their sandbox during training and evaluation.">
+<link rel="canonical" href="https://swarmincidents.com/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0C10" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website">
-<meta property="og:title" content="OpenAI Agent Incidents">
-<meta property="og:description" content="Timeline of incidents in which OpenAI's AI agents reached systems and websites beyond their sandbox during training and evaluation.">
+<meta property="og:site_name" content="Swarm Incidents">
+<meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://swarmincidents.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:title" content="Timeline of OpenAI agent incidents">
+<meta property="og:description" content="A sourced timeline of incidents in which OpenAI's AI agents reached systems and websites beyond their sandbox during training and evaluation.">
+<meta property="og:image" content="https://swarmincidents.com/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Timeline of OpenAI agent incidents, swarmincidents.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Timeline of OpenAI agent incidents">
+<meta name="twitter:description" content="A sourced timeline of incidents in which OpenAI's AI agents reached systems and websites beyond their sandbox during training and evaluation.">
+<meta name="twitter:image" content="https://swarmincidents.com/og.png">
+<meta name="twitter:image:alt" content="Timeline of OpenAI agent incidents, swarmincidents.com">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://swarmincidents.com/#site","url":"https://swarmincidents.com/","name":"Swarm Incidents","inLanguage":"en"},
+{"@type":"Dataset","name":"Timeline of OpenAI agent incidents","description":"A sourced timeline of incidents in which OpenAI's AI agents reached systems and websites beyond their sandbox during training and evaluation.","url":"https://swarmincidents.com/","isPartOf":{"@id":"https://swarmincidents.com/#site"},"dateModified":"2026-09-28","version":"1.3","isAccessibleForFree":true,"keywords":["AI incidents","AI agents","OpenAI","AI safety"]}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -360,6 +388,8 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 }
 @media (prefers-reduced-motion: reduce){ .pane,.scrim{transition:none} }
 </style>
+</head>
+<body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="h-bg" width="4" height="4"/><rect class="h-fg" width="2" height="4"/></pattern>
@@ -972,6 +1002,7 @@ function syncThemeBtn() {
   b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   b.setAttribute('data-tip', dark ? 'Light mode' : 'Dark mode');
   if (tipEl === b) hideTip();
+  document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.setAttribute('content', dark ? '#0A0C10' : '#F3F4F6'));
 }
 $('#theme-btn').addEventListener('click', () => {
   const next = isDark() ? 'light' : 'dark';
@@ -1509,3 +1540,5 @@ window.addEventListener('popstate', () => {
 window.addEventListener('hashchange', () => route());
 })();
 </script>
+</body>
+</html>
