@@ -1,0 +1,14 @@
+{
+  "name": "swarmincidents-tests",
+  "private": true,
+  "description": "End-to-end tests for swarmincidents.com (the site itself has no build-time JS dependencies)",
+  "scripts": {
+    "test": "playwright test",
+    "test:visual": "npm run docker -- npx playwright test --project=chromium --project='Pixel 7' --grep @visual",
+    "test:update-visual": "npm run docker -- npx playwright test --project=chromium --project='Pixel 7' --grep @visual --update-snapshots",
+    "docker": "docker run --rm --ipc=host --platform linux/amd64 -e CI=1 -e VISUAL=1 -v \"$PWD\":/work -v /work/node_modules -w /work mcr.microsoft.com/playwright:v1.63.0-noble ./tests/docker-run.sh"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
