@@ -43,8 +43,10 @@ test('#wikis opens the incident card', async ({ page }) => {
 test('#wikis/posts goes inside the incident and loads the posts', async ({ page }) => {
   await load(page, 'wikis/posts');
   const lvl = page.locator('#lvl');
-  await expect(lvl).toContainText(/Inside an incident\s*›\s*18,000 posts/);
-  await expect(lvl.getByRole('button', { name: /^18,000 posts/ })).toHaveAttribute('aria-current', 'true');
+  await expect(lvl).toContainText(/Inside an incident\s*›\s*German wiki\s*›\s*\S/);
+  // the thread is the current crumb; the incident crumb uses its short name
+  await expect(lvl.getByRole('button', { name: 'German wiki' })).toHaveAttribute('aria-current', 'false');
+  await expect(lvl.getByRole('button', { name: /^Thread:/ })).toHaveAttribute('aria-current', 'true');
   await expect(lvl.getByRole('button', { name: 'Inside an incident' })).toHaveAttribute('aria-current', 'false');
   await expect(page.locator('.msg').first()).toBeVisible();
   expect(await page.evaluate(() => window.WIKI.posts.length)).toBe(wikiData().posts.length);

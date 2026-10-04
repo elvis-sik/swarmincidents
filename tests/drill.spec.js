@@ -4,7 +4,8 @@ const { test, expect, load } = require('./fixtures');
 const nav = page => ({
   overview: page.locator('#lvl').getByRole('button', { name: 'Overview' }),
   inside: page.locator('#lvl').getByRole('button', { name: 'Inside an incident' }),
-  incident: page.locator('#lvl').getByRole('button', { name: /^18,000 posts/ }),
+  incident: page.locator('#lvl').getByRole('button', { name: 'German wiki' }),
+  thread: page.locator('#lvl').getByRole('button', { name: /^Thread:/ }),
 });
 
 /** From the timeline: open the wiki incident's card, then press its drill-in button. */
@@ -13,8 +14,9 @@ async function drillIn(page) {
   await expect(page).toHaveURL(/#wikis$/);
   await expect(page.locator('#det-title')).toHaveText(/^18,000 posts/);
   await page.getByRole('button', { name: /Read what the agents wrote/ }).click();
-  // inside an incident, its title is the current item and "Inside an incident" is a crumb back to the chooser
-  await expect(nav(page).incident).toHaveAttribute('aria-current', 'true');
+  // inside an incident, the thread is the current item; the incident (by its short name) and "Inside an incident" are crumbs back
+  await expect(nav(page).thread).toHaveAttribute('aria-current', 'true');
+  await expect(nav(page).incident).toHaveAttribute('aria-current', 'false');
   await expect(nav(page).inside).toHaveAttribute('aria-current', 'false');
   // entering selects nothing: the feed starts at the top with the thread's context open
   await expect(page).toHaveURL(/#wikis\/posts$/);
@@ -43,7 +45,7 @@ test('browser Back steps up one level at a time', async ({ page }) => {
   // first Back: the selected post closes, still inside the incident
   await page.goBack();
   await expect(page).toHaveURL(/#wikis\/posts$/);
-  await expect(nav(page).incident).toHaveAttribute('aria-current', 'true');
+  await expect(nav(page).thread).toHaveAttribute('aria-current', 'true');
   await expect(page.locator('.msg').first()).toBeVisible();
   await expect(page.locator('.msg[aria-selected="true"]')).toHaveCount(0);
   // second Back: the overview
