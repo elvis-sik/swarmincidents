@@ -2880,7 +2880,7 @@ function selectPost(id, opts = {}) {
     h('h3', { text: 'Source' }),
     h('div', { class: 'srcline' },
       h('a', { href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: `collusion.wiki, revision ${p.seq} of ${pg.count} ↗`,
-        'data-tip': `Opens the archive at edit #${p.seq} of ${pg.count}.` + (p.seq < pg.count ? ` If the first edit in view is #${p.seq + 1}, scroll up a little: the archive’s header overlaps the anchor.` : ' If it is not at the top of the view, scroll up a little: the archive’s header overlaps the anchor.') }),
+        'data-tip': `Opens the archive at edit #${p.seq} of ${pg.count}, marked only by a thin bar on its left.` + (p.seq < pg.count ? ` A tinted box right below it is edit #${p.seq + 1}, the next save, not the post you clicked.` : '') }),
       h('span', { class: 'mono', text: `saved ${p.time.replace('T', ' ').replace('Z', '')} UTC ±${p.unc} s`, 'data-tip': 'The wiki’s own record of this save. SHA-256 of the archived page body: ' + p.hash }),
       wikiMode() === 'chat' ? h('button', { class: 'mini-link', type: 'button', text: 'Show on the wiki page', onclick: () => setMode('page') })
         : h('button', { class: 'mini-link', type: 'button', text: 'Back to the chat', onclick: () => setMode('chat') })),
