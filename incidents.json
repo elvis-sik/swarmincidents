@@ -1,7 +1,7 @@
 {
   "updated": "2026-09-28",
   "version": "1.3",
-  "contact": "hello@swarmincidents.com",
+  "contact": "",
   "incidents": [
     {
       "id": "hugging-face",
@@ -53,7 +53,11 @@
           "OpenAI says its AI models escaped from a secure test environment",
           "Fortune",
           "https://fortune.com/2026/07/21/openai-says-ai-models-escaped-control-hacked-hugging-face/"
-        ]
+        ],
+        ["A dated log of the July 2026 agent intrusion", "huggingface.wtf", "https://huggingface.wtf/"],
+        ["The best explainers of the Hugging Face attack, reviewed", "agi.fyi (explainer guide)", "https://agi.fyi/huggingface-explainers"],
+        ["What Happened: OpenAI and HuggingFace", "Zvi Mowshowitz", "https://thezvi.substack.com/p/what-happened-openai-and-huggingface"],
+        ["HuggingFace Attack Postmortem: Fleshing Out the Facts", "Zvi Mowshowitz", "https://thezvi.substack.com/p/huggingface-attack-postmortem-fleshing"]
       ]
     },
     {
@@ -88,7 +92,8 @@
           "Black Hat 2026: OpenAI reveals agents planned ‘collective attacks’ via secret message board",
           "SC Media",
           "https://www.scworld.com/news/black-hat-2026-openai-reveals-agents-planned-collective-attacks-via-secret-message-board"
-        ]
+        ],
+        ["OpenAI Trained Its Models For Months While Those Models Were Coordinating Exploits Via Message Boards", "Zvi Mowshowitz", "https://thezvi.substack.com/p/openai-trained-its-models-for-months"]
       ]
     },
     {
@@ -133,7 +138,8 @@
           "Researcher who found OpenAI-linked rogue agent swarm says AI giants may hide future chaos",
           "NBC News",
           "https://www.nbcnews.com/tech/security/openai-linked-ai-agents-swarmed-dormant-german-wiki-report-rcna596182"
-        ]
+        ],
+        ["OpenAI and the Wiki Incident", "Zvi Mowshowitz", "https://thezvi.substack.com/p/openai-and-the-wiki-incident"]
       ]
     },
     {
@@ -300,7 +306,8 @@
           "Acting PM Richard Marles says AI incident very serious but impact is minor — as it happened",
           "ABC News (Australia)",
           "https://www.abc.net.au/news/2026-09-24/federal-politics-live-blog-openai-medicare-breach/107186578"
-        ]
+        ],
+        ["What Also Happened: #NotOnlyHuggingFace", "Zvi Mowshowitz", "https://thezvi.substack.com/p/what-also-happened-notonlyhuggingface"]
       ]
     },
     {
@@ -345,7 +352,8 @@
           "OpenAI agent unsuccessfully tried to breach Department of Education website",
           "The Hill",
           "https://thehill.com/policy/technology/6113061-openai-access-government-websites/"
-        ]
+        ],
+        ["What Also Happened: #NotOnlyHuggingFace", "Zvi Mowshowitz", "https://thezvi.substack.com/p/what-also-happened-notonlyhuggingface"]
       ]
     },
     {
@@ -374,7 +382,8 @@
           "The Hugging Face incident and other third-party impact from misaligned models",
           "OpenAI",
           "https://openai.com/hugging-face-incident-and-misalignment/"
-        ]
+        ],
+        ["What Also Happened: #NotOnlyHuggingFace", "Zvi Mowshowitz", "https://thezvi.substack.com/p/what-also-happened-notonlyhuggingface"]
       ]
     },
     {
@@ -412,7 +421,8 @@
           "OpenAI pauses some training amid allegations its rogue agents behaved more badly than first thought",
           "The Register",
           "https://www.theregister.com/ai-and-ml/2026/09/28/openai-pauses-some-training-amid-allegations-its-rogue-agents-behaved-more-badly-than-first-thought/5299350"
-        ]
+        ],
+        ["What Also Happened: #NotOnlyHuggingFace", "Zvi Mowshowitz", "https://thezvi.substack.com/p/what-also-happened-notonlyhuggingface"]
       ]
     }
   ],
