@@ -457,6 +457,16 @@ button.lg.lg-lvl{margin-right:-4px}
 .srcs{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:12.5px;line-height:1.4}
 .srcs a{color:var(--ink)}
 .srcs span{color:var(--muted)}
+.srcg{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:550;color:var(--muted);margin:10px 0 5px}
+.srcg:first-of-type{margin-top:6px}
+.srcg .dot{width:7px;height:7px}
+.srcstrip{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:3px 10px;font-size:12.5px;line-height:1.45;padding:7px 0 0;border-top:1px solid var(--line);margin-top:2px}
+.srcstrip-lbl{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.srcstrip-lbl .dot{width:7px;height:7px}
+.srcstrip a{color:var(--ink);font-weight:550}
+.srcstrip a::after{content:"\00a0\2197";color:var(--faint);font-weight:400}
+.srcstrip .links{display:flex;flex-wrap:wrap;gap:2px 12px;min-width:0}
+.srcstrip .mini-link{white-space:nowrap}
 
 /* tooltip */
 .tip{position:fixed;z-index:100;max-width:290px;background:var(--tip-bg);color:var(--tip-ink);border-radius:7px;padding:7px 9px;font-size:12px;line-height:1.4;pointer-events:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.45)}
@@ -797,7 +807,7 @@ a.tag.link:hover{border-color:var(--ink-2)}
     <h3>Still unknown</h3>
     <ul id="unknowns"></ul>
     <h3>Sources</h3>
-    <p>Every incident links to its sources. Researched with Claude; errors are possible.</p>
+    <p>Every incident and response links to its sources, grouped by who published them: researchers first (their own write-ups, such as collusion.wiki, also sit right under the summary), then OpenAI, affected organizations, governments and journalists. Researched with Claude; errors are possible.</p>
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
@@ -1360,7 +1370,19 @@ function sortCtl(s, sorts, label) {
         o.label, on ? h('span', { class: 'arr', 'aria-hidden': 'true', text: s.dir === o.def ? '↓' : '↑' }) : null);
     })));
 }
+/* Re-rendering the filter row replaces its buttons; put keyboard focus back on the equivalent control. */
+const focusKey = el => {
+  if (!el || !el.closest || !el.closest('#filters')) return null;
+  if (el.classList.contains('pk-btn')) return 'pk|' + (el.getAttribute('aria-label') || '').split(':')[0];
+  const grp = el.closest('[aria-label]');
+  return el.tagName + '|' + (grp ? grp.getAttribute('aria-label') : '') + '|' + el.textContent.trim();
+};
 function renderFilters() {
+  const key = focusKey(document.activeElement);
+  renderFilters0();
+  if (key) { const el = [...$('#filters').querySelectorAll('button,input')].find(x => focusKey(x) === key); if (el) el.focus({ preventScroll: true }); }
+}
+function renderFilters0() {
   const f = $('#filters');
   if (state.view === 'wiki') { if (!state.inside || W) renderWikiFilters(f); else put(f); return; }
   const redo = () => { renderView(); renderFilters(); };
@@ -2010,7 +2032,50 @@ function navBtns(order, i, go, noun) {
     h('button', { class: 'btn', type: 'button', 'aria-label': 'Close details', 'data-tip': 'Close (Esc)', onclick: clearSel }, '✕'));
 }
 const topLine = (kind, ...rest) => h('span', {}, h('span', { class: 'kind', text: kind }), ...rest);
-const srcList = urls => h('ul', { class: 'srcs mini' }, urls.map(u => { const x = SRC.get(u); return h('li', {}, h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: x ? x[0] : new URL(u).hostname }), x ? h('span', { text: ` · ${x[1]}` }) : null); }));
+/* ---- source groups. Tune here: groups are checked top to bottom, first match wins, anything unmatched is press.
+   `pub` is the publisher (lower case), `host` the link's hostname without www. Keys reuse the disclosed-by colors. */
+const SRC_GROUPS = [
+  { key: 'research', label: 'Researchers', dot: 'research', test: (pub, host) => /collusion\.wiki|nightingale|swarmtraces|parse and collaborators|rubyhack|transluce|\bmetr\b|socket\.dev|kennethdegraff|kenneth degraff/.test(pub + ' ' + host) },
+  { key: 'analysis', label: 'Analysis', dot: 'other', test: (pub, host) => /^thezvi\.|zvi mowshowitz|don.t worry about the vase/.test(host + ' ' + pub) },
+  { key: 'openai', label: 'OpenAI', dot: 'openai', test: (pub, host) => host === 'openai.com' || host.endsWith('.openai.com') },
+  { key: 'org', label: 'Affected organizations', dot: 'other', test: (pub, host) => host === 'huggingface.co' },
+  { key: 'gov', label: 'Governments', dot: 'gov', test: (pub, host) => /\.gov(\.[a-z]{2})?$/.test(host) || /attorney general|prime minister/.test(pub) },
+  { key: 'press', label: 'Journalists', dot: 'press', test: () => true },
+];
+const LEAD_GROUPS = ['research', 'analysis'];  // shown in the strip under the summary
+function srcGroup([, pub, url]) {
+  let host = ''; try { host = new URL(url).hostname.replace(/^www\./, ''); } catch (e) { /* bad url: classify by publisher */ }
+  return SRC_GROUPS.find(g => g.test((pub || '').toLowerCase(), host));
+}
+const srcRank = x => SRC_GROUPS.indexOf(srcGroup(x));
+const groupSrcs = list => SRC_GROUPS.map(g => ({ g, items: list.filter(x => srcGroup(x) === g) })).filter(x => x.items.length);
+const extA = (u, text, tip) => h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text, 'data-tip': tip || null });
+/* the full list: one numbered list, split under quiet group labels when sources come from two or more kinds of publisher */
+function srcSection(list) {
+  const groups = groupSrcs(list); let n = 1;
+  const ol = items => { const el = h('ol', { class: 'srcs', start: n }, items.map(([t, p, u]) => h('li', {}, extA(u, t), h('span', { text: ` · ${p}` })))); n += items.length; return el; };
+  return h('section', { class: 'srcsec' }, h('h3', { text: 'Sources' }),
+    groups.length < 2 ? ol(list) : groups.map(({ g, items }) => [h('div', { class: 'srcg' }, h('span', { class: `dot g-${g.dot}` }), g.label), ol(items)]));
+}
+/* scroll only the card's own scroller (scrollIntoView would also move the page) */
+function jumpToSrcs(btn) {
+  const sec = btn.closest('.det').querySelector('.srcsec'); if (!sec) return;
+  let box = sec.parentElement;
+  while (box && box !== document.body && !(box.scrollHeight > box.clientHeight && /auto|scroll/.test(getComputedStyle(box).overflowY))) box = box.parentElement;
+  if (!box || box === document.body) { sec.scrollIntoView({ block: 'start' }); return; }
+  box.scrollTo({ top: box.scrollTop + sec.getBoundingClientRect().top - box.getBoundingClientRect().top - 8, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+/* the strip under the summary: researchers' own write-ups first, and a jump to the full list */
+function srcStrip(list) {
+  const lead = list.filter(x => LEAD_GROUPS.includes(srcGroup(x).key));
+  if (!lead.length) return null;
+  const seen = new Set(), uniq = lead.filter(([, p]) => !seen.has(p) && seen.add(p));
+  return h('div', { class: 'srcstrip' },
+    h('span', { class: 'srcstrip-lbl' }, h('span', { class: 'dot g-research' }), 'Research'),
+    h('span', { class: 'links' }, uniq.map(([t, p, u]) => extA(u, p, t))),
+    h('button', { class: 'mini-link', type: 'button', text: list.length === 1 ? 'Source ↓' : list.length === 2 ? 'Both sources ↓' : `All ${list.length} sources ↓`, onclick: ev => jumpToSrcs(ev.currentTarget) }));
+}
+const srcList = urls => h('ul', { class: 'srcs mini' }, urls.map(u => SRC.get(u) || ['', '', u]).sort((a, b) => srcRank(a) - srcRank(b)).map(x => h('li', {}, extA(x[2], x[0] || new URL(x[2]).hostname), x[1] ? h('span', { text: ` · ${x[1]}` }) : null)));
 function finishCard(hashS, row, opts, hadCard) {
   if (!opts.quiet) { openPane(opts.focus); scrollToRow(row, opts.instant); }
   const push = !hadCard && !opts.instant && !opts.quiet;
@@ -2066,6 +2131,7 @@ function select(id, opts = {}) {
       h('span', { class: 'tag', text: e.status }),
       e.delay != null ? h('span', { class: 'tag', text: `${e.delay}-day delay`, 'data-tip': delayTxt(e) }) : null),
     h('p', { text: e.summary }),
+    srcStrip(e.sources),
     INSIDE[e.id] && !(state.view === 'wiki' && state.inside === e.id) ? h('div', { class: 'inwiki' }, insideBtn(e.id, INSIDE[e.id].cta)) : null,
     h('h3', { class: 'h3row' }, h('span', { text: 'Timeline' }), state.view !== 'timeline' ? h('button', { class: 'mini-link', type: 'button', 'data-tip': 'The Timeline tab, with this incident selected', onclick: () => { if (state.view === 'wiki') leaveInside(); setView('timeline'); select(id, { instant: true }); } }, 'Open in Timeline') : null),
     h('ul', { class: 'chron' }, items.map(it => h('li', { class: `k-${it.k}` + (it.by ? ` g-${it.by}` : '') },
@@ -2074,8 +2140,7 @@ function select(id, opts = {}) {
       entLink(a.id), ' ', whatTags(v), h('span', { class: 'note', text: v.note }))))] : null,
     h('h3', { text: 'Found by' }), h('p', { text: e.found }),
     h('h3', { text: 'OpenAI’s response' }), h('p', { text: e.openai }),
-    h('h3', { text: 'Sources' }),
-    h('ol', { class: 'srcs' }, e.sources.map(([t, p, u]) => h('li', {}, h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: t }), h('span', { text: ` · ${p}` }))))));
+    srcSection(e.sources)));
   finishCard(id, document.querySelector(`[data-inc-row="${id}"]`), opts, hadCard);
 }
 /* a small timeline of one incident with this response on it */
@@ -2112,10 +2177,11 @@ function selectRsp(id, opts = {}) {
       h('span', { class: 'tag' }, h('span', { class: `dot g-${RESP_DOT[r.who]}` }), RESP_WHO[r.who]),
       r.lag != null ? h('span', { class: 'tag', text: lagTxt(r.lag), 'data-tip': `From the first public report of the related incident (${fmt(r.from)}) to this response (${r.label || fmt(r.d)})` }) : h('span', { class: 'tag', text: 'Not tied to one incident' })),
     h('p', { text: r.text }),
+    r.src && r.src.length ? srcStrip(r.src) : null,
     incs.length ? [h('h3', { text: incs.length === 1 ? 'Incident' : 'Incidents' }), incs.map(e => relIncBlock(e, r))] : null,
     others.length ? [h('h3', { text: `Other responses to ${incs.length === 1 ? 'this incident' : 'these incidents'}` }),
       h('ul', { class: 'rlist' }, others.map(o => h('li', {}, h('b', { text: o.label || fmt(o.d) }), h('span', { class: `dot g-${RESP_DOT[o.who]}`, 'data-tip': RESP_WHO[o.who] }), rspLink(o.id))))] : null,
-    r.src && r.src.length ? [h('h3', { text: 'Sources' }), h('ol', { class: 'srcs' }, r.src.map(([st, sp, su]) => h('li', {}, h('a', { href: su, target: '_blank', rel: 'noopener noreferrer', text: st }), h('span', { text: ` · ${sp}` }))))] : null));
+    r.src && r.src.length ? srcSection(r.src) : null));
   finishCard('response/' + id, document.querySelector(`[data-rsp-row="${id}"]`), opts, hadCard);
 }
 function clearSel(opts = {}) {
