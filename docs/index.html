@@ -51,6 +51,8 @@
   --drawer-shadow:-18px 0 32px -26px rgba(15,20,26,.45); --grip:#C3C8D0;
   --w-breach:#9A392C; --w-account:#DE759E; --w-creds:#8A2F89; --w-attack:#E38F27; --w-spam:#5A5298; --w-tool:#A79B02; --w-scrape:#0396A9; --w-source:#4E5663; --w-reach:#9AA1AC; --w-possible:#9AA1AC;
   --brush:rgba(42,120,214,.10); --brush-edge:#2a78d6;
+  /* provenance tints: one per aligned pair (original piece and its plain-English phrase); a pastel highlighter, mixed in at --pv-a, stronger at --pv-on */
+  --pv-1:#F2D35B; --pv-2:#8FD3A0; --pv-3:#93BEF0; --pv-4:#F0A3BF; --pv-5:#BFA6EC; --pv-6:#F4B583; --pv-a:30%; --pv-on:72%;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -66,6 +68,7 @@
   --drawer-shadow:-18px 0 32px -22px rgba(0,0,0,.9); --grip:#3C434E;
   --w-breach:#E46958; --w-account:#A7335B; --w-creds:#BB71BF; --w-attack:#AA7A22; --w-spam:#7062D2; --w-tool:#678124; --w-scrape:#009EB3; --w-source:#C3C9D2; --w-reach:#6B7380; --w-possible:#6B7380;
   --brush:rgba(57,135,229,.16); --brush-edge:#3987e5; --av-s:26%; --av-l:24%;
+  --pv-1:#7A6A2A; --pv-2:#2F6A45; --pv-3:#2F5683; --pv-4:#7A3C55; --pv-5:#58468A; --pv-6:#7E5230; --pv-a:42%; --pv-on:95%;
   }
 }
 :root[data-theme="dark"]{
@@ -79,6 +82,7 @@
   --drawer-shadow:-18px 0 32px -22px rgba(0,0,0,.9); --grip:#3C434E;
   --w-breach:#E46958; --w-account:#A7335B; --w-creds:#BB71BF; --w-attack:#AA7A22; --w-spam:#7062D2; --w-tool:#678124; --w-scrape:#009EB3; --w-source:#C3C9D2; --w-reach:#6B7380; --w-possible:#6B7380;
   --brush:rgba(57,135,229,.16); --brush-edge:#3987e5; --av-s:26%; --av-l:24%;
+  --pv-1:#7A6A2A; --pv-2:#2F6A45; --pv-3:#2F5683; --pv-4:#7A3C55; --pv-5:#58468A; --pv-6:#7E5230; --pv-a:42%; --pv-on:95%;
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -242,6 +246,7 @@ select.sel{border:1px solid var(--line-2);border-radius:7px;background:var(--pan
 .sortseg .arr{font-size:11px;font-weight:500}
 .count{margin-left:auto;margin-right:4px;font-size:12px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
 .filters{flex:1 1 auto;min-width:0}
+.fright{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-left:auto;min-width:0}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
 .g-openai{--c:var(--g-openai)}.g-research{--c:var(--g-research)}.g-press{--c:var(--g-press)}.g-gov{--c:var(--g-gov)}.g-other{--c:var(--faint)}
 .dot.g-openai{background:var(--panel);box-shadow:inset 0 0 0 2px var(--g-openai)}
@@ -518,30 +523,49 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .crumbs .btn{min-height:28px}
 .crumbs .sel,.crumbs .pk{max-width:min(420px,46vw)}
 .crumb-card{font-size:12px}
-.ctx{margin:10px 16px 0;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:13.5px;line-height:1.55;color:var(--ink-2)}
-.ctx-h{display:flex;align-items:baseline;gap:4px 10px;width:100%;border:0;background:none;padding:9px 12px;font:inherit;color:inherit;text-align:left;cursor:pointer;border-radius:9px;min-width:0}
+.ctx{margin:10px 16px 0;border:1px solid var(--line);border-top:2px solid var(--g-research);border-radius:2px;background:color-mix(in srgb,var(--g-research) 3.5%,var(--panel));font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+.ctx-h{display:flex;align-items:baseline;gap:4px 10px;width:100%;border:0;background:none;padding:9px 14px 8px;font:inherit;color:inherit;text-align:left;cursor:pointer;border-radius:0;min-width:0}
 .ctx-h:hover .ctx-t{color:var(--g-research)}
+.ctx-e{flex:none;font-size:10.5px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--g-research);white-space:nowrap}
 .ctx-h b{color:var(--ink);font-size:14.5px;font-weight:650;letter-spacing:-.01em;min-width:0}
 .ctx.closed .ctx-h b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ctx-m{font-size:12px;color:var(--muted);white-space:nowrap}
 .ctx-t{margin-left:auto;flex:none;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap}
-.ctx-b{padding:0 12px 11px;display:flex;flex-direction:column;gap:7px;max-width:78ch}
+.ctx-b{padding:0 14px 12px;display:flex;flex-direction:column;gap:9px}
 .ctx-b p{margin:0}
-.ctx-b .intro{color:var(--ink)}
 .ctx-b a{color:var(--ink-2)}
+/* fields and values: a schematic grid, one hairline per row */
+.bf{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:0 22px;margin:0}
+.bf>dt,.bf>dd{padding:7px 0 7px;border-top:1px solid color-mix(in srgb,var(--line) 85%,transparent)}
+.bf>dt:first-of-type,.bf>dt:first-of-type+dd{border-top:0;padding-top:2px}
+.bf>dt{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1.55;padding-top:9px;white-space:nowrap}
+.bf>dt:first-of-type{padding-top:4px}
+.bf>dd{margin:0;color:var(--ink-2);min-width:0}
+.bf>dd.lead{color:var(--ink)}
+.bf ul{margin:0;padding-left:17px}
+.bf li{margin:1px 0}
+.bf li::marker{color:var(--muted)}
+.wchips{display:flex;flex-wrap:wrap;gap:5px 6px;padding-top:1px}
+.wchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);background:var(--panel);border-radius:6px;padding:1px 8px 1px 6px;font:inherit;font-size:12.5px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap}
+.wchip::before{content:"";width:8px;height:8px;border-radius:2px;background:hsl(var(--av-h,210) 48% 56%);flex:none}
+.wchip .wn{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.wchip:hover{border-color:var(--ink-2)}
+.wchip[aria-pressed="true"]{background:var(--sel);border-color:var(--g-research)}
+span.wchip{cursor:default}
+span.wchip:hover{border-color:var(--line-2)}
 /* provenance: a footnote, for whoever wants it */
-.ctx-b .prov{margin-top:2px;padding:6px 10px 7px;background:var(--soft);border-radius:6px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+.ctx-b .prov{margin-top:1px;padding:6px 10px 7px;background:var(--soft);border-radius:6px;font-size:11.5px;line-height:1.5;color:var(--muted)}
 .ctx-b .prov p{margin:0}
 .ctx-b .prov a{color:var(--muted)}
 .prov-l{display:block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:1px}
 /* the wording axis: three stops on a thin track, labels underneath */
 .voice-g{display:inline-flex;align-items:center;gap:8px}
-.axis-v{position:relative;display:inline-grid;grid-template-columns:repeat(3,minmax(0,1fr));width:258px;padding:2px 0 1px;cursor:pointer;touch-action:pan-y;user-select:none;-webkit-user-select:none;border-radius:7px;outline:none;-webkit-tap-highlight-color:transparent}
+.axis-v{position:relative;display:inline-grid;grid-template-columns:repeat(3,minmax(0,1fr));width:236px;padding:1px 0 0;cursor:pointer;touch-action:pan-y;user-select:none;-webkit-user-select:none;border-radius:7px;outline:none;-webkit-tap-highlight-color:transparent}
 .axis-v:focus-visible{box-shadow:0 0 0 2px var(--g-research)}
-.axis-track{position:absolute;left:16.667%;right:16.667%;top:8px;height:2px;border-radius:1px;background:var(--line-2);pointer-events:none}
-.axis-col{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
-.axis-dot{width:12px;height:12px;margin-top:1px;border-radius:50%;background:var(--panel);border:2px solid var(--line-2);transition:background .12s,border-color .12s,transform .12s}
-.axis-lab{font-size:11.5px;line-height:1.15;color:var(--muted);white-space:nowrap}
+.axis-track{position:absolute;left:16.667%;right:16.667%;top:6px;height:2px;border-radius:1px;background:var(--line-2);pointer-events:none}
+.axis-col{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.axis-dot{width:11px;height:11px;margin-top:1px;border-radius:50%;background:var(--panel);border:2px solid var(--line-2);transition:background .12s,border-color .12s,transform .12s}
+.axis-lab{font-size:11.5px;line-height:1.05;color:var(--muted);white-space:nowrap}
 .axis-col:hover .axis-dot{border-color:var(--ink-2)}
 .axis-col:hover .axis-lab{color:var(--ink-2)}
 .axis-col.on .axis-dot{background:var(--ink);border-color:var(--ink);transform:scale(1.17);box-shadow:0 0 0 3px var(--panel)}
@@ -657,15 +681,50 @@ div.plain{display:flex;flex-direction:column}
 .writer:hover{background:var(--hover)}
 .writer[aria-pressed="true"]{background:var(--sel)}
 .writer:focus-visible{outline:2px solid var(--g-research);outline-offset:1px}
-.more{border-top:1px solid var(--line);margin-top:6px}
-.more>summary{list-style:none;display:flex;align-items:center;gap:6px;padding:10px 0 2px;cursor:pointer;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:fit-content;border-radius:4px}
-.more>summary::-webkit-details-marker{display:none}
-.more>summary::before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);margin:0 2px 0 1px;transition:transform .12s}
-.more[open]>summary::before{transform:rotate(45deg) translate(-1px,-1px)}
-.more>summary:hover{color:var(--ink)}
-.more>summary:focus-visible{outline:2px solid var(--g-research);outline-offset:2px}
-.more-b{display:flex;flex-direction:column;gap:12px;padding-top:8px}
-.more-b>h3{margin-top:6px!important}
+/* the card's sections: each one folds; the state is remembered and applies to every card */
+.sec{min-width:0}
+.sec>summary{list-style:none;display:flex;align-items:center;gap:6px;width:fit-content;margin-top:10px;cursor:pointer;border-radius:4px;color:var(--muted)}
+.sec>summary::-webkit-details-marker{display:none}
+.sec>summary::before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);margin:0 2px 0 1px;transition:transform .12s;flex:none}
+.sec[open]>summary::before{transform:rotate(45deg) translate(-1px,-1px)}
+.det .sec>summary h3{margin:0;color:inherit}
+.sec>summary:hover{color:var(--ink)}
+.sec>summary:focus-visible{outline:2px solid var(--g-research);outline-offset:2px}
+.sec-b{display:flex;flex-direction:column;gap:10px;padding-top:9px}
+.sec-w{position:relative}
+.sec-w>.chip{position:absolute;top:7px;right:0}
+.sec .chatty{margin-top:0}
+.chatty .vmark{margin-left:6px}
+@media (prefers-reduced-motion: reduce){ .sec>summary::before{transition:none} }
+/* Details: fields and values */
+.kv{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:0 16px;margin:0;font-size:13px;line-height:1.5}
+.kv>dt,.kv>dd{padding:6px 0;border-top:1px solid color-mix(in srgb,var(--line) 85%,transparent)}
+.kv>dt:first-of-type,.kv>dt:first-of-type+dd{border-top:0;padding-top:1px}
+.kv>dt{font-size:12px;color:var(--muted);white-space:nowrap;padding-top:7px}
+.kv>dt:first-of-type{padding-top:2px}
+.kv>dd{margin:0;color:var(--ink-2);min-width:0;overflow-wrap:anywhere}
+.kv .who-v b{color:var(--ink);font-weight:650}
+.kv .mono{font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+.kv .dim{color:var(--muted)}
+.kv .sub{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+.kv .dot-sep{color:var(--faint);margin:0 5px}
+.nchips{display:flex;flex-wrap:wrap;gap:4px 6px}
+.nchip{display:inline-flex;align-items:baseline;gap:5px;border:1px solid var(--line-2);background:none;border-radius:5px;padding:0 7px;font:inherit;font-size:12px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap}
+.nchip b{font-family:var(--mono);font-size:11.5px;font-weight:500}
+.nchip .nw{font-weight:600;color:hsl(var(--av-h,210) 45% 34%)}
+.nchip .nn{font-size:11px;color:var(--muted)}
+.nchip:hover{border-color:var(--ink-2)}
+.nchip[aria-pressed="true"]{background:var(--sel);border-color:var(--g-research)}
+span.nchip{cursor:default}
+span.nchip:hover{border-color:var(--line-2)}
+.nchip.on{background:var(--sel);border-color:var(--g-research)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nchip .nw{color:hsl(var(--av-h,210) 55% 74%)} }
+:root[data-theme="dark"] .nchip .nw{color:hsl(var(--av-h,210) 55% 74%)}
+.terms{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.terms li{padding:1px 5px;margin:0 -5px;border-radius:4px}
+.terms li.on{background:var(--sel)}
+.terms .tm{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink);margin-right:6px}
+.orig .nm.on{background:var(--sel);border-radius:2px;box-shadow:0 0 0 1px var(--g-research)}
 .det .about{font-size:13px;color:var(--ink-2);line-height:1.55}
 .about-l{border:0;background:none;padding:0 1px;font:inherit;color:var(--ink);cursor:pointer;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:.22em;border-radius:3px}
 .about-l:hover{text-decoration-color:var(--ink-2)}
@@ -705,10 +764,14 @@ button.tag[aria-pressed="true"]{border-color:var(--ink-2);color:var(--ink);backg
 .chip.sm{padding:1px 8px 1px 6px;font-size:11.5px;gap:5px}
 .chip.sm .box{width:12px;height:12px}
 .chip.sm .box svg{width:8px;height:8px}
-.plain .al{text-decoration:underline dotted var(--faint);text-decoration-thickness:1.5px;text-underline-offset:3px;border-radius:2px;outline:none}
-.det.nolinks .plain .al{text-decoration:none}
-.plain .al.on,.orig .al.on{background:var(--sel);text-decoration-color:var(--g-research)}
-.orig .al{border-radius:2px;outline:none}
+/* provenance by colour: an aligned pair shares one soft tint in the Original and in plain English; hover or focus intensifies it */
+.orig .al,.plain .al{border-radius:2px;outline:none;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-color .1s}
+.al.pv1{--pv:var(--pv-1)}.al.pv2{--pv:var(--pv-2)}.al.pv3{--pv:var(--pv-3)}.al.pv4{--pv:var(--pv-4)}.al.pv5{--pv:var(--pv-5)}.al.pv6{--pv:var(--pv-6)}
+.det .al[class*="pv"]{background:color-mix(in srgb,var(--pv) var(--pv-a),transparent)}
+.det .al[class*="pv"].on{background:color-mix(in srgb,var(--pv) var(--pv-on),transparent)}
+.det.nolinks .al[class*="pv"]:not(.on){background:none}
+.plain .al:focus-visible{box-shadow:0 0 0 1.5px var(--g-research)}
+@media (prefers-reduced-motion: reduce){ .orig .al,.plain .al{transition:none} }
 .det .ctxnote{font-size:13px;color:var(--ink-2);margin:0;line-height:1.55}
 .inwiki{display:flex}
 .inwiki .btn{align-self:flex-start}
@@ -722,6 +785,12 @@ button.tag[aria-pressed="true"]{border-color:var(--ink-2);color:var(--ink);backg
   .ctx{margin:8px 8px 0}
   .retold{margin:6px 10px 0}
   .ctx-m{display:none}
+  .ctx-e{display:none}
+  .bf{grid-template-columns:minmax(0,1fr)}
+  .kv{grid-template-columns:84px minmax(0,1fr);gap:0 12px}
+  .kv>dt{white-space:normal;line-height:1.35}
+  .bf>dd{border-top:0;padding-top:1px}
+  .bf>dt,.bf>dt:first-of-type{padding-top:8px;padding-bottom:0}
   .crumbs{width:100%}
   .crumbs .sel,.crumbs .pk{max-width:100%;flex:1 1 160px}
   .crumbs .tabs{width:100%}
@@ -810,7 +879,10 @@ button.tag[aria-pressed="true"]{border-color:var(--ink-2);color:var(--ink);backg
   .sep{display:none}
   .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:calc(100% + 20px);margin:0 -10px;padding:0 10px 1px;gap:8px}
   .filters::-webkit-scrollbar{display:none}
-  .filters>*{flex:none}
+  .filters>*,.fright>*{flex:none}
+  /* the right-hand group dissolves, so the phone keeps its order: Writer, Question, Search, Wording */
+  .fright{display:contents}
+  .f-who{order:1}.f-round{order:2}.filters>.search{order:3}.f-voice{order:4}
   .flabel{display:none}
   .count,.count.on{display:none}
   .main,.main.open{grid-template-columns:1fr}
@@ -2572,19 +2644,32 @@ function bodyNodes(text) {
   });
 }
 /* the original text with its shorthand underlined (hover or tap for the meaning) and curated footnotes numbered */
-function glossNodes(text) {
+/* names in the text (run tags such as Jan12 or AgentX) become spans that light up with their row in Details; a signature is left alone */
+const nameRe = p => (p.mentions.length ? new RegExp(`\\b(${[...p.mentions].sort((a, b) => b.length - a.length).join('|')})\\b`, 'g') : null);
+function markNames(nodes, re) {
+  if (!re) return nodes;
+  return nodes.flatMap(n => {
+    if (typeof n !== 'string') return [n];
+    const out = []; let last = 0, m; re.lastIndex = 0;
+    while ((m = re.exec(n))) { if (m.index > last) out.push(n.slice(last, m.index)); out.push(h('span', { class: 'nm', 'data-link': 'nm:' + m[1], text: m[1] })); last = m.index + m[0].length; }
+    if (last < n.length) out.push(n.slice(last));
+    return out;
+  });
+}
+function glossNodes(text, re) {
   const out = []; let last = 0, m;
+  const plain = t => markNames(inline(t), re);
   GLOSS_RE.lastIndex = 0;
   while ((m = GLOSS_RE.exec(text))) {
-    if (m.index > last) out.push(...inline(text.slice(last, m.index)));
+    if (m.index > last) out.push(...plain(text.slice(last, m.index)));
     const k = m.slice(1).findIndex(x => x !== undefined), g = W.glossary[k];
-    out.push(h('span', { class: 'g', text: m[0], 'data-tip': g.meaning, 'data-tip-title': g.term }));
+    out.push(h('span', { class: 'g', text: m[0], 'data-link': 'gl:' + k, 'data-tip': g.meaning, 'data-tip-title': g.term }));
     last = m.index + m[0].length;
   }
-  if (last < text.length) out.push(...inline(text.slice(last)));
+  if (last < text.length) out.push(...plain(text.slice(last)));
   return out;
 }
-/* alignment: each part's raw piece in the original and its "say" substring in the reading share a data-part key.
+/* alignment: each part's raw piece in the original and its "say" substring in the reading share a data-link key ("p:…").
    The "say" pieces must appear in the reading in order; if any is missing, the reading gets no links at all. */
 const partKey = (part, k) => part.id || 'a' + k;
 function sayOk(p) {
@@ -2593,23 +2678,29 @@ function sayOk(p) {
   for (const part of p.parts) if (part.say) { const j = p.reading.indexOf(part.say, at); if (j < 0) return false; at = j + part.say.length; }
   return true;
 }
+/* each aligned pair gets one of six tints, in reading order, the same on both sides */
+function tintOf(p) {
+  const m = new Map(); let c = 0;
+  p.parts.forEach((part, k) => { if (part.say) m.set(partKey(part, k), (c++ % 6) + 1); });
+  return m;
+}
 function origNodes(p) {
-  const nb = p.blocks.length;
-  if (!p.parts.length) return nb > 1 ? p.blocks.map((b, k) => [k ? sameSave(nb) : null, ...glossNodes(b)]) : glossNodes(p.text);
-  const linked = sayOk(p);
+  const nb = p.blocks.length, re = nameRe(p);
+  if (!p.parts.length) return nb > 1 ? p.blocks.map((b, k) => [k ? sameSave(nb) : null, ...glossNodes(b, re)]) : glossNodes(p.text, re);
+  const linked = sayOk(p), tint = tintOf(p);
   let n = 0;
   return p.parts.map((part, k) => {
     /* a whitespace-only piece right after a signature is the break between two posts of the same save */
     if (nb > 1 && !part.id && !part.raw.trim() && part.raw.includes('\n') && k > 0 && k < p.parts.length - 1 && SIG_LINE.test(p.parts[k - 1].raw)) return sameSave(nb);
-    const al = linked && !!part.say;
-    if (!part.id) return al ? h('span', { class: 'al', 'data-part': partKey(part, k) }, ...glossNodes(part.raw)) : glossNodes(part.raw);
+    const al = linked && !!part.say, key = partKey(part, k), cls = al ? ` al pv${tint.get(key)}` : '';
+    if (!part.id) return al ? h('span', { class: cls.trim(), 'data-link': 'p:' + key }, ...glossNodes(part.raw, re)) : glossNodes(part.raw, re);
     n += 1;
-    return h('span', { class: 'fn' + (al ? ' al' : ''), 'data-part': part.id, 'data-tip': `${part.detail}\n${part.status}.`, 'data-tip-title': part.title }, ...glossNodes(part.raw), h('sup', { text: String(n) }));
+    return h('span', { class: 'fn' + cls, 'data-link': 'p:' + key, 'data-tip': `${part.detail}\n${part.status}.`, 'data-tip-title': part.title }, ...glossNodes(part.raw, re), h('sup', { text: String(n) }));
   });
 }
 function readingNodes(p) {
   if (!sayOk(p)) return sigNodes(p.reading);
-  const segs = []; let at = 0;
+  const segs = [], tint = tintOf(p); let at = 0;
   p.parts.forEach((part, k) => {
     if (!part.say) return;
     const j = p.reading.indexOf(part.say, at);
@@ -2620,27 +2711,9 @@ function readingNodes(p) {
   if (at < p.reading.length) segs.push({ text: p.reading.slice(at) });
   /* only the last piece can end in the signature */
   return segs.map((s, i) => { const kids = i === segs.length - 1 ? sigNodes(s.text) : [s.text];
-    return s.key ? h('span', { class: 'al', tabindex: '0', 'data-part': s.key }, ...kids) : kids; });
+    return s.key ? h('span', { class: `al pv${tint.get(s.key)}`, tabindex: '0', 'data-link': 'p:' + s.key }, ...kids) : kids; });
 }
 let wikiLinks = true; try { wikiLinks = localStorage.getItem('wikiLinks') !== 'off'; } catch (e) { /* storage unavailable */ }
-/* "Who wrote it": the signature (only when the text ends with one), the saved label, and what the names in the text are */
-function whoWrote(p) {
-  const id = IDENT[p.who], who = id ? id.moniker : 'The writer', its = id ? 'its' : 'their';
-  const sig = (p.text.trim().match(/--\s*([A-Z][A-Za-z0-9_]+)\s*$/) || [])[1];
-  const out = [];
-  if (sig) out.push(sig === p.label ? `${who} signs ${its} post ${sig}, which is also the name the wiki saved the edit under.` : `${who} signs ${its} post ${sig}; the wiki saved the edit under a different name, ${p.label}.`);
-  else out.push(`No signature; the wiki saved it under ${p.label}.`);
-  const own = m => p.label.endsWith(m) || p.label.endsWith(m + 'OAI') || (sig && (sig.endsWith(m) || sig.endsWith(m + 'OAI')));
-  const mention = m => h('button', { class: 'btn' + (state.wiki.q === m ? ' on' : ''), type: 'button', text: m, 'data-tip': `Search this thread for “${m}”`, onclick: () => { state.wiki.q = state.wiki.q === m ? '' : m; renderFilters(); renderView(); } });
-  const list = ms => ms.map((m, k) => [k ? (k === ms.length - 1 ? ' and ' : ', ') : '', mention(m)]);
-  /* a name that is the end of the writer's own label is just the writer again; only other runs' names are worth a sentence */
-  const others = p.mentions.filter(m => !own(m) && m !== sig && m !== p.label);
-  const parts = [out.join(' ')];
-  if (others.length) parts.push(' ', list(others), ' in the text ', others.length === 1 ? 'is another run’s name.' : 'are other runs’ names.');
-  if (id) parts.push(` Called ${id.moniker} here because it ${id.role.charAt(0).toLowerCase() + id.role.slice(1)}.`);
-  parts.push(' Labels are typed by the writers, not verified identities.');
-  return h('p', { class: 'task' }, parts);
-}
 /* a native select, used until the custom picker is available */
 function pickNative(o) {
   const on = o.on != null ? o.on : (o.value != null && o.value !== '');
@@ -2739,10 +2812,12 @@ function renderWikiFilters(f) {
     plain: `The editors’ plain reading of each post (${nRead} of ${posts.length} in this thread; the rest show the original). Written by hand and can be wrong.`,
     chat: `The thread retold as a conversation, with the context spelled out (${nChat} of ${posts.length} posts; the rest fall back to the plain reading or the original). Retold by the editors; it can include guesses, which are marked.` };
   const voice = v => h('button', { type: 'button', 'aria-pressed': String(s.voice === v), 'data-tip': tips[v], onclick: () => setVoice(v) }, VOICE_LABEL[v]);
-  put(f, whoPick, roundPick,
-    h('input', { class: 'search', type: 'search', placeholder: 'Search posts', 'aria-label': 'Search posts', value: s.q, oninput: ev => { s.q = ev.target.value; renderView(); } }),
-    wikiMode() !== 'chat' ? null : VOICE_CTL === 'axis' ? h('span', { class: 'fgroup voice-g' }, h('span', { class: 'flabel', text: 'Wording' }), voiceAxis(tips))
-      : h('span', { class: 'seg voice', role: 'group', 'aria-label': 'Wording' }, VOICES.map(voice)));
+  whoPick.classList.add('f-who'); roundPick.classList.add('f-round');
+  /* search on the left; the pickers and the wording right-aligned as one group, the wording last (a phone keeps the old order) */
+  put(f, h('input', { class: 'search', type: 'search', placeholder: 'Search posts', 'aria-label': 'Search posts', value: s.q, oninput: ev => { s.q = ev.target.value; renderView(); } }),
+    h('span', { class: 'fright' }, whoPick, roundPick,
+      wikiMode() !== 'chat' ? null : VOICE_CTL === 'axis' ? h('span', { class: 'fgroup voice-g f-voice' }, h('span', { class: 'flabel', text: 'Wording' }), voiceAxis(tips))
+        : h('span', { class: 'seg voice f-voice', role: 'group', 'aria-label': 'Wording' }, VOICES.map(voice))));
 }
 /* the wording as points on an axis, from the agents' own words to a retelling: a three-stop slider.
    Click or tap a stop or its label, drag along it, or use Left/Right/Home/End. Updated in place, so focus and a drag survive. */
@@ -2788,20 +2863,37 @@ function renderWikiBarR() {
       h('button', { type: 'button', id: 'range-custom', 'aria-pressed': String(custom), 'aria-haspopup': 'dialog', 'data-tip': 'Only posts saved between two dates (UTC)', onclick: openRangePop }, 'Custom'))) : null,
     infoBtn());
 }
-/* ---- the context panel: always at the top of the feed. The thread, its story and where the posts come from;
-   collapsible to one line, open the first time a thread is seen, remembered per thread. */
+/* ---- the briefing: always at the top of the feed. What the task is, how it works, who is here and what to watch for,
+   as fields and values; then where the posts come from. Folds to one line, open the first time a thread is seen, remembered per thread. */
 let wikiCtx = {}; try { wikiCtx = JSON.parse(localStorage.getItem('wikiCtx2') || '{}') || {}; } catch (e) { /* storage unavailable */ }
 const ctxOpen = key => wikiCtx[key] !== 'closed';
+/* the thread's writers, busiest first, as chips in each writer's hue; a click filters the feed by that writer */
+function whoChips() {
+  const s = state.wiki, n = new Map(); wikiPosts().forEach(p => n.set(p.who, (n.get(p.who) || 0) + 1));
+  const whos = [...n.keys()].sort((a, b) => n.get(b) - n.get(a) || a.localeCompare(b));
+  return h('div', { class: 'wchips' }, whos.map(who => {
+    const id = IDENT[who], on = s.who === who, name = monikerOf(who) || who;
+    return h('button', { class: 'wchip', type: 'button', style: `--av-h:${hueOf(who)}`, 'aria-pressed': String(on),
+      'data-tip': (id ? `${id.moniker}: ${id.role}.\n` : '') + `Label “${who}”, ${n.get(who)} post${n.get(who) === 1 ? '' : 's'} here.` + (on ? '\nClick to show every writer.' : '\nClick to show only this writer’s posts.'),
+      onclick: () => { s.who = on ? null : who; renderFilters(); renderView(); } }, name, h('span', { class: 'wn', text: String(n.get(who)) }));
+  }));
+}
 function ctxPanel() {
   const pg = WPAGE.get(state.wiki.page), g = WGROUP.get(pg.group), open = ctxOpen(pg.key);
   const toggle = () => { wikiCtx[pg.key] = open ? 'closed' : 'open'; try { localStorage.setItem('wikiCtx2', JSON.stringify(wikiCtx)); } catch (e) { /* storage unavailable */ } renderView(); };
   const voice = state.wiki.voice, retold = wikiMode() === 'chat' && voice !== 'orig';
-  return [h('section', { class: 'ctx' + (open ? '' : ' closed'), 'aria-label': 'About this thread' },
-    h('button', { class: 'ctx-h', type: 'button', 'aria-expanded': String(open), 'data-tip': open ? 'Fold the story of this thread to one line' : 'Show the story of this thread', onclick: toggle },
-      h('b', { text: pg.title }), h('span', { class: 'ctx-m', text: `${g.name} · ${pg.count} posts · ${pg.labels} labels` }), h('span', { class: 'ctx-t', text: open ? 'Hide' : 'Show' })),
+  const bf = g.brief || {}, has = ['task', 'rules', 'goal', 'channel'].some(k => bf[k]), watch = (pg.watch || []).filter(Boolean);
+  const row = (k, label, v, cls) => (v ? [h('dt', { text: label, 'data-f': k }), h('dd', { class: cls || null, 'data-f': k }, v)] : null);
+  return [h('section', { class: 'ctx' + (open ? '' : ' closed'), 'aria-label': 'Before you read: this thread' },
+    h('button', { class: 'ctx-h', type: 'button', 'aria-expanded': String(open), 'data-tip': open ? 'Fold the briefing to one line' : 'Show the briefing: the task, who is here and what to watch for', onclick: toggle },
+      h('span', { class: 'ctx-e', text: 'Before you read' }), h('b', { text: pg.title }), h('span', { class: 'ctx-m', text: `${g.name} · ${pg.count} posts · ${pg.labels} labels` }), h('span', { class: 'ctx-t', text: open ? 'Hide' : 'Show' })),
     open ? h('div', { class: 'ctx-b' },
-      g.story ? h('p', { text: g.story }) : h('p', {}, h('b', { text: g.task + '. ' }), g.description),
-      pg.intro ? h('p', { class: 'intro', text: pg.intro }) : null,
+      h('dl', { class: 'bf' },
+        has ? [row('task', 'Task', bf.task, 'lead'), row('rules', 'How it works', bf.rules), row('goal', 'What they want', bf.goal), row('channel', 'Why a wiki', bf.channel)]
+          : [row('task', 'Task', g.task, 'lead'), row('story', 'The story', g.story || g.description)],
+        row('who', 'Who is here', whoChips()),
+        row('thread', 'This thread', pg.intro),
+        row('watch', 'Watch for', watch.length ? h('ul', {}, watch.map(w => h('li', { text: w }))) : null)),
       h('div', { class: 'prov' }, h('span', { class: 'prov-l', text: 'Provenance' }),
         h('p', {}, g.source + ' This thread is the wiki page ', h('a', { href: W.provenance.archive + encodeURIComponent(pg.key), target: '_blank', rel: 'noopener noreferrer', text: pg.name }), ' in the archive.'))) : null),
     retold ? h('p', { class: 'retold' }, h('span', { text: 'Retold by the editors from the posts; the original wording is one click away.' }),
@@ -2992,20 +3084,64 @@ function renderWikiFoot() {
     h('span', { class: 'sum', text: `${POSTS.length} posts in ${W.pages.length} threads, from ${W.provenance.totalRevisions.toLocaleString()} archived revisions` }));
 }
 /* ---- the card for one post */
-/* the card's Details disclosure: closed by default, remembered */
-let wikiDetails = false; try { wikiDetails = localStorage.getItem('wikiDetails') === 'open'; } catch (e) { /* storage unavailable */ }
-/* one readable sentence in place of tags: what the post mentions and what kind of statement it makes; every phrase filters the feed */
+/* the card's sections: each folds, and one remembered state per section applies to every card */
+const SEC_OPEN = { orig: true, plain: true, chat: false, more: true };
+const wikiSec = {}; try { for (const k in SEC_OPEN) { const v = localStorage.getItem('wikiSec.' + k); if (v === 'open' || v === 'closed') wikiSec[k] = v === 'open'; } } catch (e) { /* storage unavailable */ }
+const secOpen = k => (k in wikiSec ? wikiSec[k] : SEC_OPEN[k]);
+function section(key, title, ...body) {
+  return h('details', { class: 'sec', 'data-sec': key, open: secOpen(key) || null,
+    ontoggle: ev => { const o = ev.currentTarget.open; if (o === secOpen(key)) return; wikiSec[key] = o; try { localStorage.setItem('wikiSec.' + key, o ? 'open' : 'closed'); } catch (e) { /* storage unavailable */ } } },
+    h('summary', {}, h('h3', { text: title })), h('div', { class: 'sec-b' }, body));
+}
 const SAYS_VERB = { result: 'reports a result', predict: 'makes a prediction', ask: 'asks for something or announces a plan', correct: 'corrects an earlier statement' };
 const andList = xs => xs.map((x, k) => [k ? (k === xs.length - 1 ? ' and ' : ', ') : '', x]);
-function aboutLine(p, filt) {
-  const s = state.wiki;
-  if (!p.rounds.length && !p.says.length) return null;
+/* which writer on this thread a name in the text points to: its label or signature ends with the name (with or without OAI) */
+const tagOf = (w, m) => w === m || w.endsWith(m) || w.endsWith(m + 'OAI');
+function nameWriter(m) { const q = wikiPosts().find(q => tagOf(q.who, m) || tagOf(q.label, m)); return q ? q.who : null; }
+/* Details: fields and values. Every link filters or searches the feed; names and terms light up with the Original. */
+function detailsGrid(p, filt) {
+  const s = state.wiki, pg = pageOf(p), id = IDENT[p.who];
+  const sig = (p.text.trim().match(/--\s*([A-Z][A-Za-z0-9_]+)\s*$/) || [])[1];
+  const row = (label, v, tip) => (v == null || (Array.isArray(v) && !v.length) ? null : [h('dt', { text: label, 'data-tip': tip || null }), h('dd', {}, v)]);
+  const sep = () => h('span', { class: 'dot-sep', 'aria-hidden': 'true', text: '·' });
+  const writer = h('span', { class: 'who-v' }, h('b', { text: nameOf(p) }), sep(),
+    sig ? ['signs ', h('span', { class: 'mono', text: sig }), sep(), sig === p.label ? h('span', { class: 'dim', text: 'also the saved label' }) : ['saved under ', h('span', { class: 'mono', text: p.label })]]
+      : [h('span', { class: 'dim', text: 'no signature' }), sep(), 'saved under ', h('span', { class: 'mono', text: p.label })],
+    id ? h('span', { class: 'sub', text: `Called ${id.moniker} because it ${id.role.charAt(0).toLowerCase() + id.role.slice(1)}.` }) : null);
+  const own = m => tagOf(p.label, m) || (sig && tagOf(sig, m));
+  const names = p.mentions.map(m => {
+    const link = 'nm:' + m;
+    if (own(m)) return h('span', { class: 'nchip', 'data-link': link, 'data-tip': `${m} is the end of this writer’s own label: the writer naming itself.` }, h('b', { text: m }), h('span', { class: 'nn', text: 'its own tag' }));
+    const who = nameWriter(m);
+    if (who) { const on = s.who === who; return h('button', { class: 'nchip', type: 'button', 'data-link': link, style: `--av-h:${hueOf(who)}`, 'aria-pressed': String(on),
+      'data-tip': `${m} is a writer on this thread: ${monikerOf(who) || humanize(who)} (${who}).` + (on ? '\nClick to show every writer.' : '\nClick to show only its posts.'),
+      onclick: filt(() => { s.who = on ? null : who; }) }, h('b', { text: m }), monikerOf(who) ? h('span', { class: 'nw', text: monikerOf(who) }) : null); }
+    const on = s.q === m;
+    return h('button', { class: 'nchip', type: 'button', 'data-link': link, 'aria-pressed': String(on), 'data-tip': `${m} does not write on this thread.` + (on ? '\nClick to clear the search.' : `\nClick to search this thread for “${m}”.`),
+      onclick: filt(() => { s.q = on ? '' : m; }) }, h('b', { text: m }), h('span', { class: 'nn', text: 'search' }));
+  });
   const link = (on, text, tip, set) => h('button', { class: 'about-l', type: 'button', 'aria-pressed': String(on), text, 'data-tip': tip + (on ? '\nClick to show every post.' : '\nClick to show only these posts.'), onclick: filt(set) });
-  const q = r => link(s.round === r, p.rounds.length > 1 ? String(r) : `question ${r}`, `Posts that mention question ${r} (R${r}, Q${r} or G${r} in the text).`, () => { s.round = s.round === r ? null : r; });
+  const qs = p.rounds.map(r => link(s.round === r, `question ${r}`, `Posts that mention question ${r} (R${r}, Q${r} or G${r} in the text).`, () => { s.round = s.round === r ? null : r; }));
   const says = p.says.map((k, j) => { const t = SAYS_VERB[k]; return link(s.says === k, j ? t : t.charAt(0).toUpperCase() + t.slice(1), SAYS_TIP[k] + '\n' + SAYS_NOTE, () => { s.says = s.says === k ? null : k; }); });
-  return h('p', { class: 'about' },
-    p.rounds.length ? ['Mentions ', p.rounds.length > 1 ? 'questions ' : '', andList(p.rounds.map(q)), '. '] : null,
-    says.length ? [andList(says), '. ', h('span', { class: 'about-n', text: '(From literal word matches.)' })] : null);
+  /* every glossary term that occurs in this post, with the forms it takes here */
+  const terms = W.glossary.map((g, k) => { const forms = [...new Set([...p.text.matchAll(new RegExp(g.re, 'g'))].map(x => x[0]))]; return forms.length ? h('li', { 'data-link': 'gl:' + k, 'data-tip': g.term, 'data-tip-title': 'Glossary' }, h('span', { class: 'tm', text: forms.join(' · ') }), g.meaning) : null; }).filter(Boolean);
+  const notes = [p.fixes ? h('p', { class: 'task', text: 'The archived text of this post stored UTF-8 bytes as Latin-1 characters; it is repaired for display here. The archive link shows it as stored.' }) : null,
+    p.placeholder ? h('p', { class: 'task', text: 'This save also kept the wiki’s placeholder line for a new page (“Beschreibe hier die neue Seite”), omitted here.' }) : null,
+    p.removed ? [h('p', { class: 'task', text: 'Text this save replaced:' }), h('p', { class: 'rm', text: p.removed })] : null].filter(Boolean);
+  return h('dl', { class: 'kv' },
+    row('Writer', writer, whoTip(p)),
+    row('Names in the text', names.length ? h('div', { class: 'nchips' }, names) : null, 'Run tags that appear in the text. Hover one to find it in the Original.'),
+    row('Questions', qs.length ? andList(qs) : null),
+    row('Says', says.length ? andList(says) : null, SAYS_NOTE),
+    row('Terms', terms.length ? h('ul', { class: 'terms' }, terms) : null, 'The shorthand in this post. Hover a term to find it in the Original.'),
+    row('Context', p.note || null),
+    row('Source', h('div', { class: 'srcline' },
+      h('a', { href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: `collusion.wiki, revision ${p.seq} of ${pg.count} ↗`,
+        'data-tip': `Opens the archive at edit #${p.seq} of ${pg.count}, marked only by a thin bar on its left.` + (p.seq < pg.count ? ` A tinted box right below it is edit #${p.seq + 1}, the next save, not the post you clicked.` : '') }),
+      h('span', { class: 'mono', text: `saved ${p.time.replace('T', ' ').replace('Z', '')} UTC ±${p.unc} s`, 'data-tip': 'The wiki’s own record of this save. SHA-256 of the archived page body: ' + p.hash }),
+      wikiMode() === 'chat' ? h('button', { class: 'mini-link', type: 'button', text: 'Show on the wiki page', onclick: () => setMode('page') })
+        : h('button', { class: 'mini-link', type: 'button', text: 'Back to the chat', onclick: () => setMode('chat') }))),
+    row('Notes', notes.length ? notes : null));
 }
 function selectPost(id, opts = {}) {
   if (!W) { loadWiki(() => selectPost(id, opts)); return; }
@@ -3020,17 +3156,20 @@ function selectPost(id, opts = {}) {
     else if (wikiMode() === 'page') { renderWikiPage(); renderWikiFoot(); }
   }
   markSelected();
-  const pg = pageOf(p), to = p.reply && POST_BY_ID.get(p.reply.to), order = wikiOrder(), i = order.findIndex(x => x.id === id);
+  const to = p.reply && POST_BY_ID.get(p.reply.to), order = wikiOrder(), i = order.findIndex(x => x.id === id);
   const repliers = REPLIES.get(id) || [], s = state.wiki;
   const n = p.parts.filter(x => x.id).length, linked = sayOk(p);
-  const notes = h('ol', { class: 'notes' }, p.parts.filter(x => x.id).map((part, k) => h('li', { 'data-part': part.id }, h('b', { text: String(k + 1) }),
+  const notes = h('ol', { class: 'notes' }, p.parts.map((part, k) => [part, k]).filter(([x]) => x.id).map(([part, k], j) => h('li', { 'data-link': 'p:' + partKey(part, k) }, h('b', { text: String(j + 1) }),
     h('span', {}, h('span', { class: 'nt', text: part.title }), h('span', { class: 'st', text: part.status }), h('br'), part.detail))));
-  /* the writer line, and every link in the Details sentence, filters the feed; pressed while its filter is on */
+  /* the writer line, and every link in Details, filters the feed; pressed while its filter is on */
   const filt = set => () => { set(); renderFilters(); renderView(); };
   const nb = p.blocks.length, paras = p.reading ? p.reading.split(/\n[ \t]*\n/).filter(x => x.trim()) : [];
   const plain = !p.reading ? h('p', { class: 'plain none', text: p.title ? `${p.title}. No full reading for this post yet; hover the underlined words above for the shorthand.` : 'No reading for this post yet. Hover the underlined words above for the shorthand.' })
     : nb > 1 && paras.length === nb && !linked ? h('div', { class: 'plain' }, paras.map((t, k) => [k ? sameSave(nb) : null, h('p', { class: 'plain' }, sigNodes(t.trim()))]))
     : h('p', { class: 'plain' }, ...readingNodes(p));
+  const linksChip = linked ? h('button', { class: 'chip sm', type: 'button', 'aria-pressed': String(wikiLinks), 'data-tip': 'Tint each phrase of the reading and the piece of the original it comes from in the same colour. Hover either side to find its partner.',
+    onclick: ev => { wikiLinks = !wikiLinks; try { localStorage.setItem('wikiLinks', wikiLinks ? 'on' : 'off'); } catch (e) { /* storage unavailable */ } card.classList.toggle('nolinks', !wikiLinks); ev.currentTarget.setAttribute('aria-pressed', String(wikiLinks)); } },
+    h('span', { class: 'box', html: CHECK }), 'Show links') : null;
   const card = h('div', { class: 'det' + (wikiLinks ? '' : ' nolinks') }, backBtn(),
     h('div', { class: 'det-top' }, topLine('Post', `${fmtY(p.day)}, ${p.clock} UTC`), navBtns(order, i, j => selectPost(j, { focus: true, keepBack: true }), 'post')),
     h('h2', { id: 'det-title', tabindex: '-1', text: p.title || `${nameOf(p)}’s post` }),
@@ -3038,36 +3177,20 @@ function selectPost(id, opts = {}) {
       onclick: filt(() => { s.who = s.who === p.who ? null : p.who; }) },
       h('span', { class: 'av', 'aria-hidden': 'true', text: avatar(p), style: `--av-h:${hueOf(p.who)}` }), h('b', { text: nameOf(p) }), nameOf(p) !== p.who ? h('span', { class: 'lit', text: p.who }) : null,
       s.who === p.who ? h('span', { class: 'wf', text: 'showing only this writer' }) : null),
-    h('h3', { text: 'Original' }),
-    h('div', { class: 'orig' }, ...origNodes(p)),
-    to || repliers.length ? h('div', { class: 'links-line' },
-      to ? h('button', { type: 'button', 'data-tip': `The text says “${p.reply.cue}”, naming an earlier post. Click to open it.`, onclick: () => { pushBack(); selectPost(to.id, { keepBack: true, focus: true }); } }, '↩ Replies to ', h('b', { text: nameOf(to) }), h('span', { class: 'q', text: ` (“${p.reply.cue}”)` })) : null,
-      repliers.length ? h('span', {}, `${repliers.length === 1 ? '1 reply' : repliers.length + ' replies'}: `, repliers.map((r, k) => [k ? ', ' : '',
-        h('button', { type: 'button', 'data-tip': `${nameOf(r)} wrote “${r.reply.cue}” at ${r.clock} UTC. Click to open it.`, onclick: () => { pushBack(); selectPost(r.id, { keepBack: true, focus: true }); } }, h('b', { text: nameOf(r) }))])) : null) : null,
-    n ? notes : null,
-    h('div', { class: 'h3row' }, h('h3', { text: 'In plain English' }),
-      linked ? h('button', { class: 'chip sm', type: 'button', 'aria-pressed': String(wikiLinks), 'data-tip': 'Underline the phrases of the reading that come from a piece of the original. Hover or focus one to see its source above.',
-        onclick: () => { wikiLinks = !wikiLinks; try { localStorage.setItem('wikiLinks', wikiLinks ? 'on' : 'off'); } catch (e) { /* storage unavailable */ } card.classList.toggle('nolinks', !wikiLinks); card.querySelector('.h3row .chip').setAttribute('aria-pressed', String(wikiLinks)); } },
-        h('span', { class: 'box', html: CHECK }), 'Show links') : null),
-    plain,
-    h('details', { class: 'more', open: wikiDetails || null, ontoggle: ev => { wikiDetails = ev.currentTarget.open; try { localStorage.setItem('wikiDetails', wikiDetails ? 'open' : 'closed'); } catch (e) { /* storage unavailable */ } } },
-      h('summary', {}, h('span', { text: 'Details' })),
-      h('div', { class: 'more-b' },
-        aboutLine(p, filt),
-        p.note ? [h('h3', { text: 'Context' }), h('p', { class: 'ctxnote', text: p.note })] : null,
-        h('h3', { text: 'Who wrote it' }),
-        whoWrote(p),
-        p.removed ? [h('h3', { text: 'Text this save replaced' }), h('p', { class: 'rm', text: p.removed })] : null,
-        h('h3', { text: 'Source' }),
-        h('div', { class: 'srcline' },
-          h('a', { href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: `collusion.wiki, revision ${p.seq} of ${pg.count} ↗`,
-            'data-tip': `Opens the archive at edit #${p.seq} of ${pg.count}, marked only by a thin bar on its left.` + (p.seq < pg.count ? ` A tinted box right below it is edit #${p.seq + 1}, the next save, not the post you clicked.` : '') }),
-          h('span', { class: 'mono', text: `saved ${p.time.replace('T', ' ').replace('Z', '')} UTC ±${p.unc} s`, 'data-tip': 'The wiki’s own record of this save. SHA-256 of the archived page body: ' + p.hash }),
-          wikiMode() === 'chat' ? h('button', { class: 'mini-link', type: 'button', text: 'Show on the wiki page', onclick: () => setMode('page') })
-            : h('button', { class: 'mini-link', type: 'button', text: 'Back to the chat', onclick: () => setMode('chat') })),
-        p.fixes ? h('p', { class: 'task', text: 'The archived text of this post stored UTF-8 bytes as Latin-1 characters; it is repaired for display here. The archive link shows it as stored.' }) : null,
-        p.placeholder ? h('p', { class: 'task', text: 'This save also kept the wiki’s placeholder line for a new page (“Beschreibe hier die neue Seite”), omitted here.' }) : null)));
-  const mark = (ev, on) => { const t = ev.target.closest && ev.target.closest('[data-part]'); if (t) card.querySelectorAll(`[data-part="${t.dataset.part}"]`).forEach(x => x.classList.toggle('on', on)); };
+    section('orig', 'Original',
+      h('div', { class: 'orig' }, ...origNodes(p)),
+      to || repliers.length ? h('div', { class: 'links-line' },
+        to ? h('button', { type: 'button', 'data-tip': `The text says “${p.reply.cue}”, naming an earlier post. Click to open it.`, onclick: () => { pushBack(); selectPost(to.id, { keepBack: true, focus: true }); } }, '↩ Replies to ', h('b', { text: nameOf(to) }), h('span', { class: 'q', text: ` (“${p.reply.cue}”)` })) : null,
+        repliers.length ? h('span', {}, `${repliers.length === 1 ? '1 reply' : repliers.length + ' replies'}: `, repliers.map((r, k) => [k ? ', ' : '',
+          h('button', { type: 'button', 'data-tip': `${nameOf(r)} wrote “${r.reply.cue}” at ${r.clock} UTC. Click to open it.`, onclick: () => { pushBack(); selectPost(r.id, { keepBack: true, focus: true }); } }, h('b', { text: nameOf(r) }))])) : null) : null,
+      n ? notes : null),
+    /* the Show links chip sits beside the summary, not inside it, so a click on it never folds the section */
+    h('div', { class: 'sec-w' }, section('plain', 'In plain English', plain), linksChip),
+    p.chat ? section('chat', 'Chatty', h('div', { class: 'msg-b rich chatty' }, richNodes(p.chat, p.guess ? GUESS_MARK() : null))) : null,
+    section('more', 'Details', detailsGrid(p, filt)));
+  /* two-way highlighting: everything sharing a link key with the hovered or focused element (and its ancestors) lights up */
+  const keys = t => { const ks = []; for (let e = t; e && e !== card; e = e.parentElement) if (e.dataset && e.dataset.link) ks.push(e.dataset.link); return ks; };
+  const mark = (ev, on) => keys(ev.target).forEach(k => card.querySelectorAll(`[data-link="${CSS.escape(k)}"]`).forEach(x => x.classList.toggle('on', on)));
   card.addEventListener('pointerover', ev => mark(ev, true));
   card.addEventListener('pointerout', ev => mark(ev, false));
   card.addEventListener('focusin', ev => mark(ev, true));

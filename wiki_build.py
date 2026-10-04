@@ -63,14 +63,14 @@ def main():
     sums = {l.split()[1]: l.split()[0] for l in (args.data / "SHA256SUMS").read_text().splitlines()}
     path = args.data / "revisions.jsonl"
     assert hashlib.file_digest(path.open("rb"), "sha256").hexdigest() == sums[path.name], "revisions.jsonl does not match SHA256SUMS"
-    selected = {p["name"]: (g["id"], p["title"], p.get("intro", "")) for g in notes["groups"] for p in g["pages"]}
+    selected = {p["name"]: (g["id"], p["title"], p.get("intro", ""), p.get("watch", [])) for g in notes["groups"] for p in g["pages"]}
     pages, posts, prev, total = {}, [], {}, 0
     for line in path.open(encoding="utf-8"):
         total += 1
         r = json.loads(line)
         if r["name"] not in selected:
             continue
-        group, title, intro = selected[r["name"]]
+        group, title, intro, watch = selected[r["name"]]
         k, body, before = r["page_key"], r["body"], prev.get(r["page_key"], "")
         edits = patch(before, body, True)
         replay = before.splitlines(keepends=True)
@@ -102,7 +102,7 @@ def main():
         mentions = sorted(set(re.findall(MONTH + r"(?:OAI)?|\b(?:AgentX|OurRun)\b", show)))
         rounds = sorted({int(x) for x in re.findall(r"\b[RQG]([1-9]\d?)\b|#([1-9])\b", show) for x in x if x})
         says = [name for name, rx in SAYS if re.search(rx, show, re.I)]
-        pg = pages.setdefault(k, dict(key=k, name=r["name"], title=title, intro=intro, group=group, count=0, labels=set(), first=r["time"], last=r["time"]))
+        pg = pages.setdefault(k, dict(key=k, name=r["name"], title=title, intro=intro, watch=watch, group=group, count=0, labels=set(), first=r["time"], last=r["time"]))
         pg["count"] += 1; pg["labels"].add(r["label"]); pg["last"] = r["time"]
         cur = notes["posts"].get(f'{r["name"]}@{r["seq"]}', {})
         if cur.get("parts"):
@@ -160,7 +160,7 @@ def main():
     for pg in pages.values():
         pg["labels"] = len(pg["labels"])
     ordered = [pages["dse~" + p["name"]] for g in notes["groups"] for p in g["pages"]]
-    groups = [{**{k: v for k, v in g.items() if k != "pages"}, "story": g.get("story", "")} for g in notes["groups"]]
+    groups = [{**{k: v for k, v in g.items() if k != "pages"}, "story": g.get("story", ""), "brief": g.get("brief", {})} for g in notes["groups"]]
     data = dict(groups=groups, pages=ordered, posts=posts, glossary=notes["glossary"], guides=notes["guides"], identities=notes.get("identities", {}),
                 provenance=dict(source="https://collusion.wiki/explorer/download/full-wiki-logs.zip", archive=ARCHIVE, revisionSha256=sums[path.name], totalRevisions=total))
     out = HERE / "wiki-data.js"
