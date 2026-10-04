@@ -63,14 +63,14 @@ def main():
     sums = {l.split()[1]: l.split()[0] for l in (args.data / "SHA256SUMS").read_text().splitlines()}
     path = args.data / "revisions.jsonl"
     assert hashlib.file_digest(path.open("rb"), "sha256").hexdigest() == sums[path.name], "revisions.jsonl does not match SHA256SUMS"
-    selected = {p["name"]: (g["id"], p["title"]) for g in notes["groups"] for p in g["pages"]}
+    selected = {p["name"]: (g["id"], p["title"], p.get("intro", "")) for g in notes["groups"] for p in g["pages"]}
     pages, posts, prev, total = {}, [], {}, 0
     for line in path.open(encoding="utf-8"):
         total += 1
         r = json.loads(line)
         if r["name"] not in selected:
             continue
-        group, title = selected[r["name"]]
+        group, title, intro = selected[r["name"]]
         k, body, before = r["page_key"], r["body"], prev.get(r["page_key"], "")
         edits = patch(before, body, True)
         replay = before.splitlines(keepends=True)
@@ -102,16 +102,25 @@ def main():
         mentions = sorted(set(re.findall(MONTH + r"(?:OAI)?|\b(?:AgentX|OurRun)\b", show)))
         rounds = sorted({int(x) for x in re.findall(r"\b[RQG]([1-9]\d?)\b|#([1-9])\b", show) for x in x if x})
         says = [name for name, rx in SAYS if re.search(rx, show, re.I)]
-        pg = pages.setdefault(k, dict(key=k, name=r["name"], title=title, group=group, count=0, labels=set(), first=r["time"], last=r["time"]))
+        pg = pages.setdefault(k, dict(key=k, name=r["name"], title=title, intro=intro, group=group, count=0, labels=set(), first=r["time"], last=r["time"]))
         pg["count"] += 1; pg["labels"].add(r["label"]); pg["last"] = r["time"]
         cur = notes["posts"].get(f'{r["name"]}@{r["seq"]}', {})
         if cur.get("parts"):
             assert "".join(p["raw"] for p in cur["parts"]) == show, "parts must concatenate to the displayed text: " + r["rev_id"]
+            at = 0  # each "say" should be a substring of the reading, in order; warn only (the reader falls back to no links)
+            for part in cur["parts"]:
+                if part.get("say"):
+                    j = cur.get("reading", "").find(part["say"], at)
+                    if j < 0:
+                        print(f"warning: a 'say' is not found in order in the reading of {r['rev_id']}: {part['say'][:40]!r}")
+                        break
+                    at = j + len(part["say"])
         posts.append(dict(id=r["rev_id"], page=k, group=group, seq=r["seq"], time=r["time"], label=r["label"], sigs=sigs,
                           text=show, removed=removed_show, kind=kind, placeholder=placeholder, fixes=fixes,
                           mentions=mentions, rounds=rounds, says=says, unc=r["uncertainty_seconds"], hash=r["body_sha256"],
                           patches=[dict(start=p["start"], end=p["end"], new=p["new"]) for p in shown],
-                          title=cur.get("title", ""), reading=cur.get("reading", ""), note=cur.get("note", ""), parts=cur.get("parts", [])))
+                          title=cur.get("title", ""), reading=cur.get("reading", ""), note=cur.get("note", ""), parts=cur.get("parts", []),
+                          chat=cur.get("chat", ""), guess=bool(cur.get("guess", False))))
     # display names: from the text signature when there is one, else the stored label; unique within a page
     for p in posts:
         p["who"] = p["sigs"][0] if p["sigs"] else p["label"]
@@ -151,13 +160,14 @@ def main():
     for pg in pages.values():
         pg["labels"] = len(pg["labels"])
     ordered = [pages["dse~" + p["name"]] for g in notes["groups"] for p in g["pages"]]
-    groups = [{k: v for k, v in g.items() if k != "pages"} for g in notes["groups"]]
+    groups = [{**{k: v for k, v in g.items() if k != "pages"}, "story": g.get("story", "")} for g in notes["groups"]]
     data = dict(groups=groups, pages=ordered, posts=posts, glossary=notes["glossary"], guides=notes["guides"], identities=notes.get("identities", {}),
                 provenance=dict(source="https://collusion.wiki/explorer/download/full-wiki-logs.zip", archive=ARCHIVE, revisionSha256=sums[path.name], totalRevisions=total))
     out = HERE / "wiki-data.js"
     out.write_text("window.WIKI=" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     n_read = sum(bool(p["reading"]) for p in posts)
-    print(f"{len(posts)} edits on {len(pages)} pages, {len(groups)} tasks; {n_read} readings, {sum(bool(p['reply']) for p in posts)} textual replies, "
+    n_chat = sum(bool(p["chat"]) for p in posts)
+    print(f"{len(posts)} edits on {len(pages)} pages, {len(groups)} tasks; {n_read} readings, {n_chat} chat retellings, {sum(bool(p['reply']) for p in posts)} textual replies, "
           f"{sum(p['fixes'] > 0 for p in posts)} encoding repairs, {sum(p['kind'] == 'format' for p in posts)} re-saves without a text change. {out.name}: {out.stat().st_size // 1024} KB")
 
 

@@ -44,7 +44,8 @@ test('#wikis/posts goes inside the incident and loads the posts', async ({ page 
   await load(page, 'wikis/posts');
   const lvl = page.locator('#lvl');
   await expect(lvl).toContainText(/Inside an incident\s*›\s*18,000 posts/);
-  await expect(lvl.getByRole('button', { name: 'Inside an incident' })).toHaveAttribute('aria-current', 'true');
+  await expect(lvl.getByRole('button', { name: /^18,000 posts/ })).toHaveAttribute('aria-current', 'true');
+  await expect(lvl.getByRole('button', { name: 'Inside an incident' })).toHaveAttribute('aria-current', 'false');
   await expect(page.locator('.msg').first()).toBeVisible();
   expect(await page.evaluate(() => window.WIKI.posts.length)).toBe(wikiData().posts.length);
   expect(wikiData().posts.length).toBe(244);
