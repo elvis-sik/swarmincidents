@@ -1,6 +1,7 @@
 // @ts-check
 // The "Inside an incident" reader: the breadcrumb with its thread picker, the context panel, the wording axis,
-// the feed's markup and multi-post saves, and the card (writer line, folding sections, provenance tints, Details as fields).
+// the feed's markup and multi-post saves, the card (writer line, folding sections, provenance tints, Details as fields),
+// the writer card, the explainer and the glossary.
 const { test, expect, load, wikiData, isMobile } = require('./fixtures');
 
 const HOME = 'dse~DataUSACashiersMastersSequenceLive5';
@@ -91,13 +92,16 @@ test('the wording axis by keyboard: Left from Chatty is Plain English, Home and 
   await expect(page.getByRole('slider', { name: 'Wording' })).toHaveAttribute('aria-valuetext', 'Plain English');
 });
 
-test('mentions in Chatty keep the @ and filter the feed by that writer', async ({ page }) => {
+test('mentions in Chatty keep the @ and open the writer’s card', async ({ page }) => {
   await load(page, 'wikis/posts');
   const at = page.locator('.msg-b button.at').first();
   await expect(at).toHaveText(/^@\S/);
-  const before = await page.locator('.msg').count();
+  const name = ((await at.textContent()) || '').slice(1);
   await at.click();
-  await expect.poll(() => page.locator('.msg').count()).toBeLessThan(before);
+  await expect(page).toHaveURL(/#wikis\/writers\/[A-Za-z0-9_]+$/);
+  await expect(page.locator('#det .det-top .kind')).toHaveText('Writer');
+  await expect(page.locator('#det h2')).toContainText(name);
+  await expect(page.locator('.msg')).toHaveCount(homePosts().length);
 });
 
 test('a save with two signed posts: two bubbles under one header, and a "same save" rule on the card', async ({ page }) => {
@@ -113,7 +117,7 @@ test('a save with two signed posts: two bubbles under one header, and a "same sa
   await expect(page.locator('#det .orig .same-save')).toHaveCount(1);
 });
 
-test('the card: a writer line that filters the feed, no tag row, and Details open by default with its links filtering', async ({ page }) => {
+test('the card: the writer line opens the writer’s card, whose button filters the feed; Back returns; question chips filter', async ({ page }) => {
   const posts = homePosts(), counts = new Map();
   posts.forEach(p => counts.set(p.who, (counts.get(p.who) || 0) + 1));
   const post = posts.find(p => counts.get(p.who) > 1 && counts.get(p.who) < posts.length && p.rounds.length);
@@ -121,16 +125,23 @@ test('the card: a writer line that filters the feed, no tag row, and Details ope
   await load(page, 'wikis/posts/' + post.id.replace(/^dse~/, ''));
   await expect(page.locator(`.msg[data-post-row="${post.id}"]`)).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('#det .tags')).toHaveCount(0);
-  const writer = page.locator('#det button.writer');
-  await expect(writer).toHaveAttribute('aria-pressed', 'false');
-  await writer.click();
-  await expect(page.locator('#det button.writer')).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('.msg')).toHaveCount(counts.get(post.who));
+  await expect(page.locator('#det .det-top a.arch')).toHaveAttribute('href', /collusion\.wiki/);
   await page.locator('#det button.writer').click();
+  await expect(page).toHaveURL(new RegExp(`#wikis/writers/${post.who}$`));
+  await expect(page.locator('#det .det-top .kind')).toHaveText('Writer');
+  await expect(page.locator('#det dl.kv dt', { hasText: /^Label$/ })).toBeVisible();
+  const filter = page.locator('#det').getByRole('button', { name: /only this writer/ });
+  await expect(filter).toHaveAttribute('aria-pressed', 'false');
+  await filter.click();
+  await expect(page.locator('.msg')).toHaveCount(counts.get(post.who));
+  await expect(page.locator('#det').getByRole('button', { name: /only this writer/ })).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('#det').getByRole('button', { name: /only this writer/ }).click();
   await expect(page.locator('.msg')).toHaveCount(posts.length);
+  await page.locator('#det button.back').click();
+  await expect(page).toHaveURL(new RegExp(`#wikis/posts/${post.id.replace(/^dse~/, '')}$`));
   const more = page.locator('#det details[data-sec="more"]');
   await expect(more).toHaveAttribute('open', /.*/);
-  const q = more.locator('dd button.about-l', { hasText: `question ${post.rounds[0]}` });
+  const q = more.locator('dd button.qchip', { hasText: `Q${post.rounds[0]}` });
   await q.click();
   await expect(page.locator('.msg')).toHaveCount(posts.filter(p => p.rounds.includes(post.rounds[0])).length);
 });
@@ -156,7 +167,8 @@ test('the briefing: fields and values, and a Who-is-here chip filters the feed b
   const ctx = page.locator('.ctx');
   await expect(ctx.locator('.ctx-h')).toContainText(/Before you read/i);
   const labels = await ctx.locator('dl.bf > dt').allTextContents();
-  const want = g.brief && g.brief.task ? ['Task', 'How it works', 'What they want', 'Why a wiki', 'Who is here', 'This thread'] : ['Task', 'Who is here', 'This thread'];
+  const want = ['Task', 'The setup', 'Who is here', 'This thread'];
+  void g;
   for (const w of want) expect(labels).toContain(w);
   const posts = homePosts(), counts = new Map();
   posts.forEach(p => counts.set(p.who, (counts.get(p.who) || 0) + 1));
@@ -198,15 +210,62 @@ test('card sections fold: Chatty is collapsed by default, and a folded section s
   await expect(sec('chat')).toHaveAttribute('open', /.*/);
 });
 
-test('Details as fields: the Writer and Terms rows, and a name in the Original lights up its row', async ({ page }) => {
+test('Details as fields, the shorthand as its own section, and a name in the Original lights up its chip', async ({ page }) => {
   await load(page, 'wikis/posts/DataUSACashiersMastersSequenceLive5@14');
   const kv = page.locator('#det details[data-sec="more"] dl.kv');
   await expect(kv.locator('dt', { hasText: /^Writer$/ })).toBeVisible();
-  await expect(kv.locator('dt', { hasText: /^Terms$/ })).toBeVisible();
-  await expect(kv.locator('ul.terms li').first()).toBeVisible();
-  await expect(kv.locator('.nchip[data-link="nm:AgentX"]')).toBeVisible();
+  await expect(kv.locator('dt', { hasText: /^Terms$/ })).toHaveCount(0);
+  const terms = page.locator('#det details[data-sec="terms"]');
+  await expect(terms).toHaveAttribute('open', /.*/);
+  await expect(terms.locator('.tm-row').first()).toBeVisible();
+  const chip = kv.locator('.nchip[data-link="nm:AgentX"]');
+  await expect(chip).toBeVisible();
+  await expect(chip).toContainText('AgentX');
   await page.locator('#det .orig [data-link="nm:AgentX"]').hover();
-  await expect(kv.locator('.nchip[data-link="nm:AgentX"]')).toHaveClass(/\bon\b/);
+  await expect(chip).toHaveClass(/\bon\b/);
+});
+
+test('the explainer opens by itself on a first visit only, and closes with Escape; the glossary is its own dialog', async ({ page }) => {
+  // a first visit: the fixture marks the explainer seen before every load, so unmark it once (the reload below must keep the app's own mark)
+  await page.addInitScript(() => { try { if (!sessionStorage.getItem('introTest')) { sessionStorage.setItem('introTest', '1'); localStorage.removeItem('wikiIntro'); } } catch (e) { /* storage unavailable */ } });
+  await load(page, 'wikis/posts');
+  const dlg = page.locator('dialog#viewinfo');
+  await expect(dlg).toHaveAttribute('open', /.*/);
+  await expect(dlg.locator('h2')).toHaveText('How to read this');
+  await expect(dlg.locator('.howto li')).toHaveCount(4);
+  await page.keyboard.press('Escape');
+  await expect(dlg).not.toHaveAttribute('open', /.*/);
+  await page.reload();
+  await expect(page.locator('#lvl button').first()).toBeVisible();
+  await expect(page.locator('.msg').first()).toBeVisible();
+  await expect(page.locator('dialog#viewinfo')).not.toHaveAttribute('open', /.*/);
+  await page.locator('#foot').getByRole('button', { name: 'Glossary' }).click();
+  const gl = page.locator('dialog#gloss');
+  await expect(gl).toHaveAttribute('open', /.*/);
+  await expect(gl.locator('.gl-row').first()).toBeVisible();
+  await expect(gl.locator('.gl-row dt').first()).not.toBeEmpty();
+  await expect(gl).not.toContainText('About the posts');
+});
+
+test('a writer card by URL lists its posts across threads, and a post opens from it', async ({ page }) => {
+  const d = wikiData(), counts = new Map();
+  d.posts.forEach(p => counts.set(p.who, (counts.get(p.who) || 0) + 1));
+  const who = [...counts.entries()].filter(([w]) => d.posts.some(p => p.who === w && p.page === HOME)).sort((a, b) => b[1] - a[1])[0][0];
+  await load(page, 'wikis/writers/' + who);
+  const det = page.locator('#det');
+  await expect(det.locator('.det-top .kind')).toHaveText('Writer');
+  await expect(det.locator('h2')).toContainText(d.identities[who] ? d.identities[who].moniker : who);
+  await expect(det.locator('.wpost')).toHaveCount(counts.get(who));
+  await expect(page.locator('.msg.rel')).toHaveCount(d.posts.filter(p => p.who === who && p.page === HOME).length);
+  await det.locator('.wpost').first().click();
+  await expect(page).toHaveURL(/#wikis\/posts\/[^/]+@\d+$/);
+  await expect(det.locator('.det-top .kind')).toHaveText('Post');
+  // the writer's other posts are no longer marked; only reply relations of the opened post are
+  const opened = d.posts.filter(p => p.who === who).sort((a, b) => a.time.localeCompare(b.time))[0];
+  const related = d.posts.filter(p => p.page === opened.page && p.id !== opened.id && ((p.reply && p.reply.to === opened.id) || (opened.reply && opened.reply.to === p.id)));
+  await expect(page.locator('.msg.rel')).toHaveCount(related.length);
+  await det.locator('button.back').click();
+  await expect(page).toHaveURL(new RegExp(`#wikis/writers/${who}$`));
 });
 
 test('provenance by colour: tints on both sides with Show links on, none with it off', async ({ page }) => {

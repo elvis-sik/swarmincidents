@@ -11,6 +11,8 @@ const test = base.test.extend({
     page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
     // The page asks Google Fonts for Inter and JetBrains Mono. Answer locally with an empty stylesheet so the run is
     // deterministic and offline (fulfilling, not aborting: an aborted request would log a console error).
+    // The reader's explainer opens by itself on a first visit; tests start as a returning reader (one test clears this).
+    await page.addInitScript(() => { try { localStorage.setItem('wikiIntro', 'seen'); } catch (e) { /* storage unavailable */ } });
     const origin = new URL(baseURL || 'http://127.0.0.1:8799/').origin;
     await page.route(url => url.origin !== origin && /^https?:$/.test(url.protocol), route =>
       route.fulfill({ status: 200, contentType: route.request().resourceType() === 'stylesheet' ? 'text/css' : 'text/plain', body: '' }));

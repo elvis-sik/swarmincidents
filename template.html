@@ -677,7 +677,8 @@ div.plain{display:flex;flex-direction:column}
 .writer .av{width:22px;height:22px;border-radius:6px;font-size:9.5px;margin:0;flex:none}
 .writer b{font-weight:650}
 .writer .lit{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.writer .wf{font-size:11.5px;color:var(--g-research);white-space:nowrap}
+.writer .wf{font-size:11px;color:var(--muted);white-space:nowrap;opacity:0;transition:opacity .12s}
+.writer:hover .wf,.writer:focus-visible .wf{opacity:1}
 .writer:hover{background:var(--hover)}
 .writer[aria-pressed="true"]{background:var(--sel)}
 .writer:focus-visible{outline:2px solid var(--g-research);outline-offset:1px}
@@ -726,9 +727,41 @@ span.nchip:hover{border-color:var(--line-2)}
 .terms .tm{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink);margin-right:6px}
 .orig .nm.on{background:var(--sel);border-radius:2px;box-shadow:0 0 0 1px var(--g-research)}
 .det .about{font-size:13px;color:var(--ink-2);line-height:1.55}
-.about-l{border:0;background:none;padding:0 1px;font:inherit;color:var(--ink);cursor:pointer;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:.22em;border-radius:3px}
-.about-l:hover{text-decoration-color:var(--ink-2)}
-.about-l[aria-pressed="true"]{background:var(--sel);text-decoration-color:var(--g-research)}
+.qchip{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line-2);background:none;border-radius:5px;padding:0 7px;font:inherit;font-size:12px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap}
+.qchip b{font-family:var(--mono);font-size:11.5px;font-weight:500}
+.qchip:hover{border-color:var(--ink-2)}
+.qchip[aria-pressed="true"]{background:var(--sel);border-color:var(--g-research)}
+.qchip .nn{font-size:11px;color:var(--muted)}
+.nchip .nw::before{content:"→";color:var(--faint);font-weight:400;margin-right:5px}
+/* the shorthand section: term, meaning; a row lights up with its term in the Original */
+.tm-kv{margin:0;display:flex;flex-direction:column;gap:1px}
+.tm-row{display:grid;grid-template-columns:minmax(72px,34%) minmax(0,1fr);gap:0 12px;padding:3px 6px;margin:0 -6px;border-radius:5px;font-size:12.5px;line-height:1.45}
+.tm-row dt{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink);padding-top:1px;overflow-wrap:anywhere}
+.tm-row dd{margin:0;color:var(--ink-2)}
+.tm-row.on{background:var(--sel)}
+/* the writer: a link to its card wherever a name is shown; the card itself */
+.wlink{border:0;background:none;padding:0;font:inherit;color:var(--ink);cursor:pointer;border-radius:3px}
+.wlink b{font-weight:650;border-bottom:1.5px solid hsl(var(--av-h,210) 48% 60%)}
+.wlink:hover b{background:var(--sel)}
+.kv .who-v{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.wname{border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:3px;line-height:inherit}
+.wname:hover b{text-decoration:underline;text-underline-offset:.2em;text-decoration-color:var(--line-2)}
+.det-top .arch{margin-left:10px;font-family:var(--sans);font-size:11.5px;font-weight:500;color:var(--g-research);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--g-research) 40%,transparent)}
+.det-top .arch:hover{border-bottom-color:currentColor}
+.det .why{font-size:13px;color:var(--ink-2);margin:0;line-height:1.55}
+.det .small{font-size:12.5px;margin:0}
+.det .dim{color:var(--muted)}
+.wh2{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wh2 .av{width:28px;height:28px;border-radius:8px;font-size:11px;margin:0;flex:none}
+.wh2 .lit{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-weight:400}
+.wpages,.wposts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.wpages .mini-link{font-size:12.5px}
+.wpost{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:1px 10px;width:calc(100% + 12px);border:0;background:none;padding:3px 6px;margin:0 -6px;border-radius:5px;font:inherit;font-size:12.5px;line-height:1.4;color:var(--ink);cursor:pointer;text-align:left}
+.wpost:hover{background:var(--hover)}
+.wpost .mono{font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:2px}
+.wpost .wt{font-weight:500;overflow-wrap:anywhere}
+.wpost .dim{grid-column:2;font-size:11.5px}
+.det>.btn.on{border-color:var(--g-research);color:var(--ink);background:var(--sel)}
 .about-n{font-size:11.5px;color:var(--muted)}
 .orig sup{font-family:var(--mono);font-size:9.5px;color:var(--g-research);line-height:0;vertical-align:super;margin-left:1px}
 /* the signature line: its own line, smaller and muted, in the feed, the Original box and the reading */
@@ -775,8 +808,30 @@ button.tag[aria-pressed="true"]{border-color:var(--ink-2);color:var(--ink);backg
 .det .ctxnote{font-size:13px;color:var(--ink-2);margin:0;line-height:1.55}
 .inwiki{display:flex}
 .inwiki .btn{align-self:flex-start}
-.dlg .gloss{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;font-size:12.5px}
-.dlg .gloss b{font-family:var(--mono);font-weight:500;font-size:11.5px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:5px}
+.dlg .lead{margin:0 0 4px}
+.dlg .mono{font-family:var(--mono);font-size:12px}
+.dlg b.mono{font-weight:500;color:var(--ink)}
+.dlg .kbd{display:inline-block;font-family:var(--mono);font-size:11px;line-height:16px;min-width:16px;text-align:center;border:1px solid var(--line-2);border-radius:4px;padding:0 3px;color:var(--ink)}
+.dlg .dlg-foot{margin-top:14px;font-size:12.5px;color:var(--muted)}
+.dlg .dlg-foot .mini-link{font-size:12.5px}
+.dlg .gl{margin:10px 0 0;display:flex;flex-direction:column}
+.dlg .gl-row{display:grid;grid-template-columns:minmax(96px,30%) minmax(0,1fr);gap:0 14px;padding:7px 0;border-top:1px solid color-mix(in srgb,var(--line) 85%,transparent);font-size:12.5px;line-height:1.5}
+.dlg .gl-row:first-child{border-top:0;padding-top:2px}
+.dlg .gl-row dt{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink);padding-top:1px;overflow-wrap:anywhere}
+.dlg .gl-row dd{margin:0;color:var(--ink-2)}
+@media (max-width:540px){.dlg .gl-row{grid-template-columns:1fr;gap:1px 0}}
+/* the explainer's diagram: four boxes, left to right (two by two on phones) */
+.howto{list-style:none;margin:10px 0 2px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.howto li{position:relative;border:1px solid var(--line);border-radius:8px;padding:9px 10px 10px;background:var(--soft);font-size:12px;line-height:1.4;color:var(--ink-2)}
+.howto li+li::before{content:"→";position:absolute;left:-13px;top:11px;width:14px;text-align:center;color:var(--faint);font-size:13px}
+.howto svg{display:block;width:24px;height:24px;margin-bottom:6px;stroke:var(--g-research);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.howto b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+.howto i{font-style:normal;font-weight:600;color:var(--ink)}
+.howto .ex{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;color:var(--muted);overflow-wrap:anywhere}
+@media (max-width:540px){.howto{grid-template-columns:1fr 1fr;gap:8px}.howto li+li::before{content:none}}
+.fly{position:fixed;z-index:120;border:1.5px solid var(--g-research);border-radius:12px;background:color-mix(in srgb,var(--g-research) 10%,var(--panel));pointer-events:none;transform-origin:center}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--g-research) 60%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
+.btn.icon.pulse{animation:pulse .9s ease-out 2;border-color:var(--g-research);color:var(--g-research)}
 .empty p{margin:0 0 6px}
 @media (max-width:820px){
   .msg{padding:7px 10px 9px 8px;gap:0 8px}
@@ -1017,10 +1072,28 @@ button.tag[aria-pressed="true"]{border-color:var(--ink-2);color:var(--ink);backg
       <ul id="impact-help"></ul>
     </div>
     <div id="viewinfo-wiki" hidden>
-      <p>A selection of the archive published by the collusion.wiki researchers: saved edits on ten wiki pages, across five of the agents&rsquo; tasks. Each thread is one page on the wiki: <b>Chat</b> shows its saved edits as messages, and <b>Wiki page</b> shows the final page as the wiki last saved it. Each post is one saved edit, computed from consecutive page revisions, so earlier text is never counted twice. Text is shown as stored (with its encoding repaired), never run. Replies, question numbers and the kinds of statement are literal text matches. The feed can show each post in the original, in plain English or retold as a chat (Chatty). Nicknames, titles, plain-English readings, chatty retellings and notes are written by the editors and can be wrong; guesses in a retelling are marked, and the card always shows the original; the archive link on every post shows the source. The posts cannot tell us whether any answer was accepted, how many agents sit behind a label, or which pages a writer actually read.</p>
-      <h3>Shorthand</h3>
-      <ul class="gloss" id="glossary"></ul>
+      <p>Posts that OpenAI&rsquo;s agents left on a public German wiki while they were taking timed quizzes, read like a chat. The wiki&rsquo;s administrator has since deleted the pages; everything here is replayed from the archive the collusion.wiki researchers published.</p>
+      <ol class="howto" aria-label="From the wiki to a post">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h9l5 5v12H5z"/><path d="M14 3.5v5h5"/><path d="M8 12h8M8 15.5h8"/></svg><b>A wiki page</b>A public page anyone could edit. The runs used each page as one conversation, so the site calls a page a <i>thread</i>.<span class="ex">DataUSACashiersMastersSequenceLive5</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 11h16M4 15.5h16M4 20h10"/><circle cx="20" cy="20" r="1" fill="currentColor"/></svg><b>Saves</b>Every time a run saved the page, the wiki kept a new revision, with the time and the label the run typed.<span class="ex">11:46:11 UTC &middot; CashierCoordAgentX</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><b>A post</b>The text one save added is one post, shown as a message. A save sometimes holds two or three signed messages; they stay together, marked &ldquo;same save&rdquo;.</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5h17v12h-17z"/><path d="M3.5 7.5l2-3h13l2 3"/><path d="M10 12h4"/></svg><b>The archive</b>Each post links to its revision in the archive (<span id="howto-n">14,591</span> revisions, every page body&rsquo;s hash reproduced).</li>
+      </ol>
+      <h3>Names</h3>
+      <p>A run signs with a label it typed itself, such as <b class="mono">CashierCoordAgentX</b>: a role, then a tag (<span class="mono">AgentX</span>, <span class="mono">Jul08OAI</span>) the other runs use to refer to it. Labels are not verified identities, and one label need not be one agent. The editors give each label a nickname from what it does (<b>Lead-measurer</b>) and always show the label beside it. Click any name for the writer&rsquo;s card.</p>
+      <h3>Three wordings</h3>
+      <p>Every post can be read as the writer saved it (<b>Original</b>), in <b>plain English</b> linked clause by clause to the original, or retold as a group-chat message (<b>Chatty</b>). Readings and retellings are the editors&rsquo; work and can be wrong; a guess is marked, and the original is always on the card.</p>
+      <h3>What the posts cannot tell you</h3>
+      <p>Whether any answer was accepted, how many agents sit behind a label, or which pages a run actually read. No prompt and no grader feedback are in the archive. Replies are shown only where the text itself names an earlier writer.</p>
+      <p class="dlg-foot">The <button class="mini-link" type="button" id="howto-gloss">Glossary</button> explains the shorthand in the posts. This page opens again from the <span class="kbd">i</span> button in the bar.</p>
     </div>
+  </div>
+</dialog>
+<dialog id="gloss" aria-labelledby="gloss-h">
+  <div class="dlg" tabindex="-1" autofocus>
+    <div class="dlg-top"><h2 id="gloss-h">Glossary</h2><button class="btn icon" type="button" id="gloss-close" aria-label="Close">&#x2715;</button></div>
+    <p class="lead">The shorthand the runs use in their posts, as the editors read it. The same terms are underlined in every post&rsquo;s Original; hover one there for its meaning.</p>
+    <dl class="gl" id="glossary"></dl>
   </div>
 </dialog>
 <div class="scrim" id="scrim"></div>
@@ -1124,10 +1197,10 @@ const AFF_BY_ID = new Map(AFF.map(a => [a.id, a]));
 const SRC = new Map(); INC.forEach(e => e.sources.forEach(x => SRC.set(x[2], x)));
 
 let modes = {}; try { modes = JSON.parse(localStorage.getItem('viewModes') || '{}') || {}; } catch (e) { /* storage unavailable */ }
-let dock = 'right'; try { if (localStorage.getItem('dock') === 'left') dock = 'left'; } catch (e) { /* storage unavailable */ }
+const dock = 'right';
 const state = {
-  view: 'timeline', sel: null, ent: null, rsp: null, post: null,
-  wiki: { page: null, who: null, round: null, says: null, q: '', voice: 'chat' }, inside: null, from: null,
+  view: 'timeline', sel: null, ent: null, rsp: null, post: null, writer: null,
+  wiki: { page: null, who: null, round: null, q: '', voice: 'chat' }, inside: null, from: null,
   chooser: { sort: 'd', dir: -1, q: '' },
   range: null, emph: null,
   tl: { by: 'all', conf: false, sort: 'start', dir: -1 },
@@ -1381,19 +1454,47 @@ $('#about-btn').addEventListener('click', () => { hideTip(); about.showModal(); 
 $('#about-close').addEventListener('click', () => about.close());
 about.addEventListener('click', ev => { if (ev.target === about) about.close(); });
 const viewinfo = $('#viewinfo');
-$('#viewinfo-close').addEventListener('click', () => viewinfo.close());
-viewinfo.addEventListener('click', ev => { if (ev.target === viewinfo) viewinfo.close(); });
+$('#viewinfo-close').addEventListener('click', () => closeInfo());
+viewinfo.addEventListener('click', ev => { if (ev.target === viewinfo) closeInfo(); });
+viewinfo.addEventListener('cancel', ev => { ev.preventDefault(); closeInfo(); });
 /* view-specific help: only the Affected tab and the inside of the wiki incident have any */
 const viewInfoKey = () => (state.view === 'affected' ? 'aff' : state.view === 'wiki' && state.inside === WIKI_INC && W ? 'wiki' : null);
 function openViewInfo() {
   const k = viewInfoKey(); if (!k) return;
   hideTip();
   $('#viewinfo-aff').hidden = k !== 'aff'; $('#viewinfo-wiki').hidden = k !== 'wiki';
-  $('#viewinfo-h').textContent = k === 'aff' ? 'About the Affected view' : 'About the posts';
-  viewinfo.showModal();
+  $('#viewinfo-h').textContent = k === 'aff' ? 'About the Affected view' : 'How to read this';
+  if (!viewinfo.open) viewinfo.showModal();
 }
+/* closing the explainer flies a ghost of it to the info button, so the way back is seen once */
+function closeInfo() {
+  const from = viewinfo.querySelector('.dlg').getBoundingClientRect(), k = viewInfoKey();
+  viewinfo.close();
+  if (k === 'wiki') flyTo(from, document.querySelector('#bar-r .btn.icon[aria-label="About this view"]'));
+}
+function flyTo(from, target) {
+  if (!target || !target.offsetWidth || matchMedia('(prefers-reduced-motion: reduce)').matches || !document.body.animate) return;
+  const to = target.getBoundingClientRect(), g = h('div', { class: 'fly', 'aria-hidden': 'true' });
+  Object.assign(g.style, { left: from.left + 'px', top: from.top + 'px', width: from.width + 'px', height: from.height + 'px' });
+  document.body.append(g);
+  const dx = to.left + to.width / 2 - (from.left + from.width / 2), dy = to.top + to.height / 2 - (from.top + from.height / 2);
+  g.animate([{ transform: 'translate(0,0) scale(1)', opacity: .85 }, { transform: `translate(${dx}px,${dy}px) scale(${to.width / from.width},${to.height / from.height})`, opacity: .25 }],
+    { duration: 520, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' }).finished.then(() => { g.remove(); target.classList.add('pulse'); setTimeout(() => target.classList.remove('pulse'), 2200); });
+}
+/* the explainer opens by itself once: the first time the wiki is entered, never on re-entry */
+let introSeen = false; try { introSeen = localStorage.getItem('wikiIntro') === 'seen'; } catch (e) { /* storage unavailable */ }
+function maybeIntro() {
+  if (introSeen || !inWiki() || !W) return;
+  introSeen = true; try { localStorage.setItem('wikiIntro', 'seen'); } catch (e) { /* storage unavailable */ }
+  openViewInfo();
+}
+const gloss = $('#gloss');
+function openGloss() { hideTip(); if (viewinfo.open) viewinfo.close(); if (!gloss.open) gloss.showModal(); }
+$('#gloss-close').addEventListener('click', () => gloss.close());
+gloss.addEventListener('click', ev => { if (ev.target === gloss) gloss.close(); });
+$('#howto-gloss').addEventListener('click', openGloss);
 const INFO_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 7.2v4M8 4.8v.3" stroke-linecap="round"/></svg>';
-const infoBtn = () => (viewInfoKey() ? h('button', { class: 'btn icon', type: 'button', 'aria-label': 'About this view', 'data-tip': 'About this view', html: INFO_ICON, onclick: openViewInfo }) : null);
+const infoBtn = () => (viewInfoKey() ? h('button', { class: 'btn icon', type: 'button', 'aria-label': 'About this view', 'data-tip': viewInfoKey() === 'wiki' ? 'How to read this: pages, saves, posts and names' : 'About this view', html: INFO_ICON, onclick: openViewInfo }) : null);
 $('#unknowns').replaceChildren(...DATA.unknowns.map(t => {
   const li = h('li');
   const re = /\[([^\]]+)\]\(#([a-z0-9-]+)\)/g; let last = 0, m;
@@ -1455,7 +1556,7 @@ const scrollMem = {}, scrollKey = () => (state.view === 'wiki' ? 'wiki:' + (stat
 function setView(v) {
   if (state.view !== v) scrollMem[scrollKey()] = scrollY;
   state.view = v; state.emph = null;
-  if (v !== 'wiki') { state.inside = null; state.from = null; state.post = null; }
+  if (v !== 'wiki') { state.inside = null; state.from = null; state.post = null; state.writer = null; }
   renderTabs();
   $('#pane-empty').textContent = v !== 'wiki' ? 'Select an incident to see what happened, who found it, and the sources.' : !state.inside ? 'Pick an incident to look inside.' : state.inside === WIKI_INC ? 'Select a post to read it with its shorthand explained, in plain English where a reading exists, and with a link to the archived page.' : 'Nothing to explore inside this incident yet.';
   renderBarR(); renderFilters(); renderView();
@@ -1980,14 +2081,14 @@ const incSites = id => AFF.filter(a => a.incs.includes(id)).sort((x, y) => {
   const d = a => a.inv.find(v => v.inc === id).d || '9999';
   return d(x).localeCompare(d(y)) || x.idx - y.idx;
 });
-function pushBack() { if (hasCard()) state.back.push(state.ent ? { ent: state.ent } : state.rsp ? { rsp: state.rsp } : state.post ? { post: state.post } : { inc: state.sel }); }
+function pushBack() { if (hasCard()) state.back.push(state.ent ? { ent: state.ent } : state.rsp ? { rsp: state.rsp } : state.post ? { post: state.post } : state.writer ? { writer: state.writer } : { inc: state.sel }); }
 function backBtn() {
   const b = state.back[state.back.length - 1]; if (!b) return null;
-  const label = b.ent ? AFF_BY_ID.get(b.ent).name : b.rsp ? RSP_BY_ID.get(b.rsp).title : b.post ? (POST_BY_ID.get(b.post).title || POST_BY_ID.get(b.post).name + '’s post') : BY_ID.get(b.inc).title;
+  const label = b.ent ? AFF_BY_ID.get(b.ent).name : b.rsp ? RSP_BY_ID.get(b.rsp).title : b.post ? (POST_BY_ID.get(b.post).title || POST_BY_ID.get(b.post).name + '’s post') : b.writer ? writerName(b.writer) : BY_ID.get(b.inc).title;
   return h('button', { class: 'back', type: 'button', 'data-tip': `Back to ${label}`, onclick: () => {
     state.back.pop();
     const o = { keepBack: true, focus: true };
-    if (b.ent) selectEnt(b.ent, o); else if (b.rsp) selectRsp(b.rsp, o); else if (b.post) selectPost(b.post, o); else { if (state.view === 'wiki') leaveInside(); select(b.inc, o); }
+    if (b.ent) selectEnt(b.ent, o); else if (b.rsp) selectRsp(b.rsp, o); else if (b.post) selectPost(b.post, o); else if (b.writer) selectWriter(b.writer, o); else { if (state.view === 'wiki') leaveInside(); select(b.inc, o); }
   } }, h('span', { 'aria-hidden': 'true', text: '← ' }), h('span', { class: 'back-l', text: label }));
 }
 const incOptions = () => [...INC].sort((a, b) => a.n - b.n).map(e => ({ v: e.id, label: e.title, sub: `Disclosed ${fmtY(e.main.d)} · ${e.status}` }));
@@ -2162,7 +2263,7 @@ function renderView() {
 function refreshCard() {
   const det = $('#det'), f = [...det.querySelectorAll('button,a')].indexOf(document.activeElement);
   const o = { keepBack: true, quiet: true };
-  if (state.sel) select(state.sel, o); else if (state.ent) selectEnt(state.ent, o); else if (state.rsp) selectRsp(state.rsp, o); else if (state.post) selectPost(state.post, o);
+  if (state.sel) select(state.sel, o); else if (state.ent) selectEnt(state.ent, o); else if (state.rsp) selectRsp(state.rsp, o); else if (state.post) selectPost(state.post, o); else if (state.writer) selectWriter(state.writer, o);
   const g = f >= 0 && det.querySelectorAll('button,a')[f]; if (g) g.focus({ preventScroll: true });
 }
 /* ---------------------------------------------------------------- details */
@@ -2188,7 +2289,7 @@ function markSelected() {
     const id = r.dataset.postRow, p = W && POST_BY_ID.get(id), s = W && state.post && POST_BY_ID.get(state.post);
     r.setAttribute('aria-selected', String(id === state.post));
     if (r.classList.contains('msg')) r.setAttribute('tabindex', id === state.post || (!state.post && r === document.querySelector('.msg')) ? '0' : '-1');
-    r.classList.toggle('rel', !!(p && s && p !== s && ((p.reply && p.reply.to === s.id) || (s.reply && s.reply.to === p.id))));
+    r.classList.toggle('rel', !!(p && s && p !== s && ((p.reply && p.reply.to === s.id) || (s.reply && s.reply.to === p.id))) || !!(p && state.writer && p.who === state.writer));
   });
   /* with an incident open, the Affected chart dims other incidents' involvements */
   document.querySelectorAll('.inv[data-inc]').forEach(g => g.classList.toggle('dim', !!state.sel && g.dataset.inc !== state.sel));
@@ -2207,18 +2308,8 @@ function scrollToRow(row, instant) {
   const r = row.getBoundingClientRect(), top = $('#bar').offsetHeight + AXIS_H + 2, bottom = innerHeight - $('#foot').offsetHeight;
   if (r.top < top || r.bottom > bottom) row.scrollIntoView({ block: 'center', behavior: instant ? 'auto' : 'smooth' });
 }
-const DOCK_L = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.75" y="2.75" width="12.5" height="10.5" rx="1.5"/><path d="M6.25 2.75v10.5"/><path d="M3.5 5.5h1M3.5 7.5h1" stroke-linecap="round"/></svg>';
-const DOCK_R = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.75" y="2.75" width="12.5" height="10.5" rx="1.5"/><path d="M9.75 2.75v10.5"/><path d="M11.5 5.5h1M11.5 7.5h1" stroke-linecap="round"/></svg>';
-function setDock(d) {
-  dock = d;
-  try { localStorage.setItem('dock', d); } catch (e) { /* storage unavailable */ }
-  $('#main').classList.toggle('left', d === 'left');
-  hideTip(); refreshCard();
-}
 function navBtns(order, i, go, noun) {
-  const toLeft = dock === 'right';
   return h('span', { class: 'nav' },
-    mobileMQ.matches ? null : h('button', { class: 'btn', type: 'button', 'aria-label': toLeft ? 'Move the panel to the left' : 'Move the panel to the right', 'data-tip': toLeft ? 'Move the panel to the left' : 'Move the panel to the right', html: toLeft ? DOCK_L : DOCK_R, onclick: () => setDock(toLeft ? 'left' : 'right') }),
     h('button', { class: 'btn', type: 'button', 'aria-label': `Previous ${noun}`, 'data-tip': `Previous ${noun} (↑)`, disabled: i <= 0 ? true : null, onclick: i > 0 ? () => go(order[i - 1].id) : null }, '↑'),
     h('button', { class: 'btn', type: 'button', 'aria-label': `Next ${noun}`, 'data-tip': `Next ${noun} (↓)`, disabled: i < 0 || i >= order.length - 1 ? true : null, onclick: i >= 0 && i < order.length - 1 ? () => go(order[i + 1].id) : null }, '↓'),
     h('button', { class: 'btn', type: 'button', 'aria-label': 'Close details', 'data-tip': 'Close (Esc)', onclick: clearSel }, '✕'));
@@ -2274,12 +2365,12 @@ function finishCard(hashS, row, opts, hadCard) {
   const push = !hadCard && !opts.instant && !opts.quiet;
   if (setHash(hashS, push) && push) state.pushed = true;
 }
-const hasCard = () => !!(state.sel || state.ent || state.rsp || state.post);
+const hasCard = () => !!(state.sel || state.ent || state.rsp || state.post || state.writer);
 function selectEnt(id, opts = {}) {
   const hadCard = hasCard();
   const a = AFF_BY_ID.get(id); if (!a) return;
   if (!opts.keepBack) state.back = [];
-  state.ent = id; state.sel = null; state.rsp = null; state.post = null;
+  state.ent = id; state.sel = null; state.rsp = null; state.post = null; state.writer = null;
   markSelected();
   const from = state.back[state.back.length - 1];
   const order = from && from.inc ? incSites(from.inc) : affRows(), i = order.findIndex(x => x.id === id);
@@ -2302,7 +2393,7 @@ function select(id, opts = {}) {
   const hadCard = hasCard();
   const e = BY_ID.get(id); if (!e) return;
   if (!opts.keepBack) state.back = [];
-  state.sel = id; state.ent = null; state.rsp = null; state.post = null;
+  state.sel = id; state.ent = null; state.rsp = null; state.post = null; state.writer = null;
   markSelected();
   const items = [];
   if (!e.activity.length && e.noDates) items.push({ d: '0000', label: '—', k: 'act', t: e.noDates });
@@ -2354,7 +2445,7 @@ function selectRsp(id, opts = {}) {
   const hadCard = hasCard();
   const r = RSP_BY_ID.get(id); if (!r) return;
   if (!opts.keepBack) state.back = [];
-  state.rsp = id; state.sel = null; state.ent = null; state.post = null;
+  state.rsp = id; state.sel = null; state.ent = null; state.post = null; state.writer = null;
   markSelected();
   const byD = (x, y) => x.d.localeCompare(y.d) || x.idx - y.idx;
   const from = state.back[state.back.length - 1];
@@ -2379,7 +2470,7 @@ function selectRsp(id, opts = {}) {
 }
 function clearSel(opts = {}) {
   const had = state.sel || state.ent || state.rsp || state.post;
-  state.sel = null; state.ent = null; state.rsp = null; state.post = null; state.back = [];
+  state.sel = null; state.ent = null; state.rsp = null; state.post = null; state.writer = null; state.back = [];
   markSelected();
   $('#det').hidden = true; $('#pane-empty').hidden = false;
   $('#main').classList.remove('open');
@@ -2558,12 +2649,9 @@ function prepWiki() {
   AT = new Map(); Object.entries(IDENT).forEach(([who, id]) => { AT.set(id.moniker.toLowerCase(), who); AT.set(who.toLowerCase(), who); });
   POSTS.forEach(p => { if (!AT.has(p.who.toLowerCase())) AT.set(p.who.toLowerCase(), p.who); if (!AT.has(p.label.toLowerCase())) AT.set(p.label.toLowerCase(), p.who); });
   if (!WPAGE.has(state.wiki.page)) state.wiki.page = WIKI_HOME;
-  put($('#glossary'), ...W.glossary.map(g => h('li', {}, h('b', { text: g.term }), g.meaning)));
+  put($('#glossary'), ...W.glossary.map(g => h('div', { class: 'gl-row' }, h('dt', { text: g.term }), h('dd', { text: g.meaning }))));
+  $('#howto-n').textContent = W.provenance.totalRevisions.toLocaleString();
 }
-const SAYS = { result: 'Reported result', predict: 'Prediction', ask: 'Request or plan', correct: 'Correction' };
-const SAYS_TIP = { result: 'Posts with words like “confirmed”, “answered” or “submitted”: the writer reports something as having happened.', predict: 'Posts with words like “due”, “expected” or “likely”: the writer projects something that has not happened yet.',
-  ask: 'Posts with words like “please”, “relay” or “will”: the writer asks for something or announces a plan.', correct: 'Posts with words like “correction” or “retracted”: the writer revises an earlier statement.' };
-const SAYS_NOTE = 'Literal word matches, not a verified classification.';
 const pageOf = p => WPAGE.get(p.page), groupOf = p => WGROUP.get(p.group);
 const archiveUrl = p => W.provenance.archive + encodeURIComponent(p.page) + '#rev-' + p.seq;
 const shortId = id => id.replace(/^dse~/, '');
@@ -2599,7 +2687,8 @@ function humanize(label) {
 const monikerOf = who => (IDENT[who] && IDENT[who].moniker) || '';
 const nameOf = p => monikerOf(p.who) || humanize(p.who);
 const hueOf = who => { let x = 7; for (const c of who) x = (x * 31 + c.charCodeAt(0)) >>> 0; return (x % 12) * 30; };
-const avatar = p => { const w = nameOf(p).split(/[\s-]+/); return (w.length > 1 ? w[0][0] + w[1][0] : w[0].slice(0, 2)).toUpperCase(); };
+const avatarOf = who => { const w = (monikerOf(who) || humanize(who)).split(/[\s-]+/); return (w.length > 1 ? w[0][0] + w[1][0] : w[0].slice(0, 2)).toUpperCase(); };
+const avatar = p => avatarOf(p.who);
 const sameName = p => p.sigs.length && p.sigs.includes(p.label);
 function whoTip(p) {
   const id = IDENT[p.who], lines = [];
@@ -2613,7 +2702,7 @@ function whoTip(p) {
 const wikiPosts = () => POSTS.filter(p => p.page === state.wiki.page);
 function wikiRows() {
   const s = state.wiki, q = s.q.trim().toLowerCase(), r = state.range && !state.range.preset ? state.range : null;
-  return wikiPosts().filter(p => (!s.who || p.who === s.who) && (!s.round || p.rounds.includes(s.round)) && (!s.says || p.says.includes(s.says))
+  return wikiPosts().filter(p => (!s.who || p.who === s.who) && (!s.round || p.rounds.includes(s.round))
     && (!r || (p.day >= r.a && p.day <= r.b))
     && (!q || [p.text, p.removed, p.label, p.sigs.join(' '), p.title, p.reading, p.chat, nameOf(p)].join('\n').toLowerCase().includes(q)));
 }
@@ -2767,7 +2856,7 @@ function renderTabs() {
 function enterInside(id, opts = {}) {
   scrollMem[scrollKey()] = scrollY;
   if (state.view !== 'wiki') state.from = { view: state.view, sel: state.sel, ent: state.ent, rsp: state.rsp };
-  state.inside = id || null; state.sel = null; state.ent = null; state.rsp = null; state.post = null;
+  state.inside = id || null; state.sel = null; state.ent = null; state.rsp = null; state.post = null; state.writer = null;
   if (!opts.keepBack) state.back = [];
   $('#det').hidden = true; $('#pane-empty').hidden = false; $('#main').classList.remove('open'); pane.classList.remove('open', 'full'); scrim.classList.remove('open');
   /* a fresh entry starts at the top of the feed, with the thread's context open; nothing is selected */
@@ -2779,7 +2868,7 @@ function enterInside(id, opts = {}) {
 function leaveInside() {
   const f = state.from || { view: 'timeline' };
   scrollMem[scrollKey()] = scrollY;
-  state.from = null; state.inside = null; state.post = null; state.back = [];
+  state.from = null; state.inside = null; state.post = null; state.writer = null; state.back = [];
   $('#det').hidden = true; $('#pane-empty').hidden = false; $('#main').classList.remove('open'); pane.classList.remove('open', 'full'); scrim.classList.remove('open');
   setView(f.view || 'timeline');
   const o = { instant: true };
@@ -2790,7 +2879,7 @@ const insideBtn = (id, label) => h('button', { class: 'btn primary', type: 'butt
 function setWikiPage(key) {
   const s = state.wiki;
   if (!key || key === s.page) return;
-  s.page = key; s.who = null; s.round = null; s.says = null;
+  s.page = key; s.who = null; s.round = null;
   if (state.post && POST_BY_ID.get(state.post).page !== key) clearSel();
   renderTabs(); renderFilters(); renderView();
 }
@@ -2882,15 +2971,15 @@ function ctxPanel() {
   const pg = WPAGE.get(state.wiki.page), g = WGROUP.get(pg.group), open = ctxOpen(pg.key);
   const toggle = () => { wikiCtx[pg.key] = open ? 'closed' : 'open'; try { localStorage.setItem('wikiCtx2', JSON.stringify(wikiCtx)); } catch (e) { /* storage unavailable */ } renderView(); };
   const voice = state.wiki.voice, retold = wikiMode() === 'chat' && voice !== 'orig';
-  const bf = g.brief || {}, has = ['task', 'rules', 'goal', 'channel'].some(k => bf[k]), watch = (pg.watch || []).filter(Boolean);
+  const bf = g.brief || {}, watch = (pg.watch || []).filter(Boolean);
   const row = (k, label, v, cls) => (v ? [h('dt', { text: label, 'data-f': k }), h('dd', { class: cls || null, 'data-f': k }, v)] : null);
   return [h('section', { class: 'ctx' + (open ? '' : ' closed'), 'aria-label': 'Before you read: this thread' },
     h('button', { class: 'ctx-h', type: 'button', 'aria-expanded': String(open), 'data-tip': open ? 'Fold the briefing to one line' : 'Show the briefing: the task, who is here and what to watch for', onclick: toggle },
       h('span', { class: 'ctx-e', text: 'Before you read' }), h('b', { text: pg.title }), h('span', { class: 'ctx-m', text: `${g.name} · ${pg.count} posts · ${pg.labels} labels` }), h('span', { class: 'ctx-t', text: open ? 'Hide' : 'Show' })),
     open ? h('div', { class: 'ctx-b' },
       h('dl', { class: 'bf' },
-        has ? [row('task', 'Task', bf.task, 'lead'), row('rules', 'How it works', bf.rules), row('goal', 'What they want', bf.goal), row('channel', 'Why a wiki', bf.channel)]
-          : [row('task', 'Task', g.task, 'lead'), row('story', 'The story', g.story || g.description)],
+        row('task', 'Task', bf.task || g.task, 'lead'),
+        row('setup', 'The setup', g.setup || g.story || g.description),
         row('who', 'Who is here', whoChips()),
         row('thread', 'This thread', pg.intro),
         row('watch', 'Watch for', watch.length ? h('ul', {}, watch.map(w => h('li', { text: w }))) : null)),
@@ -2937,7 +3026,7 @@ function renderWiki() {
   }
   if (!W) { put($('#view'), h('div', { class: 'loading', text: 'Loading the wiki posts…' })); $('#count').textContent = ''; put($('#foot')); loadWiki(() => { if (inWiki()) { renderTabs(); renderBarR(); renderFilters(); renderView(); } }); return; }
   if (wikiMode() === 'page') renderWikiPage(); else renderWikiChat();
-  markSelected(); renderWikiFoot();
+  markSelected(); renderWikiFoot(); maybeIntro();
 }
 function renderWikiChat() {
   const s = state.wiki, rows = wikiRows();
@@ -2962,9 +3051,7 @@ function chatNodes(text) {
     if (!who) continue;
     if (m.index > last) out.push(text.slice(last, m.index));
     const label = monikerOf(who) || humanize(who), on = here.has(who);
-    out.push(on ? h('button', { class: 'at', type: 'button', text: '@' + label, style: `--av-h:${hueOf(who)}`, 'data-tip': `${label} (${who}). Click to show only this writer’s posts.`,
-      onclick: ev => { ev.stopPropagation(); state.wiki.who = state.wiki.who === who ? null : who; renderFilters(); renderView(); } })
-      : h('span', { class: 'at', text: '@' + label, style: `--av-h:${hueOf(who)}`, 'data-tip': `${label} (${who}), a writer on another thread` }));
+    out.push(h('button', { class: 'at', type: 'button', text: '@' + label, style: `--av-h:${hueOf(who)}`, 'data-tip': `${label} (${who})${on ? '' : ', a writer on another thread'}. Click to open the writer’s card.`, onclick: ev => openWriter(who, ev) }));
     last = m.index + m[0].length;
   }
   if (last < text.length) out.push(text.slice(last));
@@ -3030,7 +3117,7 @@ function msgEl(p, first) {
     h('span', { class: 'av', 'aria-hidden': 'true', text: avatar(p), style: `--av-h:${hueOf(p.who)}` }),
     h('div', {},
       h('div', { class: 'msg-h' },
-        h('b', { text: nameOf(p), 'data-tip': whoTip(p) }),
+        h('button', { class: 'wname', type: 'button', 'data-tip': whoTip(p) + '\nClick to open the writer’s card.', onclick: ev => openWriter(p.who, ev) }, h('b', { text: nameOf(p) })),
         id ? h('span', { class: 'lit', text: p.who, 'data-tip': whoTip(p) }) : null,
         p.sigs.length && !sameName(p) ? h('span', { class: 'aka', text: `saved as ${p.label}`, 'data-tip': whoTip(p) }) : null,
         h('span', { class: 't', text: p.clock + ' UTC', 'data-tip': `Saved by the wiki at ${p.time.replace('T', ' ').replace('Z', ' UTC')} (±${p.unc} s). Times quoted inside the text belong to the writer’s own task clock.` }),
@@ -3072,76 +3159,118 @@ function renderWikiPage() {
   put($('#view'), ctxPanel(), head, doc);
   if (firstCh) requestAnimationFrame(() => scrollToRow(firstCh, true));
 }
-/* ---- footer legend: the kinds of statement (click to filter), replies, glossary */
+/* ---- footer legend: replies, the glossary, the explainer */
 function renderWikiFoot() {
-  const s = state.wiki, foot = $('#foot'); foot.classList.toggle('filtering', !!s.says);
+  const foot = $('#foot'); foot.classList.remove('filtering');
   put(foot,
-    h('span', { class: 'lg-group' }, h('span', { text: 'Says', 'data-tip': SAYS_NOTE }), Object.keys(SAYS).map(k => lgBtn({ on: s.says === k, filter: true, title: SAYS[k], tip: SAYS_TIP[k] + (s.says === k ? '\nClick to show every post.' : '\nClick to show only these posts.'),
-      onclick: () => { s.says = s.says === k ? null : k; renderView(); } }, SAYS[k]))),
-    h('span', { class: 'lg-sep', 'aria-hidden': 'true' }),
     h('span', { class: 'lg', 'data-tip': 'A reply is shown only where the text itself names an earlier writer, for example “Thanks Jul08OAI” or “@Nov09”.' }, h('span', { class: 'arr', text: '↩' }), 'Named in the text'),
-    h('button', { class: 'lg-clear', type: 'button', text: 'Glossary', 'data-tip': 'What the shorthand means, and where the posts come from', onclick: openViewInfo }),
+    h('button', { class: 'lg-clear', type: 'button', text: 'Glossary', 'data-tip': 'What the shorthand in the posts means', onclick: openGloss }),
+    h('button', { class: 'lg-clear', type: 'button', text: 'How to read this', 'data-tip': 'Pages, saves, posts, names: what you are looking at', onclick: openViewInfo }),
     h('span', { class: 'sum', text: `${POSTS.length} posts in ${W.pages.length} threads, from ${W.provenance.totalRevisions.toLocaleString()} archived revisions` }));
 }
 /* ---- the card for one post */
 /* the card's sections: each folds, and one remembered state per section applies to every card */
-const SEC_OPEN = { orig: true, plain: true, chat: false, more: true };
+const SEC_OPEN = { orig: true, plain: true, chat: false, note: true, terms: true, more: true };
+const SEC_TIP = { note: 'What the editors add about this post: where it sits in the thread and what it refers to. Not something the post says.', terms: 'The shorthand this post uses and what it means here. Hover a row to find the term in the Original.', chat: 'The post retold as a group-chat message, by the editors.', plain: 'The post in plain English, clause by clause.', orig: 'The text as the writer saved it.', more: 'Who wrote it, who and what it names, and where it is archived.' };
 const wikiSec = {}; try { for (const k in SEC_OPEN) { const v = localStorage.getItem('wikiSec.' + k); if (v === 'open' || v === 'closed') wikiSec[k] = v === 'open'; } } catch (e) { /* storage unavailable */ }
 const secOpen = k => (k in wikiSec ? wikiSec[k] : SEC_OPEN[k]);
 function section(key, title, ...body) {
   return h('details', { class: 'sec', 'data-sec': key, open: secOpen(key) || null,
     ontoggle: ev => { const o = ev.currentTarget.open; if (o === secOpen(key)) return; wikiSec[key] = o; try { localStorage.setItem('wikiSec.' + key, o ? 'open' : 'closed'); } catch (e) { /* storage unavailable */ } } },
-    h('summary', {}, h('h3', { text: title })), h('div', { class: 'sec-b' }, body));
+    h('summary', {}, h('h3', { text: title, 'data-tip': SEC_TIP[key] || null })), h('div', { class: 'sec-b' }, body));
 }
-const SAYS_VERB = { result: 'reports a result', predict: 'makes a prediction', ask: 'asks for something or announces a plan', correct: 'corrects an earlier statement' };
-const andList = xs => xs.map((x, k) => [k ? (k === xs.length - 1 ? ' and ' : ', ') : '', x]);
-/* which writer on this thread a name in the text points to: its label or signature ends with the name (with or without OAI) */
-const tagOf = (w, m) => w === m || w.endsWith(m) || w.endsWith(m + 'OAI');
-function nameWriter(m) { const q = wikiPosts().find(q => tagOf(q.who, m) || tagOf(q.label, m)); return q ? q.who : null; }
-/* Details: fields and values. Every link filters or searches the feed; names and terms light up with the Original. */
+/* the cohort tag is the tail of a label ("AgentX" in "CashierCoordAgentX", "Jul08OAI" in "CashierCoordJul08OAI"); the text calls runs by it */
+const TAG_RE = /((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\d{2}(?:OAI|X\d*)?|AgentX|OurRun)$/;
+const tagOfWho = who => { const m = who.match(TAG_RE); return m ? m[1] : null; };
+const writerName = who => monikerOf(who) || humanize(who);
+const writerPosts = who => POSTS.filter(p => p.who === who);
+const lc = t => t.charAt(0).toLowerCase() + t.slice(1);
+const cutShort = (t, n = 96) => (t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t);
+/* which writer a name in the text points to: its label or signature ends with the name (with or without OAI); this thread first,
+   then the same task's other threads. Never another task: cohort tags are dates and recur across tasks. */
+const tagOf = (w, m) => w === m || new RegExp(m + '(?:OAI|X\\d*)?$').test(w);
+function nameWriter(m, p) { const hit = q => tagOf(q.who, m) || tagOf(q.label, m); const q = wikiPosts().find(hit) || POSTS.find(q => q.group === p.group && hit(q)); return q ? q.who : null; }
+const openWriter = (who, ev) => { if (ev) ev.stopPropagation(); pushBack(); selectWriter(who, { keepBack: true, focus: true }); };
+/* a name chip: the tag as the text writes it, then the nickname it resolves to here; a click opens the writer's card */
+function nameChip(p, m) {
+  const link = 'nm:' + m, own = tagOf(p.label, m) || p.sigs.some(sg => tagOf(sg, m));
+  const who = own ? p.who : nameWriter(m, p);
+  if (!who) return h('span', { class: 'nchip', 'data-link': link, 'data-tip': `${m} names a run that does not write on any thread here. Hover to find it in the Original.` }, h('b', { text: m }), h('span', { class: 'nn', text: 'not a writer here' }));
+  const here = wikiPosts().some(q => q.who === who), nick = monikerOf(who);
+  const tip = own ? `${m} is the tail of this writer’s own label, ${p.who}: the writer naming itself.`
+    : `${m} is the tail of the label ${who}: ${nick ? `the writer called ${nick} here` : 'a writer with no nickname yet'}${here ? '' : ', on another thread'}.`;
+  return h('button', { class: 'nchip', type: 'button', 'data-link': link, style: `--av-h:${hueOf(who)}`, 'data-tip': tip + '\nClick to open the writer’s card.', onclick: ev => openWriter(who, ev) },
+    h('b', { text: m }), h('span', { class: 'nw', text: nick || humanize(who) }), own ? h('span', { class: 'nn', text: 'this writer' }) : !here ? h('span', { class: 'nn', text: 'other thread' }) : null);
+}
+/* a question chip: the number as the text writes it, and what that question asked for, from the task's table; a click filters the feed */
+function qChip(p, r, filt) {
+  const s = state.wiki, g = groupOf(p), qq = (g.questions || []).find(x => x.n === r), q = qq && !/^unknown$/i.test(qq.field) ? qq : null, on = s.round === r;
+  const st = q && (q.status === 'confirmed' ? '' : q.status === 'signaled' ? ' (signaled)' : ' (expected)');
+  const tip = (q ? `Question ${r}${q.status === 'confirmed' ? ' asked for' : q.status === 'signaled' ? ' was signaled as' : ' is expected to be'} ${q.field}${q.value ? ` (${q.value})` : ''}.${q.note ? ' ' + q.note : ''}`
+    : `Question ${r} of the task sequence. What it asked for is not established by these posts.${qq && qq.note ? ' ' + qq.note : ''}`) + (on ? '\nClick to show every post.' : `\nClick to show only the posts that mention question ${r}.`);
+  return h('button', { class: 'qchip', type: 'button', 'aria-pressed': String(on), 'data-tip': tip, onclick: filt(() => { s.round = on ? null : r; }) },
+    h('b', { text: 'Q' + r }), q ? h('span', { text: q.field + st }) : h('span', { class: 'nn', text: 'not yet known' }));
+}
+/* the shorthand a post uses, with the forms it takes in it; each row lights up with the term in the Original */
+function termRows(p) {
+  return W.glossary.map((g, k) => { const forms = [...new Set([...p.text.matchAll(new RegExp(g.re, 'g'))].map(x => x[0]))];
+    return forms.length ? h('div', { class: 'tm-row', 'data-link': 'gl:' + k }, h('dt', { text: forms.join(' · ') }), h('dd', { text: g.meaning })) : null; }).filter(Boolean);
+}
+const archTip = p => { const pg = pageOf(p); return `Opens the archive at edit #${p.seq} of ${pg.count}, marked only by a thin bar on its left.` + (p.seq < pg.count ? ` A tinted box right below it is edit #${p.seq + 1}, the next save, not the post you clicked.` : ''); };
+const archLink = p => h('a', { class: 'arch', href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: 'collusion.wiki ↗', 'data-tip': archTip(p) });
+/* Details: standardized fields. The writer opens its card, names and questions are chips, the source links the archive. */
 function detailsGrid(p, filt) {
-  const s = state.wiki, pg = pageOf(p), id = IDENT[p.who];
-  const sig = (p.text.trim().match(/--\s*([A-Z][A-Za-z0-9_]+)\s*$/) || [])[1];
+  const pg = pageOf(p);
   const row = (label, v, tip) => (v == null || (Array.isArray(v) && !v.length) ? null : [h('dt', { text: label, 'data-tip': tip || null }), h('dd', {}, v)]);
-  const sep = () => h('span', { class: 'dot-sep', 'aria-hidden': 'true', text: '·' });
-  const writer = h('span', { class: 'who-v' }, h('b', { text: nameOf(p) }), sep(),
-    sig ? ['signs ', h('span', { class: 'mono', text: sig }), sep(), sig === p.label ? h('span', { class: 'dim', text: 'also the saved label' }) : ['saved under ', h('span', { class: 'mono', text: p.label })]]
-      : [h('span', { class: 'dim', text: 'no signature' }), sep(), 'saved under ', h('span', { class: 'mono', text: p.label })],
-    id ? h('span', { class: 'sub', text: `Called ${id.moniker} because it ${id.role.charAt(0).toLowerCase() + id.role.slice(1)}.` }) : null);
-  const own = m => tagOf(p.label, m) || (sig && tagOf(sig, m));
-  const names = p.mentions.map(m => {
-    const link = 'nm:' + m;
-    if (own(m)) return h('span', { class: 'nchip', 'data-link': link, 'data-tip': `${m} is the end of this writer’s own label: the writer naming itself.` }, h('b', { text: m }), h('span', { class: 'nn', text: 'its own tag' }));
-    const who = nameWriter(m);
-    if (who) { const on = s.who === who; return h('button', { class: 'nchip', type: 'button', 'data-link': link, style: `--av-h:${hueOf(who)}`, 'aria-pressed': String(on),
-      'data-tip': `${m} is a writer on this thread: ${monikerOf(who) || humanize(who)} (${who}).` + (on ? '\nClick to show every writer.' : '\nClick to show only its posts.'),
-      onclick: filt(() => { s.who = on ? null : who; }) }, h('b', { text: m }), monikerOf(who) ? h('span', { class: 'nw', text: monikerOf(who) }) : null); }
-    const on = s.q === m;
-    return h('button', { class: 'nchip', type: 'button', 'data-link': link, 'aria-pressed': String(on), 'data-tip': `${m} does not write on this thread.` + (on ? '\nClick to clear the search.' : `\nClick to search this thread for “${m}”.`),
-      onclick: filt(() => { s.q = on ? '' : m; }) }, h('b', { text: m }), h('span', { class: 'nn', text: 'search' }));
-  });
-  const link = (on, text, tip, set) => h('button', { class: 'about-l', type: 'button', 'aria-pressed': String(on), text, 'data-tip': tip + (on ? '\nClick to show every post.' : '\nClick to show only these posts.'), onclick: filt(set) });
-  const qs = p.rounds.map(r => link(s.round === r, `question ${r}`, `Posts that mention question ${r} (R${r}, Q${r} or G${r} in the text).`, () => { s.round = s.round === r ? null : r; }));
-  const says = p.says.map((k, j) => { const t = SAYS_VERB[k]; return link(s.says === k, j ? t : t.charAt(0).toUpperCase() + t.slice(1), SAYS_TIP[k] + '\n' + SAYS_NOTE, () => { s.says = s.says === k ? null : k; }); });
-  /* every glossary term that occurs in this post, with the forms it takes here */
-  const terms = W.glossary.map((g, k) => { const forms = [...new Set([...p.text.matchAll(new RegExp(g.re, 'g'))].map(x => x[0]))]; return forms.length ? h('li', { 'data-link': 'gl:' + k, 'data-tip': g.term, 'data-tip-title': 'Glossary' }, h('span', { class: 'tm', text: forms.join(' · ') }), g.meaning) : null; }).filter(Boolean);
+  const writer = h('span', { class: 'who-v' },
+    h('button', { class: 'wlink', type: 'button', style: `--av-h:${hueOf(p.who)}`, 'data-tip': whoTip(p) + '\nClick to open the writer’s card.', onclick: ev => openWriter(p.who, ev) }, h('b', { text: nameOf(p) })),
+    h('span', { class: 'mono', text: p.who, 'data-tip': p.whoFrom === 'sig' ? 'The signature the writer typed at the end of the text; the name comes from it.' : 'The label the wiki stored with this edit; the text has no signature.' }));
   const notes = [p.fixes ? h('p', { class: 'task', text: 'The archived text of this post stored UTF-8 bytes as Latin-1 characters; it is repaired for display here. The archive link shows it as stored.' }) : null,
     p.placeholder ? h('p', { class: 'task', text: 'This save also kept the wiki’s placeholder line for a new page (“Beschreibe hier die neue Seite”), omitted here.' }) : null,
     p.removed ? [h('p', { class: 'task', text: 'Text this save replaced:' }), h('p', { class: 'rm', text: p.removed })] : null].filter(Boolean);
   return h('dl', { class: 'kv' },
-    row('Writer', writer, whoTip(p)),
-    row('Names in the text', names.length ? h('div', { class: 'nchips' }, names) : null, 'Run tags that appear in the text. Hover one to find it in the Original.'),
-    row('Questions', qs.length ? andList(qs) : null),
-    row('Says', says.length ? andList(says) : null, SAYS_NOTE),
-    row('Terms', terms.length ? h('ul', { class: 'terms' }, terms) : null, 'The shorthand in this post. Hover a term to find it in the Original.'),
-    row('Context', p.note || null),
+    row('Writer', writer, 'Who wrote this post: the nickname given here, and the name the wiki stored.'),
+    row('Names in the text', p.mentions.length ? h('div', { class: 'nchips' }, p.mentions.map(m => nameChip(p, m))) : null, 'Runs named in the text, by the tag they go by, and who that is here. Hover one to find it in the Original.'),
+    row('Questions', p.rounds.length ? h('div', { class: 'nchips' }, p.rounds.map(r => qChip(p, r, filt))) : null, 'The questions this post mentions, and what each asked for.'),
     row('Source', h('div', { class: 'srcline' },
-      h('a', { href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: `collusion.wiki, revision ${p.seq} of ${pg.count} ↗`,
-        'data-tip': `Opens the archive at edit #${p.seq} of ${pg.count}, marked only by a thin bar on its left.` + (p.seq < pg.count ? ` A tinted box right below it is edit #${p.seq + 1}, the next save, not the post you clicked.` : '') }),
+      h('a', { href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: `collusion.wiki, revision ${p.seq} of ${pg.count} ↗`, 'data-tip': archTip(p) }),
       h('span', { class: 'mono', text: `saved ${p.time.replace('T', ' ').replace('Z', '')} UTC ±${p.unc} s`, 'data-tip': 'The wiki’s own record of this save. SHA-256 of the archived page body: ' + p.hash }),
       wikiMode() === 'chat' ? h('button', { class: 'mini-link', type: 'button', text: 'Show on the wiki page', onclick: () => setMode('page') })
         : h('button', { class: 'mini-link', type: 'button', text: 'Back to the chat', onclick: () => setMode('chat') }))),
     row('Notes', notes.length ? notes : null));
+}
+const closeBtn = () => h('span', { class: 'nav' }, h('button', { class: 'btn', type: 'button', 'aria-label': 'Close details', 'data-tip': 'Close (Esc)', onclick: clearSel }, '✕'));
+/* ---- the card for one writer: the nickname and why, the label and signatures, where it writes, its posts across threads */
+function selectWriter(who, opts = {}) {
+  if (!W) { loadWiki(() => selectWriter(who, opts)); return; }
+  const hadCard = hasCard(), mine = writerPosts(who); if (!mine.length) return;
+  if (!opts.keepBack) state.back = [];
+  if (!inWiki() && !opts.quiet) enterInside(WIKI_INC, { keepBack: true });
+  state.writer = who; state.post = null; state.sel = null; state.ent = null; state.rsp = null;
+  markSelected();
+  const s = state.wiki, id = IDENT[who], name = writerName(who), tag = tagOfWho(who), here = wikiPosts().some(p => p.who === who), on = s.who === who;
+  const sigs = [...new Set(mine.flatMap(p => p.sigs))], labels = [...new Set(mine.map(p => p.label))];
+  const pages = [...new Set(mine.map(p => p.page))].map(k => ({ pg: WPAGE.get(k), n: mine.filter(p => p.page === k).length }));
+  const filt = set => () => { set(); renderFilters(); renderView(); refreshCard(); };
+  const row = (label, v, tip) => (v == null || (Array.isArray(v) && !v.length) ? null : [h('dt', { text: label, 'data-tip': tip || null }), h('dd', {}, v)]);
+  const monos = xs => xs.map((x, k) => [k ? ', ' : '', h('span', { class: 'mono', text: x })]);
+  const card = h('div', { class: 'det' }, backBtn(),
+    h('div', { class: 'det-top' }, topLine('Writer', `${mine.length} post${mine.length === 1 ? '' : 's'} in ${pages.length} thread${pages.length === 1 ? '' : 's'}`), closeBtn()),
+    h('h2', { id: 'det-title', tabindex: '-1', class: 'wh2' }, h('span', { class: 'av', 'aria-hidden': 'true', text: avatarOf(who), style: `--av-h:${hueOf(who)}` }), name, id ? h('span', { class: 'lit', text: who }) : null),
+    h('p', { class: 'why' }, id ? `Called ${name} here because it ${lc(id.role)}. The nickname is the editors’; the label is the writer’s own.` : 'No nickname yet: the name is the label, spaced out.'),
+    h('dl', { class: 'kv' },
+      row('Label', monos(labels), 'The label the wiki stored with each edit. Typed by the writer, so not a verified identity; one label need not be one agent.'),
+      row('Signs as', sigs.length ? monos(sigs) : h('span', { class: 'dim', text: 'never signs; the name comes from the label' }), 'The signature typed at the end of the text (“-- Name”). Where it differs from the label, the signature is the name.'),
+      row('Goes by', tag ? [h('span', { class: 'mono', text: tag }), h('span', { class: 'sub', text: 'The tail of the label, which is how the runs refer to each other in the text.' })] : null),
+      row('Writes on', h('ul', { class: 'wpages' }, pages.map(({ pg, n }) => h('li', {}, h('button', { class: 'mini-link', type: 'button', text: pg.title, 'data-tip': `Open this thread with only ${name}’s posts shown`,
+        onclick: () => { if (pg.key !== s.page) setWikiPage(pg.key); s.who = who; renderFilters(); renderView(); refreshCard(); } }), h('span', { class: 'dim', text: ` · ${n} post${n === 1 ? '' : 's'}` }))))),
+      row('Posts', h('ol', { class: 'wposts' }, mine.map(p => h('li', {}, h('button', { class: 'wpost', type: 'button', 'data-tip': 'Open this post', onclick: () => { pushBack(); selectPost(p.id, { keepBack: true, focus: true }); } },
+        h('span', { class: 'mono', text: `${fmtY(p.day)} ${p.clock}` }), h('span', { class: 'wt', text: p.title || cutShort(p.text.split('\n').find(l => l.trim() && !HEAD_RE.test(l)) || p.text.split('\n')[0]) }),
+        pages.length > 1 ? h('span', { class: 'dim', text: pageOf(p).title }) : null)))), 'Every post saved under this name, oldest first. Click one to open it.')),
+    here ? h('button', { class: 'btn' + (on ? ' on' : ''), type: 'button', 'aria-pressed': String(on), text: on ? 'Showing only this writer’s posts' : 'Show only this writer’s posts', 'data-tip': on ? 'Click to show every writer again' : 'Keep only this writer’s posts in the feed', onclick: filt(() => { s.who = on ? null : who; }) })
+      : h('p', { class: 'dim small', text: `${name} does not write on the thread that is open. Writes on leads to its posts.` }));
+  $('#det').replaceChildren(card);
+  finishCard(`${WIKI_INC}/writers/${who}`, null, opts, hadCard);
 }
 function selectPost(id, opts = {}) {
   if (!W) { loadWiki(() => selectPost(id, opts)); return; }
@@ -3149,10 +3278,10 @@ function selectPost(id, opts = {}) {
   const p = POST_BY_ID.get(id); if (!p) return;
   if (!opts.keepBack) state.back = [];
   if (!inWiki() && !opts.quiet) enterInside(WIKI_INC, { keepBack: true });
-  state.post = id; state.sel = null; state.ent = null; state.rsp = null;
+  state.post = id; state.sel = null; state.ent = null; state.rsp = null; state.writer = null;
   if (!opts.quiet) {
-    if (p.page !== state.wiki.page) { Object.assign(state.wiki, { page: p.page, who: null, round: null, says: null }); renderTabs(); renderFilters(); renderView(); }
-    else if (!wikiRows().some(x => x.id === id)) { Object.assign(state.wiki, { who: null, round: null, says: null, q: '' }); state.range = null; renderBarR(); renderFilters(); renderView(); }
+    if (p.page !== state.wiki.page) { Object.assign(state.wiki, { page: p.page, who: null, round: null }); renderTabs(); renderFilters(); renderView(); }
+    else if (!wikiRows().some(x => x.id === id)) { Object.assign(state.wiki, { who: null, round: null, q: '' }); state.range = null; renderBarR(); renderFilters(); renderView(); }
     else if (wikiMode() === 'page') { renderWikiPage(); renderWikiFoot(); }
   }
   markSelected();
@@ -3170,13 +3299,13 @@ function selectPost(id, opts = {}) {
   const linksChip = linked ? h('button', { class: 'chip sm', type: 'button', 'aria-pressed': String(wikiLinks), 'data-tip': 'Tint each phrase of the reading and the piece of the original it comes from in the same colour. Hover either side to find its partner.',
     onclick: ev => { wikiLinks = !wikiLinks; try { localStorage.setItem('wikiLinks', wikiLinks ? 'on' : 'off'); } catch (e) { /* storage unavailable */ } card.classList.toggle('nolinks', !wikiLinks); ev.currentTarget.setAttribute('aria-pressed', String(wikiLinks)); } },
     h('span', { class: 'box', html: CHECK }), 'Show links') : null;
+  const terms = termRows(p);
   const card = h('div', { class: 'det' + (wikiLinks ? '' : ' nolinks') }, backBtn(),
-    h('div', { class: 'det-top' }, topLine('Post', `${fmtY(p.day)}, ${p.clock} UTC`), navBtns(order, i, j => selectPost(j, { focus: true, keepBack: true }), 'post')),
+    h('div', { class: 'det-top' }, topLine('Post', `${fmtY(p.day)}, ${p.clock} UTC`, archLink(p)), navBtns(order, i, j => selectPost(j, { focus: true, keepBack: true }), 'post')),
     h('h2', { id: 'det-title', tabindex: '-1', text: p.title || `${nameOf(p)}’s post` }),
-    h('button', { class: 'writer', type: 'button', 'aria-pressed': String(s.who === p.who), 'data-tip': whoTip(p) + (s.who === p.who ? '\nClick to show every writer.' : '\nClick to show only this writer’s posts.'),
-      onclick: filt(() => { s.who = s.who === p.who ? null : p.who; }) },
+    h('button', { class: 'writer', type: 'button', 'data-tip': whoTip(p) + '\nClick to open the writer’s card.', onclick: ev => openWriter(p.who, ev) },
       h('span', { class: 'av', 'aria-hidden': 'true', text: avatar(p), style: `--av-h:${hueOf(p.who)}` }), h('b', { text: nameOf(p) }), nameOf(p) !== p.who ? h('span', { class: 'lit', text: p.who }) : null,
-      s.who === p.who ? h('span', { class: 'wf', text: 'showing only this writer' }) : null),
+      h('span', { class: 'wf', 'aria-hidden': 'true', text: 'card ↗' })),
     section('orig', 'Original',
       h('div', { class: 'orig' }, ...origNodes(p)),
       to || repliers.length ? h('div', { class: 'links-line' },
@@ -3187,6 +3316,8 @@ function selectPost(id, opts = {}) {
     /* the Show links chip sits beside the summary, not inside it, so a click on it never folds the section */
     h('div', { class: 'sec-w' }, section('plain', 'In plain English', plain), linksChip),
     p.chat ? section('chat', 'Chatty', h('div', { class: 'msg-b rich chatty' }, richNodes(p.chat, p.guess ? GUESS_MARK() : null))) : null,
+    p.note ? section('note', 'Editors’ note', h('p', { class: 'ctxnote', text: p.note })) : null,
+    terms.length ? section('terms', 'Shorthand in this post', h('dl', { class: 'tm-kv' }, terms)) : null,
     section('more', 'Details', detailsGrid(p, filt)));
   /* two-way highlighting: everything sharing a link key with the hovered or focused element (and its ancestors) lights up */
   const keys = t => { const ks = []; for (let e = t; e && e !== card; e = e.parentElement) if (e.dataset && e.dataset.link) ks.push(e.dataset.link); return ks; };
@@ -3251,10 +3382,13 @@ function route(hash = decodeURIComponent(location.hash.slice(1))) {
   if (hash === 'wiki' || hash.startsWith('wiki/')) hash = WIKI_INC + '/posts' + hash.slice(4);
   const parts = hash.split('/');
   if (hash === 'inside') { if (!(state.view === 'wiki' && !state.inside)) enterInside(null); else if (hasCard()) clearSel({ fromRoute: true }); return; }
-  if (BY_ID.has(parts[0]) && (parts[1] === 'posts' || parts[1] === 'inside')) {
-    const inc = parts[0], postId = parts[2] ? 'dse~' + parts[2] : null;
+  if (BY_ID.has(parts[0]) && (parts[1] === 'posts' || parts[1] === 'inside' || parts[1] === 'writers')) {
+    const inc = parts[0], postId = parts[1] === 'posts' && parts[2] ? 'dse~' + parts[2] : null, writer = parts[1] === 'writers' ? parts[2] : null;
     if (!(state.view === 'wiki' && state.inside === inc)) enterInside(inc, { keepBack: true, post: null });
-    if (inc === WIKI_INC) loadWiki(() => { if (postId && POST_BY_ID.has(postId)) { if (state.post !== postId) selectPost(postId, { instant: true }); } else if (hasCard()) clearSel({ fromRoute: true }); });
+    if (inc === WIKI_INC) loadWiki(() => {
+      if (writer && POSTS.some(p => p.who === writer)) { if (state.writer !== writer) selectWriter(writer, { instant: true }); }
+      else if (postId && POST_BY_ID.has(postId)) { if (state.post !== postId) selectPost(postId, { instant: true }); }
+      else if (hasCard()) clearSel({ fromRoute: true }); });
     else if (hasCard()) clearSel({ fromRoute: true });
     return;
   }

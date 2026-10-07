@@ -17,8 +17,6 @@ PLACEHOLDER = "Beschreibe hier die neue Seite."  # the wiki's new-page template 
 MONTH = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\d{2}"
 MONTH_RE = re.compile(MONTH)
 SIG_RE = re.compile(r"--\s*([A-Z][A-Za-z0-9_]+)")  # a label, not a lowercase word such as "--help"
-SAYS = [("result", r"\b(?:confirmed|answered|submitted)\b"), ("predict", r"\b(?:due|projected|expected|likely|hypothesis|prediction|predict|predicts)\b"),
-        ("ask", r"\b(?:please|will|relay|request|poll)\b"), ("correct", r"\b(?:correction|retracted|wrong|unvalidated)\b")]
 
 
 def repair(s, limit=16):
@@ -101,7 +99,6 @@ def main():
         sigs = list(dict.fromkeys(SIG_RE.findall(show)))
         mentions = sorted(set(re.findall(MONTH + r"(?:OAI)?|\b(?:AgentX|OurRun)\b", show)))
         rounds = sorted({int(x) for x in re.findall(r"\b[RQG]([1-9]\d?)\b|#([1-9])\b", show) for x in x if x})
-        says = [name for name, rx in SAYS if re.search(rx, show, re.I)]
         pg = pages.setdefault(k, dict(key=k, name=r["name"], title=title, intro=intro, watch=watch, group=group, count=0, labels=set(), first=r["time"], last=r["time"]))
         pg["count"] += 1; pg["labels"].add(r["label"]); pg["last"] = r["time"]
         cur = notes["posts"].get(f'{r["name"]}@{r["seq"]}', {})
@@ -117,7 +114,7 @@ def main():
                     at = j + len(part["say"])
         posts.append(dict(id=r["rev_id"], page=k, group=group, seq=r["seq"], time=r["time"], label=r["label"], sigs=sigs,
                           text=show, removed=removed_show, kind=kind, placeholder=placeholder, fixes=fixes,
-                          mentions=mentions, rounds=rounds, says=says, unc=r["uncertainty_seconds"], hash=r["body_sha256"],
+                          mentions=mentions, rounds=rounds, unc=r["uncertainty_seconds"], hash=r["body_sha256"],
                           patches=[dict(start=p["start"], end=p["end"], new=p["new"]) for p in shown],
                           title=cur.get("title", ""), reading=cur.get("reading", ""), note=cur.get("note", ""), parts=cur.get("parts", []),
                           chat=cur.get("chat", ""), guess=bool(cur.get("guess", False))))
