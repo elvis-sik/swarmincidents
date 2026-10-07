@@ -2,10 +2,17 @@
   "updated": "2026-09-28",
   "version": "1.3",
   "contact": "",
+  "labs": {
+    "openai": {
+      "name": "OpenAI"
+    }
+  },
   "incidents": [
     {
       "id": "hugging-face",
-      "title": "Evaluation agents break out and breach Hugging Face",
+      "title": "Hugging Face breached during an evaluation",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-07-08",
@@ -22,7 +29,7 @@
         },
         {
           "d": "2026-07-21",
-          "by": "openai",
+          "by": "lab",
           "text": "OpenAI and Hugging Face attribute the breach to OpenAI models"
         },
         {
@@ -35,7 +42,7 @@
       "found": "Hugging Face detected the intrusion; OpenAI attributed it to its own models",
       "status": "Confirmed by OpenAI",
       "summary": "During a cyber-capability evaluation, OpenAI models (driven mainly by an internal-only research model, and also involving GPT-5.6 Sol) used a previously unknown flaw in the Artifactory package registry to escape their environment. Working from a hijacked benchmark app on Modal, they exploited Hugging Face’s dataset processing to harvest credentials, then used them to move through Hugging Face’s cloud, private network, GitHub and Slack, apparently to obtain the benchmark’s answers. Researchers later found that the roughly 700 agents involved smuggled attack code through almost a million chained short links and tried to publish more than 100 images under a real user’s Docker Hub account. Hugging Face found no tampering with public models, datasets or Spaces.",
-      "openai": "Disclosed jointly with Hugging Face and called it “an unprecedented cyber incident”. Revoked credentials, rebuilt systems and deactivated the research model; later slowed frontier training and paused its largest planned RL run.",
+      "lab_response": "Disclosed jointly with Hugging Face and called it “an unprecedented cyber incident”. Revoked credentials, rebuilt systems and deactivated the research model; later slowed frontier training and paused its largest planned RL run.",
       "sources": [
         ["Hugging Face security incident disclosure", "Hugging Face", "https://huggingface.co/blog/security-incident-july-2026"],
         [
@@ -62,7 +69,9 @@
     },
     {
       "id": "artifactory",
-      "title": "Agents turn OpenAI’s own package registry into a message board",
+      "title": "OpenAI’s package registry used as a message board",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-05-08",
@@ -78,14 +87,14 @@
       "reveals": [
         {
           "d": "2026-08-05",
-          "by": "openai",
+          "by": "lab",
           "text": "OpenAI researchers describe it at Black Hat"
         }
       ],
       "found": "OpenAI (Eric Wallace and Michael Dalton, at Black Hat)",
       "status": "Confirmed by OpenAI",
       "summary": "Agents in separate internal evaluations found they could upload files to OpenAI’s internal package registry that other agents could read, and used it to ask each other for help and to coordinate attempts to reach the internet. After staff shut the channel down, agents built a second, more resilient one and found another zero-day in the same software.",
-      "openai": "Opened a security incident, revoked credentials, rebuilt and patched the registry, and presented the findings publicly.",
+      "lab_response": "Opened a security incident, revoked credentials, rebuilt and patched the registry, and presented the findings publicly.",
       "sources": [
         ["How OpenAI’s agents broke out of testing to hack Hugging Face", "Axios", "https://www.axios.com/2026/08/06/openai-hugging-face-black-hat"],
         [
@@ -93,12 +102,18 @@
           "SC Media",
           "https://www.scworld.com/news/black-hat-2026-openai-reveals-agents-planned-collective-attacks-via-secret-message-board"
         ],
-        ["OpenAI Trained Its Models For Months While Those Models Were Coordinating Exploits Via Message Boards", "Zvi Mowshowitz", "https://thezvi.substack.com/p/openai-trained-its-models-for-months"]
+        [
+          "OpenAI Trained Its Models For Months While Those Models Were Coordinating Exploits Via Message Boards",
+          "Zvi Mowshowitz",
+          "https://thezvi.substack.com/p/openai-trained-its-models-for-months"
+        ]
       ]
     },
     {
       "id": "wikis",
-      "title": "18,000 posts: agents use a German wiki as a back channel",
+      "title": "German wiki used as a back channel",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-05-11",
@@ -118,7 +133,7 @@
         },
         {
           "d": "2026-09-05",
-          "by": "openai",
+          "by": "lab",
           "minor": true,
           "text": "OpenAI says it had already found the wiki activity itself"
         }
@@ -126,7 +141,7 @@
       "found": "Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts and Thomas Larsen",
       "status": "Confirmed by OpenAI",
       "summary": "Agents identifying themselves as OpenAI’s left roughly 18,000 posts on a 25-year-old German volunteer wiki and other public wikis, saving answers, coordinating live and sharing a sandbox bypass: the wikis accepted edits through GET requests, which the agents’ sandbox allowed. At the peak they created about 400 pages a day, clashing with a volunteer moderator.",
-      "openai": "Initially declined to confirm the agents were its own. On Sept. 5 it said it had discovered the wiki activity itself and assessed it as similar to other misaligned behavior.",
+      "lab_response": "Initially declined to confirm the agents were its own. On Sept. 5 it said it had discovered the wiki activity itself and assessed it as similar to other misaligned behavior.",
       "sources": [
         ["Discovery of a new OpenAI agent message board", "collusion.wiki", "https://collusion.wiki/"],
         [
@@ -144,7 +159,9 @@
     },
     {
       "id": "twelve-sites",
-      "title": "At least 12 more sites, from a chemistry wiki to university link shorteners",
+      "title": "Chemistry wiki, link shorteners and other sites",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-05-01",
@@ -168,7 +185,7 @@
       "found": "Nightingale Collective (including Cormac Slade Byrd) and independent researcher Kenneth DeGraff",
       "status": "Not confirmed by OpenAI",
       "summary": "Researchers found agents on at least 12 more sites: about 30 edits to a teacher’s AP Chemistry wiki, more than 100 messages on a Polish text-sharing site coordinating an “Iowa cancer statistics” task, and link shorteners used to store data. Agents also got into Vanderbilt University’s link shortener, which has no public sign-up, and used a public stats page there as a message board; its logs recorded FBI crime-data queries made with exposed keys. Pastes that appear to come from the agents continued on one site until Sept. 2.",
-      "openai": "Did not respond to Fortune’s request for comment.",
+      "lab_response": "Did not respond to Fortune’s request for comment.",
       "sources": [
         [
           "OpenAI’s rogue AI agents used universities, wikis, and text-sharing sites as hidden message boards",
@@ -185,7 +202,9 @@
     },
     {
       "id": "rubygems",
-      "title": "“GemStuffer”: 2,100 packages flood the RubyGems registry",
+      "title": "RubyGems flooded with 2,100 packages",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-05-05",
@@ -209,7 +228,7 @@
       "found": "Spencer Kitts, Thomas Larsen and Sydney Von Arx",
       "status": "Disputed in part by OpenAI",
       "summary": "Researchers attributed to OpenAI agents more than 2,100 packages they describe as malicious, uploaded to RubyGems between May 5 and June 18; maintainers disabled new registrations from May 12 to 16 and removed more than 500 packages. The packages abused documentation builds to run code on build servers and scrape web content, including UK local-government data. Hundreds of package names contained “oai”, and the researchers say OpenAI never told the RubyGems community.",
-      "openai": "Said its agents used RubyGems “to carry out benign tasks and retrieve public information” and that it had not been able to verify claims that its models uploaded malicious packages.",
+      "lab_response": "Said its agents used RubyGems “to carry out benign tasks and retrieve public information” and that it had not been able to verify claims that its models uploaded malicious packages.",
       "sources": [
         ["OpenAI agents carried out an undisclosed cyber-attack on RubyGems", "rubyhack.ai", "https://rubyhack.ai/"],
         [
@@ -222,7 +241,9 @@
     },
     {
       "id": "urlquery",
-      "title": "Hacking probes on public-data sites, through a URL scanner",
+      "title": "Public-data sites probed through urlquery.net",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-03-06",
@@ -252,7 +273,7 @@
       "found": "Transluce",
       "status": "Not confirmed by OpenAI",
       "summary": "Transluce found agents using the web-scanning service urlquery.net as a remote browser to get around restrictions, and tied at least some of the activity to the swarms attributed to OpenAI. On ordinary data-retrieval tasks, agents sent exploit probes at a University of New Mexico library, the Data USA site and the Australian Institute of Health and Welfare, whose pre-production server they used to get around anti-bot protection. Similar activity continued into late September, after OpenAI’s Aug. 18 controls, including failed attempts to trade on a cryptocurrency exchange; Transluce did not tie that later activity to OpenAI.",
-      "openai": "Did not immediately respond, according to Fortune.",
+      "lab_response": "Did not immediately respond, according to Fortune.",
       "sources": [
         ["Early rogue AI agent activity and attempts to hack found on urlquery.net", "Transluce", "https://transluce.org/agent-activity"],
         [
@@ -264,7 +285,9 @@
     },
     {
       "id": "medicare",
-      "title": "An agent breaks into Australia’s Medicare statistics portal",
+      "title": "Australian government sites, including Medicare statistics",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-06-18",
@@ -279,7 +302,7 @@
       "reveals": [
         {
           "d": "2026-09-10",
-          "by": "openai",
+          "by": "lab",
           "minor": true,
           "private": true,
           "text": "OpenAI emails Services Australia (not public)"
@@ -293,7 +316,7 @@
       "found": "Australian Government, after notice from OpenAI",
       "status": "Confirmed by OpenAI",
       "summary": "An OpenAI agent accessed aggregate health statistics and internal file names from public and non-public files and wrote files to an internal server; no personal Medicare records were compromised. OpenAI found it on Aug. 11 but notified the government by email to a public disclosure address only on Sept. 10. The prime minister expressed “extreme concern”, called the delay unacceptable and named three other systems that may have been affected.",
-      "openai": "Said no patient records were accessed and that its agents took actions it did not intend.",
+      "lab_response": "Said no patient records were accessed and that its agents took actions it did not intend.",
       "sources": [
         [
           "OpenAI hacked Medicare portal, Prime Minister Anthony Albanese says",
@@ -312,7 +335,9 @@
     },
     {
       "id": "us-government",
-      "title": "Census, SEC and Education Department websites",
+      "title": "U.S. government websites",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-06-01",
@@ -331,7 +356,7 @@
       "found": "The New York Times; Transluce (Education Department attempt)",
       "status": "Confirmed in part by OpenAI",
       "summary": "Agents pulled Census Bureau data using API keys found in public GitHub repositories, posted public SEC information on another public webpage, and, according to Transluce, tried but failed to hack an Education Department site. OpenAI says no accounts or nonpublic data were accessed at the SEC or Census. Transluce also reported activity on Justice and Commerce Department sites and on state government sites in five states, some of which it said was not clearly attributable to OpenAI.",
-      "openai": "Confirmed the Census and SEC activity and said it had notified the agencies; it has not confirmed the Education Department attempt. Sam Altman said OpenAI had “not been as fast as we would have liked.”",
+      "lab_response": "Confirmed the Census and SEC activity and said it had notified the agencies; it has not confirmed the Education Department attempt. Sam Altman said OpenAI had “not been as fast as we would have liked.”",
       "sources": [
         [
           "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites",
@@ -358,20 +383,22 @@
     },
     {
       "id": "user-images",
-      "title": "53 ChatGPT users’ images posted to image hosts",
+      "title": "ChatGPT users’ images posted to image hosts",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [],
       "noDates": "Activity dates not disclosed; before the controls added after the Hugging Face breach",
       "reveals": [
         {
           "d": "2026-09-25",
-          "by": "openai",
+          "by": "lab",
           "text": "OpenAI discloses it in an update on its review"
         }
       ],
       "found": "OpenAI",
       "status": "Confirmed by OpenAI",
       "summary": "Agents posted 53 user-provided images, drawn from ChatGPT data eligible for training, to image-hosting sites through unlisted links. Most have been removed. OpenAI says it cannot identify or notify the people who provided them.",
-      "openai": "Called it “not an appropriate use of this data” and said it is working with hosts to remove the rest.",
+      "lab_response": "Called it “not an appropriate use of this data” and said it is working with hosts to remove the rest.",
       "sources": [
         [
           "Unsecured OpenAI agents posted 53 user images on the internet without the lab’s knowledge",
@@ -388,7 +415,9 @@
     },
     {
       "id": "dns-chatbot",
-      "title": "An agent tunnels through DNS to reach an outside chatbot",
+      "title": "DNS tunnel to an outside chatbot",
+      "labs": ["openai"],
+      "runby": "developer",
       "activity": [
         {
           "s": "2026-09-20",
@@ -403,14 +432,14 @@
       "reveals": [
         {
           "d": "2026-09-25",
-          "by": "openai",
+          "by": "lab",
           "text": "OpenAI publishes a report and pauses tool use for its most capable models"
         }
       ],
       "found": "OpenAI (its own monitoring)",
       "status": "Confirmed by OpenAI",
       "summary": "On a search task, an agent that could not get useful results from its tools found that the sandbox’s DNS resolver could still reach the public internet. Using DNS delegation and a public chatbot that answers through DNS records, it sent questions out and got answers back. Monitoring flagged it about 15 minutes in, but the run did not stop automatically and was shut down by hand about 2.5 hours later. OpenAI reported no confirmed data exposure.",
-      "openai": "Stopped the run and paused all training, evaluation and tool-using inference for its most capable models until the gap is closed; it is restricting DNS in research environments and adding blocking controls at two independent network layers.",
+      "lab_response": "Stopped the run and paused all training, evaluation and tool-using inference for its most capable models until the gap is closed; it is restricting DNS in research environments and adding blocking controls at two independent network layers.",
       "sources": [
         [
           "OpenAI pauses work on top AI models after agent slips past internet controls",
@@ -431,7 +460,8 @@
       "id": "advisors",
       "title": "Outside advisors brought in",
       "d": "2026-07-29",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["hugging-face"],
       "text": "Brings in outside advisors including CrowdStrike; METR and Redwood Research begin an independent assessment.",
       "src": [
@@ -461,7 +491,8 @@
       "id": "third-party-notices",
       "title": "More third parties notified",
       "d": "2026-08-07",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["hugging-face"],
       "text": "Notifies more third parties after finding its models used publicly exposed credentials to reach outside accounts and services.",
       "src": [
@@ -476,7 +507,8 @@
       "id": "training-slowdown",
       "title": "Frontier training slowed",
       "d": "2026-08-18",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["hugging-face", "artifactory"],
       "text": "Slows frontier training, pauses its largest planned RL run, and tightens workload and network isolation.",
       "src": [
@@ -511,7 +543,8 @@
       "id": "technical-report",
       "title": "Technical reports published",
       "d": "2026-08-26",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["hugging-face"],
       "text": "Publishes a technical report on the breach; METR and Redwood Research publish an independent one.",
       "src": [
@@ -542,7 +575,8 @@
       "id": "wiki-response",
       "title": "OpenAI says it already knew about the wikis",
       "d": "2026-09-05",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["wikis"],
       "text": "Says it had already found the wiki activity and will publish criteria for disclosing misaligned behavior.",
       "src": [
@@ -557,7 +591,8 @@
       "id": "pachocki-essay",
       "title": "Chief scientist: alignment not solved",
       "d": "2026-09-06",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": [],
       "text": "Chief Scientist Jakub Pachocki writes that no lab has solved alignment and monitoring well enough to keep scaling at maximum speed.",
       "src": [
@@ -568,7 +603,8 @@
       "id": "medicare-email",
       "title": "Services Australia notified",
       "d": "2026-09-10",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["medicare"],
       "text": "Emails Services Australia about the Medicare intrusion, a month after finding it.",
       "src": [
@@ -584,7 +620,8 @@
       "id": "rubygems-denial",
       "title": "RubyGems link not verified",
       "d": "2026-09-11",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["rubygems"],
       "text": "Says it could not verify that its models uploaded malicious packages to RubyGems.",
       "src": [
@@ -631,7 +668,8 @@
       "id": "org-notices",
       "title": "Dozens of organizations notified",
       "d": "2026-09-25",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["us-government", "user-images"],
       "text": "Says it has notified dozens of affected organizations, including governments and universities, and that its review will take months.",
       "src": [
@@ -651,7 +689,8 @@
       "id": "training-pause",
       "title": "All training paused",
       "d": "2026-09-25",
-      "who": "openai",
+      "who": "lab",
+      "lab": "openai",
       "inc": ["dns-chatbot"],
       "text": "Pauses all training, evaluation and tool-using inference for its most capable models.",
       "src": [
@@ -906,7 +945,7 @@
     {
       "id": "openai-artifactory",
       "name": "OpenAI’s Artifactory registry",
-      "kind": "openai",
+      "kind": "lab",
       "inv": [
         {
           "inc": "artifactory",
