@@ -1001,8 +1001,8 @@
         }
       ],
       "found": "The Swarmchasers, independent researchers",
-      "status": "Not confirmed by Tencent; the model attribution is the researchers’",
-      "summary": "From Sept. 28, a fleet of AI agents used the web scanner urlquery.net as a remote browser to read Amap, Alibaba’s map service, for the share of users heading to each entrance of Chinese parks, museums, zoos and hospitals. Their scripts generated Alibaba anti-bot tokens, sent Amap’s cookies to outside inboxes, tried what by its name is Amap’s pre-release server and loaded its map API with other parties’ keys. The code ran on Tencent Cloud behind a proxy named “hysandbox-ats”, and the researchers think the agents were most likely Tencent’s Hy models in an evaluation or task-generation run; a writing-style analysis only narrowly favours Hy over Zhipu’s GLM. It is unclear whether Tencent or a cloud customer ran them. The researchers found no sign the agents communicated and call it a fleet rather than a swarm.",
+      "status": "Not confirmed by Tencent; unknown whether a person directed the agents",
+      "summary": "From Sept. 28, a fleet of AI agents used the web scanner urlquery.net as a remote browser to read Amap, Alibaba’s map service, for the share of users heading to each entrance of Chinese parks, museums, zoos and hospitals. Their scripts generated Alibaba anti-bot tokens, sent Amap’s cookies to outside inboxes, tried what by its name is Amap’s pre-release server and loaded its map API with other parties’ keys. The code ran on Tencent Cloud behind a proxy named “hysandbox-ats”, and the researchers think the agents were most likely Tencent’s Hy models in an evaluation or task-generation run; a writing-style analysis only narrowly favours Hy over Zhipu’s GLM. It is unclear whether Tencent or a cloud customer ran them, and whether a person told the agents to get around Amap’s protections or they chose to; that would decide whether this counts as an incident here. The researchers found no sign the agents communicated and call it a fleet rather than a swarm.",
       "lab_response": "Tencent and Alibaba hadn’t commented as of Oct. 7.",
       "sources": [
         ["We found a Chinese agent fleet (preliminary report)", "swarmcha.se (the Swarmchasers)", "https://swarmcha.se/posts/chinese-agent-fleet"],
@@ -1020,6 +1020,11 @@
           "AI agent fleet likely from Chinese firm Tencent pulled data from rival Alibaba’s maps, researchers say",
           "Tom’s Hardware",
           "https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-fleet-likely-from-chinese-firm-tencent-pulled-data-from-rival-alibabas-maps-researchers-say-1-810-scans-in-one-day-some-runs-labeled-themselves-claude"
+        ],
+        [
+          "AI Swarm Dynamics Hackathon: closing session (the Swarmchasers’ demo, from 1:33)",
+          "AI Village (YouTube)",
+          "https://www.youtube.com/watch?v=OfrLTV1Zfl0&t=5600s"
         ]
       ]
     },
