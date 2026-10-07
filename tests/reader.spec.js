@@ -218,7 +218,7 @@ test('Details as fields, the shorthand as its own section, and a name in the Ori
   const terms = page.locator('#det details[data-sec="terms"]');
   await expect(terms).toHaveAttribute('open', /.*/);
   await expect(terms.locator('.tm-row').first()).toBeVisible();
-  const chip = kv.locator('.nchip[data-link="nm:AgentX"]');
+  const chip = kv.locator('.nref[data-link="nm:AgentX"]');
   await expect(chip).toBeVisible();
   await expect(chip).toContainText('AgentX');
   await page.locator('#det .orig [data-link="nm:AgentX"]').hover();

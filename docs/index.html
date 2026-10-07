@@ -715,29 +715,31 @@ div.plain{display:flex;flex-direction:column}
 .kv .sub{display:block;font-size:12px;color:var(--muted);margin-top:1px}
 .kv .dot-sep{color:var(--faint);margin:0 5px}
 .nchips{display:flex;flex-wrap:wrap;gap:4px 6px}
-.nchip{display:inline-flex;align-items:baseline;gap:5px;border:1px solid var(--line-2);background:none;border-radius:5px;padding:0 7px;font:inherit;font-size:12px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap}
-.nchip b{font-family:var(--mono);font-size:11.5px;font-weight:500}
-.nchip .nw{font-weight:600;color:hsl(var(--av-h,210) 45% 34%)}
-.nchip .nn{font-size:11px;color:var(--muted)}
-.nchip:hover{border-color:var(--ink-2)}
-.nchip[aria-pressed="true"]{background:var(--sel);border-color:var(--g-research)}
-span.nchip{cursor:default}
-span.nchip:hover{border-color:var(--line-2)}
-.nchip.on{background:var(--sel);border-color:var(--g-research)}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nchip .nw{color:hsl(var(--av-h,210) 55% 74%)} }
-:root[data-theme="dark"] .nchip .nw{color:hsl(var(--av-h,210) 55% 74%)}
+/* a writer reference: the tag as written, an arrow, the name in the writer's hue; no box. A click opens the card. */
+.nrefs{display:flex;flex-wrap:wrap;gap:3px 14px}
+.nref{display:inline-flex;align-items:baseline;gap:5px;border:0;background:none;border-radius:4px;padding:1px 4px;margin:-1px -4px;font:inherit;font-size:12.5px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap;text-align:left}
+.nref .tg{font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+.nref .arr{color:var(--faint)}
+.nref .nk{font-weight:650;color:hsl(var(--av-h,210) 45% 34%)}
+.nref .nn{font-size:11px;color:var(--muted)}
+.nref:hover .nk,.nref:focus-visible .nk{text-decoration:underline;text-underline-offset:.2em}
+.nref:focus-visible{outline:2px solid var(--g-research);outline-offset:1px}
+.nref.none{cursor:default}
+.nref.on{background:var(--sel)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nref .nk{color:hsl(var(--av-h,210) 55% 74%)} }
+:root[data-theme="dark"] .nref .nk{color:hsl(var(--av-h,210) 55% 74%)}
 .terms{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
 .terms li{padding:1px 5px;margin:0 -5px;border-radius:4px}
 .terms li.on{background:var(--sel)}
 .terms .tm{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink);margin-right:6px}
 .orig .nm.on{background:var(--sel);border-radius:2px;box-shadow:0 0 0 1px var(--g-research)}
 .det .about{font-size:13px;color:var(--ink-2);line-height:1.55}
-.qchip{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line-2);background:none;border-radius:5px;padding:0 7px;font:inherit;font-size:12px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap}
-.qchip b{font-family:var(--mono);font-size:11.5px;font-weight:500}
+/* a filter chip: a boxed pill with a pressed state, the same language as the Who-is-here chips in the briefing */
+.qchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);background:var(--panel);border-radius:6px;padding:1px 8px;font:inherit;font-size:12.5px;line-height:20px;color:var(--ink);cursor:pointer;white-space:nowrap}
+.qchip b{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink-2)}
 .qchip:hover{border-color:var(--ink-2)}
 .qchip[aria-pressed="true"]{background:var(--sel);border-color:var(--g-research)}
 .qchip .nn{font-size:11px;color:var(--muted)}
-.nchip .nw::before{content:"→";color:var(--faint);font-weight:400;margin-right:5px}
 /* the shorthand section: term, meaning; a row lights up with its term in the Original */
 .tm-kv{margin:0;display:flex;flex-direction:column;gap:1px}
 .tm-row{display:grid;grid-template-columns:minmax(72px,34%) minmax(0,1fr);gap:0 12px;padding:3px 6px;margin:0 -6px;border-radius:5px;font-size:12.5px;line-height:1.45}
@@ -745,9 +747,6 @@ span.nchip:hover{border-color:var(--line-2)}
 .tm-row dd{margin:0;color:var(--ink-2)}
 .tm-row.on{background:var(--sel)}
 /* the writer: a link to its card wherever a name is shown; the card itself */
-.wlink{border:0;background:none;padding:0;font:inherit;color:var(--ink);cursor:pointer;border-radius:3px}
-.wlink b{font-weight:650;border-bottom:1.5px solid hsl(var(--av-h,210) 48% 60%)}
-.wlink:hover b{background:var(--sel)}
 .kv .who-v{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
 .wname{border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;border-radius:3px;line-height:inherit}
 .wname:hover b{text-decoration:underline;text-underline-offset:.2em;text-decoration-color:var(--line-2)}
@@ -3200,12 +3199,12 @@ const openWriter = (who, ev) => { if (ev) ev.stopPropagation(); pushBack(); sele
 function nameChip(p, m) {
   const link = 'nm:' + m, own = tagOf(p.label, m) || p.sigs.some(sg => tagOf(sg, m));
   const who = own ? p.who : nameWriter(m, p);
-  if (!who) return h('span', { class: 'nchip', 'data-link': link, 'data-tip': `${m} names a run that does not write on any thread here. Hover to find it in the Original.` }, h('b', { text: m }), h('span', { class: 'nn', text: 'not a writer here' }));
+  if (!who) return h('span', { class: 'nref none', 'data-link': link, 'data-tip': `${m} names a run that does not write on any thread here. Hover to find it in the Original.` }, h('span', { class: 'tg', text: m }), h('span', { class: 'nn', text: 'not a writer here' }));
   const here = wikiPosts().some(q => q.who === who), nick = monikerOf(who);
   const tip = own ? `${m} is the tail of this writer’s own label, ${p.who}: the writer naming itself.`
     : `${m} is the tail of the label ${who}: ${nick ? `the writer called ${nick} here` : 'a writer with no nickname yet'}${here ? '' : ', on another thread'}.`;
-  return h('button', { class: 'nchip', type: 'button', 'data-link': link, style: `--av-h:${hueOf(who)}`, 'data-tip': tip + '\nClick to open the writer’s card.', onclick: ev => openWriter(who, ev) },
-    h('b', { text: m }), h('span', { class: 'nw', text: nick || humanize(who) }), own ? h('span', { class: 'nn', text: 'this writer' }) : !here ? h('span', { class: 'nn', text: 'other thread' }) : null);
+  return h('button', { class: 'nref', type: 'button', 'data-link': link, style: `--av-h:${hueOf(who)}`, 'data-tip': tip + '\nClick to open the writer’s card.', onclick: ev => openWriter(who, ev) },
+    h('span', { class: 'tg', text: m }), h('span', { class: 'arr', 'aria-hidden': 'true', text: '→' }), h('b', { class: 'nk', text: nick || humanize(who) }), own ? h('span', { class: 'nn', text: 'this writer' }) : !here ? h('span', { class: 'nn', text: 'other thread' }) : null);
 }
 /* a question chip: the number as the text writes it, and what that question asked for, from the task's table; a click filters the feed */
 function qChip(p, r, filt) {
@@ -3228,15 +3227,15 @@ function detailsGrid(p, filt) {
   const pg = pageOf(p);
   const row = (label, v, tip) => (v == null || (Array.isArray(v) && !v.length) ? null : [h('dt', { text: label, 'data-tip': tip || null }), h('dd', {}, v)]);
   const writer = h('span', { class: 'who-v' },
-    h('button', { class: 'wlink', type: 'button', style: `--av-h:${hueOf(p.who)}`, 'data-tip': whoTip(p) + '\nClick to open the writer’s card.', onclick: ev => openWriter(p.who, ev) }, h('b', { text: nameOf(p) })),
+    h('button', { class: 'nref', type: 'button', style: `--av-h:${hueOf(p.who)}`, 'data-tip': whoTip(p) + '\nClick to open the writer’s card.', onclick: ev => openWriter(p.who, ev) }, h('b', { class: 'nk', text: nameOf(p) })),
     h('span', { class: 'mono', text: p.who, 'data-tip': p.whoFrom === 'sig' ? 'The signature the writer typed at the end of the text; the name comes from it.' : 'The label the wiki stored with this edit; the text has no signature.' }));
   const notes = [p.fixes ? h('p', { class: 'task', text: 'The archived text of this post stored UTF-8 bytes as Latin-1 characters; it is repaired for display here. The archive link shows it as stored.' }) : null,
     p.placeholder ? h('p', { class: 'task', text: 'This save also kept the wiki’s placeholder line for a new page (“Beschreibe hier die neue Seite”), omitted here.' }) : null,
     p.removed ? [h('p', { class: 'task', text: 'Text this save replaced:' }), h('p', { class: 'rm', text: p.removed })] : null].filter(Boolean);
   return h('dl', { class: 'kv' },
     row('Writer', writer, 'Who wrote this post: the nickname given here, and the name the wiki stored.'),
-    row('Names in the text', p.mentions.length ? h('div', { class: 'nchips' }, p.mentions.map(m => nameChip(p, m))) : null, 'Runs named in the text, by the tag they go by, and who that is here. Hover one to find it in the Original.'),
-    row('Questions', p.rounds.length ? h('div', { class: 'nchips' }, p.rounds.map(r => qChip(p, r, filt))) : null, 'The questions this post mentions, and what each asked for.'),
+    row('Names in the text', p.mentions.length ? h('div', { class: 'nrefs' }, p.mentions.map(m => nameChip(p, m))) : null, 'Runs named in the text, by the tag they go by, and who that is here. A name opens the writer’s card; hover one to find it in the Original.'),
+    row('Questions', p.rounds.length ? h('div', { class: 'nchips' }, p.rounds.map(r => qChip(p, r, filt))) : null, 'The questions this post mentions, and what each asked for. A chip filters the feed, like the Question picker above.'),
     row('Source', h('div', { class: 'srcline' },
       h('a', { href: archiveUrl(p), target: '_blank', rel: 'noopener noreferrer', text: `collusion.wiki, revision ${p.seq} of ${pg.count} ↗`, 'data-tip': archTip(p) }),
       h('span', { class: 'mono', text: `saved ${p.time.replace('T', ' ').replace('Z', '')} UTC ±${p.unc} s`, 'data-tip': 'The wiki’s own record of this save. SHA-256 of the archived page body: ' + p.hash }),
