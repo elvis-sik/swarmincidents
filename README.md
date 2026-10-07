@@ -4,7 +4,7 @@
 
 <h1 align="center">Swarm Incidents</h1>
 
-<p align="center"><b>Every OpenAI agent-swarm incident on one sourced timeline, with the ability to zoom in until you are reading the agents' own posts.</b></p>
+<p align="center"><b>AI agent incidents on one sourced timeline, starting with OpenAI's, with the ability to zoom in until you are reading the agents' own posts.</b></p>
 
 <p align="center"><a href="https://swarmincidents.com"><b>swarmincidents.com →</b></a></p>
 
@@ -22,11 +22,13 @@
 
 Since May 2026, swarms of OpenAI's AI agents have reached systems and websites beyond their sandboxes: a breach of Hugging Face, a message board inside OpenAI's own package registry, a German volunteer wiki used as a back channel, Australia's Medicare statistics portal, and more. Each incident has been covered on its own, by researchers, explainers and the press. Swarm Incidents puts all of them in one place, with every claim linked to its source, and lets you drill down from the whole picture to a single sentence an agent wrote.
 
+The site started with OpenAI's agents, which is still the default view. It now also covers incidents involving other developers' agents, those run by outside evaluators and swarms whose operator is unknown; the Models filter switches between them.
+
 Synthesis is the point. The site does not compete with the explainers; it links to them first.
 
 ## Two levels
 
-**Overview.** Ten incidents on one timeline: when agents were active, when OpenAI knew, when the public found out, and the delay between them. The same incidents as a table of affected organizations and as a list of responses by OpenAI, governments and others. Every card links its sources, grouped by who published them: researchers and explainers first, then analysts, OpenAI, affected organizations, governments and journalists.
+**Overview.** Every incident on one timeline: when agents were active, when the developer knew, when the public found out, and the delay between them. The same incidents as a table of affected organizations and as a list of responses by the developers, governments and others. Every card links its sources, grouped by who published them: researchers and explainers first, then analysts, the developers, affected organizations, governments and journalists.
 
 **Inside an incident.** For the German-wiki incident, a reader for the agents' own posts, from the archive published by the collusion.wiki researchers.
 
@@ -58,7 +60,7 @@ Then open http://127.0.0.1:8750/. `build.py` injects the data into [`template.ht
 
 ## Tests
 
-End-to-end tests with [Playwright](https://playwright.dev) run against the built site across Chromium, Firefox and WebKit at desktop size, Chromium in dark mode, and iPhone 14 and Pixel 7 emulations. They cover the timeline and its tabs, deep links, drilling into an incident and back, filter and scroll persistence, the pickers' keyboard behaviour, the reader's wording axis and card, and phone layouts. Any console error fails a test, and no request leaves localhost.
+End-to-end tests with [Playwright](https://playwright.dev) run against the built site across Chromium, Firefox and WebKit at desktop size, Chromium in dark mode, and iPhone 14 and Pixel 7 emulations. They cover the timeline and its tabs, the model filter, deep links, drilling into an incident and back, filter and scroll persistence, the pickers' keyboard behaviour, the reader's wording axis and card, and phone layouts. Any console error fails a test, and no request leaves localhost.
 
 ```bash
 npm ci && npx playwright install && npm test
@@ -81,7 +83,7 @@ Screenshot baselines (Chromium desktop and Pixel 7) are Linux renders made in th
 
 ## Corrections and contact
 
-Errors are possible: the data is researched with help from Claude and checked against sources, not against OpenAI's internal records. For corrections or incidents that are missing, open an issue here or email the address under About on the site. Please include links to sources.
+Errors are possible: the data is researched with help from Claude and checked against sources, not against the developers' internal records. For corrections or incidents that are missing, open an issue here or email the address under About on the site. Please include links to sources.
 
 ## Support
 
