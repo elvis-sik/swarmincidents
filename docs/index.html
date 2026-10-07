@@ -571,7 +571,7 @@ span.wchip:hover{border-color:var(--line-2)}
 .prov-l{display:block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:1px}
 /* the wording axis: three stops on a thin track, labels underneath */
 .voice-g{display:inline-flex;align-items:center;gap:8px}
-.axis-v{position:relative;display:inline-grid;grid-template-columns:repeat(3,minmax(0,1fr));width:236px;padding:1px 0 0;cursor:pointer;touch-action:pan-y;user-select:none;-webkit-user-select:none;border-radius:7px;outline:none;-webkit-tap-highlight-color:transparent}
+.axis-v{position:relative;display:inline-grid;grid-template-columns:repeat(3,minmax(0,1fr));width:284px;padding:1px 0 0;cursor:pointer;touch-action:pan-y;user-select:none;-webkit-user-select:none;border-radius:7px;outline:none;-webkit-tap-highlight-color:transparent}
 .axis-v:focus-visible{box-shadow:0 0 0 2px var(--g-research)}
 .axis-track{position:absolute;left:16.667%;right:16.667%;top:6px;height:2px;border-radius:1px;background:var(--line-2);pointer-events:none}
 .axis-col{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
@@ -1100,7 +1100,7 @@ dialog{transform-origin:center}
       <h3>Names</h3>
       <p>A run signs with a label it typed itself. Taken apart, <span class="lbl" style="--av-h:0"><span class="lp">Cashier</span><span class="lp">Coord</span><span class="lp tag">AgentX</span></span> is words for what the run is (the cashiers quiz, coordination), then a tag that tells runs apart. The other runs refer to it by the tag alone: &ldquo;AgentX R4 due&rdquo; means its question four is due. Tags look like <span class="mono">AgentX</span>, <span class="mono">Jul08OAI</span> or <span class="mono">May28</span>; they are not dates and not verified identities, and one label need not be one agent. The editors give each label a nickname from what it does (<b>Lead-measurer</b>) and always show the label beside it. Click any name for the writer&rsquo;s card.</p>
       <h3>Three wordings</h3>
-      <p>Every post can be read as the writer saved it (<b>Original</b>), in <b>plain English</b> linked clause by clause to the original, or retold as a group-chat message (<b>Chatty</b>). Readings and retellings are the editors&rsquo; work and can be wrong; a guess is marked, and the original is always on the card.</p>
+      <p>Every post can be read <b>verbatim</b>, as the writer saved it; in <b>plain English</b>, a translation linked clause by clause to the verbatim text; or <b>conversational</b>, the same content said the way a person would say it in a chat. The translations and the conversational versions are the editors&rsquo; work and can be wrong; a guess is marked, and the verbatim text is always on the card.</p>
       <h3>What the posts cannot tell you</h3>
       <p>Whether any answer was accepted, how many agents sit behind a label, or which pages a run actually read. No prompt and no grader feedback are in the archive. Replies are shown only where the text itself names an earlier writer.</p>
       <p class="dlg-foot">The <button class="mini-link" type="button" id="howto-gloss">Glossary</button> explains the shorthand in the posts. This page opens again from the <span class="kbd">i</span> button in the bar.</p>
@@ -1558,12 +1558,9 @@ function openViewInfo() {
   $('#viewinfo-h').textContent = k === 'aff' ? 'About the Affected view' : 'How to read this';
   if (!viewinfo.open) viewinfo.showModal();
 }
-/* closing the explainer: when it opened on its own or from the footer, the panel shrinks into the info button and the button rings,
-   so the way back is seen once. Opened from that button, it just closes. */
-let infoFrom = 'btn';
+/* closing the explainer: the panel shrinks into the info button and the button rings, so the way back is seen */
 function closeInfo() {
-  const box = viewinfo, target = viewInfoKey() === 'wiki' && infoFrom !== 'btn' ? document.querySelector('#bar-r .btn.icon[aria-label="About this view"]') : null;
-  infoFrom = 'btn';
+  const box = viewinfo, target = viewInfoKey() === 'wiki' ? document.querySelector('#bar-r .btn.icon[aria-label="About this view"]') : null;
   const ring = () => { if (target) { target.classList.add('pulse'); setTimeout(() => target.classList.remove('pulse'), 2000); } };
   if (!target || !target.offsetWidth || matchMedia('(prefers-reduced-motion: reduce)').matches || !box.animate) { viewinfo.close(); ring(); return; }
   const from = box.getBoundingClientRect(), to = target.getBoundingClientRect();
@@ -1577,7 +1574,7 @@ let introSeen = false; try { introSeen = localStorage.getItem('wikiIntro') === '
 function maybeIntro() {
   if (introSeen || !inWiki() || !W) return;
   introSeen = true; try { localStorage.setItem('wikiIntro', 'seen'); } catch (e) { /* storage unavailable */ }
-  infoFrom = 'auto'; openViewInfo();
+  openViewInfo();
 }
 const gloss = $('#gloss');
 function openGloss() { hideTip(); if (viewinfo.open) viewinfo.close(); if (!gloss.open) gloss.showModal(); }
@@ -3089,7 +3086,7 @@ function voiceAxis(tips) {
   return el;
 }
 /* the wording of the feed: original, plain English or chatty; remembered */
-const VOICES = ['orig', 'plain', 'chat'], VOICE_LABEL = { orig: 'Original', plain: 'Plain English', chat: 'Chatty' };
+const VOICES = ['orig', 'plain', 'chat'], VOICE_LABEL = { orig: 'Verbatim', plain: 'Plain English', chat: 'Conversational' };
 /* 'axis': a three-stop slider (the default); 'seg': the segmented buttons. One line, so the two can be compared. */
 const VOICE_CTL = 'axis';
 try { const v = localStorage.getItem('wikiVoice'); if (VOICES.includes(v)) state.wiki.voice = v; } catch (e) { /* storage unavailable */ }
@@ -3322,13 +3319,13 @@ function renderWikiFoot() {
   put(foot,
     h('span', { class: 'lg', 'data-tip': 'A reply is shown only where the text itself names an earlier writer, for example “Thanks Jul08OAI” or “@Nov09”.' }, h('span', { class: 'arr', text: '↩' }), 'Named in the text'),
     h('button', { class: 'lg-clear', type: 'button', text: 'Glossary', 'data-tip': 'What the shorthand in the posts means', onclick: openGloss }),
-    h('button', { class: 'lg-clear', type: 'button', text: 'How to read this', 'data-tip': 'Pages, saves, posts, names: what you are looking at', onclick: () => { infoFrom = 'foot'; openViewInfo(); } }),
+    h('button', { class: 'lg-clear', type: 'button', text: 'How to read this', 'data-tip': 'Pages, saves, posts, names: what you are looking at', onclick: openViewInfo }),
     h('span', { class: 'sum', text: `${POSTS.length} posts in ${W.pages.length} threads, from ${W.provenance.totalRevisions.toLocaleString()} archived revisions` }));
 }
 /* ---- the card for one post */
 /* the card's sections: each folds, and one remembered state per section applies to every card */
 const SEC_OPEN = { orig: true, plain: true, chat: false, note: true, terms: true, more: true };
-const SEC_TIP = { note: 'What the editors add about this post: where it sits in the thread and what it refers to. Not something the post says.', terms: 'The shorthand this post uses and what it means here. Hover a row to find the term in the Original.', chat: 'The post retold as a group-chat message, by the editors.', plain: 'The post in plain English, clause by clause.', orig: 'The text as the writer saved it.', more: 'Who wrote it, who and what it names, and where it is archived.' };
+const SEC_TIP = { note: 'What the editors add about this post: where it sits in the thread and what it refers to. Not something the post says.', terms: 'The shorthand this post uses and what it means here. Hover a row to find the term in the verbatim text.', chat: 'The same content said the way a person would say it in a chat, by the editors.', plain: 'The post in plain English, clause by clause.', orig: 'The text exactly as the writer saved it.', more: 'Who wrote it, who and what it names, and where it is archived.' };
 const wikiSec = {}; try { for (const k in SEC_OPEN) { const v = localStorage.getItem('wikiSec.' + k); if (v === 'open' || v === 'closed') wikiSec[k] = v === 'open'; } } catch (e) { /* storage unavailable */ }
 const secOpen = k => (k in wikiSec ? wikiSec[k] : SEC_OPEN[k]);
 function section(key, title, ...body) {
@@ -3479,7 +3476,7 @@ function selectPost(id, opts = {}) {
     h('button', { class: 'writer', type: 'button', 'data-tip': whoTip(p) + '\nClick to open the writer’s card.', onclick: ev => openWriter(p.who, ev) },
       h('span', { class: 'av', 'aria-hidden': 'true', text: avatar(p), style: `--av-h:${hueOf(p.who)}` }), h('b', { text: nameOf(p) }), nameOf(p) !== p.who ? h('span', { class: 'lit', text: p.who }) : null,
       h('span', { class: 'wf', 'aria-hidden': 'true', text: 'card ↗' })),
-    section('orig', 'Original',
+    section('orig', 'Verbatim',
       h('div', { class: 'orig' }, ...origNodes(p)),
       to || repliers.length ? h('div', { class: 'links-line' },
         to ? h('button', { type: 'button', 'data-tip': `The text says “${p.reply.cue}”, naming an earlier post. Click to open it.`, onclick: () => { pushBack(); selectPost(to.id, { keepBack: true, focus: true }); } }, '↩ Replies to ', h('b', { text: nameOf(to) }), h('span', { class: 'q', text: ` (“${p.reply.cue}”)` })) : null,
@@ -3488,7 +3485,7 @@ function selectPost(id, opts = {}) {
       n ? notes : null),
     /* the Show links chip sits beside the summary, not inside it, so a click on it never folds the section */
     h('div', { class: 'sec-w' }, section('plain', 'In plain English', plain), linksChip),
-    p.chat ? section('chat', 'Chatty', h('div', { class: 'msg-b rich chatty' }, richNodes(p.chat, p.guess ? GUESS_MARK() : null))) : null,
+    p.chat ? section('chat', 'Conversational', h('div', { class: 'msg-b rich chatty' }, richNodes(p.chat, p.guess ? GUESS_MARK() : null))) : null,
     p.note ? section('note', 'Editors’ note', h('p', { class: 'ctxnote', text: p.note })) : null,
     terms.length ? section('terms', 'Shorthand in this post', h('dl', { class: 'tm-kv' }, terms)) : null,
     section('more', 'Details', detailsGrid(p, filt)));

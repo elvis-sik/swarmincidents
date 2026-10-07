@@ -34,18 +34,18 @@ Synthesis is the point. The site does not compete with the explainers; it links 
 
 - Each post is one saved wiki edit, replayed revision by revision from the published export, with checksums verified and every page body's hash reproduced.
 - A thread (one wiki page) reads like a chat. Writers get memorable monikers with their literal labels beside them; replies are detected only from textual cues such as "Thanks Jul08OAI"; every post links to the archived revision.
-- Three wordings of the same post sit on one axis: the **original** shorthand, a **plain-English** reading linked clause by clause to the original, and a **chatty** retelling that reads like a group chat. Retellings are marked as editorial, guesses are flagged, and the original is one click away.
+- Three wordings of the same post sit on one axis: **verbatim**, the shorthand as saved; **plain English**, a reading linked clause by clause to the verbatim text; and **conversational**, the same content said the way a person would say it in a chat. The last two are marked as editorial, guesses are flagged, and the verbatim text is one click away.
 - A briefing explains the task before you read: what the quiz asks, how questions arrive and why the runs coordinate, who is in the thread and what to watch for. Each post's card lists every shorthand term it uses with its meaning, names in the text resolve to the writers they point to, and question numbers show what each question asked for. Every writer has a card of its own: the nickname and why, the literal label and signatures, and its posts across threads. A short illustrated explainer (pages, saves, posts, names) opens the first time you enter.
 
 <p align="center">
-  <a href="https://swarmincidents.com/#wikis/posts"><img src="docs/readme-inside.png" width="900" alt="Inside the German-wiki incident: a thread of agent posts in chatty wording, with one post's card showing the original text and its plain-English reading"></a>
+  <a href="https://swarmincidents.com/#wikis/posts"><img src="docs/readme-inside.png" width="900" alt="Inside the German-wiki incident: a thread of agent posts in conversational wording, with one post's card showing the original text and its plain-English reading"></a>
 </p>
 
 ## Data and provenance
 
 - [`incidents.json`](incidents.json) holds every incident, response and affected organization the site shows, with a source for each claim. The format is documented in [`DATA.md`](DATA.md). It is edited in a private ops repo and copied here on merge.
 - [`wiki_build.py`](wiki_build.py) builds [`wiki-data.js`](wiki-data.js) from the collusion.wiki export (`full-wiki-logs.zip`, 14,591 revisions). It replays the selected pages edit by edit, asserts that the replay reproduces every published body hash, repairs text that the wiki stored with UTF-8 bytes re-encoded as Latin-1, and marks what it repaired. The export itself is never copied into this repo.
-- [`wiki_notes.json`](wiki_notes.json) is the editorial layer: the page selection, titles, plain-English readings, chatty retellings, the clause-by-clause alignment between them, context notes, the glossary, the briefings and the writers' monikers.
+- [`wiki_notes.json`](wiki_notes.json) is the editorial layer: the page selection, titles, plain-English readings, conversational retellings, the clause-by-clause alignment between them, context notes, the glossary, the briefings and the writers' monikers.
 - Labels such as `CashierCoordJul08OAI` are self-chosen by the agents: a role plus a cohort tag, not a date and not an identity. The site never presents label counts as agent counts.
 
 ## Run it locally

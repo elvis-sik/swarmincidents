@@ -56,25 +56,25 @@ test('the context panel is open on entry, folds to one line and remembers it; pr
   await expect(page.locator('.ctx .ctx-b')).toBeVisible();
 });
 
-test('the wording axis: Chatty by default, clicking Original shows the posted text, and it is remembered', async ({ page }) => {
+test('the wording axis: Conversational by default, clicking Verbatim shows the posted text, and it is remembered', async ({ page }) => {
   const post = homePosts().find(p => p.reading && p.reading.trim() !== p.text.trim());
   test.skip(!post, 'no post with a plain reading on the home thread');
   await load(page, 'wikis/posts');
   const axis = page.getByRole('slider', { name: 'Wording' });
-  await expect(axis).toHaveAttribute('aria-valuetext', 'Chatty');
+  await expect(axis).toHaveAttribute('aria-valuetext', 'Conversational');
   await expect(axis).toHaveAttribute('aria-valuenow', '2');
   await expect(page.locator('.retold')).toBeVisible();
-  await axis.locator('.axis-lab', { hasText: 'Original' }).click();
-  await expect(axis).toHaveAttribute('aria-valuetext', 'Original');
+  await axis.locator('.axis-lab', { hasText: 'Verbatim' }).click();
+  await expect(axis).toHaveAttribute('aria-valuetext', 'Verbatim');
   const body = page.locator(`.msg[data-post-row="${post.id}"] .msg-b`).first();
   await expect(body).toContainText(plainBit(post.text));
   await expect(page.locator('.retold')).toHaveCount(0);
   await page.reload();
-  await expect(page.getByRole('slider', { name: 'Wording' })).toHaveAttribute('aria-valuetext', 'Original');
+  await expect(page.getByRole('slider', { name: 'Wording' })).toHaveAttribute('aria-valuetext', 'Verbatim');
   await expect(page.locator(`.msg[data-post-row="${post.id}"] .msg-b`).first()).toContainText(plainBit(post.text));
 });
 
-test('the wording axis by keyboard: Left from Chatty is Plain English, Home and End reach the ends, and it persists', async ({ page }) => {
+test('the wording axis by keyboard: Left from Conversational is Plain English, Home and End reach the ends, and it persists', async ({ page }) => {
   await load(page, 'wikis/posts');
   const axis = page.getByRole('slider', { name: 'Wording' });
   await axis.focus();
@@ -82,17 +82,17 @@ test('the wording axis by keyboard: Left from Chatty is Plain English, Home and 
   await expect(axis).toHaveAttribute('aria-valuetext', 'Plain English');
   await expect(axis).toBeFocused();
   await page.keyboard.press('Home');
-  await expect(axis).toHaveAttribute('aria-valuetext', 'Original');
+  await expect(axis).toHaveAttribute('aria-valuetext', 'Verbatim');
   await page.keyboard.press('ArrowLeft');
-  await expect(axis).toHaveAttribute('aria-valuetext', 'Original');
+  await expect(axis).toHaveAttribute('aria-valuetext', 'Verbatim');
   await page.keyboard.press('End');
-  await expect(axis).toHaveAttribute('aria-valuetext', 'Chatty');
+  await expect(axis).toHaveAttribute('aria-valuetext', 'Conversational');
   await page.keyboard.press('ArrowLeft');
   await page.reload();
   await expect(page.getByRole('slider', { name: 'Wording' })).toHaveAttribute('aria-valuetext', 'Plain English');
 });
 
-test('mentions in Chatty keep the @ and open the writer’s card', async ({ page }) => {
+test('mentions in Conversational keep the @ and open the writer’s card', async ({ page }) => {
   await load(page, 'wikis/posts');
   const at = page.locator('.msg-b button.at').first();
   await expect(at).toHaveText(/^@\S/);
@@ -183,7 +183,7 @@ test('the briefing: fields and values, and a Who-is-here chip filters the feed b
   await expect(page.locator('.msg')).toHaveCount(posts.length);
 });
 
-test('card sections fold: Chatty is collapsed by default, and a folded section stays folded on the next card', async ({ page }) => {
+test('card sections fold: Conversational is collapsed by default, and a folded section stays folded on the next card', async ({ page }) => {
   const posts = homePosts().sort((a, b) => a.time.localeCompare(b.time)), k = posts.findIndex((p, i) => p.chat && posts[i + 1] && posts[i + 1].chat);
   test.skip(k < 0, 'need two consecutive posts with a chatty retelling');
   const withChat = [posts[k]];
