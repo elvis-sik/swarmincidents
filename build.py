@@ -18,6 +18,7 @@ docs.mkdir(exist_ok=True)
 (docs / "index.html").write_text(page)
 # The Wiki tab loads wiki-data.js on demand. Rebuild it with wiki_build.py when the archive selection or wiki_notes.json change.
 shutil.copyfile(here / "wiki-data.js", docs / "wiki-data.js")
+shutil.copyfile(here / "analytics.js", docs / "analytics.js")
 (docs / "sitemap.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://swarmincidents.com/</loc><lastmod>{updated}</lastmod></url>

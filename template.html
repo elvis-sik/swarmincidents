@@ -1073,6 +1073,8 @@ dialog{transform-origin:center}
     <ul id="unknowns"></ul>
     <h3>Sources</h3>
     <p>Every incident and response links to its sources, grouped by who published them: researchers and explainers first (their own write-ups, such as collusion.wiki, also sit right under the summary), then analysts, the developers, affected organizations, governments and journalists. Researched with Claude; errors are possible.</p>
+    <h3>Site analytics</h3>
+    <p>We use <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer">GoatCounter</a> for aggregate visits, referral sources and use of the timeline and reader. We also count source clicks and time with the page visible and focused. No analytics cookies, persistent visitor IDs or search text. <a href="https://swarmincidents.com/#toggle-goatcounter">Toggle analytics for this browser</a>.</p>
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
@@ -1117,10 +1119,12 @@ dialog{transform-origin:center}
 <div class="scrim" id="scrim"></div>
 <div class="tip" id="tip" role="tooltip" hidden></div>
 
+<script src="analytics.js"></script>
 <script>
 (() => {
 'use strict';
 /*__DATA__*/
+const track = (name, detail) => { if (window.SwarmAnalytics) window.SwarmAnalytics.event(name, detail); };
 
 /* ---------------------------------------------------------------- helpers */
 const $ = s => document.querySelector(s);
@@ -1643,6 +1647,7 @@ const modeOf = v => modes[v] || (v === 'affected' ? 'table' : 'chart');
 const isChart = () => modeOf(state.view) === 'chart';
 const scrollMem = {}, scrollKey = () => (state.view === 'wiki' ? 'wiki:' + (state.inside || '') : state.view);
 function setView(v) {
+  if (v !== 'wiki') track('view', v);
   if (state.view !== v) scrollMem[scrollKey()] = scrollY;
   state.view = v; state.emph = null;
   if (v !== 'wiki') { state.inside = null; state.from = null; state.post = null; state.writer = null; }
@@ -1683,6 +1688,7 @@ function modelsPicker() {
    whatever falls out of it, then re-render */
 function setScope(v) {
   if (!SCOPES.has(v) || v === scope) return;
+  track('models', v);
   const refocus = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('.f-models'));
   scope = v; derive();
   if (state.aff.inc && !BY_ID.has(state.aff.inc)) state.aff.inc = null;
@@ -2545,6 +2551,7 @@ function devLine(e) {
 function select(id, opts = {}) {
   const hadCard = hasCard();
   const e = BY_ID.get(id); if (!e) return;
+  if (!opts.quiet) track('incident-open', id);
   if (!opts.keepBack) state.back = [];
   state.sel = id; state.ent = null; state.rsp = null; state.post = null; state.writer = null;
   markSelected();
@@ -3008,6 +3015,7 @@ function renderTabs() {
       h('button', { class: 'tab', type: 'button', role: 'tab', 'aria-selected': String(wikiMode() === 'page'), 'data-tip': 'The final page, as the wiki last saved it. Every line opens the post that wrote it.', onclick: () => setMode('page') }, 'Wiki page')) : null));
 }
 function enterInside(id, opts = {}) {
+  if (id === WIKI_INC) track('reader-open');
   scrollMem[scrollKey()] = scrollY;
   if (state.view !== 'wiki') state.from = { view: state.view, sel: state.sel, ent: state.ent, rsp: state.rsp };
   state.inside = id || null; state.sel = null; state.ent = null; state.rsp = null; state.post = null; state.writer = null;
@@ -3033,6 +3041,7 @@ const insideBtn = (id, label) => h('button', { class: 'btn primary', type: 'butt
 function setWikiPage(key) {
   const s = state.wiki;
   if (!key || key === s.page) return;
+  track('thread-open', key.replace(/^dse~/, ''));
   s.page = key; s.who = null; s.round = null;
   if (state.post && POST_BY_ID.get(state.post).page !== key) clearSel();
   renderTabs(); renderFilters(); renderView();
@@ -3091,6 +3100,7 @@ const VOICES = ['orig', 'plain', 'chat'], VOICE_LABEL = { orig: 'Verbatim', plai
 const VOICE_CTL = 'axis';
 try { const v = localStorage.getItem('wikiVoice'); if (VOICES.includes(v)) state.wiki.voice = v; } catch (e) { /* storage unavailable */ }
 function setVoice(v, inPlace) {
+  if (state.wiki.voice !== v) track('wording', v);
   state.wiki.voice = v;
   try { localStorage.setItem('wikiVoice', v); } catch (e) { /* storage unavailable */ }
   if (!inPlace) renderFilters();
@@ -3446,6 +3456,7 @@ function selectPost(id, opts = {}) {
   if (!W) { loadWiki(() => selectPost(id, opts)); return; }
   const hadCard = hasCard();
   const p = POST_BY_ID.get(id); if (!p) return;
+  if (!opts.quiet) track('post-open', p.page.replace(/^dse~/, ''));
   if (!opts.keepBack) state.back = [];
   if (!inWiki() && !opts.quiet) enterInside(WIKI_INC, { keepBack: true });
   state.post = id; state.sel = null; state.ent = null; state.rsp = null; state.writer = null;
