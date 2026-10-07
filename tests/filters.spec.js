@@ -10,9 +10,9 @@ test('a picker filter on Affected survives a tab round-trip', async ({ page }) =
   const pop = page.locator('.pk-pop');
   await expect(pop.getByRole('listbox')).toBeVisible();
   await pop.getByRole('combobox').fill('German wiki');
-  await pop.getByRole('option', { name: /18,000 posts/ }).click();
+  await pop.getByRole('option', { name: /German wiki used as a back channel/ }).click();
   await expect(pop).toHaveCount(0);
-  await expect(incPicker(page)).toHaveAccessibleName(/^Incident: 18,000 posts/);
+  await expect(incPicker(page)).toHaveAccessibleName(/^Incident: German wiki used as a back channel/);
   const count1 = await page.locator('#view [data-ent-row]').count();
   expect(count1).toBeGreaterThan(0);
   expect(count1).toBeLessThan(count0);
@@ -20,7 +20,7 @@ test('a picker filter on Affected survives a tab round-trip', async ({ page }) =
   await page.getByRole('tab', { name: /^Timeline/ }).click();
   await expect(page.locator('#view [data-inc-row]').first()).toBeVisible();
   await page.getByRole('tab', { name: /^Affected/ }).click();
-  await expect(incPicker(page)).toHaveAccessibleName(/^Incident: 18,000 posts/);
+  await expect(incPicker(page)).toHaveAccessibleName(/^Incident: German wiki used as a back channel/);
   await expect(page.locator('#view [data-ent-row]')).toHaveCount(count1);
 });
 

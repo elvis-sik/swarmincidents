@@ -33,6 +33,14 @@ function wikiData() {
   return JSON.parse(s.slice(s.indexOf('=') + 1).trim().replace(/;$/, ''));
 }
 
+/** The incident data built into the page, read from docs/index.html so tests follow whatever data was built. */
+function siteData() {
+  const s = fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8');
+  const m = s.match(/const DATA = (.*);\n/);
+  if (!m) throw new Error('no DATA in docs/index.html');
+  return JSON.parse(m[1]);
+}
+
 const isMobile = testInfo => !!testInfo.project.use.isMobile;
 
-module.exports = { test, expect: base.expect, load, wikiData, isMobile };
+module.exports = { test, expect: base.expect, load, wikiData, siteData, isMobile };
