@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect, load, wikiData } = require('./fixtures');
 
-const WIKI_TITLE = /^18,000 posts/;
+const WIKI_TITLE = /^German wiki used as a back channel/;
 
 test('#affected opens the Affected tab', async ({ page }) => {
   await load(page, 'affected');

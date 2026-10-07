@@ -12,7 +12,7 @@ const nav = page => ({
 async function drillIn(page) {
   await page.locator('#view [data-inc-row="wikis"]').first().click();
   await expect(page).toHaveURL(/#wikis$/);
-  await expect(page.locator('#det-title')).toHaveText(/^18,000 posts/);
+  await expect(page.locator('#det-title')).toHaveText(/^German wiki used as a back channel/);
   await page.getByRole('button', { name: /Read what the agents wrote/ }).click();
   // inside an incident, the thread is the current item; the incident (by its short name) and "Inside an incident" are crumbs back
   await expect(nav(page).thread).toHaveAttribute('aria-current', 'true');
@@ -33,7 +33,7 @@ test('drill in from the card and out via the Overview nav button', async ({ page
   await expect(page.getByRole('tab', { name: /^Timeline/ })).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('.msg')).toHaveCount(0);
   // leaving restores the card the reader drilled in from
-  await expect(page.locator('#det-title')).toHaveText(/^18,000 posts/);
+  await expect(page.locator('#det-title')).toHaveText(/^German wiki used as a back channel/);
   await expect(page).toHaveURL(/#wikis$/);
 });
 
