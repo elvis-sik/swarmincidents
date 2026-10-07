@@ -1627,7 +1627,7 @@ function openRangePop(ev) {
   closeRangePop();
   const r = state.range;
   const field = (lab, v) => { const i = h('input', { type: 'date', min: RANGE_MIN, max: RANGE_MAX, value: v, required: true }); return [h('label', {}, h('span', { text: lab }), i), i]; };
-  const [la, ia] = field('From', r ? r.a : FIT[state.view === 'wiki' ? 'timeline' : state.view][0]), [lb, ib] = field('To', r ? r.b : RANGE_MAX);
+  const [la, ia] = field('From', r ? r.a : FIT.timeline[0]), [lb, ib] = field('To', r ? r.b : RANGE_MAX);
   const err = h('p', { class: 'rpop-err', 'aria-live': 'polite' });
   const apply = () => {
     let a = ia.value, b = ib.value;
