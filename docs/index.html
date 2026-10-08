@@ -514,8 +514,9 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .dlg .ver{margin-top:18px;font-size:12px;color:var(--muted);font-family:var(--mono)}
 .dlg .colophon{white-space:nowrap}
 .dlg .colophon svg{width:10px;height:10px;fill:currentColor;opacity:.8;vertical-align:-1px;margin-right:4px}
-.dlg .colophon a{color:inherit;text-decoration-color:var(--line-2);text-underline-offset:.22em}
-.dlg .colophon a:hover{color:var(--ink-2);text-decoration-color:currentColor}
+.dlg .ver a{color:inherit;text-decoration-color:var(--line-2);text-underline-offset:.22em}
+.dlg .ver a:hover{color:var(--ink-2);text-decoration-color:currentColor}
+.dlg .analytics-link{white-space:nowrap}
 @media (max-width:540px){.dlg .colophon{display:block;margin-top:3px}.dlg .cph-sep{display:none}}
 
 .scrim{display:none}
@@ -1073,14 +1074,11 @@ dialog{transform-origin:center}
     <ul id="unknowns"></ul>
     <h3>Sources</h3>
     <p>Every incident and response links to its sources, grouped by who published them: researchers and explainers first (their own write-ups, such as collusion.wiki, also sit right under the summary), then analysts, the developers, affected organizations, governments and journalists. Researched with Claude; errors are possible.</p>
-    <h3>Site analytics</h3>
-    <p>We use <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer">GoatCounter</a> for aggregate visits, referral sources and use of the timeline and reader. We also count source clicks and time with the page visible and focused. No analytics cookies, persistent visitor IDs or search text. <a href="https://swarmincidents.com/#toggle-goatcounter">Toggle analytics for this browser</a>.</p>
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
     </div>
-    <p><a href="https://analytics.swarmincidents.com/" target="_blank" rel="noopener noreferrer">Analytics</a></p>
-    <p class="ver"><span id="ver"></span><span class="colophon"><span class="cph-sep">&nbsp;·&nbsp;</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.2 14 .8v10.4a2.3 2.3 0 1 1-1.5-2.15V4.1L7.5 5v7.7a2.3 2.3 0 1 1-1.5-2.15z"/></svg>created while listening to <a href="https://open.spotify.com/album/2k06VbwEjFt9iMbPNcnJMA" target="_blank" rel="noopener">this</a></span></p>
+    <p class="ver"><span id="ver"></span><span class="analytics-link">&nbsp;·&nbsp;<a href="https://analytics.swarmincidents.com/" target="_blank" rel="noopener noreferrer">Analytics</a></span><span class="colophon"><span class="cph-sep">&nbsp;·&nbsp;</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.2 14 .8v10.4a2.3 2.3 0 1 1-1.5-2.15V4.1L7.5 5v7.7a2.3 2.3 0 1 1-1.5-2.15z"/></svg>created while listening to <a href="https://open.spotify.com/album/2k06VbwEjFt9iMbPNcnJMA" target="_blank" rel="noopener">this</a></span></p>
   </div>
 </dialog>
 <dialog id="viewinfo" aria-labelledby="viewinfo-h">
