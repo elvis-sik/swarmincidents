@@ -512,12 +512,10 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .dlg ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
 .dlg a{color:var(--ink)}
 .dlg .ver{margin-top:18px;font-size:12px;color:var(--muted);font-family:var(--mono)}
-.dlg .colophon{display:block;margin-top:8px;text-align:center;white-space:nowrap}
-.dlg .colophon svg{width:10px;height:10px;fill:currentColor;opacity:.8;vertical-align:-1px;margin-right:4px}
+.dlg .colophon{white-space:nowrap}
 .dlg .ver a{color:inherit;text-decoration-color:var(--line-2);text-underline-offset:.22em}
 .dlg .ver a:hover{color:var(--ink-2);text-decoration-color:currentColor}
 .dlg .analytics-link{white-space:nowrap}
-.dlg .cph-sep{display:none}
 
 .scrim{display:none}
 .grab{display:none}
@@ -1078,7 +1076,7 @@ dialog{transform-origin:center}
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
     </div>
-    <p class="ver"><span id="ver"></span><span class="analytics-link">&nbsp;·&nbsp;<a href="https://analytics.swarmincidents.com/" target="_blank" rel="noopener noreferrer">Analytics</a></span><span class="colophon"><span class="cph-sep">&nbsp;·&nbsp;</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.2 14 .8v10.4a2.3 2.3 0 1 1-1.5-2.15V4.1L7.5 5v7.7a2.3 2.3 0 1 1-1.5-2.15z"/></svg>created while listening to <a href="https://open.spotify.com/album/2k06VbwEjFt9iMbPNcnJMA" target="_blank" rel="noopener">this</a></span></p>
+    <p class="ver"><span id="ver"></span><span class="analytics-link">&nbsp;·&nbsp;<a href="https://analytics.swarmincidents.com/" target="_blank" rel="noopener noreferrer">Analytics</a></span><span class="colophon">&nbsp;·&nbsp;<a href="https://open.spotify.com/album/2k06VbwEjFt9iMbPNcnJMA" target="_blank" rel="noopener"><span aria-hidden="true">🎵</span> Soundtrack</a></span></p>
   </div>
 </dialog>
 <dialog id="viewinfo" aria-labelledby="viewinfo-h">
