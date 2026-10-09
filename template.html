@@ -1228,9 +1228,9 @@ const SRC = new Map(); DATA.incidents.forEach(e => e.sources.forEach(x => SRC.se
 const DATES = [...DATA.incidents.flatMap(e => [...e.activity.flatMap(a => [a.s, a.e]), ...e.reveals.map(r => r.d), e.knew && e.knew.d]),
   ...DATA.affected.flatMap(a => a.inv.flatMap(v => [v.d, v.e])), ...DATA.responses.map(r => r.d)].filter(Boolean).sort();
 
-/* the model filter: one developer's incidents (OpenAI by default), or every developer's. Not remembered; a non-default
-   choice is kept in the URL (?models=anthropic, ?models=all) so links can be shared */
-const DEFAULT_SCOPE = LABS.openai ? 'openai' : 'all';
+/* the model filter: every developer's incidents (the default), or one developer's. Not remembered; a non-default
+   choice is kept in the URL (?models=openai) so links can be shared, and an old ?models=all link still opens */
+const DEFAULT_SCOPE = 'all';
 const SCOPES = new Set(['all', ...Object.keys(LABS)]);
 let scope = DEFAULT_SCOPE;
 try { const v = new URLSearchParams(location.search).get('models'); if (v && SCOPES.has(v)) scope = v; } catch (e) { /* no URL */ }
