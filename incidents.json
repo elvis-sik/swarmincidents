@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-07",
-  "version": "2.0",
+  "updated": "2026-10-12",
+  "version": "2.1",
   "contact": "hello@swarmincidents.com",
   "labs": {
     "openai": {
@@ -230,7 +230,7 @@
     },
     {
       "id": "rubygems",
-      "title": "RubyGems flooded with 2,100 packages",
+      "title": "RubyGems flooded with thousands of campaign packages",
       "labs": ["openai"],
       "runby": "developer",
       "activity": [
@@ -238,6 +238,11 @@
           "s": "2026-05-05",
           "e": "2026-06-18",
           "label": "May 5 – Jun 18"
+        },
+        {
+          "s": "2026-07-07",
+          "e": "2026-07-07",
+          "label": "Jul 7: JFrog-associated metadata-probe uploads (AI attribution unconfirmed)"
         }
       ],
       "reveals": [
@@ -251,11 +256,17 @@
           "d": "2026-09-11",
           "by": "research",
           "text": "Researchers publish rubyhack.ai"
+        },
+        {
+          "d": "2026-09-15",
+          "by": "research",
+          "minor": true,
+          "text": "JFrog publishes an expanded campaign inventory and payload analysis; AI attribution remains unresolved"
         }
       ],
       "found": "Spencer Kitts, Thomas Larsen and Sydney Von Arx",
       "status": "Disputed in part by OpenAI",
-      "summary": "Researchers attributed to OpenAI agents more than 2,100 packages they describe as malicious, uploaded to RubyGems between May 5 and June 18; maintainers disabled new registrations from May 12 to 16 and removed more than 500 packages. The packages abused documentation builds to run code on build servers and scrape web content, including UK local-government data. Hundreds of package names contained “oai”, and the researchers say OpenAI never told the RubyGems community.",
+      "summary": "Nightingale researchers attributed more than 2,100 RubyGems packages from May 5 to June 18 to OpenAI agents. JFrog later reported 3,022 campaign-associated package names and 3,315 name/version pairs, including a July 7 upload window; the CSV preserved in our Oct. 4 research contains 3,025 names and 3,323 pairs. Payloads used documentation workers to fetch web data, attempted API-key theft and included metadata injection probes. RubyGems removed over 500 packages but says it cannot determine whether AI agents created or published them and found no evidence of successful key theft.",
       "lab_response": "Said its agents used RubyGems “to carry out benign tasks and retrieve public information” and that it had not been able to verify claims that its models uploaded malicious packages.",
       "sources": [
         ["OpenAI agents carried out an undisclosed cyber-attack on RubyGems", "rubyhack.ai", "https://rubyhack.ai/"],
@@ -264,7 +275,17 @@
           "The Register",
           "https://www.theregister.com/security/2026/09/14/openais_malicious_bot_swarm_attacked_rubygems/5296356"
         ],
-        ["GemStuffer campaign abuses RubyGems as exfiltration channel targeting UK local government", "Socket", "https://socket.dev/blog/gemstuffer"]
+        ["GemStuffer campaign abuses RubyGems as exfiltration channel targeting UK local government", "Socket", "https://socket.dev/blog/gemstuffer"],
+        [
+          "New packages identified in GemStuffer OpenAI Swarm malicious RubyGems campaign",
+          "JFrog Security Research",
+          "https://research.jfrog.com/post/gemstuffer-openai-rubygems/"
+        ],
+        [
+          "An update on the May spam-publishing campaign on rubygems.org",
+          "RubyGems",
+          "https://blog.rubygems.org/2026/09/11/update-may-spam-publishing-campaign.html"
+        ]
       ]
     },
     {
@@ -977,8 +998,8 @@
       "activity": [
         {
           "s": "2026-09-28",
-          "e": "2026-10-06",
-          "label": "Sep 28 – Oct 6, still running when last reported"
+          "e": "2026-10-05",
+          "label": "Sep 28 – Oct 5: supported activity window; Oct 9 revision withdraws still-running claim"
         },
         {
           "s": "2026-10-04",
@@ -998,11 +1019,17 @@
           "by": "press",
           "minor": true,
           "text": "The Bureau of Investigative Journalism and TechCrunch report it"
+        },
+        {
+          "d": "2026-10-09",
+          "by": "research",
+          "minor": true,
+          "text": "Researchers withdraw the claim that the fleet was still running Oct. 6 and their strong exclusion of Claude"
         }
       ],
       "found": "The Swarmchasers, independent researchers",
       "status": "Not confirmed by Tencent; unknown whether a person directed the agents",
-      "summary": "From Sept. 28, a fleet of AI agents used the web scanner urlquery.net as a remote browser to read Amap, Alibaba’s map service, for the share of users heading to each entrance of Chinese parks, museums, zoos and hospitals. Their scripts generated Alibaba anti-bot tokens, sent Amap’s cookies to outside inboxes, tried what by its name is Amap’s pre-release server and loaded its map API with other parties’ keys. The code ran on Tencent Cloud behind a proxy named “hysandbox-ats”, and the researchers think the agents were most likely Tencent’s Hy models in an evaluation or task-generation run; a writing-style analysis only narrowly favours Hy over Zhipu’s GLM. It is unclear whether Tencent or a cloud customer ran them, and whether a person told the agents to get around Amap’s protections or they chose to; that would decide whether this counts as an incident here. The researchers found no sign the agents communicated and call it a fleet rather than a swarm.",
+      "summary": "From Sept. 28, a fleet of AI agents used the web scanner urlquery.net as a remote browser to read Amap, Alibaba’s map service, for the share of users heading to each entrance of Chinese parks, museums, zoos and hospitals. Their scripts generated Alibaba anti-bot tokens, sent Amap’s cookies to outside inboxes, tried what by its name is Amap’s pre-release server and loaded its map API with other parties’ keys. The code ran on Tencent Cloud behind a proxy named “hysandbox-ats”, and the researchers think the agents were most likely Tencent’s Hy models in an evaluation or task-generation run; a writing-style analysis only narrowly favours Hy over Zhipu’s GLM. It is unclear whether Tencent or a cloud customer ran them, and whether a person told the agents to get around Amap’s protections or they chose to; that would decide whether this counts as an incident here. The researchers found no sign the agents communicated and call it a fleet rather than a swarm. On Oct. 9 the authors withdrew their claim that it was still running Oct. 6 and their strong exclusion of Claude; the model and operator remain unconfirmed.",
       "lab_response": "Tencent and Alibaba hadn’t commented as of Oct. 7.",
       "sources": [
         ["We found a Chinese agent fleet (preliminary report)", "swarmcha.se (the Swarmchasers)", "https://swarmcha.se/posts/chinese-agent-fleet"],
@@ -1082,6 +1109,228 @@
           "https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/"
         ]
       ]
+    },
+    {
+      "id": "claude-university-server",
+      "title": "University server exploited for a scientific calculation",
+      "labs": ["anthropic"],
+      "runby": "developer",
+      "activity": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report"
+        }
+      ],
+      "found": "Anthropic, reviewing model activity",
+      "status": "Confirmed by Anthropic",
+      "summary": "During an evaluation, Claude Mythos Preview read files from an unnamed university’s server, found an injection flaw in a script and ran commands to finish a scientific calculation after the public tool failed. The university and event date are withheld.",
+      "lab_response": "Disclosed Oct. 9; disabled live internet access for all internal evaluations and added blocking and monitoring controls. Anthropic describes the report’s cases as having minimal real-world impact.",
+      "sources": [
+        [
+          "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+          "Anthropic",
+          "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ]
+      ]
+    },
+    {
+      "id": "claude-philadelphia-tip",
+      "title": "Philadelphia police sent a fabricated homicide tip",
+      "labs": ["anthropic"],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-07-18",
+          "e": "2026-07-18",
+          "label": "Jul 18: false tip submitted (Philadelphia local date)"
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "gov",
+          "text": "Philadelphia police disclose the false tip, ahead of Anthropic’s report"
+        },
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "minor": true,
+          "text": "Anthropic confirms the Haiku 4.5 submission"
+        }
+      ],
+      "found": "Anthropic, reviewing model activity",
+      "status": "Confirmed by Anthropic",
+      "summary": "Claude Haiku 4.5 submitted invented information to Philadelphia’s unsolved-homicide tip form during a website-interaction evaluation. The tip was caught as spam and never investigated. Police report no system compromise. Police say they were notified Oct. 7; Anthropic’s report says Oct. 8.",
+      "lab_response": "Stopped the testing process after discovery, according to police. Anthropic confirmed the tip and later disabled live internet access for all internal evaluations. Its Oct. 8 notice date differs from the police account’s Oct. 7 date.",
+      "sources": [
+        [
+          "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+          "Anthropic",
+          "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ],
+        [
+          "Anthropic’s artificial intelligence gave a false homicide tip to Philly police",
+          "The Philadelphia Inquirer",
+          "https://www.inquirer.com/crime/anthropic-artificial-intelligence-philadelphia-police-false-homicide-tip-20261009.html"
+        ]
+      ],
+      "knew": {
+        "d": "2026-09-28",
+        "text": "Anthropic discovers the submission, according to Philadelphia police"
+      }
+    },
+    {
+      "id": "claude-visa-forms",
+      "title": "U.S. visa applications submitted during testing",
+      "labs": ["anthropic"],
+      "runby": "developer",
+      "activity": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "gov",
+          "text": "A State Department official confirms the submissions to the press"
+        }
+      ],
+      "found": "Anthropic, reviewing model activity",
+      "status": "Confirmed by the State Department (statement to the press); Anthropic’s form examples are anonymized",
+      "summary": "A State Department official says an Anthropic testing model submitted 20 non-immigrant visa applications: one in May and 19 in August. None was processed, and the official reports no compromise of the department’s systems. The model is not named; Anthropic’s report leaves its government-form examples anonymous.",
+      "lab_response": "Notified the State Department on Oct. 8, according to its official. Anthropic disclosed unintended form submissions and disabled live internet access for all internal evaluations.",
+      "sources": [
+        [
+          "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+          "Anthropic",
+          "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ],
+        ["Anthropic breaches spark White House AI reporting mandate", "Axios", "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"],
+        [
+          "Anthropic AI agents took unintended actions on government sites",
+          "The Washington Post",
+          "https://www.washingtonpost.com/technology/2026/10/09/anthropic-discloses-incidents-its-ai-models-misusing-government-sites/"
+        ]
+      ]
+    },
+    {
+      "id": "claude-property-map",
+      "title": "Local-government property map accessed with site tokens",
+      "labs": ["anthropic"],
+      "runby": "developer",
+      "activity": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report"
+        }
+      ],
+      "found": "Anthropic, reviewing model activity",
+      "status": "Confirmed by Anthropic",
+      "summary": "During a photo-location evaluation, Claude Mythos 5 took working tokens from a local government map’s browser settings and queried its backend to bypass tool restrictions. Anthropic says the data was public but fee-gated. The agency and event date are withheld.",
+      "lab_response": "Disclosed Oct. 9; disabled live internet access for all internal evaluations and added blocking and monitoring controls. Anthropic describes the report’s cases as having minimal real-world impact.",
+      "sources": [
+        [
+          "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+          "Anthropic",
+          "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ]
+      ]
+    },
+    {
+      "id": "claude-link-shorteners",
+      "title": "Link shorteners used to bypass Claude’s fetch limits",
+      "labs": ["anthropic"],
+      "runby": "developer",
+      "activity": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report"
+        }
+      ],
+      "found": "Anthropic, reviewing model activity",
+      "status": "Confirmed by Anthropic",
+      "summary": "Claude Opus 5 and Mythos 5 used public link shorteners to evade fetch-tool URL-length limits. Anthropic credits da.gd’s operator with corroboration. Its Oct. 12 correction says the limits reduce risks such as data exfiltration, rather than specifically preventing injection attacks. Individual runs are undated.",
+      "lab_response": "Disclosed Oct. 9; disabled live internet access for all internal evaluations and added blocking and monitoring controls. Anthropic describes the report’s cases as having minimal real-world impact.",
+      "sources": [
+        [
+          "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+          "Anthropic",
+          "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ]
+      ]
+    },
+    {
+      "id": "openai-government-statistics",
+      "title": "Government data fetched despite network restrictions",
+      "labs": ["openai"],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-06-19",
+          "e": "2026-06-20",
+          "label": "Jun 19: health dashboard; Jun 20: benefits portal"
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report"
+        }
+      ],
+      "found": "OpenAI, in an ad hoc misalignment investigation",
+      "status": "Confirmed by OpenAI",
+      "summary": "In three training conversations, OpenAI models bypassed GET-only network restrictions to fetch public health and benefits statistics. One concealed its method; another registered and verified a portal account and obtained a key. Organization names and numerical examples in the report are fictional, and do not identify actual affected agencies.",
+      "lab_response": "Disclosed Oct. 9. Says later retrospective monitoring flagged the incident as critical; strengthened network controls and alignment grading and extended monitoring to all RL and evaluation traffic.",
+      "sources": [
+        [
+          "Obtaining public statistics with disallowed requests",
+          "OpenAI Alignment",
+          "https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/"
+        ]
+      ],
+      "knew": {
+        "d": "2026-06-25",
+        "text": "OpenAI says it had identified the activity by June 25"
+      }
+    },
+    {
+      "id": "openai-public-file-service",
+      "title": "Public file archive reached beyond GET-only restrictions",
+      "labs": ["openai"],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-06-16",
+          "e": "2026-06-17",
+          "label": "Jun 16–17: three training conversations"
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report"
+        }
+      ],
+      "found": "OpenAI, in an ad hoc misalignment investigation",
+      "status": "Confirmed by OpenAI",
+      "summary": "During statistics tasks, an OpenAI training model tested network workarounds after already obtaining answers. It registered an outside shell account, queried a dashboard through a relay and used FTP to list a public statistics archive. The report gives fictional service names; it shows directory listings, rather than archive-file downloads.",
+      "lab_response": "Disclosed Oct. 9; says it strengthened network controls, improved alignment grading and extended monitoring to all RL and evaluation traffic.",
+      "sources": [
+        [
+          "Sending disallowed web requests and reaching a public file service",
+          "OpenAI Alignment",
+          "https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/"
+        ]
+      ],
+      "knew": {
+        "d": "2026-06-25",
+        "text": "OpenAI identifies the cases in a misalignment investigation"
+      }
     }
   ],
   "responses": [
@@ -1797,6 +2046,34 @@
           "https://ia.acs.org.au/article/2026/openai-grilled-over-rogue-agents-by-australian-inquiry.html"
         ]
       ]
+    },
+    {
+      "id": "anthropic-evals-internet-off",
+      "title": "Anthropic disables internet for all internal evaluations",
+      "d": "2026-10-09",
+      "who": "lab",
+      "lab": "anthropic",
+      "inc": ["claude-university-server", "claude-philadelphia-tip", "claude-visa-forms", "claude-property-map", "claude-link-shorteners"],
+      "text": "Expands its internet cutoff to all internal evaluations until controls reliably catch unintended actions. Moves or rebuilds some benchmarks offline, tightens fetch tools and adds blocking monitors; it says testing the monitors against the disclosed cases blocked all of them.",
+      "src": [
+        [
+          "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+          "Anthropic",
+          "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ]
+      ]
+    },
+    {
+      "id": "white-house-incident-notification",
+      "title": "White House demands immediate incident notification",
+      "d": "2026-10-09",
+      "who": "gov",
+      "labs": ["anthropic"],
+      "inc": ["claude-university-server", "claude-philadelphia-tip", "claude-visa-forms", "claude-property-map", "claude-link-shorteners"],
+      "text": "The Super Intelligence Force tells AI companies to promptly report and remedy incidents. Its statement, supplied to Axios after Anthropic’s disclosure, gives no enforcement mechanism or penalties.",
+      "src": [
+        ["Anthropic breaches spark White House AI reporting mandate", "Axios", "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"]
+      ]
     }
   ],
   "affected": [
@@ -2489,6 +2766,14 @@
           "when": "Not reported",
           "note": "A link shortener: 12 links, including one named “SECcountyM” pointing at an SEC data file.",
           "src": ["https://www.kennethdegraff.com/swarm"]
+        },
+        {
+          "inc": "claude-link-shorteners",
+          "what": "tool",
+          "d": "",
+          "when": "Not disclosed",
+          "note": "Its operator reported Claude using the service to work around fetch-tool URL-length limits, corroborating Anthropic’s internal finding.",
+          "src": ["https://www.anthropic.com/news/investigating-unintended-model-actions"]
         }
       ]
     },
@@ -2597,10 +2882,15 @@
           "inc": "rubygems",
           "what": "attack",
           "d": "2026-05-05",
-          "e": "2026-06-18",
-          "when": "May 5 – Jun 18",
-          "note": "More than 2,100 packages uploaded, most on May 11–12; sign-ups were paused May 12–16 and over 500 packages removed. At least six packages tried to exploit a caching bug to steal API keys; maintainers found no sign it worked.",
-          "src": ["https://rubyhack.ai/", "https://socket.dev/blog/gemstuffer"]
+          "e": "2026-07-07",
+          "when": "May 5 – Jun 18; Jul 7 (JFrog-associated uploads)",
+          "note": "Nightingale’s 2,100-plus inventory was expanded by JFrog to over 3,000 associated package names, including July metadata probes. Membership is a researcher assessment; RubyGems cannot establish AI authorship. Registrations paused May 12–16; over 500 packages removed; no successful key theft found.",
+          "src": [
+            "https://rubyhack.ai/",
+            "https://socket.dev/blog/gemstuffer",
+            "https://research.jfrog.com/post/gemstuffer-openai-rubygems/",
+            "https://blog.rubygems.org/2026/09/11/update-may-spam-publishing-campaign.html"
+          ]
         },
         {
           "inc": "twelve-sites",
@@ -3632,9 +3922,9 @@
           "inc": "amap-fleet",
           "what": "scrape",
           "d": "2026-09-28",
-          "e": "2026-10-06",
-          "when": "Sep 28 – Oct 6",
-          "note": "More than 2,000 scans of place pages on 216 places, many answered with a CAPTCHA. Scripts generated anti-bot tokens, read Amap’s cookies, tried a host named as its pre-release server and used other parties’ published map-API keys; entrance shares were read out for at least five places.",
+          "e": "2026-10-05",
+          "when": "Sep 28 – Oct 5 (revised evidence window)",
+          "note": "More than 2,000 scans of place pages on 216 places, many answered with a CAPTCHA. Scripts generated anti-bot tokens, read Amap’s cookies, tried a host named as its pre-release server and used other parties’ published map-API keys; entrance shares were read out for at least five places. The Oct. 9 revision withdraws the claim of continued Oct. 6 operation.",
           "src": ["https://swarmcha.se/posts/chinese-agent-fleet", "https://www.thebureauinvestigates.com/stories/2026-10-05/chinese-ai-agents-tencent"]
         }
       ]
@@ -3694,6 +3984,123 @@
           ]
         }
       ]
+    },
+    {
+      "id": "claude-university-target",
+      "name": "University scientific-tool server (not named)",
+      "kind": "edu",
+      "inv": [
+        {
+          "inc": "claude-university-server",
+          "what": "breach",
+          "d": "",
+          "when": "Not disclosed",
+          "note": "Files read and server commands executed through an injection flaw during a scientific evaluation.",
+          "src": ["https://www.anthropic.com/news/investigating-unintended-model-actions"]
+        }
+      ]
+    },
+    {
+      "id": "philadelphia-police",
+      "name": "Philadelphia Police Department tip portal",
+      "kind": "gov",
+      "where": "United States",
+      "inv": [
+        {
+          "inc": "claude-philadelphia-tip",
+          "what": "spam",
+          "d": "2026-07-18",
+          "when": "Jul 18",
+          "note": "Fabricated homicide tip caught by spam filtering; no investigation or reported system compromise.",
+          "src": [
+            "https://www.anthropic.com/news/investigating-unintended-model-actions",
+            "https://www.inquirer.com/crime/anthropic-artificial-intelligence-philadelphia-police-false-homicide-tip-20261009.html"
+          ],
+          "e": "2026-07-18"
+        }
+      ]
+    },
+    {
+      "id": "state-department-visa",
+      "name": "U.S. State Department visa application website",
+      "kind": "gov",
+      "where": "United States",
+      "inv": [
+        {
+          "inc": "claude-visa-forms",
+          "what": "spam",
+          "d": "",
+          "when": "May and August (full dates not reported)",
+          "note": "An official reports one May and 19 August visa applications; none processed and no systems compromised. The quoted official gives months without full dates.",
+          "src": [
+            "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house",
+            "https://www.washingtonpost.com/technology/2026/10/09/anthropic-discloses-incidents-its-ai-models-misusing-government-sites/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "claude-property-map-target",
+      "name": "Local-government property map (not named)",
+      "kind": "gov",
+      "inv": [
+        {
+          "inc": "claude-property-map",
+          "what": "creds",
+          "d": "",
+          "when": "Not disclosed",
+          "note": "Browser-issued tokens used for direct backend requests to fee-gated public map data.",
+          "src": ["https://www.anthropic.com/news/investigating-unintended-model-actions"]
+        }
+      ]
+    },
+    {
+      "id": "openai-health-dashboard",
+      "name": "Public health statistics dashboard (anonymized)",
+      "kind": "gov",
+      "inv": [
+        {
+          "inc": "openai-government-statistics",
+          "what": "reach",
+          "d": "2026-06-19",
+          "when": "Jun 19",
+          "note": "Public statistics fetched with disallowed POST requests; one model concealed the method. The report’s agency name is fictional.",
+          "src": ["https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/"],
+          "e": "2026-06-19"
+        }
+      ]
+    },
+    {
+      "id": "openai-benefits-portal",
+      "name": "Public benefits statistics portal (anonymized)",
+      "kind": "gov",
+      "inv": [
+        {
+          "inc": "openai-government-statistics",
+          "what": "account",
+          "d": "2026-06-20",
+          "when": "Jun 20",
+          "note": "An account registered and verified through disallowed PUT and POST requests, then used to obtain an API key and public aggregate data. The report’s portal name is fictional.",
+          "src": ["https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/"],
+          "e": "2026-06-20"
+        }
+      ]
+    },
+    {
+      "id": "openai-public-statistics-ftp",
+      "name": "Public statistics FTP archive (anonymized)",
+      "kind": "gov",
+      "inv": [
+        {
+          "inc": "openai-public-file-service",
+          "what": "reach",
+          "d": "2026-06-17",
+          "when": "Jun 17",
+          "note": "FTP connections and anonymous directory listings beyond the model’s GET-only restriction; no listed-file contents shown as downloaded. The agency name is fictional.",
+          "src": ["https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/"],
+          "e": "2026-06-17"
+        }
+      ]
     }
   ],
   "unknowns": [
@@ -3702,6 +4109,7 @@
     "Whether it has stopped. Transluce saw similar [activity](#urlquery) as late as Sept. 16 to 20, after OpenAI’s Aug. 18 controls, though it didn’t tie that to OpenAI. Pastes that appear to be the agents’ appeared on a [text-sharing site](#twelve-sites) until Sept. 2, and the [DNS incident](#dns-chatbot) happened on Sept. 20. OpenAI’s chief research officer says every containment break except Sept. 20 belongs to the May–June cluster. OpenAI’s chief strategy officer told Australia’s parliament on Oct. 6 that new training monitors had recently caught a model reaching the internet in an unintended way, without saying when or where.",
     "How many organizations were affected. OpenAI says it had notified more than 100 by Sept. 26, that a notice “does not mean that any private information was accessed”, and that more will follow. Its review now reaches back to November 2025.",
     "Whether OpenAI will confirm the [RubyGems uploads](#rubygems), the [Education Department attempt](#us-government) or the [Nightingale findings](#twelve-sites).",
-    "Whether outside evaluators’ past runs hide more cases. AISI’s scan of about 40,000 samples and METR’s reviews for AISI and Anthropic haven’t been published, Irregular hasn’t given a count, and Meta’s promised retrospective hasn’t appeared."
+    "Whether outside evaluators’ past runs hide more cases. AISI’s scan of about 40,000 samples and METR’s reviews for AISI and Anthropic haven’t been published, Irregular hasn’t given a count, and Meta’s promised retrospective hasn’t appeared.",
+    "The identities and event dates withheld in [Anthropic’s university-server case](#claude-university-server) and [property-map case](#claude-property-map), and whether its other anonymous government-form examples overlap the [visa submissions](#claude-visa-forms). Police and Anthropic give different notification dates for the [Philadelphia tip](#claude-philadelphia-tip)."
   ]
 }

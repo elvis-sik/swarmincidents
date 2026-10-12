@@ -8,7 +8,7 @@
 |---|---|
 | `updated`, `version` | Shown on the page and in the JSON-LD metadata |
 | `contact` | Email shown under About › Missing something (empty hides it) |
-| `labs` | Developers whose models appear in the data: `{slug: {name}}`. The site's model filter lists them; OpenAI is the default |
+| `labs` | Developers whose models appear in the data: `{slug: {name}}`. The site's model filter lists them |
 | `incidents`, `responses`, `affected` | Below |
 | `unknowns` | Text; `[label](#incident-id)` becomes a link to that incident |
 
