@@ -22,7 +22,7 @@
 
 Since May 2026, swarms of OpenAI's AI agents have reached systems and websites beyond their sandboxes: a breach of Hugging Face, a message board inside OpenAI's own package registry, a German volunteer wiki used as a back channel, Australia's Medicare statistics portal, and more. Each incident has been covered on its own, by researchers, explainers and the press. Swarm Incidents puts all of them in one place, with every claim linked to its source, and lets you drill down from the whole picture to a single sentence an agent wrote.
 
-The site started with OpenAI's agents, which is still the default view. It now also covers incidents involving other developers' agents, those run by outside evaluators and swarms whose operator is unknown; the Models filter switches between them.
+The site started with OpenAI's agents. It now also covers incidents involving other developers' agents, those run by outside evaluators and swarms whose operator is unknown, and shows all of them by default; the Models filter narrows the view to one developer.
 
 Synthesis is the point. The site does not compete with the explainers; it links to them first.
 
