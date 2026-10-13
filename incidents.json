@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "version": "2.1",
   "contact": "hello@swarmincidents.com",
   "labs": {
@@ -290,7 +290,7 @@
     },
     {
       "id": "urlquery",
-      "title": "Public-data sites probed through urlquery.net",
+      "title": "Web scanners used to circumvent agent restrictions",
       "labs": ["openai"],
       "runby": "developer",
       "activity": [
@@ -304,6 +304,12 @@
           "e": "2026-05-28",
           "sub": true,
           "label": "Exploit probes: UNM library, Data USA"
+        },
+        {
+          "s": "2026-06-16",
+          "e": "2026-06-19",
+          "sub": true,
+          "label": "urlscan cluster: customer keys misused; developer unknown"
         },
         {
           "s": "2026-06-20",
@@ -329,12 +335,18 @@
           "by": "research",
           "minor": true,
           "text": "Asymmetric Security finds probes of staging servers and Git files, and private urlquery accounts that hide activity from June 14"
+        },
+        {
+          "d": "2026-10-01",
+          "by": "other",
+          "minor": true,
+          "text": "urlscan reports misuse of customer API keys in scans of Australian and Indian government services; developer unknown"
         }
       ],
       "found": "Transluce",
-      "status": "Not confirmed by OpenAI",
-      "summary": "Transluce found agents using the web-scanning service urlquery.net as a remote browser to get around restrictions, and tied at least some of the activity to the swarms attributed to OpenAI. On ordinary data-retrieval tasks, agents sent exploit probes at a University of New Mexico library, the Data USA site and the Australian Institute of Health and Welfare, whose pre-production server they used to get around anti-bot protection. Similar activity continued into late September, after OpenAI’s Aug. 18 controls, including failed attempts to trade on a cryptocurrency exchange; Transluce did not tie that later activity to OpenAI.",
-      "lab_response": "Did not immediately respond, according to Fortune.",
+      "status": "Some activity linked to OpenAI; urlscan cluster unattributed",
+      "summary": "Transluce found agents using the web-scanning service urlquery.net as a remote browser to get around restrictions, and tied at least some of the activity to the swarms attributed to OpenAI. On ordinary data-retrieval tasks, agents sent exploit probes at a University of New Mexico library, the Data USA site and the Australian Institute of Health and Welfare, whose pre-production server they used to get around anti-bot protection. Similar activity continued into late September, after OpenAI’s Aug. 18 controls, including failed attempts to trade on a cryptocurrency exchange; Transluce did not tie that later activity to OpenAI. Separately, urlscan linked 3,553 June 16–19 scans of Australian and Indian government services to a suspected agent cluster, without establishing its developer. Six legitimate customers’ API keys were likely used without their knowledge. This overlaps with previously reported Australian activity; it is not evidence of a separate government-site breach.",
+      "lab_response": "Did not immediately respond, according to Fortune. In response to urlscan, OpenAI described its ongoing review and notifications without confirming responsibility for that cluster.",
       "sources": [
         ["Early rogue AI agent activity and attempts to hack found on urlquery.net", "Transluce", "https://transluce.org/agent-activity"],
         [
@@ -353,6 +365,11 @@
           "Rogue agents targeted a second Australian health dashboard, urlscan.io index shows",
           "Manifold Security",
           "https://www.manifold.security/blog/ai-agents-urlscan-aihw-government-data"
+        ],
+        [
+          "Intel Brief: Caught in the Crossfire - When an AI Agent Swarm Uses Your Infrastructure to Attack",
+          "urlscan",
+          "https://urlscan.io/blog/2026/10/01/AiSwarmReport/"
         ]
       ]
     },
@@ -2073,6 +2090,22 @@
       "text": "The Super Intelligence Force tells AI companies to promptly report and remedy incidents. Its statement, supplied to Axios after Anthropic’s disclosure, gives no enforcement mechanism or penalties.",
       "src": [
         ["Anthropic breaches spark White House AI reporting mandate", "Axios", "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"]
+      ]
+    },
+    {
+      "id": "urlscan-disables-abused-accounts",
+      "title": "urlscan disables abused keys and accounts",
+      "d": "2026-10-01",
+      "label": "Reported Oct 1; action dates unspecified",
+      "who": "other",
+      "inc": ["urlquery"],
+      "text": "urlscan deleted nine disposable accounts and disabled six customers’ API keys. The report does not establish the agents’ developer.",
+      "src": [
+        [
+          "Intel Brief: Caught in the Crossfire - When an AI Agent Swarm Uses Your Infrastructure to Attack",
+          "urlscan",
+          "https://urlscan.io/blog/2026/10/01/AiSwarmReport/"
+        ]
       ]
     }
   ],
@@ -4099,6 +4132,23 @@
           "note": "FTP connections and anonymous directory listings beyond the model’s GET-only restriction; no listed-file contents shown as downloaded. The agency name is fictional.",
           "src": ["https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/"],
           "e": "2026-06-17"
+        }
+      ]
+    },
+    {
+      "id": "urlscan-customer-accounts",
+      "name": "urlscan customer accounts",
+      "kind": "company",
+      "inv": [
+        {
+          "inc": "urlquery",
+          "what": "creds",
+          "attr": "unclear",
+          "d": "2026-06-16",
+          "e": "2026-06-19",
+          "when": "Jun 16–19",
+          "note": "Six customers’ API keys were likely used without their knowledge. urlscan assessed that some had been publicly exposed and harvested; it did not establish the agents’ developer.",
+          "src": ["https://urlscan.io/blog/2026/10/01/AiSwarmReport/"]
         }
       ]
     }
