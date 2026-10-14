@@ -3,6 +3,7 @@
 import json
 import shutil
 from pathlib import Path
+from feed import build as build_feed
 here = Path(__file__).parent
 data = json.loads((here / "incidents.json").read_text(encoding="utf-8"))
 updated, version = data["updated"], data["version"]
@@ -15,6 +16,7 @@ page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
 (here / "brand" / "data.js").write_text(js + "\n")  # for brand/og.html
 docs = here / "docs"
 docs.mkdir(exist_ok=True)
+build_feed(data, here)
 (docs / "index.html").write_text(page)
 # The Wiki tab loads wiki-data.js on demand. Rebuild it with wiki_build.py when the archive selection or wiki_notes.json change.
 shutil.copyfile(here / "wiki-data.js", docs / "wiki-data.js")

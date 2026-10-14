@@ -23,6 +23,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 build.py
+      - run: python3 -m unittest discover -s tests/unit -p 'test_*.py'
       - name: docs/ is up to date
         run: |
           git diff --exit-code -- docs/

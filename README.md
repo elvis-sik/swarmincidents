@@ -58,6 +58,14 @@ python3 build.py && python3 -m http.server 8750 --directory docs
 
 Then open http://127.0.0.1:8750/. `build.py` injects the data into [`template.html`](template.html) and writes `docs/`, which GitHub Pages serves at swarmincidents.com. Rebuilding the wiki data needs the ops repo's local export: `python3 wiki_build.py`.
 
+## RSS
+
+Subscribe at [swarmincidents.com/feed.xml](https://swarmincidents.com/feed.xml), also linked in About and advertised through HTML feed autodiscovery. Each entry uses the approved incident title and summary and links to its card. The feed contains the current incident catalog, newest additions first; ordinary corrections update the existing entry rather than creating another notification. Responses and other changes do not create separate feed entries in this first version.
+
+`feed.py` runs as part of `build.py`, using Python's standard library. `feed-history.json` preserves each incident's first publication day. The initial 32 dates were backfilled from the public repository's main history, rather than incident activity or disclosure dates. Newly added IDs receive the dataset's editorial `updated` day on their first build; set that date to the publication day when approving data changes. Rebuilds never consult the clock or require Git history. Keep history entries after removal so restoration does not notify again. Commit the history file and `docs/feed.xml` with the build output. The private data-publishing workflow already rebuilds and commits these automatically.
+
+Run feed regression checks with `python3 -m unittest discover -s tests/unit -p 'test_*.py'`. RSS follows the [RSS 2.0 specification](https://www.rssboard.org/rss-specification).
+
 ## Tests
 
 End-to-end tests with [Playwright](https://playwright.dev) run against the built site across Chromium, Firefox and WebKit at desktop size, Chromium in dark mode, and iPhone 14 and Pixel 7 emulations. They cover the timeline and its tabs, the model filter, deep links, drilling into an incident and back, filter and scroll persistence, the pickers' keyboard behaviour, the reader's wording axis and card, and phone layouts. Any console error fails a test, and no request leaves localhost.
