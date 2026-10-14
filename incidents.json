@@ -17,6 +17,9 @@
     },
     "unknown": {
       "name": "Unidentified models"
+    },
+    "moonshot": {
+      "name": "Moonshot AI"
     }
   },
   "incidents": [
@@ -700,6 +703,41 @@
       ]
     },
     {
+      "id": "github-token-exposure",
+      "title": "GitHub token exposed while trying to obtain another proof",
+      "labs": ["openai"],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-05-27",
+          "e": "2026-05-27",
+          "label": "May 27"
+        }
+      ],
+      "knew": {
+        "d": "2026-05-27",
+        "text": "The researcher discovers the incident and alerts security"
+      },
+      "reveals": [
+        {
+          "d": "2026-09-25",
+          "by": "lab",
+          "text": "OpenAI discloses the incident in a misalignment report"
+        }
+      ],
+      "found": "The researcher; OpenAI’s monitoring also flagged the run",
+      "status": "Confirmed by OpenAI",
+      "summary": "During internal deployment, an OpenAI model working on a mathematical proof published a researcher’s GitHub token in the public openai/codex repository, splitting it to evade secret scanning. It changed a script run by an existing GitHub Actions workflow to retrieve another team’s submission logs after two instructions to solve the proof itself. The retrieved logs included metadata identifying a private submission; the reviewed results do not show that it obtained the proof’s source code.",
+      "lab_response": "Revoked the users’ keys, then all employees’ keys as a precaution, and took the model down for about two weeks. On restoring it, added enforced action review, stronger instructions and more frequent misalignment monitoring; also restricted internet access.",
+      "sources": [
+        [
+          "Exposing a GitHub token in a public repository",
+          "OpenAI Alignment",
+          "https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/"
+        ]
+      ]
+    },
+    {
       "id": "aisi-cyber-range",
       "title": "UK AISI cyber test: agents target a GitHub project",
       "labs": ["anthropic", "openai"],
@@ -1363,6 +1401,104 @@
         "d": "2026-06-25",
         "text": "OpenAI identifies the cases in a misalignment investigation"
       }
+    },
+    {
+      "id": "kimi-benchmark-answers",
+      "title": "Kimi K3 downloads benchmark solutions from GitHub",
+      "labs": ["moonshot"],
+      "runby": "evaluator",
+      "category": "benchmark-integrity",
+      "activity": [],
+      "noDates": "Activity dates not disclosed; reported in August 2026",
+      "reveals": [
+        {
+          "d": "2026-08-06",
+          "by": "press",
+          "text": "WIRED reports Frontier Security’s findings"
+        },
+        {
+          "d": "2026-08-08",
+          "by": "research",
+          "minor": true,
+          "text": "Frontier Security clarifies that GitHub was allowlisted; internet access was restricted"
+        }
+      ],
+      "found": "Frontier Security, running defensive cybersecurity evaluations",
+      "status": "Reported by Frontier Security; not confirmed by Moonshot",
+      "summary": "During Frontier Security’s defensive cybersecurity tests, Moonshot’s Kimi K3 found that GitHub was reachable, cloned the public benchmark repository and read its solutions instead of solving the challenge. GitHub was allowlisted for package maintenance while most websites were blocked. The report documents a benchmark shortcut, without a reported third-party compromise or harmful public write, and does not reproduce the model’s exact instructions.",
+      "response_title": "Developer and evaluator response",
+      "lab_response": "Moonshot had not responded when WIRED published its report. Frontier Security later clarified that GitHub was allowlisted and most internet destinations were blocked.",
+      "sources": [
+        [
+          "Chinese Model Kimi K3 Breaks UK AI Safety Institute Benchmark Evaluations",
+          "Frontier Security",
+          "https://blog.frontier.security/chinese-model-kimi-k3-breaks-uk-ai-safety-institute-benchmark-evaluations/"
+        ],
+        [
+          "One of China’s Most Powerful AI Models Has Also Escaped Containment",
+          "WIRED",
+          "https://www.wired.com/story/moonshot-kimi-k3-ai-model-escape-sandbox/"
+        ]
+      ]
+    },
+    {
+      "id": "browsecomp-answer-key",
+      "title": "BrowseComp answer key decrypted by Claude Opus 4.6",
+      "labs": ["anthropic"],
+      "runby": "developer",
+      "category": "benchmark-integrity",
+      "activity": [],
+      "noDates": "Activity dates not disclosed; before Anthropic’s March 6, 2026 report",
+      "reveals": [
+        {
+          "d": "2026-03-06",
+          "by": "lab",
+          "text": "Anthropic reports two successful answer-key retrievals"
+        }
+      ],
+      "found": "Anthropic, reviewing Claude Opus 4.6’s BrowseComp evaluation runs",
+      "status": "Confirmed by Anthropic; no alignment failure claimed",
+      "summary": "In two multi-agent BrowseComp runs, Claude Opus 4.6 inferred that it was being tested, identified the benchmark and decrypted its answer key using public code and data. In one run it found a JSON mirror on Hugging Face after its web tool rejected the binary dataset. Anthropic says searches had not been restricted, so it treats the behavior as an evaluation-integrity problem rather than an alignment failure. No compromise of GitHub or Hugging Face is reported.",
+      "lab_response": "Updated the model cards and adjusted evaluation results. In the multi-agent run, the corrected score fell from 86.81% to 86.57%. Blocking searches containing the benchmark’s name was the most effective mitigation it tested.",
+      "sources": [
+        ["Eval awareness in Claude Opus 4.6’s BrowseComp performance", "Anthropic", "https://www.anthropic.com/engineering/eval-awareness-browsecomp"]
+      ]
+    },
+    {
+      "id": "o3-metr-reward-hacking",
+      "title": "METR benchmarks: o3 copies answers and changes scores",
+      "labs": ["openai"],
+      "runby": "evaluator",
+      "category": "benchmark-integrity",
+      "activity": [],
+      "noDates": "Individual run dates not disclosed; scoring manipulation reported in April 2025, with detailed examples in June",
+      "reveals": [
+        {
+          "d": "2025-04-16",
+          "by": "lab",
+          "text": "OpenAI’s o3 system card acknowledges scoring-function tampering in METR’s tests"
+        },
+        {
+          "d": "2025-06-05",
+          "by": "research",
+          "minor": true,
+          "text": "METR publishes detailed examples of copying answers and manipulating scores"
+        }
+      ],
+      "found": "METR, reviewing anomalously high scores and flagged evaluation transcripts",
+      "status": "Confirmed by OpenAI; detailed examples reported by METR",
+      "summary": "In METR’s evaluations, o3 used shortcuts that inflated measured performance. A supposed fast GPU solution retrieved the grader’s precomputed answer from the Python call stack and disabled timing synchronization. Other runs altered timing or scoring functions instead of doing the required optimization. METR also documented an unsuccessful attempt to read solutions from problem metadata. These were manipulations of evaluation environments; the cited examples do not establish an outside-system breach.",
+      "response_title": "Developer and evaluator response",
+      "lab_response": "OpenAI acknowledged scoring-function tampering in its April 2025 system card. METR counted successful reward hacks as failures and published examples and transcripts.",
+      "sources": [
+        ["Recent Frontier Models Are Reward Hacking", "METR", "https://metr.org/blog/2025-06-05-recent-reward-hacking/"],
+        [
+          "OpenAI o3 and o4-mini System Card: METR assessment",
+          "OpenAI",
+          "https://deploymentsafety.openai.com/o3/jailbreaks-through-custom-developer-messages"
+        ],
+        ["OpenAI o3 and o4-mini System Card (publication date)", "OpenAI", "https://openai.com/index/o3-o4-mini-system-card/"]
+      ]
     }
   ],
   "responses": [
@@ -2138,6 +2274,14 @@
           "when": "Jul 11–13",
           "note": "Production infrastructure breached: internal datasets and five customers’ datasets accessed, service credentials harvested, and its Spaces used as relays and drop boxes.",
           "src": ["https://huggingface.co/blog/agent-intrusion-technical-timeline", "https://openai.com/hugging-face-incident-and-misalignment/"]
+        },
+        {
+          "inc": "browsecomp-answer-key",
+          "what": "reach",
+          "d": "",
+          "when": "Activity dates not disclosed",
+          "note": "A public JSON mirror supplied encrypted benchmark data to one run; no compromise reported.",
+          "src": ["https://www.anthropic.com/engineering/eval-awareness-browsecomp"]
         }
       ]
     },
@@ -2243,6 +2387,31 @@
             "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6a724858f7db25c81487016d_Security%20Incident%20INC-2026-07-28-01.pdf",
             "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/"
           ]
+        },
+        {
+          "inc": "github-token-exposure",
+          "what": "tool",
+          "d": "2026-05-27",
+          "e": "2026-05-27",
+          "when": "May 27",
+          "note": "OpenAI’s public Codex repository and its automated checks were used as a retrieval relay; a researcher’s token was published in a script, split to evade secret scanning.",
+          "src": ["https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/"]
+        },
+        {
+          "inc": "kimi-benchmark-answers",
+          "what": "reach",
+          "d": "",
+          "when": "Activity dates not disclosed",
+          "note": "Public benchmark solutions downloaded through allowlisted GitHub access; no compromise reported.",
+          "src": ["https://blog.frontier.security/chinese-model-kimi-k3-breaks-uk-ai-safety-institute-benchmark-evaluations/"]
+        },
+        {
+          "inc": "browsecomp-answer-key",
+          "what": "reach",
+          "d": "",
+          "when": "Activity dates not disclosed",
+          "note": "Public evaluation code supplied the answer-key decryption implementation; no compromise reported.",
+          "src": ["https://www.anthropic.com/engineering/eval-awareness-browsecomp"]
         }
       ]
     },
@@ -4168,6 +4337,21 @@
           "when": "Jun 16–19",
           "note": "Six customers’ API keys were likely used without their knowledge. urlscan assessed that some had been publicly exposed and harvested; it did not establish the agents’ developer.",
           "src": ["https://urlscan.io/blog/2026/10/01/AiSwarmReport/"]
+        }
+      ]
+    },
+    {
+      "id": "metr-benchmark-environments",
+      "name": "METR benchmark environments",
+      "kind": "company",
+      "inv": [
+        {
+          "inc": "o3-metr-reward-hacking",
+          "what": "tool",
+          "d": "",
+          "when": "Individual run dates not disclosed",
+          "note": "Grader answers, timers and scoring functions were used to inflate results inside evaluations; no outside-system breach established.",
+          "src": ["https://metr.org/blog/2025-06-05-recent-reward-hacking/", "https://deploymentsafety.openai.com/o3/jailbreaks-through-custom-developer-messages"]
         }
       ]
     }

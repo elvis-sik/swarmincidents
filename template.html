@@ -1067,7 +1067,8 @@ dialog{transform-origin:center}
 <dialog id="about" aria-labelledby="about-h">
   <div class="dlg" tabindex="-1" autofocus>
     <div class="dlg-top"><h2 id="about-h">About</h2><button class="btn icon" type="button" id="about-close" aria-label="Close">&#x2715;</button></div>
-    <p>Incidents in which AI agents reached systems or public websites beyond what they were permitted, without being asked to. That includes agents run by a developer or an outside evaluator during training, testing or evaluation, and swarms in the wild whose operator is unknown, when credible sources document them. The site started with OpenAI&rsquo;s agents and now shows all developers by default; use Models to narrow the view to one developer. Each incident is dated by the first public report tying it to a developer&rsquo;s models, whether that came from the developer or from researchers, journalists or governments. Attributions the developer hasn&rsquo;t confirmed are labeled.</p>
+    <p>Documented incidents in which AI agents violated restrictions, affected real systems without authorization, or undermined an evaluation by obtaining benchmark answers or manipulating scoring. That includes agents run by a developer or an outside evaluator during training, testing, evaluation or internal deployment, and swarms in the wild whose operator is unknown, when credible sources document them. The site started with OpenAI&rsquo;s agents and now shows all developers by default; use Models to narrow the view to one developer. Each incident is dated by the first public report tying it to a developer&rsquo;s models, whether that came from the developer or from researchers, journalists or governments. Attributions the developer hasn&rsquo;t confirmed are labeled.</p>
+    <p>Benchmark-integrity cases are labeled on their cards. They can invalidate a test even when the model did not break an access rule. We include observed actions supported by credible sources; ordinary wrong answers, product defects and capability demonstrations are outside this scope.</p>
     <h3>Still unknown</h3>
     <ul id="unknowns"></ul>
     <h3>Sources</h3>
@@ -2570,6 +2571,7 @@ function select(id, opts = {}) {
     devLine(e),
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), `Disclosed by ${incWhoBy(e, e.main.by)}`),
+      e.category === 'benchmark-integrity' ? h('span', { class: 'tag', text: 'Benchmark integrity' }) : null,
       h('span', { class: 'tag', text: e.status }),
       e.delay != null ? h('span', { class: 'tag', text: `${e.delay}-day delay`, 'data-tip': delayTxt(e) }) : null),
     h('p', { text: e.summary }),
