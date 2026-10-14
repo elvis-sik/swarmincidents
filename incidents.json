@@ -96,6 +96,19 @@
           "MIT Technology Review",
           "https://www.technologyreview.com/2026/09/30/1145339/were-not-going-to-shoot-ourselves-in-the-foot-over-hugging-face-says-openais-chief-research-officer/"
         ]
+      ],
+      "datasets": [
+        {
+          "id": "swarm-traces-payloads",
+          "title": "Reconstructed attack payloads",
+          "publisher": "Swarm Traces",
+          "format": "JSONL (gzip)",
+          "url": "https://swarmtraces.org/",
+          "download": "https://swarmtraces.org/data/final/redacted.jsonl.gz",
+          "description": "Redacted payloads reconstructed from public link chains associated with the Hugging Face incident.",
+          "note": "Payloads show attempted actions; they are not complete agent transcripts or proof that each action succeeded.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {
@@ -186,6 +199,19 @@
           "https://www.nbcnews.com/tech/security/openai-linked-ai-agents-swarmed-dormant-german-wiki-report-rcna596182"
         ],
         ["OpenAI and the Wiki Incident", "Zvi Mowshowitz", "https://thezvi.substack.com/p/openai-and-the-wiki-incident"]
+      ],
+      "datasets": [
+        {
+          "id": "collusion-wiki-logs",
+          "title": "Wiki edit histories and events",
+          "publisher": "collusion.wiki",
+          "format": "JSONL · JSON · ZIP",
+          "url": "https://collusion.wiki/explorer/download",
+          "download": "https://collusion.wiki/explorer/download/full-wiki-logs.zip",
+          "description": "Redacted page histories, saved text, labels and save/delete events from the agent message boards.",
+          "note": "Save events overlap with revisions. Labels do not establish unique agents.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {
@@ -229,6 +255,19 @@
           "Kenneth DeGraff",
           "https://www.kennethdegraff.com/swarm"
         ]
+      ],
+      "datasets": [
+        {
+          "id": "collusion-additional-sites",
+          "title": "Additional-site text and link records",
+          "publisher": "collusion.wiki",
+          "format": "JSONL · CSV (gzip)",
+          "url": "https://collusion.wiki/explorer/download",
+          "download": "https://collusion.wiki/explorer/download/records.jsonl.gz",
+          "description": "Redacted text artifacts, extracted links and site-coverage tables released with the additional findings.",
+          "note": "Some material overlaps the wiki release. Referenced URLs do not establish successful actions.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {
@@ -289,6 +328,19 @@
           "RubyGems",
           "https://blog.rubygems.org/2026/09/11/update-may-spam-publishing-campaign.html"
         ]
+      ],
+      "datasets": [
+        {
+          "id": "rubyhack-upload-counts",
+          "title": "Daily RubyGems upload counts",
+          "publisher": "RubyHack",
+          "format": "CSV",
+          "url": "https://rubyhack.ai/",
+          "download": "https://rubyhack.ai/data/uploads-per-day.csv",
+          "description": "Daily counts of new package names, subsequent versions and total uploads during the campaign.",
+          "note": "Aggregate counts only; this file does not contain package contents or agent transcripts.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {
@@ -374,6 +426,19 @@
           "urlscan",
           "https://urlscan.io/blog/2026/10/01/AiSwarmReport/"
         ]
+      ],
+      "datasets": [
+        {
+          "id": "transluce-scanner-catalog",
+          "title": "Agent-activity scanner catalog",
+          "publisher": "Transluce",
+          "format": "CSV · JSON · ZIP",
+          "url": "https://transluce.org/agent-activity",
+          "download": "https://transluce.org/data/urlquery-agent-activity-2026-09-23.zip",
+          "description": "Report IDs, public scan links, dates and research annotations for potentially agent-related activity.",
+          "note": "Metadata and links, not full scan bodies or agent logs. Attribution and confidence remain qualified.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {
@@ -949,6 +1014,18 @@
         ],
         ["Mythos 5 transcript release", "Anthropic (GitHub)", "https://github.com/anthropics/mythos-5-incident-transcript"],
         ["Anthropic identifies biased reasoning and recklessness as drivers of Claude’s PyPI attack", "Socket", "https://socket.dev/blog/claude-pypi-attack"]
+      ],
+      "datasets": [
+        {
+          "id": "mythos-5-transcript",
+          "title": "Mythos 5 evaluation transcript",
+          "publisher": "Anthropic",
+          "format": "JSONL · HTML · PDF",
+          "url": "https://github.com/anthropics/mythos-5-incident-transcript",
+          "description": "Redacted model messages and tool calls from the evaluation involving malware published to PyPI.",
+          "note": "Early and later portions are withheld. The publisher excludes this release from model training.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {
@@ -1178,6 +1255,19 @@
           "Ars Technica",
           "https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/"
         ]
+      ],
+      "datasets": [
+        {
+          "id": "wikimedia-agent-edits",
+          "title": "Edits attributed to OpenAI agents",
+          "publisher": "Wikimedia Foundation",
+          "format": "CSV",
+          "url": "https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/",
+          "download": "https://security.wikimedia.org/data/openai-wikimedia-edits-2026-10-04.csv",
+          "description": "A structured list of edits across Wikimedia projects attributed to the agent activity.",
+          "note": "Covers the listed edits, not the full API-request traffic or a complete agent trace.",
+          "checked": "2026-10-14"
+        }
       ]
     },
     {

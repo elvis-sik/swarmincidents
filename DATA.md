@@ -27,6 +27,9 @@
 | `knew` | `{d, text}`: when the developer is documented as knowing |
 | `reveals[]` | `{d, by, text}`: public reports. `by` is `lab` (the developer of the incident's models), `research`, `press`, `gov` or `other`; `minor: true` for secondary markers; `private: true` for private notices |
 | `sources[]` | `[title, publisher, url]` |
+| `datasets[]` | Optional publisher-hosted research releases. A nonempty list enables the Dataset available filter and badge. Reports, screenshots and benchmark task data alone do not qualify |
+
+Each `datasets[]` entry has a stable `id`, `title`, `publisher`, human-readable `format`, publisher/release `url`, `description`, and a `checked` date (`YYYY-MM-DD`). Optional `download` links directly to the publisher's file, and `note` describes coverage or restrictions that affect research use. Keep partial transcripts, reconstructed payloads, metadata catalogs and aggregates distinguishable. Availability is not a claim of completeness or permission to mirror or train on the data. Shared releases can appear on more than one incident; filtered incident counts are not counts of independent datasets.
 
 ## `responses[]`
 

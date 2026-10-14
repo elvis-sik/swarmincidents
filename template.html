@@ -1028,6 +1028,35 @@ dialog{transform-origin:center}
   .stats{gap:2px 14px;margin-bottom:8px}
 }
 @media (prefers-reduced-motion: reduce){ .pane,.scrim{transition:none} }
+/* overview controls: view choice first, scope and dates second, evidence filters third */
+.view-controls{display:inline-flex;align-items:center;gap:8px}
+.bar-r{flex-wrap:wrap;width:100%;gap:10px 24px}
+.bar-controls{padding-top:7px;border-top:1px solid var(--line)}
+.filters{gap:8px 16px}
+.dataset-tag{color:var(--g-research);border-color:color-mix(in srgb,var(--g-research) 30%,var(--line));background:color-mix(in srgb,var(--g-research) 5%,var(--panel))}
+.data-mark{display:inline-block;margin-left:7px;padding:1px 5px;border-radius:4px;font:500 10px var(--sans);color:var(--g-research);background:color-mix(in srgb,var(--g-research) 8%,var(--panel));white-space:nowrap;vertical-align:middle}
+.dataset-section{padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--soft)}
+.det .dataset-section h3{margin:0 0 9px}
+.dataset-list{list-style:none;margin:0;padding:0}
+.dataset-item+.dataset-item{margin-top:14px}
+.dataset-title{font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.dataset-meta{font-size:11.5px;color:var(--muted);margin:5px 0}
+.det .dataset-item p{font-size:12.5px;line-height:1.5}
+.det .dataset-item .dataset-note{margin-top:5px;color:var(--muted)}
+.dataset-download{display:inline-block;margin-top:7px;font-size:12px;color:var(--g-research);text-underline-offset:3px}
+@media (max-width:820px){
+  .bar-row:first-child{gap:8px}
+  .tabsrow{flex:1 1 auto;width:auto;min-width:0}
+  .view-controls{margin-left:auto}
+  .bar-r .f-models{flex:0 1 auto}
+  .bar-r{gap:8px 18px}
+  .bar-r .flabel,.filters .flabel{display:inline}
+  .filters{flex-wrap:wrap;overflow:visible;width:100%;margin:0;padding:0;gap:8px 12px}
+  .filters .fgroup.sort{margin-left:0}
+  /* the incident reader keeps its compact scrolling row */
+  .filters.inside-filters{flex-wrap:nowrap;overflow-x:auto;width:calc(100% + 20px);margin:0 -10px;padding:0 10px 1px}
+  .inside-filters .flabel{display:none}
+}
 </style>
 </head>
 <body>
@@ -1057,6 +1086,9 @@ dialog{transform-origin:center}
       <div class="bar-row">
         <div class="tabsrow" id="tabs"></div>
         <span class="count" id="count" aria-live="polite"></span>
+        <div class="view-controls" id="view-controls"></div>
+      </div>
+      <div class="bar-row bar-controls">
         <div class="bar-r" id="bar-r"></div>
       </div>
       <div class="bar-row">
@@ -1232,6 +1264,8 @@ const whatBtn = w => h('button', { type: 'button', class: 'what ' + w, 'data-wha
   onclick: ev => { ev.stopPropagation(); toggleCat(w, true); } }, WHAT[w]);
 const whatTags = a => [whatBtn(a.what), a.attr === 'unclear' ? h('span', { class: 'what unclear', text: 'Attribution unclear', 'data-tip': attrTip() }) : null];
 const confirmed = e => /^Confirmed/.test(e.status);
+const hasDataset = e => !!(e.datasets && e.datasets.length);
+const datasetMark = e => hasDataset(e) ? h('span', { class: 'data-mark', text: 'Dataset', 'data-tip': 'Published research data is linked on this incident’s card' }) : null;
 
 /* ---------------------------------------------------------------- data prep */
 /* the data and the page can be published in either order: accept the older OpenAI-only format too */
@@ -1265,8 +1299,8 @@ const DATES = [...DATA.incidents.flatMap(e => [...e.activity.flatMap(a => [a.s, 
    choice is kept in the URL (?models=openai) so links can be shared, and an old ?models=all link still opens */
 const DEFAULT_SCOPE = 'all';
 const SCOPES = new Set(['all', ...Object.keys(LABS)]);
-let scope = DEFAULT_SCOPE;
-try { const v = new URLSearchParams(location.search).get('models'); if (v && SCOPES.has(v)) scope = v; } catch (e) { /* no URL */ }
+let scope = DEFAULT_SCOPE, datasetOnly = false;
+try { const params = new URLSearchParams(location.search), v = params.get('models'); if (v && SCOPES.has(v)) scope = v; datasetOnly = params.get('datasets') === 'available'; } catch (e) { /* no URL */ }
 const allScope = () => scope === 'all';
 const scopeName = () => (allScope() || scope === 'unknown' ? null : labName(scope));
 const incInScope = e => allScope() || e.labs.includes(scope);
@@ -1329,7 +1363,7 @@ const state = {
   wiki: { page: null, who: null, round: null, q: '', voice: 'chat' }, inside: null, from: null,
   chooser: { sort: 'd', dir: -1, q: '' },
   range: null, emph: null,
-  tl: { by: 'all', conf: false, sort: 'start', dir: -1 },
+  tl: { by: 'all', conf: false, datasets: datasetOnly, sort: 'start', dir: -1 },
   aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null, cats: new Set(), unclear: true },
   back: [], pushed: false, popping: false,
   resp: { who: 'all', dir: -1, inc: null, disc: true },
@@ -1354,7 +1388,7 @@ function picker(opts) {
   const cur = h('span', { class: 'pk-cur' });
   const btn = h('button', { type: 'button', class: 'pk-btn', 'aria-haspopup': 'listbox', 'aria-expanded': 'false',
       'aria-controls': uid + '-list', onclick: () => (pop ? Date.now() - openedAt > 250 && close(true) : open(false)), onkeydown: btnKey },
-    o.label ? h('span', { class: 'pk-lab', text: o.label + ':' }) : null, cur, svg('M4 6l4 4 4-4', 'pk-chev'));
+    o.label && !o.hideLabel ? h('span', { class: 'pk-lab', text: o.label + ':' }) : null, cur, svg('M4 6l4 4 4-4', 'pk-chev'));
   const wrap = h('span', { class: 'pk' }, btn);
 
   function render() {
@@ -1741,7 +1775,9 @@ function urlFor(hash) {
   let q = location.search;
   try {
     const u = new URLSearchParams(location.search), want = scope === DEFAULT_SCOPE ? null : scope;
-    if (u.get('models') !== want) { if (want) u.set('models', want); else u.delete('models'); const t = u.toString(); q = t ? '?' + t : ''; }
+    if (want) u.set('models', want); else u.delete('models');
+    if (state.tl.datasets) u.set('datasets', 'available'); else u.delete('datasets');
+    const t = u.toString(); q = t ? '?' + t : '';
   } catch (e) { /* no URL API */ }
   return location.pathname + q + (hash ? '#' + hash : '');
 }
@@ -1750,12 +1786,11 @@ function setHash(s, push) { try { history[push ? 'pushState' : 'replaceState'](n
 const nInc = n => `${n} incident${n === 1 ? '' : 's'}`;
 function modelsPicker() {
   const labs = Object.keys(LABS).map(k => [k, DATA.incidents.filter(e => e.labs.includes(k)).length]).sort((a, b) => b[1] - a[1] || labName(a[0]).localeCompare(labName(b[0])));
-  const el = picker({ label: 'Models', ariaLabel: 'Models', value: scope, on: scope !== DEFAULT_SCOPE, searchable: labs.length > 8, placeholder: 'Search developers',
+  const el = picker({ label: 'Models', ariaLabel: 'Models', hideLabel: true, value: scope, on: scope !== DEFAULT_SCOPE, searchable: labs.length > 8, placeholder: 'Search developers',
     options: [...labs.map(([k, n]) => ({ v: k, label: labName(k), sub: nInc(n), tip: `Incidents involving ${labName(k)}\u2019s models` })),
       { v: 'all', label: 'All developers', sub: nInc(DATA.incidents.length), tip: 'Incidents involving any developer\u2019s models' }],
     onPick: v => setScope(v || DEFAULT_SCOPE) });
-  el.classList.add('f-models');
-  return el;
+  return h('span', { class: 'fgroup f-models' }, h('span', { class: 'flabel', text: 'Models' }), el);
 }
 /* switch the whole site to one developer's incidents or to all of them, in place: rebuild the scoped data, close or reset
    whatever falls out of it, then re-render */
@@ -1790,6 +1825,7 @@ const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" s
 const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
 function setRange(r) { state.range = r; renderBarR(); renderFilters(); renderView(); }
 function renderBarR() {
+  put($('#view-controls'));
   if (state.view === 'wiki') { renderWikiBarR(); return; }
   const r = state.range, m = modeOf(state.view);
   const on = v => (v ? !!r && r.preset === v : !r);
@@ -1800,7 +1836,8 @@ function renderBarR() {
       h('span', { class: 'seg rangeseg', role: 'group', 'aria-label': 'Date range' }, PRESETS.map(o => h('button', { type: 'button', 'aria-pressed': String(on(o.v)),
         'data-tip': o.v ? `Only what happened in the ${o.v} days up to the last update (${fmt(addDays(DATA.updated, -o.v))} – ${fmt(DATA.updated)})` : 'All dates. Drag across the dates above a chart to zoom in.',
         onclick: () => setRange(o.v && !on(o.v) ? { a: addDays(DATA.updated, -o.v), b: DATA.updated, preset: o.v } : null) }, o.label)),
-        h('button', { type: 'button', id: 'range-custom', 'aria-pressed': String(!!r && !r.preset), 'aria-haspopup': 'dialog', 'data-tip': 'Pick any start and end date. You can also drag across the dates above a chart.', onclick: openRangePop }, 'Custom'))),
+        h('button', { type: 'button', id: 'range-custom', 'aria-pressed': String(!!r && !r.preset), 'aria-haspopup': 'dialog', 'data-tip': 'Pick any start and end date. You can also drag across the dates above a chart.', onclick: openRangePop }, 'Custom'))));
+  put($('#view-controls'),
     h('span', { class: 'seg modeseg', role: 'group', 'aria-label': 'Layout' },
       h('button', { type: 'button', 'aria-pressed': String(m === 'chart'), 'aria-label': 'Chart', 'data-tip': 'Chart', html: ICON_CHART, onclick: () => setMode('chart') }),
       h('button', { type: 'button', 'aria-pressed': String(m === 'table'), 'aria-label': 'Table', 'data-tip': 'Table', html: ICON_TABLE, onclick: () => setMode('table') })),
@@ -1889,6 +1926,7 @@ function renderFilters() {
 }
 function renderFilters0() {
   const f = $('#filters');
+  f.classList.toggle('inside-filters', state.view === 'wiki');
   if (state.view === 'wiki') { if (!state.inside || W) renderWikiFilters(f); else put(f); return; }
   const redo = () => { renderView(); renderFilters(); };
   const chart = isChart();
@@ -1896,17 +1934,21 @@ function renderFilters0() {
     const s = state.tl;
     put(f, 
       h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Disclosed by' }),
-        seg([{ v: 'all', label: 'Anyone' }, ...Object.keys(WHO).map(g => ({ v: g, label: whoLabel(g), dot: g, tip: `Only incidents first made public by ${whoBy(g)}` }))],
-          s.by, v => { s.by = v; redo(); }, 'Disclosed by')),
+        picker({ label: 'Disclosed by', hideLabel: true, value: s.by, on: s.by !== 'all', searchable: false,
+          options: [{ v: 'all', label: 'Anyone' }, ...Object.keys(WHO).map(g => ({ v: g, label: whoLabel(g), tip: `Only incidents first made public by ${whoBy(g)}` }))],
+          onPick: v => { s.by = v; redo(); } })),
       h('button', { class: 'chip', type: 'button', 'aria-pressed': String(s.conf), 'data-tip': `Only incidents ${devThe()} has confirmed, fully or in part`,
         onclick: () => { s.conf = !s.conf; redo(); } }, h('span', { class: 'box', html: CHECK }), `Confirmed by ${devThe()}`),
+      h('button', { class: 'chip dataset-filter', type: 'button', 'aria-label': 'Dataset available', 'aria-pressed': String(s.datasets), 'data-tip': 'Only incidents with linked public research data. Coverage and formats are described on each card.',
+        onclick: () => { s.datasets = !s.datasets; setHash(location.hash.slice(1)); redo(); } }, h('span', { class: 'box', html: CHECK }), 'Dataset available', h('span', { class: 'n', 'aria-hidden': 'true', text: String(INC.filter(hasDataset).length) })),
       chart ? sortCtl(s, SORTS.timeline, 'Sort incidents') : null);
   } else if (state.view === 'affected') {
     const s = state.aff;
     put(f, h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Type' }),
-      seg([{ v: 'all', label: 'All' }, { v: 'gov', label: 'Government' }, { v: 'edu', label: 'Education' }, { v: 'company', label: 'Companies', tip: 'Companies and online services' }, { v: 'community', label: 'Community', tip: 'Volunteer wikis and open-source registries' }, { v: 'lab', label: scopeName() || 'AI developers', tip: scopeName() ? `${scopeName()}\u2019s own systems` : 'The developers\u2019 own systems' }]
-        .map(o => Object.assign(o, { label: o.v === 'all' ? o.label : `${o.label} ${AFF.filter(a => a.kind === o.v).length}` })),
-        s.kind, v => { s.kind = v; redo(); }, 'Type')),
+      picker({ label: 'Type', hideLabel: true, value: s.kind, on: s.kind !== 'all', searchable: false,
+        options: [{ v: 'all', label: 'All' }, { v: 'gov', label: 'Government' }, { v: 'edu', label: 'Education' }, { v: 'company', label: 'Companies', tip: 'Companies and online services' }, { v: 'community', label: 'Community', tip: 'Volunteer wikis and open-source registries' }, { v: 'lab', label: scopeName() || 'AI developers', tip: scopeName() ? `${scopeName()}\u2019s own systems` : 'The developers\u2019 own systems' }]
+          .map(o => Object.assign(o, { sub: String(AFF.filter(a => o.v === 'all' || a.kind === o.v).length) + ' sites' })),
+        onPick: v => { s.kind = v; redo(); } })),
       incFilter(s),
       s.cats.size ? h('span', { class: 'fchip' }, h('span', { class: 'flabel', text: 'Impact' }), [...s.cats].sort((a, b) => RANK[a] - RANK[b]).map(c => h('span', { class: 'what ' + c, text: WHAT[c] })),
         h('button', { type: 'button', 'aria-label': 'Clear impact filter', 'data-tip': 'Show every impact', text: '✕', onclick: () => { s.cats.clear(); redo(); } })) : null,
@@ -1916,8 +1958,9 @@ function renderFilters0() {
   } else {
     const s = state.resp;
     put(f, h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'From' }),
-      seg([{ v: 'all', label: 'Anyone' }, ...Object.keys(RESP_WHO).map(w => ({ v: w, label: respWhoLabel(w), dot: RESP_DOT[w] }))],
-        s.who, v => { s.who = v; redo(); }, 'Response from')), incFilter(s),
+      picker({ label: 'From', ariaLabel: 'Response from', hideLabel: true, value: s.who, on: s.who !== 'all', searchable: false,
+        options: [{ v: 'all', label: 'Anyone' }, ...Object.keys(RESP_WHO).map(w => ({ v: w, label: respWhoLabel(w) }))],
+        onPick: v => { s.who = v; redo(); } })), incFilter(s),
       chart ? sortCtl(s, SORTS.responses.filter(o => o.k === 'd'), 'Sort responses') : null);
   }
 }
@@ -1940,7 +1983,7 @@ function applyViewClass() { $('#view').className = 'view' + (state.emph && isCha
 function tlRows() {
   const s = state.tl;
   const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : e.main.d;
-  return INC.filter(e => (s.by === 'all' || e.main.by === s.by) && (!s.conf || confirmed(e)) && inRange(e.a, e.b))
+  return INC.filter(e => (s.by === 'all' || e.main.by === s.by) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
     .sort((a, b) => {
       const ka = key(a), kb = key(b);
       if (ka == null || kb == null) return (ka == null) - (kb == null) || a.n - b.n;
@@ -2155,9 +2198,9 @@ function renderTimeline() {
     const meta = h('span', { class: 'm' }, startTxt
       ? [`${startTxt} → public ${fmtA(e.main.d)} · `, h('span', { class: 'u', text: `${e.delay} days` })]
       : `public ${fmtA(e.main.d)}`);
-    const lbl = h('span', { class: 'lbl' }, h('span', { class: 't' }, e.title, labTags(e)), meta);
+    const lbl = h('span', { class: 'lbl' }, h('span', { class: 't' }, e.title, labTags(e), datasetMark(e)), meta);
     const row = laneRow({ 'data-inc-row': e.id, 'aria-selected': String(state.sel === e.id),
-      'aria-label': `${e.title}${allScope() ? ` (${incDev(e)})` : ''}. ${e.first ? `Started ${fmtA(e.first)}, disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}, ${e.delay} days later.` : `Disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}; activity dates not disclosed.`}`,
+      'aria-label': `${e.title}${allScope() ? ` (${incDev(e)})` : ''}. ${e.first ? `Started ${fmtA(e.first)}, disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}, ${e.delay} days later.` : `Disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}; activity dates not disclosed.`}${hasDataset(e) ? ' Dataset available.' : ''}`,
       onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) }, grid, lbl, svg);
     return { row, lbl, meta, nodate, lo, hi };
   });
@@ -2348,7 +2391,7 @@ function renderTimelineTable() {
       { label: 'Disclosed by' }, { label: 'Status' }, { label: 'Sites', cls: 'num', tip: 'Affected sites and organizations' },
     ]),
     h('tbody', {}, rows.length ? rows.map(e => h('tr', { class: 'linked', 'data-inc-row': e.id, onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
-      h('td', { class: 'ttl' }, e.title, labTags(e), e.id === WIKI_INC ? [' ', h('button', { class: 'mini-link', type: 'button', text: 'posts ↘', 'data-tip': 'Inside this incident: the agents’ posts, with the shorthand explained', onclick: ev => { ev.stopPropagation(); enterInside(WIKI_INC); } })] : null),
+      h('td', { class: 'ttl' }, e.title, labTags(e), datasetMark(e), e.id === WIKI_INC ? [' ', h('button', { class: 'mini-link', type: 'button', text: 'posts ↘', 'data-tip': 'Inside this incident: the agents’ posts, with the shorthand explained', onclick: ev => { ev.stopPropagation(); enterInside(WIKI_INC); } })] : null),
       h('td', { class: 'mono m-when m-inline', text: e.first ? (e.approx ? '~' : '') + fmtA(e.first) : '—' }),
       h('td', { class: 'mono m-inline', text: fmtA(e.main.d) }),
       h('td', { class: 'mono num m-inline', text: e.delay != null ? `${e.delay} d` : '—', 'data-tip': delayTxt(e) }),
@@ -2615,6 +2658,16 @@ function selectEnt(id, opts = {}) {
 /* under an incident's title: its developers (All developers, or when it involves more than the chosen one) and who ran
    the agents when that wasn't the developer */
 const RUNBY = { evaluator: 'run by an outside evaluator', unknown: 'operator unknown' };
+function datasetSection(e) {
+  if (!hasDataset(e)) return null;
+  return h('section', { class: 'dataset-section', 'aria-label': 'Research data' }, h('h3', { text: 'Research data' }),
+    h('ul', { class: 'dataset-list' }, e.datasets.map(d => h('li', { class: 'dataset-item' },
+      h('a', { class: 'dataset-title', href: d.url, target: '_blank', rel: 'noopener noreferrer' }, d.title, h('span', { 'aria-hidden': 'true', text: ' ↗' })),
+      h('div', { class: 'dataset-meta', text: `${d.publisher} · ${d.format}` }),
+      h('p', { text: d.description }),
+      d.note ? h('p', { class: 'dataset-note', text: d.note }) : null,
+      d.download ? h('a', { class: 'dataset-download', href: d.download, target: '_blank', rel: 'noopener noreferrer', text: 'Download dataset ↗' }) : null))));
+}
 function devLine(e) {
   const parts = [allScope() || e.labs.length > 1 ? incDev(e) : null, RUNBY[e.runby] || null].filter(Boolean);
   if (!parts.length) return null;
@@ -2647,11 +2700,13 @@ function select(id, opts = {}) {
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), `Disclosed by ${incWhoBy(e, e.main.by)}`),
       e.category === 'benchmark-integrity' ? h('span', { class: 'tag', text: 'Benchmark integrity' }) : null,
+      hasDataset(e) ? h('span', { class: 'tag dataset-tag', text: 'Dataset available' }) : null,
       h('span', { class: 'tag', text: e.status }),
       e.delay != null ? h('span', { class: 'tag', text: `${e.delay}-day delay`, 'data-tip': delayTxt(e) }) : null),
     h('p', { text: e.summary }),
     srcStrip(e.sources),
     INSIDE[e.id] && !(state.view === 'wiki' && state.inside === e.id) ? h('div', { class: 'inwiki' }, insideBtn(e.id, INSIDE[e.id].cta)) : null,
+    datasetSection(e),
     h('h3', { class: 'h3row' }, h('span', { text: 'Timeline' }), state.view !== 'timeline' ? h('button', { class: 'mini-link', type: 'button', 'data-tip': 'The Timeline tab, with this incident selected', onclick: () => { if (state.view === 'wiki') leaveInside(); setView('timeline'); select(id, { instant: true }); } }, 'Open in Timeline') : null),
     h('ul', { class: 'chron' }, items.map(it => h('li', { class: `k-${it.k}` + (it.by ? ` g-${it.by}` : '') },
       h('b', { text: it.label || fmtA(it.d) }), it.rid ? [rspLink(it.rid), h('span', { class: 'src', text: ` — ${it.who}` })] : it.t))),
