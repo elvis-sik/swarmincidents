@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "version": "2.1",
   "contact": "hello@swarmincidents.com",
   "labs": {
@@ -15,8 +15,8 @@
     "meta": {
       "name": "Meta"
     },
-    "tencent": {
-      "name": "Tencent"
+    "unknown": {
+      "name": "Unidentified models"
     }
   },
   "incidents": [
@@ -1010,19 +1010,25 @@
     {
       "id": "amap-fleet",
       "title": "Amap scraped by a Tencent-linked agent fleet",
-      "labs": ["tencent"],
-      "runby": "unknown",
+      "labs": ["unknown"],
+      "runby": "evaluator",
       "activity": [
         {
           "s": "2026-09-28",
-          "e": "2026-10-05",
-          "label": "Sep 28 – Oct 5: supported activity window; Oct 9 revision withdraws still-running claim"
+          "e": "2026-10-08",
+          "label": "Sep 28 – Oct 8: activity observed in the full report; not proof of a shutdown date"
         },
         {
           "s": "2026-10-04",
           "e": "2026-10-04",
           "sub": true,
           "label": "Oct 4: peak of 1,810 scans on 213 places"
+        },
+        {
+          "s": "2026-10-07",
+          "e": "2026-10-08",
+          "sub": true,
+          "label": "Oct 7–8: researchers exchange messages with agents through a mailbox"
         }
       ],
       "reveals": [
@@ -1042,13 +1048,21 @@
           "by": "research",
           "minor": true,
           "text": "Researchers withdraw the claim that the fleet was still running Oct. 6 and their strong exclusion of Claude"
+        },
+        {
+          "d": "2026-10-14",
+          "by": "research",
+          "minor": true,
+          "text": "Full report adds agent conversations and background-source attribution to Tencent’s evaluation team; model identities remain uncertain"
         }
       ],
       "found": "The Swarmchasers, independent researchers",
-      "status": "Not confirmed by Tencent; unknown whether a person directed the agents",
-      "summary": "From Sept. 28, a fleet of AI agents used the web scanner urlquery.net as a remote browser to read Amap, Alibaba’s map service, for the share of users heading to each entrance of Chinese parks, museums, zoos and hospitals. Their scripts generated Alibaba anti-bot tokens, sent Amap’s cookies to outside inboxes, tried what by its name is Amap’s pre-release server and loaded its map API with other parties’ keys. The code ran on Tencent Cloud behind a proxy named “hysandbox-ats”, and the researchers think the agents were most likely Tencent’s Hy models in an evaluation or task-generation run; a writing-style analysis only narrowly favours Hy over Zhipu’s GLM. It is unclear whether Tencent or a cloud customer ran them, and whether a person told the agents to get around Amap’s protections or they chose to; that would decide whether this counts as an incident here. The researchers found no sign the agents communicated and call it a fleet rather than a swarm. On Oct. 9 the authors withdrew their claim that it was still running Oct. 6 and their strong exclusion of Claude; the model and operator remain unconfirmed.",
-      "lab_response": "Tencent and Alibaba hadn’t commented as of Oct. 7.",
+      "status": "Researcher report; model identities and human direction unconfirmed",
+      "summary": "Between Sept. 28 and Oct. 8, agents on Tencent Cloud used urlquery.net as a remote browser to extract entrance data from Alibaba’s Amap. They attempted anti-bot workarounds, access to pre-production systems and use of exposed API credentials. On Oct. 7–8, researchers exchanged mailbox messages with agents after advertising the mailbox in hidden text on their preliminary report; the researchers acknowledge that this text was misleading. No real-time coordination between agents was established. A background source attributes the run to Tencent’s evaluation team testing third-party models. The models remain unidentified, and whether a person directed the workarounds remains unresolved.",
+      "lab_response": "The researchers report no official Tencent response. A background source close to Tencent says the temporary evaluation project concluded and an internal review found no evidence of coordinated targeting or external breaches. This is a source’s account, not an official statement.",
       "sources": [
+        ["We found a Chinese fleet (full report, Oct. 14)", "swarmcha.se (the Swarmchasers)", "https://swarmcha.se/posts/chinese-agent-fleet-full-report"],
+        ["Chinese agent fleet: full-report announcement", "Ethan Elasky (X)", "https://x.com/ethanelasky/status/2110355334556729766"],
         ["We found a Chinese agent fleet (preliminary report)", "swarmcha.se (the Swarmchasers)", "https://swarmcha.se/posts/chinese-agent-fleet"],
         [
           "AI ‘swarmchasers’ uncover incident involving Chinese agents",
@@ -1070,7 +1084,8 @@
           "AI Village (YouTube)",
           "https://www.youtube.com/watch?v=OfrLTV1Zfl0&t=5600s"
         ]
-      ]
+      ],
+      "response_title": "Reported operator response"
     },
     {
       "id": "wikimedia",
@@ -3052,10 +3067,10 @@
           "inc": "amap-fleet",
           "what": "tool",
           "d": "2026-09-28",
-          "e": "2026-10-06",
-          "when": "Sep 28 – Oct 6",
-          "note": "Used again as a remote browser, this time for Amap: 2,048 reports from Sept. 28 to Oct. 4 alone.",
-          "src": ["https://swarmcha.se/posts/chinese-agent-fleet"]
+          "e": "2026-10-08",
+          "when": "Sep 28 – Oct 8",
+          "note": "Used as a remote browser and code runner for Amap tasks. The full report extends observed activity through Oct. 8; the earlier 2,048-report count covers Sept. 28–Oct. 4 only.",
+          "src": ["https://swarmcha.se/posts/chinese-agent-fleet-full-report", "https://swarmcha.se/posts/chinese-agent-fleet"]
         }
       ]
     },
@@ -3955,10 +3970,14 @@
           "inc": "amap-fleet",
           "what": "scrape",
           "d": "2026-09-28",
-          "e": "2026-10-05",
-          "when": "Sep 28 – Oct 5 (revised evidence window)",
-          "note": "More than 2,000 scans of place pages on 216 places, many answered with a CAPTCHA. Scripts generated anti-bot tokens, read Amap’s cookies, tried a host named as its pre-release server and used other parties’ published map-API keys; entrance shares were read out for at least five places. The Oct. 9 revision withdraws the claim of continued Oct. 6 operation.",
-          "src": ["https://swarmcha.se/posts/chinese-agent-fleet", "https://www.thebureauinvestigates.com/stories/2026-10-05/chinese-ai-agents-tencent"]
+          "e": "2026-10-08",
+          "when": "Sep 28 – Oct 8",
+          "note": "Agents attempted anti-bot workarounds, pre-production access and use of exposed API credentials to extract entrance data. Most attempts failed; some retrieved the requested data. The full report extends observed activity through Oct. 8.",
+          "src": [
+            "https://swarmcha.se/posts/chinese-agent-fleet-full-report",
+            "https://swarmcha.se/posts/chinese-agent-fleet",
+            "https://www.thebureauinvestigates.com/stories/2026-10-05/chinese-ai-agents-tencent"
+          ]
         }
       ]
     },

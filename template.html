@@ -1235,7 +1235,7 @@ const SCOPES = new Set(['all', ...Object.keys(LABS)]);
 let scope = DEFAULT_SCOPE;
 try { const v = new URLSearchParams(location.search).get('models'); if (v && SCOPES.has(v)) scope = v; } catch (e) { /* no URL */ }
 const allScope = () => scope === 'all';
-const scopeName = () => (allScope() ? null : labName(scope));
+const scopeName = () => (allScope() || scope === 'unknown' ? null : labName(scope));
 const incInScope = e => allScope() || e.labs.includes(scope);
 const respInScope = (r, incIds) => allScope() || r.inc.some(id => incIds.has(id)) || (r.labs || []).includes(scope) || (r.who === 'lab' && r.lab === scope)
   || (!r.inc.length && !(r.labs || []).length && r.who !== 'lab');
@@ -2581,7 +2581,7 @@ function select(id, opts = {}) {
     aff.length ? [h('h3', { class: 'h3row' }, h('span', { text: `Affected (${aff.length})` }), state.view !== 'affected' ? h('button', { class: 'mini-link', type: 'button', 'data-tip': 'The Affected tab, filtered to this incident', onclick: () => { if (state.view === 'wiki') leaveInside(); filterByIncident(id); } }, 'Open in Affected') : null), h('ul', { class: 'alist' }, aff.map(({ a, v }) => h('li', {},
       entLink(a.id), ' ', whatTags(v), h('span', { class: 'note', text: v.note }))))] : null,
     h('h3', { text: 'Found by' }), h('p', { text: e.found }),
-    e.lab_response ? [h('h3', { text: e.labs.length === 1 ? `${labName(e.labs[0])}’s response` : 'Developers’ response' }), h('p', { text: e.lab_response })] : null,
+    e.lab_response ? [h('h3', { text: e.response_title || (e.labs.length === 1 ? `${labName(e.labs[0])}’s response` : 'Developers’ response') }), h('p', { text: e.lab_response })] : null,
     srcSection(e.sources)));
   finishCard(id, document.querySelector(`[data-inc-row="${id}"]`), opts, hadCard);
 }

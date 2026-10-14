@@ -8,7 +8,7 @@
 |---|---|
 | `updated`, `version` | Shown on the page and in the JSON-LD metadata |
 | `contact` | Email shown under About › Missing something (empty hides it) |
-| `labs` | Developers whose models appear in the data: `{slug: {name}}`. The site's model filter lists them |
+| `labs` | Developers whose models appear in the data (`unknown` means their identities are unconfirmed): `{slug: {name}}`. The site's model filter lists them |
 | `incidents`, `responses`, `affected` | Below |
 | `unknowns` | Text; `[label](#incident-id)` becomes a link to that incident |
 
@@ -19,6 +19,7 @@
 | `id` | Stable slug used in links (`#<id>`); never change it |
 | `title` | Lead with the place or thing a reader would look for ("German wiki used as a back channel"), not a number or a hook. Under about 60 characters |
 | `labs` | Developer slugs (keys of `labs`) whose models were involved, e.g. `["openai"]` or `["anthropic", "openai"]` |
+| `response_title` | Optional heading for `lab_response`, used when the account concerns an operator rather than an identified model developer |
 | `runby` | Who ran the agents: `developer`, `evaluator` (name it in the summary) or `unknown` (swarms in the wild) |
 | `summary`, `lab_response`, `found`, `status` | Text shown on the card; `lab_response` is what the developer said or did |
 | `activity[]` | `{s, e, label}`: when agents were active. `approx: true` for loosely reported windows; `sub: true` for notable sub-windows |
