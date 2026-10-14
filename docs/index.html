@@ -516,6 +516,19 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .dlg .ver a{color:inherit;text-decoration-color:var(--line-2);text-underline-offset:.22em}
 .dlg .ver a:hover{color:var(--ink-2);text-decoration-color:currentColor}
 .dlg .analytics-link{white-space:nowrap}
+.report-form{display:grid;gap:14px;margin:18px 0}
+.report-field{display:grid;gap:5px;color:var(--ink);font-weight:500}
+.report-field small{font-weight:400;color:var(--muted)}
+.report-field input,.report-field textarea{width:100%;box-sizing:border-box;border:1px solid var(--line-2);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit;font-weight:400;padding:9px 10px}
+.report-field textarea{resize:vertical;min-height:90px}
+.report-field input:focus-visible,.report-field textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.report-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.report-actions .btn{padding:7px 14px}
+.report-note{font-size:12px;color:var(--muted)}
+.report-status{color:var(--ink);overflow-wrap:anywhere}
+.report-honey{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+#report a{overflow-wrap:anywhere}
+@media(max-width:600px){.top{flex-wrap:wrap}.top-l{flex:1 0 100%}.top-r{margin-left:auto}.report-field input,.report-field textarea{font-size:16px}.dlg{padding:16px}}
 
 .scrim{display:none}
 .grab{display:none}
@@ -1028,6 +1041,7 @@ dialog{transform-origin:center}
       <span class="meta" id="meta"></span>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
       <a class="btn" href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer" data-tip="Support the project on Manifund">Donate</a>
+      <button class="btn" type="button" id="report-btn" aria-haspopup="dialog">Report</button>
       <button class="btn" type="button" id="about-btn">About</button>
       <button class="btn icon" type="button" id="theme-btn"></button>
     </div>
@@ -1064,6 +1078,22 @@ dialog{transform-origin:center}
   </div>
 </div>
 
+<dialog id="report" aria-labelledby="report-h" aria-describedby="report-intro">
+  <div class="dlg">
+    <div class="dlg-top"><h2 id="report-h">Report an incident</h2><button class="btn icon" type="button" id="report-close" aria-label="Close report">&#x2715;</button></div>
+    <p id="report-intro">Know of an AI agent incident we&rsquo;re missing, or a correction to one we cover? Send it here.</p>
+    <form id="report-form" class="report-form">
+      <label class="report-field" for="report-message">What happened?<textarea id="report-message" name="message" rows="4" maxlength="10000" required autofocus placeholder="Describe the incident or correction, and when it happened."></textarea></label>
+      <label class="report-field" for="report-sources">Source links <small>Optional &mdash; articles, reports or other evidence.</small><textarea id="report-sources" name="sources" rows="2" maxlength="3000" placeholder="https://..."></textarea></label>
+      <label class="report-field" for="report-email">Your email <small>Optional &mdash; if you&rsquo;d like us to follow up.</small><input id="report-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></label>
+      <div class="report-honey" aria-hidden="true"><label for="report-website">Website</label><input id="report-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div id="report-challenge"></div>
+      <div class="report-actions"><button class="btn primary" id="report-send" type="submit">Send report</button><span class="report-note">Reports go to the site&rsquo;s editor for review.</span></div>
+      <p id="report-status" class="report-status" role="status" aria-live="polite" hidden></p>
+    </form>
+    <p>You can also directly email <a href="mailto:report@swarmincidents.com">report@swarmincidents.com</a>.</p>
+  </div>
+</dialog>
 <dialog id="about" aria-labelledby="about-h">
   <div class="dlg" tabindex="-1" autofocus>
     <div class="dlg-top"><h2 id="about-h">About</h2><button class="btn icon" type="button" id="about-close" aria-label="Close">&#x2715;</button></div>
@@ -1076,6 +1106,7 @@ dialog{transform-origin:center}
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
+    <p>To report an incident, use the <button class="mini-link" type="button" id="about-report">Report form</button>.</p>
     </div>
     <p class="ver"><span id="ver"></span><span class="analytics-link">&nbsp;·&nbsp;<a href="https://analytics.swarmincidents.com/" target="_blank" rel="noopener noreferrer">Analytics</a></span><span class="colophon">&nbsp;·&nbsp;<a href="https://open.spotify.com/album/2k06VbwEjFt9iMbPNcnJMA" target="_blank" rel="noopener"><span aria-hidden="true">🎵</span> Soundtrack</a></span></p>
   </div>
@@ -1544,6 +1575,62 @@ darkMQ.addEventListener('change', syncThemeBtn);
 syncThemeBtn();
 
 const about = $('#about');
+const report = $('#report'), reportForm = $('#report-form');
+const REPORT_API = 'https://analytics.swarmincidents.com/api/report';
+let reportWidget, reportConfigPromise, reportBusy = false, reportAttempt;
+function reportStatus(message) { $('#report-status').textContent = message; $('#report-status').hidden = !message; }
+async function prepareReport() {
+  if (reportWidget !== undefined) return;
+  if (!reportConfigPromise) reportConfigPromise = (async () => {
+    const response = await fetch(REPORT_API + '/config', {credentials:'omit', signal:AbortSignal.timeout(10000)});
+    if (!response.ok) throw new Error('Report form unavailable');
+    const config = await response.json();
+    if (!config.siteKey) throw new Error('Report form unavailable');
+    if (!window.turnstile) await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      const timer = setTimeout(() => { script.remove(); reject(new Error('Verification unavailable')); }, 10000);
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true; script.onload = () => { clearTimeout(timer); resolve(); }; script.onerror = () => { clearTimeout(timer); script.remove(); reject(new Error('Verification unavailable')); };
+      document.head.appendChild(script);
+    });
+    reportWidget = window.turnstile.render('#report-challenge', {sitekey:config.siteKey, action:'report', theme:'auto', 'response-field':false});
+  })().catch(() => {
+    reportConfigPromise = undefined;
+    reportStatus('The form is currently unavailable. You can email report@swarmincidents.com below. Your draft is kept here.');
+  });
+  await reportConfigPromise;
+}
+function openReport() { hideTip(); if (about.open) about.close(); report.showModal(); prepareReport(); }
+$('#report-btn').addEventListener('click', openReport);
+$('#about-report').addEventListener('click', openReport);
+$('#report-close').addEventListener('click', () => report.close());
+report.addEventListener('click', ev => { if (ev.target === report) report.close(); });
+report.addEventListener('close', () => $('#report-btn').focus());
+reportForm.addEventListener('input', () => { reportAttempt = undefined; });
+reportForm.addEventListener('submit', async ev => {
+  ev.preventDefault(); if (reportBusy) return;
+  if (!$('#report-message').value.trim()) { reportStatus('Please describe the incident or correction.'); $('#report-message').focus(); return; }
+  await prepareReport();
+  if (reportBusy) return;
+  if (reportWidget === undefined) return;
+  const token = window.turnstile.getResponse(reportWidget);
+  if (!token) { reportStatus('Please complete the verification before sending.'); return; }
+  const payload = {message:$('#report-message').value.trim(), sources:$('#report-sources').value.trim(), email:$('#report-email').value.trim(), website:$('#report-website').value};
+  const signature = JSON.stringify(payload);
+  if (!reportAttempt || reportAttempt.signature !== signature) reportAttempt = {signature, id:crypto.randomUUID()};
+  reportBusy = true; $('#report-send').disabled = true; $('#report-send').textContent = 'Sending…'; reportStatus('Sending your report…');
+  try {
+    const response = await fetch(REPORT_API, {method:'POST', credentials:'omit', headers:{'Content-Type':'application/json'}, body:JSON.stringify({...payload, token, id:reportAttempt.id}), signal:AbortSignal.timeout(25000)});
+    const result = await response.json();
+    if (!response.ok || result.ok !== true) throw new Error(result.error || 'We couldn’t confirm your report was sent. Please try again or email the address below.');
+    reportForm.reset(); reportAttempt = undefined;
+    reportStatus('Thank you. Your report has been sent to the editor for review.');
+  } catch (error) {
+    reportStatus(error.name === 'TimeoutError' || error.name === 'TypeError' ? 'We couldn’t confirm your report was sent. Your draft is kept here. Please retry or email the address below.' : error.message);
+  } finally {
+    window.turnstile.reset(reportWidget); reportBusy = false; $('#report-send').disabled = false; $('#report-send').textContent = 'Send report';
+  }
+});
 $('#about-btn').addEventListener('click', () => { hideTip(); about.showModal(); });
 $('#about-close').addEventListener('click', () => about.close());
 about.addEventListener('click', ev => { if (ev.target === about) about.close(); });

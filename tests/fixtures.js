@@ -5,9 +5,16 @@ const fs = require('fs');
 const path = require('path');
 
 const test = base.test.extend({
-  page: async ({ page, baseURL }, use) => {
+  expectedHttpError: [null, {option:true}],
+  page: async ({ page, baseURL, expectedHttpError }, use) => {
     const errors = [];
-    page.on('console', m => { if (m.type() === 'error') errors.push(`console.error: ${m.text()}`); });
+    page.on('console', m => {
+      if (m.type() !== 'error') return;
+      // Error-path tests explicitly opt in to their mocked endpoint's HTTP error;
+      // application exceptions and every unrelated console error still fail.
+      if (expectedHttpError && m.location().url === expectedHttpError && /^Failed to load resource:.*502/.test(m.text())) return;
+      errors.push(`console.error: ${m.text()}`);
+    });
     page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
     // The page asks Google Fonts for Inter and JetBrains Mono. Answer locally with an empty stylesheet so the run is
     // deterministic and offline (fulfilling, not aborting: an aborted request would log a console error).
