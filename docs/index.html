@@ -105,6 +105,8 @@ html,*{scrollbar-width:thin;scrollbar-color:var(--grip) transparent}
 .top-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;min-width:0}
 h1{font-size:17px;font-weight:700;letter-spacing:-.015em;margin:0}
 .tagline{font-size:12.5px;color:var(--muted)}
+.wiki-link{font-size:12.5px;color:var(--ink-2);padding:3px 0;text-decoration-color:var(--line-2);text-underline-offset:.22em;white-space:nowrap}
+.wiki-link:hover{color:var(--ink);text-decoration-color:currentColor}
 .top-r{display:flex;align-items:center;gap:8px;flex:none}
 .meta{font-size:12.5px;color:var(--muted);margin-right:6px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line-2);background:var(--panel);border-radius:7px;padding:4px 10px;font-size:12.5px;cursor:pointer;color:var(--ink-2);text-decoration:none;min-height:30px}
@@ -1036,7 +1038,7 @@ dialog{transform-origin:center}
 
 <div class="wrap">
   <header class="top" id="top">
-    <div class="top-l"><h1 class="wordmark">Swarm Incidents</h1><span class="tagline">AI agent incidents, with sources</span></div>
+    <div class="top-l"><h1 class="wordmark">Swarm Incidents</h1><span class="tagline">AI agent incidents, with sources</span><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a></div>
     <div class="top-r">
       <span class="meta" id="meta"></span>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
@@ -1099,10 +1101,9 @@ dialog{transform-origin:center}
     <div class="dlg-top"><h2 id="about-h">About</h2><button class="btn icon" type="button" id="about-close" aria-label="Close">&#x2715;</button></div>
     <p>Documented incidents in which AI agents violated restrictions, affected real systems without authorization, or undermined an evaluation by obtaining benchmark answers or manipulating scoring. That includes agents run by a developer or an outside evaluator during training, testing, evaluation or internal deployment, and swarms in the wild whose operator is unknown, when credible sources document them. The site started with OpenAI&rsquo;s agents and now shows all developers by default; use Models to narrow the view to one developer. Each incident is dated by the first public report tying it to a developer&rsquo;s models, whether that came from the developer or from researchers, journalists or governments. Attributions the developer hasn&rsquo;t confirmed are labeled.</p>
     <p>Benchmark-integrity cases are labeled on their cards. They can invalidate a test even when the model did not break an access rule. We include observed actions supported by credible sources; ordinary wrong answers, product defects and capability demonstrations are outside this scope.</p>
-    <h3>Still unknown</h3>
-    <ul id="unknowns"></ul>
-    <h3>Sources</h3>
-    <p>Every incident and response links to its sources, grouped by who published them: researchers and explainers first (their own write-ups, such as collusion.wiki, also sit right under the summary), then analysts, the developers, affected organizations, governments and journalists. Researched with Claude; errors are possible.</p>
+    <h3>Explore and support</h3>
+    <p>Find related research, tools and projects at <a href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">swarms.wiki</a>.</p>
+    <p><a href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer">Support the project on Manifund</a>.</p>
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
@@ -1672,19 +1673,6 @@ gloss.addEventListener('click', ev => { if (ev.target === gloss) gloss.close(); 
 $('#howto-gloss').addEventListener('click', openGloss);
 const INFO_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 7.2v4M8 4.8v.3" stroke-linecap="round"/></svg>';
 const infoBtn = () => (viewInfoKey() ? h('button', { class: 'btn icon', type: 'button', 'aria-label': 'About this view', 'data-tip': viewInfoKey() === 'wiki' ? 'How to read this: pages, saves, posts and names' : 'About this view', html: INFO_ICON, onclick: openViewInfo }) : null);
-$('#unknowns').replaceChildren(...DATA.unknowns.map(t => {
-  const li = h('li');
-  const re = /\[([^\]]+)\]\(#([a-z0-9-]+)\)/g; let last = 0, m;
-  while ((m = re.exec(t))) {
-    li.append(t.slice(last, m.index));
-    const id = m[2];
-    li.append(h('a', { href: '#' + id, text: m[1], onclick: ev => { ev.preventDefault(); about.close(); if (!reach('inc', id)) return; if (state.view !== 'timeline') setView('timeline'); select(id); } }));
-    last = m.index + m[0].length;
-  }
-  li.append(t.slice(last));
-  return li;
-}));
-
 /* ---------------------------------------------------------------- key numbers */
 const median = xs => { const a = [...xs].sort((x, y) => x - y); return a.length % 2 ? a[(a.length - 1) / 2] : Math.round((a[a.length / 2 - 1] + a[a.length / 2]) / 2); };
 function renderStats() {
