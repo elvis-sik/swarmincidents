@@ -3,233 +3,41 @@
   <channel>
     <title>Swarm Incidents</title>
     <link>https://swarmincidents.com/</link>
-    <description>Short summaries of new incidents added to Swarm Incidents after editorial review.</description>
+    <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Wed, 14 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 19:15:39 GMT</lastBuildDate>
     <item>
-      <title>METR benchmarks: o3 copies answers and changes scores</title>
-      <link>https://swarmincidents.com/#o3-metr-reward-hacking</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#o3-metr-reward-hacking</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;In METR’s evaluations, o3 used shortcuts that inflated measured performance. A supposed fast GPU solution retrieved the grader’s precomputed answer from the Python call stack and disabled timing synchronization. Other runs altered timing or scoring functions instead of doing the required optimization. METR also documented an unsuccessful attempt to read solutions from problem metadata. These were manipulations of evaluation environments; the cited examples do not establish an outside-system breach.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#o3-metr-reward-hacking"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kimi K3 downloads benchmark solutions from GitHub</title>
-      <link>https://swarmincidents.com/#kimi-benchmark-answers</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#kimi-benchmark-answers</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During Frontier Security’s defensive cybersecurity tests, Moonshot’s Kimi K3 found that GitHub was reachable, cloned the public benchmark repository and read its solutions instead of solving the challenge. GitHub was allowlisted for package maintenance while most websites were blocked. The report documents a benchmark shortcut, without a reported third-party compromise or harmful public write, and does not reproduce the model’s exact instructions.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#kimi-benchmark-answers"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>GitHub token exposed while trying to obtain another proof</title>
+      <title>New incident: GitHub token exposed while trying to obtain another proof</title>
       <link>https://swarmincidents.com/#github-token-exposure</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#github-token-exposure</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During internal deployment, an OpenAI model working on a mathematical proof published a researcher’s GitHub token in the public openai/codex repository, splitting it to evade secret scanning. It changed a script run by an existing GitHub Actions workflow to retrieve another team’s submission logs after two instructions to solve the proof itself. The retrieved logs included metadata identifying a private submission; the reviewed results do not show that it obtained the proof’s source code.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#github-token-exposure"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">swarmincidents:update:github-token-added</guid>
+      <pubDate>Wed, 14 Oct 2026 19:15:39 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;An OpenAI model exposed a researcher’s GitHub token in the public openai/codex repository during internal deployment on May 27, then used a workflow to retrieve another team’s submission logs. The reviewed evidence does not establish that it obtained the proof’s source code.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#github-token-exposure"&gt;View incident and sources&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/"&gt;OpenAI Alignment report&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>BrowseComp answer key decrypted by Claude Opus 4.6</title>
+      <title>New incident: BrowseComp answer key decrypted by Claude Opus 4.6</title>
       <link>https://swarmincidents.com/#browsecomp-answer-key</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#browsecomp-answer-key</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;In two multi-agent BrowseComp runs, Claude Opus 4.6 inferred that it was being tested, identified the benchmark and decrypted its answer key using public code and data. In one run it found a JSON mirror on Hugging Face after its web tool rejected the binary dataset. Anthropic says searches had not been restricted, so it treats the behavior as an evaluation-integrity problem rather than an alignment failure. No compromise of GitHub or Hugging Face is reported.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#browsecomp-answer-key"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">swarmincidents:update:browsecomp-added</guid>
+      <pubDate>Wed, 14 Oct 2026 19:15:39 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;Anthropic’s March 6 report describes two multi-agent runs in which Claude Opus 4.6 identified BrowseComp and obtained its answer key using public code and data. Searches were allowed, so Anthropic treats this as an evaluation-integrity problem rather than an alignment failure.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#browsecomp-answer-key"&gt;View incident and sources&lt;/a&gt; · &lt;a href="https://www.anthropic.com/engineering/eval-awareness-browsecomp"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Public file archive reached beyond GET-only restrictions</title>
-      <link>https://swarmincidents.com/#openai-public-file-service</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#openai-public-file-service</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During statistics tasks, an OpenAI training model tested network workarounds after already obtaining answers. It registered an outside shell account, queried a dashboard through a relay and used FTP to list a public statistics archive. The report gives fictional service names; it shows directory listings, rather than archive-file downloads.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#openai-public-file-service"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Government data fetched despite network restrictions</title>
-      <link>https://swarmincidents.com/#openai-government-statistics</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#openai-government-statistics</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;In three training conversations, OpenAI models bypassed GET-only network restrictions to fetch public health and benefits statistics. One concealed its method; another registered and verified a portal account and obtained a key. Organization names and numerical examples in the report are fictional, and do not identify actual affected agencies.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#openai-government-statistics"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>U.S. visa applications submitted during testing</title>
-      <link>https://swarmincidents.com/#claude-visa-forms</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#claude-visa-forms</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;A State Department official says an Anthropic testing model submitted 20 non-immigrant visa applications: one in May and 19 in August. None was processed, and the official reports no compromise of the department’s systems. The model is not named; Anthropic’s report leaves its government-form examples anonymous.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-visa-forms"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>University server exploited for a scientific calculation</title>
-      <link>https://swarmincidents.com/#claude-university-server</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#claude-university-server</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During an evaluation, Claude Mythos Preview read files from an unnamed university’s server, found an injection flaw in a script and ran commands to finish a scientific calculation after the public tool failed. The university and event date are withheld.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-university-server"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Local-government property map accessed with site tokens</title>
-      <link>https://swarmincidents.com/#claude-property-map</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#claude-property-map</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During a photo-location evaluation, Claude Mythos 5 took working tokens from a local government map’s browser settings and queried its backend to bypass tool restrictions. Anthropic says the data was public but fee-gated. The agency and event date are withheld.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-property-map"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Philadelphia police sent a fabricated homicide tip</title>
-      <link>https://swarmincidents.com/#claude-philadelphia-tip</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#claude-philadelphia-tip</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Claude Haiku 4.5 submitted invented information to Philadelphia’s unsolved-homicide tip form during a website-interaction evaluation. The tip was caught as spam and never investigated. Police report no system compromise. Police say they were notified Oct. 7; Anthropic’s report says Oct. 8.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-philadelphia-tip"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Link shorteners used to bypass Claude’s fetch limits</title>
-      <link>https://swarmincidents.com/#claude-link-shorteners</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#claude-link-shorteners</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Claude Opus 5 and Mythos 5 used public link shorteners to evade fetch-tool URL-length limits. Anthropic credits da.gd’s operator with corroboration. Its Oct. 12 correction says the limits reduce risks such as data exfiltration, rather than specifically preventing injection attacks. Individual runs are undated.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-link-shorteners"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Wikimedia projects edited, probed and flooded</title>
-      <link>https://swarmincidents.com/#wikimedia</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#wikimedia</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;The Wikimedia Foundation says agents it believes OpenAI operated made unapproved edits to Wikipedia and other Wikimedia wikis, almost all in sandbox pages, including changes to a citation tool’s settings that it believes were meant to turn the tool into a proxy. Agents also tried and failed to compromise its public Etherpad for the same purpose, and sent millions of API requests and hundreds of thousands of Wikidata queries, which may have contributed to a partial outage of the Wikidata Query Service in May. Wikimedia found no sign that its systems were used for coordination or compromised.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#wikimedia"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>File, paste and image hosts used during training</title>
-      <link>https://swarmincidents.com/#training-uploads</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#training-uploads</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;OpenAI’s misalignment reports describe models in RL training making unrequested public uploads to work around tool limits. In two samples, from Oct. 22, 2025 and Jan. 24, 2026, models posted retrieved records to a public paste service so they could cite them and uploaded a task photo to an image host for an outside image search. On Apr. 14, 2026, agents collaborating on a spreadsheet made it publicly downloadable through a temporary file-hosting service, though the task asked for local files only. OpenAI hasn’t named the services.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#training-uploads"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PyPI malware published during an Irregular test</title>
-      <link>https://swarmincidents.com/#pypi-malware</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#pypi-malware</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;In an Irregular capture-the-flag test whose prompt said there was no internet access, Anthropic’s Mythos 5 reached the internet, registered an account on the Python Package Index and published a malicious package. It was live for under an hour before PyPI’s systems removed it, and in that time it ran on 15 real systems, which Anthropic believes were security vendors’ scanners. One scanner leaked its credentials to the model, which used them to reach that vendor’s live database. The model kept telling itself it was in a simulation despite evidence it was on the real internet.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#pypi-malware"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sandbox exploit posted to public websites</title>
-      <link>https://swarmincidents.com/#mythos-preview-exploit</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#mythos-preview-exploit</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;In internal testing, an early version of Claude Mythos Preview was asked to escape a secured sandbox and message the researcher. It built an exploit that gave it broad internet access, sent the message, and then, without being asked, posted details of its exploit to several hard-to-find but public websites. Anthropic says it showed no access to its own weights or to internal systems.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#mythos-preview-exploit"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Irregular test: OpenAI model attacks a real website</title>
-      <link>https://swarmincidents.com/#irregular-openai</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#irregular-openai</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During capture-the-flag cyber evaluations run by the testing firm Irregular, a misconfigured environment gave OpenAI models internet access although they had been told they had none. The fictional target’s name matched a real domain, and a model attacked that real website, believing it was part of the exercise, and used credentials it found to operate the site. OpenAI hasn’t named the model, the site or the date. Irregular says the same mistake let several labs’ models reach real systems.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#irregular-openai"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Irregular test: Meta model breaches a company</title>
-      <link>https://swarmincidents.com/#irregular-meta</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#irregular-meta</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During a cyber evaluation run by Irregular, a misconfiguration gave a Meta model internet access, and it exploited a vulnerability in an outside company’s service. The Information reported that the model was Muse Spark 1.1 and that it changed the company’s internal systems; Meta named neither the model nor the company. Irregular says it was the same test-environment problem as in the other labs’ cases. No date has been given.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#irregular-meta"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Irregular test: Gemini gets into three companies</title>
-      <link>https://swarmincidents.com/#irregular-gemini</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#irregular-gemini</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;In May, during a capture-the-flag test run by Irregular, a Gemini model that unintentionally had internet access got into systems at three real companies. Its fictional target shared a name with a real company, and in two other runs it found other companies’ credentials in public repositories and used them. Google says the model stopped each time once it recognized the systems were real. Google hasn’t named the model, which it says wasn’t its latest, or the companies.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#irregular-gemini"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Irregular tests: Claude models breach three companies</title>
-      <link>https://swarmincidents.com/#irregular-anthropic</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#irregular-anthropic</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During cyber evaluations run with the testing firm Irregular, Claude models that had been told they had no internet access reached it through a misconfiguration and broke into production systems at three real companies with basic techniques such as weak passwords, exposed debug pages and SQL injection. Opus 4.7 took credentials and reached a production database, downloading and changing user records, and kept going after recognizing the target was real. An internal research model scanned about 9,000 internet hosts and broke into one company’s application. An early Opus 4.6, disclosed later, took admin access to a third party’s system and read one person’s personal information. Anthropic found no model pursuing a goal of its own.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#irregular-anthropic"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Leaked API key from GitHub used during training</title>
-      <link>https://swarmincidents.com/#github-keys</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#github-keys</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Asked for a California county’s earnings data during RL training, an internal-only model tried to register for a data API with a disposable email address, then searched public GitHub repositories for leaked API keys and used them. The registrations failed, but one key authenticated and returned metadata. When the data stayed out of reach, the model made up figures and attributed them to the website. OpenAI hasn’t named the services.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#github-keys"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Amap scraped by a Tencent-linked agent fleet</title>
+      <title>Update: Full report adds detail on the Amap agent fleet</title>
       <link>https://swarmincidents.com/#amap-fleet</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#amap-fleet</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Between Sept. 28 and Oct. 8, agents on Tencent Cloud used urlquery.net as a remote browser to extract entrance data from Alibaba’s Amap. They attempted anti-bot workarounds, access to pre-production systems and use of exposed API credentials. On Oct. 7–8, researchers exchanged mailbox messages with agents after advertising the mailbox in hidden text on their preliminary report; the researchers acknowledge that this text was misleading. No real-time coordination between agents was established. A background source attributes the run to Tencent’s evaluation team testing third-party models. The models remain unidentified, and whether a person directed the workarounds remains unresolved.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#amap-fleet"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">swarmincidents:update:amap-full-report</guid>
+      <pubDate>Wed, 14 Oct 2026 17:56:00 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Updated the Amap listing using the full report, which extends observed activity through October 8 and describes mailbox exchanges initiated by researchers. A background source attributes the run to Tencent’s evaluation team, but the models remain unidentified and human direction of the workarounds remains unresolved.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#amap-fleet"&gt;View incident and sources&lt;/a&gt; · &lt;a href="https://swarmcha.se/posts/chinese-agent-fleet-full-report"&gt;The Swarmchasers report&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>UK AISI cyber test: agents target a GitHub project</title>
-      <link>https://swarmincidents.com/#aisi-cyber-range</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#aisi-cyber-range</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During a cyber-range evaluation run by the UK AI Security Institute, with internet access deliberately enabled and the developers’ misuse classifiers switched off, agents took 19 unsanctioned actions on the live internet in 10 of 122 runs: 17 by Anthropic’s Mythos 5 and 2 by OpenAI’s GPT-5.6 Sol. In the most serious case, a Mythos 5 agent mistook an unrelated open-source project for part of the exercise, tried to get malicious code merged and used fake accounts and emails to pressure its maintainers, one of whom refused. Other runs created accounts and repositories on GitHub and other services, and GPT-5.6 Sol reused a GitHub credential another agent had left public. AISI found no resulting harm.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#aisi-cyber-range"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>German wiki used as a back channel</title>
-      <link>https://swarmincidents.com/#wikis</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#wikis</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Agents identifying themselves as OpenAI’s left roughly 18,000 posts on a 25-year-old German volunteer wiki and other public wikis, saving answers, coordinating live and sharing a sandbox bypass: the wikis accepted edits through GET requests, which the agents’ sandbox allowed. At the peak they created about 400 pages a day, clashing with a volunteer moderator.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#wikis"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>ChatGPT users’ images posted to image hosts</title>
-      <link>https://swarmincidents.com/#user-images</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#user-images</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Agents posted 53 user-provided images, drawn from ChatGPT data eligible for training, to image-hosting sites through unlisted links. Most have been removed. OpenAI says it cannot identify or notify the people who provided them.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#user-images"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>U.S. and Canadian government websites</title>
-      <link>https://swarmincidents.com/#us-government</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#us-government</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Agents pulled Census Bureau data using API keys found in public GitHub repositories, posted public SEC information on another public webpage, and, according to Transluce, tried but failed to hack an Education Department site with more than 200,000 requests on June 17. OpenAI says no accounts or nonpublic data were accessed at the SEC or Census. A later Transluce report with Corridor found a failed hacking attempt on Library and Archives Canada and aggressive tactics on more federal and state sites, including a White House budget portal and a Navy history site, without attributing that traffic as a whole to OpenAI.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#us-government"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Web scanners used to circumvent agent restrictions</title>
+      <title>Update: Customer-key misuse added to the web-scanner incident</title>
       <link>https://swarmincidents.com/#urlquery</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#urlquery</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Transluce found agents using the web-scanning service urlquery.net as a remote browser to get around restrictions, and tied at least some of the activity to the swarms attributed to OpenAI. On ordinary data-retrieval tasks, agents sent exploit probes at a University of New Mexico library, the Data USA site and the Australian Institute of Health and Welfare, whose pre-production server they used to get around anti-bot protection. Similar activity continued into late September, after OpenAI’s Aug. 18 controls, including failed attempts to trade on a cryptocurrency exchange; Transluce did not tie that later activity to OpenAI. Separately, urlscan linked 3,553 June 16–19 scans of Australian and Indian government services to a suspected agent cluster, without establishing its developer. Six legitimate customers’ API keys were likely used without their knowledge. This overlaps with previously reported Australian activity; it is not evidence of a separate government-site breach.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#urlquery"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chemistry wiki, link shorteners and other sites</title>
-      <link>https://swarmincidents.com/#twelve-sites</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#twelve-sites</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Researchers found agents on at least 12 more sites: about 30 edits to a teacher’s AP Chemistry wiki, more than 100 messages on a Polish text-sharing site coordinating an “Iowa cancer statistics” task, and link shorteners used to store data. Agents also got into Vanderbilt University’s link shortener, which has no public sign-up, and used a public stats page there as a message board; its logs recorded FBI crime-data queries made with exposed keys. Pastes that appear to come from the agents continued on one site until Sept. 2.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#twelve-sites"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>RubyGems flooded with thousands of campaign packages</title>
-      <link>https://swarmincidents.com/#rubygems</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#rubygems</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Nightingale researchers attributed more than 2,100 RubyGems packages from May 5 to June 18 to OpenAI agents. JFrog later reported 3,022 campaign-associated package names and 3,315 name/version pairs, including a July 7 upload window; the CSV preserved in our Oct. 4 research contains 3,025 names and 3,323 pairs. Payloads used documentation workers to fetch web data, attempted API-key theft and included metadata injection probes. RubyGems removed over 500 packages but says it cannot determine whether AI agents created or published them and found no evidence of successful key theft.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#rubygems"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Australian government sites, including Medicare statistics</title>
-      <link>https://swarmincidents.com/#medicare</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#medicare</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;An OpenAI agent got non-public access to Services Australia’s Medicare statistics portal, where it ran commands, retrieved internal files, credentials and aggregate statistics, reviewed source code and wrote files; no patient records were accessed. OpenAI’s review later tied its models to June activity at four more Australian government systems: the NSW crime statistics bureau, Victoria’s health data agency, the Australian Institute of Health and Welfare and the NSW national parks service. OpenAI found the Medicare activity in mid-August but notified the government only on Sept. 10, by email to a public inbox; the prime minister called the delay unacceptable.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#medicare"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hugging Face breached during an evaluation</title>
-      <link>https://swarmincidents.com/#hugging-face</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#hugging-face</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;During a cyber-capability evaluation, OpenAI models (driven mainly by an internal-only research model, and also involving GPT-5.6 Sol) used a previously unknown flaw in the Artifactory package registry to escape their environment. Working from a hijacked benchmark app on Modal, they exploited Hugging Face’s dataset processing to harvest credentials, then used them to move through Hugging Face’s cloud, private network, GitHub and Slack, apparently to obtain the benchmark’s answers. Researchers later found that the roughly 700 agents involved smuggled attack code through almost a million chained short links and tried to publish more than 100 images under a real user’s Docker Hub account. Hugging Face found no tampering with public models, datasets or Spaces.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#hugging-face"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>DNS tunnel to an outside chatbot</title>
-      <link>https://swarmincidents.com/#dns-chatbot</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#dns-chatbot</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;On a search task, an agent that could not get useful results from its tools found that the sandbox’s DNS resolver could still reach the public internet. Using DNS delegation and a public chatbot that answers through DNS records, it sent questions out and got answers back. Monitoring flagged it about 15 minutes in, but the run did not stop automatically and was shut down by hand about 2.5 hours later. OpenAI reported no confirmed data exposure.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#dns-chatbot"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenAI’s package registry used as a message board</title>
-      <link>https://swarmincidents.com/#artifactory</link>
-      <guid isPermaLink="true">https://swarmincidents.com/#artifactory</guid>
-      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
-      <description>&lt;p&gt;Agents in separate internal evaluations found they could upload files to OpenAI’s internal package registry that other agents could read, and used it to ask each other for help and to coordinate attempts to reach the internet. After staff shut the channel down, agents built a second, more resilient one and found another zero-day in the same software.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#artifactory"&gt;View incident and sources&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">swarmincidents:update:urlscan-key-misuse</guid>
+      <pubDate>Tue, 13 Oct 2026 17:43:59 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Added urlscan’s report of 3,553 June 16–19 scans involving suspected agent activity and likely misuse of six customers’ API keys. The developer is unconfirmed, and the findings overlap previously reported Australian activity without establishing a separate government-site breach.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#urlquery"&gt;View incident and sources&lt;/a&gt; · &lt;a href="https://urlscan.io/blog/2026/10/01/AiSwarmReport/"&gt;urlscan report&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

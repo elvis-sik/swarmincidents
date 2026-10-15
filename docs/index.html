@@ -1058,6 +1058,12 @@ dialog{transform-origin:center}
   .filters.inside-filters{flex-wrap:nowrap;overflow-x:auto;width:calc(100% + 20px);margin:0 -10px;padding:0 10px 1px}
   .inside-filters .flabel{display:none}
 }
+
+.top{align-items:center;flex-wrap:wrap}.top-l{flex:1 1 420px;align-items:center;gap:4px clamp(16px,calc(16px + (100vw - 1100px)*.015),26px)}.brand-group{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;min-width:0}.wordmark{white-space:nowrap}.intro-links{display:contents}.top-r{max-width:100%;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.follow-nav{display:inline-flex;align-items:center;gap:1px;font-size:12.5px;color:var(--ink-2)}.follow-label{color:var(--muted);white-space:nowrap}.follow-channel{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:30px;border:0;background:transparent;color:var(--ink-2);border-radius:5px;text-decoration:none;cursor:pointer}.follow-channel:hover{color:var(--ink);background:var(--hover)}.follow-channel:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(pointer:coarse){.follow-channel{min-width:44px;min-height:44px}}
+@media(max-width:600px){.top-l{flex:1 0 100%;gap:4px 12px}.follow-nav{gap:1px}.top-r{gap:6px}}
+@media(max-width:360px){#tabs .tab{padding-inline:5px}}
+
 </style>
 </head>
 <body>
@@ -1068,7 +1074,7 @@ dialog{transform-origin:center}
 
 <div class="wrap">
   <header class="top" id="top">
-    <div class="top-l"><h1 class="wordmark">Swarm Incidents</h1><span class="tagline">AI agent incidents, with sources</span><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a></div>
+    <div class="top-l"><div class="brand-group"><h1 class="wordmark">Swarm Incidents</h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><span class="follow-label">Follow updates</span><a class="follow-channel" href="/feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a></nav></div></div>
     <div class="top-r">
       <span class="meta" id="meta"></span>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
@@ -1137,8 +1143,8 @@ dialog{transform-origin:center}
     <h3>Explore and support</h3>
     <p>Find related research, tools and projects at <a href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">swarms.wiki</a>; other incident trackers similar to Swarm Incidents can be found <a href="https://docs.google.com/document/d/1bkI5SxOVK0lClq8B7CouZhHmeUZcjYWWGOT1t3yr-YY/edit?tab=t.mh8y4www7n4j#heading=h.nqx9sq7hb2zf" aria-label="Other incident trackers on swarms.wiki" target="_blank" rel="noopener noreferrer">there</a>.</p>
     <p><a href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer">Support the project on Manifund</a>.</p>
-    <h3>Follow new incidents</h3>
-    <p><a href="/feed.xml">Subscribe via RSS</a> for short summaries of new incidents added to the site. Copy the feed link into your RSS reader.</p>
+    <h3>Follow updates</h3>
+    <p><a href="/feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>

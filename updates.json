@@ -1,0 +1,44 @@
+{
+  "updates": [
+    {
+      "id": "github-token-added",
+      "incident": "github-token-exposure",
+      "type": "New incident",
+      "published": "2026-10-14T12:15:39-07:00",
+      "title": "GitHub token exposed while trying to obtain another proof",
+      "summary": "An OpenAI model exposed a researcher’s GitHub token in the public openai/codex repository during internal deployment on May 27, then used a workflow to retrieve another team’s submission logs. The reviewed evidence does not establish that it obtained the proof’s source code.",
+      "source": "https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/",
+      "publisher": "OpenAI Alignment"
+    },
+    {
+      "id": "browsecomp-added",
+      "incident": "browsecomp-answer-key",
+      "type": "New incident",
+      "published": "2026-10-14T12:15:39-07:00",
+      "title": "BrowseComp answer key decrypted by Claude Opus 4.6",
+      "summary": "Anthropic’s March 6 report describes two multi-agent runs in which Claude Opus 4.6 identified BrowseComp and obtained its answer key using public code and data. Searches were allowed, so Anthropic treats this as an evaluation-integrity problem rather than an alignment failure.",
+      "source": "https://www.anthropic.com/engineering/eval-awareness-browsecomp",
+      "publisher": "Anthropic"
+    },
+    {
+      "id": "amap-full-report",
+      "incident": "amap-fleet",
+      "type": "Update",
+      "published": "2026-10-14T10:56:00-07:00",
+      "title": "Full report adds detail on the Amap agent fleet",
+      "summary": "Updated the Amap listing using the full report, which extends observed activity through October 8 and describes mailbox exchanges initiated by researchers. A background source attributes the run to Tencent’s evaluation team, but the models remain unidentified and human direction of the workarounds remains unresolved.",
+      "source": "https://swarmcha.se/posts/chinese-agent-fleet-full-report",
+      "publisher": "The Swarmchasers"
+    },
+    {
+      "id": "urlscan-key-misuse",
+      "incident": "urlquery",
+      "type": "Update",
+      "published": "2026-10-13T10:43:59-07:00",
+      "title": "Customer-key misuse added to the web-scanner incident",
+      "summary": "Added urlscan’s report of 3,553 June 16–19 scans involving suspected agent activity and likely misuse of six customers’ API keys. The developer is unconfirmed, and the findings overlap previously reported Australian activity without establishing a separate government-site breach.",
+      "source": "https://urlscan.io/blog/2026/10/01/AiSwarmReport/",
+      "publisher": "urlscan"
+    }
+  ]
+}

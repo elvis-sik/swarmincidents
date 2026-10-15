@@ -58,13 +58,12 @@ python3 build.py && python3 -m http.server 8750 --directory docs
 
 Then open http://127.0.0.1:8750/. `build.py` injects the data into [`template.html`](template.html) and writes `docs/`, which GitHub Pages serves at swarmincidents.com. Rebuilding the wiki data needs the ops repo's local export: `python3 wiki_build.py`.
 
-## RSS
+## RSS updates
 
-Subscribe at [swarmincidents.com/feed.xml](https://swarmincidents.com/feed.xml), also linked in About and advertised through HTML feed autodiscovery. Each entry uses the approved incident title and summary and links to its card. The feed contains the current incident catalog, newest additions first; ordinary corrections update the existing entry rather than creating another notification. Responses and other changes do not create separate feed entries in this first version.
+The [RSS feed](https://swarmincidents.com/feed.xml) contains curator-approved announcements from `updates.json`: new listings, substantial developments and material corrections. It is discoverable from the header, About and HTML feed metadata. Each entry has a permanent update ID, timezone-aware publication time, short summary, incident ID and a source already listed on that incident card. Separate developments about one incident use separate IDs. Routine card edits and rebuilds do not create announcements or change their dates.
 
-`feed.py` runs as part of `build.py`, using Python's standard library. `feed-history.json` preserves each incident's first publication day. The initial 32 dates were backfilled from the public repository's main history, rather than incident activity or disclosure dates. Newly added IDs receive the dataset's editorial `updated` day on their first build; set that date to the publication day when approving data changes. Rebuilds never consult the clock or require Git history. Keep history entries after removal so restoration does not notify again. Commit the history file and `docs/feed.xml` with the build output. The private data-publishing workflow already rebuilds and commits these automatically.
+`python3 build.py` validates the log and generates `docs/feed.xml`. The initial four entries use the dates those changes were published on the site; future entries should be reviewed alongside the incident change and published together. Never reassign an existing ID. The private ops repo owns the canonical `data/updates.json` and copies it during data publication. RSS needs no sending account or API key. Email and X distribution are future work.
 
-Run feed regression checks with `python3 -m unittest discover -s tests/unit -p 'test_*.py'`. RSS follows the [RSS 2.0 specification](https://www.rssboard.org/rss-specification).
 
 ## Tests
 
