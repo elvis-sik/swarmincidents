@@ -60,9 +60,12 @@ Then open http://127.0.0.1:8750/. `build.py` injects the data into [`template.ht
 
 ## RSS updates
 
-The [RSS feed](https://swarmincidents.com/feed.xml) contains curator-approved announcements from `updates.json`: new listings, substantial developments and material corrections. It is discoverable from the header, About and HTML feed metadata. Each entry has a permanent update ID, timezone-aware publication time, short summary, incident ID and a source already listed on that incident card. Separate developments about one incident use separate IDs. Routine card edits and rebuilds do not create announcements or change their dates.
+The [Updates page](https://swarmincidents.com/updates.html) and [RSS feed](https://swarmincidents.com/feed.xml) share curator-reviewed announcements from `publications.json`. Updates defaults to a readable card list, with an optional timeline, publication-date/model/category filters and source-linked modal details. The incident action opens the corresponding catalog record.
 
-`python3 build.py` validates the log and generates `docs/feed.xml`. The initial four entries use the dates those changes were published on the site; future entries should be reviewed alongside the incident change and published together. Never reassign an existing ID. The private ops repo owns the canonical `data/updates.json` and copies it during data publication. RSS needs no sending account or API key. Email and X distribution are future work.
+`publications.json` binds catalog changes, announcement copy and selected evidence together; `updates.json` is its generated compatibility export. `python3 build.py` verifies that projection and builds both channels. The history includes all 32 first listings and substantial developments back to the September 28 launch. Reconstructed entries use public first-parent Git commit timestamps, explicitly qualified as approximate site-publication dates, and preserve exact before/after snapshots. The four original RSS identities and announcement copy remain unchanged.
+
+See [PUBLICATION.md](PUBLICATION.md) for drafting, review and publication. The private ops repository owns the canonical catalog, journal and export. Email subscriptions/delivery and X posting remain separate future work.
+
 
 
 ## Tests

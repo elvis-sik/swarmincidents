@@ -1,12 +1,14 @@
 const { test, expect } = require('@playwright/test');
 const updates = require('../updates.json').updates;
+test.beforeEach(async({page})=>{await page.route('https://fonts.googleapis.com/**',r=>r.abort());await page.route('https://fonts.gstatic.com/**',r=>r.abort());});
 
 test('RSS is discoverable in the header and About, with approved new and update entries', async ({page, request}) => {
-  await page.goto('/');
+  await page.goto('/', {waitUntil:'domcontentloaded'});
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', 'https://swarmincidents.com/feed.xml');
   const header = page.getByRole('navigation', {name:'Follow updates'});
   await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toBeVisible();
-  await expect(header.getByRole('link')).toHaveAttribute('href', '/feed.xml');
+  await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toHaveAttribute('href', '/feed.xml');
+  await expect(header.getByRole('link', {name:'Updates', exact:true})).toHaveAttribute('href', '/updates.html');
   await page.getByRole('button', {name:'About', exact:true}).click();
   const link = page.getByRole('dialog').getByRole('link', {name:'Subscribe via RSS'});
   await expect(link).toBeVisible();
@@ -32,9 +34,11 @@ test('RSS is discoverable in the header and About, with approved new and update 
 });
 
 test('approved header wraps without clipping on narrow and wide screens', async ({page}, testInfo) => {
-  await page.goto('/');
+  await page.goto('/', {waitUntil:'domcontentloaded'});
   for (const width of [320,390,768,1024,1440,1920]) {
     await page.setViewportSize({width, height:900});
+    // The existing dashboard resizes its SVG chart asynchronously.
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     const layout = await page.evaluate(() => ({
       width: innerWidth, content: document.documentElement.scrollWidth,
       controls: [...document.querySelectorAll('#top a,#top button')].map(e => {

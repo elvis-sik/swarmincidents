@@ -10,6 +10,8 @@ const test = base.test.extend({
     const errors = [];
     page.on('console', m => {
       if (m.type() !== 'error') return;
+      // Preconnect bypasses Playwright routing. These font hosts are deliberately mocked/offline below.
+      if (/^Failed to preconnect to https:\/\/fonts\.(?:googleapis|gstatic)\.com\//.test(m.text())) return;
       // Error-path tests explicitly opt in to their mocked endpoint's HTTP error;
       // application exceptions and every unrelated console error still fail.
       if (expectedHttpError && m.location().url === expectedHttpError && /^Failed to load resource:.*502/.test(m.text())) return;

@@ -3,12 +3,16 @@
 import json
 import shutil
 from pathlib import Path
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from feed import build as build_feed
+from publication import project
 here = Path(__file__).parent
 data = json.loads((here / "incidents.json").read_text(encoding="utf-8"))
 updated, version = data["updated"], data["version"]
 js = "const DATA = " + json.dumps(data, ensure_ascii=False) + ";"
 page = (here / "template.html").read_text().replace("/*__DATA__*/", js.replace("</", "<\\/"))
+page = page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
 page = page.replace("__UPDATED__", updated).replace("__VERSION__", version)
 wiki = json.loads((here / "wiki-data.js").read_text(encoding="utf-8").split("=", 1)[1].rstrip().rstrip(";"))
 page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
@@ -16,7 +20,29 @@ page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
 (here / "brand" / "data.js").write_text(js + "\n")  # for brand/og.html
 docs = here / "docs"
 docs.mkdir(exist_ok=True)
+journal = json.loads((here / "publications.json").read_text(encoding="utf-8"))
+updates = project(journal, data)
+# The journal is authoritative; updates.json is a generated compatibility export.
+if json.loads((here / "updates.json").read_text(encoding="utf-8")) != updates:
+    raise ValueError("updates.json must be the exact projection of publications.json")
 build_feed(data, here)
+(docs / "updates.json").write_text(json.dumps(updates, ensure_ascii=False, indent=2) + "\n")
+# One actual shell and renderer, not a separate approximation of the dashboard.
+update_data = dict(data)
+update_data["responses"] = [dict(
+    id=u["id"], title=u["title"], text=u["summary"],
+    d=datetime.fromisoformat(u["published"]).astimezone(ZoneInfo("America/Los_Angeles")).date().isoformat(),
+    who={"New incident":"lab", "Update":"gov", "Correction":"other"}[u["type"]],
+    inc=[u["incident"]], update=u,
+    src=[[r["publisher"] + " report", r["publisher"], r["url"]] for r in u.get("resources", [{"url":u["source"], "publisher":u["publisher"]}])]
+) for u in updates["updates"]]
+updates_page = (here / "template.html").read_text().replace("/*__DATA__*/", ("const DATA = " + json.dumps(update_data, ensure_ascii=False) + ";").replace("</", "<\\/"))
+updates_page = updates_page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
+updates_page = updates_page.replace("const UPDATES_PAGE = false;", "const UPDATES_PAGE = true;")
+updates_page = updates_page.replace("__UPDATED__", updated).replace("__VERSION__", version).replace("__WIKI_N__", str(len(wiki["posts"])))
+updates_page = updates_page.replace("<title>Swarm Incidents: a timeline of AI agent incidents</title>", "<title>Updates · Swarm Incidents</title>")
+updates_page = updates_page.replace('<link rel="canonical" href="https://swarmincidents.com/">', '<link rel="canonical" href="https://swarmincidents.com/updates.html">')
+(docs / "updates.html").write_text(updates_page)
 (docs / "index.html").write_text(page)
 # The Wiki tab loads wiki-data.js on demand. Rebuild it with wiki_build.py when the archive selection or wiki_notes.json change.
 shutil.copyfile(here / "wiki-data.js", docs / "wiki-data.js")
@@ -24,6 +50,7 @@ shutil.copyfile(here / "analytics.js", docs / "analytics.js")
 (docs / "sitemap.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://swarmincidents.com/</loc><lastmod>{updated}</lastmod></url>
+  <url><loc>https://swarmincidents.com/updates.html</loc><lastmod>{updated}</lastmod></url>
 </urlset>
 """)
 print(f"built openai-agent-swarm.html and docs/ ({len(page) // 1024} KB, updated {updated}, v{version})")
