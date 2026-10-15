@@ -1059,11 +1059,52 @@ dialog{transform-origin:center}
   .inside-filters .flabel{display:none}
 }
 
-.top{align-items:center;flex-wrap:wrap}.top-l{flex:1 1 420px;align-items:center;gap:4px clamp(16px,calc(16px + (100vw - 1100px)*.015),26px)}.brand-group{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;min-width:0}.wordmark{white-space:nowrap}.intro-links{display:contents}.top-r{max-width:100%;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.follow-nav{display:inline-flex;align-items:center;gap:1px;font-size:12.5px;color:var(--ink-2)}.follow-label{color:var(--muted);white-space:nowrap}.follow-channel{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:30px;border:0;background:transparent;color:var(--ink-2);border-radius:5px;text-decoration:none;cursor:pointer}.follow-channel:hover{color:var(--ink);background:var(--hover)}.follow-channel:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.top{align-items:center;flex-wrap:wrap}.top-l{flex:1 1 420px;align-items:center;gap:4px clamp(16px,calc(16px + (100vw - 1100px)*.015),26px)}.brand-group{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;min-width:0}.wordmark{white-space:nowrap}.intro-links{display:contents}.top-r{max-width:100%;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.follow-nav{display:inline-flex;align-items:center;gap:1px;font-size:12.5px;color:var(--ink-2)}.follow-label{color:var(--muted);white-space:nowrap}.updates-link{color:var(--ink-2);text-decoration-color:var(--line-2);margin-right:3px}.updates-link:hover{color:var(--ink)}.follow-channel{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:30px;border:0;background:transparent;color:var(--ink-2);border-radius:5px;text-decoration:none;cursor:pointer}.follow-channel:hover{color:var(--ink);background:var(--hover)}.follow-channel:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media(pointer:coarse){.follow-channel{min-width:44px;min-height:44px}}
 @media(max-width:600px){.top-l{flex:1 0 100%;gap:4px 12px}.follow-nav{gap:1px}.top-r{gap:6px}}
 @media(max-width:360px){#tabs .tab{padding-inline:5px}}
 
+/* Updates content uses the common dashboard shell; no alternate header, timeline or modal styles. */
+.update-heading{font-size:14px;font-weight:600;margin:0;padding:3px 0;border:0;cursor:default;color:var(--ink)}
+.update-subscribe{font-size:12px;white-space:nowrap}
+.update-type-controls{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}.update-type-controls .flabel{display:inline}.update-types button{font-size:12px;gap:5px}.update-types .n{font:10.5px var(--mono);opacity:.7}.updates-title-row{gap:8px 14px}html.updates-modal-page .bar>.bar-row:first-child{min-height:34px}.update-types .rdot{width:8px;height:8px}
+@media(max-width:820px){.updates-title-row{width:100%;gap:7px 12px}.update-type-controls{flex:1 1 100%}.update-types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));flex:1;max-width:100%}.update-types button{padding:5px 7px;font-size:11px;gap:4px;justify-content:center}.update-types button:nth-child(3){border-left:0}.update-types button:nth-child(n+3){border-top:1px solid var(--line-2)}.update-subscribe{margin-left:auto}}.update-intro{font-size:12px;color:var(--muted)}
+.update-change{border-top:1px solid var(--line);padding:9px 0 0;margin:0}.update-change>summary{font-size:12px;font-weight:600;cursor:pointer;color:var(--ink-2)}
+.update-before,.update-after{margin:10px 0 0;padding-left:10px;border-left:2px solid var(--line-2)}.update-after{border-color:var(--g-research)}
+.update-change-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.update-change p{font-size:12.5px;line-height:1.65;margin:5px 0 8px;overflow-wrap:anywhere}.update-change ins{background:color-mix(in srgb,var(--g-gov) 12%,transparent);text-decoration:none}.update-change del{color:var(--muted);text-decoration-color:var(--faint)}
+.update-values{font-size:12px;line-height:1.65;overflow-wrap:anywhere}.update-values ul{padding-left:18px}.update-values p{margin:3px 0 6px}
+@media(pointer:coarse){.update-subscribe{min-height:44px;display:inline-flex;align-items:center}}
+/* Updates controls share one flowing row; wrap whole groups when space runs out. */
+.updates-filters{gap:8px 20px}
+.updates-filters #bar-r,.updates-filters #filters{display:contents}
+.updates-filters .fgroup{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.updates-filters .fgroup.sort{margin-left:auto}
+.latest-updates{white-space:nowrap;font-size:12px}
+[hidden]{display:none!important}
+@media(max-width:820px){.updates-filters{gap:6px 14px}.updates-filters .fgroup.sort{margin-left:0}}
+/* A reading-width stream uses the same colors, border and native detail pane. */
+.update-list{width:100%;max-width:800px;box-sizing:border-box;margin:0 auto;padding:16px;display:grid;gap:10px}
+.update-list-card{display:block;width:100%;box-sizing:border-box;text-align:left;white-space:normal;border:1px solid var(--line-2);border-radius:8px;background:var(--panel);color:var(--ink);padding:13px 16px;font:inherit;cursor:pointer;overflow-wrap:anywhere}
+.update-list-card:hover{background:var(--hover)}
+.update-list-card[aria-selected="true"]{background:var(--soft);border-color:var(--line-2);box-shadow:none}
+.update-list-card:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.update-card-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px;font-size:11.5px;color:var(--muted);margin-bottom:6px}
+.update-card-kind{display:inline-flex;align-items:center;gap:6px}
+.update-card-title{display:block;font-size:15px;font-weight:600;line-height:1.4}
+.update-card-summary{display:block;margin-top:7px;font-size:13px;line-height:1.65;color:var(--ink-2)}
+.update-card-meta{display:block;margin-top:9px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+@media(max-width:820px){.update-list{padding:10px;gap:8px}.update-list-card{padding:12px}.update-card-title{font-size:14px}}
+/* Update details float over the reading column, without resizing the list. */
+html.updates-modal-page{scrollbar-gutter:stable}
+.update-dialog{width:min(720px,calc(100vw - 24px));max-height:88dvh;overscroll-behavior:contain}
+.update-dialog .det{padding:14px 20px 24px}
+.update-dialog .det-top{position:sticky;top:0;z-index:1;background:var(--panel);padding:10px 0;border-bottom:1px solid var(--line)}
+.update-incident-action{align-self:flex-start;font-weight:600;min-height:36px;padding:7px 16px}
+@media(max-width:820px){.update-dialog .det{padding:10px 14px 20px}.update-dialog{max-height:90dvh}}
+
+.updates-filters>.fgroup,.updates-filters #bar-r>.fgroup,.updates-filters #filters>.fgroup{display:inline-flex;align-items:center;gap:7px;min-width:0}
+html.updates-modal-page .rhead.two .rh-l,html.updates-modal-page .rhead.two .rh-r{justify-content:center}
 </style>
 </head>
 <body>
@@ -1074,7 +1115,7 @@ dialog{transform-origin:center}
 
 <div class="wrap">
   <header class="top" id="top">
-    <div class="top-l"><div class="brand-group"><h1 class="wordmark">Swarm Incidents</h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><span class="follow-label">Follow updates</span><a class="follow-channel" href="/feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a></nav></div></div>
+    <div class="top-l"><div class="brand-group"><h1 class="wordmark"><a href="/" aria-label="Swarm Incidents home" style="text-decoration:none;color:inherit">Swarm Incidents</a></h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><a class="follow-label updates-link" href="/updates.html">Updates</a><a class="follow-channel" href="/feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a></nav></div></div>
     <div class="top-r">
       <span class="meta" id="meta"></span>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
@@ -1093,6 +1134,7 @@ dialog{transform-origin:center}
       <div class="bar-row">
         <div class="tabsrow" id="tabs"></div>
         <span class="count" id="count" aria-live="polite"></span>
+        <a class="mini-link latest-updates" id="latest-updates" href="/updates.html" hidden>Latest updates</a>
         <div class="view-controls" id="view-controls"></div>
       </div>
       <div class="bar-row bar-controls">
@@ -1144,7 +1186,7 @@ dialog{transform-origin:center}
     <p>Find related research, tools and projects at <a href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">swarms.wiki</a>; other incident trackers similar to Swarm Incidents can be found <a href="https://docs.google.com/document/d/1bkI5SxOVK0lClq8B7CouZhHmeUZcjYWWGOT1t3yr-YY/edit?tab=t.mh8y4www7n4j#heading=h.nqx9sq7hb2zf" aria-label="Other incident trackers on swarms.wiki" target="_blank" rel="noopener noreferrer">there</a>.</p>
     <p><a href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer">Support the project on Manifund</a>.</p>
     <h3>Follow updates</h3>
-    <p><a href="/feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
+    <p><a href="/updates.html">Read the Updates page</a> or <a href="/feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
     <div id="contact-sec" hidden>
     <h3>Contact</h3>
     <p>For questions, corrections or reports of missing incidents, email <a id="mail-link" href="#"></a>. Please include links to sources where possible.</p>
@@ -1195,6 +1237,14 @@ dialog{transform-origin:center}
 (() => {
 'use strict';
 /*__DATA__*/
+const UPDATES_PAGE = false;
+if (UPDATES_PAGE) {
+  const extraFilters = document.querySelector('#filters'), oldRow = extraFilters.parentElement;
+  const controls = document.querySelector('#bar-r').parentElement;
+  controls.classList.add('updates-filters');
+  controls.append(extraFilters);
+  oldRow.hidden = true;
+}
 const track = (name, detail) => { if (window.SwarmAnalytics) window.SwarmAnalytics.event(name, detail); };
 
 /* ---------------------------------------------------------------- helpers */
@@ -1227,7 +1277,7 @@ const CHECK = '<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke
    chosen, general words ("the developer", "AI developers") for All developers; per-incident text names the incident's own developers */
 const WHO = { lab: 'Developer', research: 'Researchers', press: 'Journalists', gov: 'Governments' };
 const WHO_BY = { lab: 'the developer', research: 'researchers', press: 'journalists', gov: 'a government', other: 'someone else' };
-const RESP_WHO = { lab: 'AI developers', gov: 'Governments', other: 'Researchers & lawmakers' };
+const RESP_WHO = UPDATES_PAGE ? {lab:'New listings',gov:'Developments',other:'Corrections'} : { lab: 'AI developers', gov: 'Governments', other: 'Researchers & lawmakers' };
 const RESP_DOT = { lab: 'lab', gov: 'gov', other: 'research' };
 const KIND = { gov: 'Government', edu: 'Education', company: 'Company or service', community: 'Community project', lab: 'AI developer' };
 /* general text */
@@ -1235,14 +1285,14 @@ const whoLabel = g => (g === 'lab' && scopeName()) || WHO[g];
 const whoBy = g => (g === 'lab' && scopeName()) || WHO_BY[g];
 const devThe = () => scopeName() || 'the developer';
 const devTo = () => scopeName() || 'its developer';
-const respWhoLabel = w => (w === 'lab' && scopeName()) || RESP_WHO[w];
+const respWhoLabel = w => UPDATES_PAGE ? RESP_WHO[w] : (w === 'lab' && scopeName()) || RESP_WHO[w];
 const kindLabel = k => (k === 'lab' && scopeName()) || KIND[k];
 /* per incident and per response */
 const incDev = e => joinNames(e.labs.map(labName));
 const incWhoBy = (e, g) => (g === 'lab' ? incDev(e) : WHO_BY[g]);
 const incWho = (e, g) => (g === 'lab' ? incDev(e) : WHO[g] || 'Other');
 const incKnew = e => `${e.labs.length === 1 ? labName(e.labs[0]) : 'Developer'} knew`;
-const respWho = r => (r.who !== 'lab' ? RESP_WHO[r.who] : r.lab ? labName(r.lab) : r.labs && r.labs.length ? joinNames(r.labs.map(labName)) : 'AI developer');
+const respWho = r => UPDATES_PAGE ? RESP_WHO[r.who] : (r.who !== 'lab' ? RESP_WHO[r.who] : r.lab ? labName(r.lab) : r.labs && r.labs.length ? joinNames(r.labs.map(labName)) : 'AI developer');
 const WHAT = { breach: 'Breached', account: 'Customer account breached', attack: 'Attacked', creds: 'Exposed keys used', source: 'Leaked keys found here', spam: 'Posted to', scrape: 'Data pulled', tool: 'Used as a tool', reach: 'Reached', possible: 'Possibly affected' };
 const WHAT_TIP = {
   breach: 'Agents got into systems, accounts or data that should have been off limits.',
@@ -1308,14 +1358,26 @@ const DATES = [...DATA.incidents.flatMap(e => [...e.activity.flatMap(a => [a.s, 
    choice is kept in the URL (?models=openai) so links can be shared, and an old ?models=all link still opens */
 const DEFAULT_SCOPE = 'all';
 const SCOPES = new Set(['all', ...Object.keys(LABS)]);
-let scope = DEFAULT_SCOPE, datasetOnly = false;
-try { const params = new URLSearchParams(location.search), v = params.get('models'); if (v && SCOPES.has(v)) scope = v; datasetOnly = params.get('datasets') === 'available'; } catch (e) { /* no URL */ }
+const TAGS = [
+  { id: 'swarms', label: 'Swarms / fleets', test: e => !!e.agent_group, note: 'Documented coordination, multi-agent runs or fleets. Coordination is not established for every fleet; some grouped incidents contain other runs.' },
+  { id: 'benchmark', label: 'Benchmark integrity', test: e => e.category === 'benchmark-integrity', note: 'Documented benchmark-answer retrieval or scoring manipulation. This does not assert an outside-system breach.' }
+];
+const DEFAULT_TAGS = [];
+let scope = DEFAULT_SCOPE, activeTags = [...DEFAULT_TAGS], datasetOnly = false;
+try {
+  const params = new URLSearchParams(location.search), v = params.get('models');
+  if (v && SCOPES.has(v)) scope = v;
+  datasetOnly = params.get('datasets') === 'available';
+  if (params.has('tags')) activeTags = [...new Set(params.get('tags').split(',').filter(id => TAGS.some(t => t.id === id)))];
+  else if (params.get('agents') === 'all') activeTags = [];
+} catch (e) { /* no URL */ }
+const tagMatch = e => !activeTags.length || activeTags.some(id => TAGS.find(t => t.id === id).test(e));
+const sameTags = (a, b) => [...a].sort().join(',') === [...b].sort().join(',');
 const allScope = () => scope === 'all';
 const scopeName = () => (allScope() || scope === 'unknown' ? null : labName(scope));
-const incInScope = e => allScope() || e.labs.includes(scope);
-const respInScope = (r, incIds) => allScope() || r.inc.some(id => incIds.has(id)) || (r.labs || []).includes(scope) || (r.who === 'lab' && r.lab === scope)
+const incInScope = e => (allScope() || e.labs.includes(scope)) && (!UPDATES_PAGE || tagMatch(e));
+const respInScope = (r, incIds) => UPDATES_PAGE && activeTags.length ? r.inc.some(id => incIds.has(id)) : allScope() || r.inc.some(id => incIds.has(id)) || (r.labs || []).includes(scope) || (r.who === 'lab' && r.lab === scope)
   || (!r.inc.length && !(r.labs || []).length && r.who !== 'lab');
-
 const dayN = n => `${n} day${n === 1 ? '' : 's'}`;
 const lagTxt = n => n > 0 ? `${dayN(n)} after disclosure` : n < 0 ? `${dayN(-n)} before disclosure` : 'same day as disclosure';
 /* a date outside the year of the last update shows its year */
@@ -1336,7 +1398,7 @@ function derive() {
   [...INC].sort((a, b) => a.main.d.localeCompare(b.main.d) || a.idx - b.idx).forEach((e, i) => { e.n = i + 1; });
   BY_ID = new Map(INC.map(e => [e.id, e]));
   const ids = new Set(BY_ID.keys());
-  RESP = DATA.responses.map((r, i) => Object.assign({ idx: i }, r)).filter(r => respInScope(r, ids)).map(r => {
+  RESP = DATA.responses.map((r, i) => Object.assign({ idx: UPDATES_PAGE ? -i : i }, r)).filter(r => respInScope(r, ids)).map(r => {
     const inc = r.inc.filter(id => ids.has(id));
     const from = inc.map(id => BY_ID.get(id).main.d).sort()[0] || null;
     return Object.assign(r, { inc, from, lag: from ? Math.round((D(r.d) - D(from)) / DAY) : null });
@@ -1375,7 +1437,7 @@ const state = {
   tl: { by: 'all', conf: false, datasets: datasetOnly, sort: 'start', dir: -1 },
   aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null, cats: new Set(), unclear: true },
   back: [], pushed: false, popping: false,
-  resp: { who: 'all', dir: -1, inc: null, disc: true },
+  resp: { who: 'all', freshness:'all', dir: -1, inc: null, disc: true },
 };
 
 // picker(opts) — dependency-free dropdown. Needs only the site's h() helper. See README.md.
@@ -1391,7 +1453,8 @@ function picker(opts) {
     s.setAttribute('viewBox', '0 0 16 16'); s.setAttribute('aria-hidden', 'true'); s.setAttribute('class', cls);
     p.setAttribute('d', d); s.append(p); return s;
   };
-  let value = o.value ?? null, pop = null, list = null, input = null;
+  let value = o.multiple ? new Set(o.value || []) : o.value ?? null, pop = null, list = null, input = null;
+  const selected = v => o.multiple ? (isAll(v) ? !value.size : value.has(v)) : same(v, value);
   let shown = [], active = -1, typed = '', typedAt = 0, openedAt = 0, openW = 0;
 
   const cur = h('span', { class: 'pk-cur' });
@@ -1401,12 +1464,15 @@ function picker(opts) {
   const wrap = h('span', { class: 'pk' }, btn);
 
   function render() {
-    const opt = options.find(x => same(x.v, value));
-    const text = opt ? opt.label : String(value ?? '');
+    const opt = options.find(x => selected(x.v));
+    const names = o.multiple ? options.filter(x => !isAll(x.v) && selected(x.v)).map(x => x.label) : [];
+    const full = o.multiple ? names.join(', ') || 'All incidents' : opt ? opt.label : String(value ?? '');
+    const text = o.multiple && names.length > 1 ? `${names[0]} +${names.length - 1}` : full;
     cur.textContent = text;
-    btn.classList.toggle('on', o.on ?? !isAll(value));
-    btn.setAttribute('aria-label', (o.ariaLabel || o.label || 'Choose') + ': ' + text);
-    if (opt && opt.tip) btn.dataset.tip = opt.tip; else delete btn.dataset.tip;
+    btn.classList.toggle('on', o.multiple ? value.size > 0 : o.on ?? !isAll(value));
+    btn.setAttribute('aria-label', (o.ariaLabel || o.label || 'Choose') + ': ' + full);
+    if (o.multiple) btn.dataset.tip = names.length ? 'Selected categories: ' + names.join(', ') : 'All incidents in the current model scope. Choose categories to narrow the view.';
+    else if (opt && opt.tip) btn.dataset.tip = opt.tip; else delete btn.dataset.tip;
   }
   function btnKey(e) {
     if (!pop && ['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key)) { e.preventDefault(); open(true); }
@@ -1430,9 +1496,9 @@ function picker(opts) {
         box = h('div', { role: 'group', 'aria-labelledby': hid }, h('div', { class: 'pk-grp', id: hid, text: x.group }));
         list.append(box);
       } else if (!x.group && grp) { grp = null; box = list; }
-      const sel = same(x.v, value);
+      const sel = selected(x.v);
       box.append(h('div', { role: 'option', id: uid + '-o' + i, class: 'pk-opt' + (sel ? ' cur' : ''),
-          'aria-selected': String(sel), 'data-tip': x.tip, 'data-i': i,
+          'aria-selected': String(sel), 'data-tip': x.tip, 'data-i': i, 'data-value': x.v ?? '',
           onclick: () => pick(x), onmousedown: e => e.preventDefault() },
         h('span', { class: 'pk-l1' }, h('span', { class: 'pk-txt' }, hl(x.label, q)),
           x.mark ? h('span', { class: 'pk-mark', text: x.mark }) : null,
@@ -1440,7 +1506,7 @@ function picker(opts) {
         x.sub ? h('span', { class: 'pk-sub' }, hl(x.sub, q)) : null));
     });
     if (!shown.length) list.append(h('div', { class: 'pk-empty', text: 'No matches' }));
-    const ci = shown.findIndex(x => same(x.v, value));
+    const ci = shown.findIndex(x => selected(x.v));
     setActive(q ? 0 : Math.max(ci, 0));
   }
 
@@ -1470,12 +1536,13 @@ function picker(opts) {
   function open(kb) {
     if (picker.openOne) picker.openOne(false);
     list = h('div', { role: 'listbox', id: uid + '-list', class: 'pk-list', tabindex: '-1',
-      'aria-label': o.ariaLabel || o.label, onkeydown: listKey });
+      'aria-label': o.ariaLabel || o.label, 'aria-multiselectable': o.multiple ? 'true' : null, onkeydown: listKey });
     input = searchable ? h('input', { type: 'text', class: 'pk-search', role: 'combobox', autocomplete: 'off',
       spellcheck: 'false', 'aria-expanded': 'true', 'aria-controls': uid + '-list', 'aria-autocomplete': 'list',
       'aria-label': o.placeholder || 'Search', placeholder: o.placeholder || 'Search',
       oninput: fill, onkeydown: listKey }) : null;
-    pop = h('div', { class: 'pk-pop' + (kb ? ' kb' : '') }, input, list);
+    pop = h('div', { class: 'pk-pop' + (kb ? ' kb' : ''), 'data-picker': o.label },
+      o.multiple ? h('div', { class: 'pk-note', text: 'Match any selected category' }) : null, input, list);
     document.body.append(pop);
     fill(); place();
     btn.setAttribute('aria-expanded', 'true'); wrap.classList.add('open');
@@ -1507,6 +1574,12 @@ function picker(opts) {
   const onResize = () => { if (innerWidth !== openW) close(false); };
 
   function pick(x) {
+    if (o.multiple) {
+      if (isAll(x.v)) value.clear(); else if (value.has(x.v)) value.delete(x.v); else value.add(x.v);
+      setActive(shown.indexOf(x)); render();
+      if (o.onPick) o.onPick([...value]);
+      return;
+    }
     value = isAll(x.v) ? null : x.v; render(); close(true);
     if (o.onPick) o.onPick(value);
   }
@@ -1531,7 +1604,8 @@ function picker(opts) {
   }
 
   render();
-  wrap.pickerSetValue = v => { value = v ?? null; render(); };
+  wrap.pickerSetValue = v => { value = o.multiple ? new Set(v || []) : v ?? null; render(); };
+  wrap.pickerOpen = (kb = true, activeValue = null) => { open(kb); if (activeValue != null) { const i = shown.findIndex(x => String(x.v ?? '') === activeValue); if (i >= 0) setActive(i); } };
   wrap.pickerClose = () => close(false);
   return wrap;
 }
@@ -1715,7 +1789,7 @@ $('#gloss-close').addEventListener('click', () => gloss.close());
 gloss.addEventListener('click', ev => { if (ev.target === gloss) gloss.close(); });
 $('#howto-gloss').addEventListener('click', openGloss);
 const INFO_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 7.2v4M8 4.8v.3" stroke-linecap="round"/></svg>';
-const infoBtn = () => (viewInfoKey() ? h('button', { class: 'btn icon', type: 'button', 'aria-label': 'About this view', 'data-tip': viewInfoKey() === 'wiki' ? 'How to read this: pages, saves, posts and names' : 'About this view', html: INFO_ICON, onclick: openViewInfo }) : null);
+const infoBtn = () => (!UPDATES_PAGE && viewInfoKey() ? h('button', { class: 'btn icon', type: 'button', 'aria-label': 'About this view', 'data-tip': viewInfoKey() === 'wiki' ? 'How to read this: pages, saves, posts and names' : 'About this view', html: INFO_ICON, onclick: openViewInfo }) : null);
 /* ---------------------------------------------------------------- key numbers */
 const median = xs => { const a = [...xs].sort((x, y) => x - y); return a.length % 2 ? a[(a.length - 1) / 2] : Math.round((a[a.length / 2 - 1] + a[a.length / 2]) / 2); };
 function renderStats() {
@@ -1752,6 +1826,7 @@ $('#stats').hidden = false; $('#stats-btn').hidden = true;
 /* ---------------------------------------------------------------- tabs, layout mode, date range */
 const mobileMQ = matchMedia('(max-width:820px)');
 state.resp.sort = 'd';
+if (UPDATES_PAGE) state.resp.disc = false;
 const TABS = [
   { key: 'timeline', label: 'Timeline', n: () => INC.length, tip: () => 'Each incident on one timeline, from agent activity to disclosure' },
   { key: 'affected', label: 'Affected', n: () => AFF.length, tip: () => 'Organizations, websites and services the agents reached' },
@@ -1759,7 +1834,7 @@ const TABS = [
 ];
 const WIKI_N = __WIKI_N__;
 /* chart by default on every tab; a reader's choice is kept per tab across tab switches and reloads */
-const modeOf = v => modes[v] || (v === 'affected' ? 'table' : 'chart');
+const modeOf = v => UPDATES_PAGE ? (modes.updatesLayout === 'chart' ? 'chart' : 'cards') : modes[v] || (v === 'affected' ? 'table' : 'chart');
 const isChart = () => modeOf(state.view) === 'chart';
 const scrollMem = {}, scrollKey = () => (state.view === 'wiki' ? 'wiki:' + (state.inside || '') : state.view);
 function setView(v) {
@@ -1773,9 +1848,9 @@ function setView(v) {
   if (!hasCard()) setHash(viewHash());
   const y = scrollMem[scrollKey()]; if (y != null) scrollTo(0, y);
 }
-const viewHash = () => (state.view === 'wiki' ? (!state.inside ? 'inside' : state.inside === WIKI_INC ? WIKI_INC + '/posts' : state.inside + '/inside') : state.view === 'timeline' ? '' : state.view);
+const viewHash = () => UPDATES_PAGE ? '' : (state.view === 'wiki' ? (!state.inside ? 'inside' : state.inside === WIKI_INC ? WIKI_INC + '/posts' : state.inside + '/inside') : state.view === 'timeline' ? '' : state.view);
 function setMode(m) {
-  modes[state.view] = m; state.emph = null;
+  modes[UPDATES_PAGE ? 'updatesLayout' : state.view] = m; state.emph = null;
   try { localStorage.setItem('viewModes', JSON.stringify(modes)); } catch (e) { /* storage unavailable */ }
   renderTabs(); renderBarR(); renderFilters(); renderView();
 }
@@ -1786,6 +1861,11 @@ function urlFor(hash) {
     const u = new URLSearchParams(location.search), want = scope === DEFAULT_SCOPE ? null : scope;
     if (want) u.set('models', want); else u.delete('models');
     if (state.tl.datasets) u.set('datasets', 'available'); else u.delete('datasets');
+    u.delete('agents');
+    if (sameTags(activeTags, DEFAULT_TAGS)) u.delete('tags'); else u.set('tags', activeTags.join(',') || 'all');
+    if (UPDATES_PAGE) {
+      for (const [key,value] of [['type',state.resp.who==='all'?null:state.resp.who],['reporting',state.resp.freshness==='all'?null:state.resp.freshness],['incident',state.resp.inc],['from',state.range?.a],['to',state.range?.b]]) { if(value)u.set(key,value);else u.delete(key); }
+    }
     const t = u.toString(); q = t ? '?' + t : '';
   } catch (e) { /* no URL API */ }
   return location.pathname + q + (hash ? '#' + hash : '');
@@ -1803,11 +1883,16 @@ function modelsPicker() {
 }
 /* switch the whole site to one developer's incidents or to all of them, in place: rebuild the scoped data, close or reset
    whatever falls out of it, then re-render */
-function setScope(v) {
-  if (!SCOPES.has(v) || v === scope) return;
+function setScope(v, tags = activeTags) {
+  if (!SCOPES.has(v) || (v === scope && sameTags(tags, activeTags))) return;
   track('models', v);
-  const refocus = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('.f-models'));
-  scope = v; derive();
+  const tagPop = document.querySelector('.pk-pop[data-picker="Categories"]');
+  const tagsOpen = !!tagPop;
+  const tagFocus = tagPop?.querySelector('.pk-opt.act')?.getAttribute('data-value');
+  const focusTags = !!document.activeElement?.closest('.f-tags') || tagsOpen;
+  const refocus = focusTags || !!document.activeElement?.closest('.f-models');
+  if (tagsOpen && picker.openOne) picker.openOne(false);
+  scope = v; activeTags = [...tags]; derive();
   if (state.aff.inc && !BY_ID.has(state.aff.inc)) state.aff.inc = null;
   if (state.resp.inc && !BY_ID.has(state.resp.inc)) state.resp.inc = null;
   const kept = b => (b.post ? true : b.inc ? BY_ID.has(b.inc) : b.ent ? AFF_BY_ID.has(b.ent) : RSP_BY_ID.has(b.rsp));
@@ -1818,38 +1903,62 @@ function setScope(v) {
   hideTip();
   setHash(location.hash.slice(1));
   renderStats(); renderTabs(); renderBarR(); renderFilters(); renderView();
-  if (refocus) { const b = $('#bar-r .f-models .pk-btn'); if (b) b.focus({ preventScroll: true }); }
+  if (tagsOpen) $('.f-tags .pk')?.pickerOpen(true, tagFocus);
+  else if (refocus) {
+    const b = $(focusTags ? '.f-tags .pk-btn' : '.f-models .pk-btn');
+    if (b) b.focus({ preventScroll: true });
+  }
 }
 /* a link to something the current scope leaves out switches to All developers; false when the id isn't in the data at all */
 function reach(kind, id) {
   if (!id) return false;
   if ({ inc: BY_ID, ent: AFF_BY_ID, rsp: RSP_BY_ID }[kind].has(id)) return true;
   if (!ALL_IDS[kind].has(id)) return false;
-  setScope('all');
+  setScope('all', []);
   return true;
 }
 
+function updatesModelsPicker() {
+  const labs = Object.keys(LABS).map(k => [k, DATA.incidents.filter(e => e.labs.includes(k)).length]).sort((a, b) => b[1] - a[1] || labName(a[0]).localeCompare(labName(b[0])));
+  const el = picker({ label: 'Models', ariaLabel: 'Models', hideLabel: true, value: scope, on: scope !== DEFAULT_SCOPE, searchable: labs.length > 8, placeholder: 'Search developers',
+    options: [...labs.map(([k, n]) => ({ v: k, label: labName(k), sub: nInc(n), tip: `Incidents involving ${labName(k)}\u2019s models` })),
+      { v: 'all', label: 'All developers', sub: nInc(DATA.incidents.length), tip: 'Incidents involving any developer\u2019s models' }],
+    onPick: v => setScope(v || DEFAULT_SCOPE) });
+  return h('span', { class: 'fgroup f-models' }, h('span', { class: 'flabel', text: 'Models' }), el);
+}
+function tagsPicker() {
+  return h('span', { class: 'fgroup f-tags' }, h('span', { class: 'flabel', text: 'Categories' }),
+    picker({ label: 'Categories', hideLabel: true, multiple: true, searchable: false, value: activeTags,
+      options: [
+        { v: '', label: 'All incidents', tip: 'Clear the category selection; other filters still apply.' },
+        ...TAGS.map(t => ({ v: t.id, label: t.label, sub: nInc(DATA.incidents.filter(e => (allScope() || e.labs.includes(scope)) && t.test(e)).length), tip: t.note }))
+      ], onPick: tags => setScope(scope, tags) }));
+}
 const ICON_CHART = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h6M5.5 8h8M3.5 12h5"/></svg>';
+const ICON_CARDS = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2" y="1.5" width="12" height="5" rx="1.2"/><rect x="2" y="9.5" width="12" height="5" rx="1.2"/><path d="M4 4h8M4 12h8"/></svg>';
 const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2.75" width="12" height="10.5" rx="1.5"/><path d="M2 6.25h12M2 9.75h12M6 6.25v7"/></svg>';
 const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
-function setRange(r) { state.range = r; renderBarR(); renderFilters(); renderView(); }
+function setRange(r) { state.range = r; renderBarR(); renderFilters(); renderView(); if (UPDATES_PAGE) setHash(state.rsp || ''); }
 function renderBarR() {
   put($('#view-controls'));
   if (state.view === 'wiki') { renderWikiBarR(); return; }
   const r = state.range, m = modeOf(state.view);
   const on = v => (v ? !!r && r.preset === v : !r);
-  put($('#bar-r'), modelsPicker(),
-    h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Dates' }),
+  put($('#bar-r'), UPDATES_PAGE ? updatesModelsPicker() : modelsPicker(),
+    UPDATES_PAGE ? tagsPicker() : null,
+    h('span', { class: 'fgroup f-dates' }, h('span', { class: 'flabel', text: 'Dates' }),
       r && !r.preset ? h('span', { class: 'rchip' }, h('button', { class: 'rchip-t', type: 'button', 'aria-label': `Dates ${fmt(r.a)} to ${fmt(r.b)}. Change`, 'data-tip': 'Click to change the dates', onclick: openRangePop, text: `${fmt(r.a)} – ${fmt(r.b)}` }),
         h('button', { type: 'button', 'aria-label': 'Show all dates', 'data-tip': 'Show all dates', onclick: () => setRange(null), text: '✕' })) : null,
       h('span', { class: 'seg rangeseg', role: 'group', 'aria-label': 'Date range' }, PRESETS.map(o => h('button', { type: 'button', 'aria-pressed': String(on(o.v)),
         'data-tip': o.v ? `Only what happened in the ${o.v} days up to the last update (${fmt(addDays(DATA.updated, -o.v))} – ${fmt(DATA.updated)})` : 'All dates. Drag across the dates above a chart to zoom in.',
         onclick: () => setRange(o.v && !on(o.v) ? { a: addDays(DATA.updated, -o.v), b: DATA.updated, preset: o.v } : null) }, o.label)),
         h('button', { type: 'button', id: 'range-custom', 'aria-pressed': String(!!r && !r.preset), 'aria-haspopup': 'dialog', 'data-tip': 'Pick any start and end date. You can also drag across the dates above a chart.', onclick: openRangePop }, 'Custom'))));
+  if (UPDATES_PAGE) $('#bar-r').prepend($('#bar-r').lastElementChild);
   put($('#view-controls'),
     h('span', { class: 'seg modeseg', role: 'group', 'aria-label': 'Layout' },
-      h('button', { type: 'button', 'aria-pressed': String(m === 'chart'), 'aria-label': 'Chart', 'data-tip': 'Chart', html: ICON_CHART, onclick: () => setMode('chart') }),
-      h('button', { type: 'button', 'aria-pressed': String(m === 'table'), 'aria-label': 'Table', 'data-tip': 'Table', html: ICON_TABLE, onclick: () => setMode('table') })),
+      UPDATES_PAGE ? h('button', { type:'button', 'aria-pressed':String(m==='cards'), 'aria-label':'Card list', 'data-tip':'Card list', html:ICON_CARDS, onclick:()=>setMode('cards') }) : null,
+      h('button', { type: 'button', 'aria-pressed': String(m === 'chart'), 'aria-label': UPDATES_PAGE ? 'Timeline' : 'Chart', 'data-tip': UPDATES_PAGE ? 'Timeline' : 'Chart', html: ICON_CHART, onclick: () => setMode('chart') }),
+      !UPDATES_PAGE ? h('button', { type: 'button', 'aria-pressed': String(m === 'table'), 'aria-label': 'Table', 'data-tip': 'Table', html: ICON_TABLE, onclick: () => setMode('table') }) : null),
     infoBtn());
 }
 /* custom range: a small popover with two date fields */
@@ -1935,6 +2044,7 @@ function renderFilters() {
 }
 function renderFilters0() {
   const f = $('#filters');
+  if (UPDATES_PAGE) { renderUpdateFilters(f); return; }
   f.classList.toggle('inside-filters', state.view === 'wiki');
   if (state.view === 'wiki') { if (!state.inside || W) renderWikiFilters(f); else put(f); return; }
   const redo = () => { renderView(); renderFilters(); };
@@ -2021,7 +2131,7 @@ function affRows() {
 }
 function respRows() {
   const s = state.resp;
-  return RESP.filter(r => (s.who === 'all' || r.who === s.who) && (!s.inc || r.inc.includes(s.inc)) && inRange(r.d, r.d))
+  return RESP.filter(r => (!UPDATES_PAGE || s.freshness === 'all' || r.update.freshness === s.freshness) && (s.who === 'all' || r.who === s.who) && (!s.inc || r.inc.includes(s.inc)) && inRange(r.d, r.d))
     .sort((a, b) => {
       if (s.sort === 'lag') { if (a.lag == null || b.lag == null) return (a.lag == null) - (b.lag == null) || a.idx - b.idx; return s.dir * (a.lag - b.lag || a.d.localeCompare(b.d)); }
       return s.dir * (a.d.localeCompare(b.d) || a.idx - b.idx);
@@ -2226,16 +2336,16 @@ function renderResponsesChart() {
   const s = state.resp, view = $('#view');
   if (s.sort !== 'd') { s.sort = 'd'; s.dir = -1; }
   const rows = respRows();
-  setCount(rows.length, RESP.length, 'responses');
+  setCount(rows.length, RESP.length, UPDATES_PAGE ? 'updates' : 'responses');
   const discs = s.disc === false ? [] : INC.filter(e => (!s.inc || e.id === s.inc) && inRange(e.main.d, e.main.d));
   const sides = new Set(rows.map(r => (r.who === 'lab' ? 'l' : 'r')));
   const two = view.clientWidth >= 720 && sides.size > 1;
   const head = h('div', { class: 'thead rhead' + (two ? ' two' : '') },
-    two ? [h('span', { class: 'rh-l' }, h('span', { class: 'rdot g-lab' }), scopeName() || 'AI developers'), h('span'), h('span', { class: 'rh-r' }, h('span', { class: 'rdot g-gov' }), h('span', { class: 'rdot g-research' }), 'Governments, researchers & lawmakers')]
+    two ? [h('span', { class: 'rh-l' }, UPDATES_PAGE ? null : h('span', { class: 'rdot g-lab' }), UPDATES_PAGE ? 'New listings' : scopeName() || 'AI developers'), h('span'), h('span', { class: 'rh-r' }, UPDATES_PAGE ? null : h('span', { class: 'rdot g-gov' }), UPDATES_PAGE ? null : h('span', { class: 'rdot g-research' }), UPDATES_PAGE ? 'Developments & corrections' : 'Governments, researchers & lawmakers')]
       : h('span', { class: 'rh-1', text: s.dir === -1 ? 'Newest first' : 'Oldest first' }));
-  const rowsWrap = h('div', { role: 'listbox', 'aria-label': 'Responses', id: 'rows', class: 'rspine' + (two ? ' two' : '') });
+  const rowsWrap = h('div', { role: 'listbox', 'aria-label': UPDATES_PAGE ? 'Updates' : 'Responses', id: 'rows', class: 'rspine' + (two ? ' two' : '') });
   view.replaceChildren(h('div', { class: 'tl rtl' }, head, rowsWrap));
-  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: noneTxt('responses', RESP) })); renderRespFoot(); return; }
+  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: noneTxt(UPDATES_PAGE ? 'updates' : 'responses', RESP) })); renderRespFoot(); return; }
   /* one chronological stream of events; on the same day a disclosure comes before the responses to it */
   const ev = [...discs.map(e => ({ d: e.main.d, k: 0, i: e.n, e })), ...rows.map(r => ({ d: r.d, k: 1, i: r.idx, r }))]
     .sort((a, b) => a.d.localeCompare(b.d) || a.k - b.k || a.i - b.i);
@@ -2259,8 +2369,8 @@ function renderResponsesChart() {
     const card = h('span', { class: 'r-card' },
       h('span', { class: 'r-top' }, h('span', { class: 'r-date', text: when }), h('span', { class: 'r-who', text: respWho(r) })),
       h('span', { class: 'r-t', text: r.title }),
-      h('span', { class: 'r-m', text: r.lag != null ? lagTxt(r.lag) : 'Not tied to one incident' }));
-    out.push(h('button', { class: `r-item side-${side}`, type: 'button', role: 'option', style, 'data-rsp-row': r.id, 'aria-selected': String(state.rsp === r.id),
+      h('span', { class: 'r-m', text: UPDATES_PAGE ? (r.update.history?.reconstructed ? 'Reconstructed history' : r.update.freshness === 'archive' ? 'From the archive' : 'Newly public information') : r.lag != null ? lagTxt(r.lag) : 'Not tied to one incident' }));
+    out.push(h('button', { class: `r-item side-${side}`, type: 'button', role: 'option', style, 'data-rsp-row': r.id, 'data-update': UPDATES_PAGE ? r.id : null, 'aria-selected': String(state.rsp === r.id),
       'aria-label': `${r.title}. ${when}, ${respWho(r)}${r.lag != null ? ', ' + lagTxt(r.lag) : ''}.`,
       onclick: () => (state.rsp === r.id ? clearSel() : selectRsp(r.id)) },
       side === 'l' ? card : h('span'), h('span', { class: 'r-node' }, h('span', { class: `rdot g-${RESP_DOT[r.who]}` })), side === 'r' ? card : h('span')));
@@ -2431,6 +2541,7 @@ function renderAffected() {
   markSelected(); renderAffFoot();
 }
 function renderResponses() {
+  if (UPDATES_PAGE) { renderUpdatesList(); return; }
   const s = state.resp, rows = respRows();
   setCount(rows.length, RESP.length, 'responses');
   $('#view').replaceChildren(h('table', { class: 'tbl' },
@@ -2501,6 +2612,7 @@ function renderAffFoot() {
   );
 }
 function renderRespFoot() {
+  if (UPDATES_PAGE) { renderUpdateFoot(); return; }
   const s = state.resp, foot = $('#foot'), chart = isChart();
   foot.classList.toggle('filtering', s.who !== 'all');
   put(foot, 
@@ -2569,6 +2681,7 @@ function markSelected() {
   document.querySelectorAll('.inc-link[data-inc]').forEach(l => l.classList.toggle('on', l.dataset.inc === state.sel));
 }
 function openPane(focus) {
+  if (UPDATES_PAGE) { openUpdateModal(focus); return; }
   $('#pane-empty').hidden = true; $('#det').hidden = false;
   if (!$('#main').classList.contains('open')) rescroll = true;
   $('#main').classList.add('open'); applyDrawerW();
@@ -2636,7 +2749,7 @@ function srcStrip(list) {
 }
 const srcList = urls => h('ul', { class: 'srcs mini' }, urls.map(u => SRC.get(u) || ['', '', u]).sort((a, b) => srcRank(a) - srcRank(b)).map(x => h('li', {}, extA(x[2], x[0] || new URL(x[2]).hostname), x[1] ? h('span', { text: ` · ${x[1]}` }) : null)));
 function finishCard(hashS, row, opts, hadCard) {
-  if (!opts.quiet) { openPane(opts.focus); scrollToRow(row, opts.instant); }
+  if (!opts.quiet) { openPane(opts.focus); if (!UPDATES_PAGE) scrollToRow(row, opts.instant); }
   const push = !hadCard && !opts.instant && !opts.quiet;
   if (setHash(hashS, push) && push) state.pushed = true;
 }
@@ -2741,6 +2854,7 @@ function relIncBlock(e, r) {
     h('span', { class: 'sub', text: `${e.first ? `${e.approx ? '~' : ''}${fmtA(e.first)} → ` : ''}public ${fmtA(e.main.d)} · response ${lag > 0 ? `${dayN(lag)} later` : lag < 0 ? `${dayN(-lag)} earlier` : 'the same day'}` }));
 }
 function selectRsp(id, opts = {}) {
+  if (UPDATES_PAGE) { selectUpdate(id, opts); return; }
   const hadCard = hasCard();
   const r = RSP_BY_ID.get(id); if (!r) return;
   if (!opts.keepBack) state.back = [];
@@ -2771,6 +2885,7 @@ function clearSel(opts = {}) {
   const had = state.sel || state.ent || state.rsp || state.post;
   state.sel = null; state.ent = null; state.rsp = null; state.post = null; state.writer = null; state.back = [];
   markSelected();
+  if (UPDATES_PAGE) closeUpdateModal(had);
   $('#det').hidden = true; $('#pane-empty').hidden = false;
   $('#main').classList.remove('open');
   pane.classList.remove('open', 'full'); scrim.classList.remove('open'); syncGrab();
@@ -2833,7 +2948,7 @@ document.addEventListener('keydown', ev => {
   if (ev.key === 'Escape' && ev.target && ev.target.matches && ev.target.matches('input') && ev.target.value) return;
   if (ev.key === 'Escape' && hasCard()) { clearSel(); return; }
   if (ev.key === 'Escape' && state.view === 'wiki' && !(ev.target.closest && ev.target.closest('input,select'))) { leaveInside(); return; }
-  if ((ev.key === 'ArrowDown' || ev.key === 'ArrowUp') && ev.target.closest && ev.target.closest('#pane') && !$('#det').hidden) {
+  if ((ev.key === 'ArrowDown' || ev.key === 'ArrowUp') && ev.target.closest && ev.target.closest('#pane,#update-dialog') && !$('#det').hidden) {
     const b = [...document.querySelectorAll('#det .nav .btn')].filter(x => x.textContent === '↑' || x.textContent === '↓')[ev.key === 'ArrowUp' ? 0 : 1];
     ev.preventDefault(); if (b && !b.disabled) b.click(); return;
   }
@@ -3119,6 +3234,10 @@ const pick = o => (typeof picker === 'function' ? picker(o) : pickNative(o));
 /* ---- the tab row: three views at the top level, a breadcrumb inside an incident */
 /* the two sections of the site: every incident, or one incident from the inside */
 function renderNav() {
+  $('#latest-updates').hidden = UPDATES_PAGE || state.view !== 'timeline';
+  const updatesLink=document.querySelector('.updates-link');if(updatesLink)updatesLink.href='/updates.html';
+
+  if (UPDATES_PAGE) { renderUpdateNav(); return; }
   const inside = state.view === 'wiki', e = inside && state.inside && BY_ID.get(state.inside);
   const thread = e && e.id === WIKI_INC && W ? threadCrumb() : null, sep = () => h('span', { class: 'lvl-sep', 'aria-hidden': 'true', text: '›' });
   put($('#lvl'),
@@ -3140,6 +3259,7 @@ function threadCrumb() {
   return el;
 }
 function renderTabs() {
+  if (UPDATES_PAGE) { renderUpdateTabs(); return; }
   renderNav();
   const row = $('#tabs');
   if (state.view !== 'wiki') {
@@ -3682,10 +3802,12 @@ new ResizeObserver(() => {
 window.addEventListener('resize', () => { applyDrawerW(); measure(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (isChart()) renderChart(); });
 mobileMQ.addEventListener('change', () => {
-  const open = mobileMQ.matches && hasCard();
+  const open = !UPDATES_PAGE && mobileMQ.matches && hasCard();
   pane.classList.toggle('open', open); scrim.classList.toggle('open', open);
   renderBarR(); renderView();
 });
+
+/*__UPDATES_VIEW__*/
 
 /* ---------------------------------------------------------------- boot */
 const defs = $('#defs');
@@ -3697,6 +3819,13 @@ CATS.forEach(c => {
 put($('#impact-help'), ...LEVELS.map(l => h('li', {}, h('b', { text: l.label }), `: ${l.tip.charAt(0).toLowerCase() + l.tip.slice(1)}. `,
   l.cats.map(c => h('span', { class: 'what ' + c, text: WHAT[c], 'data-tip': WHAT_TIP[c] })).reduce((acc, el, k) => (k ? [...acc, ' ', el] : [el]), []))));
 function route(hash = decodeURIComponent(location.hash.slice(1))) {
+  if (UPDATES_PAGE) {
+    const id=hash.startsWith('response/')?hash.slice(9):hash;
+    if (state.view !== 'responses') setView('responses');
+    if (id && reach('rsp',id)) { if (state.rsp !== id) selectRsp(id,{instant:true}); }
+    else if (hasCard()) clearSel({fromRoute:true});
+    return;
+  }
   state.pushed = false;
   if (hash === 'wiki' || hash.startsWith('wiki/')) hash = WIKI_INC + '/posts' + hash.slice(4);
   const parts = hash.split('/');
@@ -3719,8 +3848,9 @@ function route(hash = decodeURIComponent(location.hash.slice(1))) {
   else if (reach('inc', hash)) { if (state.view === 'wiki') setView('timeline'); if (state.sel !== hash) select(hash, { instant: true }); }
   else { if (hasCard()) clearSel({ fromRoute: true }); const v = hash === 'affected' || hash === 'responses' ? hash : 'timeline'; if (state.view !== v) setView(v); }
 }
-const hash0 = decodeURIComponent(location.hash.slice(1));
-setView(hash0 === 'affected' || hash0.startsWith('affected/') ? 'affected' : hash0 === 'responses' || hash0.startsWith('response/') ? 'responses' : 'timeline');
+let hash0=''; try { hash0=decodeURIComponent(location.hash.slice(1)); } catch(e) {}
+if (UPDATES_PAGE) { const q=new URLSearchParams(location.search); if (Object.keys(RESP_WHO).includes(q.get('type'))) state.resp.who=q.get('type'); if (['recent','archive','correction'].includes(q.get('reporting'))) state.resp.freshness=q.get('reporting'); if (BY_ID.has(q.get('incident'))) state.resp.inc=q.get('incident'); const a=q.get('from'),b=q.get('to'); if (/^\d{4}-\d{2}-\d{2}$/.test(a||'') && /^\d{4}-\d{2}-\d{2}$/.test(b||'') && a<=b) state.range={a,b}; }
+setView(UPDATES_PAGE ? 'responses' : hash0 === 'affected' || hash0.startsWith('affected/') ? 'affected' : hash0 === 'responses' || hash0.startsWith('response/') ? 'responses' : 'timeline');
 route(hash0);
 window.addEventListener('popstate', () => {
   if (!state.popping) return;

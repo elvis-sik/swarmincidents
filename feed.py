@@ -23,7 +23,9 @@ def validated(data: dict, log: dict) -> list[dict]:
         if not SLUG.fullmatch(ident) or ident in seen:
             raise ValueError("Update IDs must be unique lowercase slugs")
         seen.add(ident)
-        if entry.get("incident") not in incidents:
+        snapshots = [s for c in entry.get("changes", []) if c["path"] == ["incidents", entry.get("incident")]
+                     for s in (c.get("before"), c.get("after")) if s]
+        if entry.get("incident") not in incidents and not snapshots:
             raise ValueError(f"Update {ident} links to an unknown incident")
         if entry.get("type") not in ("New incident", "Update", "Correction"):
             raise ValueError(f"Update {ident} has an invalid type")
@@ -34,8 +36,26 @@ def validated(data: dict, log: dict) -> list[dict]:
         url = urlsplit(source)
         if url.scheme != "https" or not url.hostname or url.username or url.password:
             raise ValueError(f"Update {ident} needs a public HTTPS source")
-        if source not in {s[2] for s in incidents[entry["incident"]]["sources"]}:
+        allowed = {s[2] for record in snapshots + [incidents.get(entry["incident"], {})] for s in record.get("sources", [])}
+        allowed.update(d["url"] for record in snapshots + [incidents.get(entry["incident"], {})] for d in record.get("datasets", []))
+        for response in data.get("responses", []):
+            if entry["incident"] in response.get("inc", []):
+                allowed.update(s[2] for s in response.get("src", []))
+        for change in entry.get("changes", []):
+            if change["path"][0] == "responses":
+                for snapshot in (change["before"], change["after"]):
+                    if snapshot and entry["incident"] in snapshot.get("inc", []):
+                        allowed.update(s[2] for s in snapshot.get("src", []))
+        if source not in allowed:
             raise ValueError(f"Update {ident} source is not on its incident card")
+        resources = entry.get("resources") or [{"url":source, "publisher":entry["publisher"]}]
+        if not 1 <= len(resources) <= 2 or resources[0]["url"] != source:
+            raise ValueError(f"Update {ident} needs one main resource and at most one complement")
+        for resource in resources:
+            target = urlsplit(resource["url"])
+            if (target.scheme != "https" or not target.hostname or target.username or target.password
+                    or resource["url"] not in allowed or not resource.get("publisher")):
+                raise ValueError(f"Update {ident} has an invalid selected resource")
         published = datetime.fromisoformat(entry["published"])
         if published.tzinfo is None:
             raise ValueError(f"Update {ident} publication time needs a timezone")
@@ -65,7 +85,11 @@ def render(data: dict, log: dict) -> bytes:
         field(item, "guid", "swarmincidents:update:" + entry["id"], isPermaLink="false")
         field(item, "pubDate", rss_date(entry))
         field(item, "category", entry["type"])
-        body = f'<p>{escape(entry["summary"])}</p><p><a href="{escape(url, quote=True)}">View incident and sources</a> · <a href="{escape(entry["source"], quote=True)}">{escape(entry["publisher"])} report</a></p>'
+        resources = entry.get("resources") or [{"url":entry["source"], "publisher":entry["publisher"]}]
+        links = ' · '.join(f'<a href="{escape(r["url"], quote=True)}">{escape(r["publisher"])} report</a>' for r in resources)
+        body = f'<p>{escape(entry["summary"])}</p><p><a href="{escape(url, quote=True)}">Read on swarmincidents.com</a> · {links}</p>'
+        if entry.get("history", {}).get("reconstructed"):
+            body += '<p><em>Reconstructed site history. Publication date is the public repository commit time, not a verified deployment time or the event date.</em></p>'
         field(item, "description", body)
     ET.indent(root, space="  ")
     return ET.tostring(root, encoding="utf-8", xml_declaration=True) + b"\n"
