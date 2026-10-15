@@ -277,6 +277,15 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .pane-wrap{position:absolute;inset:0}
 .pane{position:sticky;top:var(--barH,52px);height:min(100%,calc(100dvh - var(--barH,52px) - var(--footH,36px)));overflow:auto;overscroll-behavior:contain}
 
+/* A compact key stays beside the timeline controls; detail and source filters remain below. */
+.wordmark a{text-decoration:none}.wordmark a:hover{text-decoration:underline;text-underline-offset:4px}
+.timeline-key{display:flex;flex-wrap:wrap;align-items:center;gap:5px 20px;padding:8px 2px 3px;color:var(--ink-2);font-size:11.5px;border-top:1px solid var(--line);margin-top:7px}
+.timeline-key .key-label{color:var(--muted)}
+.timeline-key .lg{gap:5px}
+.timeline-key button.lg{min-height:26px}
+.agent-context{color:var(--muted);font-size:12px}
+.f-agents input{width:14px;height:14px;margin:0;accent-color:var(--ink);cursor:pointer}.f-agents:has(:checked){border-color:var(--ink-2);color:var(--ink)}
+@media(max-width:820px){.timeline-key{gap:3px 10px;font-size:11px}.timeline-key .key-label{display:none}}
 /* timeline: annotated lanes */
 .thead{position:sticky;top:var(--barH,52px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);height:30px;display:block}
 .axis{position:relative;display:block;height:100%;cursor:ew-resize;touch-action:pan-y}
@@ -301,7 +310,7 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .lt{display:inline-block;margin-left:6px;padding:0 5px;border:1px solid var(--line-2);border-radius:4px;font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:0;line-height:15px;color:var(--muted);white-space:nowrap;vertical-align:1px}
 .lt+.lt{margin-left:4px}
 .lbl.stack{white-space:normal}
-.lbl.stack .m{display:table;padding-left:3px;margin-top:-1px;white-space:nowrap}
+.lbl.stack .m{display:table;padding-left:3px;margin-top:-1px;white-space:normal}
 .row[aria-selected="true"] .lbl .t{color:var(--ink)}
 .c-tr{position:relative;display:block;height:26px}
 .lanes-col .thead{display:grid;grid-template-columns:var(--lw) minmax(0,1fr)}
@@ -1064,10 +1073,44 @@ dialog{transform-origin:center}
 @media(max-width:600px){.top-l{flex:1 0 100%;gap:4px 12px}.follow-nav{gap:1px}.top-r{gap:6px}}
 @media(max-width:360px){#tabs .tab{padding-inline:5px}}
 
+/* Natural control flow, self-contained checkboxes and a compact timeline key. */
+.check-control{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;cursor:pointer;min-height:28px;font-size:12px;color:var(--ink-2)}
+.check-control input{appearance:none;-webkit-appearance:none;display:inline-grid;place-content:center;flex:none;width:14px;height:14px;margin:0;border:1.5px solid var(--faint);border-radius:3px;background:var(--panel);cursor:pointer}
+.check-control input:checked{background:var(--ink);border-color:var(--ink)}
+.check-control input:checked::before{content:"";width:7px;height:4px;border-left:1.7px solid var(--panel);border-bottom:1.7px solid var(--panel);transform:rotate(-45deg) translateY(-1px)}
+.check-control:hover{color:var(--ink)}
+.pk-note{padding:3px 6px 5px;font-size:11px;color:var(--muted)}
+.f-tags .pk{justify-self:start;max-width:100%}
+.timeline-foot{display:flex;flex-direction:row;align-items:center;gap:2px 18px;padding:5px 12px;overflow:visible;flex-wrap:wrap}
+.legend-row{display:flex;align-items:center;gap:2px 10px;min-width:0;flex-wrap:wrap;font-size:11.5px}
+.legend-reporters{gap:2px 10px}.legend-reporters>.legend-label{display:inline-flex;align-items:center;gap:5px}
+.rhead.two .rh-l,.rhead.two .rh-r{justify-content:center;gap:0}
+.legend-label{color:var(--muted);white-space:nowrap;font-size:11px}.legend-toggle{font-size:11.5px;min-height:24px}.legend-toggle svg{flex:none}.legend-info{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;color:var(--muted);font-size:11px;min-height:24px}.legend-updated{margin-left:4px}.legend-clear{white-space:nowrap}
+.event-anchor{stroke:var(--muted);stroke-width:1;fill:none;pointer-events:none}.event-capsule{fill:var(--rowbg);stroke:var(--line-2);stroke-width:1}.event-count{fill:var(--ink-2);font:500 10px var(--sans);text-anchor:middle;dominant-baseline:central;pointer-events:none}.event-cluster{cursor:pointer}.event-cluster:hover .event-capsule,.event-cluster:focus-visible .event-capsule{stroke:var(--ink-2);stroke-width:1.5}.event-cluster:focus-visible{outline:none}.event-cluster[aria-expanded="true"] .event-capsule{fill:var(--sel)}
+.event-guide{stroke:var(--line-2);stroke-width:1;fill:none;pointer-events:none}.event-label{font:11px var(--sans);fill:var(--ink-2);paint-order:stroke;stroke:var(--rowbg);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.chron li.event-focused{background:var(--sel);border:solid color-mix(in srgb,var(--g-research) 24%,var(--line));border-width:0 1px;border-radius:0;padding-top:7px;padding-right:8px;padding-bottom:7px;margin-bottom:0}.chron li.event-focus-start{border-top-width:1px;border-top-left-radius:5px;border-top-right-radius:5px}.chron li.event-focus-end{border-bottom-width:1px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;margin-bottom:5px}.chron li.event-focused::before{top:11px}.timeline-section .chron{margin-top:12px}.event-focus-note{font-size:11px;color:var(--muted);margin:7px 0 9px}.timeline-section:focus{outline:none}
+@media(max-width:360px){.f-dates>.flabel{display:none}}.tip-day{color:var(--tip-ink);font-size:11px;opacity:.72;margin:9px 0 3px}.tip-day:first-of-type{margin-top:5px}
+.tip.day-tip{box-sizing:border-box;max-width:min(380px,calc(100vw - 16px));white-space:normal}.tip-event+.tip-event{border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);margin-top:8px;padding-top:8px}.tip-event strong{display:block;font-size:11.5px;margin-bottom:2px}.tip-event p{margin:0;font-size:12px;line-height:1.4}
+/* Content-sized groups retain the original rhythm as filters are added. */
+.bar-r{display:flex;flex-wrap:wrap;gap:8px 20px;width:100%}
+.filters:not(.inside-filters){display:flex;flex-wrap:wrap;gap:8px 16px;width:100%}
+.bar-r>.fgroup,.filters>.fgroup{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.bar-r>.fgroup>.flabel,.filters>.fgroup>.flabel{flex:none}
+.bar-controls:not(.updates-filters) .f-dates{margin-left:auto;justify-content:flex-end;max-width:100%}
+.filters>.fgroup.sort{margin-left:auto}
+@media(max-width:820px){
+  .bar-r{gap:8px 16px}.bar-r>.f-models,.bar-r>.f-tags{flex:0 1 auto}
+  .bar-r>.fgroup:last-child{flex-wrap:wrap}
+  .filters:not(.inside-filters){gap:6px 14px}.filters>.fgroup.sort{margin-left:0}
+  .timeline-foot{padding:5px 9px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;gap:12px}
+  .timeline-foot .legend-row{display:contents}.timeline-foot .legend-row>*{flex:none}.legend-updated{margin-left:0}
+}
+
+
 /* Updates content uses the common dashboard shell; no alternate header, timeline or modal styles. */
 .update-heading{font-size:14px;font-weight:600;margin:0;padding:3px 0;border:0;cursor:default;color:var(--ink)}
 .update-subscribe{font-size:12px;white-space:nowrap}
-.update-type-controls{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}.update-type-controls .flabel{display:inline}.update-types button{font-size:12px;gap:5px}.update-types .n{font:10.5px var(--mono);opacity:.7}.updates-title-row{gap:8px 14px}html.updates-modal-page .bar>.bar-row:first-child{min-height:34px}.update-types .rdot{width:8px;height:8px}
+.update-type-controls{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}.update-type-controls .flabel{display:inline}.update-types button{font-size:12px;gap:5px}.update-types .n{font:10.5px var(--mono);opacity:.7}.updates-title-row{gap:8px 14px}.bar>.bar-row:first-child{min-height:34px}.update-types .rdot{width:8px;height:8px}
 @media(max-width:820px){.updates-title-row{width:100%;gap:7px 12px}.update-type-controls{flex:1 1 100%}.update-types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));flex:1;max-width:100%}.update-types button{padding:5px 7px;font-size:11px;gap:4px;justify-content:center}.update-types button:nth-child(3){border-left:0}.update-types button:nth-child(n+3){border-top:1px solid var(--line-2)}.update-subscribe{margin-left:auto}}.update-intro{font-size:12px;color:var(--muted)}
 .update-change{border-top:1px solid var(--line);padding:9px 0 0;margin:0}.update-change>summary{font-size:12px;font-weight:600;cursor:pointer;color:var(--ink-2)}
 .update-before,.update-after{margin:10px 0 0;padding-left:10px;border-left:2px solid var(--line-2)}.update-after{border-color:var(--g-research)}
@@ -1102,9 +1145,6 @@ html.updates-modal-page{scrollbar-gutter:stable}
 .update-dialog .det-top{position:sticky;top:0;z-index:1;background:var(--panel);padding:10px 0;border-bottom:1px solid var(--line)}
 .update-incident-action{align-self:flex-start;font-weight:600;min-height:36px;padding:7px 16px}
 @media(max-width:820px){.update-dialog .det{padding:10px 14px 20px}.update-dialog{max-height:90dvh}}
-
-.updates-filters>.fgroup,.updates-filters #bar-r>.fgroup,.updates-filters #filters>.fgroup{display:inline-flex;align-items:center;gap:7px;min-width:0}
-html.updates-modal-page .rhead.two .rh-l,html.updates-modal-page .rhead.two .rh-r{justify-content:center}
 </style>
 </head>
 <body>
@@ -1115,7 +1155,7 @@ html.updates-modal-page .rhead.two .rh-l,html.updates-modal-page .rhead.two .rh-
 
 <div class="wrap">
   <header class="top" id="top">
-    <div class="top-l"><div class="brand-group"><h1 class="wordmark"><a href="/" aria-label="Swarm Incidents home" style="text-decoration:none;color:inherit">Swarm Incidents</a></h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><a class="follow-label updates-link" href="/updates.html">Updates</a><a class="follow-channel" href="/feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a></nav></div></div>
+    <div class="top-l"><div class="brand-group"><h1 class="wordmark"><a href="/" aria-label="Swarm Incidents home">Swarm Incidents</a></h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><a class="follow-label updates-link" href="/updates.html">Updates</a><a class="follow-channel" href="/feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a></nav></div></div>
     <div class="top-r">
       <span class="meta" id="meta"></span>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
@@ -1362,22 +1402,25 @@ const TAGS = [
   { id: 'swarms', label: 'Swarms / fleets', test: e => !!e.agent_group, note: 'Documented coordination, multi-agent runs or fleets. Coordination is not established for every fleet; some grouped incidents contain other runs.' },
   { id: 'benchmark', label: 'Benchmark integrity', test: e => e.category === 'benchmark-integrity', note: 'Documented benchmark-answer retrieval or scoring manipulation. This does not assert an outside-system breach.' }
 ];
-const DEFAULT_TAGS = [];
-let scope = DEFAULT_SCOPE, activeTags = [...DEFAULT_TAGS], datasetOnly = false;
+const DEFAULT_TAGS = UPDATES_PAGE ? [] : ['swarms'];
+let scope = DEFAULT_SCOPE, activeTags = [...DEFAULT_TAGS], datasetOnly = false, initialFeatures = [], initialReporters = [];
 try {
   const params = new URLSearchParams(location.search), v = params.get('models');
   if (v && SCOPES.has(v)) scope = v;
   datasetOnly = params.get('datasets') === 'available';
   if (params.has('tags')) activeTags = [...new Set(params.get('tags').split(',').filter(id => TAGS.some(t => t.id === id)))];
   else if (params.get('agents') === 'all') activeTags = [];
+  initialFeatures = (params.get('has') || '').split(',').filter(v => ['activity','approx','knew','gap','additional'].includes(v));
+  initialReporters = (params.get('by') || '').split(',').filter(v => ['lab','research','press','gov','other'].includes(v));
 } catch (e) { /* no URL */ }
 const tagMatch = e => !activeTags.length || activeTags.some(id => TAGS.find(t => t.id === id).test(e));
 const sameTags = (a, b) => [...a].sort().join(',') === [...b].sort().join(',');
 const allScope = () => scope === 'all';
 const scopeName = () => (allScope() || scope === 'unknown' ? null : labName(scope));
-const incInScope = e => (allScope() || e.labs.includes(scope)) && (!UPDATES_PAGE || tagMatch(e));
-const respInScope = (r, incIds) => UPDATES_PAGE && activeTags.length ? r.inc.some(id => incIds.has(id)) : allScope() || r.inc.some(id => incIds.has(id)) || (r.labs || []).includes(scope) || (r.who === 'lab' && r.lab === scope)
+const incInScope = e => (allScope() || e.labs.includes(scope)) && tagMatch(e);
+const respInScope = (r, incIds) => activeTags.length ? r.inc.some(id => incIds.has(id)) : allScope() || r.inc.some(id => incIds.has(id)) || (r.labs || []).includes(scope) || (r.who === 'lab' && r.lab === scope)
   || (!r.inc.length && !(r.labs || []).length && r.who !== 'lab');
+
 const dayN = n => `${n} day${n === 1 ? '' : 's'}`;
 const lagTxt = n => n > 0 ? `${dayN(n)} after disclosure` : n < 0 ? `${dayN(-n)} before disclosure` : 'same day as disclosure';
 /* a date outside the year of the last update shows its year */
@@ -1434,7 +1477,7 @@ const state = {
   wiki: { page: null, who: null, round: null, q: '', voice: 'chat' }, inside: null, from: null,
   chooser: { sort: 'd', dir: -1, q: '' },
   range: null, emph: null,
-  tl: { by: 'all', conf: false, datasets: datasetOnly, sort: 'start', dir: -1 },
+  tl: { by: 'all', reporters: new Set(initialReporters), features: new Set(initialFeatures), conf: false, datasets: datasetOnly, sort: 'start', dir: -1 },
   aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null, cats: new Set(), unclear: true },
   back: [], pushed: false, popping: false,
   resp: { who: 'all', freshness:'all', dir: -1, inc: null, disc: true },
@@ -1618,7 +1661,17 @@ function fillTip(el) {
   clearTimeout(tipTimer);
   if (tipEl !== el) {
     const title = el.getAttribute('data-tip-title');
-    tip.replaceChildren(...[title ? h('b', { text: title }) : null, text].filter(Boolean));
+    const day = el.getAttribute('data-day-events');
+    tip.classList.toggle('day-tip', !!day);
+    if (day) {
+      const events = JSON.parse(day);
+      let date = null;
+      tip.replaceChildren(h('b', { text: title }), ...events.flatMap(event => {
+        const heading = event.date && event.date !== date ? h('div', { class: 'tip-day', text: fmtY(event.date) }) : null;
+        date = event.date;
+        return [heading, h('div', { class: 'tip-event' }, h('strong', { text: event.label }), h('p', { text: event.text }))].filter(Boolean);
+      }));
+    } else tip.replaceChildren(...[title ? h('b', { text: title }) : null, text].filter(Boolean));
     tipEl = el;
   }
   tip.hidden = false;
@@ -1639,7 +1692,7 @@ function showTipOver(el) {
   const a = el.getBoundingClientRect(), r = tip.getBoundingClientRect();
   let top = a.top - r.height - 8; if (top < 8) top = a.bottom + 8;
   tip.style.left = Math.max(8, Math.min(a.left + a.width / 2 - r.width / 2, innerWidth - r.width - 8)) + 'px';
-  tip.style.top = top + 'px';
+  tip.style.top = Math.max(8, Math.min(top, innerHeight - r.height - 8)) + 'px';
   tipTimer = setTimeout(hideTip, 5000);
 }
 function hideTip() { tip.hidden = true; tipEl = null; clearTimeout(tipTimer); }
@@ -1653,6 +1706,7 @@ document.addEventListener('pointerdown', ev => { lastPtr = ev.pointerType || 'mo
 const TAP_TIP = '.what.unclear[data-tip],.tag[data-tip],span.lg[data-tip],.stat[data-tip],.track g[data-tip],.orig .g[data-tip],.orig .fn[data-tip],.vmark[data-tip],span.at[data-tip]';
 document.addEventListener('click', ev => {
   if (lastPtr === 'mouse') return;
+  if (ev.target.closest?.('.event-cluster')) return;
   const el = ev.target.closest && ev.target.closest(TAP_TIP); if (!el) return;
   ev.preventDefault(); ev.stopPropagation(); showTipOver(el);
 }, true);
@@ -1863,6 +1917,8 @@ function urlFor(hash) {
     if (state.tl.datasets) u.set('datasets', 'available'); else u.delete('datasets');
     u.delete('agents');
     if (sameTags(activeTags, DEFAULT_TAGS)) u.delete('tags'); else u.set('tags', activeTags.join(',') || 'all');
+    if (state.tl.features.size) u.set('has', [...state.tl.features].sort().join(',')); else u.delete('has');
+    if (state.tl.reporters.size) u.set('by', [...state.tl.reporters].sort().join(',')); else u.delete('by');
     if (UPDATES_PAGE) {
       for (const [key,value] of [['type',state.resp.who==='all'?null:state.resp.who],['reporting',state.resp.freshness==='all'?null:state.resp.freshness],['incident',state.resp.inc],['from',state.range?.a],['to',state.range?.b]]) { if(value)u.set(key,value);else u.delete(key); }
     }
@@ -1918,14 +1974,11 @@ function reach(kind, id) {
   return true;
 }
 
-function updatesModelsPicker() {
-  const labs = Object.keys(LABS).map(k => [k, DATA.incidents.filter(e => e.labs.includes(k)).length]).sort((a, b) => b[1] - a[1] || labName(a[0]).localeCompare(labName(b[0])));
-  const el = picker({ label: 'Models', ariaLabel: 'Models', hideLabel: true, value: scope, on: scope !== DEFAULT_SCOPE, searchable: labs.length > 8, placeholder: 'Search developers',
-    options: [...labs.map(([k, n]) => ({ v: k, label: labName(k), sub: nInc(n), tip: `Incidents involving ${labName(k)}\u2019s models` })),
-      { v: 'all', label: 'All developers', sub: nInc(DATA.incidents.length), tip: 'Incidents involving any developer\u2019s models' }],
-    onPick: v => setScope(v || DEFAULT_SCOPE) });
-  return h('span', { class: 'fgroup f-models' }, h('span', { class: 'flabel', text: 'Models' }), el);
-}
+const ICON_CHART = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h6M5.5 8h8M3.5 12h5"/></svg>';
+const ICON_CARDS = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2" y="1.5" width="12" height="5" rx="1.2"/><rect x="2" y="9.5" width="12" height="5" rx="1.2"/><path d="M4 4h8M4 12h8"/></svg>';
+const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2.75" width="12" height="10.5" rx="1.5"/><path d="M2 6.25h12M2 9.75h12M6 6.25v7"/></svg>';
+const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
+function setRange(r) { focusedIncidentEvents = null; expandedEventIncident = null; state.range = r; renderBarR(); renderFilters(); renderView(); if (UPDATES_PAGE) setHash(state.rsp || ''); }
 function tagsPicker() {
   return h('span', { class: 'fgroup f-tags' }, h('span', { class: 'flabel', text: 'Categories' }),
     picker({ label: 'Categories', hideLabel: true, multiple: true, searchable: false, value: activeTags,
@@ -1934,18 +1987,13 @@ function tagsPicker() {
         ...TAGS.map(t => ({ v: t.id, label: t.label, sub: nInc(DATA.incidents.filter(e => (allScope() || e.labs.includes(scope)) && t.test(e)).length), tip: t.note }))
       ], onPick: tags => setScope(scope, tags) }));
 }
-const ICON_CHART = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h6M5.5 8h8M3.5 12h5"/></svg>';
-const ICON_CARDS = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2" y="1.5" width="12" height="5" rx="1.2"/><rect x="2" y="9.5" width="12" height="5" rx="1.2"/><path d="M4 4h8M4 12h8"/></svg>';
-const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2.75" width="12" height="10.5" rx="1.5"/><path d="M2 6.25h12M2 9.75h12M6 6.25v7"/></svg>';
-const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
-function setRange(r) { state.range = r; renderBarR(); renderFilters(); renderView(); if (UPDATES_PAGE) setHash(state.rsp || ''); }
 function renderBarR() {
   put($('#view-controls'));
   if (state.view === 'wiki') { renderWikiBarR(); return; }
   const r = state.range, m = modeOf(state.view);
   const on = v => (v ? !!r && r.preset === v : !r);
-  put($('#bar-r'), UPDATES_PAGE ? updatesModelsPicker() : modelsPicker(),
-    UPDATES_PAGE ? tagsPicker() : null,
+  put($('#bar-r'), modelsPicker(),
+    tagsPicker(),
     h('span', { class: 'fgroup f-dates' }, h('span', { class: 'flabel', text: 'Dates' }),
       r && !r.preset ? h('span', { class: 'rchip' }, h('button', { class: 'rchip-t', type: 'button', 'aria-label': `Dates ${fmt(r.a)} to ${fmt(r.b)}. Change`, 'data-tip': 'Click to change the dates', onclick: openRangePop, text: `${fmt(r.a)} – ${fmt(r.b)}` }),
         h('button', { type: 'button', 'aria-label': 'Show all dates', 'data-tip': 'Show all dates', onclick: () => setRange(null), text: '✕' })) : null,
@@ -2042,6 +2090,10 @@ function renderFilters() {
   renderFilters0();
   if (key) { const el = [...$('#filters').querySelectorAll('button,input,[role="slider"]')].find(x => focusKey(x) === key); if (el) el.focus({ preventScroll: true }); }
 }
+function checkControl(label, checked, onchange, attrs = {}, ...kids) {
+  return h('label', { class: 'check-control ' + (attrs.class || ''), 'data-tip': attrs.tip || null },
+    h('input', { type: 'checkbox', checked, 'aria-label': label, onchange }), ...kids, h('span', { text: label }));
+}
 function renderFilters0() {
   const f = $('#filters');
   if (UPDATES_PAGE) { renderUpdateFilters(f); return; }
@@ -2051,15 +2103,11 @@ function renderFilters0() {
   const chart = isChart();
   if (state.view === 'timeline') {
     const s = state.tl;
-    put(f, 
-      h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Disclosed by' }),
-        picker({ label: 'Disclosed by', hideLabel: true, value: s.by, on: s.by !== 'all', searchable: false,
-          options: [{ v: 'all', label: 'Anyone' }, ...Object.keys(WHO).map(g => ({ v: g, label: whoLabel(g), tip: `Only incidents first made public by ${whoBy(g)}` }))],
-          onPick: v => { s.by = v; redo(); } })),
-      h('button', { class: 'chip', type: 'button', 'aria-pressed': String(s.conf), 'data-tip': `Only incidents ${devThe()} has confirmed, fully or in part`,
-        onclick: () => { s.conf = !s.conf; redo(); } }, h('span', { class: 'box', html: CHECK }), `Confirmed by ${devThe()}`),
-      h('button', { class: 'chip dataset-filter', type: 'button', 'aria-label': 'Dataset available', 'aria-pressed': String(s.datasets), 'data-tip': 'Only incidents with linked public research data. Coverage and formats are described on each card.',
-        onclick: () => { s.datasets = !s.datasets; setHash(location.hash.slice(1)); redo(); } }, h('span', { class: 'box', html: CHECK }), 'Dataset available', h('span', { class: 'n', 'aria-hidden': 'true', text: String(INC.filter(hasDataset).length) })),
+    put(f,
+      h('span', { class: 'fgroup f-status' },
+        checkControl(`Confirmed by ${scopeName() || 'developer'}`, s.conf, ev => { s.conf = ev.target.checked; redo(); }, { tip: `Only incidents ${devThe()} has confirmed, fully or in part` })),
+      h('span', { class: 'fgroup f-data' },
+        checkControl('Dataset available', s.datasets, ev => { s.datasets = ev.target.checked; setHash(location.hash.slice(1)); redo(); }, { class: 'dataset-filter', tip: 'Only incidents with linked public research data. Coverage and formats are described on each card.' })),
       chart ? sortCtl(s, SORTS.timeline, 'Sort incidents') : null);
   } else if (state.view === 'affected') {
     const s = state.aff;
@@ -2099,10 +2147,22 @@ function toggleEmph(k) { state.emph = state.emph === k ? null : k; applyViewClas
 function applyViewClass() { $('#view').className = 'view' + (state.emph && isChart() ? ` emph emph-${state.emph}` : '') + (state.range ? ' zoomed' : ''); }
 
 /* ---------------------------------------------------------------- rows for each view */
+const TL_FEATURES = [
+  { id: 'activity', label: 'Reported activity', tip: 'Only incidents with reported activity dates. Bars show reported windows, not proof of continuous activity.', test: e => !!e.activity.length },
+  { id: 'approx', label: 'Dates approximate', tip: 'Only incidents with at least one approximate activity window.', test: e => e.activity.some(a => a.approx) },
+  { id: 'knew', label: 'Developer knew', tip: 'Only incidents with a documented date when the developer knew.', test: e => !!e.knew },
+  { id: 'gap', label: 'Disclosure gap', tip: 'Only incidents whose last reported activity predates their first public report. The dotted gap does not imply ongoing activity.', test: e => !!e.last && e.main.d > e.last },
+  { id: 'additional', label: 'Additional reports', tip: 'Only incidents with an additional report or private notice beyond the first public disclosure.', test: e => e.reveals.some(r => r.minor || r.private) }
+];
+function toggleTimelineFilter(set, value, checked) {
+  if (checked) set.add(value); else set.delete(value);
+  setHash(location.hash.slice(1)); renderView(); renderFilters();
+  const el = document.querySelector(`#foot button[data-filter="${value}"]`); if (el) el.focus({ preventScroll: true });
+}
 function tlRows() {
   const s = state.tl;
   const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : e.main.d;
-  return INC.filter(e => (s.by === 'all' || e.main.by === s.by) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
+  return INC.filter(e => (!s.reporters.size || s.reporters.has(e.main.by)) && TL_FEATURES.every(f => !s.features.has(f.id) || f.test(e)) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
     .sort((a, b) => {
       const ka = key(a), kb = key(b);
       if (ka == null || kb == null) return (ka == null) - (kb == null) || a.n - b.n;
@@ -2163,7 +2223,14 @@ function ticks(x) {
       const t = Date.UTC(y, m, 1); if (t > x.b) break;
       if (t >= x.a) out.push({ t, label: MON[new Date(t).getUTCMonth()] });
     }
-    if (W < 380) out.forEach((o, i) => { if (i % 2) o.label = ''; });
+    const stride = Math.max(1, Math.ceil(out.length * 48 / Math.max(80, W - 56)));
+    let shownYear = null;
+    out.forEach((o, i) => {
+      if (i % stride) { o.label = ''; return; }
+      const year = new Date(o.t).getUTCFullYear();
+      if (year !== shownYear) o.label += ` ’${String(year).slice(-2)}`;
+      shownYear = year;
+    });
     return out;
   }
   const step = [1, 2, 7, 14, 28].find(s => W / (days / s) >= 62) || 28;
@@ -2181,7 +2248,7 @@ function gridSvg(x, tk, full) {
 }
 function axisEl(x, tk) {
   const axis = h('span', { class: 'axis', 'data-tip': state.range ? 'Drag across the dates to zoom again · double-click to show all' : 'Drag across the dates to zoom in' },
-    tk.map(o => h('span', { style: `left:${x(o.t)}px`, text: o.label })));
+    tk.map(o => h('span', { style: `left:clamp(28px,${x(o.t)}px,calc(100% - 28px))`, text: o.label })));
   return axis;
 }
 /* drag across the axis to pick a date range (mouse and pen; touch uses the presets) */
@@ -2216,7 +2283,6 @@ function placeLabels(lanes, W, M, mob) {
   lanes.forEach(l => {
     const wd = el => el.getBoundingClientRect().width;
     l.w = Math.ceil(wd(l.lbl)) + 1; l.mw = wd(l.meta);
-    if (l.nodate) { const t = l.nodate.getComputedTextLength(), ex = Number(l.nodate.getAttribute('x')); l.lo = Math.min(l.lo, ex - t); l.hi = Math.max(l.hi, ex); }
     l.lo = Math.max(M, Math.min(l.lo, W - M)); l.hi = Math.max(M, Math.min(l.hi, W - M));
   });
   lanes.forEach(l => {
@@ -2234,8 +2300,8 @@ function placeLabels(lanes, W, M, mob) {
     if (stack) l.lbl.style.width = Math.ceil(L) + 'px';
   });
 }
-function laneRow(attrs, grid, lbl, svg) {
-  return h('button', Object.assign({ class: 'row', type: 'button', role: 'option' }, attrs), grid, lbl, h('span', { class: 'c-tr' }, svg));
+function laneRow(attrs, grid, lbl, svg, tag = 'button') {
+  return h(tag, Object.assign({ class: 'row', type: tag === 'button' ? 'button' : null, tabindex: tag === 'button' ? null : '0', role: 'option' }, attrs), grid, lbl, h('span', { class: 'c-tr' }, svg));
 }
 function trackSvg(W) {
   const svg = sv('svg', { class: 'track', 'aria-hidden': 'true' });
@@ -2262,6 +2328,106 @@ const labTags = e => (allScope() ? e.labs.map(l => h('span', { class: 'lt', text
 /* a mark that starts before the chart's left edge is cut there, with a small chevron pointing left */
 const chev = (edge, y) => sv('path', { d: `M${edge - 2.5} ${y - 3.5}L${edge - 6} ${y}L${edge - 2.5} ${y + 3.5}`, class: 'clipcue' });
 const clipCue = (edge, cls, tip) => { const g = sv('g', Object.assign({ class: cls }, tip)); g.append(chev(edge, 0), sv('rect', { x: edge - 9, y: -7, width: 9, height: 14, class: 'hit' })); return g; };
+/* One tooltip for all plotted events on an exact date. Date anchoring remains independent of display offsets. */
+function incidentDayEvents(e, date) {
+  const events = [];
+  e.activity.forEach(a => {
+    if (a.s === date || a.e === date) events.push({ label: a.s === a.e ? 'Reported activity' : a.s === date ? 'Activity window starts' : 'Activity window ends', text: a.label + (a.approx ? ' (dates approximate)' : '') });
+  });
+  if (e.knew?.d === date) events.push({ label: incKnew(e), text: e.knew.text });
+  e.reveals.filter(r => r.d === date).forEach(r => events.push({
+    label: `${r.private ? 'Private notice' : r.minor ? 'Additional report' : 'First public report'} · ${incWho(e, r.by)}`,
+    text: r.text
+  }));
+  return events;
+}
+function incidentDayTip(e, date) {
+  const events = incidentDayEvents(e, date);
+  return { 'data-day': date, 'data-day-events': JSON.stringify(events),
+    'data-tip-title': `${fmtY(date)} · ${events.length} event${events.length === 1 ? '' : 's'}`,
+    'data-tip': events.map(event => event.label + ': ' + event.text).join('\n\n') };
+}
+let focusedIncidentEvents = null, expandedEventIncident = null;
+const pointEventKey = (e, p) => `${p.kind === 'knew' ? 'knew' : 'rev'}:${p.date}:${p.kind === 'knew' ? e.knew.text : p.r.text}`;
+function openIncidentEvents(e, points) {
+  hideTip();
+  const keys = new Set(points.map(p => pointEventKey(e, p)));
+  if (state.sel === e.id && expandedEventIncident === e.id && focusedIncidentEvents?.id === e.id && [...focusedIncidentEvents.keys].every(key => keys.has(key))) {
+    expandedEventIncident = null;
+    renderTimeline(); refreshCard();
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const badges = [...document.querySelectorAll(`[data-inc-row="${e.id}"] .event-cluster`)];
+      badges.find(b => JSON.parse(b.dataset.markers).some(m => points.some(p => p.date === m.date && p.kind === m.kind)))?.focus({ preventScroll: true });
+    }));
+    return;
+  }
+  focusedIncidentEvents = { id: e.id, keys };
+  expandedEventIncident = e.id;
+  select(e.id, { events: true, instant: true });
+  renderTimeline();
+  requestAnimationFrame(() => requestAnimationFrame(scrollToIncidentEvents));
+}
+function scrollToIncidentEvents() {
+  const section = $('#det .timeline-section'), matches = [...$('#det').querySelectorAll('.event-focused')];
+  if (!section || !matches.length) return;
+  const first = matches[0].getBoundingClientRect(), last = matches[matches.length - 1].getBoundingClientRect();
+  if (mobileMQ.matches && last.bottom - first.top > pane.clientHeight - 70) setFull(true);
+  const box = pane.getBoundingClientRect(), sec = section.getBoundingClientRect();
+  const top = last.bottom - sec.top < pane.clientHeight - 60 ? sec.top : first.top - 30;
+  pane.scrollTo({ top: pane.scrollTop + top - box.top - (mobileMQ.matches ? 30 : 12), behavior: 'auto' });
+  section.focus({ preventScroll: true });
+}
+function drawEventGlyph(point, x, y, attrs = {}) {
+  const cls = point.kind === 'knew' ? 'mk-knew' : point.r.minor ? 'mk-other' : 'mk-rev';
+  const g = sv('g', { class: 'mk ' + cls, transform: `translate(${x} ${y})`, ...attrs });
+  if (point.kind === 'knew') g.append(sv('path', { d: 'M0 -5L5 0L0 5L-5 0Z', class: 'knew' }));
+  else g.append(sv('circle', { cx: 0, cy: 0, r: point.r.minor ? 3.6 : 5.5, class: `rev g-${point.r.by}` + (point.r.minor ? ' minor' : '') }));
+  return g;
+}
+/* Group by rendered distance, so nearby dates never masquerade as simultaneous events.
+   The first-public circle keeps its date anchor; a count replaces overlapping secondary marks. */
+function timelinePointGroups(e, x, W) {
+  const points = [...e.reveals.map(r => ({ date: r.d, kind: 'report', r })), ...(e.knew ? [{ date: e.knew.d, kind: 'knew' }] : [])]
+    .map(p => ({ ...p, x: x(p.date) })).sort((a, b) => a.x - b.x);
+  const locked = focusedIncidentEvents?.id === e.id ? points.filter(p => focusedIncidentEvents.keys.has(pointEventKey(e, p))) : [];
+  const groups = [];
+  for (const p of points.filter(p => !locked.includes(p))) {
+    const last = groups[groups.length - 1];
+    const visible = p.x >= x(x.a) && p.x <= x(x.b);
+    if (last && visible && last.every(q => q.x >= x(x.a) && q.x <= x(x.b)) && p.x - last[last.length - 1].x < 20) last.push(p);
+    else groups.push([p]);
+  }
+  const layout = points => {
+    const lead = points.find(p => p.kind === 'report' && !p.r.minor && !p.r.private) || points[0];
+    const width = points.length * 13 + 24;
+    const left = Math.max(4, Math.min(lead.x - 12, W - width - 5));
+    return { points, lead, left, right: left + width, countX: left + width - 12 };
+  };
+  // Two nearby capsules must not create a new collision after the circles are grouped.
+  for (let i = 1; i < groups.length; i++) {
+    if (groups[i - 1].length < 2 || groups[i].length < 2) continue;
+    const a = layout(groups[i - 1]), b = layout(groups[i]);
+    if (a.left < b.right + 4 && b.left < a.right + 4) { groups.splice(i - 1, 2, [...groups[i - 1], ...groups[i]]); i = Math.max(0, i - 2); }
+  }
+  // Keep the clicked badge's membership fixed while its card changes the chart width.
+  if (locked.length) groups.push(locked);
+  const placed = groups.map(layout).sort((a, b) => Number(b.points === locked) - Number(a.points === locked));
+  for (let i = 0; i < placed.length; i++) {
+    const g = placed[i]; g.badgeY = -17;
+    if (g.points.length < 2) continue;
+    while (placed.slice(0, i).some(p => p.points.length > 1 && g.left < p.right + 4 && p.left < g.right + 4 && Math.abs(g.badgeY - p.badgeY) < 30)) g.badgeY -= 30;
+  }
+  // Higher leaders draw first, behind the lower capsules they may pass under.
+  return placed.sort((a, b) => a.badgeY - b.badgeY);
+}
+function incidentClusterTip(e, points) {
+  const dates = [...new Set(points.map(p => p.date))].sort(), multipleDates = dates.length > 1;
+  const events = dates.flatMap(date => incidentDayEvents(e, date).map(event => ({ ...event, ...(multipleDates ? { date } : {}) })));
+  const reports = points.every(p => p.kind === 'report');
+  return { 'data-day': dates[0], 'data-dates': JSON.stringify(dates), 'data-day-events': JSON.stringify(events),
+    'data-tip-title': `${multipleDates ? fmtA(dates[0]) + ' – ' + fmtY(dates[dates.length - 1]) : fmtY(dates[0])} · ${points.length} ${reports ? 'reports' : 'events'}`,
+    'data-tip': events.map(event => (event.date ? fmtY(event.date) + ' · ' : '') + event.label + ': ' + event.text).join('\n\n') };
+}
 function renderTimeline() {
   const { W, head, rowsWrap, tl } = chartShell('Incidents');
   const rows = tlRows();
@@ -2273,6 +2439,7 @@ function renderTimeline() {
   const lanes = rows.map(e => {
     const grid = gridSvg(x, tk);
     const { svg, mid } = trackSvg(W);
+    svg.removeAttribute('aria-hidden');
     let lo = Infinity, hi = -Infinity;
     const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
     const edge = x(x.a);
@@ -2288,40 +2455,70 @@ function renderTimeline() {
       let x1 = x(a.s), x2 = x(addDays(a.e, 1)) - 1;
       const early = x1 < edge; if (early) { x1 = edge; x2 = Math.max(x2, edge); cut = true; }
       const w = Math.max(5, x2 - x1), bx = early ? x1 : x1 - (w > x2 - x1 ? (w - (x2 - x1)) / 2 : 0);
-      const g = sv('g', { class: 'mk ' + (a.approx ? 'mk-approx' : 'mk-act'), ...tipOf(a.sub ? 'Exploit probes' : a.approx ? 'Agents active (dates approximate)' : 'Agents active', a.label) });
+      const g = sv('g', { class: 'mk ' + (a.approx ? 'mk-approx' : 'mk-act'), ...(a.s === a.e ? incidentDayTip(e, a.s) : tipOf(a.sub ? 'Exploit probes' : a.approx ? 'Agents active (dates approximate)' : 'Agents active', a.label)) });
       g.append(sv('rect', { x: bx, y: a.sub ? -5 : -4, width: w, height: a.sub ? 10 : 8, rx: 2.5, class: 'act' + (a.sub ? ' sub' : '') + (a.approx ? ' approx' : '') }));
       g.append(sv('rect', { x: x1 - 3, y: -9, width: w + 6, height: 18, class: 'hit' }));
       mid.append(g); span(bx, bx + w);
     });
     if (cut) { mid.append(clipCue(edge, 'mk mk-act', tipOf('Agents active earlier', `First known activity ${e.approx ? 'about ' : ''}${fmtY(e.first)}, before the start of the chart`))); span(edge - 7, edge); }
-    let nodate = null;
-    if (!e.activity.length) {
-      nodate = sv('text', { x: x(e.main.d) - 12, y: 4, 'text-anchor': 'end', class: 'nodate mk mk-act', ...tipOf('Agents active', e.noDates) });
-      nodate.textContent = W < 480 ? 'dates not disclosed' : 'activity dates not disclosed'; mid.append(nodate);
-    }
-    if (e.knew) {
-      const k = x(e.knew.d);
-      const g = sv('g', { class: 'mk mk-knew', ...tipOf(`${incKnew(e)} · ${fmtA(e.knew.d)}`, e.knew.text) });
-      g.append(sv('path', { d: `M${k} -6L${k + 6} 0L${k} 6L${k - 6} 0Z`, class: 'knew' }));
-      g.append(sv('circle', { cx: k, cy: 0, r: 10, class: 'hit' }));
-      mid.append(g); span(k - 6, k + 6);
-    }
-    e.reveals.forEach(r => {
-      const g = sv('g', { class: 'mk ' + (r.minor ? 'mk-other' : 'mk-rev'), ...tipOf(`${fmtA(r.d)} · ${r.private ? 'private notice' : r.minor ? 'other report' : 'disclosed by ' + incWhoBy(e, r.by)}`, r.text) });
-      const rr = r.minor ? 3.6 : 6;
-      g.append(sv('circle', { cx: x(r.d), cy: 0, r: rr, class: `rev g-${r.by}` + (r.minor ? ' minor' : '') }));
-      g.append(sv('circle', { cx: x(r.d), cy: 0, r: 10, class: 'hit' }));
-      mid.append(g); span(x(r.d) - rr, x(r.d) + rr);
+
+    const pointGroups = timelinePointGroups(e, x, W);
+    const baseline = 15 - Math.min(-17, ...pointGroups.filter(g => g.points.length > 1).map(g => g.badgeY));
+    let trackHeight = pointGroups.some(g => g.points.length > 1) ? baseline + 30 : 26;
+    if (trackHeight > 26) mid.setAttribute('y', baseline);
+    pointGroups.forEach(({ points, lead, left, right, countX, badgeY }) => {
+      const bundled = points.length > 1, dates = [...new Set(points.map(p => p.date))];
+      const group = sv('g', { class: 'date-cluster' + (bundled ? ' event-cluster' : '') + (bundled && dates.length === 1 ? ' same-day' : ''),
+        'data-date-x': lead.x, 'data-count': points.length, 'data-markers': JSON.stringify(points.map(p => ({ date: p.date, kind: p.kind, x: p.x }))),
+        ...(bundled ? incidentClusterTip(e, points) : incidentDayTip(e, lead.date)) });
+      const expanded = bundled && expandedEventIncident === e.id && state.sel === e.id && points.some(p => focusedIncidentEvents?.keys.has(pointEventKey(e, p)));
+      if (bundled) {
+        trackHeight = Math.max(trackHeight, 62);
+        group.setAttribute('role', 'button'); group.setAttribute('tabindex', '0');
+        group.setAttribute('aria-label', `${expanded ? 'Hide' : 'Show'} ${points.length} timeline events for ${e.title}`);
+        group.setAttribute('aria-expanded', String(expanded));
+        group.setAttribute('aria-controls', 'incident-timeline');
+        group.dataset.tip += expanded ? '\n\nClick again to collapse these chart events.' : '\n\nClick to open and highlight these events in the incident card.';
+        group.addEventListener('click', ev => { ev.stopPropagation(); openIncidentEvents(e, points); });
+        group.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ev.stopPropagation(); openIncidentEvents(e, points); } });
+        // The miniature symbols are a content preview; the leader anchors the group to its first public date.
+        group.append(sv('path', { d: `M${lead.x} ${badgeY + 12}V0`, class: 'event-anchor' }),
+          sv('rect', { x: left, y: badgeY - 12, width: right - left, height: 24, rx: 12, class: 'event-capsule' }));
+        points.forEach((point, i) => group.append(drawEventGlyph(point, left + 11 + i * 13, badgeY, { class: 'event-preview', 'data-preview-kind': point.kind, 'data-preview-by': point.r?.by || '' })));
+        const count = sv('text', { x: countX, y: badgeY, class: 'event-count' }); count.textContent = points.length;
+        group.append(count, sv('rect', { x: left - 2, y: badgeY - 14, width: right - left + 4, height: 28, rx: 12, class: 'hit' }));
+        if (expanded) {
+          trackHeight = Math.max(trackHeight, baseline + 34 + (points.length - 1) * 24);
+          const detail = sv('g', { class: 'cluster-details' });
+          points.forEach((point, i) => {
+            const y = 18 + i * 24, textRight = point.x + 240 < W - 10;
+            detail.append(sv('path', { d: `M${point.x} 0V${y - 7}`, class: 'event-guide' }));
+            const mark = drawEventGlyph(point, point.x, y, { 'data-point': point.kind, ...incidentDayTip(e, point.date) });
+            mark.append(sv('circle', { cx: 0, cy: 0, r: 8, class: 'hit' }));
+            const text = sv('text', { x: point.x + (textRight ? 12 : -12), y: y + 3, 'text-anchor': textRight ? 'start' : 'end', class: 'event-label' });
+            text.textContent = `${fmtA(point.date)} · ${point.kind === 'knew' ? incKnew(e) : (point.r.minor ? 'Report' : 'First report') + ' · ' + incWho(e, point.r.by)}`;
+            detail.append(mark, text);
+          });
+          // Disaggregated marks have their own date-specific hover and do not retrigger the capsule.
+          detail.addEventListener('click', ev => { ev.stopPropagation(); });
+          mid.append(detail);
+        }
+      } else {
+        group.append(drawEventGlyph(lead, lead.x, 0, { 'data-point': lead.kind }), sv('circle', { cx: lead.x, cy: 0, r: 8, class: 'hit' }));
+      }
+      mid.append(group); span(bundled ? left : lead.x - 6, bundled ? right : lead.x + 6);
     });
     const startTxt = e.first ? (e.approx ? '~' : '') + fmtA(e.first) : null;
     const meta = h('span', { class: 'm' }, startTxt
       ? [`${startTxt} → public ${fmtA(e.main.d)} · `, h('span', { class: 'u', text: `${e.delay} days` })]
-      : `public ${fmtA(e.main.d)}`);
+      : `Activity dates not disclosed · public ${fmtA(e.main.d)}`);
     const lbl = h('span', { class: 'lbl' }, h('span', { class: 't' }, e.title, labTags(e), datasetMark(e)), meta);
     const row = laneRow({ 'data-inc-row': e.id, 'aria-selected': String(state.sel === e.id),
       'aria-label': `${e.title}${allScope() ? ` (${incDev(e)})` : ''}. ${e.first ? `Started ${fmtA(e.first)}, disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}, ${e.delay} days later.` : `Disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}; activity dates not disclosed.`}${hasDataset(e) ? ' Dataset available.' : ''}`,
-      onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) }, grid, lbl, svg);
-    return { row, lbl, meta, nodate, lo, hi };
+      onclick: () => (state.sel === e.id ? clearSel() : select(e.id)),
+      onkeydown: ev => { if (ev.target === ev.currentTarget && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); state.sel === e.id ? clearSel() : select(e.id); } } }, grid, lbl, svg, 'div');
+    row.querySelector('.c-tr').style.height = trackHeight + 'px';
+    return { row, lbl, meta, lo, hi };
   });
   rowsWrap.replaceChildren(...lanes.map(l => l.row));
   placeLabels(lanes, W, M, mob);
@@ -2339,9 +2536,9 @@ function renderResponsesChart() {
   setCount(rows.length, RESP.length, UPDATES_PAGE ? 'updates' : 'responses');
   const discs = s.disc === false ? [] : INC.filter(e => (!s.inc || e.id === s.inc) && inRange(e.main.d, e.main.d));
   const sides = new Set(rows.map(r => (r.who === 'lab' ? 'l' : 'r')));
-  const two = view.clientWidth >= 720 && sides.size > 1;
+  const two = view.clientWidth >= 720 && (UPDATES_PAGE || sides.size > 1);
   const head = h('div', { class: 'thead rhead' + (two ? ' two' : '') },
-    two ? [h('span', { class: 'rh-l' }, UPDATES_PAGE ? null : h('span', { class: 'rdot g-lab' }), UPDATES_PAGE ? 'New listings' : scopeName() || 'AI developers'), h('span'), h('span', { class: 'rh-r' }, UPDATES_PAGE ? null : h('span', { class: 'rdot g-gov' }), UPDATES_PAGE ? null : h('span', { class: 'rdot g-research' }), UPDATES_PAGE ? 'Developments & corrections' : 'Governments, researchers & lawmakers')]
+    two ? [h('span', { class: 'rh-l', text: UPDATES_PAGE ? 'New listings' : scopeName() || 'AI developers' }), h('span'), h('span', { class: 'rh-r', text: UPDATES_PAGE ? 'Developments & corrections' : 'Governments, researchers & lawmakers' })]
       : h('span', { class: 'rh-1', text: s.dir === -1 ? 'Newest first' : 'Oldest first' }));
   const rowsWrap = h('div', { role: 'listbox', 'aria-label': UPDATES_PAGE ? 'Updates' : 'Responses', id: 'rows', class: 'rspine' + (two ? ' two' : '') });
   view.replaceChildren(h('div', { class: 'tl rtl' }, head, rowsWrap));
@@ -2574,24 +2771,33 @@ function renderFootOnly() {
   if (state.view === 'timeline') renderFoot(); else if (state.view === 'affected') renderAffFoot(); else if (state.view === 'wiki') renderWikiFoot(); else renderRespFoot();
 }
 function renderFoot() {
-  const s = state.tl, chart = isChart();
-  const foot = $('#foot'); foot.classList.toggle('filtering', s.by !== 'all');
-  const by = Object.keys(WHO).map(g => lgBtn({ on: s.by === g, filter: true, title: `Disclosed by ${whoBy(g)}`, tip: s.by === g ? 'Click to show every incident' : `Click to show only incidents first made public by ${whoBy(g)}`,
-    onclick: () => { s.by = s.by === g ? 'all' : g; renderView(); renderFilters(); } }, h('span', { class: `dot g-${g}` }), whoLabel(g)));
-  const knew = `${scopeName() || 'Developer'} knew`;
-  put(foot, 
-    chart ? [
-      emphBtn('act', 'Agents active', 'When the agents were active, as reported. The darker band marks exploit probes.', mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act' }))), 'Agents active'),
-      emphBtn('approx', 'Dates approximate', 'Only a rough window was reported, such as “this summer” or “May to July”.', mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act approx' }))), 'Dates approximate'),
-      emphBtn('gap', 'Not yet public', 'Time between the last known activity and disclosure.', mini(v => v.append(sv('line', { x1: 2, x2: 20, y1: 7, y2: 7, class: 'gap' })), 22), 'Not yet public'),
-      emphBtn('knew', knew, `Earliest date ${devThe()} is documented as knowing about the incident.`, mini(v => v.append(sv('path', { d: 'M9 1L15 7L9 13L3 7Z', class: 'knew' })), 18), knew),
-      h('span', { class: 'lg-sep', 'aria-hidden': 'true' })] : null,
-    h('span', { class: 'lg-group' }, h('span', { text: 'Disclosed by', 'data-tip': `The large dot marks the first public report tying the incident to ${devTo()}, colored by who made it.` }), by),
-    chart ? emphBtn('other', 'Other report', `An earlier report that didn’t name ${devThe()}, a later finding, or a private notice.`, mini(v => v.append(sv('circle', { cx: 7, cy: 7, r: 3.6, class: 'rev g-other' })), 14), 'Other report') : null,
-    chart ? h('span', { class: 'lg', 'data-tip': `Date of the last update, ${fmtY(DATA.updated)}` }, mini(v => v.append(sv('line', { x1: 6, x2: 6, y1: 0, y2: 14, class: 'gl today' })), 12), `Updated ${fmt(DATA.updated)}`) : null,
-  );
+  const s = state.tl, chart = isChart(), foot = $('#foot');
+  foot.classList.remove('filtering'); foot.classList.add('timeline-foot');
+  const filter = (label, checked, set, id, tip, icon) => h('button', {
+    type: 'button', class: 'lg legend-toggle', 'aria-pressed': String(checked), 'data-filter': id,
+    'data-tip': tip + (checked ? ' Click to remove this filter.' : ' Click to show matching incidents.'),
+    onclick: () => toggleTimelineFilter(set, id, !checked)
+  }, icon, label);
+  const symbols = {
+    activity: mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act' }))),
+    approx: mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act approx' }))),
+    knew: mini(v => v.append(sv('path', { d: 'M9 1L15 7L9 13L3 7Z', class: 'knew' })), 18),
+    gap: mini(v => v.append(sv('line', { x1: 1, x2: 19, y1: 7, y2: 7, class: 'gap' }))),
+    additional: mini(v => v.append(sv('circle', { cx: 8, cy: 7, r: 3.6, class: 'rev g-other' })), 16)
+  };
+  put(foot,
+    h('div', { class: 'legend-row legend-symbols', role: 'group', 'aria-label': 'Filter incidents by timeline features' },
+      TL_FEATURES.map(f => filter(f.label, s.features.has(f.id), s.features, f.id, f.tip + ' Select multiple features to require all of them.', chart ? symbols[f.id] : null))),
+    h('div', { class: 'legend-row legend-reporters', role: 'group', 'aria-label': 'Filter by first public reporter' },
+      h('span', { class: 'legend-label', 'data-tip': 'The large circle marks the first public report tying the incident to its developer’s models; its color shows who reported it.' }, chart ? mini(v => v.append(sv('circle', { cx: 8, cy: 7, r: 5.5, class: 'rev g-lab' })), 16) : null, 'First public report by'),
+      Object.keys(WHO).map(g => filter(whoLabel(g), s.reporters.has(g), s.reporters, g,
+        `Only incidents first made public by ${whoBy(g)}. Select multiple groups to include any of them.`, h('span', { class: `dot g-${g}` }))),
+      s.features.size || s.reporters.size ? h('button', { type: 'button', class: 'mini-link legend-clear', text: 'Clear legend filters', onclick: () => { s.features.clear(); s.reporters.clear(); setHash(location.hash.slice(1)); renderView(); renderFilters(); } }) : null,
+      h('span', { class: 'legend-info legend-updated', 'data-tip': `Date of the last catalog update, ${fmtY(DATA.updated)}` },
+        chart ? mini(v => v.append(sv('line', { x1: 6, x2: 6, y1: 0, y2: 14, class: 'gl today' })), 12) : null, `Updated ${fmt(DATA.updated)}`)));
 }
 function renderAffFoot() {
+  $('#foot').classList.remove('timeline-foot');
   const s = state.aff, foot = $('#foot');
   foot.classList.toggle('filtering', s.cats.size > 0);
   /* counts ignore the impact filter itself, so every category shows what picking it would give */
@@ -2612,6 +2818,7 @@ function renderAffFoot() {
   );
 }
 function renderRespFoot() {
+  $('#foot').classList.remove('timeline-foot');
   if (UPDATES_PAGE) { renderUpdateFoot(); return; }
   const s = state.resp, foot = $('#foot'), chart = isChart();
   foot.classList.toggle('filtering', s.who !== 'all');
@@ -2797,6 +3004,8 @@ function devLine(e) {
   return h('div', { class: 'det-sub', text: t.charAt(0).toUpperCase() + t.slice(1) });
 }
 function select(id, opts = {}) {
+  const collapseEvents = !opts.quiet && !opts.events && !!expandedEventIncident;
+  if (!opts.quiet && !opts.events) { focusedIncidentEvents = null; expandedEventIncident = null; }
   const hadCard = hasCard();
   const e = BY_ID.get(id); if (!e) return;
   if (!opts.quiet) track('incident-open', id);
@@ -2810,6 +3019,7 @@ function select(id, opts = {}) {
   e.reveals.forEach(r => items.push({ d: r.d, k: 'rev', by: r.by, t: r.text }));
   RESP.filter(r => r.inc.includes(id) && !e.reveals.some(v => v.private && v.d === r.d && v.by === r.who)).forEach(r => items.push({ d: r.d, label: r.label, k: 'resp', rid: r.id, who: respWho(r) }));
   items.sort((a, b) => a.d.localeCompare(b.d) || (a.k === 'resp') - (b.k === 'resp'));
+  const isFocusedEvent = it => !!it && focusedIncidentEvents?.id === id && focusedIncidentEvents.keys.has(`${it.k}:${it.d}:${it.t}`);
   const aff = incSites(id).map(a => ({ a, v: a.inv.find(v => v.inc === id) }));
   const from = state.back[state.back.length - 1];
   const order = from && from.ent ? AFF_BY_ID.get(from.ent).incs.map(x => BY_ID.get(x)) : state.view === 'timeline' ? tlRows() : [...INC].sort((a, b) => b.n - a.n);
@@ -2826,18 +3036,23 @@ function select(id, opts = {}) {
       h('span', { class: 'tag', text: e.status }),
       e.delay != null ? h('span', { class: 'tag', text: `${e.delay}-day delay`, 'data-tip': delayTxt(e) }) : null),
     h('p', { text: e.summary }),
+    e.agent_group ? h('p', { class: 'agent-context', text: `Swarm / multi-agent: ${e.agent_group.note}` }) : null,
     srcStrip(e.sources),
     INSIDE[e.id] && !(state.view === 'wiki' && state.inside === e.id) ? h('div', { class: 'inwiki' }, insideBtn(e.id, INSIDE[e.id].cta)) : null,
     datasetSection(e),
-    h('h3', { class: 'h3row' }, h('span', { text: 'Timeline' }), state.view !== 'timeline' ? h('button', { class: 'mini-link', type: 'button', 'data-tip': 'The Timeline tab, with this incident selected', onclick: () => { if (state.view === 'wiki') leaveInside(); setView('timeline'); select(id, { instant: true }); } }, 'Open in Timeline') : null),
-    h('ul', { class: 'chron' }, items.map(it => h('li', { class: `k-${it.k}` + (it.by ? ` g-${it.by}` : '') },
-      h('b', { text: it.label || fmtA(it.d) }), it.rid ? [rspLink(it.rid), h('span', { class: 'src', text: ` — ${it.who}` })] : it.t))),
+    h('section', { class: 'timeline-section', id: 'incident-timeline', tabindex: '-1', 'aria-label': 'Incident timeline' },
+      h('h3', { class: 'h3row' }, h('span', { text: 'Timeline' }), state.view !== 'timeline' ? h('button', { class: 'mini-link', type: 'button', 'data-tip': 'The Timeline tab, with this incident selected', onclick: () => { if (state.view === 'wiki') leaveInside(); setView('timeline'); select(id, { instant: true }); } }, 'Open in Timeline') :
+        focusedIncidentEvents?.id === id ? h('button', { class: 'mini-link', type: 'button', text: expandedEventIncident === id ? 'Collapse chart events' : 'Show chart events separately', 'aria-expanded': String(expandedEventIncident === id), onclick: () => { expandedEventIncident = expandedEventIncident === id ? null : id; renderTimeline(); refreshCard(); } }) : null),
+      focusedIncidentEvents?.id === id ? h('div', { class: 'event-focus-note', text: `${focusedIncidentEvents.keys.size} events selected from the chart` }) : null,
+      h('ul', { class: 'chron' }, items.map((it, i) => h('li', { class: `k-${it.k}` + (it.by ? ` g-${it.by}` : '') + (isFocusedEvent(it) ? ' event-focused' + (!isFocusedEvent(items[i - 1]) ? ' event-focus-start' : '') + (!isFocusedEvent(items[i + 1]) ? ' event-focus-end' : '') : ''), 'data-event-date': it.d },
+        h('b', { text: it.label || fmtA(it.d) }), it.rid ? [rspLink(it.rid), h('span', { class: 'src', text: ` — ${it.who}` })] : it.t)))),
     aff.length ? [h('h3', { class: 'h3row' }, h('span', { text: `Affected (${aff.length})` }), state.view !== 'affected' ? h('button', { class: 'mini-link', type: 'button', 'data-tip': 'The Affected tab, filtered to this incident', onclick: () => { if (state.view === 'wiki') leaveInside(); filterByIncident(id); } }, 'Open in Affected') : null), h('ul', { class: 'alist' }, aff.map(({ a, v }) => h('li', {},
       entLink(a.id), ' ', whatTags(v), h('span', { class: 'note', text: v.note }))))] : null,
     h('h3', { text: 'Found by' }), h('p', { text: e.found }),
     e.lab_response ? [h('h3', { text: e.response_title || (e.labs.length === 1 ? `${labName(e.labs[0])}’s response` : 'Developers’ response') }), h('p', { text: e.lab_response })] : null,
     srcSection(e.sources)));
   finishCard(id, document.querySelector(`[data-inc-row="${id}"]`), opts, hadCard);
+  if (collapseEvents && state.view === 'timeline' && isChart()) renderTimeline();
 }
 /* a small timeline of one incident with this response on it */
 function relIncBlock(e, r) {
@@ -2882,6 +3097,7 @@ function selectRsp(id, opts = {}) {
   finishCard('response/' + id, document.querySelector(`[data-rsp-row="${id}"]`), opts, hadCard);
 }
 function clearSel(opts = {}) {
+  const collapseEvents = !!expandedEventIncident; focusedIncidentEvents = null; expandedEventIncident = null;
   const had = state.sel || state.ent || state.rsp || state.post;
   state.sel = null; state.ent = null; state.rsp = null; state.post = null; state.writer = null; state.back = [];
   markSelected();
@@ -2897,6 +3113,7 @@ function clearSel(opts = {}) {
     try { history.back(); } catch (e) { state.popping = false; setHash(vh); }
     setTimeout(() => { if (state.popping) { state.popping = false; setHash(viewHash()); } }, 500);
   } else { state.pushed = false; setHash(vh); }
+  if (collapseEvents && state.view === 'timeline' && isChart()) renderTimeline();
   const row = had && document.querySelector(`[data-inc-row="${had}"],[data-ent-row="${had}"],[data-rsp-row="${had}"],[data-post-row="${had}"]`);
   if (row && !mobileMQ.matches) row.focus({ preventScroll: true });
 }
@@ -3366,7 +3583,7 @@ function setVoice(v, inPlace) {
 }
 function renderWikiBarR() {
   const r = state.range, custom = !!r && !r.preset;
-  put($('#bar-r'), !state.inside ? modelsPicker() : null, state.inside === WIKI_INC ? h('span', { class: 'fgroup' }, h('span', { class: 'flabel', text: 'Dates' }),
+  put($('#bar-r'), !state.inside ? modelsPicker() : null, state.inside === WIKI_INC ? h('span', { class: 'fgroup f-dates' }, h('span', { class: 'flabel', text: 'Dates' }),
     custom ? h('span', { class: 'rchip' }, h('button', { class: 'rchip-t', type: 'button', 'aria-label': `Dates ${fmt(r.a)} to ${fmt(r.b)}. Change`, 'data-tip': 'Click to change the dates', onclick: openRangePop, text: `${fmt(r.a)} – ${fmt(r.b)}` }),
       h('button', { type: 'button', 'aria-label': 'Show all dates', 'data-tip': 'Show all dates', onclick: () => setRange(null), text: '✕' })) : null,
     h('span', { class: 'seg rangeseg', role: 'group', 'aria-label': 'Date range' },
@@ -3583,6 +3800,7 @@ function renderWikiPage() {
 }
 /* ---- footer legend: replies, the glossary, the explainer */
 function renderWikiFoot() {
+  $('#foot').classList.remove('timeline-foot');
   const foot = $('#foot'); foot.classList.remove('filtering');
   put(foot,
     h('span', { class: 'lg', 'data-tip': 'A reply is shown only where the text itself names an earlier writer, for example “Thanks Jul08OAI” or “@Nov09”.' }, h('span', { class: 'arr', text: '↩' }), 'Named in the text'),

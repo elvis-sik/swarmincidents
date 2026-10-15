@@ -69,7 +69,7 @@ test('stats and shell anchors stay in place while Updates defaults to all tags',
  await expect(page).toHaveURL(/\/updates.html$/);await expect(row(page)).toHaveCount(entries.length);
  await expect.poll(()=>page.locator('#stats').innerText()).toBe(text);await expect(page.locator('.f-tags .pk-btn')).toHaveAccessibleName('Categories: All incidents');
  const updates=await anchors();for(const s of ['#top','#stats','#app']){expect(Math.abs(updates[s].top-overview[s].top),s+' top').toBeLessThanOrEqual(1);if(s!=='#app')expect(Math.abs(updates[s].height-overview[s].height),s+' height').toBeLessThanOrEqual(1);}
- await page.goto('/');await expect(page.locator('.f-tags')).toHaveCount(0);
+ await page.goto('/');await expect(page.locator('.f-tags .pk-btn')).toHaveAccessibleName('Categories: Swarms / fleets');
  await page.getByRole('navigation',{name:'Follow updates'}).getByRole('link',{name:'Updates',exact:true}).click();
  await expect(row(page)).toHaveCount(entries.length);await expect(page.locator('.f-tags .pk-btn')).toHaveAccessibleName('Categories: All incidents');
 });

@@ -2,7 +2,7 @@
 const { test, expect, load, siteData } = require('./fixtures');
 const D = siteData();
 const published = D.incidents.filter(e => e.datasets && e.datasets.length);
-const filter = page => page.getByRole('button', { name: 'Dataset available', exact: true });
+const filter = page => page.getByRole('checkbox', { name: 'Dataset available', exact: true });
 const rows = page => page.locator('#view [data-inc-row]');
 const models = page => page.locator('#bar-r').getByRole('button', { name: /^Models:/ });
 async function pickModel(page, name) {
@@ -11,13 +11,13 @@ async function pickModel(page, name) {
 }
 
 test('published data can be isolated in chart and table, then restored', async ({ page }) => {
-  await load(page);
+  await page.goto('/?tags=all');
   await expect(rows(page)).toHaveCount(D.incidents.length);
   await expect(models(page).locator('.pk-lab')).toHaveCount(0);
   await expect(page.locator('.f-models > .flabel')).toHaveText('Models');
   await filter(page).click();
-  await expect(filter(page)).toHaveAttribute('aria-pressed', 'true');
-  await expect(page).toHaveURL(/\?datasets=available$/);
+  await expect(filter(page)).toBeChecked();
+  expect(new URL(page.url()).searchParams.get('datasets')).toBe('available');
   expect((await rows(page).evaluateAll(es => es.map(e => e.getAttribute('data-inc-row')))).sort()).toEqual(published.map(e => e.id).sort());
   await expect(rows(page).locator('.data-mark')).toHaveCount(published.length);
   await page.getByRole('button', { name: 'Table', exact: true }).click();
@@ -25,23 +25,21 @@ test('published data can be isolated in chart and table, then restored', async (
   await expect(rows(page).locator('.data-mark')).toHaveCount(published.length);
   await filter(page).click();
   await expect(rows(page)).toHaveCount(D.incidents.length);
-  expect(new URL(page.url()).search).toBe('');
+  expect(new URL(page.url()).searchParams.get('tags')).toBe('all');
 });
 
 test('availability composes with models, disclosure, confirmation and dates', async ({ page }) => {
-  await load(page);
+  await page.goto('/?tags=all');
   await filter(page).click();
   await pickModel(page, 'Anthropic');
   await expect(rows(page)).toHaveCount(1);
   await expect(rows(page)).toHaveAttribute('data-inc-row', 'pypi-malware');
-  await page.getByRole('button', { name: 'Confirmed by Anthropic', exact: true }).click();
+  await page.getByRole('checkbox', { name: 'Confirmed by Anthropic', exact: true }).click();
   await expect(rows(page)).toHaveCount(1);
-  await page.locator('#filters').getByRole('button', { name: 'Disclosed by: Anyone', exact: true }).click();
-  await page.locator('.pk-pop').getByRole('option', { name: 'Researchers', exact: true }).click();
+  await page.locator('#foot button[data-filter=research]').click();
   await expect(rows(page)).toHaveCount(0);
   await expect(page.locator('#view')).toContainText('No incidents match these filters.');
-  await page.locator('#filters').getByRole('button', { name: 'Disclosed by: Researchers', exact: true }).click();
-  await page.locator('.pk-pop').getByRole('option', { name: 'Anyone', exact: true }).click();
+  await page.locator('#foot button[data-filter=research]').click();
   await page.getByRole('group', { name: 'Date range', exact: true }).getByRole('button', { name: '30 days', exact: true }).click();
   await expect(rows(page)).toHaveCount(0);
   await page.getByRole('group', { name: 'Date range', exact: true }).getByRole('button', { name: 'All', exact: true }).click();
@@ -51,7 +49,7 @@ test('availability composes with models, disclosure, confirmation and dates', as
 });
 
 test('availability survives a tab round-trip and shareable links survive reload', async ({ page }) => {
-  await page.goto('/?models=openai&datasets=available#hugging-face');
+  await page.goto('/?tags=all&models=openai&datasets=available#hugging-face');
   await expect(page.locator('#det-title')).toHaveText('Hugging Face breached during an evaluation');
   await expect(page.locator('#det .dataset-section')).toContainText('not complete agent transcripts');
   await expect(rows(page)).toHaveCount(published.filter(e => e.labs.includes('openai')).length);
@@ -59,9 +57,9 @@ test('availability survives a tab round-trip and shareable links survive reload'
   await page.getByRole('tab', { name: /^Affected/ }).click();
   await expect(filter(page)).toHaveCount(0);
   await page.getByRole('tab', { name: /^Timeline/ }).click();
-  await expect(filter(page)).toHaveAttribute('aria-pressed', 'true');
+  await expect(filter(page)).toBeChecked();
   await page.reload();
-  await expect(filter(page)).toHaveAttribute('aria-pressed', 'true');
+  await expect(filter(page)).toBeChecked();
   await expect(models(page)).toHaveAccessibleName('Models: OpenAI');
 });
 
@@ -79,10 +77,10 @@ test('cards expose correct publisher links and scope notes without labeling ordi
 });
 
 test('filter controls stay visible and retain focus when toggled from the keyboard', async ({ page }) => {
-  await load(page);
+  await page.goto('/?tags=all');
   await filter(page).focus();
   await page.keyboard.press('Space');
-  await expect(filter(page)).toHaveAttribute('aria-pressed', 'true');
+  await expect(filter(page)).toBeChecked();
   await expect(filter(page)).toBeFocused();
   const measurements = await page.locator('#filters').evaluate(el => ({ width: el.clientWidth, scroll: el.scrollWidth }));
   expect(measurements.scroll).toBeLessThanOrEqual(measurements.width + 1);
@@ -90,7 +88,7 @@ test('filter controls stay visible and retain focus when toggled from the keyboa
 });
 
 test('compact affected and response pickers filter their own views without losing the dataset selection', async ({ page }) => {
-  await load(page);
+  await page.goto('/?tags=all');
   await filter(page).click();
   await page.getByRole('tab', { name: /^Affected/ }).click();
   await page.getByRole('button', { name: 'Type: All', exact: true }).click();
@@ -101,6 +99,6 @@ test('compact affected and response pickers filter their own views without losin
   await page.locator('.pk-pop').getByRole('option', { name: 'Governments', exact: true }).click();
   await expect(page.locator('#view [data-rsp-row]')).toHaveCount(D.responses.filter(r => r.who === 'gov').length);
   await page.getByRole('tab', { name: /^Timeline/ }).click();
-  await expect(filter(page)).toHaveAttribute('aria-pressed', 'true');
+  await expect(filter(page)).toBeChecked();
   await expect(rows(page)).toHaveCount(published.length);
 });
