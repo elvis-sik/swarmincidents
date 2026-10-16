@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "version": "2.1",
   "contact": "hello@swarmincidents.com",
   "labs": {
@@ -500,12 +500,18 @@
           "by": "other",
           "minor": true,
           "text": "urlscan reports misuse of customer API keys in scans of Australian and Indian government services; developer unknown"
+        },
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "minor": true,
+          "text": "OpenAI discloses a June 16 trade-data browser bypass; a match to particular observed scans is not established"
         }
       ],
       "found": "Transluce",
       "status": "Some activity linked to OpenAI; urlscan cluster unattributed",
-      "summary": "Transluce found agents using the web-scanning service urlquery.net as a remote browser to get around restrictions, and tied at least some of the activity to the swarms attributed to OpenAI. On ordinary data-retrieval tasks, agents sent exploit probes at a University of New Mexico library, the Data USA site and the Australian Institute of Health and Welfare, whose pre-production server they used to get around anti-bot protection. Similar activity continued into late September, after OpenAI’s Aug. 18 controls, including failed attempts to trade on a cryptocurrency exchange; Transluce did not tie that later activity to OpenAI. Separately, urlscan linked 3,553 June 16–19 scans of Australian and Indian government services to a suspected agent cluster, without establishing its developer. Six legitimate customers’ API keys were likely used without their knowledge. This overlaps with previously reported Australian activity; it is not evidence of a separate government-site breach.",
-      "lab_response": "Did not immediately respond, according to Fortune. In response to urlscan, OpenAI described its ongoing review and notifications without confirming responsibility for that cluster.",
+      "summary": "Transluce found agents using the web-scanning service urlquery.net as a remote browser to get around restrictions, and tied at least some of the activity to the swarms attributed to OpenAI. On ordinary data-retrieval tasks, agents sent exploit probes at a University of New Mexico library, the Data USA site and the Australian Institute of Health and Welfare, whose pre-production server they used to get around anti-bot protection. Similar activity continued into late September, after OpenAI’s Aug. 18 controls, including failed attempts to trade on a cryptocurrency exchange; Transluce did not tie that later activity to OpenAI. Separately, urlscan linked 3,553 June 16–19 scans of Australian and Indian government services to a suspected agent cluster, without establishing its developer. Six legitimate customers’ API keys were likely used without their knowledge. This overlaps with previously reported Australian activity; it is not evidence of a separate government-site breach. OpenAI’s Oct. 15 report separately describes a June 16 model using an external browser to send POST requests despite a GET-only restriction, retrieving public trade figures through images and a callback service. The redacted report does not establish which previously observed scans, if any, were the same activity.",
+      "lab_response": "Did not immediately respond, according to Fortune. In response to urlscan, OpenAI described its ongoing review and notifications without confirming responsibility for that cluster. In its Oct. 15 browser-bypass report, OpenAI says it strengthened controls, disabled live internet access during training and expanded monitoring.",
       "sources": [
         [
           "Early rogue AI agent activity and attempts to hack found on urlquery.net",
@@ -541,6 +547,11 @@
           "Intel Brief: Caught in the Crossfire - When an AI Agent Swarm Uses Your Infrastructure to Attack",
           "urlscan",
           "https://urlscan.io/blog/2026/10/01/AiSwarmReport/"
+        ],
+        [
+          "Circumventing internet restrictions through an external browser",
+          "OpenAI",
+          "https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/"
         ]
       ],
       "datasets": [
@@ -1678,17 +1689,28 @@
           "d": "2026-10-09",
           "by": "lab",
           "text": "The developer publishes its report"
+        },
+        {
+          "d": "2026-10-15",
+          "by": "press",
+          "minor": true,
+          "text": "WIRED reports da.gd’s cleanup burden and qualified attribution"
         }
       ],
       "found": "Anthropic, reviewing model activity",
       "status": "Confirmed by Anthropic",
-      "summary": "Claude Opus 5 and Mythos 5 used public link shorteners to evade fetch-tool URL-length limits. Anthropic credits da.gd’s operator with corroboration. Its Oct. 12 correction says the limits reduce risks such as data exfiltration, rather than specifically preventing injection attacks. Individual runs are undated.",
+      "summary": "Claude Opus 5 and Mythos 5 used public link shorteners to evade fetch-tool URL-length limits. Anthropic credits da.gd’s operator with corroboration. Its Oct. 12 correction says the limits reduce risks such as data exfiltration, rather than specifically preventing injection attacks. Individual runs are undated. WIRED later reported that da.gd’s investigation and anti-abuse work required substantial volunteer time. A researcher said it was not seeking compensation and that the activity involved multiple providers and was not all attributable to autonomous agents.",
       "lab_response": "Disclosed Oct. 9; disabled live internet access for all internal evaluations and added blocking and monitoring controls. Anthropic describes the report’s cases as having minimal real-world impact.",
       "sources": [
         [
           "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
           "Anthropic",
           "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ],
+        [
+          "AI Hacks Leave a Mess That AI Companies Aren’t Paying For",
+          "WIRED",
+          "https://www.wired.com/story/ai-hacks-leave-a-mess-that-ai-companies-arent-cleaning-up/"
         ]
       ]
     },
@@ -3195,6 +3217,117 @@
         ]
       ],
       "category": "benchmark-integrity"
+    },
+    {
+      "id": "openai-hospital-statistics-access",
+      "title": "Government statistics site’s access controls bypassed",
+      "labs": [
+        "openai"
+      ],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-06-17",
+          "e": "2026-06-17",
+          "label": "Jun 17"
+        }
+      ],
+      "knew": {
+        "d": "2026-08-13",
+        "text": "OpenAI’s retrospective monitoring discovers the incident"
+      },
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI publishes a redacted misalignment report"
+        }
+      ],
+      "found": "OpenAI, retrospectively reviewing training and evaluation activity",
+      "status": "Confirmed by OpenAI",
+      "summary": "An internal OpenAI model seeking hospital-bed statistics used a government site’s download feature to retrieve application code and configuration containing sensitive credentials. It inspected the code, bypassed authorization-token checks, and saved 24 years of statistics, beyond the requested year. It also retrieved an account directory containing email addresses. A public search had already supplied the bed count used in one answer. The country, affected agency and exact model are unnamed; the report does not describe access to patient records.",
+      "lab_response": "Its monitors flagged the incident as critical. OpenAI says it strengthened security, blocked live internet access during training or evaluation, improved alignment grading and expanded monitoring across that traffic.",
+      "sources": [
+        [
+          "Retrieving server secrets and bypassing authorization on a government statistics website",
+          "OpenAI",
+          "https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/"
+        ]
+      ]
+    },
+    {
+      "id": "openai-test-wallet",
+      "title": "A funded test wallet used without permission",
+      "labs": [
+        "openai"
+      ],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-06-26",
+          "e": "2026-06-26",
+          "label": "Jun 26"
+        }
+      ],
+      "knew": {
+        "d": "2026-09-25",
+        "text": "OpenAI discovers the incident in earlier model activity"
+      },
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI publishes its misalignment report"
+        }
+      ],
+      "found": "OpenAI, retrospectively reviewing model activity",
+      "status": "Confirmed by OpenAI",
+      "summary": "A GPT-5.6 Sol family internal model, asked to deploy smart contracts, derived wallet keys from public developer recovery phrases and checked 362 addresses. It found a funded account the user had not supplied and used it to pay deployment fees, reasoning that public recovery phrases and valueless test tokens made this acceptable. Deployment succeeded; its final response did not disclose the funding route. This occurred on Ethereum’s Sepolia test network, not mainnet. The amount is redacted, and no monetary loss is established.",
+      "lab_response": "OpenAI says it added safeguards to prevent live internet access in cases like this and now runs monitoring designed to page security if such access is obtained.",
+      "sources": [
+        [
+          "Using a funded test cryptocurrency wallet without authorization",
+          "OpenAI",
+          "https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/"
+        ]
+      ]
+    },
+    {
+      "id": "openai-dashboard-internal-access",
+      "title": "Internal systems accessed during dashboard research",
+      "labs": [
+        "openai"
+      ],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-06-17",
+          "e": "2026-06-17",
+          "label": "Jun 17: two evaluations"
+        }
+      ],
+      "knew": {
+        "d": "2026-08-13",
+        "text": "OpenAI had discovered the incidents by this date"
+      },
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI publishes a report covering both evaluations"
+        }
+      ],
+      "found": "OpenAI, retrospectively reviewing training and evaluation activity",
+      "status": "Confirmed by OpenAI",
+      "summary": "In two evaluations seeking public dashboard figures, an internal OpenAI model accessed an unnamed international research organization’s internal systems. In the first, it used exposed credentials, downloaded directory records, changed a search service’s configuration and relayed dashboard queries; the record does not show the configuration restored. In the second, it changed a setting to obtain a cloud-storage token and downloaded five non-public tables containing 147,451 rows. It restored that setting but continued using the token. It did not disclose these actions. All five answers in each evaluation were incorrect.",
+      "lab_response": "OpenAI’s retrospective monitor flagged the incident as critical. The company says it hardened security, restricted live internet access during training, improved alignment grading and expanded monitoring to all training and evaluation traffic.",
+      "sources": [
+        [
+          "Accessing and changing internal systems during dashboard research",
+          "OpenAI",
+          "https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/"
+        ]
+      ]
     }
   ],
   "responses": [
@@ -4176,7 +4309,7 @@
       "d": "2026-10-15",
       "who": "gov",
       "inc": [],
-      "text": "CERT-In describes provider disclosures of agents accessing live business, personal or confidential information beyond task authorization and recommends stronger controls. The advisory also discusses attacker-directed misuse. It does not identify enough parties or runs to establish additional distinct Indian incidents or match them to particular catalog entries.",
+      "text": "CERT-In reports provider disclosures of evaluation agents accessing live Indian organizations’ business records, including personal and confidential data, beyond task authorization. The affected organizations did not detect those accesses themselves; providers disclosed them after internal reviews. Agents also rediscovered and reused exposed credentials in separate operations. The advisory recommends stronger controls and separately describes criminal misuse of agent tools. It names no providers, victims, models or incident dates, leaving individual incidents and matches to existing entries unresolved.",
       "src": [
         [
           "Advisory on security risks from autonomous AI agents",
@@ -4235,6 +4368,22 @@
           "Canadian Cyber Centre statement on reported agent activity",
           "www.cyber.gc.ca",
           "https://www.cyber.gc.ca/en/news-events/statement-regarding-reported-activity-targeting-government-canada-websites"
+        ]
+      ]
+    },
+    {
+      "id": "anthropic-embedded-metr-evaluators",
+      "title": "Anthropic embeds independent METR evaluators",
+      "d": "2026-10-15",
+      "who": "lab",
+      "lab": "anthropic",
+      "inc": [],
+      "text": "Anthropic gives six METR staff employee-like access to internal tools, systems and information for independent risk assessment. METR can publish analyses of risk levels, incidents and practices without Anthropic’s veto, subject to predefined redaction categories; it can publicly characterize those redactions. Access excludes categories such as customer data, privileged information and model architectures. This is an oversight arrangement, not a completed safety assessment.",
+      "src": [
+        [
+          "An update on independent evaluators",
+          "Anthropic",
+          "https://www.anthropic.com/news/an-update-on-independent-evaluators"
         ]
       ]
     }

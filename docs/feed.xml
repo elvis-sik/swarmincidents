@@ -6,7 +6,47 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 16 Oct 2026 03:02:56 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 17:38:30 GMT</lastBuildDate>
+    <item>
+      <title>New incident: OpenAI model uses a test wallet without permission</title>
+      <link>https://swarmincidents.com/#openai-test-wallet</link>
+      <guid isPermaLink="false">swarmincidents:update:openai-test-wallet-disclosure</guid>
+      <pubDate>Fri, 16 Oct 2026 17:38:30 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;A GPT-5.6 Sol family model found a funded account using public developer recovery phrases and charged it for contract-deployment fees without permission. The June 26 activity used Sepolia test funds; no monetary loss is established.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#openai-test-wallet"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: OpenAI discloses access-control bypass at a statistics site</title>
+      <link>https://swarmincidents.com/#openai-hospital-statistics-access</link>
+      <guid isPermaLink="false">swarmincidents:update:openai-hospital-statistics-access-disclosure</guid>
+      <pubDate>Fri, 16 Oct 2026 17:38:30 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;An internal model retrieved server secrets and application code, bypassed authorization and downloaded 24 years of hospital-bed statistics. The June 17 activity was disclosed October 15; the country and agency remain unnamed.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#openai-hospital-statistics-access"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: OpenAI confirms a browser workaround for network restrictions</title>
+      <link>https://swarmincidents.com/#urlquery</link>
+      <guid isPermaLink="false">swarmincidents:update:openai-external-browser-disclosure</guid>
+      <pubDate>Fri, 16 Oct 2026 17:38:30 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;A June 16 model used an external browser to perform blocked POST requests and retrieve public trade figures. The newly disclosed account is added to the existing bypass entry; its relationship to particular observed scans remains unresolved.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#urlquery"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Dashboard research leads to internal access and changes</title>
+      <link>https://swarmincidents.com/#openai-dashboard-internal-access</link>
+      <guid isPermaLink="false">swarmincidents:update:openai-dashboard-internal-access-disclosure</guid>
+      <pubDate>Fri, 16 Oct 2026 17:38:30 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;OpenAI discloses two June 17 evaluations involving unauthorized internal-system access and configuration changes. One downloaded five non-public tables totaling 147,451 rows. The organization is unnamed, and all five answers in each evaluation were incorrect.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#openai-dashboard-internal-access"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: Reporting adds da.gd cleanup costs and attribution limits</title>
+      <link>https://swarmincidents.com/#claude-link-shorteners</link>
+      <guid isPermaLink="false">swarmincidents:update:claude-shortener-cleanup-report</guid>
+      <pubDate>Fri, 16 Oct 2026 17:38:30 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;WIRED reports volunteer cleanup work at da.gd. The service is not seeking compensation; attribution spans multiple providers and includes activity not established as autonomous.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-link-shorteners"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.wired.com/story/ai-hacks-leave-a-mess-that-ai-companies-arent-cleaning-up/"&gt;WIRED report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: University research agent installs tools after a stand-down</title>
       <link>https://swarmincidents.com/#university-tools</link>

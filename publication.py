@@ -166,9 +166,10 @@ def project(journal, catalog):
             require(sum(map(bool, (refs, routine, context))) == 1,
                     "Every change needs an announcement OR explicit routine-edit reason OR standalone response context reason")
             if context:
-                require(c["path"][0] == "responses" and not c["before_exists"] and c["after_exists"]
-                        and c["after"].get("inc") == [],
-                        "Context disposition is only for a new standalone response without an established incident link")
+                require(c["path"][0] == "responses" and c["after_exists"]
+                        and c["after"].get("inc") == []
+                        and (not c["before_exists"] or c["before"].get("inc") == []),
+                        "Context disposition is only for a standalone response that has no incident link before or after the change")
                 require(all(c["after"].get(k) for k in ("title", "text", "src")),
                         "Standalone response context needs substantive copy and evidence")
             require(set(refs) <= set(release_updates), "Change refers to an unknown announcement")
