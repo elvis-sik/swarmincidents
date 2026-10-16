@@ -93,7 +93,7 @@ test('all top type options fit at narrow widths and explicit tag scope still wor
   await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const fits=await page.locator('.update-types').evaluate(el=>{const r=el.getBoundingClientRect();return [...el.querySelectorAll('button')].every(b=>{const x=b.getBoundingClientRect();return x.left>=r.left&&x.right<=r.right+1&&b.scrollWidth<=b.clientWidth+1;});});expect(fits).toBe(true);
  }
- await page.goto('/updates.html?tags=benchmark');const n=entries.filter(u=>['kimi-benchmark-answers','browsecomp-answer-key','o3-metr-reward-hacking'].includes(u.incident)).length;await expect(row(page)).toHaveCount(n);
+ await page.goto('/updates.html?tags=benchmark');const n=entries.filter(u=>catalog.incidents.find(i=>i.id===u.incident)?.category==='benchmark-integrity').length;await expect(row(page)).toHaveCount(n);
  await page.reload();await expect(row(page)).toHaveCount(n);
 });
 
