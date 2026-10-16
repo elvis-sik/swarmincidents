@@ -1214,12 +1214,12 @@ html.updates-modal-page{scrollbar-gutter:stable}
 <dialog id="newsletter" aria-labelledby="newsletter-h" aria-describedby="newsletter-intro">
  <div class="dlg">
   <div class="dlg-top"><h2 id="newsletter-h">Email updates</h2><button class="btn icon" type="button" id="newsletter-close" aria-label="Close email updates">&#x2715;</button></div>
-  <p id="newsletter-intro">Short, sourced updates when we publish new findings. Choose your frequency and coverage.</p>
+  <p id="newsletter-intro">Short, sourced updates when we publish new findings.</p>
   <form id="newsletter-form" class="newsletter-form">
    <label class="report-field" for="newsletter-email">Email address<input id="newsletter-email" type="email" name="email" autocomplete="email" maxlength="254" required autofocus placeholder="you@example.com"></label>
    <fieldset><legend>How often?</legend><div class="newsletter-options"><label class="newsletter-choice"><input type="radio" name="frequency" value="daily" checked>Daily</label><label class="newsletter-choice"><input type="radio" name="frequency" value="weekly">Weekly</label></div><small class="newsletter-help">A digest only when there’s something to share.</small></fieldset>
-   <fieldset><legend>What would you like?</legend><div class="newsletter-options"><label class="newsletter-choice"><input type="radio" name="coverage" value="all" checked>All substantive updates</label><label class="newsletter-choice"><input type="radio" name="coverage" value="major">Major news only</label></div><small class="newsletter-help">Material changes to the evidence, impact or response, reviewed by our editor.</small></fieldset>
-   <label class="check-control newsletter-archive"><input id="newsletter-archive" type="checkbox" name="archive"><span>Include historical additions<small class="newsletter-help">Older, already-public findings newly added to the site.</small></span></label>
+   <fieldset><legend>What would you like?</legend><div class="newsletter-options"><label class="newsletter-choice"><input type="radio" name="coverage" value="all">All substantive updates</label><label class="newsletter-choice"><input type="radio" name="coverage" value="major" checked>Major news only</label></div><small class="newsletter-help">Material changes to the evidence, impact or response, reviewed by our editor.</small></fieldset>
+   <label class="check-control newsletter-archive"><input id="newsletter-archive" type="checkbox" name="archive"><span>Include older findings<small class="newsletter-help">For example, an incident reported last year that we’ve only just added to the site.</small></span></label>
    <label class="report-honey" aria-hidden="true">Website<input id="newsletter-website" name="website" tabindex="-1" autocomplete="off"></label>
    <div id="newsletter-challenge"></div>
    <div class="report-actions"><button class="btn primary" type="submit" id="newsletter-submit">Send confirmation link</button><button type="button" class="btn newsletter-cancel" id="newsletter-unsubscribe" hidden>Unsubscribe</button></div>

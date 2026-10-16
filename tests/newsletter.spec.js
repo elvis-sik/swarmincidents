@@ -8,7 +8,7 @@ async function mock(page,{failure=false}={}){
 test('header signup opens native modal with approved defaults; Escape returns focus',async({page})=>{
  await mock(page);await load(page);const open=page.locator('#top [data-newsletter-open]');await open.click();
  await expect(page.getByRole('dialog',{name:'Email updates',exact:true})).toBeVisible();await expect(page.locator('#newsletter-email')).toBeFocused();
- await expect(page.getByRole('radio',{name:'Daily',exact:true})).toBeChecked();await expect(page.getByRole('radio',{name:'All substantive updates',exact:true})).toBeChecked();await expect(page.locator('#newsletter-archive')).not.toBeChecked();
+ await expect(page.getByRole('radio',{name:'Daily',exact:true})).toBeChecked();await expect(page.getByRole('radio',{name:'Major news only',exact:true})).toBeChecked();await expect(page.locator('#newsletter-archive')).not.toBeChecked();
  await page.keyboard.press('Escape');await expect(open).toBeFocused();
 });
 test('signup submits exactly chosen preferences and waits for email confirmation',async({page})=>{
