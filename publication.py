@@ -158,9 +158,19 @@ def project(journal, catalog):
         for c in changes:
             refs = c.get("update_ids", [])
             routine = c.get("routine_reason", "")
+            context = c.get("context_reason", "")
             require(isinstance(routine, str), "Routine-edit reason must be text")
             require(not routine or routine.strip(), "Routine-edit reason cannot be blank")
-            require(bool(refs) != bool(routine), "Every change needs an announcement OR explicit routine-edit reason")
+            require(isinstance(context, str), "Context reason must be text")
+            require(not context or context.strip(), "Context reason cannot be blank")
+            require(sum(map(bool, (refs, routine, context))) == 1,
+                    "Every change needs an announcement OR explicit routine-edit reason OR standalone response context reason")
+            if context:
+                require(c["path"][0] == "responses" and not c["before_exists"] and c["after_exists"]
+                        and c["after"].get("inc") == [],
+                        "Context disposition is only for a new standalone response without an established incident link")
+                require(all(c["after"].get(k) for k in ("title", "text", "src")),
+                        "Standalone response context needs substantive copy and evidence")
             require(set(refs) <= set(release_updates), "Change refers to an unknown announcement")
             if c["path"][0] == "incidents" and not c["before_exists"]:
                 require(refs, "A new incident requires an announcement")
@@ -210,7 +220,7 @@ def append(before, after, journal, plan):
     for c in changes:
         decision = decisions.get(tuple(c["path"]))
         if decision:
-            c.update({k: decision[k] for k in ("update_ids", "routine_reason") if k in decision})
+            c.update({k: decision[k] for k in ("update_ids", "routine_reason", "context_reason") if k in decision})
         elif c["path"] in [["updated"], ["version"]]:
             c["routine_reason"] = "Dataset release metadata"
         else:
