@@ -44,6 +44,10 @@ updates_page = updates_page.replace("<title>Swarm Incidents: a timeline of AI ag
 updates_page = updates_page.replace('<link rel="canonical" href="https://swarmincidents.com/">', '<link rel="canonical" href="https://swarmincidents.com/updates.html">')
 (docs / "updates.html").write_text(updates_page)
 (docs / "index.html").write_text(page)
+subscribe_page = page.replace('<title>Swarm Incidents: a timeline of AI agent incidents</title>', '<title>Email updates · Swarm Incidents</title>')
+subscribe_page = subscribe_page.replace('<link rel="canonical" href="https://swarmincidents.com/">', '<meta name="robots" content="noindex"><link rel="canonical" href="https://swarmincidents.com/subscribe.html">')
+(docs / "subscribe.html").write_text(subscribe_page)
+shutil.copyfile(here / "newsletter.js", docs / "newsletter.js")
 # The Wiki tab loads wiki-data.js on demand. Rebuild it with wiki_build.py when the archive selection or wiki_notes.json change.
 shutil.copyfile(here / "wiki-data.js", docs / "wiki-data.js")
 shutil.copyfile(here / "analytics.js", docs / "analytics.js")

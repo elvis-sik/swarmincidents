@@ -12,6 +12,7 @@ class Publication(unittest.TestCase):
         self.after["updated"] = "2026-10-15"
         self.journal = dict(schema_version=1, baseline=dict(catalog_sha256=p.digest(self.before), updates=[]), publications=[])
         self.update = dict(id="one-development", incident="one", type="Update", title="New evidence", summary="The account changed.",
+            notification=dict(level="standard", reason="New evidence, without a material impact change"),
             source="https://example.org/report", publisher="Publisher", freshness="recent", freshness_reason="Substantive evidence released today",
             resources=[dict(url="https://example.org/report", publisher="Publisher", reason="The original evidence for this development")])
         self.plan = dict(id="release-one", published="2026-10-15T13:00:00-07:00", approval="curator-reviewed", updates=[self.update],
@@ -27,6 +28,12 @@ class Publication(unittest.TestCase):
         self.assertEqual(result[0]["changes"][0]["before"]["summary"], "Old account")
         self.assertEqual(result[0]["changes"][0]["after"]["summary"], self.after["incidents"][0]["summary"])
         p.check_transition(self.before, self.after, self.journal, journal, {"updates": []})
+
+    def test_new_publications_require_reviewable_notification_priority(self):
+        for notification in [None, {"level": "urgent", "reason": "Unsupported level"}, {"level": "major", "reason": " "}]:
+            self.update["notification"] = notification
+            with self.assertRaisesRegex(ValueError, "notification|priority"):
+                self.prepare()
 
     def test_missing_announcement_disposition_blocks(self):
         self.plan["decisions"] = []
