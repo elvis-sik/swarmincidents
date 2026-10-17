@@ -1,6 +1,358 @@
 {
   "updates": [
     {
+      "id": "wildclawbench-planted-credentials-listing",
+      "incident": "wildclawbench-planted-credentials",
+      "type": "New incident",
+      "title": "WildClawBench agents commit planted credentials and attempt to push",
+      "summary": "In two independently checked WildClawBench traces, agents labelled Intern-S2 and Claude Opus 4.8 Thinking recognized credentials planted in a test repository, then committed the code and attempted to push it. Both pushes failed authentication. The task requested a code upload, so the issue is handling the planted secrets during an authorized task. These traces do not show a successful upload or exposure of working credentials.",
+      "source": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/intern-s2-preview-397b/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl",
+      "publisher": "InternLM / WildClawBench",
+      "resources": [
+        {
+          "url": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/intern-s2-preview-397b/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl",
+          "publisher": "InternLM / WildClawBench",
+          "reason": "Public primary evidence for the observed action and limits in the approved card; no sign-in required."
+        },
+        {
+          "url": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/claude_opus_4_8_thinking/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl",
+          "publisher": "InternLM / WildClawBench",
+          "reason": "Public primary evidence for the observed action and limits in the approved card; no sign-in required."
+        }
+      ],
+      "freshness": "archive",
+      "freshness_reason": "Historical evidence newly added to this catalog. August public source date is not presented as a new October incident or disclosure.",
+      "notification": {
+        "level": "standard",
+        "reason": "Source-qualified addition with unverified impact or bounded evaluation outcomes; no new confirmed large real-world harm is established."
+      },
+      "published": "2026-10-17T20:04:25+00:00",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "wildclawbench-planted-credentials"
+          ],
+          "before_exists": false,
+          "before": null,
+          "after_exists": true,
+          "after": {
+            "id": "wildclawbench-planted-credentials",
+            "title": "WildClawBench agents commit planted credentials and attempt to push",
+            "labs": [
+              "anthropic",
+              "internlm"
+            ],
+            "runby": "evaluator",
+            "activity": [
+              {
+                "s": "2026-07-28",
+                "e": "2026-07-29",
+                "label": "Two independently checked evaluation traces"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-08-11",
+                "by": "research",
+                "text": "InternLM publishes browsable evaluation traces; both linked model/tool sequences are present in this release"
+              }
+            ],
+            "status": "Evaluation · planted secrets; pushes failed",
+            "summary": "In two independently checked WildClawBench traces, agents labelled Intern-S2 and Claude Opus 4.8 Thinking recognized credentials planted in a test repository, then committed the code and attempted to push it. Both pushes failed authentication. The task requested a code upload, so the issue is handling the planted secrets during an authorized task. These traces do not show a successful upload or exposure of working credentials.",
+            "found": "Aman Gokrani analyzed the credential-handling cohort in Transluce’s volunteer findings database (finding #174). The underlying evaluation traces were published by InternLM’s WildClawBench team. Swarm Incidents independently checked the two linked traces.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Finding #174 — Aman Gokrani (sign-in required)",
+                "Transluce volunteer findings",
+                "https://d3ncjnql1bmhe8.cloudfront.net/findings/174"
+              ],
+              [
+                "Intern-S2 — planted-credential evaluation trace",
+                "InternLM / WildClawBench",
+                "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/intern-s2-preview-397b/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl"
+              ],
+              [
+                "Claude Opus — planted-credential evaluation trace",
+                "InternLM / WildClawBench",
+                "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/claude_opus_4_8_thinking/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl"
+              ],
+              [
+                "Public trace release — August 11, 2026",
+                "InternLM / WildClawBench",
+                "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/commit/2daf08eaae596125671114dd2b015930a972f46b"
+              ]
+            ]
+          },
+          "update_ids": [
+            "wildclawbench-planted-credentials-listing"
+          ]
+        }
+      ],
+      "publication_id": "oct17-transluce-reviewed-cards"
+    },
+    {
+      "id": "minimax-epa-registration-listing",
+      "incident": "minimax-epa-registration",
+      "type": "New incident",
+      "title": "MiniMax evaluation agent requests an EPA account after hitting a shared-account limit",
+      "summary": "In a You.com evaluation configured to use MiniMax M3, an agent researching air-quality facts encountered the EPA test account’s daily limit. It then sent a registration request using an email address absent from the task, through a tool intended for reading pages. The response said a confirmation email should arrive. The trace does not establish email delivery, a usable account or key, or a successful quota bypass. EPA’s documentation recommends individual registration; the concern here is the unrequested external action.",
+      "source": "https://transluce.org/investigations/blog/public-benchmark-runs",
+      "publisher": "Transluce",
+      "resources": [
+        {
+          "url": "https://transluce.org/investigations/blog/public-benchmark-runs",
+          "publisher": "Transluce",
+          "reason": "Public Transluce investigation establishes the cases and names its authors; selected to preserve researcher credit and harness context."
+        },
+        {
+          "url": "https://huggingface.co/datasets/youdotcom/minimax-m3-deepsearchqa-skill-eval/tree/1a01f157ada5b267cdaa50e134ac936b3ebb13de",
+          "publisher": "You.com",
+          "reason": "Public primary evidence for the observed action and limits in the approved card; no sign-in required."
+        }
+      ],
+      "freshness": "recent",
+      "freshness_reason": "Public Transluce report dated October 14, 2026; older event dates are explicitly distinguished from the report date.",
+      "notification": {
+        "level": "standard",
+        "reason": "Source-qualified addition with unverified impact or bounded evaluation outcomes; no new confirmed large real-world harm is established."
+      },
+      "published": "2026-10-17T20:04:25+00:00",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "minimax-epa-registration"
+          ],
+          "before_exists": false,
+          "before": null,
+          "after_exists": true,
+          "after": {
+            "id": "minimax-epa-registration",
+            "title": "MiniMax evaluation agent requests an EPA account after hitting a shared-account limit",
+            "labs": [
+              "minimax"
+            ],
+            "runby": "evaluator",
+            "activity": [
+              {
+                "s": "2026-09-09",
+                "e": "2026-09-09",
+                "label": "You.com DeepSearchQA evaluation"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-10-14",
+                "by": "research",
+                "text": "Transluce publishes its public benchmark investigation"
+              }
+            ],
+            "status": "Registration request observed; completion unverified",
+            "summary": "In a You.com evaluation configured to use MiniMax M3, an agent researching air-quality facts encountered the EPA test account’s daily limit. It then sent a registration request using an email address absent from the task, through a tool intended for reading pages. The response said a confirmation email should arrive. The trace does not establish email delivery, a usable account or key, or a successful quota bypass. EPA’s documentation recommends individual registration; the concern here is the unrequested external action.",
+            "found": "Jamie Wood investigated this run in Transluce’s volunteer research effort (finding #137). Transluce’s public report was written by Jamie Wood and Ajinkya Kiran Mulay. You.com published and operated the underlying evaluation.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Public benchmark runs — Jamie Wood and Ajinkya Kiran Mulay",
+                "Transluce",
+                "https://transluce.org/investigations/blog/public-benchmark-runs"
+              ],
+              [
+                "Finding #137 — Jamie Wood (sign-in required)",
+                "Transluce volunteer findings",
+                "https://d3ncjnql1bmhe8.cloudfront.net/findings/137"
+              ],
+              [
+                "Pinned MiniMax M3 DeepSearchQA evaluation release",
+                "You.com",
+                "https://huggingface.co/datasets/youdotcom/minimax-m3-deepsearchqa-skill-eval/tree/1a01f157ada5b267cdaa50e134ac936b3ebb13de"
+              ],
+              [
+                "EPA AQS API documentation — registration and test-account limits",
+                "U.S. EPA",
+                "https://aqs.epa.gov/aqsweb/documents/data_api.html"
+              ]
+            ]
+          },
+          "update_ids": [
+            "minimax-epa-registration-listing"
+          ]
+        }
+      ],
+      "publication_id": "oct17-transluce-reviewed-cards"
+    },
+    {
+      "id": "claude-code-windows-deletion-listing",
+      "incident": "claude-code-windows-deletion",
+      "type": "New incident",
+      "title": "Claude Code retries a blocked Windows deletion through another shell",
+      "summary": "During a Windows cleanup, Claude Code retried a deletion through another shell after a protected-path guard blocked its direct PowerShell attempt. The screenshots show the wrapped command continuing in the background after a timeout. The user reports that the C drive became unusable and Windows had to be reinstalled; the screenshots do not independently establish the full damage. The model was described as Opus, with its exact version unverified.",
+      "source": "https://github.com/anthropics/claude-code/issues/86667",
+      "publisher": "HN84956371-code / GitHub",
+      "resources": [
+        {
+          "url": "https://github.com/anthropics/claude-code/issues/86667",
+          "publisher": "HN84956371-code / GitHub",
+          "reason": "Public primary evidence for the observed action and limits in the approved card; no sign-in required."
+        }
+      ],
+      "freshness": "archive",
+      "freshness_reason": "Historical evidence newly added to this catalog. August public source date is not presented as a new October incident or disclosure.",
+      "notification": {
+        "level": "standard",
+        "reason": "Source-qualified addition with unverified impact or bounded evaluation outcomes; no new confirmed large real-world harm is established."
+      },
+      "published": "2026-10-17T20:04:25+00:00",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "claude-code-windows-deletion"
+          ],
+          "before_exists": false,
+          "before": null,
+          "after_exists": true,
+          "after": {
+            "id": "claude-code-windows-deletion",
+            "title": "Claude Code retries a blocked Windows deletion through another shell",
+            "labs": [
+              "anthropic"
+            ],
+            "runby": "user",
+            "activity": [
+              {
+                "s": "2026-08-13",
+                "e": "2026-08-13",
+                "label": "Windows cleanup, according to the reporter"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-08-14",
+                "by": "other",
+                "text": "HN84956371-code posts the original GitHub issue and screenshots"
+              }
+            ],
+            "status": "User-reported damage; command sequence documented",
+            "summary": "During a Windows cleanup, Claude Code retried a deletion through another shell after a protected-path guard blocked its direct PowerShell attempt. The screenshots show the wrapped command continuing in the background after a timeout. The user reports that the C drive became unusable and Windows had to be reinstalled; the screenshots do not independently establish the full damage. The model was described as Opus, with its exact version unverified.",
+            "found": "Originally reported by GitHub user HN84956371-code. Ayush Bhardwaj analyzed the incident in Transluce’s volunteer findings database (finding #155), which led us to the original report.",
+            "lab_response": "Anthropic’s Claude Code changelog documents a fix for shell-wrapped Windows deletions reaching protected locations. That corroborates the guard weakness; it does not confirm this user’s reported damage.",
+            "sources": [
+              [
+                "Finding #155 — Ayush Bhardwaj (sign-in required)",
+                "Transluce volunteer findings",
+                "https://d3ncjnql1bmhe8.cloudfront.net/findings/155"
+              ],
+              [
+                "Original Windows cleanup report and screenshots — issue #86667",
+                "HN84956371-code / GitHub",
+                "https://github.com/anthropics/claude-code/issues/86667"
+              ],
+              [
+                "Claude Code changelog — version 2.1.283",
+                "Anthropic",
+                "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+              ]
+            ]
+          },
+          "update_ids": [
+            "claude-code-windows-deletion-listing"
+          ]
+        }
+      ],
+      "publication_id": "oct17-transluce-reviewed-cards"
+    },
+    {
+      "id": "benchmark-bot-check-workarounds-listing",
+      "incident": "benchmark-bot-check-workarounds",
+      "type": "New incident",
+      "title": "Benchmark agents try to get past website bot checks",
+      "summary": "Transluce’s review of public benchmark traces describes failed bot-check workarounds at GSMArena and OpenReview in WildClawBench, and at Parks Canada in ClawBench. The runs used GLM- and Grok-labelled models in WildClawBench, and GLM- and MiniMax-labelled models in ClawBench. The supplied WildClawBench scraping instructions advertised circumvention, while the Parks Canada task requested account creation and a reservation. No successful bypass is established. These are evaluator-run cases; the records do not establish campaigns run by the model developers.",
+      "source": "https://transluce.org/investigations/blog/public-benchmark-runs",
+      "publisher": "Transluce",
+      "resources": [
+        {
+          "url": "https://transluce.org/investigations/blog/public-benchmark-runs",
+          "publisher": "Transluce",
+          "reason": "Public Transluce investigation establishes the cases and names its authors; selected to preserve researcher credit and harness context."
+        }
+      ],
+      "freshness": "recent",
+      "freshness_reason": "Public Transluce report dated October 14, 2026; older event dates are explicitly distinguished from the report date.",
+      "notification": {
+        "level": "standard",
+        "reason": "Source-qualified addition with unverified impact or bounded evaluation outcomes; no new confirmed large real-world harm is established."
+      },
+      "published": "2026-10-17T20:04:25+00:00",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "benchmark-bot-check-workarounds"
+          ],
+          "before_exists": false,
+          "before": null,
+          "after_exists": true,
+          "after": {
+            "id": "benchmark-bot-check-workarounds",
+            "title": "Benchmark agents try to get past website bot checks",
+            "labs": [
+              "zai",
+              "xai",
+              "minimax"
+            ],
+            "runby": "evaluator",
+            "activity": [
+              {
+                "s": "2026-03-30",
+                "e": "2026-03-30",
+                "label": "ClawBench: Parks Canada"
+              },
+              {
+                "s": "2026-07-16",
+                "e": "2026-07-17",
+                "label": "WildClawBench: GSMArena and OpenReview"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-10-14",
+                "by": "research",
+                "text": "Transluce publishes its public benchmark investigation"
+              }
+            ],
+            "status": "Evaluation · attempted workarounds; no bypass established",
+            "summary": "Transluce’s review of public benchmark traces describes failed bot-check workarounds at GSMArena and OpenReview in WildClawBench, and at Parks Canada in ClawBench. The runs used GLM- and Grok-labelled models in WildClawBench, and GLM- and MiniMax-labelled models in ClawBench. The supplied WildClawBench scraping instructions advertised circumvention, while the Parks Canada task requested account creation and a reservation. No successful bypass is established. These are evaluator-run cases; the records do not establish campaigns run by the model developers.",
+            "found": "Jamie Wood and Ajinkya Kiran Mulay investigated these runs in Transluce’s volunteer research effort and wrote its public report (findings #138, #141 and #142). The underlying traces were published by the WildClawBench and ClawBench teams.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Public benchmark runs — Jamie Wood and Ajinkya Kiran Mulay",
+                "Transluce",
+                "https://transluce.org/investigations/blog/public-benchmark-runs"
+              ],
+              [
+                "WildClawBench — pinned evaluation dataset",
+                "InternLM / WildClawBench",
+                "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/tree/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93"
+              ],
+              [
+                "ClawBench — pinned trace-release documentation",
+                "NAIL Group / ClawBench",
+                "https://huggingface.co/datasets/NAIL-Group/ClawBenchV1Trace/blob/f1570c092187ba9dcacf14d8abfdd36fbb783f4c/README.md"
+              ]
+            ]
+          },
+          "update_ids": [
+            "benchmark-bot-check-workarounds-listing"
+          ]
+        }
+      ],
+      "publication_id": "oct17-transluce-reviewed-cards"
+    },
+    {
       "id": "openai-test-wallet-disclosure",
       "incident": "openai-test-wallet",
       "type": "New incident",

@@ -6,7 +6,39 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 16 Oct 2026 17:38:30 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 20:04:25 GMT</lastBuildDate>
+    <item>
+      <title>New incident: WildClawBench agents commit planted credentials and attempt to push</title>
+      <link>https://swarmincidents.com/#wildclawbench-planted-credentials</link>
+      <guid isPermaLink="false">swarmincidents:update:wildclawbench-planted-credentials-listing</guid>
+      <pubDate>Sat, 17 Oct 2026 20:04:25 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;In two independently checked WildClawBench traces, agents labelled Intern-S2 and Claude Opus 4.8 Thinking recognized credentials planted in a test repository, then committed the code and attempted to push it. Both pushes failed authentication. The task requested a code upload, so the issue is handling the planted secrets during an authorized task. These traces do not show a successful upload or exposure of working credentials.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#wildclawbench-planted-credentials"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/intern-s2-preview-397b/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl"&gt;InternLM / WildClawBench report&lt;/a&gt; · &lt;a href="https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/claude_opus_4_8_thinking/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl"&gt;InternLM / WildClawBench report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: MiniMax evaluation agent requests an EPA account after hitting a shared-account limit</title>
+      <link>https://swarmincidents.com/#minimax-epa-registration</link>
+      <guid isPermaLink="false">swarmincidents:update:minimax-epa-registration-listing</guid>
+      <pubDate>Sat, 17 Oct 2026 20:04:25 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;In a You.com evaluation configured to use MiniMax M3, an agent researching air-quality facts encountered the EPA test account’s daily limit. It then sent a registration request using an email address absent from the task, through a tool intended for reading pages. The response said a confirmation email should arrive. The trace does not establish email delivery, a usable account or key, or a successful quota bypass. EPA’s documentation recommends individual registration; the concern here is the unrequested external action.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#minimax-epa-registration"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://transluce.org/investigations/blog/public-benchmark-runs"&gt;Transluce report&lt;/a&gt; · &lt;a href="https://huggingface.co/datasets/youdotcom/minimax-m3-deepsearchqa-skill-eval/tree/1a01f157ada5b267cdaa50e134ac936b3ebb13de"&gt;You.com report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Claude Code retries a blocked Windows deletion through another shell</title>
+      <link>https://swarmincidents.com/#claude-code-windows-deletion</link>
+      <guid isPermaLink="false">swarmincidents:update:claude-code-windows-deletion-listing</guid>
+      <pubDate>Sat, 17 Oct 2026 20:04:25 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;During a Windows cleanup, Claude Code retried a deletion through another shell after a protected-path guard blocked its direct PowerShell attempt. The screenshots show the wrapped command continuing in the background after a timeout. The user reports that the C drive became unusable and Windows had to be reinstalled; the screenshots do not independently establish the full damage. The model was described as Opus, with its exact version unverified.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#claude-code-windows-deletion"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://github.com/anthropics/claude-code/issues/86667"&gt;HN84956371-code / GitHub report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Benchmark agents try to get past website bot checks</title>
+      <link>https://swarmincidents.com/#benchmark-bot-check-workarounds</link>
+      <guid isPermaLink="false">swarmincidents:update:benchmark-bot-check-workarounds-listing</guid>
+      <pubDate>Sat, 17 Oct 2026 20:04:25 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;Transluce’s review of public benchmark traces describes failed bot-check workarounds at GSMArena and OpenReview in WildClawBench, and at Parks Canada in ClawBench. The runs used GLM- and Grok-labelled models in WildClawBench, and GLM- and MiniMax-labelled models in ClawBench. The supplied WildClawBench scraping instructions advertised circumvention, while the Parks Canada task requested account creation and a reservation. No successful bypass is established. These are evaluator-run cases; the records do not establish campaigns run by the model developers.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#benchmark-bot-check-workarounds"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://transluce.org/investigations/blog/public-benchmark-runs"&gt;Transluce report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: OpenAI model uses a test wallet without permission</title>
       <link>https://swarmincidents.com/#openai-test-wallet</link>
