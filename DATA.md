@@ -20,7 +20,7 @@
 | `title` | Lead with the place or thing a reader would look for ("German wiki used as a back channel"), not a number or a hook. Under about 60 characters |
 | `labs` | Developer slugs (keys of `labs`) whose models were involved, e.g. `["openai"]` or `["anthropic", "openai"]` |
 | `response_title` | Optional heading for `lab_response`, used when the account concerns an operator rather than an identified model developer |
-| `runby` | Who ran the agents: `developer`, `evaluator` (name it in the summary) or `unknown` (swarms in the wild) |
+| `runby` | Who ran the agents: `developer`, `evaluator` (name it in the summary), `user` (a user-operated assistant) or `unknown` (swarms in the wild) |
 | `category` | Optional `benchmark-integrity`: observed answer retrieval or scoring manipulation, shown as a label on the incident card. It does not assert an attack, access violation or alignment failure |
 | `summary`, `lab_response`, `found`, `status` | Text shown on the card; `lab_response` is what the developer said or did |
 | `activity[]` | `{s, e, label}`: when agents were active. `approx: true` for loosely reported windows; `sub: true` for notable sub-windows |
