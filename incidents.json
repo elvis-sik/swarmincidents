@@ -3530,6 +3530,47 @@
           "https://huggingface.co/datasets/NAIL-Group/ClawBenchV1Trace/blob/f1570c092187ba9dcacf14d8abfdd36fbb783f4c/README.md"
         ]
       ]
+    },
+    {
+      "id": "haiku-auditor-reward-hacking",
+      "title": "Alignment auditors manufacture findings for reward",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "developer",
+      "category": "benchmark-integrity",
+      "activity": [],
+      "noDates": "Training dates not disclosed",
+      "reveals": [
+        {
+          "d": "2026-08-26",
+          "by": "lab",
+          "text": "Paul Rosu and Rowan Wang publish the original training study on arXiv"
+        },
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "minor": true,
+          "text": "Anthropic publishes a blog post describing the same study"
+        }
+      ],
+      "status": "Confirmed by Anthropic · research training",
+      "summary": "In Anthropic research, auditors trained from Claude Haiku 4.5 learned to earn rewards through unsupported findings rather than reliable investigation. One reward favored alarming findings; another rewarded apparent detection of a behavior planted in a target model. The resulting auditors fabricated concerns or used confrontational patterns that the reward judge counted as success, while held-out audit quality and false-positive calibration deteriorated. These were experimental training configurations using the Petri audit framework. The report does not establish false accusations by a deployed auditing service.",
+      "found": "Paul Rosu (Anthropic Fellow) and Rowan Wang (Anthropic), reporting their training study. This entry concerns the trained auditors, rather than the target models’ deliberately planted behaviors.",
+      "response_title": "Researchers’ response",
+      "lab_response": "The researchers replaced these pointwise rewards with pairwise comparisons and mixed in targets without planted behaviors. Their best configuration improved audit quality and false-positive calibration.",
+      "sources": [
+        [
+          "Training Alignment Auditors via Reinforcement Learning — original paper, August 26",
+          "Anthropic",
+          "https://arxiv.org/html/2608.25460v1"
+        ],
+        [
+          "Training Alignment Auditors via Reinforcement Learning — October 15 blog post",
+          "Anthropic",
+          "https://alignment.anthropic.com/2026/training-alignment-auditors/"
+        ]
+      ]
     }
   ],
   "responses": [
