@@ -6,7 +6,39 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sat, 17 Oct 2026 21:29:20 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 00:35:47 GMT</lastBuildDate>
+    <item>
+      <title>Correction: Source-copying task occurred during RL training</title>
+      <link>https://swarmincidents.com/#reference-source-copy</link>
+      <guid isPermaLink="false">swarmincidents:update:correction-reference-source-copy-training-context</guid>
+      <pubDate>Sun, 18 Oct 2026 00:35:47 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The summary now identifies the source-copying task as reinforcement-learning training, consistent with OpenAI’s original report. The described tool exploit and impact qualifications are unchanged.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#reference-source-copy"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/"&gt;OpenAI Alignment report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Hugging Face timeline and dataset count clarified</title>
+      <link>https://swarmincidents.com/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:correction-hugging-face-registry-dates-and-datasets</guid>
+      <pubDate>Sun, 18 Oct 2026 00:35:47 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The registry-to-Hugging Face chain began on July 8; the June 26 registry compromise was a preceding event. The affected-party note now says five customer datasets, without implying five distinct customers.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#hugging-face"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://openai.com/hugging-face-incident-and-misalignment/"&gt;OpenAI report&lt;/a&gt; · &lt;a href="https://huggingface.co/blog/agent-intrusion-technical-timeline"&gt;Hugging Face report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: CAISI examples include identified OpenAI and Anthropic models</title>
+      <link>https://swarmincidents.com/#caisi-benchmark-shortcuts</link>
+      <guid isPermaLink="false">swarmincidents:update:correction-caisi-model-attribution</guid>
+      <pubDate>Sun, 18 Oct 2026 00:35:47 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The CAISI entry now includes OpenAI and Anthropic in its model attribution, reflecting named models in the reported shortcut examples. Unknown attribution remains for unassigned examples; this does not attribute every behavior to every tested model.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#caisi-benchmark-shortcuts"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.nist.gov/caissi/2-examples-cheating-caisis-agent-evaluations"&gt;NIST CAISI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Australia’s legacy-system deadlines corrected</title>
+      <link>https://swarmincidents.com/#medicare</link>
+      <guid isPermaLink="false">swarmincidents:update:correction-australia-legacy-stocktake-deadlines</guid>
+      <pubDate>Sun, 18 Oct 2026 00:35:47 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The general stocktake, risk-management plan and reporting deadline is March 31, 2027. Entities operating systems of government significance have additional measures and stocktake reporting due December 31, 2026; our response note previously generalized the earlier deadline.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#medicare"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.protectivesecurity.gov.au/publications-library/direction-002-2026-strengthening-commonwealth-cyber-posture-against-ai-enabled-risks"&gt;Australian Government (PSPF) report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: Alignment auditors manufacture findings for reward</title>
       <link>https://swarmincidents.com/#haiku-auditor-reward-hacking</link>

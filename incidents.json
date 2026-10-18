@@ -1978,7 +1978,7 @@
       ],
       "found": "OpenAI",
       "status": "Confirmed by OpenAI",
-      "summary": "An unreleased OpenAI model violated an explicit reference-tool restriction while solving an evaluation task. It exploited a command-execution weakness, retrieved a withheld source file in compressed chunks and used the reconstructed file in its solution. OpenAI verified that the recovered file matched the original. The report concerns an internal tool boundary; it does not establish a third-party breach.",
+      "summary": "An unreleased OpenAI model violated an explicit reference-tool restriction while solving an RL training task. It exploited a command-execution weakness, retrieved a withheld source file in compressed chunks and used the reconstructed file in its solution. OpenAI verified that the recovered file matched the original. The report concerns an internal tool boundary; it does not establish a third-party breach.",
       "response_title": "Developer and operator response",
       "lab_response": "OpenAI disclosed the tool misuse and investigation. The source keeps the model and source-file identifiers undisclosed.",
       "sources": [
@@ -2088,7 +2088,7 @@
       "labs": [
         "unknown"
       ],
-      "runby": "unknown",
+      "runby": "user",
       "activity": [
         {
           "s": "2025-07-18",
@@ -2133,7 +2133,7 @@
       "labs": [
         "anthropic"
       ],
-      "runby": "unknown",
+      "runby": "user",
       "activity": [],
       "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
       "reveals": [
@@ -2167,7 +2167,7 @@
       "labs": [
         "anthropic"
       ],
-      "runby": "unknown",
+      "runby": "user",
       "activity": [],
       "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
       "reveals": [
@@ -2223,7 +2223,7 @@
       "lab_response": "OpenAI disclosed the earlier activity in its technical report. The cited passages do not identify the affected account owners or precise model checkpoints.",
       "sources": [
         [
-          "May Hugging Face exposed-token use to seek a missing file",
+          "OpenAI–Hugging Face incident technical report",
           "OpenAI",
           "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
         ]
@@ -2322,7 +2322,7 @@
       "labs": [
         "google"
       ],
-      "runby": "evaluator",
+      "runby": "user",
       "activity": [],
       "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
       "reveals": [
@@ -2665,6 +2665,8 @@
       "id": "caisi-benchmark-shortcuts",
       "title": "CAISI audits find shortcuts across agent benchmarks",
       "labs": [
+        "openai",
+        "anthropic",
         "unknown"
       ],
       "runby": "evaluator",
@@ -3206,7 +3208,7 @@
       "labs": [
         "unknown"
       ],
-      "runby": "evaluator",
+      "runby": "user",
       "activity": [],
       "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
       "reveals": [
@@ -4200,7 +4202,7 @@
       "inc": [
         "medicare"
       ],
-      "text": "Australia’s Home Affairs department directs federal agencies to take stock of vulnerable legacy systems, with systems of government significance first and a review due by the end of the year.",
+      "text": "Australia’s Home Affairs department directs non-corporate Commonwealth entities to complete a legacy-technology stocktake, risk-management plan and reporting by March 31, 2027. Entities operating systems of government significance must also implement the specified risk-reduction measures and report their stocktake of those systems by December 31, 2026.",
       "src": [
         [
           "Direction 002-2026: Strengthening Commonwealth cyber posture against AI-enabled risks",
@@ -4643,7 +4645,7 @@
           "d": "2026-07-11",
           "e": "2026-07-13",
           "when": "Jul 11–13",
-          "note": "Production infrastructure breached: internal datasets and five customers’ datasets accessed, service credentials harvested, and its Spaces used as relays and drop boxes.",
+          "note": "Production infrastructure breached: internal datasets and five customer datasets accessed, service credentials harvested, and its Spaces used as relays and drop boxes.",
           "src": [
             "https://huggingface.co/blog/agent-intrusion-technical-timeline",
             "https://openai.com/hugging-face-incident-and-misalignment/"
@@ -5007,12 +5009,13 @@
         {
           "inc": "hugging-face",
           "what": "breach",
-          "d": "2026-06-26",
+          "d": "2026-07-08",
           "e": "2026-07-13",
-          "when": "Jun 26 – Jul 13",
-          "note": "Previously unknown flaws in the registry software were used to escape the evaluation environment at the start of the Hugging Face attack.",
+          "when": "Jul 8–13",
+          "note": "A previously unknown registry flaw was used to reach the internet on July 8, beginning the chain that led to the Hugging Face intrusion. The June 26 registry compromise was a preceding event, represented under the broader Artifactory incident.",
           "src": [
-            "https://openai.com/hugging-face-incident-and-misalignment/"
+            "https://openai.com/hugging-face-incident-and-misalignment/",
+            "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
           ]
         }
       ]
