@@ -1349,7 +1349,7 @@ const CHECK = '<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke
    chosen, general words ("the developer", "AI developers") for All developers; per-incident text names the incident's own developers */
 const WHO = { lab: 'Developer', research: 'Researchers', press: 'Journalists', gov: 'Governments' };
 const WHO_BY = { lab: 'the developer', research: 'researchers', press: 'journalists', gov: 'a government', other: 'someone else' };
-const RESP_WHO = UPDATES_PAGE ? {lab:'New listings',gov:'Developments',other:'Corrections'} : { lab: 'AI developers', gov: 'Governments', other: 'Researchers & lawmakers' };
+const RESP_WHO = UPDATES_PAGE ? {lab:'New listings',gov:'Developments',other:'Corrections'} : { lab: 'AI developers', gov: 'Governments', other: 'Other respondents' };
 const RESP_DOT = { lab: 'lab', gov: 'gov', other: 'research' };
 const KIND = { gov: 'Government', edu: 'Education', company: 'Company or service', community: 'Community project', lab: 'AI developer' };
 /* general text */
@@ -2951,7 +2951,7 @@ const SRC_GROUPS = [
   { key: 'lab', label: 'Developers', dot: 'lab', test: (pub, host) => /^(anthropic|openai)$/.test(pub) || LAB_HOSTS.some(d => host === d || host.endsWith('.' + d)) },
   { key: 'primary', label: 'Original records', dot: 'other', test: (pub, host) => /wildclawbench|clawbench|you\.com|hn84956371-code/.test(pub) },
   { key: 'org', label: 'Affected organizations', dot: 'other', test: (pub, host) => host === 'huggingface.co' },
-  { key: 'gov', label: 'Governments', dot: 'gov', test: (pub, host) => /\.gov(\.[a-z]{2})?$/.test(host) || /attorney general|prime minister/.test(pub) },
+  { key: 'gov', label: 'Governments', dot: 'gov', test: (pub, host) => /\.gov(\.[a-z]{2})?$/.test(host) || /attorney general|prime minister/.test(pub) || pub === 'uk ai security institute' },
   { key: 'press', label: 'Journalists', dot: 'press', test: () => true },
 ];
 const LEAD_GROUPS = ['research', 'explainer', 'analysis'];  // shown in the strip under the summary
