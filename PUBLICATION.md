@@ -24,4 +24,10 @@ The website and RSS use the same announcement copy and resources. Website detail
 
 ## Original catalog addition date
 
-Incident cards display the earliest `New incident` publication record, linked to its Updates entry. This build-derived metadata is separate from incident activity and disclosure dates; later updates or corrections do not reset it. Dates use the feed’s America/Los_Angeles calendar. Reconstructed Git-history dates are visibly marked approximate because commit time does not verify live deployment time. If a first-listing record is absent, the card shows “date unavailable” rather than inferring one.
+`catalog-metadata.json` stores each card’s original `added_at`, `original_update` and evidence `basis`. Incident cards display that stored date linked to the original Updates entry; builds validate it against the earliest New incident record instead of deriving a replacement. Later updates and corrections cannot reset it. Dates use America/Los_Angeles. Historical Git provenance and its limitations remain in the persisted metadata; the small visible field presents the selected catalog date without a qualifier. Missing or contradictory records fail the build.
+
+## Public source registry
+
+`source-registry.json` retains public source identities, observed URL aliases, existing title/publisher variants and per-incident curated/additional associations. Curated sources must exactly preserve the editorial catalog; additional references are saved context, not independently verified supporting evidence. Sign-in-required references retain only already-public lead identifiers. Private lead narratives and credentials do not belong in this export.
+
+Timeline associations explicitly bind report/disclosure text, activity intervals and knowledge-event text to source IDs. Build validation rejects drift, ambiguity, unknown references or guessed public links for private notifications. An unresolved historical reference needs an explicit reason. The card shows a compact selection and an accessible Show all sources dialog; the dialog retains all sources and filters only this incident’s collection.

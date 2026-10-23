@@ -6,12 +6,13 @@ const { test, expect, load, siteData } = require('./fixtures');
 test('incident card exposes original catalog addition with honest provenance', async ({ page }) => {
   await load(page, 'aisi-cyber-range');
   const meta = page.locator('#det .catalog-added');
-  await expect(meta).toHaveText('Added to catalog Oct 7, 2026 (approx.)');
+  await expect(meta).toHaveText('Added to catalog Oct 7, 2026');
   await expect(meta.locator('time')).toHaveAttribute('datetime', '2026-10-07');
   await expect(meta.getByRole('link')).toHaveAttribute('href', 'updates.html#history-ecff960-aisi-cyber-range');
-  await expect(meta.getByRole('link')).toHaveAccessibleName(/not a verified deployment date/);
+  await expect(meta.getByRole('link')).toHaveAccessibleName('Added to catalog Oct 7, 2026');
+  await expect(meta).not.toContainText('approx');
   await page.reload();
-  await expect(meta).toHaveText('Added to catalog Oct 7, 2026 (approx.)');
+  await expect(meta).toHaveText('Added to catalog Oct 7, 2026');
   const bounds = await meta.boundingBox();
   expect(bounds.x).toBeGreaterThanOrEqual(0);
   expect(bounds.x + bounds.width).toBeLessThanOrEqual(page.viewportSize().width);
@@ -25,7 +26,7 @@ test('incident card exposes original catalog addition with honest provenance', a
 
 test('recorded publication date needs no approximate qualifier', async ({ page }) => {
   const data = siteData();
-  const e = data.incidents.find(e => data.catalogAdded[e.id] && !data.catalogAdded[e.id].reconstructed);
+  const e = data.incidents.find(e => data.catalogAdded[e.id]?.basis.kind === 'publication-record');
   await load(page, e.id);
   const meta = page.locator('#det .catalog-added');
   await expect(meta.locator('time')).toHaveAttribute('datetime', data.catalogAdded[e.id].date);

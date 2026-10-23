@@ -25,11 +25,21 @@
 | `summary`, `lab_response`, `found`, `status` | Text shown on the card; `lab_response` is what the developer said or did |
 | `activity[]` | `{s, e, label}`: when agents were active. `approx: true` for loosely reported windows; `sub: true` for notable sub-windows |
 | `knew` | `{d, text}`: when the developer is documented as knowing |
-| `reveals[]` | `{d, by, text}`: public reports. `by` is `lab` (the developer of the incident's models), `research`, `press`, `gov` or `other`; `minor: true` for secondary markers; `private: true` for private notices |
+| `reveals[]` | `{d, by, text, src}`: public reports. New rows keep explicit supporting source URLs in `src`; historical source associations are backfilled in `source-registry.json`. `by` is `lab` (the developer of the incident's models), `research`, `press`, `gov` or `other`; `minor: true` for secondary markers; `private: true` for private notices |
 | `sources[]` | `[title, publisher, url]` |
 | `datasets[]` | Optional publisher-hosted research releases. A nonempty list enables the Dataset available filter and badge. Reports, screenshots and benchmark task data alone do not qualify |
 
 Each `datasets[]` entry has a stable `id`, `title`, `publisher`, human-readable `format`, publisher/release `url`, `description`, and a `checked` date (`YYYY-MM-DD`). Optional `download` links directly to the publisher's file, and `note` describes coverage or restrictions that affect research use. Keep partial transcripts, reconstructed payloads, metadata catalogs and aggregates distinguishable. Availability is not a claim of completeness or permission to mirror or train on the data. Shared releases can appear on more than one incident; filtered incident counts are not counts of independent datasets.
+
+## Catalog provenance and full reference inventory
+
+`catalog-metadata.json` stores each incident's immutable `added_at` publication timestamp, `original_update` ID and a `basis` describing the historical backfill. The visible date uses Pacific time and does not display an approximation qualifier. Earlier Git dates are best-available historical backfills, not claimed exact first-live deployment times. New dates are stamped from the first reviewed publication; updates never reset them.
+
+`source-registry.json` preserves source identities, observed URL aliases and title/publisher variants independently of the shorter selected citation list. Each source can relate to multiple incidents. `curated` contains the card's selected citations; `additional` contains other known references, including responses or redundant commentary, without implying independent corroboration. Public timeline associations bind exact disclosure/activity/discovery records to source IDs. A changed record must be reviewed rather than inheriting a link through a title/date guess. Private notices do not invent public original messages. Existing sign-in-required lead pointers retain that access classification; their private contents are never exported.
+
+The private pipeline separately retains every observed safe URL before item deduplication and keeps model-matched incident associations as pending curator review. Unread, failed and duplicate sources remain known references. They are not automatically exported as public factual evidence.
+
+`publication.py prepare` synchronizes both provenance files when they exist beside the catalog. For a manually prepared release, run `PYTHONPATH=pipeline python -m swarmops.catalog_provenance --data-dir data` before validation. Both publication CI and the site build reject missing dates or missing public timeline associations. The publisher copies both sidecars with the catalog. No global URL/keyword-search interface is included in this change.
 
 ## `responses[]`
 
