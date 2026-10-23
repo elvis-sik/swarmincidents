@@ -4,7 +4,10 @@ const catalog=require('../incidents.json');
 const developments=entries.filter(u=>u.type==='Update');
 const archiveDevelopments=developments.filter(u=>u.freshness==='archive');
 const row=page=>page.locator('#rows [data-rsp-row]');
-async function pick(page,name,option){await page.getByRole('button',{name:new RegExp('^'+name+':')}).click();await page.getByRole('option',{name:option,exact:typeof option==='string'}).click();}
+async function pick(page,name,option){
+ await page.getByRole('button',{name:new RegExp('^'+name+':')}).click();
+ await page.getByRole('listbox',{name,exact:true}).getByRole('option',{name:option,exact:typeof option==='string'}).click();
+}
 
 test('Updates and RSS share stable IDs and source-linked detail copy',async({page,request})=>{
  await page.goto('/updates.html',{waitUntil:'domcontentloaded'});await expect(page.getByRole('heading',{name:'Updates',exact:true})).toBeVisible();
