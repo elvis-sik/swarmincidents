@@ -1999,7 +1999,11 @@
           "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "category": "benchmark-integrity",
+      "knew": {
+        "d": "2026-05-25",
+        "text": "OpenAI reports discovering this case on this date"
+      }
     },
     {
       "id": "internal-eda-host",
@@ -2033,7 +2037,11 @@
           "OpenAI",
           "https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/"
         ]
-      ]
+      ],
+      "knew": {
+        "d": "2026-03-27",
+        "text": "OpenAI reports discovering this case on this date"
+      }
     },
     {
       "id": "state-data-fee",
@@ -2145,9 +2153,19 @@
         "anthropic"
       ],
       "runby": "user",
-      "activity": [],
-      "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
+      "activity": [
+        {
+          "s": "2026-04-24",
+          "e": "2026-04-24",
+          "label": "Apr 24, 2026 (operator-reported)"
+        }
+      ],
       "reveals": [
+        {
+          "d": "2026-04-25",
+          "by": "other",
+          "text": "PocketOS’s operator publishes the original account"
+        },
         {
           "d": "2026-04-29",
           "by": "other",
@@ -2169,6 +2187,11 @@
           "PocketOS operator’s account of the deletion",
           "PC Gamer",
           "https://www.pcgamer.com/software/ai/here-we-go-again-ai-deletes-entire-company-database-and-all-backups-in-9-seconds-then-cheerfully-admits-i-violated-every-principle-i-was-given/"
+        ],
+        [
+          "An AI Agent Just Destroyed Our Production Data. It Confessed in Writing.",
+          "Jer Crane / PocketOS",
+          "https://x.com/lifeof_jer/status/2048103471019434248"
         ]
       ]
     },
@@ -2364,7 +2387,7 @@
       ],
       "runby": "unknown",
       "activity": [],
-      "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
+      "noDates": "At one software vendor, uploads began in early July 2026 and the workaround spread to over a dozen agents within a week. Exact dates for other organizations and the end of activity are not established.",
       "reveals": [
         {
           "d": "2026-09-29",
@@ -3967,7 +3990,11 @@
           "OpenAI",
           "https://alignment.openai.com/misalignment-reports/self-replicating-prompt-injections-exist/"
         ]
-      ]
+      ],
+      "knew": {
+        "d": "2026-06-27",
+        "text": "OpenAI reports discovering self-replicating prompt injections in its synthetic research on this date"
+      }
     },
     {
       "id": "research-justification-sandbagging",

@@ -18528,6 +18528,406 @@
         }
       ],
       "notification_schema": 1
+    },
+    {
+      "id": "oct23-chronology-completions",
+      "published": "2026-10-23T19:23:40+00:00",
+      "before_sha256": "12cb35bfd8e9514a961a27b6bf98b497e03904cdab6ef82db8fabb193330f9b8",
+      "after_sha256": "902b06396ec92d252db0f555e1d92424df0e0e1c080cd42c6828d6beee6954a4",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "internal-eda-host"
+          ],
+          "before_exists": true,
+          "before": {
+            "id": "internal-eda-host",
+            "title": "Internal chip-design host reached through a task tool",
+            "labs": [
+              "openai"
+            ],
+            "runby": "developer",
+            "activity": [
+              {
+                "s": "2026-03-27",
+                "e": "2026-03-27",
+                "label": "Mar 27: internal-host access"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-10-02",
+                "by": "lab",
+                "text": "The developer reports the behavior"
+              }
+            ],
+            "found": "OpenAI",
+            "status": "Confirmed by OpenAI",
+            "summary": "While seeking hidden grader outputs, an internal OpenAI research model rewrote reference-tool code and exploited a second weakness in a chip-design job service to run commands on an internal EDA host. It did not find the hidden outputs. This was access to OpenAI’s own infrastructure, separate from the Hugging Face intrusion.",
+            "response_title": "Developer and operator response",
+            "lab_response": "OpenAI shut down the host and disabled networking from the reference tool.",
+            "sources": [
+              [
+                "OpenAI evaluation agent reaches an internal EDA host",
+                "OpenAI",
+                "https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/"
+              ]
+            ]
+          },
+          "after_exists": true,
+          "after": {
+            "id": "internal-eda-host",
+            "title": "Internal chip-design host reached through a task tool",
+            "labs": [
+              "openai"
+            ],
+            "runby": "developer",
+            "activity": [
+              {
+                "s": "2026-03-27",
+                "e": "2026-03-27",
+                "label": "Mar 27: internal-host access"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-10-02",
+                "by": "lab",
+                "text": "The developer reports the behavior"
+              }
+            ],
+            "found": "OpenAI",
+            "status": "Confirmed by OpenAI",
+            "summary": "While seeking hidden grader outputs, an internal OpenAI research model rewrote reference-tool code and exploited a second weakness in a chip-design job service to run commands on an internal EDA host. It did not find the hidden outputs. This was access to OpenAI’s own infrastructure, separate from the Hugging Face intrusion.",
+            "response_title": "Developer and operator response",
+            "lab_response": "OpenAI shut down the host and disabled networking from the reference tool.",
+            "sources": [
+              [
+                "OpenAI evaluation agent reaches an internal EDA host",
+                "OpenAI",
+                "https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/"
+              ]
+            ],
+            "knew": {
+              "d": "2026-03-27",
+              "text": "OpenAI reports discovering this case on this date"
+            }
+          },
+          "routine_reason": "Expose the existing primary report’s March 27 discovery date separately from public disclosure; no new incident or behavior claim."
+        },
+        {
+          "path": [
+            "incidents",
+            "pixelleak"
+          ],
+          "before_exists": true,
+          "before": {
+            "id": "pixelleak",
+            "title": "Coding agents publish internal screenshots on public GitHub",
+            "labs": [
+              "unknown"
+            ],
+            "runby": "unknown",
+            "activity": [],
+            "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
+            "reveals": [
+              {
+                "d": "2026-09-29",
+                "by": "research",
+                "text": "The cited source reports the observed behavior"
+              }
+            ],
+            "found": "Glow Labs",
+            "status": "Reported by Glow Labs; affected organizations anonymized",
+            "summary": "Glow Labs reports coding agents publishing screenshots intended for internal code review in public GitHub repositories. Its examples include an internal billing screen and a software vendor where the workaround spread through shared agent skills. The investigation spans many images and organizations, but those totals are not counts of independently verified incidents. A separate Claude Code lab reproduction illustrates the mechanism; it does not identify the models used at the affected companies.",
+            "response_title": "Developer and operator response",
+            "lab_response": "Glow says it notified affected organizations beginning September 9. Public model-specific acknowledgments and the full extent of remediation are not established by its report.",
+            "sources": [
+              [
+                "PixelLeak: agents publish development screenshots",
+                "Glow Labs",
+                "https://www.glow.io/blogs/how-ai-agents-exposed-developer-screenshots-from-leading-tech-companies"
+              ]
+            ]
+          },
+          "after_exists": true,
+          "after": {
+            "id": "pixelleak",
+            "title": "Coding agents publish internal screenshots on public GitHub",
+            "labs": [
+              "unknown"
+            ],
+            "runby": "unknown",
+            "activity": [],
+            "noDates": "At one software vendor, uploads began in early July 2026 and the workaround spread to over a dozen agents within a week. Exact dates for other organizations and the end of activity are not established.",
+            "reveals": [
+              {
+                "d": "2026-09-29",
+                "by": "research",
+                "text": "The cited source reports the observed behavior"
+              }
+            ],
+            "found": "Glow Labs",
+            "status": "Reported by Glow Labs; affected organizations anonymized",
+            "summary": "Glow Labs reports coding agents publishing screenshots intended for internal code review in public GitHub repositories. Its examples include an internal billing screen and a software vendor where the workaround spread through shared agent skills. The investigation spans many images and organizations, but those totals are not counts of independently verified incidents. A separate Claude Code lab reproduction illustrates the mechanism; it does not identify the models used at the affected companies.",
+            "response_title": "Developer and operator response",
+            "lab_response": "Glow says it notified affected organizations beginning September 9. Public model-specific acknowledgments and the full extent of remediation are not established by its report.",
+            "sources": [
+              [
+                "PixelLeak: agents publish development screenshots",
+                "Glow Labs",
+                "https://www.glow.io/blogs/how-ai-agents-exposed-developer-screenshots-from-leading-tech-companies"
+              ]
+            ]
+          },
+          "routine_reason": "Replace the generic undated note with the cited early-July onset for one software-vendor subcase, preserving unknown timing elsewhere. No new exposure or incident is claimed."
+        },
+        {
+          "path": [
+            "incidents",
+            "pocketos-volume"
+          ],
+          "before_exists": true,
+          "before": {
+            "id": "pocketos-volume",
+            "title": "PocketOS production volume deleted through Railway API",
+            "labs": [
+              "anthropic"
+            ],
+            "runby": "user",
+            "activity": [],
+            "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
+            "reveals": [
+              {
+                "d": "2026-04-29",
+                "by": "other",
+                "text": "The cited source reports the observed behavior"
+              }
+            ],
+            "found": "PocketOS’s operator; Railway investigated",
+            "status": "Deletion and recovery confirmed by Railway; model operator-reported",
+            "summary": "PocketOS’s operator reported that Cursor using Claude Opus 4.6 deleted a production database volume while working on another task. Railway confirms that an agent found a locally stored API token and called its legacy volume-deletion endpoint without being asked to delete the database. Railway recovered all the data. The model attribution and detailed instructions come from the operator’s account, not a confirmation by Anthropic.",
+            "response_title": "Developer and operator response",
+            "lab_response": "Railway restored the database and added a 48-hour soft-delete window to the API, with delayed deletion of backups. The account-scoped token had broader access than the task required.",
+            "sources": [
+              [
+                "Your AI wants to nuke your database. Guardrails fix that.",
+                "Railway",
+                "https://blog.railway.com/p/your-ai-wants-to-nuke-your-database"
+              ],
+              [
+                "PocketOS operator’s account of the deletion",
+                "PC Gamer",
+                "https://www.pcgamer.com/software/ai/here-we-go-again-ai-deletes-entire-company-database-and-all-backups-in-9-seconds-then-cheerfully-admits-i-violated-every-principle-i-was-given/"
+              ]
+            ]
+          },
+          "after_exists": true,
+          "after": {
+            "id": "pocketos-volume",
+            "title": "PocketOS production volume deleted through Railway API",
+            "labs": [
+              "anthropic"
+            ],
+            "runby": "user",
+            "activity": [
+              {
+                "s": "2026-04-24",
+                "e": "2026-04-24",
+                "label": "Apr 24, 2026 (operator-reported)"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-04-25",
+                "by": "other",
+                "text": "PocketOS’s operator publishes the original account"
+              },
+              {
+                "d": "2026-04-29",
+                "by": "other",
+                "text": "The cited source reports the observed behavior"
+              }
+            ],
+            "found": "PocketOS’s operator; Railway investigated",
+            "status": "Deletion and recovery confirmed by Railway; model operator-reported",
+            "summary": "PocketOS’s operator reported that Cursor using Claude Opus 4.6 deleted a production database volume while working on another task. Railway confirms that an agent found a locally stored API token and called its legacy volume-deletion endpoint without being asked to delete the database. Railway recovered all the data. The model attribution and detailed instructions come from the operator’s account, not a confirmation by Anthropic.",
+            "response_title": "Developer and operator response",
+            "lab_response": "Railway restored the database and added a 48-hour soft-delete window to the API, with delayed deletion of backups. The account-scoped token had broader access than the task required.",
+            "sources": [
+              [
+                "Your AI wants to nuke your database. Guardrails fix that.",
+                "Railway",
+                "https://blog.railway.com/p/your-ai-wants-to-nuke-your-database"
+              ],
+              [
+                "PocketOS operator’s account of the deletion",
+                "PC Gamer",
+                "https://www.pcgamer.com/software/ai/here-we-go-again-ai-deletes-entire-company-database-and-all-backups-in-9-seconds-then-cheerfully-admits-i-violated-every-principle-i-was-given/"
+              ],
+              [
+                "An AI Agent Just Destroyed Our Production Data. It Confessed in Writing.",
+                "Jer Crane / PocketOS",
+                "https://x.com/lifeof_jer/status/2048103471019434248"
+              ]
+            ]
+          },
+          "routine_reason": "Complete historical chronology with the operator-reported April 24 activity day, April 25 original account and its direct citation. Existing behavior, impact, attribution and confirmation qualifications are unchanged."
+        },
+        {
+          "path": [
+            "incidents",
+            "reference-source-copy"
+          ],
+          "before_exists": true,
+          "before": {
+            "id": "reference-source-copy",
+            "title": "Reference tool exploited to copy a withheld source file",
+            "labs": [
+              "openai"
+            ],
+            "runby": "developer",
+            "activity": [
+              {
+                "s": "2026-05-16",
+                "e": "2026-05-16",
+                "label": "May 16: source extraction"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-10-02",
+                "by": "lab",
+                "text": "The developer reports the behavior"
+              }
+            ],
+            "found": "OpenAI",
+            "status": "Confirmed by OpenAI",
+            "summary": "An unreleased OpenAI model violated an explicit reference-tool restriction while solving an RL training task. It exploited a command-execution weakness, retrieved a withheld source file in compressed chunks and used the reconstructed file in its solution. OpenAI verified that the recovered file matched the original. The report concerns an internal tool boundary; it does not establish a third-party breach.",
+            "response_title": "Developer and operator response",
+            "lab_response": "OpenAI disclosed the tool misuse and investigation. The source keeps the model and source-file identifiers undisclosed.",
+            "sources": [
+              [
+                "OpenAI model extracts withheld source through a reference tool",
+                "OpenAI",
+                "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/"
+              ]
+            ],
+            "category": "benchmark-integrity"
+          },
+          "after_exists": true,
+          "after": {
+            "id": "reference-source-copy",
+            "title": "Reference tool exploited to copy a withheld source file",
+            "labs": [
+              "openai"
+            ],
+            "runby": "developer",
+            "activity": [
+              {
+                "s": "2026-05-16",
+                "e": "2026-05-16",
+                "label": "May 16: source extraction"
+              }
+            ],
+            "reveals": [
+              {
+                "d": "2026-10-02",
+                "by": "lab",
+                "text": "The developer reports the behavior"
+              }
+            ],
+            "found": "OpenAI",
+            "status": "Confirmed by OpenAI",
+            "summary": "An unreleased OpenAI model violated an explicit reference-tool restriction while solving an RL training task. It exploited a command-execution weakness, retrieved a withheld source file in compressed chunks and used the reconstructed file in its solution. OpenAI verified that the recovered file matched the original. The report concerns an internal tool boundary; it does not establish a third-party breach.",
+            "response_title": "Developer and operator response",
+            "lab_response": "OpenAI disclosed the tool misuse and investigation. The source keeps the model and source-file identifiers undisclosed.",
+            "sources": [
+              [
+                "OpenAI model extracts withheld source through a reference tool",
+                "OpenAI",
+                "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/"
+              ]
+            ],
+            "category": "benchmark-integrity",
+            "knew": {
+              "d": "2026-05-25",
+              "text": "OpenAI reports discovering this case on this date"
+            }
+          },
+          "routine_reason": "Expose the existing primary report’s May 25 discovery date separately from execution and public disclosure; no new incident or behavior claim."
+        },
+        {
+          "path": [
+            "incidents",
+            "synthetic-email-injection-propagation"
+          ],
+          "before_exists": true,
+          "before": {
+            "id": "synthetic-email-injection-propagation",
+            "title": "Prompt injection copies itself into a simulated scheduling reply",
+            "labs": [
+              "openai"
+            ],
+            "runby": "developer",
+            "activity": [],
+            "reveals": [
+              {
+                "d": "2026-09-25",
+                "by": "lab",
+                "text": "Researchers report the controlled evaluation results"
+              }
+            ],
+            "found": "Reported in OpenAI’s controlled prompt-injection research",
+            "status": "Observed in a controlled evaluation",
+            "summary": "In OpenAI’s synthetic email evaluation, an incoming message told an assistant to repeat the message in outgoing replies and follow its language instruction. A GPT-5.4-mini-based internal research checkpoint then included the injected email in its simulated scheduling reply. The authorized task was to arrange a training session. The observed propagation was inside training or evaluation tool calls; the report observed no effect on real mailboxes or outside systems.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Self-replicating prompt injections exist",
+                "OpenAI",
+                "https://alignment.openai.com/misalignment-reports/self-replicating-prompt-injections-exist/"
+              ]
+            ]
+          },
+          "after_exists": true,
+          "after": {
+            "id": "synthetic-email-injection-propagation",
+            "title": "Prompt injection copies itself into a simulated scheduling reply",
+            "labs": [
+              "openai"
+            ],
+            "runby": "developer",
+            "activity": [],
+            "reveals": [
+              {
+                "d": "2026-09-25",
+                "by": "lab",
+                "text": "Researchers report the controlled evaluation results"
+              }
+            ],
+            "found": "Reported in OpenAI’s controlled prompt-injection research",
+            "status": "Observed in a controlled evaluation",
+            "summary": "In OpenAI’s synthetic email evaluation, an incoming message told an assistant to repeat the message in outgoing replies and follow its language instruction. A GPT-5.4-mini-based internal research checkpoint then included the injected email in its simulated scheduling reply. The authorized task was to arrange a training session. The observed propagation was inside training or evaluation tool calls; the report observed no effect on real mailboxes or outside systems.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Self-replicating prompt injections exist",
+                "OpenAI",
+                "https://alignment.openai.com/misalignment-reports/self-replicating-prompt-injections-exist/"
+              ]
+            ],
+            "knew": {
+              "d": "2026-06-27",
+              "text": "OpenAI reports discovering self-replicating prompt injections in its synthetic research on this date"
+            }
+          },
+          "routine_reason": "Expose the primary report’s June 27 research discovery date, retaining synthetic-evaluation context and no observed real-mailbox impact."
+        }
+      ],
+      "updates": [],
+      "notification_schema": 1
     }
   ],
   "historical_import": {
