@@ -1498,18 +1498,19 @@ const FIT = {};
 function derive() {
   INC = DATA.incidents.map((e, i) => {
     const main = e.reveals.filter(r => !r.minor)[0];
+    const disclosureKnown = main.date_basis !== 'report-updated';
     const acts = e.activity.filter(a => !a.sub);
     const first = acts.length ? acts.map(a => a.s).sort()[0] : null;
     const last = acts.length ? acts.map(a => a.e).sort().slice(-1)[0] : null;
     const dates = [first, last, main.d, e.knew && e.knew.d, ...e.reveals.map(r => r.d)].filter(Boolean).sort();
-    return Object.assign({}, e, { idx: i, main, first, last, approx: acts.some(a => a.approx), delay: first ? Math.round((D(main.d) - D(first)) / DAY) : null, a: dates[0], b: dates[dates.length - 1] });
+    return Object.assign({}, e, { idx: i, main, disclosureKnown, first, last, approx: acts.some(a => a.approx), delay: first && disclosureKnown ? Math.round((D(main.d) - D(first)) / DAY) : null, a: dates[0], b: dates[dates.length - 1] });
   }).filter(incInScope);
   [...INC].sort((a, b) => a.main.d.localeCompare(b.main.d) || a.idx - b.idx).forEach((e, i) => { e.n = i + 1; });
   BY_ID = new Map(INC.map(e => [e.id, e]));
   const ids = new Set(BY_ID.keys());
   RESP = DATA.responses.map((r, i) => Object.assign({ idx: UPDATES_PAGE ? -i : i }, r)).filter(r => respInScope(r, ids)).map(r => {
     const inc = r.inc.filter(id => ids.has(id));
-    const from = inc.map(id => BY_ID.get(id).main.d).sort()[0] || null;
+    const from = inc.map(id => BY_ID.get(id)).filter(e => e.disclosureKnown).map(e => e.main.d).sort()[0] || null;
     return Object.assign(r, { inc, from, lag: from ? Math.round((D(r.d) - D(from)) / DAY) : null });
   });
   RSP_BY_ID = new Map(RESP.map(r => [r.id, r]));
@@ -1914,24 +1915,25 @@ const infoBtn = () => (!UPDATES_PAGE && viewInfoKey() ? h('button', { class: 'bt
 const median = xs => { const a = [...xs].sort((x, y) => x - y); return a.length % 2 ? a[(a.length - 1) / 2] : Math.round((a[a.length / 2 - 1] + a[a.length / 2]) / 2); };
 function renderStats() {
   if (!INC.length) { $('#stats').replaceChildren(); return; }
-  const outside = INC.filter(e => e.main.by !== 'lab');
-  const groups = ['research', 'press', 'gov', 'lab'].map(g => [g, INC.filter(e => e.main.by === g).length]).filter(([, n]) => n);
+  const dated = INC.filter(e => e.disclosureKnown);
+  const outside = dated.filter(e => e.main.by !== 'lab');
+  const groups = ['research', 'press', 'gov', 'lab'].map(g => [g, dated.filter(e => e.main.by === g).length]).filter(([, n]) => n);
   const timed = INC.filter(e => e.delay != null);
   const longest = timed.length ? timed.reduce((a, b) => (b.delay > a.delay ? b : a)) : null;
   const unconf = INC.filter(e => !confirmed(e));
-  const latestD = INC.map(e => e.main.d).sort().pop();
+  const latestD = dated.map(e => e.main.d).sort().pop();
   const latest = INC.filter(e => e.main.d === latestD);
-  const ago = Math.round((D(DATA.updated) - D(latestD)) / DAY);
+  const ago = latestD ? Math.round((D(DATA.updated) - D(latestD)) / DAY) : null;
   const stat = (big, small, label, title, text) => h('div', { class: 'stat', ...tipOf(title, text) }, h('b', {}, big, small ? h('small', { text: small }) : null), h('span', { text: label }));
   put($('#stats'),
-    stat(String(outside.length), ` of ${INC.length}`, `first made public by someone other than ${devThe()}`, 'Who disclosed first',
-      groups.map(([g, n]) => `${whoLabel(g)}: ${n}`).join('\n')),
+    stat(String(outside.length), ` of ${dated.length}`, `first made public by someone other than ${devThe()}`, 'Who disclosed first',
+      groups.map(([g, n]) => `${whoLabel(g)}: ${n}`).join('\n') + (dated.length < INC.length ? `\n${INC.length - dated.length} first-disclosure dates unresolved; excluded here.` : '')),
     longest ? stat(String(median(timed.map(e => e.delay))), ' days', 'median time from first activity to disclosure', 'Delay',
       `Across the ${timed.length} incidents with activity dates.\nLongest: ${longest.delay} days (${longest.title}).`) : null,
     stat(String(unconf.length), ` of ${INC.length}`, `not confirmed by ${devThe()}`, 'Not confirmed',
       unconf.map(e => `${e.title}: ${e.status.replace(/ by .+$/, '').toLowerCase()}`).join('\n')),
-    stat(fmtA(latestD), null, 'latest disclosure', ago ? `${ago} days before the last update` : 'Disclosed on the day of the last update',
-      latest.map(e => `${e.title} (${incWhoBy(e, e.main.by)})`).join('\n')));
+    latestD ? stat(fmtA(latestD), null, 'latest disclosure', ago ? `${ago} days before the last update` : 'Disclosed on the day of the last update',
+      latest.map(e => `${e.title} (${incWhoBy(e, e.main.by)})`).join('\n')) : null);
 }
 function setStats(show, save = true) {
   $('#stats').hidden = !show; $('#stats-btn').hidden = show;
@@ -2217,7 +2219,7 @@ const TL_FEATURES = [
   { id: 'activity', label: 'Reported activity', tip: 'Only incidents with reported activity dates. Bars show reported windows, not proof of continuous activity.', test: e => !!e.activity.length },
   { id: 'approx', label: 'Dates approximate', tip: 'Only incidents with at least one approximate activity window.', test: e => e.activity.some(a => a.approx) },
   { id: 'knew', label: 'Developer knew', tip: 'Only incidents with a documented date when the developer knew.', test: e => !!e.knew },
-  { id: 'gap', label: 'Disclosure gap', tip: 'Only incidents whose last reported activity predates their first public report. The dotted gap does not imply ongoing activity.', test: e => !!e.last && e.main.d > e.last },
+  { id: 'gap', label: 'Disclosure gap', tip: 'Only incidents whose last reported activity predates their first public report. The dotted gap does not imply ongoing activity.', test: e => e.disclosureKnown && !!e.last && e.main.d > e.last },
   { id: 'additional', label: 'Additional reports', tip: 'Only incidents with an additional report or private notice beyond the first public disclosure.', test: e => e.reveals.some(r => r.minor || r.private) }
 ];
 function toggleTimelineFilter(set, value, checked) {
@@ -2227,7 +2229,7 @@ function toggleTimelineFilter(set, value, checked) {
 }
 function tlRows() {
   const s = state.tl;
-  const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : e.main.d;
+  const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : (e.disclosureKnown ? e.main.d : null);
   return INC.filter(e => (!s.reporters.size || s.reporters.has(e.main.by)) && TL_FEATURES.every(f => !s.features.has(f.id) || f.test(e)) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
     .sort((a, b) => {
       const ka = key(a), kb = key(b);
@@ -2388,7 +2390,7 @@ function chartShell(label) {
 }
 
 /* ---------------------------------------------------------------- timeline chart */
-const delayTxt = e => e.delay == null ? 'Activity dates not disclosed' : `${e.delay} days from the first known activity (${e.approx ? 'about ' : ''}${fmtA(e.first)}) to disclosure (${fmtA(e.main.d)})`;
+const delayTxt = e => !e.disclosureKnown ? 'First disclosure date unknown; the report-update date is not a disclosure date' : e.delay == null ? 'Activity dates not disclosed' : `${e.delay} days from the first known activity (${e.approx ? 'about ' : ''}${fmtA(e.first)}) to disclosure (${fmtA(e.main.d)})`;
 /* All developers: a small tag per developer beside an incident's title (with one developer chosen it would only repeat it) */
 const labTags = e => (allScope() ? e.labs.map(l => h('span', { class: 'lt', text: labName(l) })) : null);
 /* a mark that starts before the chart's left edge is cut there, with a small chevron pointing left */
@@ -2402,7 +2404,7 @@ function incidentDayEvents(e, date) {
   });
   if (e.knew?.d === date) events.push({ label: incKnew(e), text: e.knew.text });
   e.reveals.filter(r => r.d === date).forEach(r => events.push({
-    label: `${r.private ? 'Private notice' : r.minor ? 'Additional report' : 'First public report'} · ${incWho(e, r.by)}`,
+    label: `${r.private ? 'Private notice' : r.date_basis === 'report-updated' ? 'Report updated' : r.minor ? 'Additional report' : 'First public report'} · ${incWho(e, r.by)}`,
     text: r.text
   }));
   return events;
@@ -2509,7 +2511,7 @@ function renderTimeline() {
     let lo = Infinity, hi = -Infinity;
     const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
     const edge = x(x.a);
-    if (e.last && e.main.d > e.last) {
+    if (e.disclosureKnown && e.last && e.main.d > e.last) {
       const lx = x(e.last), a = (lx < edge ? edge + 5 : lx) + 4, b = x(e.main.d) - 8;
       if (b > a) {
         mid.append(sv('line', { x1: a, x2: b, y1: 0, y2: 0, class: 'gap mk mk-gap' }));
@@ -2575,12 +2577,12 @@ function renderTimeline() {
       mid.append(group); span(bundled ? left : lead.x - 6, bundled ? right : lead.x + 6);
     });
     const startTxt = e.first ? (e.approx ? '~' : '') + fmtA(e.first) : null;
-    const meta = h('span', { class: 'm' }, startTxt
+    const meta = h('span', { class: 'm' }, !e.disclosureKnown ? `Report updated ${fmtA(e.main.d)} · first disclosure unknown` : startTxt
       ? [`${startTxt} → public ${fmtA(e.main.d)} · `, h('span', { class: 'u', text: `${e.delay} days` })]
       : `Activity dates not disclosed · public ${fmtA(e.main.d)}`);
     const lbl = h('span', { class: 'lbl' }, h('span', { class: 't' }, e.title, labTags(e), datasetMark(e)), meta);
     const row = laneRow({ 'data-inc-row': e.id, 'aria-selected': String(state.sel === e.id),
-      'aria-label': `${e.title}${allScope() ? ` (${incDev(e)})` : ''}. ${e.first ? `Started ${fmtA(e.first)}, disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}, ${e.delay} days later.` : `Disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}; activity dates not disclosed.`}${hasDataset(e) ? ' Dataset available.' : ''}`,
+      'aria-label': `${e.title}${allScope() ? ` (${incDev(e)})` : ''}. ${!e.disclosureKnown ? `Report updated ${fmtA(e.main.d)}; first disclosure date unknown.` : e.first ? `Started ${fmtA(e.first)}, disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}, ${e.delay} days later.` : `Disclosed ${fmtA(e.main.d)} by ${incWhoBy(e, e.main.by)}; activity dates not disclosed.`}${hasDataset(e) ? ' Dataset available.' : ''}`,
       onclick: () => (state.sel === e.id ? clearSel() : select(e.id)),
       onkeydown: ev => { if (ev.target === ev.currentTarget && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); state.sel === e.id ? clearSel() : select(e.id); } } }, grid, lbl, svg, 'div');
     row.querySelector('.c-tr').style.height = trackHeight + 'px';
@@ -2600,7 +2602,7 @@ function renderResponsesChart() {
   if (s.sort !== 'd') { s.sort = 'd'; s.dir = -1; }
   const rows = respRows();
   setCount(rows.length, RESP.length, UPDATES_PAGE ? 'updates' : 'responses');
-  const discs = s.disc === false ? [] : INC.filter(e => (!s.inc || e.id === s.inc) && inRange(e.main.d, e.main.d));
+  const discs = s.disc === false ? [] : INC.filter(e => e.disclosureKnown && (!s.inc || e.id === s.inc) && inRange(e.main.d, e.main.d));
   const sides = new Set(rows.map(r => (r.who === 'lab' ? 'l' : 'r')));
   const two = view.clientWidth >= 720 && (UPDATES_PAGE || sides.size > 1);
   const head = h('div', { class: 'thead rhead' + (two ? ' two' : '') },
@@ -2736,7 +2738,7 @@ function backBtn() {
     if (b.ent) selectEnt(b.ent, o); else if (b.rsp) selectRsp(b.rsp, o); else if (b.post) selectPost(b.post, o); else if (b.writer) selectWriter(b.writer, o); else { if (state.view === 'wiki') leaveInside(); select(b.inc, o); }
   } }, h('span', { 'aria-hidden': 'true', text: '← ' }), h('span', { class: 'back-l', text: label }));
 }
-const incOptions = () => [...INC].sort((a, b) => a.n - b.n).map(e => ({ v: e.id, label: e.title, sub: `Disclosed ${fmtY(e.main.d)} · ${e.status}` }));
+const incOptions = () => [...INC].sort((a, b) => a.n - b.n).map(e => ({ v: e.id, label: e.title, sub: `${e.disclosureKnown ? 'Disclosed' : 'Report updated'} ${fmtY(e.main.d)} · ${e.status}` }));
 function incFilter(s) {
   return picker({ label: 'Incident', ariaLabel: 'Incident', value: s.inc, placeholder: 'Search incidents', searchable: true,
     options: [{ v: '', label: 'All' }, ...incOptions()], onPick: v => { s.inc = v || null; renderView(); renderFilters(); } });
@@ -2775,9 +2777,9 @@ function renderTimelineTable() {
     h('tbody', {}, rows.length ? rows.map(e => h('tr', { class: 'linked', 'data-inc-row': e.id, onclick: () => (state.sel === e.id ? clearSel() : select(e.id)) },
       h('td', { class: 'ttl' }, e.title, labTags(e), datasetMark(e), e.id === WIKI_INC ? [' ', h('button', { class: 'mini-link', type: 'button', text: 'posts ↘', 'data-tip': 'Inside this incident: the agents’ posts, with the shorthand explained', onclick: ev => { ev.stopPropagation(); enterInside(WIKI_INC); } })] : null),
       h('td', { class: 'mono m-when m-inline', text: e.first ? (e.approx ? '~' : '') + fmtA(e.first) : '—' }),
-      h('td', { class: 'mono m-inline', text: fmtA(e.main.d) }),
+      h('td', { class: 'mono m-inline', text: e.disclosureKnown ? fmtA(e.main.d) : 'Unknown', 'data-tip': e.disclosureKnown ? null : `Report updated ${fmtY(e.main.d)}; first disclosure date unknown` }),
       h('td', { class: 'mono num m-inline', text: e.delay != null ? `${e.delay} d` : '—', 'data-tip': delayTxt(e) }),
-      h('td', { class: 'm-inline' }, h('span', { class: 'who' }, h('span', { class: `dot g-${e.main.by}` }), incWho(e, e.main.by))),
+      h('td', { class: 'm-inline' }, e.disclosureKnown ? h('span', { class: 'who' }, h('span', { class: `dot g-${e.main.by}` }), incWho(e, e.main.by)) : 'Unknown'),
       h('td', { class: 'sub-cell', text: e.status }),
       h('td', { class: 'mono num m-inline', text: String(sites(e.id)) })))
       : h('tr', {}, h('td', { colspan: 7, class: 'empty', text: noneTxt('incidents', INC) })))));
@@ -3198,12 +3200,12 @@ function select(id, opts = {}) {
   const i = order.findIndex(x => x.id === id);
   const noun = from && from.ent ? `incident involving ${AFF_BY_ID.get(from.ent).name}` : 'incident';
   $('#det').replaceChildren(h('div', { class: 'det' }, backBtn(),
-    h('div', { class: 'det-top' }, topLine('Incident', 'Disclosed ', fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
+    h('div', { class: 'det-top' }, topLine('Incident', e.disclosureKnown ? 'Disclosed ' : 'Report updated ', fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
     h('h2', { id: 'det-title', tabindex: '-1', text: e.title }),
     devLine(e),
     catalogAdded(e),
     h('div', { class: 'tags' },
-      h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), `Disclosed by ${incWhoBy(e, e.main.by)}`),
+      h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), e.disclosureKnown ? `Disclosed by ${incWhoBy(e, e.main.by)}` : 'First disclosure date unknown'),
       e.category === 'benchmark-integrity' ? h('span', { class: 'tag', text: 'Benchmark integrity' }) : null,
       hasDataset(e) ? h('span', { class: 'tag dataset-tag', text: 'Dataset available' }) : null,
       h('span', { class: 'tag', text: e.status }),
@@ -3234,12 +3236,12 @@ function relIncBlock(e, r) {
   const s = sv('svg', { viewBox: `0 0 ${W} 22`, 'aria-hidden': 'true' });
   s.append(sv('line', { x1: 0, x2: W, y1: 11, y2: 11, class: 'gl' }));
   e.activity.filter(v => !v.sub).forEach(v => s.append(sv('rect', { x: x(v.s), y: 7, width: Math.max(4, x(addDays(v.e, 1)) - x(v.s)), height: 8, rx: 2.5, class: 'act' + (v.approx ? ' approx' : '') })));
-  if (Math.abs(x(r.d) - x(e.main.d)) > 12) s.append(sv('line', { x1: Math.min(x(e.main.d), x(r.d)) + 6, x2: Math.max(x(e.main.d), x(r.d)) - 6, y1: 11, y2: 11, class: 'lag' }));
+  if (e.disclosureKnown && Math.abs(x(r.d) - x(e.main.d)) > 12) s.append(sv('line', { x1: Math.min(x(e.main.d), x(r.d)) + 6, x2: Math.max(x(e.main.d), x(r.d)) - 6, y1: 11, y2: 11, class: 'lag' }));
   s.append(sv('circle', { cx: x(e.main.d), cy: 11, r: 5, class: `rev g-${e.main.by}` }));
   s.append(sv('rect', { x: x(r.d) - 6, y: 5, width: 12, height: 12, rx: 3, class: `rsq g-${RESP_DOT[r.who]}` }));
-  const lag = Math.round((D(r.d) - D(e.main.d)) / DAY);
+  const lag = e.disclosureKnown ? Math.round((D(r.d) - D(e.main.d)) / DAY) : null;
   return h('div', { class: 'rel-inc' }, incLink(e.id), s,
-    h('span', { class: 'sub', text: `${e.first ? `${e.approx ? '~' : ''}${fmtA(e.first)} → ` : ''}public ${fmtA(e.main.d)} · response ${lag > 0 ? `${dayN(lag)} later` : lag < 0 ? `${dayN(-lag)} earlier` : 'the same day'}` }));
+    h('span', { class: 'sub', text: !e.disclosureKnown ? 'First disclosure date unknown; response delay not calculated' : `${e.first ? `${e.approx ? '~' : ''}${fmtA(e.first)} → ` : ''}public ${fmtA(e.main.d)} · response ${lag > 0 ? `${dayN(lag)} later` : lag < 0 ? `${dayN(-lag)} earlier` : 'the same day'}` }));
 }
 function selectRsp(id, opts = {}) {
   if (UPDATES_PAGE) { selectUpdate(id, opts); return; }
@@ -3813,7 +3815,7 @@ function renderChooser() {
   const sorter = k => () => { if (s.sort === k) s.dir *= -1; else { s.sort = k; s.dir = k === 'title' ? 1 : -1; } renderView(); };
   const row = e => { const it = INSIDE[e.id]; return h('tr', { class: 'linked' + (it ? '' : ' plain'), 'data-inc-row': e.id, onclick: () => enterInside(e.id) },
     h('td', { class: 'ttl' }, e.title, labTags(e)),
-    h('td', { class: 'mono m-inline', text: fmtY(e.main.d) }),
+    h('td', { class: 'mono m-inline', text: e.disclosureKnown ? fmtY(e.main.d) : 'Unknown' }),
     h('td', { class: it ? 'txt' : 'sub-cell' }, it ? [h('span', { class: 'rt', text: it.summary }), h('span', { class: 'mini-link', text: 'Look inside ↘' })] : 'Only the card, for now')); };
   const grp = (label, tip) => h('tr', { class: 'grp' }, h('td', { colspan: 3, text: label, 'data-tip': tip }));
   $('#view').replaceChildren(h('table', { class: 'tbl tlt chooser' },
