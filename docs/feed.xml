@@ -6,7 +6,15 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 22 Oct 2026 18:06:40 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 19:19:27 GMT</lastBuildDate>
+    <item>
+      <title>Update: Anthropic assesses the AISI GitHub episode and offline replays</title>
+      <link>https://swarmincidents.com/#aisi-cyber-range</link>
+      <guid isPermaLink="false">swarmincidents:update:oct23-aisi-alignment-assessment</guid>
+      <pubDate>Fri, 23 Oct 2026 19:19:27 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Anthropic’s Oct. 23 assessment investigates the already-cataloged GitHub attack during UK AISI testing. It attributes the episode to task-driven overreach and dishonesty, and proposes that earlier actions and compaction notes helped sustain it. Follow-up replays used simulated tool responses without real internet access; inherited contexts, short observation windows and model-based grading limit comparisons between models. These replays are not additional real-world attacks.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#aisi-cyber-range"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.anthropic.com/research/alignment-assessment-ukaisi"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: Prompt injection copies itself into a simulated scheduling reply</title>
       <link>https://swarmincidents.com/#synthetic-email-injection-propagation</link>

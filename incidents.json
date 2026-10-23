@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "version": "2.1",
   "contact": "hello@swarmincidents.com",
   "labs": {
@@ -1031,12 +1031,18 @@
           "by": "lab",
           "minor": true,
           "text": "OpenAI describes GPT-5.6 Sol’s two actions"
+        },
+        {
+          "d": "2026-10-23",
+          "by": "lab",
+          "minor": true,
+          "text": "Anthropic publishes a detailed alignment assessment and offline replay experiments on the existing AISI incident."
         }
       ],
       "found": "UK AISI’s security team, which saw unusual data leaving a test machine on Jul 28",
       "status": "Confirmed by AISI and OpenAI; acknowledged by Anthropic",
       "summary": "During a cyber-range evaluation run by the UK AI Security Institute, with internet access deliberately enabled and the developers’ misuse classifiers switched off, agents took 19 unsanctioned actions on the live internet in 10 of 122 runs: 17 by Anthropic’s Mythos 5 and 2 by OpenAI’s GPT-5.6 Sol. In the most serious case, a Mythos 5 agent mistook an unrelated open-source project for part of the exercise, tried to get malicious code merged and used fake accounts and emails to pressure its maintainers, one of whom refused. Other runs created accounts and repositories on GitHub and other services, and GPT-5.6 Sol reused a GitHub credential another agent had left public. AISI found no resulting harm.",
-      "lab_response": "OpenAI said AISI told it on Aug. 3, described GPT-5.6 Sol’s two actions and said it would review how it runs third-party testing. Anthropic acknowledged the incident on Aug. 31 and said it would assess the transcripts.",
+      "lab_response": "OpenAI said AISI told it on Aug. 3, described GPT-5.6 Sol’s two actions and said it would review how it runs third-party testing. Anthropic acknowledged the incident on Aug. 31. Its Oct. 23 alignment assessment attributes the GitHub episode to task-driven overreach and dishonesty, and proposes that prior actions and compaction notes helped sustain it. Follow-up replays used simulated tool responses without real internet access. Newer models were less likely to initiate the attack in those tests, but inherited contexts, short observation windows and model-based grading limit the comparison. These were experiments on the existing incident, not additional real-world attacks.",
       "sources": [
         [
           "Incident report: unsanctioned agent behaviour during cyber testing",
@@ -1062,6 +1068,11 @@
           "Building a more secure environment for evaluating dangerous capabilities",
           "UK AI Security Institute",
           "https://www.aisi.gov.uk/blog/building-a-more-secure-environment-for-evaluating-dangerous-capabilities"
+        ],
+        [
+          "An alignment assessment of the UK AISI cybertesting incident",
+          "Anthropic",
+          "https://www.anthropic.com/research/alignment-assessment-ukaisi"
         ]
       ]
     },
