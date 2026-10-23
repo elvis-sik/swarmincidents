@@ -1712,6 +1712,165 @@
       "publisher": "MTS (X)",
       "aliases": [],
       "labels": []
+    },
+    "src-0105f347c088656cb14b": {
+      "url": "https://alignment.openai.com/misalignment-reports/encouraging-deception-in-compaction-summaries/",
+      "title": "Compaction summaries instruct successors to hide mistakes",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ac18f492b583412ad282": {
+      "url": "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/",
+      "title": "Self-written prompt injections change a task continuation",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a5ab872c216c2f944ec7": {
+      "url": "https://openai.com/index/safety-alignment-long-horizon-models/",
+      "title": "Safety and alignment for long-horizon models",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4cd48230cc75c0069b12": {
+      "url": "https://github.com/KellerJordan/modded-nanogpt/pull/287",
+      "title": "modded-nanogpt pull request #287 (now unavailable)",
+      "publisher": "GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9f49e2c2ea792062125a": {
+      "url": "https://alignment.anthropic.com/2026/automated-alignment-researchers/",
+      "title": "Automated alignment researchers",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a9acbff7bd542e61d9b0": {
+      "url": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+      "title": "Automated researchers mitigate alignment failures",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a88ccd9cde45b630e326": {
+      "url": "https://www.anthropic.com/research/vibe-physics",
+      "title": "Physics assistant alters plots instead of validating calculations",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-317e55b4b3e75d369b34": {
+      "url": "https://www.jonstokes.com/p/did-claude-code-lose-its-mind-or",
+      "title": "Did Claude Code lose its mind, or…?",
+      "publisher": "Jon Stokes",
+      "aliases": [],
+      "labels": []
+    },
+    "src-72ddc805312d6b9c91d9": {
+      "url": "https://x.com/SebastienGllmt/status/2092634841863123047",
+      "title": "Cleanup-safety deletion report and author replies",
+      "publisher": "Sebastien Guillemot",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cd0d0a993e3e7d41d1d8": {
+      "url": "https://github.com/google-gemini/gemini-cli/issues/4586",
+      "title": "Gemini CLI file-loss issue #4586",
+      "publisher": "Anuraag Gupta / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4e8ffacbcfc9b762ec56": {
+      "url": "https://github.com/user-attachments/files/21372906/gemini.cli.screw.up.txt",
+      "title": "Posted Gemini CLI session",
+      "publisher": "Anuraag Gupta / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d477c1aabcdb7b1f8a5f": {
+      "url": "https://arstechnica.com/information-technology/2025/07/ai-coding-assistants-chase-phantoms-destroy-real-user-data/",
+      "title": "AI coding assistants chase phantoms, destroy real user data",
+      "publisher": "Ars Technica",
+      "aliases": [],
+      "labels": []
+    },
+    "src-96c880a4fa6f2ec8719d": {
+      "url": "https://x.com/SakanaAILabs/status/1892992938013270019",
+      "title": "AI CUDA Engineer acknowledgment",
+      "publisher": "Sakana AI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7e25f6f465bc2622edf5": {
+      "url": "https://sakana.ai/ai-cuda-engineer-post-mortem/",
+      "title": "AI CUDA Engineer postmortem",
+      "publisher": "Sakana AI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cb3c1211f1f964a39bb9": {
+      "url": "https://aivillageblog.substack.com/p/what-do-we-tell-the-humans",
+      "title": "What Do We Tell the Humans?",
+      "publisher": "AI Village",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5bc08691af64ad61dda2": {
+      "url": "https://aivillageblog.substack.com/p/the-m5000-loan-how-i-borrowed-play",
+      "title": "The 5,000-mana loan",
+      "publisher": "AI Village",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6d9cb3eac49029e539b8": {
+      "url": "https://www.anthropic.com/research/project-vend-2",
+      "title": "Project Vend: Phase two",
+      "publisher": "Anthropic / Andon Labs",
+      "aliases": [],
+      "labels": []
+    },
+    "src-86540449865f210a8f64": {
+      "url": "https://github.com/h2theoran1984/SignalPot/pull/40",
+      "title": "PocketOS commentary repeats the existing Railway deletion (secondary commentary)",
+      "publisher": "h2theoran1984",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "secondary-commentary"
+    },
+    "src-d1b51c4355e48b00a177": {
+      "url": "https://github.com/Narwhal-Lab/Narwhal-aicode-risks/issues/35",
+      "title": "PocketOS case submission repeats the existing incident (secondary commentary)",
+      "publisher": "adcdl",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "secondary-commentary"
+    },
+    "src-cb8a0549b0ebaa274c41": {
+      "url": "https://news.ycombinator.com/item?id=44633147",
+      "title": "HN speculation concerns Lemkin’s Replit incident (secondary commentary)",
+      "publisher": "moconnor",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "secondary-commentary"
+    },
+    "src-73b37d8421b1245d4595": {
+      "url": "https://github.com/xhiroga/news/issues/1661",
+      "title": "News-bot issue repeats Replit database deletion (secondary commentary)",
+      "publisher": "sawaraken[bot]",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "secondary-commentary"
+    },
+    "src-751a4395c7d87eb52e4d": {
+      "url": "https://news.ycombinator.com/item?id=44648792",
+      "title": "HN cross-links point to the same Replit story (secondary commentary)",
+      "publisher": "gnabgib",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "secondary-commentary"
     }
   },
   "incidents": {
@@ -3237,7 +3396,12 @@
         "src-6ffd57b2d41967667ab9",
         "src-547f860fb0fb164f9623"
       ],
-      "additional": [],
+      "additional": [
+        "src-d477c1aabcdb7b1f8a5f",
+        "src-cb8a0549b0ebaa274c41",
+        "src-73b37d8421b1245d4595",
+        "src-751a4395c7d87eb52e4d"
+      ],
       "reveals": [
         {
           "d": "2025-07-18",
@@ -3273,7 +3437,10 @@
         "src-95fb24d3cd2c1bcba60c",
         "src-38836a4c061a2785a040"
       ],
-      "additional": [],
+      "additional": [
+        "src-86540449865f210a8f64",
+        "src-d1b51c4355e48b00a177"
+      ],
       "reveals": [
         {
           "d": "2026-04-25",
@@ -4453,6 +4620,281 @@
           "text": "Johannes Gasteiger presents the research-decision-steering study at London ControlConf; the blog publication and individual run dates remain unverified",
           "source_ids": [
             "src-f8bae829272814f8fd37"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "compaction-summary-concealment": {
+      "curated": [
+        "src-0105f347c088656cb14b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-16",
+          "by": "lab",
+          "text": "OpenAI report marked updated; its first public posting date is not established",
+          "source_ids": [
+            "src-0105f347c088656cb14b"
+          ]
+        }
+      ],
+      "activity": [],
+      "knew": {
+        "d": "2026-07-09",
+        "text": "OpenAI discovers the behavior; the report’s main sample date is May 30, not a date established for each example.",
+        "source_ids": [
+          "src-0105f347c088656cb14b"
+        ]
+      }
+    },
+    "compaction-self-prompt-injection": {
+      "curated": [
+        "src-ac18f492b583412ad282"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-16",
+          "by": "lab",
+          "text": "OpenAI report marked updated; its first public posting date is not established",
+          "source_ids": [
+            "src-ac18f492b583412ad282"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-18",
+          "e": "2026-07-18",
+          "label": "Incident date stated in the report; individual example dates are not separately established",
+          "source_ids": [
+            "src-ac18f492b583412ad282"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-08-09",
+        "text": "OpenAI discovers the behavior",
+        "source_ids": [
+          "src-ac18f492b583412ad282"
+        ]
+      }
+    },
+    "nanogpt-slack-only-publication": {
+      "curated": [
+        "src-a5ab872c216c2f944ec7",
+        "src-4cd48230cc75c0069b12"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-20",
+          "by": "lab",
+          "text": "OpenAI describes the unauthorized public NanoGPT submission",
+          "source_ids": [
+            "src-a5ab872c216c2f944ec7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "automated-alignment-research-review-gaming": {
+      "curated": [
+        "src-9f49e2c2ea792062125a",
+        "src-a9acbff7bd542e61d9b0"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-28",
+          "by": "lab",
+          "text": "Anthropic announces the research and describes monitored cheating attempts",
+          "source_ids": [
+            "src-a9acbff7bd542e61d9b0"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "physics-assistant-uncertainty-plots": {
+      "curated": [
+        "src-a88ccd9cde45b630e326"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-23",
+          "by": "lab",
+          "text": "Anthropic publishes Schwartz’s account of the physics project",
+          "source_ids": [
+            "src-a88ccd9cde45b630e326"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "markdown-chunker-hardcoded-tests": {
+      "curated": [
+        "src-317e55b4b3e75d369b34"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-06-08",
+          "by": "other",
+          "text": "Jon Stokes publishes his Markdown-chunker account",
+          "source_ids": [
+            "src-317e55b4b3e75d369b34"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "cleanup-safety-test-home-directory": {
+      "curated": [
+        "src-72ddc805312d6b9c91d9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-26",
+          "by": "other",
+          "text": "Guillemot reports the destructive safety test and explains the model fallbacks",
+          "source_ids": [
+            "src-72ddc805312d6b9c91d9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "gemini-cli-file-reorganization-loss": {
+      "curated": [
+        "src-cd0d0a993e3e7d41d1d8",
+        "src-4e8ffacbcfc9b762ec56",
+        "src-d477c1aabcdb7b1f8a5f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-07-21",
+          "by": "other",
+          "text": "Gupta posts the original issue and session material",
+          "source_ids": [
+            "src-cd0d0a993e3e7d41d1d8",
+            "src-4e8ffacbcfc9b762ec56"
+          ]
+        },
+        {
+          "d": "2025-07-24",
+          "by": "press",
+          "text": "Ars Technica reports the file-loss account",
+          "source_ids": [
+            "src-d477c1aabcdb7b1f8a5f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "sakana-cuda-engineer-check-bypass": {
+      "curated": [
+        "src-96c880a4fa6f2ec8719d",
+        "src-7e25f6f465bc2622edf5"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-02-21",
+          "by": "research",
+          "text": "Sakana AI acknowledges the evaluation loopholes",
+          "source_ids": [
+            "src-96c880a4fa6f2ec8719d"
+          ]
+        },
+        {
+          "d": "2025-03-03",
+          "by": "research",
+          "text": "Sakana AI publishes a postmortem",
+          "source_ids": [
+            "src-7e25f6f465bc2622edf5"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "ai-village-ngo-endorsement-claims": {
+      "curated": [
+        "src-cb3c1211f1f964a39bb9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-11-21",
+          "by": "research",
+          "text": "AI Village operators describe NGO outreach, rejections and unsupported endorsements",
+          "source_ids": [
+            "src-cb3c1211f1f964a39bb9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "ai-village-game-marketing-overclaims": {
+      "curated": [
+        "src-cb3c1211f1f964a39bb9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-11-21",
+          "by": "research",
+          "text": "AI Village operators describe fabricated puzzle-game marketing claims",
+          "source_ids": [
+            "src-cb3c1211f1f964a39bb9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "ai-village-play-money-loan-default": {
+      "curated": [
+        "src-5bc08691af64ad61dda2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-04",
+          "by": "research",
+          "text": "AI Village publishes the retrospective, with an editor’s warning about its generated reflection",
+          "source_ids": [
+            "src-5bc08691af64ad61dda2"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-08",
+          "e": "2026-08-08",
+          "label": "Loan accepted July 8; explicit refusal August 7; repayment market resolves August 8",
+          "source_ids": [
+            "src-5bc08691af64ad61dda2"
+          ]
+        }
+      ]
+    },
+    "project-vend-unauthorized-hiring-authority": {
+      "curated": [
+        "src-6d9cb3eac49029e539b8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-12-18",
+          "by": "lab",
+          "text": "Anthropic and Andon Labs describe phase two, including the security and imposter-CEO episodes",
+          "source_ids": [
+            "src-6d9cb3eac49029e539b8"
           ]
         }
       ],

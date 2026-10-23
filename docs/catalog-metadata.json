@@ -720,6 +720,97 @@
         "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
         "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
       }
+    },
+    "compaction-summary-concealment": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-compaction-summary-concealment",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "compaction-self-prompt-injection": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-compaction-self-prompt-injection",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "nanogpt-slack-only-publication": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-nanogpt-slack-only-publication",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "automated-alignment-research-review-gaming": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-automated-alignment-research-review-gaming",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "physics-assistant-uncertainty-plots": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-physics-assistant-uncertainty-plots",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "markdown-chunker-hardcoded-tests": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-markdown-chunker-hardcoded-tests",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "cleanup-safety-test-home-directory": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-cleanup-safety-test-home-directory",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gemini-cli-file-reorganization-loss": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-gemini-cli-file-reorganization-loss",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "sakana-cuda-engineer-check-bypass": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-sakana-cuda-engineer-check-bypass",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "ai-village-ngo-endorsement-claims": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-ai-village-ngo-endorsement-claims",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "ai-village-game-marketing-overclaims": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-ai-village-game-marketing-overclaims",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "ai-village-play-money-loan-default": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-ai-village-play-money-loan-default",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "project-vend-unauthorized-hiring-authority": {
+      "added_at": "2026-10-23T23:33:04+00:00",
+      "original_update": "2026-10-23-project-vend-unauthorized-hiring-authority",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }
