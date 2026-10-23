@@ -84,7 +84,7 @@ Screenshot baselines (Chromium desktop and Pixel 7) are Linux renders made in th
 |---|---|
 | `template.html` | The whole site: markup, styles and script in one file |
 | `incidents.json`, `DATA.md` | The data and its format |
-| `build.py` | Writes `docs/index.html`, `docs/wiki-data.js`, `docs/sitemap.xml` |
+| `build.py` | Writes `docs/index.html`, `docs/wiki-data.js`, `docs/sitemap.xml`, `docs/stats.json` (the incident count, read by swarms.wiki) |
 | `wiki_build.py`, `wiki_notes.json`, `wiki-data.js` | The wiki reader's data pipeline, editorial layer and output |
 | `docs/` | What GitHub Pages serves |
 | `tests/`, `playwright.config.js`, `.github/workflows/test.yml` | The test suite and CI |
