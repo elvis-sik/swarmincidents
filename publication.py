@@ -322,9 +322,25 @@ def main():
     if args.command == "packet":
         args.output.write_text(json.dumps(drafting_packet(read(args.before), read(args.after)), ensure_ascii=False, indent=2) + "\n")
     elif args.command == "prepare":
-        result = append(read(args.before), read(args.after), read(args.journal), read(args.plan))
+        after = read(args.after)
+        result = append(read(args.before), after, read(args.journal), read(args.plan))
+        projected = project(result, after)
+        metadata_path = args.after.with_name('catalog-metadata.json')
+        registry_path = args.after.with_name('source-registry.json')
+        sidecars = None
+        if metadata_path.exists() or registry_path.exists():
+            if not metadata_path.exists() or not registry_path.exists():
+                raise ValueError('Publication needs both catalog provenance files')
+            try:
+                from .catalog_provenance import sync
+            except ImportError:
+                from catalog_provenance import sync
+            sidecars = sync(after, projected, read(metadata_path), read(registry_path))
         args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
-        args.updates_output.write_text(json.dumps(project(result, read(args.after)), ensure_ascii=False, indent=2) + "\n")
+        args.updates_output.write_text(json.dumps(projected, ensure_ascii=False, indent=2) + "\n")
+        if sidecars:
+            for path, value in zip((metadata_path, registry_path), sidecars):
+                path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
     else:
         old = read(args.old_journal) if args.old_journal and args.old_journal.exists() else None
         check_transition(read(args.before), read(args.after), old, read(args.journal), read(args.old_updates))

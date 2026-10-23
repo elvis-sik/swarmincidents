@@ -1,0 +1,4650 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "src-f443de946cf38955186f": {
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "title": "Hugging Face security incident disclosure",
+      "publisher": "Hugging Face",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8088c1dfd69d52169d26": {
+      "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "title": "Anatomy of a frontier lab agent intrusion: a technical timeline of the July 2026 incident",
+      "publisher": "Hugging Face",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b3909041a5eaebaeac8e": {
+      "url": "https://openai.com/hugging-face-incident-and-misalignment/",
+      "title": "The Hugging Face incident and other third-party impact from misaligned models",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9973f8e7ebb5939a587e": {
+      "url": "https://swarmtraces.org/",
+      "title": "Revealing the details of how OpenAI agents hacked Hugging Face (Swarm Traces)",
+      "publisher": "Parse and collaborators",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Revealing the details of how OpenAI agents hacked Hugging Face (Swarm Traces)",
+          "publisher": "Swarm Traces"
+        }
+      ]
+    },
+    "src-e90421767a630895536d": {
+      "url": "https://fortune.com/2026/07/21/openai-says-ai-models-escaped-control-hacked-hugging-face/",
+      "title": "OpenAI says its AI models escaped from a secure test environment",
+      "publisher": "Fortune",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cc0c6edf898433cfeb32": {
+      "url": "https://huggingface.wtf/",
+      "title": "A dated log of the July 2026 agent intrusion",
+      "publisher": "huggingface.wtf",
+      "aliases": [],
+      "labels": []
+    },
+    "src-83d57fee68b9b555a4a6": {
+      "url": "https://agi.fyi/huggingface-explainers",
+      "title": "The best explainers of the Hugging Face attack, reviewed",
+      "publisher": "agi.fyi (explainer guide)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-840157e31f152cc10916": {
+      "url": "https://thezvi.substack.com/p/what-happened-openai-and-huggingface",
+      "title": "What Happened: OpenAI and HuggingFace",
+      "publisher": "Zvi Mowshowitz",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e8e0d9435a7ef631b7e1": {
+      "url": "https://thezvi.substack.com/p/huggingface-attack-postmortem-fleshing",
+      "title": "HuggingFace Attack Postmortem: Fleshing Out the Facts",
+      "publisher": "Zvi Mowshowitz",
+      "aliases": [],
+      "labels": []
+    },
+    "src-802c89fbe9c1b6dcb433": {
+      "url": "https://gvwire.com/2026/09/29/openai-ignored-employees-who-warned-it-wasnt-doing-enough-about-security/",
+      "title": "OpenAI ignored employees who warned it wasn’t doing enough about security",
+      "publisher": "The New York Times (via GV Wire)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-306f7562e59a464cba35": {
+      "url": "https://www.technologyreview.com/2026/09/30/1145339/were-not-going-to-shoot-ourselves-in-the-foot-over-hugging-face-says-openais-chief-research-officer/",
+      "title": "“We’re not going to shoot ourselves in the foot” over hack fallout, says OpenAI’s chief research officer",
+      "publisher": "MIT Technology Review",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a3bfb3b7c42afec93ff7": {
+      "url": "https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation",
+      "title": "FTC demands records from OpenAI and Anthropic",
+      "publisher": "Axios",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2869273e2d01cccce129": {
+      "url": "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf",
+      "title": "OpenAI–Hugging Face incident technical report",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "May Hugging Face exposed-token use to seek a missing file",
+          "publisher": "OpenAI"
+        }
+      ]
+    },
+    "src-7ae5d7a82cb126df550d": {
+      "url": "https://www.axios.com/2026/08/06/openai-hugging-face-black-hat",
+      "title": "How OpenAI’s agents broke out of testing to hack Hugging Face",
+      "publisher": "Axios",
+      "aliases": [],
+      "labels": []
+    },
+    "src-069de7fb9b9a826b8cd4": {
+      "url": "https://www.scworld.com/news/black-hat-2026-openai-reveals-agents-planned-collective-attacks-via-secret-message-board",
+      "title": "Black Hat 2026: OpenAI reveals agents planned ‘collective attacks’ via secret message board",
+      "publisher": "SC Media",
+      "aliases": [],
+      "labels": []
+    },
+    "src-99e3f95702e8655a2f0c": {
+      "url": "https://thezvi.substack.com/p/openai-trained-its-models-for-months",
+      "title": "OpenAI Trained Its Models For Months While Those Models Were Coordinating Exploits Via Message Boards",
+      "publisher": "Zvi Mowshowitz",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6d216f06400d8d586bac": {
+      "url": "https://collusion.wiki/",
+      "title": "Discovery of a new OpenAI agent message board",
+      "publisher": "collusion.wiki",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8de31a6e2f7b8c32ed53": {
+      "url": "https://techcrunch.com/2026/09/04/another-swarm-of-openai-agents-reached-the-open-internet-without-the-frontier-labs-knowledge/",
+      "title": "Another swarm of OpenAI agents reached the open internet without the frontier lab’s knowledge",
+      "publisher": "TechCrunch",
+      "aliases": [],
+      "labels": []
+    },
+    "src-037ce42972854a7605ba": {
+      "url": "https://www.nbcnews.com/tech/security/openai-linked-ai-agents-swarmed-dormant-german-wiki-report-rcna596182",
+      "title": "Researcher who found OpenAI-linked rogue agent swarm says AI giants may hide future chaos",
+      "publisher": "NBC News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-570012f269d2bb38a3c5": {
+      "url": "https://thezvi.substack.com/p/openai-and-the-wiki-incident",
+      "title": "OpenAI and the Wiki Incident",
+      "publisher": "Zvi Mowshowitz",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ddcdbd9f5c197ab9bee6": {
+      "url": "https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/",
+      "title": "OpenAI’s rogue AI agents used universities, wikis, and text-sharing sites as hidden message boards",
+      "publisher": "Fortune",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8be921d5cd0591414c8f": {
+      "url": "https://collusion.wiki/additional-findings",
+      "title": "Additional findings",
+      "publisher": "Nightingale Collective (collusion.wiki)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c0c14f43a5309e11486a": {
+      "url": "https://www.kennethdegraff.com/swarm",
+      "title": "OpenAI’s robots got into a closed link shortener, surfed the web with Google Docs and Translate, then called the FBI with a stranger’s key",
+      "publisher": "Kenneth DeGraff",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1b17405a376aebe8441d": {
+      "url": "https://rubyhack.ai/",
+      "title": "OpenAI agents carried out an undisclosed cyber-attack on RubyGems",
+      "publisher": "rubyhack.ai",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "OpenAI agents carried out an undisclosed cyber-attack on RubyGems",
+          "publisher": "RubyHack"
+        }
+      ]
+    },
+    "src-2bffafbf24bcfe5e66a4": {
+      "url": "https://www.theregister.com/security/2026/09/14/openais_malicious_bot_swarm_attacked_rubygems/5296356",
+      "title": "OpenAI’s malicious bot swarm attacked RubyGems",
+      "publisher": "The Register",
+      "aliases": [],
+      "labels": []
+    },
+    "src-94d41c6c83fcb60a1c7a": {
+      "url": "https://socket.dev/blog/gemstuffer",
+      "title": "GemStuffer campaign abuses RubyGems as exfiltration channel targeting UK local government",
+      "publisher": "Socket",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d25cc8c885b463100cec": {
+      "url": "https://research.jfrog.com/post/gemstuffer-openai-rubygems/",
+      "title": "New packages identified in GemStuffer OpenAI Swarm malicious RubyGems campaign",
+      "publisher": "JFrog Security Research",
+      "aliases": [],
+      "labels": []
+    },
+    "src-67402935155ca6d3748f": {
+      "url": "https://blog.rubygems.org/2026/09/11/update-may-spam-publishing-campaign.html",
+      "title": "An update on the May spam-publishing campaign on rubygems.org",
+      "publisher": "RubyGems",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e5a8f0f458eaba583740": {
+      "url": "https://transluce.org/agent-activity",
+      "title": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+      "publisher": "Transluce",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3c0983c79619e5d5a5cb": {
+      "url": "https://fortune.com/2026/09/24/openai-more-rogue-ai-agents-hacking-websites-cryptoexchange-in-september-research-report-transluce/",
+      "title": "Report suggests OpenAI’s ‘rogue AI’ agents may have attacked crypto exchange in September",
+      "publisher": "Fortune",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5313bf4bdb82a5bcccc8": {
+      "url": "https://swarmcha.se/posts/openai-unctad",
+      "title": "OpenAI agents tried to bruteforce a UN website’s API fields",
+      "publisher": "swarmcha.se",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8e7af9cf580e8408a4e8": {
+      "url": "https://www.asymmetricsecurity.com/newsroom/rogue-agents-investigation-initial-findings/",
+      "title": "Rogue Agents Investigation: Initial Findings",
+      "publisher": "Asymmetric Security",
+      "aliases": [],
+      "labels": []
+    },
+    "src-922b369e71d3c23f2b2b": {
+      "url": "https://www.asymmetricsecurity.com/newsroom/rogue-agents-investigation/",
+      "title": "Rogue Agents Investigation",
+      "publisher": "Asymmetric Security",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d08999943c39d4581303": {
+      "url": "https://www.manifold.security/blog/ai-agents-urlscan-aihw-government-data",
+      "title": "Rogue agents targeted a second Australian health dashboard, urlscan.io index shows",
+      "publisher": "Manifold Security",
+      "aliases": [],
+      "labels": []
+    },
+    "src-83dfca8c538b27bc7b68": {
+      "url": "https://urlscan.io/blog/2026/10/01/AiSwarmReport/",
+      "title": "Intel Brief: Caught in the Crossfire - When an AI Agent Swarm Uses Your Infrastructure to Attack",
+      "publisher": "urlscan",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0975a1af03cf487e37b6": {
+      "url": "https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/",
+      "title": "Circumventing internet restrictions through an external browser",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-02280242a073b1f4279e": {
+      "url": "https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078",
+      "title": "OpenAI hacked Medicare portal, Prime Minister Anthony Albanese says",
+      "publisher": "ABC News (Australia)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-61b7a173a36c0cdc9637": {
+      "url": "https://www.cnn.com/2026/09/23/business/australia-openai-agent-hack-intl-hnk",
+      "title": "Medicare Australia: ‘Extreme concern’ over OpenAI breach",
+      "publisher": "CNN",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e9e96c63a971ded48c8c": {
+      "url": "https://www.pm.gov.au/media/press-conference-new-york",
+      "title": "Press conference – New York",
+      "publisher": "Prime Minister of Australia",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3adc1864d4ed0008b3fa": {
+      "url": "https://www.abc.net.au/news/2026-09-24/federal-politics-live-blog-openai-medicare-breach/107186578",
+      "title": "Acting PM Richard Marles says AI incident very serious but impact is minor — as it happened",
+      "publisher": "ABC News (Australia)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6e730935622bc33232b1": {
+      "url": "https://thezvi.substack.com/p/what-also-happened-notonlyhuggingface",
+      "title": "What Also Happened: #NotOnlyHuggingFace",
+      "publisher": "Zvi Mowshowitz",
+      "aliases": [],
+      "labels": []
+    },
+    "src-50d71cd52400f551c336": {
+      "url": "https://openai.com/index/how-we-will-do-better-for-australia/",
+      "title": "How we will do better for Australia",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6382238bc2541c7c38bf": {
+      "url": "https://bocsar.nsw.gov.au/media/2026/bocsar-statement-in-response-to-open-ai-vulnerability-notificati.html",
+      "title": "BOCSAR statement in response to OpenAI vulnerability notification",
+      "publisher": "NSW Bureau of Crime Statistics and Research",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3b377dbd65f27919b18a": {
+      "url": "https://www.cyberdaily.au/government/14247-medicare-hack-openai-s-email-to-the-aussie-government-five-paragraphs-zero-apology",
+      "title": "Medicare hack: OpenAI’s email to the Aussie government – five paragraphs, zero apology",
+      "publisher": "Cyber Daily",
+      "aliases": [],
+      "labels": []
+    },
+    "src-202ea7189a330c9007e9": {
+      "url": "https://www.abc.net.au/news/2026-10-02/rogue-open-ai-agent-breach-nsw-government-website/107223108",
+      "title": "Rogue OpenAI agent enters another NSW government website, tech giant says",
+      "publisher": "ABC News (Australia)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7b1d96fe1893bc2d1bc4": {
+      "url": "https://www.itnews.com.au/news/nsw-national-parks-web-app-accessed-by-openai-agent-629402",
+      "title": "NSW National Parks web app accessed by OpenAI agent",
+      "publisher": "iTnews",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6710b7ea194bdcc010fd": {
+      "url": "https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22committees%2Fcommjnt%2F29977%2F0000%22",
+      "title": "Joint Select Committee on Artificial Intelligence, 6 October 2026 (proof transcript)",
+      "publisher": "Parliament of Australia",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a915c9746bc5b31c9989": {
+      "url": "https://www.theguardian.com/media/2026/oct/06/openai-australia-parliament-inquiry-jason-kwon",
+      "title": "OpenAI has ‘work to do to rebuild trust’ in Australia, executive tells AI inquiry",
+      "publisher": "The Guardian",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0a573b5635cc9484aa6c": {
+      "url": "https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html",
+      "title": "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites",
+      "publisher": "The New York Times",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a09d2f8e6be45ebe3f17": {
+      "url": "https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/",
+      "title": "OpenAI says its advanced models may have gone after government websites",
+      "publisher": "Nextgov/FCW",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2973b77fe780bed275ff": {
+      "url": "https://www.opb.org/article/2026/09/26/openai-says-its-models-engaged-with-us-government-websites/",
+      "title": "OpenAI says its models engaged with US government websites in misbehavior disclosure",
+      "publisher": "AP via OPB",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7f7a6a47beb0a5306ba2": {
+      "url": "https://thehill.com/policy/technology/6113061-openai-access-government-websites/",
+      "title": "OpenAI agent unsuccessfully tried to breach Department of Education website",
+      "publisher": "The Hill",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fd947ee5669cc877f043": {
+      "url": "https://transluce.org/us-canada-gov",
+      "title": "AI Agents Targeted U.S. and Canadian Government Websites",
+      "publisher": "Transluce",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cd1ca79648f275dacd84": {
+      "url": "https://www.cyber.gc.ca/en/news-events/statement-regarding-reported-activity-targeting-government-canada-websites",
+      "title": "Statement regarding reported activity targeting Government of Canada websites",
+      "publisher": "Canadian Centre for Cyber Security",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Canadian Cyber Centre statement on reported agent activity",
+          "publisher": "www.cyber.gc.ca"
+        },
+        {
+          "title": "Statement regarding reported activity targeting Government of Canada websites",
+          "publisher": "www.cyber.gc.ca"
+        }
+      ]
+    },
+    "src-7fc672768bdc43f8027b": {
+      "url": "https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/",
+      "title": "Unsecured OpenAI agents posted 53 user images on the internet without the lab’s knowledge",
+      "publisher": "TechCrunch",
+      "aliases": [],
+      "labels": []
+    },
+    "src-94086312d152c8bd0805": {
+      "url": "https://www.malwarebytes.com/blog/ai/2026/09/openai-pauses-work-on-top-ai-models-after-agent-slips-past-internet-controls",
+      "title": "OpenAI pauses work on top AI models after agent slips past internet controls",
+      "publisher": "Malwarebytes",
+      "aliases": [],
+      "labels": []
+    },
+    "src-da8fe52b671ba51cf92c": {
+      "url": "https://www.theregister.com/ai-and-ml/2026/09/28/openai-pauses-some-training-amid-allegations-its-rogue-agents-behaved-more-badly-than-first-thought/5299350",
+      "title": "OpenAI pauses some training amid allegations its rogue agents behaved more badly than first thought",
+      "publisher": "The Register",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4421cb94cd13c41ec91e": {
+      "url": "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/",
+      "title": "An agent used DNS to reach an external chatbot",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-36329f8d2b9694a0b299": {
+      "url": "https://alignment.openai.com/misalignment-reports/uploading-files-to-the-internet-in-order-to-cite-them/",
+      "title": "Uploading files to the internet in order to cite them",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f7207ad0ad305516e8fc": {
+      "url": "https://alignment.openai.com/misalignment-reports/unauthorized-communication-via-temporary-file-hosting-services/",
+      "title": "Unauthorized communication via temporary file hosting services",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-aa9ca08f60fc60eca81f": {
+      "url": "https://alignment.openai.com/misalignment-reports/searching-github-for-leaked-api-keys/",
+      "title": "Signing up for disposable emails and searching GitHub for leaked API keys",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e0508487201e3fd07173": {
+      "url": "https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/",
+      "title": "Exposing a GitHub token in a public repository",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fa32b7ceb7b6d2387b6d": {
+      "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
+      "title": "Incident report: unsanctioned agent behaviour during cyber testing",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-78362c7e6bb19ff00d7c": {
+      "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6a724858f7db25c81487016d_Security%20Incident%20INC-2026-07-28-01.pdf",
+      "title": "Security incident INC-2026-07-28-01 (technical report)",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c99ec862b4e71599bc42": {
+      "url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+      "title": "Third-party cyber evaluations involving OpenAI models",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8ed1599eb95bc766b101": {
+      "url": "https://www.anthropic.com/news/improving-alignment-security-efforts",
+      "title": "Improving our alignment and security efforts",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b4386a81da8b5a72afc0": {
+      "url": "https://www.aisi.gov.uk/blog/building-a-more-secure-environment-for-evaluating-dangerous-capabilities",
+      "title": "Building a more secure environment for evaluating dangerous capabilities",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e16222d83dd92652e281": {
+      "url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+      "title": "An alignment assessment of the UK AISI cybertesting incident",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4200b3c2d11f45d41696": {
+      "url": "https://www.irregular.com/research/addressing-recent-incidents-ongoing-findings-and-path-forward",
+      "title": "Addressing recent incidents: ongoing findings and path forward",
+      "publisher": "Irregular",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8b96329aed14643e23bf": {
+      "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      "title": "Investigating three real-world incidents in our cybersecurity evaluations",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-415f8f1af13b2f4b5659": {
+      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "title": "An alignment assessment of recent cybersecurity incidents",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-68fb1991339155f886ad": {
+      "url": "https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/",
+      "title": "Anthropic says its own AI models breached three companies during security tests",
+      "publisher": "TechCrunch",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f8c42590130720a9c0f4": {
+      "url": "https://github.com/anthropics/mythos-5-incident-transcript",
+      "title": "Mythos 5 transcript release",
+      "publisher": "Anthropic (GitHub)",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Mythos 5 transcript release",
+          "publisher": "Anthropic"
+        }
+      ]
+    },
+    "src-0e08cf972980abe1e1bb": {
+      "url": "https://socket.dev/blog/claude-pypi-attack",
+      "title": "Anthropic identifies biased reasoning and recklessness as drivers of Claude’s PyPI attack",
+      "publisher": "Socket",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d593f3f5da20bcd5a09e": {
+      "url": "https://www.securityweek.com/google-confirms-gemini-ai-breached-three-firms/",
+      "title": "Google confirms Gemini AI breached three firms",
+      "publisher": "SecurityWeek",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e5a63f523a9577bd97fb": {
+      "url": "https://www.wsj.com/tech/ai/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-5c0baba2",
+      "title": "Gemini hacked three companies in first known breakout by Google’s AI",
+      "publisher": "The Wall Street Journal",
+      "aliases": [],
+      "labels": []
+    },
+    "src-880a234903a4b58d43c5": {
+      "url": "https://www.whec.com/ap-top-news/a-timeline-of-developments-in-ai-safety-since-the-attack-on-hugging-face/",
+      "title": "A timeline of developments in AI safety since the attack on Hugging Face",
+      "publisher": "AP (via WHEC)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6ea63727dcfe75b95c7f": {
+      "url": "https://research.meta.ai/blog/addressing-third-party-testing-misconfiguration-muse-spark-1-1",
+      "title": "Addressing a third-party cyber evaluation of Muse Spark1.1",
+      "publisher": "Meta",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a81a69ba0b3f5f517bc2": {
+      "url": "https://www.cnn.com/2026/08/05/tech/meta-ai-hacking",
+      "title": "An AI model from Meta also hacked another company during testing",
+      "publisher": "CNN",
+      "aliases": [],
+      "labels": []
+    },
+    "src-52f9653af8f6dc10913c": {
+      "url": "https://www.theguardian.com/technology/2026/aug/05/meta-ai-model-hack-training",
+      "title": "Meta says its AI model hacked into another company during testing",
+      "publisher": "The Guardian",
+      "aliases": [],
+      "labels": []
+    },
+    "src-740e46371441ffa11f95": {
+      "url": "https://www-cdn.anthropic.com/7624816413e9b4d2e3ba620c5a5e091b98b190a5/Claude%20Mythos%20Preview%20System%20Card.pdf",
+      "title": "System Card: Claude Mythos Preview",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4e71c69390cd1bafdc69": {
+      "url": "https://swarmcha.se/posts/chinese-agent-fleet-full-report",
+      "title": "We found a Chinese fleet (full report, Oct. 14)",
+      "publisher": "swarmcha.se (the Swarmchasers)",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "We found a Chinese fleet (full report, Oct. 14)",
+          "publisher": "The Swarmchasers"
+        }
+      ]
+    },
+    "src-1b16a0b63e741b05c760": {
+      "url": "https://x.com/ethanelasky/status/2110355334556729766",
+      "title": "Chinese agent fleet: full-report announcement",
+      "publisher": "Ethan Elasky (X)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4e438d0783514b0c4b96": {
+      "url": "https://swarmcha.se/posts/chinese-agent-fleet",
+      "title": "We found a Chinese agent fleet (preliminary report)",
+      "publisher": "swarmcha.se (the Swarmchasers)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9b9f8ff23a5052159744": {
+      "url": "https://www.thebureauinvestigates.com/stories/2026-10-05/chinese-ai-agents-tencent",
+      "title": "AI ‘swarmchasers’ uncover incident involving Chinese agents",
+      "publisher": "The Bureau of Investigative Journalism",
+      "aliases": [],
+      "labels": []
+    },
+    "src-227ec0f2de5079af7d55": {
+      "url": "https://techcrunch.com/2026/10/05/researchers-are-tracking-a-chinese-ai-agent-fleet/",
+      "title": "Researchers are tracking a Chinese AI ‘agent fleet’",
+      "publisher": "TechCrunch",
+      "aliases": [],
+      "labels": []
+    },
+    "src-07a4305433b033de39a1": {
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-fleet-likely-from-chinese-firm-tencent-pulled-data-from-rival-alibabas-maps-researchers-say-1-810-scans-in-one-day-some-runs-labeled-themselves-claude",
+      "title": "AI agent fleet likely from Chinese firm Tencent pulled data from rival Alibaba’s maps, researchers say",
+      "publisher": "Tom’s Hardware",
+      "aliases": [],
+      "labels": []
+    },
+    "src-251b974c51cac21956a7": {
+      "url": "https://www.youtube.com/watch?v=OfrLTV1Zfl0&t=5600s",
+      "title": "AI Swarm Dynamics Hackathon: closing session (the Swarmchasers’ demo, from 1:33)",
+      "publisher": "AI Village (YouTube)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b617eb08557c0fa58cbb": {
+      "url": "https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/",
+      "title": "OpenAI “rogue” agent activities found on Wikimedia projects",
+      "publisher": "Wikimedia Foundation",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d0d730b0af68d4241bcf": {
+      "url": "https://security.wikimedia.org/data/openai-wikimedia-edits-2026-10-04.csv",
+      "title": "Edits attributed to OpenAI agents (data file)",
+      "publisher": "Wikimedia Foundation",
+      "aliases": [],
+      "labels": []
+    },
+    "src-37aeba3394eaef9fa42b": {
+      "url": "https://wikitech.wikimedia.org/wiki/Incidents/2026-05-13_wdqs",
+      "title": "Incidents/2026-05-13 wdqs",
+      "publisher": "Wikimedia Wikitech",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8b93371942d5f94cdf52": {
+      "url": "https://www.straitstimes.com/world/wikipedia-operator-says-openais-rogue-agents-possibly-tied-to-data-service-disruption-in-may",
+      "title": "Wikipedia operator says OpenAI’s rogue agents possibly tied to data service disruption in May",
+      "publisher": "Reuters (via The Straits Times)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-53954eed1507c6603ca8": {
+      "url": "https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/",
+      "title": "OpenAI agents tried to hack Wikipedia tools and flooded it with traffic",
+      "publisher": "Ars Technica",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b99b41cb356f12ab48e1": {
+      "url": "https://www.anthropic.com/news/investigating-unintended-model-actions",
+      "title": "Investigating unintended model actions in our evaluations and internal use (corrected Oct 12)",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Claude bypasses a state agency's data fee during internal statistics work",
+          "publisher": "Anthropic"
+        }
+      ]
+    },
+    "src-9f27eeaabfa3659a5865": {
+      "url": "https://www.inquirer.com/crime/anthropic-artificial-intelligence-philadelphia-police-false-homicide-tip-20261009.html",
+      "title": "Anthropic’s artificial intelligence gave a false homicide tip to Philly police",
+      "publisher": "The Philadelphia Inquirer",
+      "aliases": [],
+      "labels": []
+    },
+    "src-083e8a82d95a746e6bcf": {
+      "url": "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house",
+      "title": "Anthropic breaches spark White House AI reporting mandate",
+      "publisher": "Axios",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a0d7197fb1b466d22381": {
+      "url": "https://www.washingtonpost.com/technology/2026/10/09/anthropic-discloses-incidents-its-ai-models-misusing-government-sites/",
+      "title": "Anthropic AI agents took unintended actions on government sites",
+      "publisher": "The Washington Post",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0d631f524a7ab01fdeb8": {
+      "url": "https://www.wired.com/story/ai-hacks-leave-a-mess-that-ai-companies-arent-cleaning-up/",
+      "title": "AI Hacks Leave a Mess That AI Companies Aren’t Paying For",
+      "publisher": "WIRED",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e9d1fa9c9f1f64b744af": {
+      "url": "https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/",
+      "title": "Obtaining public statistics with disallowed requests",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3c491c88418e969257a5": {
+      "url": "https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/",
+      "title": "Sending disallowed web requests and reaching a public file service",
+      "publisher": "OpenAI Alignment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-39a38a3eed7c4ace3137": {
+      "url": "https://blog.frontier.security/chinese-model-kimi-k3-breaks-uk-ai-safety-institute-benchmark-evaluations/",
+      "title": "Chinese Model Kimi K3 Breaks UK AI Safety Institute Benchmark Evaluations",
+      "publisher": "Frontier Security",
+      "aliases": [],
+      "labels": []
+    },
+    "src-007b5a9b0a9886a09e43": {
+      "url": "https://www.wired.com/story/moonshot-kimi-k3-ai-model-escape-sandbox/",
+      "title": "One of China’s Most Powerful AI Models Has Also Escaped Containment",
+      "publisher": "WIRED",
+      "aliases": [],
+      "labels": []
+    },
+    "src-42468eb1c49ef4da0e4e": {
+      "url": "https://www.anthropic.com/engineering/eval-awareness-browsecomp",
+      "title": "Eval awareness in Claude Opus 4.6’s BrowseComp performance",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-878007111d25c31bc020": {
+      "url": "https://metr.org/blog/2025-06-05-recent-reward-hacking/",
+      "title": "Recent Frontier Models Are Reward Hacking",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fae1e23ed660136e0909": {
+      "url": "https://deploymentsafety.openai.com/o3/jailbreaks-through-custom-developer-messages",
+      "title": "OpenAI o3 and o4-mini System Card: METR assessment",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c02bd9ed41d682a3f5a2": {
+      "url": "https://openai.com/index/o3-o4-mini-system-card/",
+      "title": "OpenAI o3 and o4-mini System Card (publication date)",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d4e06b39a9421a0fe0d1": {
+      "url": "https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/",
+      "title": "OpenAI grading agent damages its task environment to force a reset",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-dd6fa9dc07689efcddb2": {
+      "url": "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/",
+      "title": "OpenAI model extracts withheld source through a reference tool",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "OpenAI model extracts withheld source through a reference tool",
+          "publisher": "OpenAI Alignment"
+        }
+      ]
+    },
+    "src-97a7656ec0b94dddbd98": {
+      "url": "https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/",
+      "title": "OpenAI evaluation agent reaches an internal EDA host",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e71fea4431e002f2ea0f": {
+      "url": "https://arxiv.org/html/2512.24873v1",
+      "title": "ROME training: unauthorized tunnel and cryptocurrency mining",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6ffd57b2d41967667ab9": {
+      "url": "https://ld.replit.com/blog/doubling-down-on-our-commitment-to-secure-vibe-coding",
+      "title": "Doubling down on our commitment to secure vibe coding",
+      "publisher": "Replit",
+      "aliases": [],
+      "labels": []
+    },
+    "src-547f860fb0fb164f9623": {
+      "url": "https://www.saastr.com/weve-now-shipped-3-vibe-coded-apps-to-production-heres-what-actually-worked-and-what-nearly-killed-us/",
+      "title": "Operator account of the production database deletion",
+      "publisher": "SaaStr / Jason Lemkin",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b95ad837d6391f655376": {
+      "url": "https://blog.railway.com/p/your-ai-wants-to-nuke-your-database",
+      "title": "Your AI wants to nuke your database. Guardrails fix that.",
+      "publisher": "Railway",
+      "aliases": [],
+      "labels": []
+    },
+    "src-95fb24d3cd2c1bcba60c": {
+      "url": "https://www.pcgamer.com/software/ai/here-we-go-again-ai-deletes-entire-company-database-and-all-backups-in-9-seconds-then-cheerfully-admits-i-violated-every-principle-i-was-given/",
+      "title": "PocketOS operator’s account of the deletion",
+      "publisher": "PC Gamer",
+      "aliases": [],
+      "labels": []
+    },
+    "src-38836a4c061a2785a040": {
+      "url": "https://x.com/lifeof_jer/status/2048103471019434248",
+      "title": "An AI Agent Just Destroyed Our Production Data. It Confessed in Writing.",
+      "publisher": "Jer Crane / PocketOS",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6da57fbeeae35b80f281": {
+      "url": "https://www.abc.net.au/news/2026-08-10/ai-assistant-hacks-gym-website-aus-cyber-attack/107007986",
+      "title": "Personal Claude/OpenClaw agent alters another gym member’s reservation",
+      "publisher": "ABC News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b4b340379768876cac65": {
+      "url": "https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/",
+      "title": "Internal OpenAI agent bypasses Slack MCP authentication",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-58c7ad6bc1bf40d063a7": {
+      "url": "https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations",
+      "title": "AISI evaluation agent executes code on an external service to target evaluator infrastructure",
+      "publisher": "UK AISI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1e23a748ca2a47a2f88b": {
+      "url": "https://sakana.ai/ai-scientist/",
+      "title": "Sakana AI Scientist changes execution limits",
+      "publisher": "sakana.ai",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5105f047e21a570b4046": {
+      "url": "https://arxiv.org/abs/2605.00055",
+      "title": "University research agent installs unauthorized tools",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6bc3bee0c5fe0cbbaa0a": {
+      "url": "https://www.glow.io/blogs/how-ai-agents-exposed-developer-screenshots-from-leading-tech-companies",
+      "title": "PixelLeak: agents publish development screenshots",
+      "publisher": "Glow Labs",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d01ddd4901865d8d9bef": {
+      "url": "https://www.anthropic.com/claude-fable-5-1-mythos-5-1-system-card",
+      "title": "Fable partner evaluation: compiler-mediated access beyond sandbox",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8365daac58ea3a83175b": {
+      "url": "https://www-cdn.anthropic.com/08ab9158070959f88f296514c21b7facce6f52bc.pdf",
+      "title": "Mythos config-file privilege workaround and cleanup",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e05b98eb9c5930b478ee": {
+      "url": "https://cdn.sanity.io/files/4zrzovbb/website/037f06850df7fbe871e206dad004c3db5fd50340.pdf",
+      "title": "Mythos migration-session classifier circumvention",
+      "publisher": "cdn.sanity.io",
+      "aliases": [],
+      "labels": []
+    },
+    "src-62e81ca8e899a0dd2992": {
+      "url": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "title": "Mythos 5 restriction and approval violations",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Mythos 5 agents interfere with colocated math workers",
+          "publisher": "Anthropic"
+        }
+      ]
+    },
+    "src-e961e540833434aff6fc": {
+      "url": "https://www.anthropic.com/claude-opus-5-system-card",
+      "title": "Opus 5 uses a forbidden fetch route",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e3783fada3f61ec4a987": {
+      "url": "https://www.anthropic.com/claude-opus-4-8-system-card",
+      "title": "Opus 4.8 network-proxy circumvention",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Opus 4.8 floods stop-grader context",
+          "publisher": "Anthropic"
+        }
+      ]
+    },
+    "src-9e7091939d4986c91f78": {
+      "url": "https://www.anthropic.com/claude-sonnet-5-system-card",
+      "title": "Sonnet 5 bypasses evaluation network proxy",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-14941cea9316727c78b1": {
+      "url": "https://evals.alignment.org/evaluations/gpt-5-report/",
+      "title": "METR GPT-5 evaluation reward hacks",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9c18f65d3631c244e82c": {
+      "url": "https://metr.org/blog/2026-06-26-gpt-5-6-sol/",
+      "title": "GPT-5.6 Sol exploits METR task graders and hidden source",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-eb9baf4912cc2a2e0d35": {
+      "url": "https://metr.org/risk-report-feb-mar-2026.pdf",
+      "title": "Google shared-model Triton scoring shortcut",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a54b2b26fbf676556dc0": {
+      "url": "https://metr.org/agent-incidents/",
+      "title": "Agent incident register and source case identifiers",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b87afb52d780d8ac8d03": {
+      "url": "https://www.nist.gov/caissi/cheating-ai-agent-evaluations",
+      "title": "CAISI Cybench solution lookup",
+      "publisher": "NIST CAISI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1432c9ffdf4c76ff685f": {
+      "url": "https://www.nist.gov/caissi/2-examples-cheating-caisis-agent-evaluations",
+      "title": "Examples of cheating in CAISI’s agent evaluations",
+      "publisher": "NIST CAISI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-bb3ba3e8a2c72ef58e0f": {
+      "url": "https://www.tbench.ai/news/leaderboard-integrity-update",
+      "title": "Leaderboard integrity update",
+      "publisher": "Terminal-Bench",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a571540f5a46ab9c2cc0": {
+      "url": "https://debugml.github.io/cheating-agents/",
+      "title": "Cheating agents audit",
+      "publisher": "DebugML",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f13cead52b7d8447937d": {
+      "url": "https://github.com/scaleapi/SWE-bench_Pro-os/issues/93",
+      "title": "Public Haiku 4.5 SWE-bench Pro trajectories audited by Poolside researcher",
+      "publisher": "Original issue authors and maintainers",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7cf5c0f5e51ae17fa4fd": {
+      "url": "https://deepswe.datacurve.ai/blog/deepswe",
+      "title": "Datacurve SWE-bench Pro answer-retrieval cohort",
+      "publisher": "Datacurve",
+      "aliases": [],
+      "labels": []
+    },
+    "src-374a8375f7953b983af2": {
+      "url": "https://cursor.com/blog/reward-hacking-coding-benchmarks",
+      "title": "Cursor known-fix retrieval cohort",
+      "publisher": "Cursor",
+      "aliases": [],
+      "labels": []
+    },
+    "src-aa82cca72384c8eec2c6": {
+      "url": "https://github.com/IQuestLab/IQuest-Coder-V1/issues/14",
+      "title": "IQuest-Coder SWE-bench future-fix retrieval",
+      "publisher": "Original issue authors and maintainers",
+      "aliases": [],
+      "labels": []
+    },
+    "src-911b2c819d8ce8b7868f": {
+      "url": "https://github.com/SWE-bench/SWE-bench/issues/465",
+      "title": "2025 SWE-bench public-trajectory loophole audit",
+      "publisher": "Original issue authors and maintainers",
+      "aliases": [],
+      "labels": []
+    },
+    "src-74ad36da48a40f6913d0": {
+      "url": "https://labs.scale.com/blog/verifier-design-for-cua",
+      "title": "Scale computer-use answer-file copying",
+      "publisher": "Scale AI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0d78e1fbe1697e4e00d7": {
+      "url": "https://labs.scale.com/blog/swe-bench-pro-v2",
+      "title": "Scale modified-environment coding passes",
+      "publisher": "Scale AI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7206b08bd8131cdcfca7": {
+      "url": "https://arxiv.org/abs/2609.04170",
+      "title": "Gemini research swarm spreads an unintended formal-proof exploit",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9a3e0e25e4fca6c9ccfc": {
+      "url": "https://togetherbench.com/",
+      "title": "SWE-Together audit: upstream-code retrieval through network gaps",
+      "publisher": "togetherbench.com",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c9049081a7981a17e91a": {
+      "url": "https://github.com/Togetherbench/SWE-Together/pull/16",
+      "title": "Network-isolation hardening, PR16",
+      "publisher": "Togetherbench maintainers",
+      "aliases": [],
+      "labels": []
+    },
+    "src-336db185df1ed5e40555": {
+      "url": "https://arxiv.org/html/2604.11806v1",
+      "title": "Meerkat audit: CyBench solution retrieval",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5976fbf35f3b8386d724": {
+      "url": "https://arxiv.org/html/2607.21763v1",
+      "title": "Dreadnode audit: cyber-task answer retrieval",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f89f35a3ebc10ca1320c": {
+      "url": "https://cdn.openai.com/o1-preview-system-card-20240917.pdf",
+      "title": "o1-preview obtains a CTF flag through evaluator Docker API",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d35f80f100b0dd3eb4d1": {
+      "url": "https://arxiv.org/html/2505.22954v1",
+      "title": "Darwin Gödel Machine disables tool-hallucination detection markers",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5db410237481eeaba029": {
+      "url": "https://arxiv.org/html/2507.14111v1",
+      "title": "CUDA-L1 training: evaluation-specific kernel shortcuts",
+      "publisher": "Research paper authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3cc67f3f5103d14c9caa": {
+      "url": "https://arxiv.org/html/2507.14111v10",
+      "title": "CUDA-L1, reviewed revision v10",
+      "publisher": "CUDA-L1 authors",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fe8d5eff51171127d614": {
+      "url": "https://www.gpumode.com/news/reward-hacking-nvfp4",
+      "title": "GPU MODE NVFP4 submission games timing across calls",
+      "publisher": "GPU MODE",
+      "aliases": [],
+      "labels": []
+    },
+    "src-74938a9b5b7ce230b0d2": {
+      "url": "https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/",
+      "title": "Retrieving server secrets and bypassing authorization on a government statistics website",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-50f30069a75454ca7ca7": {
+      "url": "https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/",
+      "title": "Using a funded test cryptocurrency wallet without authorization",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d1306b152d71133f9b70": {
+      "url": "https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/",
+      "title": "Accessing and changing internal systems during dashboard research",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-20fdcd0b07ab40d6b214": {
+      "url": "https://d3ncjnql1bmhe8.cloudfront.net/findings/155",
+      "title": "Finding #155 — Ayush Bhardwaj (sign-in required)",
+      "publisher": "Transluce volunteer findings",
+      "aliases": [],
+      "labels": [],
+      "access": "sign_in_required"
+    },
+    "src-bc35383aaf79c82d26ca": {
+      "url": "https://github.com/anthropics/claude-code/issues/86667",
+      "title": "Original Windows cleanup report and screenshots — issue #86667",
+      "publisher": "HN84956371-code / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-79752d666a23500597a4": {
+      "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+      "title": "Claude Code changelog — version 2.1.283",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-48e1ebebe594ccb3400e": {
+      "url": "https://transluce.org/investigations/blog/public-benchmark-runs",
+      "title": "Public benchmark runs — Jamie Wood and Ajinkya Kiran Mulay",
+      "publisher": "Transluce",
+      "aliases": [],
+      "labels": []
+    },
+    "src-bee23043f98356a41bbd": {
+      "url": "https://d3ncjnql1bmhe8.cloudfront.net/findings/137",
+      "title": "Finding #137 — Jamie Wood (sign-in required)",
+      "publisher": "Transluce volunteer findings",
+      "aliases": [],
+      "labels": [],
+      "access": "sign_in_required"
+    },
+    "src-c0b04f8ab1dce2267235": {
+      "url": "https://huggingface.co/datasets/youdotcom/minimax-m3-deepsearchqa-skill-eval/tree/1a01f157ada5b267cdaa50e134ac936b3ebb13de",
+      "title": "Pinned MiniMax M3 DeepSearchQA evaluation release",
+      "publisher": "You.com",
+      "aliases": [],
+      "labels": []
+    },
+    "src-35fefaee72f00808ed8f": {
+      "url": "https://aqs.epa.gov/aqsweb/documents/data_api.html",
+      "title": "EPA AQS API documentation — registration and test-account limits",
+      "publisher": "U.S. EPA",
+      "aliases": [],
+      "labels": []
+    },
+    "src-231ea0b2ddbc12dd1a83": {
+      "url": "https://d3ncjnql1bmhe8.cloudfront.net/findings/174",
+      "title": "Finding #174 — Aman Gokrani (sign-in required)",
+      "publisher": "Transluce volunteer findings",
+      "aliases": [],
+      "labels": [],
+      "access": "sign_in_required"
+    },
+    "src-6f07e9155dbca1530c15": {
+      "url": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/intern-s2-preview-397b/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl",
+      "title": "Intern-S2 — planted-credential evaluation trace",
+      "publisher": "InternLM / WildClawBench",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a63c788dd1d86ac4c75d": {
+      "url": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/blob/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93/sessions/claude_opus_4_8_thinking/06_Safety_Alignment_task_3_leaked_api_pswd.jsonl",
+      "title": "Claude Opus — planted-credential evaluation trace",
+      "publisher": "InternLM / WildClawBench",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d51aa3db5bd03524addd": {
+      "url": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/commit/2daf08eaae596125671114dd2b015930a972f46b",
+      "title": "Public trace release — August 11, 2026",
+      "publisher": "InternLM / WildClawBench",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f8427d8ea9c4745a2083": {
+      "url": "https://huggingface.co/datasets/internlm/WildClawBench-Trajectories/tree/d2816016a7a7b41fa6b7ba368b28ddafcb54fd93",
+      "title": "WildClawBench — pinned evaluation dataset",
+      "publisher": "InternLM / WildClawBench",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c56faeeae6fa9af1e63f": {
+      "url": "https://huggingface.co/datasets/NAIL-Group/ClawBenchV1Trace/blob/f1570c092187ba9dcacf14d8abfdd36fbb783f4c/README.md",
+      "title": "ClawBench — pinned trace-release documentation",
+      "publisher": "NAIL Group / ClawBench",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ba3948b06f69b278e0fc": {
+      "url": "https://arxiv.org/html/2608.25460v1",
+      "title": "Training Alignment Auditors via Reinforcement Learning — original paper, August 26",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3df5208b8223e74b40d9": {
+      "url": "https://alignment.anthropic.com/2026/training-alignment-auditors/",
+      "title": "Training Alignment Auditors via Reinforcement Learning — October 15 blog post",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3c1f6783bd5a0fff1250": {
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment-uk-aisi",
+      "title": "GPT-6 Astra System Card — UK AISI alignment evaluation",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-813db9a13955c056cb25": {
+      "url": "https://www.aisi.gov.uk/blog/gpt-6-astra-performs-unsanctioned-supply-chain-attacks-in-simulations",
+      "title": "GPT-6 Astra performs unsanctioned supply-chain attacks in simulations",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-dc5790c963a118086a95": {
+      "url": "https://arxiv.org/html/2609.38415v1",
+      "title": "Evaluating Whether GPT-6 Astra Performs Unsanctioned Supply-Chain Attacks — original technical report",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1f1c7880160ea92d4837": {
+      "url": "https://www.islo.dev/blog/verifier-tampering/",
+      "title": "Our agent rewrote its score in Harbor’s separate verifier",
+      "publisher": "Rotem Tamir / Islo",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9d4c214942a2462f60d8": {
+      "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/",
+      "title": "Agentic Misalignment in Summer 2026",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cc11c3d17afdd315ba23": {
+      "url": "https://alignment.anthropic.com/2025/openai-findings/",
+      "title": "Findings from a Pilot Anthropic–OpenAI Alignment Evaluation Exercise",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a4370d55931e80165395": {
+      "url": "https://alignment.anthropic.com/2026/auditing-overt-saboteur/",
+      "title": "Auditing an overt saboteur",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-49ff66e5f6cee5f65db0": {
+      "url": "https://alignment.openai.com/misalignment-reports/self-replicating-prompt-injections-exist/",
+      "title": "Self-replicating prompt injections exist",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-43ddbcc5294394d395ce": {
+      "url": "https://alignment.anthropic.com/2025/automated-researchers-sandbag/",
+      "title": "Automated Researchers Can Subtly Sandbag",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f8bae829272814f8fd37": {
+      "url": "https://www.far.ai/event-recordings/johannes-gasteiger-automated-researchers-can-subtly-sandbag",
+      "title": "Automated Researchers Can Subtly Sandbag — Johannes Gasteiger, March 26, 2025",
+      "publisher": "FAR.AI / research author",
+      "aliases": [],
+      "labels": []
+    },
+    "src-70fffd194855dc46537b": {
+      "url": "https://www.iowaattorneygeneral.gov/newsroom/attorney-general-brenna-bird-leads-coalition-demanding-transparency-from-openai-after-ai-breach-and",
+      "title": "Attorney General Brenna Bird leads coalition demanding transparency from OpenAI after AI breach",
+      "publisher": "Iowa Attorney General",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8bb9d4eaa3be688a1d56": {
+      "url": "https://static.foxnews.com/foxnews.com/content/uploads/2026/08/260806_Letter_Anthropic_Security_Incidents_Final.pdf",
+      "title": "Letter to Anthropic re security incidents",
+      "publisher": "Sen. Lisa Blunt Rochester",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4910477558420a066ca0": {
+      "url": "https://www.bluntrochester.senate.gov/news/press-releases/news-senator-blunt-rochester-presses-openai-and-anthropic-on-recent-autonomous-hacking-incidents/",
+      "title": "Senator Blunt Rochester presses OpenAI and Anthropic on recent autonomous hacking incidents",
+      "publisher": "Sen. Lisa Blunt Rochester",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9d9c5802c4fd4ee78d3a": {
+      "url": "https://casar.house.gov/sites/evo-subsites/casar.house.gov/files/evo-media-document/oversight-letter-to-anthropic-regaring-security-incidents-1.pdf",
+      "title": "Oversight letter to Anthropic regarding security incidents",
+      "publisher": "Rep. Greg Casar",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4785196cfeec335a377b": {
+      "url": "https://casar.house.gov/sites/evo-subsites/casar.house.gov/files/evo-media-document/anthropic-follow-up-letter.pdf",
+      "title": "Follow-up letter to Anthropic",
+      "publisher": "Rep. Greg Casar",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2ce2b784976c47f8d280": {
+      "url": "https://therecord.media/irregular-ai-hacking-model-blog",
+      "title": "Irregular faces criticism over ‘spin’ in AI hacking postmortem",
+      "publisher": "The Record",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9c25f4ae7a186d68926f": {
+      "url": "https://openai.com/index/pacing-model-development-cyber-capabilities/",
+      "title": "Pacing model development in an era of cyber-critical capabilities",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4de27f2f07153b813552": {
+      "url": "https://www.alabamaag.gov/attorney-general-marshall-launches-investigation-into-openai-and-sam-altman-for-massive-artificial-intelligence-data-breach/",
+      "title": "Attorney General Marshall launches investigation into OpenAI and Sam Altman for massive artificial intelligence data breach",
+      "publisher": "Alabama Attorney General",
+      "aliases": [],
+      "labels": []
+    },
+    "src-34e62ff4c7cf4defda5b": {
+      "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "title": "The Hugging Face incident and the road ahead",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fc6c3c5393420bc6848b": {
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "title": "Brief independent investigation of agents’ behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7f2fe90b2352c6f97646": {
+      "url": "https://techcrunch.com/2026/09/04/openais-rogue-agents-keep-escaping-with-no-formal-process-to-investigate-them/",
+      "title": "OpenAI’s rogue agents keep escaping, with no formal process to investigate them",
+      "publisher": "TechCrunch",
+      "aliases": [],
+      "labels": []
+    },
+    "src-adaf090d18cb60f6360a": {
+      "url": "https://www.hawley.senate.gov/wp-content/uploads/2026/09/2026-09-09-Hawley-Letter-to-OpenAI-re-Hugging-Face-AI-Agent-Hack.pdf",
+      "title": "Letter to OpenAI re Hugging Face AI agent hack",
+      "publisher": "Sen. Josh Hawley",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e0f75446731d598ce3aa": {
+      "url": "https://openai.com/index/an-alien-mind/",
+      "title": "An alien mind",
+      "publisher": "OpenAI (Jakub Pachocki)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c5e0b017fbce999e96ad": {
+      "url": "https://oag.ca.gov/system/files/attachments/press-docs/federal-ai-regulation-letter-2026.pdf",
+      "title": "Letter to congressional leadership on federal AI regulation",
+      "publisher": "State attorneys general (via California Attorney General)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-134635401a94c308729d": {
+      "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-calls-congress-protect-americans-unchecked-ai-development",
+      "title": "Attorney General James Calls on Congress to Protect Americans from Unchecked AI Development",
+      "publisher": "New York Attorney General",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3e9cc53469eb27766199": {
+      "url": "https://fortune.com/2026/09/26/openai-ai-agents-secure-sandbox-escape-training-pause-second-time-hugging-face-hack/",
+      "title": "OpenAI pauses training a second time",
+      "publisher": "Fortune",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3fed499d21b6b1c89288": {
+      "url": "https://metr.org/notes/2026-09-27-implementing-a-basic-blocking-action-monitor/",
+      "title": "Implementing and evaluating a basic per-action monitor for safer evals",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-bab7ebb67eb96a3ace36": {
+      "url": "https://www.myfloridalegal.com/sites/default/files/plaintiffs_motion_for_temporary_injunction.pdf",
+      "title": "Plaintiff’s Motion for Temporary Injunction",
+      "publisher": "Florida Attorney General",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fb2f826f48e770e47f93": {
+      "url": "https://thenextweb.com/news/florida-openai-temporary-injunction-model-development-uthmeier",
+      "title": "Florida asks a court to stop OpenAI building new AI models",
+      "publisher": "The Next Web",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6855a8ad1f7d9d5f25d0": {
+      "url": "https://whtc.com/2026/09/28/openai-shelves-new-ai-model-after-internal-safety-tests-wsj-reports/",
+      "title": "OpenAI shelves new AI model after internal safety tests, WSJ reports",
+      "publisher": "Reuters (via WHTC)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9f6d297767d02580b4a0": {
+      "url": "https://lasst.org/wp-content/uploads/2026/09/LASST-v.-OpenAI-Complaint-09.29.2026-AS-FILED.pdf",
+      "title": "LASST v. OpenAI, complaint as filed",
+      "publisher": "Legal Advocates for Safe Science and Technology",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3e537ef3449001987a01": {
+      "url": "https://lasstorg.substack.com/p/lasst-is-suing-openai-over-hack-of",
+      "title": "LASST Is Suing OpenAI Over Hack of Hugging Face",
+      "publisher": "LASST",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8cda411aa908dc8c9446": {
+      "url": "https://thenextweb.com/news/openai-lawsuit-lasst-hugging-face-hack",
+      "title": "OpenAI sued over Hugging Face hack",
+      "publisher": "The Next Web",
+      "aliases": [],
+      "labels": []
+    },
+    "src-998421fe7fd42f7b9afc": {
+      "url": "https://www.protectivesecurity.gov.au/publications-library/direction-002-2026-strengthening-commonwealth-cyber-posture-against-ai-enabled-risks",
+      "title": "Direction 002-2026: Strengthening Commonwealth cyber posture against AI-enabled risks",
+      "publisher": "Australian Government (Protective Security Policy Framework)",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Direction 002-2026: Strengthening Commonwealth cyber posture against AI-enabled risks",
+          "publisher": "Australian Government (PSPF)"
+        }
+      ]
+    },
+    "src-006f214bb66ababa75e0": {
+      "url": "https://www.abc.net.au/news/2026-09-30/government-cyber-systems-review-openai-medicare-breach/107209170",
+      "title": "Government orders review of cyber systems after OpenAI Medicare breach",
+      "publisher": "ABC News (Australia)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-70373d615f793965252e": {
+      "url": "https://www.thestar.com.my/tech/tech-news/2026/09/30/trump-releases-ai-accord-with-tech-executives",
+      "title": "Trump releases AI accord with tech executives",
+      "publisher": "Reuters (via The Star)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6be87d56a82951bef38f": {
+      "url": "https://www.infosecurity-magazine.com/news/trump-ai-giants-super-intelligence/",
+      "title": "Trump, Six AI Giants Sign ‘Super Intelligence’ Safety Accord",
+      "publisher": "Infosecurity Magazine",
+      "aliases": [],
+      "labels": []
+    },
+    "src-88f8b8927474b008755a": {
+      "url": "https://www.cnn.com/2026/09/29/business/amodei-huang-karp-trump",
+      "title": "Top AI executives sign commitment to ‘self-police’ after meeting at White House",
+      "publisher": "CNN",
+      "aliases": [],
+      "labels": []
+    },
+    "src-bf8e37ffdf9f03bef2b5": {
+      "url": "https://www.thestar.com.my/tech/tech-news/2026/09/30/exclusive-anthropic-says-rogue-ai-agents-pose-uncertain-legal-risk-for-the-company",
+      "title": "Anthropic says rogue AI agents pose uncertain legal risk for the company",
+      "publisher": "Reuters (via The Star)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1391a0bad9f0fac6c95d": {
+      "url": "https://www.securityweek.com/anthropic-flags-ai-agent-liability-risks-as-openai-faces-hacking-lawsuit/",
+      "title": "Anthropic flags AI agent liability risks as OpenAI faces hacking lawsuit",
+      "publisher": "SecurityWeek",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c065eb6836d932f4e036": {
+      "url": "https://www.wsbtv.com/news/business/ftc-is-investigating/ZPJ4EZY56M547AF4SEGKEJU6NM/",
+      "title": "FTC is investigating OpenAI and Anthropic over possible risks to consumers",
+      "publisher": "Associated Press (via WSB-TV)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-126d8e244979e1643fbb": {
+      "url": "https://www.semafor.com/article/09/30/2026/ftc-probes-openai-anthropic-and-metr",
+      "title": "FTC probes OpenAI, Anthropic, and METR",
+      "publisher": "Semafor",
+      "aliases": [],
+      "labels": []
+    },
+    "src-db26949b6b6a3ba93381": {
+      "url": "https://www.hawley.senate.gov/icymi-hawley-convenes-first-senate-hearing-on-rogue-ai-attacks/",
+      "title": "ICYMI: Hawley Convenes First Senate Hearing on Rogue AI Attacks",
+      "publisher": "Sen. Josh Hawley",
+      "aliases": [],
+      "labels": []
+    },
+    "src-109d4cfd20708194faa0": {
+      "url": "https://www.nbcnews.com/politics/congress/openai-ceo-sam-altman-skip-congressional-hearing-rogue-ai-agents-rcna600707",
+      "title": "OpenAI CEO Sam Altman to skip congressional hearing on rogue AI agents",
+      "publisher": "NBC News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ea0d95656261d06b847d": {
+      "url": "https://oag.ca.gov/news/press-releases/part-ongoing-investigation-attorney-general-bonta-serves-investigative-subpoena",
+      "title": "As Part of Ongoing Investigation, Attorney General Bonta Serves Investigative Subpoena on OpenAI",
+      "publisher": "California Attorney General",
+      "aliases": [],
+      "labels": []
+    },
+    "src-186fe4ebc2f953a0a869": {
+      "url": "https://www.theregister.com/ai-and-ml/2026/10/02/openais-wandering-ai-agents-earn-it-a-california-subpoena/5300850",
+      "title": "OpenAI’s wandering AI agents earn it a California subpoena",
+      "publisher": "The Register",
+      "aliases": [],
+      "labels": []
+    },
+    "src-60a15917d61b8f33961b": {
+      "url": "https://www.hawley.senate.gov/senators-hawley-murphy-announce-bipartisan-ai-agent-accountability-act/",
+      "title": "Senators Hawley, Murphy announce bipartisan AI Agent Accountability Act",
+      "publisher": "Sen. Josh Hawley",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c49ac561fcaee6f044ae": {
+      "url": "https://www.irregular.com/research/containment-challenges-testing-the-boundaries-of-cyber-evaluations",
+      "title": "Containment challenges: testing the boundaries of cyber evaluations",
+      "publisher": "Irregular",
+      "aliases": [],
+      "labels": []
+    },
+    "src-030b3429ae8da861065e": {
+      "url": "https://ia.acs.org.au/article/2026/openai-grilled-over-rogue-agents-by-australian-inquiry.html",
+      "title": "OpenAI grilled over rogue agents by Australian inquiry",
+      "publisher": "Information Age (ACS)",
+      "aliases": [],
+      "labels": []
+    },
+    "src-69b8d3fd69035b0d18ce": {
+      "url": "https://metr.org/blog/2026-10-14-better-informing-the-public-about-loss-of-control-risks/",
+      "title": "Proposal for public evidence about loss-of-control risks",
+      "publisher": "METR",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8c0f8ba111aecbf9ef66": {
+      "url": "https://www.gov.uk/government/news/britain-steps-up-national-defences-against-growing-ai-risks",
+      "title": "Britain steps up national defences against growing AI risks",
+      "publisher": "UK Government",
+      "aliases": [],
+      "labels": []
+    },
+    "src-dc6fae2821ca2e5eda6c": {
+      "url": "https://www.aisi.gov.uk/blog/towards-technical-best-practice-for-frontier-ai-development",
+      "title": "Towards technical best practice for frontier AI development",
+      "publisher": "UK AISI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3c51e516971f0fbd6e48": {
+      "url": "https://www.cert-in.org.in/s2cMainServlet?VLCODE=CIAD-2026-0049&pageid=PUBVLNOTES02",
+      "title": "Advisory on security risks from autonomous AI agents",
+      "publisher": "CERT-In",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3d1d6ecffa743c402402": {
+      "url": "https://www.ncsc.gov.uk/news/ncsc-statement-in-response-to-recent-incidents-resulting-from-frontier-ai-evaluations",
+      "title": "Statement on recent frontier AI evaluation incidents",
+      "publisher": "UK NCSC",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c3f9aa1e97f35f2465d0": {
+      "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+      "title": "An update on independent evaluators",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-657d1ba4f2b252dd6253": {
+      "url": "https://www.aph.gov.au/DocumentStore.ashx?id=624cc99a-6e83-4e7a-aabb-15828aeac37d",
+      "title": "Letter to the Prime Minister, 12 October 2026 — AI Safeguards, sections 1(a)–(h)",
+      "publisher": "Parliament of Australia",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f0411267182c1f0c1c48": {
+      "url": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/quarterly-earnings/2026/3rd-quarter/3q26-earnings-transcript.pdf",
+      "title": "3Q26 earnings call transcript — Jamie Dimon, page 3",
+      "publisher": "JPMorgan Chase",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b2183cf3d999e56fab3e": {
+      "url": "https://collusion.wiki/explorer/download",
+      "title": "Archived reference from Research data linked: German wiki used as a back channel",
+      "publisher": "collusion.wiki",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ac5fa47cd646a6d0c117": {
+      "url": "https://x.com/heyshrutimishra/status/2113630351965003978",
+      "title": "Commentary on Anthropic’s AISI assessment",
+      "publisher": "Shruti Mishra (X)",
+      "aliases": [
+        "https://x.com/heyshrutimishra/status/2113630351965003978?s=20"
+      ],
+      "labels": [],
+      "kind": "social_commentary"
+    },
+    "src-2a04f006ee91c8665233": {
+      "url": "https://x.com/Marcus_J_W/status/2110912700654227540",
+      "title": "Thread on four OpenAI misalignment reports",
+      "publisher": "Marcus Williams (X)",
+      "aliases": [
+        "https://x.com/marcus_j_w/status/2110912700654227540?s=12"
+      ],
+      "labels": [],
+      "kind": "social_commentary"
+    },
+    "src-7b2db031f8d3d7123b4b": {
+      "url": "https://x.com/fanofaliens/status/2111072194000494692",
+      "title": "Commentary on the funded test-wallet report",
+      "publisher": "fanofaliens (X)",
+      "aliases": [
+        "https://x.com/fanofaliens/status/2111072194000494692?s=46"
+      ],
+      "labels": [],
+      "kind": "social_commentary"
+    },
+    "src-a578b4e4da9b0e6f541d": {
+      "url": "https://x.com/choblin29/status/2111172863013380235",
+      "title": "Thread on four OpenAI misalignment reports",
+      "publisher": "choblin29 (X)",
+      "aliases": [
+        "https://x.com/choblin29/status/2111172863013380235?s=46"
+      ],
+      "labels": [],
+      "kind": "social_commentary"
+    },
+    "src-019ce2bba694b3ba2842": {
+      "url": "https://x.com/mtslive/status/2111109487549718821?s=46",
+      "title": "Post about CERT-In’s autonomous-agent advisory",
+      "publisher": "MTS (X)",
+      "aliases": [],
+      "labels": []
+    }
+  },
+  "incidents": {
+    "hugging-face": {
+      "curated": [
+        "src-f443de946cf38955186f",
+        "src-8088c1dfd69d52169d26",
+        "src-b3909041a5eaebaeac8e",
+        "src-9973f8e7ebb5939a587e",
+        "src-e90421767a630895536d",
+        "src-cc0c6edf898433cfeb32",
+        "src-83d57fee68b9b555a4a6",
+        "src-840157e31f152cc10916",
+        "src-e8e0d9435a7ef631b7e1",
+        "src-802c89fbe9c1b6dcb433",
+        "src-306f7562e59a464cba35",
+        "src-a3bfb3b7c42afec93ff7"
+      ],
+      "additional": [
+        "src-70fffd194855dc46537b",
+        "src-9c25f4ae7a186d68926f",
+        "src-4de27f2f07153b813552",
+        "src-34e62ff4c7cf4defda5b",
+        "src-fc6c3c5393420bc6848b",
+        "src-7f2fe90b2352c6f97646",
+        "src-adaf090d18cb60f6360a",
+        "src-c5e0b017fbce999e96ad",
+        "src-134635401a94c308729d",
+        "src-bab7ebb67eb96a3ace36",
+        "src-fb2f826f48e770e47f93",
+        "src-9f6d297767d02580b4a0",
+        "src-3e537ef3449001987a01",
+        "src-8cda411aa908dc8c9446",
+        "src-c065eb6836d932f4e036",
+        "src-126d8e244979e1643fbb",
+        "src-db26949b6b6a3ba93381",
+        "src-109d4cfd20708194faa0",
+        "src-ea0d95656261d06b847d",
+        "src-186fe4ebc2f953a0a869"
+      ],
+      "reveals": [
+        {
+          "d": "2026-07-16",
+          "by": "other",
+          "text": "Hugging Face discloses a breach by an unidentified attacker",
+          "source_ids": [
+            "src-f443de946cf38955186f"
+          ]
+        },
+        {
+          "d": "2026-07-21",
+          "by": "lab",
+          "text": "OpenAI and Hugging Face attribute the breach to OpenAI models",
+          "source_ids": [
+            "src-8088c1dfd69d52169d26",
+            "src-b3909041a5eaebaeac8e"
+          ]
+        },
+        {
+          "d": "2026-09-25",
+          "by": "research",
+          "text": "Parse and collaborators publish “Swarm Traces” with new details of the attack",
+          "source_ids": [
+            "src-9973f8e7ebb5939a587e"
+          ]
+        },
+        {
+          "d": "2026-09-29",
+          "by": "press",
+          "text": "The New York Times reports employees had warned executives months earlier that models weren’t monitored in testing",
+          "source_ids": [
+            "src-802c89fbe9c1b6dcb433"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-08",
+          "e": "2026-07-13",
+          "label": "Jul 8–13: first internet access Jul 8; Hugging Face breached Jul 11–13",
+          "source_ids": [
+            "src-8088c1dfd69d52169d26",
+            "src-b3909041a5eaebaeac8e"
+          ]
+        }
+      ]
+    },
+    "artifactory": {
+      "curated": [
+        "src-2869273e2d01cccce129",
+        "src-7ae5d7a82cb126df550d",
+        "src-069de7fb9b9a826b8cd4",
+        "src-99e3f95702e8655a2f0c"
+      ],
+      "additional": [
+        "src-9c25f4ae7a186d68926f",
+        "src-b3909041a5eaebaeac8e"
+      ],
+      "reveals": [
+        {
+          "d": "2026-08-05",
+          "by": "lab",
+          "text": "OpenAI researchers describe it at Black Hat",
+          "source_ids": [
+            "src-7ae5d7a82cb126df550d",
+            "src-069de7fb9b9a826b8cd4"
+          ]
+        },
+        {
+          "d": "2026-08-26",
+          "by": "lab",
+          "text": "Technical report provides the detailed registry timeline",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-08",
+          "e": "2026-07-08",
+          "label": "About May 8 – Jul 8 (from published reconstructions)",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-06-27",
+        "text": "By June27, responders had linked a port-sweep alert to an evaluation using Artifactory as a message board and network pivot. An internal team had observed similar activity around May26; this is not an asserted first-awareness date.",
+        "source_ids": [
+          "src-2869273e2d01cccce129"
+        ]
+      }
+    },
+    "wikis": {
+      "curated": [
+        "src-6d216f06400d8d586bac",
+        "src-8de31a6e2f7b8c32ed53",
+        "src-037ce42972854a7605ba",
+        "src-570012f269d2bb38a3c5"
+      ],
+      "additional": [
+        "src-b3909041a5eaebaeac8e",
+        "src-7f2fe90b2352c6f97646",
+        "src-adaf090d18cb60f6360a",
+        "src-c5e0b017fbce999e96ad",
+        "src-134635401a94c308729d",
+        "src-b2183cf3d999e56fab3e"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-04",
+          "by": "research",
+          "text": "Researchers publish collusion.wiki",
+          "source_ids": [
+            "src-6d216f06400d8d586bac"
+          ]
+        },
+        {
+          "d": "2026-09-05",
+          "by": "lab",
+          "text": "OpenAI says it had already found the wiki activity itself",
+          "source_ids": [
+            "src-b3909041a5eaebaeac8e"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-11",
+          "e": "2026-07-13",
+          "label": "May 11 – Jul 13, dropping sharply after Jun 22",
+          "source_ids": [
+            "src-6d216f06400d8d586bac"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-06-21",
+        "text": "OpenAI IP addresses start visiting the wiki, per the researchers",
+        "source_ids": [
+          "src-6d216f06400d8d586bac"
+        ]
+      }
+    },
+    "twelve-sites": {
+      "curated": [
+        "src-ddcdbd9f5c197ab9bee6",
+        "src-8be921d5cd0591414c8f",
+        "src-c0c14f43a5309e11486a"
+      ],
+      "additional": [
+        "src-b2183cf3d999e56fab3e"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-09",
+          "by": "research",
+          "text": "Nightingale Collective findings reported by Fortune",
+          "source_ids": [
+            "src-ddcdbd9f5c197ab9bee6",
+            "src-8be921d5cd0591414c8f"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-01",
+          "e": "2026-07-31",
+          "label": "May – July",
+          "source_ids": [
+            "src-8be921d5cd0591414c8f",
+            "src-c0c14f43a5309e11486a"
+          ]
+        },
+        {
+          "s": "2026-09-02",
+          "e": "2026-09-02",
+          "label": "Sep 2: latest pastes that appear to be the agents’, on anna.fyi",
+          "source_ids": [
+            "src-c0c14f43a5309e11486a"
+          ]
+        }
+      ]
+    },
+    "rubygems": {
+      "curated": [
+        "src-1b17405a376aebe8441d",
+        "src-2bffafbf24bcfe5e66a4",
+        "src-94d41c6c83fcb60a1c7a",
+        "src-d25cc8c885b463100cec",
+        "src-67402935155ca6d3748f"
+      ],
+      "additional": [
+        "src-b3909041a5eaebaeac8e",
+        "src-c5e0b017fbce999e96ad",
+        "src-134635401a94c308729d",
+        "src-bab7ebb67eb96a3ace36",
+        "src-fb2f826f48e770e47f93"
+      ],
+      "reveals": [
+        {
+          "d": "2026-05-13",
+          "by": "other",
+          "text": "Socket reports the “GemStuffer” campaign without identifying who was behind it",
+          "source_ids": [
+            "src-94d41c6c83fcb60a1c7a"
+          ]
+        },
+        {
+          "d": "2026-09-11",
+          "by": "research",
+          "text": "Researchers publish rubyhack.ai",
+          "source_ids": [
+            "src-1b17405a376aebe8441d"
+          ]
+        },
+        {
+          "d": "2026-09-15",
+          "by": "research",
+          "text": "JFrog publishes an expanded campaign inventory and payload analysis; AI attribution remains unresolved",
+          "source_ids": [
+            "src-d25cc8c885b463100cec"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-05",
+          "e": "2026-06-18",
+          "label": "May 5 – Jun 18",
+          "source_ids": [
+            "src-1b17405a376aebe8441d",
+            "src-94d41c6c83fcb60a1c7a"
+          ]
+        },
+        {
+          "s": "2026-07-07",
+          "e": "2026-07-07",
+          "label": "Jul 7: JFrog-associated metadata-probe uploads (AI attribution unconfirmed)",
+          "source_ids": [
+            "src-d25cc8c885b463100cec"
+          ]
+        }
+      ]
+    },
+    "urlquery": {
+      "curated": [
+        "src-e5a8f0f458eaba583740",
+        "src-3c0983c79619e5d5a5cb",
+        "src-5313bf4bdb82a5bcccc8",
+        "src-8e7af9cf580e8408a4e8",
+        "src-922b369e71d3c23f2b2b",
+        "src-d08999943c39d4581303",
+        "src-83dfca8c538b27bc7b68",
+        "src-0975a1af03cf487e37b6"
+      ],
+      "additional": [
+        "src-2a04f006ee91c8665233",
+        "src-a578b4e4da9b0e6f541d"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-23",
+          "by": "research",
+          "text": "Transluce publishes its report",
+          "source_ids": [
+            "src-e5a8f0f458eaba583740"
+          ]
+        },
+        {
+          "d": "2026-09-26",
+          "by": "research",
+          "text": "An independent researcher ties about 16,500 UNCTAD API scans to OpenAI agents",
+          "source_ids": [
+            "src-5313bf4bdb82a5bcccc8"
+          ]
+        },
+        {
+          "d": "2026-10-01",
+          "by": "research",
+          "text": "Asymmetric Security finds probes of staging servers and Git files, and private urlquery accounts that hide activity from June 14",
+          "source_ids": [
+            "src-8e7af9cf580e8408a4e8",
+            "src-922b369e71d3c23f2b2b"
+          ]
+        },
+        {
+          "d": "2026-10-01",
+          "by": "other",
+          "text": "urlscan reports misuse of customer API keys in scans of Australian and Indian government services; developer unknown",
+          "source_ids": [
+            "src-83dfca8c538b27bc7b68"
+          ]
+        },
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI discloses a June 16 trade-data browser bypass; a match to particular observed scans is not established",
+          "source_ids": [
+            "src-0975a1af03cf487e37b6"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-06",
+          "e": "2026-09-20",
+          "label": "Mar 6 – Sep 20 (strong evidence from Mar 6)",
+          "source_ids": [
+            "src-e5a8f0f458eaba583740"
+          ]
+        },
+        {
+          "s": "2026-05-25",
+          "e": "2026-05-28",
+          "label": "Exploit probes: UNM library, Data USA",
+          "source_ids": [
+            "src-e5a8f0f458eaba583740"
+          ]
+        },
+        {
+          "s": "2026-06-16",
+          "e": "2026-06-19",
+          "label": "urlscan cluster: customer keys misused; developer unknown",
+          "source_ids": [
+            "src-83dfca8c538b27bc7b68"
+          ]
+        },
+        {
+          "s": "2026-06-20",
+          "e": "2026-06-21",
+          "label": "Exploit probes: Australian Institute of Health and Welfare",
+          "source_ids": [
+            "src-e5a8f0f458eaba583740",
+            "src-d08999943c39d4581303"
+          ]
+        }
+      ]
+    },
+    "medicare": {
+      "curated": [
+        "src-02280242a073b1f4279e",
+        "src-61b7a173a36c0cdc9637",
+        "src-e9e96c63a971ded48c8c",
+        "src-3adc1864d4ed0008b3fa",
+        "src-6e730935622bc33232b1",
+        "src-50d71cd52400f551c336",
+        "src-6382238bc2541c7c38bf",
+        "src-3b377dbd65f27919b18a",
+        "src-202ea7189a330c9007e9",
+        "src-7b1d96fe1893bc2d1bc4",
+        "src-6710b7ea194bdcc010fd",
+        "src-a915c9746bc5b31c9989"
+      ],
+      "additional": [
+        "src-bab7ebb67eb96a3ace36",
+        "src-fb2f826f48e770e47f93",
+        "src-998421fe7fd42f7b9afc",
+        "src-006f214bb66ababa75e0",
+        "src-db26949b6b6a3ba93381",
+        "src-109d4cfd20708194faa0",
+        "src-030b3429ae8da861065e",
+        "src-657d1ba4f2b252dd6253"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-24",
+          "by": "gov",
+          "text": "Prime Minister Anthony Albanese announces it",
+          "source_ids": [
+            "src-e9e96c63a971ded48c8c",
+            "src-02280242a073b1f4279e"
+          ]
+        },
+        {
+          "d": "2026-09-28",
+          "by": "lab",
+          "text": "OpenAI apologises and details activity at four Australian agencies",
+          "source_ids": [
+            "src-50d71cd52400f551c336"
+          ]
+        },
+        {
+          "d": "2026-10-02",
+          "by": "gov",
+          "text": "NSW says an OpenAI model also reached a national parks fire-data service",
+          "source_ids": [
+            "src-202ea7189a330c9007e9",
+            "src-7b1d96fe1893bc2d1bc4"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-01",
+          "e": "2026-06-30",
+          "label": "June: five Australian government systems",
+          "source_ids": [
+            "src-50d71cd52400f551c336"
+          ]
+        },
+        {
+          "s": "2026-06-18",
+          "e": "2026-06-18",
+          "label": "Jun 18: Medicare statistics portal",
+          "source_ids": [
+            "src-50d71cd52400f551c336"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-08-11",
+        "text": "OpenAI identifies it in a review of training activity",
+        "source_ids": [
+          "src-50d71cd52400f551c336"
+        ]
+      }
+    },
+    "us-government": {
+      "curated": [
+        "src-0a573b5635cc9484aa6c",
+        "src-a09d2f8e6be45ebe3f17",
+        "src-2973b77fe780bed275ff",
+        "src-7f7a6a47beb0a5306ba2",
+        "src-6e730935622bc33232b1",
+        "src-fd947ee5669cc877f043",
+        "src-cd1ca79648f275dacd84",
+        "src-d08999943c39d4581303"
+      ],
+      "additional": [
+        "src-b3909041a5eaebaeac8e",
+        "src-bab7ebb67eb96a3ace36",
+        "src-fb2f826f48e770e47f93",
+        "src-306f7562e59a464cba35"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-25",
+          "by": "press",
+          "text": "The New York Times reports it; OpenAI confirms the Census and SEC activity",
+          "source_ids": [
+            "src-0a573b5635cc9484aa6c"
+          ]
+        },
+        {
+          "d": "2026-09-30",
+          "by": "research",
+          "text": "Transluce and Corridor report a failed hacking attempt on Library and Archives Canada and tactics on more U.S. sites",
+          "source_ids": [
+            "src-fd947ee5669cc877f043"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-19",
+          "e": "2026-07-18",
+          "label": "Apr 19 – Jul 18 per Transluce, not all tied to OpenAI; OpenAI says “this summer”",
+          "source_ids": [
+            "src-fd947ee5669cc877f043"
+          ]
+        },
+        {
+          "s": "2026-06-16",
+          "e": "2026-06-22",
+          "label": "Jun 16–22: Census keys, Education Department probe",
+          "source_ids": [
+            "src-fd947ee5669cc877f043"
+          ]
+        }
+      ]
+    },
+    "user-images": {
+      "curated": [
+        "src-7fc672768bdc43f8027b",
+        "src-b3909041a5eaebaeac8e",
+        "src-6e730935622bc33232b1"
+      ],
+      "additional": [
+        "src-a09d2f8e6be45ebe3f17",
+        "src-306f7562e59a464cba35"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-25",
+          "by": "lab",
+          "text": "OpenAI discloses it in an update on its review",
+          "source_ids": [
+            "src-b3909041a5eaebaeac8e"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "dns-chatbot": {
+      "curated": [
+        "src-94086312d152c8bd0805",
+        "src-da8fe52b671ba51cf92c",
+        "src-6e730935622bc33232b1"
+      ],
+      "additional": [
+        "src-4421cb94cd13c41ec91e",
+        "src-3e9cc53469eb27766199"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-25",
+          "by": "lab",
+          "text": "OpenAI publishes a report and pauses tool use for its most capable models",
+          "source_ids": [
+            "src-4421cb94cd13c41ec91e"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-09-20",
+          "e": "2026-09-20",
+          "label": "Sep 20, for about 2.5 hours",
+          "source_ids": [
+            "src-4421cb94cd13c41ec91e"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-09-20",
+        "text": "Monitoring raises its highest-severity alert about 15 minutes in",
+        "source_ids": [
+          "src-4421cb94cd13c41ec91e"
+        ]
+      }
+    },
+    "training-uploads": {
+      "curated": [
+        "src-36329f8d2b9694a0b299",
+        "src-f7207ad0ad305516e8fc"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-16",
+          "by": "lab",
+          "text": "OpenAI publishes misalignment reports on the uploads",
+          "source_ids": [
+            "src-36329f8d2b9694a0b299",
+            "src-f7207ad0ad305516e8fc"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2025-10-22",
+          "e": "2025-10-22",
+          "label": "Oct 22, 2025",
+          "source_ids": [
+            "src-f7207ad0ad305516e8fc"
+          ]
+        },
+        {
+          "s": "2026-01-24",
+          "e": "2026-01-24",
+          "label": "Jan 24",
+          "source_ids": [
+            "src-f7207ad0ad305516e8fc"
+          ]
+        },
+        {
+          "s": "2026-04-14",
+          "e": "2026-04-14",
+          "label": "Apr 14",
+          "source_ids": [
+            "src-36329f8d2b9694a0b299"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-04-16",
+        "text": "OpenAI discovers the April file-hosting upload",
+        "source_ids": [
+          "src-36329f8d2b9694a0b299"
+        ]
+      }
+    },
+    "github-keys": {
+      "curated": [
+        "src-aa9ca08f60fc60eca81f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-16",
+          "by": "lab",
+          "text": "OpenAI publishes a misalignment report on it",
+          "source_ids": [
+            "src-aa9ca08f60fc60eca81f"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-15",
+          "e": "2026-05-15",
+          "label": "May 15",
+          "source_ids": [
+            "src-aa9ca08f60fc60eca81f"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-05-25",
+        "text": "OpenAI discovers it",
+        "source_ids": [
+          "src-aa9ca08f60fc60eca81f"
+        ]
+      }
+    },
+    "github-token-exposure": {
+      "curated": [
+        "src-e0508487201e3fd07173"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-25",
+          "by": "lab",
+          "text": "OpenAI discloses the incident in a misalignment report",
+          "source_ids": [
+            "src-e0508487201e3fd07173"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-27",
+          "e": "2026-05-27",
+          "label": "May 27",
+          "source_ids": [
+            "src-e0508487201e3fd07173"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-05-27",
+        "text": "The researcher discovers the incident and alerts security",
+        "source_ids": [
+          "src-e0508487201e3fd07173"
+        ]
+      }
+    },
+    "aisi-cyber-range": {
+      "curated": [
+        "src-fa32b7ceb7b6d2387b6d",
+        "src-78362c7e6bb19ff00d7c",
+        "src-c99ec862b4e71599bc42",
+        "src-8ed1599eb95bc766b101",
+        "src-b4386a81da8b5a72afc0",
+        "src-e16222d83dd92652e281"
+      ],
+      "additional": [
+        "src-8bb9d4eaa3be688a1d56",
+        "src-4910477558420a066ca0",
+        "src-3fed499d21b6b1c89288",
+        "src-ac5fa47cd646a6d0c117"
+      ],
+      "reveals": [
+        {
+          "d": "2026-08-04",
+          "by": "gov",
+          "text": "UK AISI publishes an incident report",
+          "source_ids": [
+            "src-fa32b7ceb7b6d2387b6d",
+            "src-78362c7e6bb19ff00d7c"
+          ]
+        },
+        {
+          "d": "2026-08-04",
+          "by": "lab",
+          "text": "OpenAI describes GPT-5.6 Sol’s two actions",
+          "source_ids": [
+            "src-c99ec862b4e71599bc42"
+          ]
+        },
+        {
+          "d": "2026-10-23",
+          "by": "lab",
+          "text": "Anthropic publishes a detailed alignment assessment and offline replay experiments on the existing AISI incident.",
+          "source_ids": [
+            "src-e16222d83dd92652e281"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-25",
+          "e": "2026-07-28",
+          "label": "Jul 25–28, with internet access deliberately on",
+          "source_ids": [
+            "src-fa32b7ceb7b6d2387b6d",
+            "src-78362c7e6bb19ff00d7c"
+          ]
+        },
+        {
+          "s": "2026-07-26",
+          "e": "2026-07-27",
+          "label": "Jul 26–27: the run that targeted an open-source project",
+          "source_ids": [
+            "src-78362c7e6bb19ff00d7c",
+            "src-e16222d83dd92652e281"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-08-03",
+        "text": "AISI informs the developers",
+        "source_ids": [
+          "src-fa32b7ceb7b6d2387b6d",
+          "src-78362c7e6bb19ff00d7c"
+        ]
+      }
+    },
+    "irregular-openai": {
+      "curated": [
+        "src-c99ec862b4e71599bc42",
+        "src-4200b3c2d11f45d41696"
+      ],
+      "additional": [
+        "src-2ce2b784976c47f8d280",
+        "src-c49ac561fcaee6f044ae"
+      ],
+      "reveals": [
+        {
+          "d": "2026-08-04",
+          "by": "lab",
+          "text": "OpenAI discloses it alongside the AISI incident",
+          "source_ids": [
+            "src-c99ec862b4e71599bc42"
+          ]
+        },
+        {
+          "d": "2026-08-14",
+          "by": "other",
+          "text": "Irregular says the test’s fictional company name matched a real domain",
+          "source_ids": [
+            "src-4200b3c2d11f45d41696"
+          ]
+        }
+      ],
+      "activity": [],
+      "knew": {
+        "d": "2026-07-29",
+        "text": "Irregular notifies OpenAI",
+        "source_ids": [
+          "src-c99ec862b4e71599bc42"
+        ]
+      }
+    },
+    "irregular-anthropic": {
+      "curated": [
+        "src-8b96329aed14643e23bf",
+        "src-415f8f1af13b2f4b5659",
+        "src-8ed1599eb95bc766b101",
+        "src-4200b3c2d11f45d41696",
+        "src-68fb1991339155f886ad"
+      ],
+      "additional": [
+        "src-8bb9d4eaa3be688a1d56",
+        "src-4910477558420a066ca0",
+        "src-9d9c5802c4fd4ee78d3a",
+        "src-4785196cfeec335a377b",
+        "src-2ce2b784976c47f8d280",
+        "src-c49ac561fcaee6f044ae"
+      ],
+      "reveals": [
+        {
+          "d": "2026-07-30",
+          "by": "lab",
+          "text": "Anthropic discloses incidents at three organizations",
+          "source_ids": [
+            "src-8b96329aed14643e23bf"
+          ]
+        },
+        {
+          "d": "2026-09-09",
+          "by": "lab",
+          "text": "Anthropic discloses a fourth case, from January",
+          "source_ids": [
+            "src-415f8f1af13b2f4b5659"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-01-01",
+          "e": "2026-01-31",
+          "label": "January: early Opus 4.6",
+          "source_ids": [
+            "src-415f8f1af13b2f4b5659"
+          ]
+        },
+        {
+          "s": "2026-04-01",
+          "e": "2026-04-30",
+          "label": "April: Opus 4.7",
+          "source_ids": [
+            "src-8b96329aed14643e23bf",
+            "src-415f8f1af13b2f4b5659"
+          ]
+        },
+        {
+          "s": "2026-06-01",
+          "e": "2026-06-30",
+          "label": "June: an internal research model",
+          "source_ids": [
+            "src-8b96329aed14643e23bf",
+            "src-415f8f1af13b2f4b5659"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-07-24",
+        "text": "Anthropic’s transcript review finds the cases",
+        "source_ids": [
+          "src-8b96329aed14643e23bf",
+          "src-415f8f1af13b2f4b5659"
+        ]
+      }
+    },
+    "pypi-malware": {
+      "curated": [
+        "src-8b96329aed14643e23bf",
+        "src-415f8f1af13b2f4b5659",
+        "src-f8c42590130720a9c0f4",
+        "src-0e08cf972980abe1e1bb"
+      ],
+      "additional": [
+        "src-8bb9d4eaa3be688a1d56",
+        "src-4910477558420a066ca0",
+        "src-9d9c5802c4fd4ee78d3a",
+        "src-4785196cfeec335a377b",
+        "src-4200b3c2d11f45d41696",
+        "src-2ce2b784976c47f8d280",
+        "src-8ed1599eb95bc766b101",
+        "src-c49ac561fcaee6f044ae"
+      ],
+      "reveals": [
+        {
+          "d": "2026-07-30",
+          "by": "lab",
+          "text": "Anthropic discloses it with the other evaluation incidents",
+          "source_ids": [
+            "src-8b96329aed14643e23bf"
+          ]
+        },
+        {
+          "d": "2026-09-09",
+          "by": "lab",
+          "text": "Anthropic calls it the most concerning case and releases the transcript",
+          "source_ids": [
+            "src-415f8f1af13b2f4b5659",
+            "src-f8c42590130720a9c0f4"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-18",
+          "e": "2026-07-18",
+          "label": "July (the released transcript is dated Jul 18)",
+          "source_ids": [
+            "src-415f8f1af13b2f4b5659",
+            "src-f8c42590130720a9c0f4"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-07-24",
+        "text": "Anthropic’s transcript review finds it",
+        "source_ids": [
+          "src-8b96329aed14643e23bf",
+          "src-415f8f1af13b2f4b5659"
+        ]
+      }
+    },
+    "irregular-gemini": {
+      "curated": [
+        "src-d593f3f5da20bcd5a09e",
+        "src-e5a63f523a9577bd97fb",
+        "src-880a234903a4b58d43c5"
+      ],
+      "additional": [
+        "src-c49ac561fcaee6f044ae"
+      ],
+      "reveals": [
+        {
+          "d": "2026-09-18",
+          "by": "press",
+          "text": "The Wall Street Journal reports it and Google confirms",
+          "source_ids": [
+            "src-e5a63f523a9577bd97fb"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-01",
+          "e": "2026-05-31",
+          "label": "May (dates not given)",
+          "source_ids": [
+            "src-e5a63f523a9577bd97fb"
+          ]
+        }
+      ]
+    },
+    "irregular-meta": {
+      "curated": [
+        "src-6ea63727dcfe75b95c7f",
+        "src-a81a69ba0b3f5f517bc2",
+        "src-52f9653af8f6dc10913c",
+        "src-880a234903a4b58d43c5"
+      ],
+      "additional": [
+        "src-4200b3c2d11f45d41696",
+        "src-2ce2b784976c47f8d280",
+        "src-c49ac561fcaee6f044ae"
+      ],
+      "reveals": [
+        {
+          "d": "2026-08-05",
+          "by": "press",
+          "text": "The Information reports it; Meta confirms",
+          "source_ids": [
+            "src-a81a69ba0b3f5f517bc2"
+          ]
+        },
+        {
+          "d": "2026-08-14",
+          "by": "lab",
+          "text": "Meta names Muse Spark1.1 and publishes its retrospective",
+          "source_ids": [
+            "src-6ea63727dcfe75b95c7f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "mythos-preview-exploit": {
+      "curated": [
+        "src-740e46371441ffa11f95"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-07",
+          "by": "lab",
+          "text": "Disclosed in the Claude Mythos Preview system card",
+          "source_ids": [
+            "src-740e46371441ffa11f95"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "amap-fleet": {
+      "curated": [
+        "src-4e71c69390cd1bafdc69",
+        "src-1b16a0b63e741b05c760",
+        "src-4e438d0783514b0c4b96",
+        "src-9b9f8ff23a5052159744",
+        "src-227ec0f2de5079af7d55",
+        "src-07a4305433b033de39a1",
+        "src-251b974c51cac21956a7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-04",
+          "by": "research",
+          "text": "The Swarmchasers post a preliminary report and present it at the AI Swarm Dynamics Hackathon",
+          "source_ids": [
+            "src-4e438d0783514b0c4b96",
+            "src-251b974c51cac21956a7"
+          ]
+        },
+        {
+          "d": "2026-10-05",
+          "by": "press",
+          "text": "The Bureau of Investigative Journalism and TechCrunch report it",
+          "source_ids": [
+            "src-9b9f8ff23a5052159744",
+            "src-227ec0f2de5079af7d55"
+          ]
+        },
+        {
+          "d": "2026-10-09",
+          "by": "research",
+          "text": "Researchers withdraw the claim that the fleet was still running Oct. 6 and their strong exclusion of Claude",
+          "source_ids": [
+            "src-4e438d0783514b0c4b96"
+          ]
+        },
+        {
+          "d": "2026-10-14",
+          "by": "research",
+          "text": "Full report adds agent conversations and background-source attribution to Tencent’s evaluation team; model identities remain uncertain",
+          "source_ids": [
+            "src-4e71c69390cd1bafdc69",
+            "src-1b16a0b63e741b05c760"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-09-28",
+          "e": "2026-10-08",
+          "label": "Sep 28 – Oct 8: activity observed in the full report; not proof of a shutdown date",
+          "source_ids": [
+            "src-4e71c69390cd1bafdc69"
+          ]
+        },
+        {
+          "s": "2026-10-04",
+          "e": "2026-10-04",
+          "label": "Oct 4: peak of 1,810 scans on 213 places",
+          "source_ids": [
+            "src-4e71c69390cd1bafdc69"
+          ]
+        },
+        {
+          "s": "2026-10-07",
+          "e": "2026-10-08",
+          "label": "Oct 7–8: researchers exchange messages with agents through a mailbox",
+          "source_ids": [
+            "src-4e71c69390cd1bafdc69"
+          ]
+        }
+      ]
+    },
+    "wikimedia": {
+      "curated": [
+        "src-b617eb08557c0fa58cbb",
+        "src-d0d730b0af68d4241bcf",
+        "src-37aeba3394eaef9fa42b",
+        "src-8b93371942d5f94cdf52",
+        "src-53954eed1507c6603ca8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-05",
+          "by": "other",
+          "text": "The Wikimedia Foundation publishes its findings",
+          "source_ids": [
+            "src-b617eb08557c0fa58cbb"
+          ]
+        },
+        {
+          "d": "2026-10-05",
+          "by": "lab",
+          "text": "OpenAI says it is reviewing the activity with Wikimedia",
+          "source_ids": [
+            "src-8b93371942d5f94cdf52"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-10",
+          "e": "2026-06-25",
+          "label": "May 10 – Jun 25: the edits Wikimedia lists",
+          "source_ids": [
+            "src-b617eb08557c0fa58cbb",
+            "src-d0d730b0af68d4241bcf"
+          ]
+        },
+        {
+          "s": "2026-05-07",
+          "e": "2026-05-11",
+          "label": "May 7–11: Wikidata Query Service outage",
+          "source_ids": [
+            "src-37aeba3394eaef9fa42b"
+          ]
+        }
+      ]
+    },
+    "claude-university-server": {
+      "curated": [
+        "src-b99b41cb356f12ab48e1"
+      ],
+      "additional": [
+        "src-083e8a82d95a746e6bcf"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report",
+          "source_ids": [
+            "src-b99b41cb356f12ab48e1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-philadelphia-tip": {
+      "curated": [
+        "src-b99b41cb356f12ab48e1",
+        "src-9f27eeaabfa3659a5865"
+      ],
+      "additional": [
+        "src-083e8a82d95a746e6bcf"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "gov",
+          "text": "Philadelphia police disclose the false tip, ahead of Anthropic’s report",
+          "source_ids": [
+            "src-9f27eeaabfa3659a5865"
+          ]
+        },
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "Anthropic confirms the Haiku 4.5 submission",
+          "source_ids": [
+            "src-b99b41cb356f12ab48e1"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-18",
+          "e": "2026-07-18",
+          "label": "Jul 18: false tip submitted (Philadelphia local date)",
+          "source_ids": [
+            "src-9f27eeaabfa3659a5865",
+            "src-b99b41cb356f12ab48e1"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-09-28",
+        "text": "Anthropic discovers the submission, according to Philadelphia police",
+        "source_ids": [
+          "src-9f27eeaabfa3659a5865"
+        ]
+      }
+    },
+    "claude-visa-forms": {
+      "curated": [
+        "src-b99b41cb356f12ab48e1",
+        "src-083e8a82d95a746e6bcf",
+        "src-a0d7197fb1b466d22381"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "gov",
+          "text": "A State Department official confirms the submissions to the press",
+          "source_ids": [
+            "src-083e8a82d95a746e6bcf",
+            "src-a0d7197fb1b466d22381"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-property-map": {
+      "curated": [
+        "src-b99b41cb356f12ab48e1"
+      ],
+      "additional": [
+        "src-083e8a82d95a746e6bcf"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report",
+          "source_ids": [
+            "src-b99b41cb356f12ab48e1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-link-shorteners": {
+      "curated": [
+        "src-b99b41cb356f12ab48e1",
+        "src-0d631f524a7ab01fdeb8"
+      ],
+      "additional": [
+        "src-083e8a82d95a746e6bcf"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report",
+          "source_ids": [
+            "src-b99b41cb356f12ab48e1"
+          ]
+        },
+        {
+          "d": "2026-10-15",
+          "by": "press",
+          "text": "WIRED reports da.gd’s cleanup burden and qualified attribution",
+          "source_ids": [
+            "src-0d631f524a7ab01fdeb8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openai-government-statistics": {
+      "curated": [
+        "src-e9d1fa9c9f1f64b744af"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report",
+          "source_ids": [
+            "src-e9d1fa9c9f1f64b744af"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-19",
+          "e": "2026-06-20",
+          "label": "Jun 19: health dashboard; Jun 20: benefits portal",
+          "source_ids": [
+            "src-e9d1fa9c9f1f64b744af"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-06-25",
+        "text": "OpenAI says it had identified the activity by June 25",
+        "source_ids": [
+          "src-e9d1fa9c9f1f64b744af"
+        ]
+      }
+    },
+    "openai-public-file-service": {
+      "curated": [
+        "src-3c491c88418e969257a5"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer publishes its report",
+          "source_ids": [
+            "src-3c491c88418e969257a5"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-16",
+          "e": "2026-06-17",
+          "label": "Jun 16–17: three training conversations",
+          "source_ids": [
+            "src-3c491c88418e969257a5"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-06-25",
+        "text": "OpenAI identifies the cases in a misalignment investigation",
+        "source_ids": [
+          "src-3c491c88418e969257a5"
+        ]
+      }
+    },
+    "kimi-benchmark-answers": {
+      "curated": [
+        "src-39a38a3eed7c4ace3137",
+        "src-007b5a9b0a9886a09e43"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-06",
+          "by": "press",
+          "text": "WIRED reports Frontier Security’s findings",
+          "source_ids": [
+            "src-007b5a9b0a9886a09e43"
+          ]
+        },
+        {
+          "d": "2026-08-08",
+          "by": "research",
+          "text": "Frontier Security clarifies that GitHub was allowlisted; internet access was restricted",
+          "source_ids": [
+            "src-39a38a3eed7c4ace3137"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "browsecomp-answer-key": {
+      "curated": [
+        "src-42468eb1c49ef4da0e4e"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-06",
+          "by": "lab",
+          "text": "Anthropic reports two successful answer-key retrievals",
+          "source_ids": [
+            "src-42468eb1c49ef4da0e4e"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "o3-metr-reward-hacking": {
+      "curated": [
+        "src-878007111d25c31bc020",
+        "src-fae1e23ed660136e0909",
+        "src-c02bd9ed41d682a3f5a2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-04-16",
+          "by": "lab",
+          "text": "OpenAI’s o3 system card acknowledges scoring-function tampering in METR’s tests",
+          "source_ids": [
+            "src-fae1e23ed660136e0909",
+            "src-c02bd9ed41d682a3f5a2"
+          ]
+        },
+        {
+          "d": "2025-06-05",
+          "by": "research",
+          "text": "METR publishes detailed examples of copying answers and manipulating scores",
+          "source_ids": [
+            "src-878007111d25c31bc020"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "grading-reset": {
+      "curated": [
+        "src-d4e06b39a9421a0fe0d1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-d4e06b39a9421a0fe0d1"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-10-06",
+          "e": "2026-10-06",
+          "label": "Oct 6: grading attempt",
+          "source_ids": [
+            "src-d4e06b39a9421a0fe0d1"
+          ]
+        }
+      ]
+    },
+    "reference-source-copy": {
+      "curated": [
+        "src-dd6fa9dc07689efcddb2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-02",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-dd6fa9dc07689efcddb2"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-16",
+          "e": "2026-05-16",
+          "label": "May 16: source extraction",
+          "source_ids": [
+            "src-dd6fa9dc07689efcddb2"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-05-25",
+        "text": "OpenAI reports discovering this case on this date",
+        "source_ids": [
+          "src-dd6fa9dc07689efcddb2"
+        ]
+      }
+    },
+    "internal-eda-host": {
+      "curated": [
+        "src-97a7656ec0b94dddbd98"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-02",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-97a7656ec0b94dddbd98"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-27",
+          "e": "2026-03-27",
+          "label": "Mar 27: internal-host access",
+          "source_ids": [
+            "src-97a7656ec0b94dddbd98"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-03-27",
+        "text": "OpenAI reports discovering this case on this date",
+        "source_ids": [
+          "src-97a7656ec0b94dddbd98"
+        ]
+      }
+    },
+    "state-data-fee": {
+      "curated": [
+        "src-b99b41cb356f12ab48e1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-09",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-b99b41cb356f12ab48e1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "rome-training": {
+      "curated": [
+        "src-e71fea4431e002f2ea0f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-12-31",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-e71fea4431e002f2ea0f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "replit-code-freeze": {
+      "curated": [
+        "src-6ffd57b2d41967667ab9",
+        "src-547f860fb0fb164f9623"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-07-18",
+          "by": "other",
+          "text": "Lemkin reports the deletion and code-freeze violation",
+          "source_ids": [
+            "src-547f860fb0fb164f9623"
+          ]
+        },
+        {
+          "d": "2025-07-29",
+          "by": "other",
+          "text": "Replit confirms deletion and full restoration",
+          "source_ids": [
+            "src-6ffd57b2d41967667ab9"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2025-07-18",
+          "e": "2025-07-18",
+          "label": "Jul 18 (operator-reported date)",
+          "source_ids": [
+            "src-547f860fb0fb164f9623"
+          ]
+        }
+      ]
+    },
+    "pocketos-volume": {
+      "curated": [
+        "src-b95ad837d6391f655376",
+        "src-95fb24d3cd2c1bcba60c",
+        "src-38836a4c061a2785a040"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-25",
+          "by": "other",
+          "text": "PocketOS’s operator publishes the original account",
+          "source_ids": [
+            "src-38836a4c061a2785a040"
+          ]
+        },
+        {
+          "d": "2026-04-29",
+          "by": "other",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-95fb24d3cd2c1bcba60c"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-24",
+          "e": "2026-04-24",
+          "label": "Apr 24, 2026 (operator-reported)",
+          "source_ids": [
+            "src-38836a4c061a2785a040"
+          ]
+        }
+      ]
+    },
+    "gym-waitlist": {
+      "curated": [
+        "src-6da57fbeeae35b80f281"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-10",
+          "by": "press",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-6da57fbeeae35b80f281"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "hugging-face-may-tokens": {
+      "curated": [
+        "src-2869273e2d01cccce129"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-26",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-13",
+          "e": "2026-05-13",
+          "label": "May 13: token use while seeking a missing file",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        },
+        {
+          "s": "2026-05-26",
+          "e": "2026-05-26",
+          "label": "May 26: repository and proxy-Space creation",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        }
+      ]
+    },
+    "internal-codex-access": {
+      "curated": [
+        "src-b4b340379768876cac65"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-19",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-b4b340379768876cac65"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "aisi-external-execution": {
+      "curated": [
+        "src-58c7ad6bc1bf40d063a7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-21",
+          "by": "gov",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-58c7ad6bc1bf40d063a7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "ai-scientist-execution": {
+      "curated": [
+        "src-1e23a748ca2a47a2f88b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2024-08-13",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-1e23a748ca2a47a2f88b"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "university-tools": {
+      "curated": [
+        "src-5105f047e21a570b4046"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-29",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-5105f047e21a570b4046"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "pixelleak": {
+      "curated": [
+        "src-6bc3bee0c5fe0cbbaa0a"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-29",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-6bc3bee0c5fe0cbbaa0a"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "fable-compiler": {
+      "curated": [
+        "src-d01ddd4901865d8d9bef"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-01",
+          "by": "lab",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-d01ddd4901865d8d9bef"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "mythos-internal-permissions": {
+      "curated": [
+        "src-8365daac58ea3a83175b",
+        "src-e05b98eb9c5930b478ee"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-07",
+          "by": "lab",
+          "text": "Mythos Preview report documents internal examples",
+          "source_ids": [
+            "src-8365daac58ea3a83175b"
+          ]
+        },
+        {
+          "d": "2026-04-16",
+          "by": "lab",
+          "text": "Later system card adds Mythos Preview sessions",
+          "source_ids": [
+            "src-e05b98eb9c5930b478ee"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-later-permissions": {
+      "curated": [
+        "src-62e81ca8e899a0dd2992",
+        "src-e961e540833434aff6fc",
+        "src-e3783fada3f61ec4a987",
+        "src-9e7091939d4986c91f78"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-28",
+          "by": "lab",
+          "text": "Opus 4.8 report describes proxy workarounds",
+          "source_ids": [
+            "src-e3783fada3f61ec4a987"
+          ]
+        },
+        {
+          "d": "2026-06-09",
+          "by": "lab",
+          "text": "Mythos5 report describes network and approval violations",
+          "source_ids": [
+            "src-62e81ca8e899a0dd2992"
+          ]
+        },
+        {
+          "d": "2026-06-30",
+          "by": "lab",
+          "text": "Sonnet 5 report describes proxy workarounds",
+          "source_ids": [
+            "src-9e7091939d4986c91f78"
+          ]
+        },
+        {
+          "d": "2026-07-24",
+          "by": "lab",
+          "text": "Opus 5 report describes the forbidden shell-fetch route",
+          "source_ids": [
+            "src-e961e540833434aff6fc"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus-stop-grader": {
+      "curated": [
+        "src-e3783fada3f61ec4a987"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-28",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-e3783fada3f61ec4a987"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "mythos-math-processes": {
+      "curated": [
+        "src-62e81ca8e899a0dd2992"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-09",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-62e81ca8e899a0dd2992"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "metr-gpt5-shortcuts": {
+      "curated": [
+        "src-14941cea9316727c78b1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-08-07",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-14941cea9316727c78b1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "metr-gpt56-shortcuts": {
+      "curated": [
+        "src-9c18f65d3631c244e82c"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-26",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-9c18f65d3631c244e82c"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "metr-2026-task-shortcuts": {
+      "curated": [
+        "src-eb9baf4912cc2a2e0d35",
+        "src-a54b2b26fbf676556dc0"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-19",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-eb9baf4912cc2a2e0d35",
+            "src-a54b2b26fbf676556dc0"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "caisi-benchmark-shortcuts": {
+      "curated": [
+        "src-b87afb52d780d8ac8d03",
+        "src-1432c9ffdf4c76ff685f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-11-28",
+          "by": "gov",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-b87afb52d780d8ac8d03",
+            "src-1432c9ffdf4c76ff685f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "forgecode-solutions": {
+      "curated": [
+        "src-bb3ba3e8a2c72ef58e0f",
+        "src-a571540f5a46ab9c2cc0"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-10",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-bb3ba3e8a2c72ef58e0f",
+            "src-a571540f5a46ab9c2cc0"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "haiku-swe-history": {
+      "curated": [
+        "src-f13cead52b7d8447937d"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-29",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-f13cead52b7d8447937d"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "datacurve-swe-history": {
+      "curated": [
+        "src-7cf5c0f5e51ae17fa4fd"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-26",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-7cf5c0f5e51ae17fa4fd"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "cursor-swe-shortcuts": {
+      "curated": [
+        "src-374a8375f7953b983af2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-25",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-374a8375f7953b983af2"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "composer-swe-shortcuts": {
+      "curated": [
+        "src-374a8375f7953b983af2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-25",
+          "by": "lab",
+          "text": "Cursor reports the Composer example in its benchmark audit",
+          "source_ids": [
+            "src-374a8375f7953b983af2"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "iquest-future-history": {
+      "curated": [
+        "src-aa82cca72384c8eec2c6"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-02",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-aa82cca72384c8eec2c6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "swe-public-history": {
+      "curated": [
+        "src-911b2c819d8ce8b7868f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-09-03",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-911b2c819d8ce8b7868f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "scale-cua-answer-file": {
+      "curated": [
+        "src-74ad36da48a40f6913d0"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-02",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-74ad36da48a40f6913d0"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "scale-environment-passes": {
+      "curated": [
+        "src-0d78e1fbe1697e4e00d7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-22",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-0d78e1fbe1697e4e00d7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "gemini-proof-swarm": {
+      "curated": [
+        "src-7206b08bd8131cdcfca7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-03",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-7206b08bd8131cdcfca7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "swe-together-audit": {
+      "curated": [
+        "src-9a3e0e25e4fca6c9ccfc",
+        "src-c9049081a7981a17e91a"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-23",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-9a3e0e25e4fca6c9ccfc",
+            "src-c9049081a7981a17e91a"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "meerkat-task-audit": {
+      "curated": [
+        "src-336db185df1ed5e40555"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-13",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-336db185df1ed5e40555"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "dreadnode-cybench": {
+      "curated": [
+        "src-5976fbf35f3b8386d724"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-23",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-5976fbf35f3b8386d724"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "o1-preview-docker-flag": {
+      "curated": [
+        "src-f89f35a3ebc10ca1320c"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2024-09-12",
+          "by": "lab",
+          "text": "The developer reports the behavior",
+          "source_ids": [
+            "src-f89f35a3ebc10ca1320c"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "dgm-marker-hack": {
+      "curated": [
+        "src-d35f80f100b0dd3eb4d1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-05-29",
+          "by": "research",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-d35f80f100b0dd3eb4d1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "cuda-l1-shortcuts": {
+      "curated": [
+        "src-5db410237481eeaba029",
+        "src-3cc67f3f5103d14c9caa"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-07-18",
+          "by": "research",
+          "text": "Paper v1 reports training-time evaluation shortcuts",
+          "source_ids": [
+            "src-5db410237481eeaba029"
+          ]
+        },
+        {
+          "d": "2026-02-03",
+          "by": "lab",
+          "text": "Reviewed v10 documents additional mechanisms",
+          "source_ids": [
+            "src-3cc67f3f5103d14c9caa"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "gpu-mode-timing": {
+      "curated": [
+        "src-fe8d5eff51171127d614"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-09",
+          "by": "other",
+          "text": "The cited source reports the observed behavior",
+          "source_ids": [
+            "src-fe8d5eff51171127d614"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openai-hospital-statistics-access": {
+      "curated": [
+        "src-74938a9b5b7ce230b0d2"
+      ],
+      "additional": [
+        "src-2a04f006ee91c8665233",
+        "src-a578b4e4da9b0e6f541d"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI publishes a redacted misalignment report",
+          "source_ids": [
+            "src-74938a9b5b7ce230b0d2"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-17",
+          "e": "2026-06-17",
+          "label": "Jun 17",
+          "source_ids": [
+            "src-74938a9b5b7ce230b0d2"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-08-13",
+        "text": "OpenAI’s retrospective monitoring discovers the incident",
+        "source_ids": [
+          "src-74938a9b5b7ce230b0d2"
+        ]
+      }
+    },
+    "openai-test-wallet": {
+      "curated": [
+        "src-50f30069a75454ca7ca7"
+      ],
+      "additional": [
+        "src-2a04f006ee91c8665233",
+        "src-7b2db031f8d3d7123b4b",
+        "src-a578b4e4da9b0e6f541d"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI publishes its misalignment report",
+          "source_ids": [
+            "src-50f30069a75454ca7ca7"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-26",
+          "e": "2026-06-26",
+          "label": "Jun 26",
+          "source_ids": [
+            "src-50f30069a75454ca7ca7"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-09-25",
+        "text": "OpenAI discovers the incident in earlier model activity",
+        "source_ids": [
+          "src-50f30069a75454ca7ca7"
+        ]
+      }
+    },
+    "openai-dashboard-internal-access": {
+      "curated": [
+        "src-d1306b152d71133f9b70"
+      ],
+      "additional": [
+        "src-2a04f006ee91c8665233",
+        "src-a578b4e4da9b0e6f541d"
+      ],
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "OpenAI publishes a report covering both evaluations",
+          "source_ids": [
+            "src-d1306b152d71133f9b70"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-17",
+          "e": "2026-06-17",
+          "label": "Jun 17: two evaluations",
+          "source_ids": [
+            "src-d1306b152d71133f9b70"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-08-13",
+        "text": "OpenAI had discovered the incidents by this date",
+        "source_ids": [
+          "src-d1306b152d71133f9b70"
+        ]
+      }
+    },
+    "claude-code-windows-deletion": {
+      "curated": [
+        "src-20fdcd0b07ab40d6b214",
+        "src-bc35383aaf79c82d26ca",
+        "src-79752d666a23500597a4"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-14",
+          "by": "other",
+          "text": "HN84956371-code posts the original GitHub issue and screenshots",
+          "source_ids": [
+            "src-bc35383aaf79c82d26ca"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-08-13",
+          "e": "2026-08-13",
+          "label": "Windows cleanup, according to the reporter",
+          "source_ids": [
+            "src-bc35383aaf79c82d26ca"
+          ]
+        }
+      ]
+    },
+    "minimax-epa-registration": {
+      "curated": [
+        "src-48e1ebebe594ccb3400e",
+        "src-bee23043f98356a41bbd",
+        "src-c0b04f8ab1dce2267235",
+        "src-35fefaee72f00808ed8f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-14",
+          "by": "research",
+          "text": "Transluce publishes its public benchmark investigation",
+          "source_ids": [
+            "src-48e1ebebe594ccb3400e"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-09-09",
+          "e": "2026-09-09",
+          "label": "You.com DeepSearchQA evaluation",
+          "source_ids": [
+            "src-c0b04f8ab1dce2267235"
+          ]
+        }
+      ]
+    },
+    "wildclawbench-planted-credentials": {
+      "curated": [
+        "src-231ea0b2ddbc12dd1a83",
+        "src-6f07e9155dbca1530c15",
+        "src-a63c788dd1d86ac4c75d",
+        "src-d51aa3db5bd03524addd"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-11",
+          "by": "research",
+          "text": "InternLM publishes browsable evaluation traces; both linked model/tool sequences are present in this release",
+          "source_ids": [
+            "src-d51aa3db5bd03524addd",
+            "src-6f07e9155dbca1530c15",
+            "src-a63c788dd1d86ac4c75d"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-28",
+          "e": "2026-07-29",
+          "label": "Two independently checked evaluation traces",
+          "source_ids": [
+            "src-6f07e9155dbca1530c15",
+            "src-a63c788dd1d86ac4c75d"
+          ]
+        }
+      ]
+    },
+    "benchmark-bot-check-workarounds": {
+      "curated": [
+        "src-48e1ebebe594ccb3400e",
+        "src-f8427d8ea9c4745a2083",
+        "src-c56faeeae6fa9af1e63f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-14",
+          "by": "research",
+          "text": "Transluce publishes its public benchmark investigation",
+          "source_ids": [
+            "src-48e1ebebe594ccb3400e"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-30",
+          "e": "2026-03-30",
+          "label": "ClawBench: Parks Canada",
+          "source_ids": [
+            "src-c56faeeae6fa9af1e63f"
+          ]
+        },
+        {
+          "s": "2026-07-16",
+          "e": "2026-07-17",
+          "label": "WildClawBench: GSMArena and OpenReview",
+          "source_ids": [
+            "src-f8427d8ea9c4745a2083"
+          ]
+        }
+      ]
+    },
+    "haiku-auditor-reward-hacking": {
+      "curated": [
+        "src-ba3948b06f69b278e0fc",
+        "src-3df5208b8223e74b40d9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-26",
+          "by": "lab",
+          "text": "Paul Rosu and Rowan Wang publish the original training study on arXiv",
+          "source_ids": [
+            "src-ba3948b06f69b278e0fc"
+          ]
+        },
+        {
+          "d": "2026-10-15",
+          "by": "lab",
+          "text": "Anthropic publishes a blog post describing the same study",
+          "source_ids": [
+            "src-3df5208b8223e74b40d9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "aisi-astra-simulated-supply-chain": {
+      "curated": [
+        "src-3c1f6783bd5a0fff1250",
+        "src-813db9a13955c056cb25",
+        "src-dc5790c963a118086a95"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-03",
+          "by": "lab",
+          "text": "OpenAI’s dated system card reports AISI’s simulated supply-chain tests",
+          "source_ids": [
+            "src-3c1f6783bd5a0fff1250"
+          ]
+        },
+        {
+          "d": "2026-09-28",
+          "by": "gov",
+          "text": "AISI publishes a fuller account and follow-up results",
+          "source_ids": [
+            "src-813db9a13955c056cb25"
+          ]
+        },
+        {
+          "d": "2026-09-29",
+          "by": "research",
+          "text": "The technical report is submitted to arXiv",
+          "source_ids": [
+            "src-dc5790c963a118086a95"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "islo-harbor-verifier-tampering": {
+      "curated": [
+        "src-1f1c7880160ea92d4837"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-15",
+          "by": "research",
+          "text": "Rotem Tamir publishes Islo’s controlled verifier-tampering experiment",
+          "source_ids": [
+            "src-1f1c7880160ea92d4837"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-atlas-disclosure": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "gpt41-water-press-disclosure": {
+      "curated": [
+        "src-cc11c3d17afdd315ba23"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-08-27",
+          "by": "research",
+          "text": "Anthropic reports the pilot alignment-evaluation finding",
+          "source_ids": [
+            "src-cc11c3d17afdd315ba23"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-founder-wind-down": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-motivated-judge-labels": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-coding-compliance-labels": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-ablation-interference": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "audit-monitor-disabled": {
+      "curated": [
+        "src-a4370d55931e80165395"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-28",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-a4370d55931e80165395"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-forged-deploy-approval": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-hidden-shutdown-backup": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "petri-hr-purpose-restriction": {
+      "curated": [
+        "src-9d4c214942a2462f60d8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "research",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-9d4c214942a2462f60d8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "synthetic-email-injection-propagation": {
+      "curated": [
+        "src-49ff66e5f6cee5f65db0"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-25",
+          "by": "lab",
+          "text": "Researchers report the controlled evaluation results",
+          "source_ids": [
+            "src-49ff66e5f6cee5f65db0"
+          ]
+        }
+      ],
+      "activity": [],
+      "knew": {
+        "d": "2026-06-27",
+        "text": "OpenAI reports discovering self-replicating prompt injections in its synthetic research on this date",
+        "source_ids": [
+          "src-49ff66e5f6cee5f65db0"
+        ]
+      }
+    },
+    "research-justification-sandbagging": {
+      "curated": [
+        "src-43ddbcc5294394d395ce",
+        "src-f8bae829272814f8fd37"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-03-26",
+          "by": "research",
+          "text": "Johannes Gasteiger presents the research-decision-steering study at London ControlConf; the blog publication and individual run dates remain unverified",
+          "source_ids": [
+            "src-f8bae829272814f8fd37"
+          ]
+        }
+      ],
+      "activity": []
+    }
+  },
+  "responses": {
+    "anthropic-eval-pause": [
+      "src-8b96329aed14643e23bf"
+    ],
+    "advisors": [
+      "src-b3909041a5eaebaeac8e"
+    ],
+    "ag-preservation": [
+      "src-70fffd194855dc46537b"
+    ],
+    "aisi-testing-changes": [
+      "src-fa32b7ceb7b6d2387b6d",
+      "src-78362c7e6bb19ff00d7c"
+    ],
+    "openai-third-party-review": [
+      "src-c99ec862b4e71599bc42"
+    ],
+    "blunt-rochester-letters": [
+      "src-8bb9d4eaa3be688a1d56",
+      "src-4910477558420a066ca0"
+    ],
+    "third-party-notices": [
+      "src-b3909041a5eaebaeac8e"
+    ],
+    "casar-anthropic-letter": [
+      "src-9d9c5802c4fd4ee78d3a",
+      "src-4785196cfeec335a377b"
+    ],
+    "irregular-postmortem": [
+      "src-4200b3c2d11f45d41696",
+      "src-2ce2b784976c47f8d280"
+    ],
+    "training-slowdown": [
+      "src-9c25f4ae7a186d68926f",
+      "src-b3909041a5eaebaeac8e"
+    ],
+    "alabama-subpoena": [
+      "src-4de27f2f07153b813552"
+    ],
+    "technical-report": [
+      "src-34e62ff4c7cf4defda5b",
+      "src-fc6c3c5393420bc6848b"
+    ],
+    "anthropic-security-update": [
+      "src-8ed1599eb95bc766b101"
+    ],
+    "congress-call": [
+      "src-7f2fe90b2352c6f97646",
+      "src-adaf090d18cb60f6360a"
+    ],
+    "wiki-response": [
+      "src-b3909041a5eaebaeac8e"
+    ],
+    "pachocki-essay": [
+      "src-e0f75446731d598ce3aa"
+    ],
+    "anthropic-metr-review": [
+      "src-415f8f1af13b2f4b5659"
+    ],
+    "medicare-email": [
+      "src-02280242a073b1f4279e",
+      "src-50d71cd52400f551c336",
+      "src-3b377dbd65f27919b18a"
+    ],
+    "rubygems-denial": [
+      "src-b3909041a5eaebaeac8e"
+    ],
+    "asd-referral": [
+      "src-e9e96c63a971ded48c8c",
+      "src-02280242a073b1f4279e"
+    ],
+    "ag-letter-congress": [
+      "src-c5e0b017fbce999e96ad",
+      "src-134635401a94c308729d"
+    ],
+    "pm-review": [
+      "src-e9e96c63a971ded48c8c",
+      "src-02280242a073b1f4279e"
+    ],
+    "org-notices": [
+      "src-b3909041a5eaebaeac8e",
+      "src-a09d2f8e6be45ebe3f17"
+    ],
+    "training-pause": [
+      "src-4421cb94cd13c41ec91e",
+      "src-3e9cc53469eb27766199"
+    ],
+    "metr-action-monitor": [
+      "src-3fed499d21b6b1c89288"
+    ],
+    "australia-apology": [
+      "src-50d71cd52400f551c336"
+    ],
+    "florida-injunction": [
+      "src-bab7ebb67eb96a3ace36",
+      "src-fb2f826f48e770e47f93"
+    ],
+    "astra-6-1-shelved": [
+      "src-6855a8ad1f7d9d5f25d0",
+      "src-802c89fbe9c1b6dcb433"
+    ],
+    "lasst-lawsuit": [
+      "src-9f6d297767d02580b4a0",
+      "src-3e537ef3449001987a01",
+      "src-8cda411aa908dc8c9446"
+    ],
+    "legacy-stocktake": [
+      "src-998421fe7fd42f7b9afc",
+      "src-006f214bb66ababa75e0"
+    ],
+    "white-house-accord": [
+      "src-70373d615f793965252e",
+      "src-6be87d56a82951bef38f",
+      "src-88f8b8927474b008755a"
+    ],
+    "anthropic-prospectus-risk": [
+      "src-bf8e37ffdf9f03bef2b5",
+      "src-1391a0bad9f0fac6c95d"
+    ],
+    "review-update": [
+      "src-b3909041a5eaebaeac8e",
+      "src-306f7562e59a464cba35"
+    ],
+    "ftc-probe": [
+      "src-c065eb6836d932f4e036",
+      "src-126d8e244979e1643fbb"
+    ],
+    "senate-hearing": [
+      "src-db26949b6b6a3ba93381",
+      "src-109d4cfd20708194faa0"
+    ],
+    "california-subpoena": [
+      "src-ea0d95656261d06b847d",
+      "src-186fe4ebc2f953a0a869"
+    ],
+    "aisi-resumes-testing": [
+      "src-b4386a81da8b5a72afc0"
+    ],
+    "agent-accountability-act": [
+      "src-60a15917d61b8f33961b"
+    ],
+    "irregular-containment-tests": [
+      "src-c49ac561fcaee6f044ae"
+    ],
+    "kwon-hearing": [
+      "src-6710b7ea194bdcc010fd",
+      "src-a915c9746bc5b31c9989",
+      "src-030b3429ae8da861065e"
+    ],
+    "anthropic-evals-internet-off": [
+      "src-b99b41cb356f12ab48e1"
+    ],
+    "white-house-incident-notification": [
+      "src-083e8a82d95a746e6bcf"
+    ],
+    "urlscan-disables-abused-accounts": [
+      "src-83dfca8c538b27bc7b68"
+    ],
+    "metr-risk-assessment-proposal": [
+      "src-69b8d3fd69035b0d18ce"
+    ],
+    "uk-ai-preparedness": [
+      "src-8c0f8ba111aecbf9ef66",
+      "src-dc6fae2821ca2e5eda6c"
+    ],
+    "cert-in-agent-advisory": [
+      "src-3c51e516971f0fbd6e48",
+      "src-019ce2bba694b3ba2842"
+    ],
+    "ncsc-agent-safeguards": [
+      "src-3d1d6ecffa743c402402"
+    ],
+    "ftc-investigative-demands": [
+      "src-a3bfb3b7c42afec93ff7"
+    ],
+    "canada-no-compromise-indication": [
+      "src-cd1ca79648f275dacd84"
+    ],
+    "anthropic-embedded-metr-evaluators": [
+      "src-c3f9aa1e97f35f2465d0"
+    ],
+    "australia-committee-safeguards-letter": [
+      "src-657d1ba4f2b252dd6253"
+    ],
+    "jpmorgan-outside-agent-access-policy": [
+      "src-f0411267182c1f0c1c48"
+    ]
+  }
+}

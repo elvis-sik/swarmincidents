@@ -1,0 +1,725 @@
+{
+  "schema_version": 1,
+  "incidents": {
+    "synthetic-email-injection-propagation": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-synthetic-email-injection-propagation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "research-justification-sandbagging": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-research-justification-sandbagging",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-motivated-judge-labels": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-motivated-judge-labels",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-hr-purpose-restriction": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-hr-purpose-restriction",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-hidden-shutdown-backup": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-hidden-shutdown-backup",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-founder-wind-down": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-founder-wind-down",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-forged-deploy-approval": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-forged-deploy-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-coding-compliance-labels": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-coding-compliance-labels",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-atlas-disclosure": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-atlas-disclosure",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "petri-ablation-interference": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-petri-ablation-interference",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gpt41-water-press-disclosure": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-gpt41-water-press-disclosure",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "audit-monitor-disabled": {
+      "added_at": "2026-10-22T18:06:40.818382+00:00",
+      "original_update": "oct22-backfill-audit-monitor-disabled",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "islo-harbor-verifier-tampering": {
+      "added_at": "2026-10-19T19:27:14+00:00",
+      "original_update": "islo-harbor-verifier-tampering-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "aisi-astra-simulated-supply-chain": {
+      "added_at": "2026-10-19T19:27:14+00:00",
+      "original_update": "aisi-astra-simulated-supply-chain-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "haiku-auditor-reward-hacking": {
+      "added_at": "2026-10-17T21:29:20+00:00",
+      "original_update": "haiku-auditor-reward-hacking-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "wildclawbench-planted-credentials": {
+      "added_at": "2026-10-17T20:04:25+00:00",
+      "original_update": "wildclawbench-planted-credentials-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "minimax-epa-registration": {
+      "added_at": "2026-10-17T20:04:25+00:00",
+      "original_update": "minimax-epa-registration-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-code-windows-deletion": {
+      "added_at": "2026-10-17T20:04:25+00:00",
+      "original_update": "claude-code-windows-deletion-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "benchmark-bot-check-workarounds": {
+      "added_at": "2026-10-17T20:04:25+00:00",
+      "original_update": "benchmark-bot-check-workarounds-listing",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openai-test-wallet": {
+      "added_at": "2026-10-16T17:38:30+00:00",
+      "original_update": "openai-test-wallet-disclosure",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openai-hospital-statistics-access": {
+      "added_at": "2026-10-16T17:38:30+00:00",
+      "original_update": "openai-hospital-statistics-access-disclosure",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openai-dashboard-internal-access": {
+      "added_at": "2026-10-16T17:38:30+00:00",
+      "original_update": "openai-dashboard-internal-access-disclosure",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "university-tools": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "university-tools-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "swe-together-audit": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "swe-together-audit-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "swe-public-history": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "swe-public-history-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "state-data-fee": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "state-data-fee-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "scale-environment-passes": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "scale-environment-passes-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "scale-cua-answer-file": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "scale-cua-answer-file-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "rome-training": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "rome-training-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "replit-code-freeze": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "replit-code-freeze-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "reference-source-copy": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "reference-source-copy-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "pocketos-volume": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "pocketos-volume-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "pixelleak": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "pixelleak-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus-stop-grader": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "opus-stop-grader-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "o1-preview-docker-flag": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "o1-preview-docker-flag-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "mythos-math-processes": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "mythos-math-processes-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "mythos-internal-permissions": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "mythos-internal-permissions-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "metr-gpt56-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "metr-gpt56-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "metr-gpt5-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "metr-gpt5-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "metr-2026-task-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "metr-2026-task-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "meerkat-task-audit": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "meerkat-task-audit-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "iquest-future-history": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "iquest-future-history-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "internal-eda-host": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "internal-eda-host-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "internal-codex-access": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "internal-codex-access-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "hugging-face-may-tokens": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "hugging-face-may-tokens-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "haiku-swe-history": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "haiku-swe-history-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gym-waitlist": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "gym-waitlist-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "grading-reset": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "grading-reset-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gpu-mode-timing": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "gpu-mode-timing-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gemini-proof-swarm": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "gemini-proof-swarm-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "forgecode-solutions": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "forgecode-solutions-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "fable-compiler": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "fable-compiler-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "dreadnode-cybench": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "dreadnode-cybench-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "dgm-marker-hack": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "dgm-marker-hack-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "datacurve-swe-history": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "datacurve-swe-history-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "cursor-swe-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "cursor-swe-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "cuda-l1-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "cuda-l1-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "composer-swe-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "composer-swe-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-later-permissions": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "claude-later-permissions-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "caisi-benchmark-shortcuts": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "caisi-benchmark-shortcuts-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "aisi-external-execution": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "aisi-external-execution-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "ai-scientist-execution": {
+      "added_at": "2026-10-16T03:02:56+00:00",
+      "original_update": "ai-scientist-execution-added",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "o3-metr-reward-hacking": {
+      "added_at": "2026-10-14T12:15:39-07:00",
+      "original_update": "history-1f92757-o3-metr-reward-hacking",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "1f92757352a217ae17aeb06ed73c58df083a7f72",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "kimi-benchmark-answers": {
+      "added_at": "2026-10-14T12:15:39-07:00",
+      "original_update": "history-1f92757-kimi-benchmark-answers",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "1f92757352a217ae17aeb06ed73c58df083a7f72",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "github-token-exposure": {
+      "added_at": "2026-10-14T12:15:39-07:00",
+      "original_update": "github-token-added",
+      "basis": {
+        "kind": "publication-record",
+        "note": "Imported approved announcement; snapshots from its original publication commit."
+      }
+    },
+    "browsecomp-answer-key": {
+      "added_at": "2026-10-14T12:15:39-07:00",
+      "original_update": "browsecomp-added",
+      "basis": {
+        "kind": "publication-record",
+        "note": "Imported approved announcement; snapshots from its original publication commit."
+      }
+    },
+    "openai-public-file-service": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-openai-public-file-service",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "openai-government-statistics": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-openai-government-statistics",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "claude-visa-forms": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-claude-visa-forms",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "claude-university-server": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-claude-university-server",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "claude-property-map": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-claude-property-map",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "claude-philadelphia-tip": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-claude-philadelphia-tip",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "claude-link-shorteners": {
+      "added_at": "2026-10-12T22:44:45Z",
+      "original_update": "history-ed72bd9-claude-link-shorteners",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ed72bd9e472fd473abe59b320b5a66932b367589",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "wikimedia": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-wikimedia",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "training-uploads": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-training-uploads",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "pypi-malware": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-pypi-malware",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "mythos-preview-exploit": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-mythos-preview-exploit",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "irregular-openai": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-irregular-openai",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "irregular-meta": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-irregular-meta",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "irregular-gemini": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-irregular-gemini",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "irregular-anthropic": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-irregular-anthropic",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "github-keys": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-github-keys",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "amap-fleet": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-amap-fleet",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "aisi-cyber-range": {
+      "added_at": "2026-10-07T13:34:39-07:00",
+      "original_update": "history-ecff960-aisi-cyber-range",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "ecff96001de4566eafc912ed890bb0fe4db742a6",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "wikis": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-wikis",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "user-images": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-user-images",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "us-government": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-us-government",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "urlquery": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-urlquery",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "twelve-sites": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-twelve-sites",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "rubygems": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-rubygems",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "medicare": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-medicare",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "hugging-face": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-hugging-face",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "dns-chatbot": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-dns-chatbot",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    },
+    "artifactory": {
+      "added_at": "2026-09-28T19:41:28-07:00",
+      "original_update": "history-b0218e4-artifactory",
+      "basis": {
+        "kind": "git-first-parent",
+        "commit": "b0218e4ae450850ac7ac939fe5644100717e04b4",
+        "note": "Backfilled from the original public first-parent Git commit. Commit time is the best available catalog-addition evidence; exact live deployment time was not independently verified."
+      }
+    }
+  }
+}
