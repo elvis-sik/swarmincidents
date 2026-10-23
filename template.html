@@ -467,6 +467,9 @@ button.lg.lg-lvl{margin-right:-4px}
 .det-top .btn svg{width:15px;height:15px}
 .det-top .kind{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:8px}
 .det-sub{font-size:13px;color:var(--muted);margin-top:-6px}
+.catalog-added{font-size:11.5px;line-height:1.5;color:var(--muted);margin-top:-6px}
+.catalog-added a{color:inherit;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.catalog-added a:hover{color:var(--ink);text-decoration-color:currentColor}
 .rel-inc{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--line)}
 .rel-inc:first-of-type{border-top:0;padding-top:2px}
 .rel-inc .inc-link{font-size:13.5px;font-weight:600}
@@ -3036,6 +3039,17 @@ function devLine(e) {
   const t = parts.join(' · ');
   return h('div', { class: 'det-sub', text: t.charAt(0).toUpperCase() + t.slice(1) });
 }
+function catalogAdded(e) {
+  const added = DATA.catalogAdded?.[e.id];
+  if (!added) return h('div', { class: 'catalog-added', text: 'Added to catalog: date unavailable' });
+  const note = added.reconstructed
+    ? 'Approximate catalog addition date, reconstructed from public Git history. The commit date is not a verified deployment date.'
+    : 'Original catalog addition date, from its publication record. Dates use Pacific time.';
+  return h('div', { class: 'catalog-added' }, 'Added to catalog ',
+    h('a', { href: `updates.html#${added.update}`, 'data-tip': note,
+      'aria-label': `Added to catalog ${fmtY(added.date)}${added.reconstructed ? ', approximate' : ''}. ${note}` },
+      h('time', { datetime: added.date, text: fmtY(added.date) }), added.reconstructed ? ' (approx.)' : null));
+}
 function select(id, opts = {}) {
   const collapseEvents = !opts.quiet && !opts.events && !!expandedEventIncident;
   if (!opts.quiet && !opts.events) { focusedIncidentEvents = null; expandedEventIncident = null; }
@@ -3062,6 +3076,7 @@ function select(id, opts = {}) {
     h('div', { class: 'det-top' }, topLine('Incident', 'Disclosed ', fmtY(e.main.d)), navBtns(order, i, j => select(j, { focus: true, keepBack: true }), noun)),
     h('h2', { id: 'det-title', tabindex: '-1', text: e.title }),
     devLine(e),
+    catalogAdded(e),
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), `Disclosed by ${incWhoBy(e, e.main.by)}`),
       e.category === 'benchmark-integrity' ? h('span', { class: 'tag', text: 'Benchmark integrity' }) : null,

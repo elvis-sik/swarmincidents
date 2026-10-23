@@ -7,10 +7,18 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from feed import build as build_feed
 from publication import project
+from catalog_dates import catalog_additions
 here = Path(__file__).parent
 data = json.loads((here / "incidents.json").read_text(encoding="utf-8"))
 updated, version = data["updated"], data["version"]
-js = "const DATA = " + json.dumps(data, ensure_ascii=False) + ";"
+journal = json.loads((here / "publications.json").read_text(encoding="utf-8"))
+updates = project(journal, data)
+# The journal is authoritative; updates.json is a generated compatibility export.
+if json.loads((here / "updates.json").read_text(encoding="utf-8")) != updates:
+    raise ValueError("updates.json must be the exact projection of publications.json")
+# Display metadata is derived, never written back into the editorial catalog.
+site_data = dict(data, catalogAdded=catalog_additions(updates))
+js = "const DATA = " + json.dumps(site_data, ensure_ascii=False) + ";"
 page = (here / "template.html").read_text().replace("/*__DATA__*/", js.replace("</", "<\\/"))
 page = page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
 page = page.replace("__UPDATED__", updated).replace("__VERSION__", version)
@@ -20,15 +28,10 @@ page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
 (here / "brand" / "data.js").write_text(js + "\n")  # for brand/og.html
 docs = here / "docs"
 docs.mkdir(exist_ok=True)
-journal = json.loads((here / "publications.json").read_text(encoding="utf-8"))
-updates = project(journal, data)
-# The journal is authoritative; updates.json is a generated compatibility export.
-if json.loads((here / "updates.json").read_text(encoding="utf-8")) != updates:
-    raise ValueError("updates.json must be the exact projection of publications.json")
 build_feed(data, here)
 (docs / "updates.json").write_text(json.dumps(updates, ensure_ascii=False, indent=2) + "\n")
 # One actual shell and renderer, not a separate approximation of the dashboard.
-update_data = dict(data)
+update_data = dict(site_data)
 update_data["responses"] = [dict(
     id=u["id"], title=u["title"], text=u["summary"],
     d=datetime.fromisoformat(u["published"]).astimezone(ZoneInfo("America/Los_Angeles")).date().isoformat(),

@@ -21,3 +21,7 @@ The baseline becomes immutable after migration; subsequent publication records e
 ## Channel behavior
 
 The website and RSS use the same announcement copy and resources. Website details expose the historical differences and a primary View incident action. RSS retains the Read on swarmincidents.com wording. This release does not activate email collection, an email schedule, X posting or automatic editorial approval.
+
+## Original catalog addition date
+
+Incident cards display the earliest `New incident` publication record, linked to its Updates entry. This build-derived metadata is separate from incident activity and disclosure dates; later updates or corrections do not reset it. Dates use the feed’s America/Los_Angeles calendar. Reconstructed Git-history dates are visibly marked approximate because commit time does not verify live deployment time. If a first-listing record is absent, the card shows “date unavailable” rather than inferring one.
