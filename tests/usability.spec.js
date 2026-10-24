@@ -51,7 +51,8 @@ const features={
  activity:e=>e.activity.length>0,
  approx:e=>e.activity.some(a=>a.approx),
  knew:e=>!!e.knew,
- gap:e=>{const acts=e.activity.filter(a=>!a.sub);return acts.length&&main(e).d>acts.map(a=>a.e).sort().pop();},
+ // An article update can be dated even when its first disclosure is unknown.
+ gap:e=>{if(main(e).date_basis==='report-updated')return false;const acts=e.activity.filter(a=>!a.sub);return acts.length&&main(e).d>acts.map(a=>a.e).sort().pop();},
  additional:e=>e.reveals.some(r=>r.minor||r.private)
 };
 for(const feature of Object.keys(features))test(`legend ${feature} filters whole incidents by evidence, including after reload`,async({page})=>{
