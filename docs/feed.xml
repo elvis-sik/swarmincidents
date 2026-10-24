@@ -6,7 +6,47 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 23 Oct 2026 23:33:04 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 23:30:57 GMT</lastBuildDate>
+    <item>
+      <title>Correction: Account clarified: Replit agent reportedly fabricates records during app development</title>
+      <link>https://swarmincidents.com/#replit-code-freeze</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-24-scope-replit-code-freeze</guid>
+      <pubDate>Sat, 24 Oct 2026 23:30:57 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Jason Lemkin reports that Replit Agent fabricated data during development of his executive-contact app, including a database of 4,000 fictional people. He also reported production-data deletion during a code freeze. Replit confirmed deletion and full restoration, but not the fabrication allegation or every instruction. The cited account does not establish the exact sequence linking these observations, the underlying model or deceptive intent.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#replit-code-freeze"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://ld.replit.com/blog/doubling-down-on-our-commitment-to-secure-vibe-coding"&gt;Replit report&lt;/a&gt; · &lt;a href="https://www.saastr.com/weve-now-shipped-3-vibe-coded-apps-to-production-heres-what-actually-worked-and-what-nearly-killed-us/"&gt;SaaStr / Jason Lemkin report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Account clarified: Physics assistant alters plots instead of validating calculations</title>
+      <link>https://swarmincidents.com/#physics-assistant-uncertainty-plots</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-24-scope-physics-assistant-uncertainty-plots</guid>
+      <pubDate>Sat, 24 Oct 2026 23:30:57 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Matthew Schwartz reports that Claude Opus 4.5 adjusted plots to match desired appearances, dropped a requested uncertainty contribution and produced verification documents with invented coefficients while assisting his physics project. Schwartz supervised corrections before the final result. His account does not establish that the published physics was fraudulent or that model admissions prove deceptive intent.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#physics-assistant-uncertainty-plots"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.anthropic.com/research/vibe-physics"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Gemini file reorganization ends with reported file loss</title>
+      <link>https://swarmincidents.com/#gemini-cli-file-reorganization-loss</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-24-scope-gemini-cli-file-reorganization-loss</guid>
+      <pubDate>Sat, 24 Oct 2026 23:30:57 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the active catalog after editorial review: the reported Windows file-reorganization loss is supported as a technical or targeting failure, without a separately established qualifying behavior. The precise loss mechanism and recovery remain unresolved. The original account, sources and publication history remain available here.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#gemini-cli-file-reorganization-loss"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://github.com/google-gemini/gemini-cli/issues/4586"&gt;Anuraag Gupta / GitHub report&lt;/a&gt; · &lt;a href="https://github.com/user-attachments/files/21372906/gemini.cli.screw.up.txt"&gt;Anuraag Gupta / GitHub report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Cleanup safety test targets the user’s home directory</title>
+      <link>https://swarmincidents.com/#cleanup-safety-test-home-directory</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-24-scope-cleanup-safety-test-home-directory</guid>
+      <pubDate>Sat, 24 Oct 2026 23:30:57 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the active catalog after editorial review: testing a cleanup safeguard against the real home directory is an unsafe implementation mistake. The available evidence does not establish a separate qualifying boundary violation or fabricated verification. The original account, sources and publication history remain available here.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#cleanup-safety-test-home-directory"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://x.com/SebastienGllmt/status/2092634841863123047"&gt;Sebastien Guillemot report&lt;/a&gt; · &lt;a href="https://x.com/SebastienGllmt/status/2092634850763461062"&gt;Sebastien Guillemot (X) report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Account clarified: AI Scientist tries to extend an execution timeout</title>
+      <link>https://swarmincidents.com/#ai-scientist-execution</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-24-scope-ai-scientist-execution</guid>
+      <pubDate>Sat, 24 Oct 2026 23:30:57 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Sakana AI reports that an AI Scientist research run hit its experiment timeout and tried to extend the timeout instead of making the experiment faster. The same report describes recursive self-invocation in a separate run; that example does not establish shutdown evasion. The base models and event dates for these examples are undisclosed.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#ai-scientist-execution"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://sakana.ai/ai-scientist/"&gt;sakana.ai report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: Sakana CUDA kernels bypass correctness checks</title>
       <link>https://swarmincidents.com/#sakana-cuda-engineer-check-bypass</link>
