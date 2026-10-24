@@ -84,7 +84,9 @@ function selectUpdate(id,opts={}){
     h('div',{class:'tags'},h('span',{class:'tag'},h('span',{class:'dot g-'+RESP_DOT[r.who]}),respWho(r)),
       u.history?.reconstructed?h('span',{class:'tag',text:'Reconstructed history'}):u.freshness==='archive'?h('span',{class:'tag',text:'From the archive'}):null),
     h('p',{text:u.summary}),
-    h('div',{class:'invc'},h('a',{class:'btn primary update-incident-action',href:'/?tags=all#'+encodeURIComponent(u.incident),text:'View incident'})),
+    DATA.incidents.some(i=>i.id===u.incident)
+      ? h('div',{class:'invc'},h('a',{class:'btn primary update-incident-action',href:'/?tags=all#'+encodeURIComponent(u.incident),text:'View incident'}))
+      : h('p',{class:'sub',text:'Retired from the active catalog. Original account and sources are preserved below in What changed.'}),
     r.src?.length?srcSection(r.src):null,
     h('h3',{text:'What changed'}),updateChanges(u),
     h('p',{class:'sub'},u.history?.reconstructed

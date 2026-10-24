@@ -36,7 +36,7 @@ test('shared pickers compose type, reporting and models and survive reload',asyn
  await page.goto('/updates.html',{waitUntil:'domcontentloaded'});await page.getByRole('group',{name:'Update type',exact:true}).getByRole('button',{name:'Developments',exact:true}).click();await expect(row(page)).toHaveCount(developments.length);
  await pick(page,'Reporting','Archive additions');await expect(row(page)).toHaveCount(archiveDevelopments.length);
  await page.reload();await expect(row(page)).toHaveCount(archiveDevelopments.length);await pick(page,'Reporting','Recent & archive');
- await pick(page,'Models',/^Anthropic\b/);await expect(row(page)).toHaveCount(developments.filter(u=>catalog.incidents.find(i=>i.id===u.incident).labs.includes('anthropic')).length);
+ await pick(page,'Models',/^Anthropic\b/);await expect(row(page)).toHaveCount(developments.filter(u=>catalog.incidents.find(i=>i.id===u.incident)?.labs.includes('anthropic')).length);
 });
 
 test('shared custom date range filters publication dates and persists',async({page})=>{
