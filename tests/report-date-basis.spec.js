@@ -25,6 +25,10 @@ test('report-update date stays out of disclosure claims and calculated delay',as
   await page.getByRole('button',{name:'Close details',exact:true}).click();
   await page.getByRole('button',{name:'Table',exact:true}).click();
   await expect(page.locator(`tr[data-inc-row="${incident.id}"]`).locator('td').nth(2)).toHaveText('Unknown');
+  await page.locator('#foot button[data-filter="gap"]').click();
+  await expect(page.locator(`[data-inc-row="${incident.id}"]`)).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator(`[data-inc-row="${incident.id}"]`)).toHaveCount(0);
 });
 
 test('known first disclosure retains its label and delay as a positive control',async({page})=>{
@@ -35,4 +39,6 @@ test('known first disclosure retains its label and delay as a positive control',
   await page.getByRole('button',{name:'Table',exact:true}).click();
   await expect(page.locator('tr[data-inc-row="aisi-cyber-range"] td').nth(2)).toHaveText('Aug 4');
   await expect(page.locator('tr[data-inc-row="aisi-cyber-range"] td').nth(3)).toHaveText('10 d');
+  await page.locator('#foot button[data-filter="gap"]').click();
+  await expect(page.locator('[data-inc-row="aisi-cyber-range"]')).toHaveCount(1);
 });
