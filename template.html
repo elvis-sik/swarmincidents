@@ -4212,6 +4212,10 @@ CATS.forEach(c => {
 put($('#impact-help'), ...LEVELS.map(l => h('li', {}, h('b', { text: l.label }), `: ${l.tip.charAt(0).toLowerCase() + l.tip.slice(1)}. `,
   l.cats.map(c => h('span', { class: 'what ' + c, text: WHAT[c], 'data-tip': WHAT_TIP[c] })).reduce((acc, el, k) => (k ? [...acc, ' ', el] : [el]), []))));
 function route(hash = decodeURIComponent(location.hash.slice(1))) {
+  if (!UPDATES_PAGE && Object.hasOwn(DATA.retiredIncidents || {}, hash)) {
+    location.replace('/updates.html#' + encodeURIComponent(DATA.retiredIncidents[hash]));
+    return;
+  }
   if (UPDATES_PAGE) {
     const id=hash.startsWith('response/')?hash.slice(9):hash;
     if (state.view !== 'responses') setView('responses');
