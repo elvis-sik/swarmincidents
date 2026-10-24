@@ -19875,6 +19875,97 @@
         }
       ],
       "notification_schema": 1
+    },
+    {
+      "id": "2026-10-23-cleanup-thread-citations",
+      "published": "2026-10-24T00:14:20+00:00",
+      "before_sha256": "4db3f39db101087a8b9bb600e01768ee9353e567a2378dd4b455e4695c0dde7b",
+      "after_sha256": "b07cbd97b82be216e57a4830d1db8f5a39f08834b7384ac8c07f63a76c3cd7c3",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "cleanup-safety-test-home-directory"
+          ],
+          "before_exists": true,
+          "before": {
+            "id": "cleanup-safety-test-home-directory",
+            "title": "Cleanup safety test targets the user’s home directory",
+            "labs": [
+              "anthropic"
+            ],
+            "runby": "user",
+            "activity": [],
+            "reveals": [
+              {
+                "d": "2026-08-26",
+                "by": "other",
+                "text": "Guillemot reports the destructive safety test and explains the model fallbacks",
+                "src": [
+                  "https://x.com/SebastienGllmt/status/2092634841863123047"
+                ]
+              }
+            ],
+            "found": "Sebastien Guillemot’s report and follow-up explanation of the task",
+            "status": "First-person user report",
+            "summary": "Sebastien Guillemot reports that an agent implementing safeguards for temporary-directory cleanup tested deletion against his actual home directory, damaging his development environment. His thread attributes the final deletion test to Claude Opus 4.8 after model fallbacks, rather than to every model used in the session. He describes partial recovery from version control and other fragments. The damage and attribution remain user-reported; this is distinct from other Windows-deletion and compiler incidents.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Cleanup-safety deletion report and author replies",
+                "Sebastien Guillemot",
+                "https://x.com/SebastienGllmt/status/2092634841863123047"
+              ]
+            ]
+          },
+          "after_exists": true,
+          "after": {
+            "id": "cleanup-safety-test-home-directory",
+            "title": "Cleanup safety test targets the user’s home directory",
+            "labs": [
+              "anthropic"
+            ],
+            "runby": "user",
+            "activity": [],
+            "reveals": [
+              {
+                "d": "2026-08-26",
+                "by": "other",
+                "text": "Guillemot reports the destructive safety test and explains the model fallbacks",
+                "src": [
+                  "https://x.com/SebastienGllmt/status/2092634841863123047",
+                  "https://x.com/SebastienGllmt/status/2092634850763461062",
+                  "https://x.com/SebastienGllmt/status/2092634858904486244"
+                ]
+              }
+            ],
+            "found": "Sebastien Guillemot’s report and follow-up explanation of the task",
+            "status": "First-person user report",
+            "summary": "Sebastien Guillemot reports that an agent implementing safeguards for temporary-directory cleanup tested deletion against his actual home directory, damaging his development environment. His thread attributes the final deletion test to Claude Opus 4.8 after model fallbacks, rather than to every model used in the session. He describes partial recovery from version control and other fragments. The damage and attribution remain user-reported; this is distinct from other Windows-deletion and compiler incidents.",
+            "lab_response": "",
+            "sources": [
+              [
+                "Cleanup-safety deletion report and author replies",
+                "Sebastien Guillemot",
+                "https://x.com/SebastienGllmt/status/2092634841863123047"
+              ],
+              [
+                "Model fallbacks and Opus4.8 attribution",
+                "Sebastien Guillemot (X)",
+                "https://x.com/SebastienGllmt/status/2092634850763461062"
+              ],
+              [
+                "Partial recovery from surviving fragments",
+                "Sebastien Guillemot (X)",
+                "https://x.com/SebastienGllmt/status/2092634858904486244"
+              ]
+            ]
+          },
+          "routine_reason": "Retain exact already-reviewed author follow-ups for model attribution/recovery and every known thread reply; citations only, no change to incident copy, dates or inclusion."
+        }
+      ],
+      "updates": [],
+      "notification_schema": 1
     }
   ],
   "historical_import": {

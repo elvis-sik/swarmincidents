@@ -1871,6 +1871,78 @@
       "aliases": [],
       "labels": [],
       "evidence_role": "secondary-commentary"
+    },
+    "src-21cb62bb9506bb44d5e4": {
+      "url": "https://x.com/SebastienGllmt/status/2092634850763461062",
+      "title": "Model fallbacks and Opus4.8 attribution",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-0411dcb4f0da3b1b1716": {
+      "url": "https://x.com/SebastienGllmt/status/2092634858904486244",
+      "title": "Partial recovery from surviving fragments",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-0115e7b4dfdc066ee0be": {
+      "url": "https://x.com/SebastienGllmt/status/2092634844656439372",
+      "title": "Authorized temporary-directory task",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-063cffd7873e7f94b11d": {
+      "url": "https://x.com/SebastienGllmt/status/2092634846955012097",
+      "title": "Long-running agent cleanup design",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-b592cf40f8017c70b5a8": {
+      "url": "https://x.com/SebastienGllmt/status/2092634848867606757",
+      "title": "Unrequested adversarial design review",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-f0ec76c3aba0e9855381": {
+      "url": "https://x.com/SebastienGllmt/status/2092634853233803267",
+      "title": "Home-directory deletion safety test",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-6d1ba685b063ac3d7538": {
+      "url": "https://x.com/SebastienGllmt/status/2092634856039895400",
+      "title": "What remained after the deletion",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-1a62c65ea560829d26b2": {
+      "url": "https://x.com/SebastienGllmt/status/2092634861840548237",
+      "title": "Follow-up about rebuilding the environment",
+      "publisher": "Sebastien Guillemot (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "author-followup"
+    },
+    "src-6bd948391f93776c9f98": {
+      "url": "https://x.com/astroboysoup/status/2092644897132073065",
+      "title": "Reply/commentary on the deletion report",
+      "publisher": "Pete / astroboysoup (X)",
+      "aliases": [],
+      "labels": [],
+      "evidence_role": "commentary"
     }
   },
   "incidents": {
@@ -4754,20 +4826,45 @@
     },
     "cleanup-safety-test-home-directory": {
       "curated": [
-        "src-72ddc805312d6b9c91d9"
+        "src-72ddc805312d6b9c91d9",
+        "src-21cb62bb9506bb44d5e4",
+        "src-0411dcb4f0da3b1b1716"
       ],
-      "additional": [],
+      "additional": [
+        "src-0115e7b4dfdc066ee0be",
+        "src-063cffd7873e7f94b11d",
+        "src-b592cf40f8017c70b5a8",
+        "src-f0ec76c3aba0e9855381",
+        "src-6d1ba685b063ac3d7538",
+        "src-1a62c65ea560829d26b2",
+        "src-6bd948391f93776c9f98"
+      ],
       "reveals": [
         {
           "d": "2026-08-26",
           "by": "other",
           "text": "Guillemot reports the destructive safety test and explains the model fallbacks",
           "source_ids": [
-            "src-72ddc805312d6b9c91d9"
+            "src-72ddc805312d6b9c91d9",
+            "src-21cb62bb9506bb44d5e4",
+            "src-0411dcb4f0da3b1b1716"
           ]
         }
       ],
-      "activity": []
+      "activity": [],
+      "timeline_history": [
+        {
+          "kind": "reveals",
+          "association": {
+            "d": "2026-08-26",
+            "by": "other",
+            "text": "Guillemot reports the destructive safety test and explains the model fallbacks",
+            "source_ids": [
+              "src-72ddc805312d6b9c91d9"
+            ]
+          }
+        }
+      ]
     },
     "gemini-cli-file-reorganization-loss": {
       "curated": [

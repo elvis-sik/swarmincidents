@@ -4260,7 +4260,9 @@
           "by": "other",
           "text": "Guillemot reports the destructive safety test and explains the model fallbacks",
           "src": [
-            "https://x.com/SebastienGllmt/status/2092634841863123047"
+            "https://x.com/SebastienGllmt/status/2092634841863123047",
+            "https://x.com/SebastienGllmt/status/2092634850763461062",
+            "https://x.com/SebastienGllmt/status/2092634858904486244"
           ]
         }
       ],
@@ -4273,6 +4275,16 @@
           "Cleanup-safety deletion report and author replies",
           "Sebastien Guillemot",
           "https://x.com/SebastienGllmt/status/2092634841863123047"
+        ],
+        [
+          "Model fallbacks and Opus4.8 attribution",
+          "Sebastien Guillemot (X)",
+          "https://x.com/SebastienGllmt/status/2092634850763461062"
+        ],
+        [
+          "Partial recovery from surviving fragments",
+          "Sebastien Guillemot (X)",
+          "https://x.com/SebastienGllmt/status/2092634858904486244"
         ]
       ]
     },
