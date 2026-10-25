@@ -1943,6 +1943,13 @@
       "aliases": [],
       "labels": [],
       "evidence_role": "commentary"
+    },
+    "src-f8c156dba7886826388b": {
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+      "title": "Securing our frontier model training environment",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -2481,6 +2488,7 @@
     },
     "dns-chatbot": {
       "curated": [
+        "src-f8c156dba7886826388b",
         "src-94086312d152c8bd0805",
         "src-da8fe52b671ba51cf92c",
         "src-6e730935622bc33232b1"
@@ -2496,6 +2504,14 @@
           "text": "OpenAI publishes a report and pauses tool use for its most capable models",
           "source_ids": [
             "src-4421cb94cd13c41ec91e"
+          ]
+        },
+        {
+          "d": "2026-10-23",
+          "by": "lab",
+          "text": "OpenAI publishes its containment-hardening report and reports the Oct. 1 resumption",
+          "source_ids": [
+            "src-f8c156dba7886826388b"
           ]
         }
       ],
@@ -5184,6 +5200,9 @@
     ],
     "jpmorgan-outside-agent-access-policy": [
       "src-f0411267182c1f0c1c48"
+    ],
+    "openai-frontier-training-resumed": [
+      "src-f8c156dba7886826388b"
     ]
   }
 }

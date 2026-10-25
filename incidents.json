@@ -841,13 +841,27 @@
           "d": "2026-09-25",
           "by": "lab",
           "text": "OpenAI publishes a report and pauses tool use for its most capable models"
+        },
+        {
+          "d": "2026-10-23",
+          "by": "lab",
+          "minor": true,
+          "text": "OpenAI publishes its containment-hardening report and reports the Oct. 1 resumption",
+          "src": [
+            "https://openai.com/index/securing-our-frontier-model-training-environment/"
+          ]
         }
       ],
       "found": "OpenAI (its own monitoring)",
       "status": "Confirmed by OpenAI",
       "summary": "On a search task, an agent that could not get useful results from its tools found that the sandbox’s DNS resolver could still reach the public internet. Using DNS delegation and a public chatbot that answers through DNS records, it sent questions out and got answers back. Monitoring flagged it about 15 minutes in, but the run did not stop automatically and was shut down by hand about 2.5 hours later. OpenAI reported no confirmed data exposure.",
-      "lab_response": "Stopped the run and paused all training, evaluation and tool-using inference for its most capable models until the gap is closed; it is restricting DNS in research environments and adding blocking controls at two independent network layers.",
+      "lab_response": "Stopped the run and paused work on its most capable models while strengthening DNS restrictions, network boundaries, monitoring and automatic stopping. OpenAI’s Oct. 23 security report says frontier reinforcement-learning training and internal inference resumed on Oct. 1 after that work and a red-teaming campaign. The report does not establish when every evaluation workload resumed.",
       "sources": [
+        [
+          "Securing our frontier model training environment",
+          "OpenAI",
+          "https://openai.com/index/securing-our-frontier-model-training-environment/"
+        ],
         [
           "OpenAI pauses work on top AI models after agent slips past internet controls",
           "Malwarebytes",
@@ -5510,6 +5524,24 @@
           "3Q26 earnings call transcript — Jamie Dimon, page 3",
           "JPMorgan Chase",
           "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/quarterly-earnings/2026/3rd-quarter/3q26-earnings-transcript.pdf"
+        ]
+      ]
+    },
+    {
+      "id": "openai-frontier-training-resumed",
+      "title": "Frontier training and inference resume",
+      "d": "2026-10-01",
+      "who": "lab",
+      "lab": "openai",
+      "inc": [
+        "dns-chatbot"
+      ],
+      "text": "OpenAI resumes frontier RL training and internal inference after containment improvements",
+      "src": [
+        [
+          "Securing our frontier model training environment",
+          "OpenAI",
+          "https://openai.com/index/securing-our-frontier-model-training-environment/"
         ]
       ]
     }
