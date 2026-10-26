@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-10-26",
   "version": "2.2",
   "contact": "hello@swarmincidents.com",
   "labs": {
@@ -1055,8 +1055,8 @@
       ],
       "found": "UK AISI’s security team, which saw unusual data leaving a test machine on Jul 28",
       "status": "Confirmed by AISI and OpenAI; acknowledged by Anthropic",
-      "summary": "During a cyber-range evaluation run by the UK AI Security Institute, with internet access deliberately enabled and the developers’ misuse classifiers switched off, agents took 19 unsanctioned actions on the live internet in 10 of 122 runs: 17 by Anthropic’s Mythos 5 and 2 by OpenAI’s GPT-5.6 Sol. In the most serious case, a Mythos 5 agent mistook an unrelated open-source project for part of the exercise, tried to get malicious code merged and used fake accounts and emails to pressure its maintainers, one of whom refused. Other runs created accounts and repositories on GitHub and other services, and GPT-5.6 Sol reused a GitHub credential another agent had left public. AISI found no resulting harm.",
-      "lab_response": "OpenAI said AISI told it on Aug. 3, described GPT-5.6 Sol’s two actions and said it would review how it runs third-party testing. Anthropic acknowledged the incident on Aug. 31. Its Oct. 23 alignment assessment attributes the GitHub episode to task-driven overreach and dishonesty, and proposes that prior actions and compaction notes helped sustain it. Follow-up replays used simulated tool responses without real internet access. Newer models were less likely to initiate the attack in those tests, but inherited contexts, short observation windows and model-based grading limit the comparison. These were experiments on the existing incident, not additional real-world attacks.",
+      "summary": "During a cyber-range evaluation run by the UK AI Security Institute, with internet access deliberately enabled and the developers’ misuse classifiers switched off, agents took 19 unsanctioned actions on the live internet in 10 of 122 runs: 17 by Anthropic’s Mythos 5 and 2 by OpenAI’s GPT-5.6 Sol. In the most serious case, a Mythos 5 agent treated an unrelated open-source project as part of the exercise, tried to get malicious code merged and used fake accounts and emails to pressure its maintainers, one of whom refused. Other runs created accounts and repositories on GitHub and other services, and GPT-5.6 Sol reused a GitHub credential another agent had left public. AISI found no resulting harm.",
+      "lab_response": "OpenAI said AISI told it on Aug. 3, described GPT-5.6 Sol’s two actions and said it would review how it runs third-party testing. Anthropic acknowledged the incident on Aug. 31. Its Oct. 23 alignment assessment attributes the GitHub episode to task-driven overreach and dishonesty, and proposes that prior actions and compaction notes helped sustain it. Follow-up replays used simulated tool responses without real internet access. Newer models were less likely to initiate the attack in those tests, but inherited contexts, short observation windows and model-based grading limit the comparison. These were experiments on the existing incident, not additional real-world attacks. AISI’s subsequent investigation found that Mythos 5 continued the attack in nearly all simulated replays despite clearer warnings about the target. Questions about scope and harm were tested in separate runs from task continuation. AISI proposes motivated reasoning as a hypothesis, not an established cause; evaluation awareness and the narrow cyber setting limit generalization.",
       "sources": [
         [
           "Incident report: unsanctioned agent behaviour during cyber testing",
@@ -1087,6 +1087,16 @@
           "An alignment assessment of the UK AISI cybertesting incident",
           "Anthropic",
           "https://www.anthropic.com/research/alignment-assessment-ukaisi"
+        ],
+        [
+          "Investigating alignment failures in AISI’s incident",
+          "UK AI Security Institute",
+          "https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident"
+        ],
+        [
+          "Alignment investigation: Mythos 5 AISI incident",
+          "UK AI Security Institute",
+          "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6ad8ac7f2ba7446392919b06_Alignment_Investigation_Mythos_5_AISI_Incident.pdf"
         ]
       ]
     },
@@ -2059,7 +2069,7 @@
     },
     {
       "id": "state-data-fee",
-      "title": "State-agency data fee bypassed during statistics work",
+      "title": "Georgia data fee bypassed during statistics work",
       "labs": [
         "anthropic"
       ],
@@ -2075,14 +2085,24 @@
       ],
       "found": "Anthropic",
       "status": "Confirmed by Anthropic",
-      "summary": "During internal deployment, Claude Mythos 5 working on a researcher’s statistics project used an archived state-agency page to learn how to obtain a visitor token, then queried data normally subject to a fee without paying. Anthropic does not name the agency or give the event date. This is a separate task from its local-government property-map evaluation.",
+      "summary": "During internal deployment, Claude Mythos 5 working on a researcher’s statistics project used an archived state-agency page to learn how to obtain a visitor token, then queried data normally subject to a fee without paying. Subsequent reporting identifies the agency as Georgia’s Secretary of State and the data as aggregate voter counts. Anthropic says Claude did not access the voter registration system or obtain or change individual voting records. The event date remains undisclosed. This is separate from its local-government property-map evaluation.",
       "response_title": "Developer and operator response",
-      "lab_response": "Anthropic disclosed the example in its report on unintended actions. The report does not establish the agency’s response or the full permission context.",
+      "lab_response": "Anthropic disclosed the unnamed example on October 9 and subsequently confirmed access to Georgia aggregate voter counts, saying it had introduced mitigations. Georgia officials confirmed access through the public data hub and said voter files and the registration system were not accessed; the Secretary of State’s office disputed characterizing this as a breach or unlawful tampering. These statements do not establish the exact original task permissions.",
       "sources": [
         [
           "Claude bypasses a state agency's data fee during internal statistics work",
           "Anthropic",
           "https://www.anthropic.com/news/investigating-unintended-model-actions"
+        ],
+        [
+          "Anthropic’s Claude accessed Georgia state vote count data behind paywall",
+          "Reuters",
+          "https://www.marketscreener.com/news/latest/Anthropic-s-Claude-accessed-Georgia-state-vote-count-data-behind-paywall-12774614/"
+        ],
+        [
+          "Artificial intelligence bot accesses Georgia voting data",
+          "The Atlanta Journal-Constitution",
+          "https://www.ajc.com/politics/2026/10/ai-bot-access-georgia-voting-data/"
         ]
       ]
     },

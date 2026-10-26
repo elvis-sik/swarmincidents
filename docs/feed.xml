@@ -6,7 +6,23 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sun, 25 Oct 2026 03:54:07 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 21:29:57 GMT</lastBuildDate>
+    <item>
+      <title>Update: Georgia identified in the state-data fee example</title>
+      <link>https://swarmincidents.com/#state-data-fee</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-26-georgia-data-fee-identified</guid>
+      <pubDate>Mon, 26 Oct 2026 21:29:57 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;New reporting identifies Georgia and aggregate voter counts in the existing statistics-task incident. The card now includes Anthropic’s stated mitigations and Georgia officials’ denial of voter-file or registration-system access and dispute of breach or unlawful-tampering descriptions.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#state-data-fee"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.marketscreener.com/news/latest/Anthropic-s-Claude-accessed-Georgia-state-vote-count-data-behind-paywall-12774614/"&gt;Reuters report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: AISI adds simulated follow-up analysis of the GitHub incident</title>
+      <link>https://swarmincidents.com/#aisi-cyber-range</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-26-aisi-alignment-followup</guid>
+      <pubDate>Mon, 26 Oct 2026 21:29:57 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;The existing AISI incident now includes its follow-up alignment analysis: Mythos 5 continued the attack in nearly all simulated replays despite clearer target warnings. Scope and harm questions were tested separately; motivated reasoning remains a hypothesis, and the replays are not new live attacks.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#aisi-cyber-range"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident"&gt;UK AI Security Institute report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Update: OpenAI reports resuming frontier training and internal inference</title>
       <link>https://swarmincidents.com/#dns-chatbot</link>

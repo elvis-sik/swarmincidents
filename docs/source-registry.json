@@ -1950,6 +1950,34 @@
       "publisher": "OpenAI",
       "aliases": [],
       "labels": []
+    },
+    "src-3689ae04ddedc9d85325": {
+      "url": "https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident",
+      "title": "Investigating alignment failures in AISI’s incident",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4357a3b86897143f4f8f": {
+      "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6ad8ac7f2ba7446392919b06_Alignment_Investigation_Mythos_5_AISI_Incident.pdf",
+      "title": "Alignment investigation: Mythos 5 AISI incident",
+      "publisher": "UK AI Security Institute",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b98ddce489ff3786fcf6": {
+      "url": "https://www.marketscreener.com/news/latest/Anthropic-s-Claude-accessed-Georgia-state-vote-count-data-behind-paywall-12774614/",
+      "title": "Anthropic’s Claude accessed Georgia state vote count data behind paywall",
+      "publisher": "Reuters",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d494ed7a7b00ab72c080": {
+      "url": "https://www.ajc.com/politics/2026/10/ai-bot-access-georgia-voting-data/",
+      "title": "Artificial intelligence bot accesses Georgia voting data",
+      "publisher": "The Atlanta Journal-Constitution",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -2657,7 +2685,9 @@
         "src-c99ec862b4e71599bc42",
         "src-8ed1599eb95bc766b101",
         "src-b4386a81da8b5a72afc0",
-        "src-e16222d83dd92652e281"
+        "src-e16222d83dd92652e281",
+        "src-3689ae04ddedc9d85325",
+        "src-4357a3b86897143f4f8f"
       ],
       "additional": [
         "src-8bb9d4eaa3be688a1d56",
@@ -3447,7 +3477,9 @@
     },
     "state-data-fee": {
       "curated": [
-        "src-b99b41cb356f12ab48e1"
+        "src-b99b41cb356f12ab48e1",
+        "src-b98ddce489ff3786fcf6",
+        "src-d494ed7a7b00ab72c080"
       ],
       "additional": [],
       "reveals": [
