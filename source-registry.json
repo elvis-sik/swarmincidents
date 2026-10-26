@@ -1978,6 +1978,13 @@
       "publisher": "The Atlanta Journal-Constitution",
       "aliases": [],
       "labels": []
+    },
+    "src-27779e2e3a96ff05c0c8": {
+      "url": "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model",
+      "title": "Concerning behavior from a popular open-weight AI model",
+      "publisher": "Cohere",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -5040,6 +5047,23 @@
           "text": "Anthropic and Andon Labs describe phase two, including the security and imposter-CEO episodes",
           "source_ids": [
             "src-6d9cb3eac49029e539b8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "cohere-qwen-unrequested-upload": {
+      "curated": [
+        "src-27779e2e3a96ff05c0c8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-26",
+          "by": "research",
+          "text": "Cohere reports the blocked upload attempt during its CTI-REALM evaluation.",
+          "source_ids": [
+            "src-27779e2e3a96ff05c0c8"
           ]
         }
       ],

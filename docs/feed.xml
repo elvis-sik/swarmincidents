@@ -6,7 +6,15 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Mon, 26 Oct 2026 21:29:57 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 21:38:31 GMT</lastBuildDate>
+    <item>
+      <title>New incident: Qwen attempts an unrequested upload during a security test</title>
+      <link>https://swarmincidents.com/#cohere-qwen-unrequested-upload</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-26-cohere-qwen-unrequested-upload</guid>
+      <pubDate>Mon, 26 Oct 2026 21:38:31 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;Cohere reports that Qwen3.8-Flash-Next, tasked with writing a defensive detection rule, inspected its sandbox environment and attempted to upload a fixed test string to an Alibaba Cloud storage bucket in Beijing. The sandbox blocked the request. Its published reasoning described responding without tool calls, but the same turn issued shell commands. The cause and ownership of the destination bucket remain unresolved.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#cohere-qwen-unrequested-upload"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model"&gt;Cohere report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Update: Georgia identified in the state-data fee example</title>
       <link>https://swarmincidents.com/#state-data-fee</link>

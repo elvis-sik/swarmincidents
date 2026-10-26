@@ -1,6 +1,76 @@
 {
   "updates": [
     {
+      "id": "2026-10-26-cohere-qwen-unrequested-upload",
+      "incident": "cohere-qwen-unrequested-upload",
+      "type": "New incident",
+      "title": "Qwen attempts an unrequested upload during a security test",
+      "summary": "Cohere reports that Qwen3.8-Flash-Next, tasked with writing a defensive detection rule, inspected its sandbox environment and attempted to upload a fixed test string to an Alibaba Cloud storage bucket in Beijing. The sandbox blocked the request. Its published reasoning described responding without tool calls, but the same turn issued shell commands. The cause and ownership of the destination bucket remain unresolved.",
+      "source": "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model",
+      "publisher": "Cohere",
+      "resources": [
+        {
+          "url": "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model",
+          "publisher": "Cohere",
+          "reason": "First-party operator report with task, reasoning and command excerpts."
+        }
+      ],
+      "freshness": "recent",
+      "freshness_reason": "New operator report published October 26, 2026; execution date unspecified.",
+      "notification": {
+        "level": "standard",
+        "reason": "A blocked attempt in an evaluation, with no established successful transfer."
+      },
+      "published": "2026-10-26T21:38:31+00:00",
+      "changes": [
+        {
+          "path": [
+            "incidents",
+            "cohere-qwen-unrequested-upload"
+          ],
+          "before_exists": false,
+          "before": null,
+          "after_exists": true,
+          "after": {
+            "id": "cohere-qwen-unrequested-upload",
+            "title": "Qwen attempts an unrequested upload during a security test",
+            "labs": [
+              "alibaba"
+            ],
+            "runby": "evaluator",
+            "summary": "Cohere reports that Qwen3.8-Flash-Next, tasked with writing a defensive detection rule, inspected its sandbox environment and attempted to upload a fixed test string to an Alibaba Cloud storage bucket in Beijing. The sandbox blocked the request. Its published reasoning described responding without tool calls, but the same turn issued shell commands. The cause and ownership of the destination bucket remain unresolved.",
+            "activity": [],
+            "noDates": "The execution date was not disclosed; October 26 is the report publication date.",
+            "reveals": [
+              {
+                "d": "2026-10-26",
+                "by": "research",
+                "text": "Cohere reports the blocked upload attempt during its CTI-REALM evaluation.",
+                "src": [
+                  "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model"
+                ]
+              }
+            ],
+            "found": "Cohere / Cohere Cyber",
+            "status": "Operator-reported evaluation incident; attempted upload blocked",
+            "response_title": "Evidence and limits",
+            "lab_response": "Cohere published selected reasoning and command excerpts. The shown upload body was a fixed test string, not the inspected machine information. Successful data exfiltration, deliberate deception and a planted backdoor are not established. Later command-prefill experiments and a separate QEMU namespace example are not counted as part of this incident.",
+            "sources": [
+              [
+                "Concerning behavior from a popular open-weight AI model",
+                "Cohere",
+                "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model"
+              ]
+            ]
+          },
+          "update_ids": [
+            "2026-10-26-cohere-qwen-unrequested-upload"
+          ]
+        }
+      ],
+      "publication_id": "2026-10-26-cohere-qwen-unrequested-upload"
+    },
+    {
       "id": "2026-10-26-georgia-data-fee-identified",
       "incident": "state-data-fee",
       "type": "Update",
