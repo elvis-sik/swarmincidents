@@ -361,6 +361,9 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .rev.g-other{fill:var(--panel);stroke:var(--faint);stroke-width:1.6}
 .rev.minor.g-lab{stroke-width:1.6}
 .nodate{font-size:11px;fill:var(--muted);font-style:italic}
+.lane-label{font:11px var(--sans);fill:var(--muted);paint-order:stroke;stroke:var(--rowbg);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.activity-point{stroke:var(--rowbg);stroke-width:1.2}
+.activity-point.approx{stroke:var(--act);stroke-width:1.5}
 .hit{fill:transparent}
 .empty{padding:48px 16px;text-align:center;color:var(--muted)}
 
@@ -473,7 +476,7 @@ button.lg.lg-lvl{margin-right:-4px}
 .rel-inc{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--line)}
 .rel-inc:first-of-type{border-top:0;padding-top:2px}
 .rel-inc .inc-link{font-size:13.5px;font-weight:600}
-.rel-inc svg{display:block;width:100%;height:22px;overflow:visible}
+.rel-inc svg{display:block;width:100%;height:60px;overflow:visible}
 .rel-inc .sub{font-size:12px;color:var(--muted);font-family:var(--mono)}
 .rlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 .rlist li{display:flex;gap:8px;align-items:baseline;font-size:12.5px;color:var(--ink-2)}
@@ -2216,10 +2219,10 @@ function applyViewClass() { $('#view').className = 'view' + (state.emph && isCha
 
 /* ---------------------------------------------------------------- rows for each view */
 const TL_FEATURES = [
-  { id: 'activity', label: 'Reported activity', tip: 'Only incidents with reported activity dates. Bars show reported windows, not proof of continuous activity.', test: e => !!e.activity.length },
+  { id: 'activity', label: 'Reported activity', tip: 'Only incidents with reported activity dates. Points locate activity to a day; bars show observed windows, not proof of continuous activity. Reports and notices occupy the lower lane.', test: e => !!e.activity.length },
   { id: 'approx', label: 'Dates approximate', tip: 'Only incidents with at least one approximate activity window.', test: e => e.activity.some(a => a.approx) },
   { id: 'knew', label: 'Developer knew', tip: 'Only incidents with a documented date when the developer knew.', test: e => !!e.knew },
-  { id: 'gap', label: 'Disclosure gap', tip: 'Only incidents whose last reported activity predates their first public report. The dotted gap does not imply ongoing activity.', test: e => e.disclosureKnown && !!e.last && e.main.d > e.last },
+  { id: 'gap', label: 'Disclosure gap', tip: 'Only incidents whose last reported activity predates their first public report. The date difference does not imply ongoing activity.', test: e => e.disclosureKnown && !!e.last && e.main.d > e.last },
   { id: 'additional', label: 'Additional reports', tip: 'Only incidents with an additional report or private notice beyond the first public disclosure.', test: e => e.reveals.some(r => r.minor || r.private) }
 ];
 function toggleTimelineFilter(set, value, checked) {
@@ -2274,11 +2277,11 @@ function setCount(n, total, noun) {
 /* ---------------------------------------------------------------- chart engine */
 const ms = t => (typeof t === 'number' ? t : D(t));
 /* x scale over the current date range, or over the view's own extent when no range is set */
-function makeX(W, PAD) {
+function makeX(W, PAD, rightPad = PAD) {
   const r = state.range;
   const a = r ? D(r.a) - DAY / 2 : D(FIT[state.view][0]), b = r ? D(r.b) + DAY * 1.5 : D(FIT[state.view][1]);
-  const f = t => PAD + ((ms(t) - a) / (b - a)) * (W - PAD * 2);
-  f.inv = px => a + ((px - PAD) / (W - PAD * 2)) * (b - a);
+  const f = t => PAD + ((ms(t) - a) / (b - a)) * (W - PAD - rightPad);
+  f.inv = px => a + ((px - PAD) / (W - PAD - rightPad)) * (b - a);
   f.a = a; f.b = b; f.W = W; f.PAD = PAD;
   return f;
 }
@@ -2448,12 +2451,15 @@ function scrollToIncidentEvents() {
 function drawEventGlyph(point, x, y, attrs = {}) {
   const cls = point.kind === 'knew' ? 'mk-knew' : point.r.minor ? 'mk-other' : 'mk-rev';
   const g = sv('g', { class: 'mk ' + cls, transform: `translate(${x} ${y})`, ...attrs });
-  if (point.kind === 'knew') g.append(sv('path', { d: 'M0 -5L5 0L0 5L-5 0Z', class: 'knew' }));
-  else g.append(sv('circle', { cx: 0, cy: 0, r: point.r.minor ? 3.6 : 5.5, class: `rev g-${point.r.by}` + (point.r.minor ? ' minor' : '') }));
+  if (point.kind === 'knew') g.append(sv('rect', { x: -4.5, y: -4.5, width: 9, height: 9, rx: 1, class: 'knew' }));
+  else {
+    const r = point.r.minor ? 4 : 6;
+    g.append(sv('path', { d: `M0 ${-r}L${r} 0L0 ${r}L${-r} 0Z`, class: `rev g-${point.r.by}` + (point.r.minor ? ' minor' : '') }));
+  }
   return g;
 }
 /* Group by rendered distance, so nearby dates never masquerade as simultaneous events.
-   The first-public circle keeps its date anchor; a count replaces overlapping secondary marks. */
+   The first-public diamond keeps its date anchor; a count replaces overlapping secondary marks. */
 function timelinePointGroups(e, x, W) {
   const points = [...e.reveals.map(r => ({ date: r.d, kind: 'report', r })), ...(e.knew ? [{ date: e.knew.d, kind: 'knew' }] : [])]
     .map(p => ({ ...p, x: x(p.date) })).sort((a, b) => a.x - b.x);
@@ -2468,7 +2474,7 @@ function timelinePointGroups(e, x, W) {
   const layout = points => {
     const lead = points.find(p => p.kind === 'report' && !p.r.minor && !p.r.private) || points[0];
     const width = points.length * 13 + 24;
-    const left = Math.max(4, Math.min(lead.x - 12, W - width - 5));
+    const left = Math.max(x.PAD - 10, Math.min(lead.x - 12, W - width - 5));
     return { points, lead, left, right: left + width, countX: left + width - 12 };
   };
   // Two nearby capsules must not create a new collision after the circles are grouped.
@@ -2501,39 +2507,54 @@ function renderTimeline() {
   const rows = tlRows();
   setCount(rows.length, INC.length, 'incidents');
   const mob = mobileMQ.matches;
-  const x = makeX(W, mob ? 14 : 22), M = mob ? 10 : 12, tk = ticks(x);
+  const x = makeX(W, 76, mob ? 14 : 22), M = mob ? 10 : 12, tk = ticks(x);
   const axis = axisEl(x, tk); head.append(axis); attachBrush(axis, tl, x, 0);
   if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: noneTxt('incidents', INC) })); renderFoot(); return; }
   const lanes = rows.map(e => {
     const grid = gridSvg(x, tk);
     const { svg, mid } = trackSvg(W);
     svg.removeAttribute('aria-hidden');
+    mid.setAttribute('y', 0);
+    const activityY = 18;
+    const activityLane = sv('g', { 'data-lane': 'activity', transform: `translate(0 ${activityY})` });
+    mid.append(activityLane);
+    const laneLabel = (text, y) => { const label = sv('text', { x: 12, y: y + 4, class: 'lane-label' }); label.textContent = text; return label; };
+    mid.append(laneLabel('Activity', activityY));
     let lo = Infinity, hi = -Infinity;
     const span = (a, b) => { lo = Math.min(lo, a); hi = Math.max(hi, b); };
     const edge = x(x.a);
-    if (e.disclosureKnown && e.last && e.main.d > e.last) {
-      const lx = x(e.last), a = (lx < edge ? edge + 5 : lx) + 4, b = x(e.main.d) - 8;
-      if (b > a) {
-        mid.append(sv('line', { x1: a, x2: b, y1: 0, y2: 0, class: 'gap mk mk-gap' }));
-        mid.append(sv('rect', { x: a, y: -7, width: b - a, height: 14, class: 'hit', ...tipOf('Not yet public', `${Math.round((D(e.main.d) - D(e.last)) / DAY)} days from the last known activity (${fmtA(e.last)}) to disclosure (${fmtA(e.main.d)})`) }));
-      }
-    }
+    // Disclosure delay remains in the dates and filter; no line implies activity between lanes.
     let cut = false;
     e.activity.forEach(a => {
       let x1 = x(a.s), x2 = x(addDays(a.e, 1)) - 1;
       const early = x1 < edge; if (early) { x1 = edge; x2 = Math.max(x2, edge); cut = true; }
       const w = Math.max(5, x2 - x1), bx = early ? x1 : x1 - (w > x2 - x1 ? (w - (x2 - x1)) / 2 : 0);
-      const g = sv('g', { class: 'mk ' + (a.approx ? 'mk-approx' : 'mk-act'), ...(a.s === a.e ? incidentDayTip(e, a.s) : tipOf(a.sub ? 'Exploit probes' : a.approx ? 'Agents active (dates approximate)' : 'Agents active', a.label)) });
-      g.append(sv('rect', { x: bx, y: a.sub ? -5 : -4, width: w, height: a.sub ? 10 : 8, rx: 2.5, class: 'act' + (a.sub ? ' sub' : '') + (a.approx ? ' approx' : '') }));
-      g.append(sv('rect', { x: x1 - 3, y: -9, width: w + 6, height: 18, class: 'hit' }));
-      mid.append(g); span(bx, bx + w);
+      const point = a.s === a.e;
+      const g = sv('g', { class: 'mk ' + (a.approx ? 'mk-approx' : 'mk-act'), 'data-activity-start': a.s, 'data-activity-end': a.e,
+        ...(point ? incidentDayTip(e, a.s) : tipOf(a.approx ? 'Observed activity window (dates approximate)' : 'Observed activity window', a.label + '\nThis window does not establish continuous activity.')) });
+      const cls = 'act' + (a.sub ? ' sub' : '') + (a.approx ? ' approx' : '');
+      if (point) {
+        g.append(sv('circle', { cx: x1, cy: 0, r: a.sub ? 4 : 5.5, class: cls + ' activity-point' }));
+        g.append(sv('circle', { cx: x1, cy: 0, r: 10, class: 'hit' }));
+        span(x1 - 6, x1 + 6);
+      } else {
+        g.append(sv('rect', { x: bx, y: a.sub ? -5 : -4, width: w, height: a.sub ? 10 : 8, rx: 2.5, class: cls }));
+        g.append(sv('rect', { x: x1 - 3, y: -9, width: w + 6, height: 18, class: 'hit' }));
+        span(bx, bx + w);
+      }
+      activityLane.append(g);
     });
-    if (cut) { mid.append(clipCue(edge, 'mk mk-act', tipOf('Agents active earlier', `First known activity ${e.approx ? 'about ' : ''}${fmtY(e.first)}, before the start of the chart`))); span(edge - 7, edge); }
+    if (cut) { activityLane.append(clipCue(edge, 'mk mk-act', tipOf('Agents active earlier', `First known activity ${e.approx ? 'about ' : ''}${fmtY(e.first)}, before the start of the chart`))); span(edge - 7, edge); }
+    if (!e.activity.length) {
+      const unknown = sv('text', { x: edge + 4, y: 4, class: 'nodate' }); unknown.textContent = 'Date unknown'; activityLane.append(unknown);
+    }
 
     const pointGroups = timelinePointGroups(e, x, W);
     const baseline = 15 - Math.min(-17, ...pointGroups.filter(g => g.points.length > 1).map(g => g.badgeY));
-    let trackHeight = pointGroups.some(g => g.points.length > 1) ? baseline + 30 : 26;
-    if (trackHeight > 26) mid.setAttribute('y', baseline);
+    const reportY = activityY + (pointGroups.some(g => g.points.length > 1) ? 24 + baseline : 32);
+    const reportLane = sv('g', { 'data-lane': 'reports', transform: `translate(0 ${reportY})` });
+    mid.append(reportLane, laneLabel('Reports', reportY));
+    let trackHeight = reportY + 20;
     pointGroups.forEach(({ points, lead, left, right, countX, badgeY }) => {
       const bundled = points.length > 1, dates = [...new Set(points.map(p => p.date))];
       const group = sv('g', { class: 'date-cluster' + (bundled ? ' event-cluster' : '') + (bundled && dates.length === 1 ? ' same-day' : ''),
@@ -2556,7 +2577,7 @@ function renderTimeline() {
         const count = sv('text', { x: countX, y: badgeY, class: 'event-count' }); count.textContent = points.length;
         group.append(count, sv('rect', { x: left - 2, y: badgeY - 14, width: right - left + 4, height: 28, rx: 12, class: 'hit' }));
         if (expanded) {
-          trackHeight = Math.max(trackHeight, baseline + 34 + (points.length - 1) * 24);
+          trackHeight = Math.max(trackHeight, reportY + 34 + (points.length - 1) * 24);
           const detail = sv('g', { class: 'cluster-details' });
           points.forEach((point, i) => {
             const y = 18 + i * 24, textRight = point.x + 240 < W - 10;
@@ -2569,12 +2590,12 @@ function renderTimeline() {
           });
           // Disaggregated marks have their own date-specific hover and do not retrigger the capsule.
           detail.addEventListener('click', ev => { ev.stopPropagation(); });
-          mid.append(detail);
+          reportLane.append(detail);
         }
       } else {
         group.append(drawEventGlyph(lead, lead.x, 0, { 'data-point': lead.kind }), sv('circle', { cx: lead.x, cy: 0, r: 8, class: 'hit' }));
       }
-      mid.append(group); span(bundled ? left : lead.x - 6, bundled ? right : lead.x + 6);
+      reportLane.append(group); span(bundled ? left : lead.x - 6, bundled ? right : lead.x + 6);
     });
     const startTxt = e.first ? (e.approx ? '~' : '') + fmtA(e.first) : null;
     const meta = h('span', { class: 'm' }, !e.disclosureKnown ? `Report updated ${fmtA(e.main.d)} · first disclosure unknown` : startTxt
@@ -2847,17 +2868,17 @@ function renderFoot() {
     onclick: () => toggleTimelineFilter(set, id, !checked)
   }, icon, label);
   const symbols = {
-    activity: mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act' }))),
+    activity: mini(v => v.append(sv('circle', { cx: 5, cy: 7, r: 4, class: 'act' }), sv('rect', { x: 14, y: 3, width: 16, height: 8, rx: 2.5, class: 'act' })), 32),
     approx: mini(v => v.append(sv('rect', { x: 1, y: 3, width: 18, height: 8, rx: 2.5, class: 'act approx' }))),
-    knew: mini(v => v.append(sv('path', { d: 'M9 1L15 7L9 13L3 7Z', class: 'knew' })), 18),
+    knew: mini(v => v.append(sv('rect', { x: 4, y: 2, width: 10, height: 10, rx: 1, class: 'knew' })), 18),
     gap: mini(v => v.append(sv('line', { x1: 1, x2: 19, y1: 7, y2: 7, class: 'gap' }))),
-    additional: mini(v => v.append(sv('circle', { cx: 8, cy: 7, r: 3.6, class: 'rev g-other' })), 16)
+    additional: mini(v => v.append(sv('path', { d: 'M8 3L12 7L8 11L4 7Z', class: 'rev g-other' })), 16)
   };
   put(foot,
     h('div', { class: 'legend-row legend-symbols', role: 'group', 'aria-label': 'Filter incidents by timeline features' },
       TL_FEATURES.map(f => filter(f.label, s.features.has(f.id), s.features, f.id, f.tip + ' Select multiple features to require all of them.', chart ? symbols[f.id] : null))),
     h('div', { class: 'legend-row legend-reporters', role: 'group', 'aria-label': 'Filter by first public reporter' },
-      h('span', { class: 'legend-label', 'data-tip': 'The large circle marks the first public report tying the incident to its developer’s models; its color shows who reported it.' }, chart ? mini(v => v.append(sv('circle', { cx: 8, cy: 7, r: 5.5, class: 'rev g-lab' })), 16) : null, 'First public report by'),
+      h('span', { class: 'legend-label', 'data-tip': 'Diamonds in the lower lane mark reports; color shows who reported them. Larger diamonds mark the first public report. Squares mark developer awareness; private notices and report updates retain their own labels.' }, chart ? mini(v => v.append(sv('path', { d: 'M8 1L14 7L8 13L2 7Z', class: 'rev g-lab' })), 16) : null, 'First public report by'),
       Object.keys(WHO).map(g => filter(whoLabel(g), s.reporters.has(g), s.reporters, g,
         `Only incidents first made public by ${whoBy(g)}. Select multiple groups to include any of them.`, h('span', { class: `dot g-${g}` }))),
       s.features.size || s.reporters.size ? h('button', { type: 'button', class: 'mini-link legend-clear', text: 'Clear legend filters', onclick: () => { s.features.clear(); s.reporters.clear(); setHash(location.hash.slice(1)); renderView(); renderFilters(); } }) : null,
@@ -3232,13 +3253,18 @@ function select(id, opts = {}) {
 /* a small timeline of one incident with this response on it */
 function relIncBlock(e, r) {
   const a = D(e.a) - 3 * DAY, b = Math.max(D(e.b), D(r.d)) + 3 * DAY, W = 320;
-  const x = t => 8 + ((ms(t) - a) / (b - a)) * (W - 16);
-  const s = sv('svg', { viewBox: `0 0 ${W} 22`, 'aria-hidden': 'true' });
-  s.append(sv('line', { x1: 0, x2: W, y1: 11, y2: 11, class: 'gl' }));
-  e.activity.filter(v => !v.sub).forEach(v => s.append(sv('rect', { x: x(v.s), y: 7, width: Math.max(4, x(addDays(v.e, 1)) - x(v.s)), height: 8, rx: 2.5, class: 'act' + (v.approx ? ' approx' : '') })));
-  if (e.disclosureKnown && Math.abs(x(r.d) - x(e.main.d)) > 12) s.append(sv('line', { x1: Math.min(x(e.main.d), x(r.d)) + 6, x2: Math.max(x(e.main.d), x(r.d)) - 6, y1: 11, y2: 11, class: 'lag' }));
-  s.append(sv('circle', { cx: x(e.main.d), cy: 11, r: 5, class: `rev g-${e.main.by}` }));
-  s.append(sv('rect', { x: x(r.d) - 6, y: 5, width: 12, height: 12, rx: 3, class: `rsq g-${RESP_DOT[r.who]}` }));
+  const x = t => 68 + ((ms(t) - a) / (b - a)) * (W - 76);
+  const s = sv('svg', { viewBox: `0 0 ${W} 60`, 'aria-hidden': 'true' });
+  for (const [text,y] of [['Activity',16],['Reports',44]]) { const label=sv('text',{x:0,y:y+4,class:'lane-label'}); label.textContent=text; s.append(label); }
+  e.activity.filter(v => !v.sub).forEach(v => {
+    const cls = 'act' + (v.approx ? ' approx' : '');
+    s.append(v.s === v.e ? sv('circle', { cx:x(v.s),cy:16,r:4.5,class:cls+' activity-point' })
+      : sv('rect', { x: x(v.s), y: 12, width: Math.max(4, x(addDays(v.e, 1)) - x(v.s)), height: 8, rx: 2.5, class: cls }));
+  });
+  if (!e.activity.length) { const unknown=sv('text',{x:72,y:20,class:'nodate'}); unknown.textContent='Date unknown'; s.append(unknown); }
+  if (e.disclosureKnown && Math.abs(x(r.d) - x(e.main.d)) > 12) s.append(sv('line', { x1: Math.min(x(e.main.d), x(r.d)) + 6, x2: Math.max(x(e.main.d), x(r.d)) - 6, y1: 44, y2: 44, class: 'lag' }));
+  s.append(drawEventGlyph({kind:'report',r:e.main},x(e.main.d),44));
+  s.append(sv('rect', { x: x(r.d) - 6, y: 38, width: 12, height: 12, rx: 3, class: `rsq g-${RESP_DOT[r.who]}` }));
   const lag = e.disclosureKnown ? Math.round((D(r.d) - D(e.main.d)) / DAY) : null;
   return h('div', { class: 'rel-inc' }, incLink(e.id), s,
     h('span', { class: 'sub', text: !e.disclosureKnown ? 'First disclosure date unknown; response delay not calculated' : `${e.first ? `${e.approx ? '~' : ''}${fmtA(e.first)} → ` : ''}public ${fmtA(e.main.d)} · response ${lag > 0 ? `${dayN(lag)} later` : lag < 0 ? `${dayN(-lag)} earlier` : 'the same day'}` }));
