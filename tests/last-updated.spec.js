@@ -1,10 +1,11 @@
 // @ts-check
 const {test, expect, load, siteData, isMobile} = require('./fixtures');
 
-test('Updated defaults to newest catalog publications and reverses on click', async ({page}) => {
+test('Updated remains available and reverses; reload restores disclosure default', async ({page}) => {
   const data=siteData();
   await page.goto('/?tags=all');
-  await expect(page.getByRole('button',{name:'Sort by updated, newest first',exact:true})).toHaveAttribute('aria-pressed','true');
+  await expect(page.getByRole('button',{name:'Sort by disclosed, newest first',exact:true})).toHaveAttribute('aria-pressed','true');
+  await page.getByRole('button',{name:'Sort by updated',exact:true}).click();
   const ids=await page.locator('#view [data-inc-row]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-inc-row')));
   expect(ids.length).toBe(data.incidents.length);
   const times=ids.map(id=>data.catalogUpdated[id].timestamp);
@@ -16,7 +17,7 @@ test('Updated defaults to newest catalog publications and reverses on click', as
   await page.getByRole('button',{name:'Sort by started',exact:true}).click();
   await expect(page.getByRole('button',{name:'Sort by started, newest first',exact:true})).toHaveAttribute('aria-pressed','true');
   await page.reload();
-  await expect(page.getByRole('button',{name:'Sort by updated, newest first',exact:true})).toHaveAttribute('aria-pressed','true');
+  await expect(page.getByRole('button',{name:'Sort by disclosed, newest first',exact:true})).toHaveAttribute('aria-pressed','true');
   await page.setViewportSize({width:320,height:812});
   await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const box=await page.getByRole('group',{name:'Sort incidents',exact:true}).boundingBox();
@@ -27,7 +28,7 @@ test('table exposes the publication date and can sort by it', async ({page}, tes
   test.skip(isMobile(testInfo), 'Table headers are hidden in the existing phone card layout.');
   await page.addInitScript(()=>localStorage.setItem('viewModes',JSON.stringify({timeline:'table'})));
   await load(page);
-  await expect(page.locator('th[aria-sort="descending"]')).toContainText('Updated');
+  await expect(page.locator('th[aria-sort="descending"]')).toContainText('Disclosed');
   await page.locator('th').getByRole('button',{name:/^Started/}).click();
   await page.locator('th').getByRole('button',{name:/^Updated/}).click();
   await expect(page.locator('th[aria-sort="descending"]')).toContainText('Updated');
