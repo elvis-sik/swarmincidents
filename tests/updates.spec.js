@@ -153,14 +153,18 @@ test('card list supports keyboard details, chronological sorting and empty filte
 
 
 test('modal keeps cards stationary, restores focus and has a primary incident action',async({page})=>{
- await page.goto('/updates.html');const card=page.locator('.update-list-card').first();await card.focus();
+ // Retirements have no active-incident action; exercise this positive control on a live listing.
+ const active=entries.find(u=>catalog.incidents.some(i=>i.id===u.incident));
+ await page.goto('/updates.html');const card=page.locator(`.update-list-card[data-rsp-row="${active.id}"]`);
+ await card.scrollIntoViewIfNeeded();await card.focus();
+ await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  const before=await card.boundingBox(),scroll=await page.evaluate(()=>scrollY);
  await card.click();const modal=page.locator('#update-dialog');await expect(modal).toBeVisible();
  const after=await card.boundingBox();expect(Math.abs(after.x-before.x)).toBeLessThanOrEqual(1);expect(Math.abs(after.y-before.y)).toBeLessThanOrEqual(1);expect(after.width).toBe(before.width);
  expect(Math.abs(await page.evaluate(()=>scrollY)-scroll)).toBeLessThanOrEqual(1);await expect(page.locator('#main')).not.toHaveClass(/open/);
  expect(await card.evaluate(el=>getComputedStyle(el).boxShadow)).toBe('none');
  const action=modal.getByRole('link',{name:'View incident',exact:true});await expect(action).toHaveClass(/primary/);
- await expect(action).toHaveAttribute('href','/?tags=all#'+entries[0].incident);
+ await expect(action).toHaveAttribute('href','/?tags=all#'+active.incident);
  for(let i=0;i<12;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('#update-dialog').contains(document.activeElement)||document.activeElement===document.body)).toBe(true)}
  await page.keyboard.press('Escape');await expect(modal).not.toBeVisible();await expect(card).toBeFocused();expect(await page.evaluate(()=>document.body.style.overflow)).toBe('');
 });
