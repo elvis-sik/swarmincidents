@@ -29,7 +29,7 @@ test('drill in from the card and out via the Overview nav button', async ({ page
   await load(page);
   await drillIn(page);
   await nav(page).overview.click();
-  await expect(nav(page).overview).toHaveAttribute('aria-current', 'true');
+  await expect(page.locator('#lvl')).toBeHidden();
   await expect(page.getByRole('tab', { name: /^Timeline/ })).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('.msg')).toHaveCount(0);
   // leaving restores the card the reader drilled in from
@@ -50,7 +50,7 @@ test('browser Back steps up one level at a time', async ({ page }) => {
   await expect(page.locator('.msg[aria-selected="true"]')).toHaveCount(0);
   // second Back: the overview
   await page.goBack();
-  await expect(nav(page).overview).toHaveAttribute('aria-current', 'true');
+  await expect(page.locator('#lvl')).toBeHidden();
   await expect(page.locator('#view [data-inc-row]').first()).toBeVisible();
   await expect(page.locator('.msg')).toHaveCount(0);
 });

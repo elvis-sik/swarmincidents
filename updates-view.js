@@ -1,9 +1,8 @@
 /* Updates-specific content only. Header, timeline, pickers, theme and pane are
    the actual dashboard components in template.html, shared by both pages. */
 function renderUpdateNav() {
-  put($('#lvl'), h('a', {class:'lvl-l', href:'/', text:'Overview'}),
-    h('span', {class:'lvl-tail'}, h('span', {class:'lvl-sep', 'aria-hidden':'true', text:'›'}),
-      h('span', {class:'lvl-l', 'aria-current':'true', text:'Updates'})));
+  $('#lvl').hidden = true;
+  put($('#lvl'));
 }
 function renderUpdateTabs() {
   renderNav();

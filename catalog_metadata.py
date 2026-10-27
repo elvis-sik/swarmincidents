@@ -72,6 +72,23 @@ def catalog_additions(metadata, updates, catalog):
     return out
 
 
+def catalog_updates(updates, catalog):
+    """Latest published catalog entry per active incident, compared as instants."""
+    active = {e['id'] for e in catalog['incidents']}
+    latest = {}
+    for update in updates['updates']:
+        ident = update['incident']
+        if ident not in active:
+            continue
+        stamp = datetime.fromisoformat(update['published'])
+        require(stamp.tzinfo is not None, 'Catalog update needs a timezone: ' + ident)
+        if ident not in latest or stamp > datetime.fromisoformat(latest[ident]['published']):
+            latest[ident] = {'published': update['published'], 'timestamp': stamp.timestamp(),
+                             'date': stamp.astimezone(ZoneInfo('America/Los_Angeles')).date().isoformat(),
+                             'update': update['id']}
+    return latest
+
+
 def validate_sources(registry, catalog):
     require(registry.get('schema_version') == 1, 'Unsupported source registry version')
     sources = registry.get('sources', {})
