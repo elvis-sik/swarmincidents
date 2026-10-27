@@ -111,7 +111,8 @@ test('nearby dates group by screen space, list every date, and separate when zoo
   for(const report of data.incidents.find(e=>e.id==='amap-fleet').reveals)await expect(page.locator('#tip')).toContainText(report.text);
  }
  await page.getByRole('button',{name:'Custom',exact:true}).click();const range=page.getByRole('dialog',{name:'Custom date range'});
- await range.getByLabel('From',{exact:true}).fill('2026-10-01');await range.getByLabel('To',{exact:true}).fill('2026-10-14');await range.getByRole('button',{name:'Apply',exact:true}).click();
+ // The lane labels reserve horizontal space; zoom enough to separate adjacent days on iPhone.
+ await range.getByLabel('From',{exact:true}).fill('2026-10-03');await range.getByLabel('To',{exact:true}).fill('2026-10-14');await range.getByRole('button',{name:'Apply',exact:true}).click();
  await expect(row.locator('.event-cluster')).toHaveCount(0);await expect(row.locator('.date-cluster')).toHaveCount(4);
 });
 

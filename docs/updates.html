@@ -2477,7 +2477,7 @@ function timelinePointGroups(e, x, W) {
     const left = Math.max(x.PAD - 10, Math.min(lead.x - 12, W - width - 5));
     return { points, lead, left, right: left + width, countX: left + width - 12 };
   };
-  // Two nearby capsules must not create a new collision after the circles are grouped.
+  // Two nearby capsules must not create a new collision after the marks are grouped.
   for (let i = 1; i < groups.length; i++) {
     if (groups[i - 1].length < 2 || groups[i].length < 2) continue;
     const a = layout(groups[i - 1]), b = layout(groups[i]);
@@ -2487,7 +2487,8 @@ function timelinePointGroups(e, x, W) {
   if (locked.length) groups.push(locked);
   const placed = groups.map(layout).sort((a, b) => Number(b.points === locked) - Number(a.points === locked));
   for (let i = 0; i < placed.length; i++) {
-    const g = placed[i]; g.badgeY = -17;
+    // Leave room for the diamond stroke below each capsule, including Firefox SVG bounds.
+    const g = placed[i]; g.badgeY = -22;
     if (g.points.length < 2) continue;
     while (placed.slice(0, i).some(p => p.points.length > 1 && g.left < p.right + 4 && p.left < g.right + 4 && Math.abs(g.badgeY - p.badgeY) < 30)) g.badgeY -= 30;
   }
@@ -2550,7 +2551,7 @@ function renderTimeline() {
     }
 
     const pointGroups = timelinePointGroups(e, x, W);
-    const baseline = 15 - Math.min(-17, ...pointGroups.filter(g => g.points.length > 1).map(g => g.badgeY));
+    const baseline = 15 - Math.min(-22, ...pointGroups.filter(g => g.points.length > 1).map(g => g.badgeY));
     const reportY = activityY + (pointGroups.some(g => g.points.length > 1) ? 24 + baseline : 32);
     const reportLane = sv('g', { 'data-lane': 'reports', transform: `translate(0 ${reportY})` });
     mid.append(reportLane, laneLabel('Reports', reportY));
