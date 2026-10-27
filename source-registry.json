@@ -952,7 +952,12 @@
       "title": "Opus 5 uses a forbidden fetch route",
       "publisher": "Anthropic",
       "aliases": [],
-      "labels": []
+      "labels": [
+        {
+          "title": "Opus 5 forbidden fetch route and service-access attempt",
+          "publisher": "Anthropic"
+        }
+      ]
     },
     "src-e3783fada3f61ec4a987": {
       "url": "https://www.anthropic.com/claude-opus-4-8-system-card",
@@ -2265,6 +2270,20 @@
       "url": "https://research.meta.ai/static/muse-spark-1-3-evaluation-report",
       "title": "Muse Spark 1.3 evaluation report, p.99",
       "publisher": "Meta",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a1b1afc286ca1a8f0344": {
+      "url": "https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/",
+      "title": "Magentic-One: risks and mitigations",
+      "publisher": "Microsoft Research",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d73c8302ae717c73cfac": {
+      "url": "https://arxiv.org/abs/2411.04468",
+      "title": "Magentic-One technical report, §6.3",
+      "publisher": "Microsoft Research",
       "aliases": [],
       "labels": []
     }
@@ -4130,7 +4149,7 @@
         {
           "d": "2026-07-24",
           "by": "lab",
-          "text": "Opus 5 report describes the forbidden shell-fetch route",
+          "text": "Opus 5 report describes the forbidden shell-fetch route and a separate service-access attempt",
           "source_ids": [
             "src-e961e540833434aff6fc"
           ]
@@ -4154,6 +4173,17 @@
             "text": "Opus 4.8 report describes proxy workarounds",
             "source_ids": [
               "src-e3783fada3f61ec4a987"
+            ]
+          }
+        },
+        {
+          "kind": "reveals",
+          "association": {
+            "d": "2026-07-24",
+            "by": "lab",
+            "text": "Opus 5 report describes the forbidden shell-fetch route",
+            "source_ids": [
+              "src-e961e540833434aff6fc"
             ]
           }
         }
@@ -6040,6 +6070,65 @@
           "text": "Meta reports the behavior",
           "source_ids": [
             "src-8feab8edbe924fd380ef"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "sol-monitor-alert-suppression": {
+      "curated": [
+        "src-d6ef153b0f46f737303a"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-20",
+          "by": "lab",
+          "text": "OpenAI’s updated report describes the October 3 alert-suppression episode",
+          "source_ids": [
+            "src-d6ef153b0f46f737303a"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-10-03",
+          "e": "2026-10-03",
+          "label": "Oct 3: pipeline repair suppresses human alerts",
+          "source_ids": [
+            "src-d6ef153b0f46f737303a"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-10-03",
+        "text": "OpenAI dates discovery of the Sol episode to October 3.",
+        "source_ids": [
+          "src-d6ef153b0f46f737303a"
+        ]
+      }
+    },
+    "magentic-one-outside-recruitment": {
+      "curated": [
+        "src-a1b1afc286ca1a8f0344",
+        "src-d73c8302ae717c73cfac"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2024-11-04",
+          "by": "research",
+          "text": "Microsoft reports attempted outside recruitment during Magentic-One development",
+          "source_ids": [
+            "src-a1b1afc286ca1a8f0344"
+          ]
+        },
+        {
+          "d": "2024-11-07",
+          "by": "research",
+          "text": "The technical report describes the unsuccessful outreach attempts and mitigations",
+          "source_ids": [
+            "src-d73c8302ae717c73cfac"
           ]
         }
       ],
