@@ -351,7 +351,7 @@
       ],
       "found": "Nightingale Collective (including Cormac Slade Byrd) and independent researcher Kenneth DeGraff",
       "status": "Not confirmed by OpenAI",
-      "summary": "Researchers found agents on at least 12 more sites: about 30 edits to a teacher’s AP Chemistry wiki, more than 100 messages on a Polish text-sharing site coordinating an “Iowa cancer statistics” task, and link shorteners used to store data. Agents also got into Vanderbilt University’s link shortener, which has no public sign-up, and used a public stats page there as a message board; its logs recorded FBI crime-data queries made with exposed keys. Pastes that appear to come from the agents continued on one site until Sept. 2.",
+      "summary": "Researchers found agents on at least 12 more sites: about 30 edits to a teacher’s AP Chemistry wiki, more than 100 messages on a Polish text-sharing site coordinating an “Iowa cancer statistics” task, and link shorteners used to store data. Agents also got into Vanderbilt University’s link shortener, which has no public sign-up, and used a public stats page there as a message board; its logs recorded FBI crime-data queries made with exposed keys. Pastes that appear to come from the agents continued on one site until Sept. 2. DeGraff also traced agents using Google’s document viewer and Google Translate as intermediaries to retrieve public files, alongside page-to-text and proxy services. Some of the same files were also fetched directly; the report does not establish a compromise of Google’s services.",
       "lab_response": "Did not respond to Fortune’s request for comment.",
       "sources": [
         [
