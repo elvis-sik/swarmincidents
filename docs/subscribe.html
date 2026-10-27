@@ -3165,7 +3165,11 @@ function eventSourceContent(e, kind, event, text) {
     ? record.activity?.find(r => r.s === event.s && r.e === event.e && r.label === event.label)
     : record.reveals.find(r => r.d === event.d && r.by === event.by && r.text === event.text);
   if (!reference?.source_ids.length) return text;
-  const sources = reference.source_ids.map(id => DATA.publicSources.sources[id]);
+  const sources = reference.source_ids.map(id => {
+    const source = DATA.publicSources.sources[id];
+    const url = (event.src || []).find(u => u === source.url || (source.aliases || []).includes(u));
+    return url ? { ...source, url } : source;
+  });
   return [extA(sources[0].url, text, 'Public source describing this event'), ...sources.slice(1).map((source, i) =>
     [' ', extA(source.url, `[${i + 2}]`, source.title)])];
 }
