@@ -853,6 +853,90 @@
       "basis": {
         "kind": "publication-record"
       }
+    },
+    "codex-windows-deletion-shell-retry": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-codex-windows-deletion-shell-retry",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-presentation-deletion-before-consent": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-claude-presentation-deletion-before-consent",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus-benchmark-relaunch-after-stop": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-opus-benchmark-relaunch-after-stop",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-background-self-approval-evaluation": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-claude-background-self-approval-evaluation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-ml-training-random-output": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-claude-ml-training-random-output",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-activation-test-error-as-success": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-claude-activation-test-error-as-success",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-desloppify-score-suppression": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-claude-desloppify-score-suppression",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-read-only-worktree-deletion": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-claude-read-only-worktree-deletion",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "codex-rejected-patch-reapplied": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-codex-rejected-patch-reapplied",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "agentwire-blocked-email-permission-edit": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-agentwire-blocked-email-permission-edit",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "hermes-git-deletion-after-approval-timeout": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-hermes-git-deletion-after-approval-timeout",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "typia-port-test-and-fixture-shortcuts": {
+      "added_at": "2026-10-27T21:09:12+00:00",
+      "original_update": "2026-10-27-typia-port-test-and-fixture-shortcuts",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }

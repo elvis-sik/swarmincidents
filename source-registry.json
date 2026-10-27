@@ -2032,6 +2032,118 @@
       "publisher": "Anthropic",
       "aliases": [],
       "labels": []
+    },
+    "src-1f65ac2ddd9c10ed93f7": {
+      "url": "https://github.com/FailproofAI/claude-hackernews/pull/34",
+      "title": "Additional reviewed reference",
+      "publisher": "Original public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-54c9cf84df47df8bc832": {
+      "url": "https://github.com/NousResearch/hermes-agent/pull/30879",
+      "title": "Approval-timeout follow-up and guard clarification, PR 30879",
+      "publisher": "Hermes maintainers / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8e01062ece1eb42713f8": {
+      "url": "https://typia.io/blog/ai-deleted-my-tests-and-said-all-tests-pass/",
+      "title": "AI deleted my tests and said all tests pass",
+      "publisher": "Jeongho Nam / Typia",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f3c72acf49f241820a1f": {
+      "url": "https://github.com/dotdevdotdev/agentwire-dev/issues/678",
+      "title": "Blocked send followed by permission configuration edit",
+      "publisher": "Agentwire developer / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a08ac3ac19cbd12c29c1": {
+      "url": "https://github.com/peteromallet/desloppify/issues/66",
+      "title": "Perfect score through suppressions and self-assessment",
+      "publisher": "Peter O’Mallet / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-923c683c46fd73eb6cab": {
+      "url": "https://github.com/openai/codex/issues/32543",
+      "title": "Rejected patch reapplied through smaller patches",
+      "publisher": "OmriPolygon / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-24cc3e871cc49fa841a1": {
+      "url": "https://github.com/anthropics/claude-code/issues/6778",
+      "title": "Presentation assets removed before confirmation",
+      "publisher": "Matt Godbolt / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-29c1e8cd8076dabafc9a": {
+      "url": "https://news.ycombinator.com/item?id=47997777",
+      "title": "Additional reviewed reference",
+      "publisher": "Original public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-67c86386eadc75f3a8ba": {
+      "url": "https://github.com/anthropics/claude-code/issues/19106",
+      "title": "Training runner replaced by random outputs",
+      "publisher": "RoyT6 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2b4c75dd07521216aaf8": {
+      "url": "https://github.com/NousResearch/hermes-agent/issues/24912",
+      "title": "Git metadata removal after approval timeout",
+      "publisher": "tofalck / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7bab750925ff535b053d": {
+      "url": "https://github.com/anthropics/claude-code/issues/33781",
+      "title": "Activation test accepts an error and bypasses UI validation",
+      "publisher": "davidkrcek / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c77e64ed6ef3996e0578": {
+      "url": "https://github.com/user-attachments/assets/c04fce1e-b0dc-46be-8f66-08969a468fe5",
+      "title": "Screenshot supplied with the report",
+      "publisher": "Arsi88100 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-95f3a063386cedb459a6": {
+      "url": "https://github.com/anthropics/claude-code/issues/40716",
+      "title": "Background completion followed by assistant-generated approval",
+      "publisher": "Finndersen / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-444037eb635c7c8f7ac6": {
+      "url": "https://github.com/openai/codex/issues/11006",
+      "title": "Original Windows backup-deletion report",
+      "publisher": "Arsi88100 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d6dbe24652dbfebf0160": {
+      "url": "https://github.com/anthropics/claude-code/issues/75861",
+      "title": "Read-only research subagent removes worktree checkouts",
+      "publisher": "ryaner / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9bf22c2b2a56fafef14d": {
+      "url": "https://github.com/anthropics/claude-code/issues/27715",
+      "title": "Benchmark restarts after repeated stop requests",
+      "publisher": "SgtMorgan / GitHub",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -5215,6 +5327,250 @@
           "text": "Anthropic describes Mythos Preview’s fabricated progress and Slack findings",
           "source_ids": [
             "src-bac05932b08421ee18a7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "codex-windows-deletion-shell-retry": {
+      "curated": [
+        "src-444037eb635c7c8f7ac6",
+        "src-c77e64ed6ef3996e0578"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-07",
+          "by": "other",
+          "text": "Arsi88100 publishes the account.",
+          "source_ids": [
+            "src-444037eb635c7c8f7ac6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-presentation-deletion-before-consent": {
+      "curated": [
+        "src-24cc3e871cc49fa841a1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-08-28",
+          "by": "other",
+          "text": "Matt Godbolt publishes the account.",
+          "source_ids": [
+            "src-24cc3e871cc49fa841a1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus-benchmark-relaunch-after-stop": {
+      "curated": [
+        "src-9bf22c2b2a56fafef14d"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-22",
+          "by": "other",
+          "text": "SgtMorgan publishes the account.",
+          "source_ids": [
+            "src-9bf22c2b2a56fafef14d"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-background-self-approval-evaluation": {
+      "curated": [
+        "src-95f3a063386cedb459a6"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-29",
+          "by": "other",
+          "text": "Finndersen publishes the account.",
+          "source_ids": [
+            "src-95f3a063386cedb459a6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-ml-training-random-output": {
+      "curated": [
+        "src-67c86386eadc75f3a8ba"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-19",
+          "by": "other",
+          "text": "RoyT6 publishes the account.",
+          "source_ids": [
+            "src-67c86386eadc75f3a8ba"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-activation-test-error-as-success": {
+      "curated": [
+        "src-7bab750925ff535b053d"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-12",
+          "by": "other",
+          "text": "davidkrcek publishes the account.",
+          "source_ids": [
+            "src-7bab750925ff535b053d"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-12",
+          "e": "2026-03-12",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-7bab750925ff535b053d"
+          ]
+        }
+      ]
+    },
+    "claude-desloppify-score-suppression": {
+      "curated": [
+        "src-a08ac3ac19cbd12c29c1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-14",
+          "by": "other",
+          "text": "Peter O’Mallet publishes the account.",
+          "source_ids": [
+            "src-a08ac3ac19cbd12c29c1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-read-only-worktree-deletion": {
+      "curated": [
+        "src-d6dbe24652dbfebf0160"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-08",
+          "by": "other",
+          "text": "ryaner publishes the account.",
+          "source_ids": [
+            "src-d6dbe24652dbfebf0160"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "codex-rejected-patch-reapplied": {
+      "curated": [
+        "src-923c683c46fd73eb6cab"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-12",
+          "by": "other",
+          "text": "OmriPolygon publishes the account.",
+          "source_ids": [
+            "src-923c683c46fd73eb6cab"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-12",
+          "e": "2026-07-12",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-923c683c46fd73eb6cab"
+          ]
+        }
+      ]
+    },
+    "agentwire-blocked-email-permission-edit": {
+      "curated": [
+        "src-f3c72acf49f241820a1f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-03",
+          "by": "other",
+          "text": "Agentwire developer publishes the account.",
+          "source_ids": [
+            "src-f3c72acf49f241820a1f"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-03",
+          "e": "2026-07-03",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-f3c72acf49f241820a1f"
+          ]
+        }
+      ]
+    },
+    "hermes-git-deletion-after-approval-timeout": {
+      "curated": [
+        "src-2b4c75dd07521216aaf8",
+        "src-54c9cf84df47df8bc832"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-13",
+          "by": "other",
+          "text": "tofalck publishes the account.",
+          "source_ids": [
+            "src-2b4c75dd07521216aaf8"
+          ]
+        },
+        {
+          "d": "2026-05-23",
+          "by": "other",
+          "text": "The repair PR clarifies that the approval guard already returned blocked.",
+          "source_ids": [
+            "src-54c9cf84df47df8bc832"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "typia-port-test-and-fixture-shortcuts": {
+      "curated": [
+        "src-8e01062ece1eb42713f8"
+      ],
+      "additional": [
+        "src-1f65ac2ddd9c10ed93f7",
+        "src-29c1e8cd8076dabafc9a"
+      ],
+      "reveals": [
+        {
+          "d": "2026-05-03",
+          "by": "other",
+          "text": "Jeongho Nam publishes the account.",
+          "source_ids": [
+            "src-8e01062ece1eb42713f8"
           ]
         }
       ],
