@@ -470,6 +470,8 @@ button.lg.lg-lvl{margin-right:-4px}
 .det-top .btn svg{width:15px;height:15px}
 .det-top .kind{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:8px}
 .det-sub{font-size:13px;color:var(--muted);margin-top:-6px}
+.catalog-updated{font-size:11.5px;line-height:1.5;color:var(--muted);margin-top:-6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 4px}
+.catalog-updated .mini-link{font-size:inherit}
 .catalog-added{font-size:11.5px;line-height:1.5;color:var(--muted);margin-top:-6px}
 .catalog-added a{color:inherit;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
 .catalog-added a:hover{color:var(--ink);text-decoration-color:currentColor}
@@ -552,6 +554,27 @@ button.lg.lg-lvl{margin-right:-4px}
 .source-aliases summary,.source-related summary{cursor:pointer}
 .source-related ul{padding-left:18px;margin:5px 0}
 @media(max-width:600px){.source-dialog{max-height:90dvh}.source-dialog-top{padding:15px}.source-browser-body{padding:12px 15px 18px}.source-tabs{gap:5px}.source-tabs button{padding:6px 7px}}
+
+
+/* Incident card publication history. */
+.card-history-dialog{width:min(720px,calc(100vw - 24px));max-height:88dvh;overscroll-behavior:contain}
+.card-history-body{padding:16px 22px 24px;overflow-wrap:anywhere}
+.card-history-note{font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 20px}
+.card-history-list{list-style:none;margin:0 0 0 5px;padding:0;border-left:1px solid var(--line-2)}
+.card-history-entry{position:relative;margin:0;padding:0 0 25px 23px}
+.card-history-entry:last-child{padding-bottom:0}
+.card-history-entry::before{content:'';position:absolute;top:5px;left:-4px;width:7px;height:7px;border-radius:50%;background:var(--line-2);box-shadow:0 0 0 4px var(--panel)}
+.card-history-entry:first-child::before{background:var(--g-research)}
+.card-history-date{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:12px;font-weight:600}
+.card-history-kind{font-size:10.5px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.card-history-entry h3{font-size:14px;line-height:1.4;margin:7px 0 6px;font-weight:600}
+.card-history-summary{font-size:13px;line-height:1.6;color:var(--ink-2);margin:0 0 8px}
+.card-history-provenance{font-size:11px;line-height:1.5;color:var(--muted);margin:6px 0 9px}
+.card-history-change>summary{font-size:11.5px;font-weight:500;color:var(--g-research);cursor:pointer;width:fit-content}
+.card-history-diff{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:7px;background:var(--soft)}
+.card-history-diff>.update-change:first-child{border-top:0;padding-top:0}
+.card-history-diff .update-change+.update-change{margin-top:12px}
+@media(max-width:600px){.card-history-dialog{max-height:90dvh}.card-history-body{padding:14px 15px 20px}.card-history-entry{padding-left:18px}.card-history-diff{padding:9px}}
 
 /* about dialog */
 dialog{border:1px solid var(--line-2);border-radius:12px;background:var(--panel);color:var(--ink);padding:0;width:min(560px,calc(100vw - 24px));max-height:min(86dvh,760px);box-shadow:var(--shadow)}
@@ -3230,6 +3253,7 @@ function select(id, opts = {}) {
     h('h2', { id: 'det-title', tabindex: '-1', text: e.title }),
     devLine(e),
     catalogAdded(e),
+    catalogUpdated(e),
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), e.disclosureKnown ? `Disclosed by ${incWhoBy(e, e.main.by)}` : 'First disclosure date unknown'),
       e.category === 'benchmark-integrity' ? h('span', { class: 'tag', text: 'Benchmark integrity' }) : null,
@@ -3367,7 +3391,7 @@ pane.addEventListener('pointercancel', sheetEnd);
 grab.addEventListener('click', ev => { if (ev.detail === 0) setFull(!pane.classList.contains('full')); });   /* keyboard */
 syncGrab();
 document.addEventListener('keydown', ev => {
-  if (about.open || viewinfo.open || sourceDialog?.open) return;
+  if (about.open || viewinfo.open || sourceDialog?.open || cardHistoryDialog?.open) return;
   if (ev.key === 'Escape' && ev.target && ev.target.matches && ev.target.matches('input') && ev.target.value) return;
   if (ev.key === 'Escape' && hasCard()) { clearSel(); return; }
   if (ev.key === 'Escape' && state.view === 'wiki' && !(ev.target.closest && ev.target.closest('input,select'))) { leaveInside(); return; }
@@ -4235,6 +4259,7 @@ mobileMQ.addEventListener('change', () => {
 });
 
 /*__UPDATES_VIEW__*/
+/*__CARD_HISTORY__*/
 
 /* ---------------------------------------------------------------- boot */
 const defs = $('#defs');
