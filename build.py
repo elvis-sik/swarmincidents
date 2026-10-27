@@ -7,7 +7,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from feed import build as build_feed
 from publication import project
-from catalog_metadata import catalog_additions, validate_sources
+from catalog_metadata import catalog_additions, catalog_updates, validate_sources
 from catalog_history import retired_incidents
 here = Path(__file__).parent
 data = json.loads((here / "incidents.json").read_text(encoding="utf-8"))
@@ -22,7 +22,7 @@ metadata = json.loads((here / "catalog-metadata.json").read_text(encoding="utf-8
 registry = validate_sources(json.loads((here / "source-registry.json").read_text(encoding="utf-8")), data)
 # Keep retired permalink IDs pointing at the exact correction and before snapshot.
 # Derive from journal removals, never from absent search/filter results.
-site_data = dict(data, catalogAdded=catalog_additions(metadata, updates, data), publicSources=registry, retiredIncidents=retired_incidents(data, updates))
+site_data = dict(data, catalogAdded=catalog_additions(metadata, updates, data), catalogUpdated=catalog_updates(updates, data), publicSources=registry, retiredIncidents=retired_incidents(data, updates))
 js = "const DATA = " + json.dumps(site_data, ensure_ascii=False) + ";"
 page = (here / "template.html").read_text().replace("/*__DATA__*/", js.replace("</", "<\\/"))
 page = page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())

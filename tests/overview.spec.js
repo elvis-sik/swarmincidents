@@ -1,13 +1,14 @@
 // @ts-check
 const { test, expect, load } = require('./fixtures');
 
-test('timeline loads with the stats row, the section nav and the three tabs', async ({ page }) => {
+test('timeline loads with stats and three tabs, without the section row', async ({ page }) => {
   await load(page);
   await expect(page).toHaveTitle(/.+/);
   await expect(page.locator('header')).toContainText('Swarm Incidents');
   await expect(page.locator('#stats')).not.toBeEmpty();
   const lvl = page.locator('#lvl');
-  await expect(lvl.getByRole('button', { name: 'Overview' })).toHaveAttribute('aria-current', 'true');
+  await expect(lvl).toBeHidden();
+  await expect(lvl).toBeEmpty();
   const tabs = page.locator('#tabs').getByRole('tab');
   await expect(tabs).toHaveCount(3);
   await expect(page.getByRole('tab', { name: /^Timeline/ })).toHaveAttribute('aria-selected', 'true');

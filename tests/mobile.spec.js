@@ -29,6 +29,10 @@ for (const hash of ['', 'affected', 'responses', 'inside', 'wikis/posts']) {
     else await expect(page.locator('#tabs [role=tab]').first()).toBeVisible();
     if (hash === 'wikis/posts') await expect(page.locator('.msg').first()).toBeVisible();
     for (const sel of ['#lvl', '#tabs']) {
+      if (sel === '#lvl' && !['inside', 'wikis/posts'].includes(hash)) {
+        await expect(page.locator(sel)).toBeHidden();
+        continue;
+      }
       const box = await page.locator(sel).boundingBox();
       const vw = await page.evaluate(() => innerWidth);
       expect(box, sel).not.toBeNull();

@@ -37,7 +37,7 @@ test('#wikis opens the incident card', async ({ page }) => {
   await load(page, 'wikis');
   await expect(page.locator('#det')).toBeVisible();
   await expect(page.locator('#det-title')).toHaveText(WIKI_TITLE);
-  await expect(page.locator('#lvl').getByRole('button', { name: 'Overview' })).toHaveAttribute('aria-current', 'true');
+  await expect(page.locator('#lvl')).toBeHidden();
 });
 
 test('#wikis/posts goes inside the incident and loads the posts', async ({ page }) => {

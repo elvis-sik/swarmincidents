@@ -33,7 +33,7 @@ const test = base.test.extend({
 /** Loads the site at a hash and waits until the app has rendered. */
 async function load(page, hash = '') {
   await page.goto(hash ? '/#' + hash : '/');
-  await base.expect(page.locator('#lvl button').first()).toBeVisible();
+  await base.expect(page.locator('#view')).not.toBeEmpty();
 }
 
 /** The wiki data the site loads on demand, read from disk so tests follow regenerated data. */

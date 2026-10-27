@@ -1141,7 +1141,7 @@ dialog{transform-origin:center}
 @media(max-width:820px){
   .bar-r{gap:8px 16px}.bar-r>.f-models,.bar-r>.f-tags{flex:0 1 auto}
   .bar-r>.fgroup:last-child{flex-wrap:wrap}
-  .filters:not(.inside-filters){gap:6px 14px}.filters>.fgroup.sort{margin-left:0}
+  .filters:not(.inside-filters){gap:6px 14px}.filters>.fgroup.sort{margin-left:0;max-width:100%;flex-wrap:wrap}
   .timeline-foot{padding:5px 9px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;gap:12px}
   .timeline-foot .legend-row{display:contents}.timeline-foot .legend-row>*{flex:none}.legend-updated{margin-left:0}
 }
@@ -1213,7 +1213,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
   </header>
 
   <section class="stats" id="stats" aria-label="Key numbers"></section>
-  <nav class="lvl" id="lvl" aria-label="Sections"></nav>
+  <nav class="lvl" id="lvl" aria-label="Sections" hidden></nav>
 
   <div class="app" id="app">
     <div class="bar" id="bar">
@@ -1548,7 +1548,7 @@ const state = {
   wiki: { page: null, who: null, round: null, q: '', voice: 'chat' }, inside: null, from: null,
   chooser: { sort: 'd', dir: -1, q: '' },
   range: null, emph: null,
-  tl: { by: 'all', reporters: new Set(initialReporters), features: new Set(initialFeatures), conf: false, datasets: datasetOnly, sort: 'start', dir: -1 },
+  tl: { by: 'all', reporters: new Set(initialReporters), features: new Set(initialFeatures), conf: false, datasets: datasetOnly, sort: 'updated', dir: -1 },
   aff: { kind: 'all', sort: 'd', dir: 1, q: '', inc: null, cats: new Set(), unclear: true },
   back: [], pushed: false, popping: false,
   resp: { who: 'all', freshness:'all', dir: -1, inc: null, disc: true },
@@ -2128,6 +2128,7 @@ const SORTS = {
     { k: 'start', label: 'Started', what: 'first known agent activity', '-1': 'newest first', 1: 'oldest first', def: -1 },
     { k: 'public', label: 'Disclosed', get what() { return `first public report tying the incident to ${devTo()}`; }, '-1': 'newest first', 1: 'oldest first', def: -1 },
     { k: 'delay', label: 'Delay', what: 'days from the first known activity to disclosure', '-1': 'longest first', 1: 'shortest first', def: -1 },
+    { k: 'updated', label: 'Updated', what: 'latest published catalog addition, update or correction on this site', '-1': 'newest first', 1: 'oldest first', def: -1 },
   ],
   affected: [
     { k: 'd', label: 'First seen', what: 'when the agents were first active there', '-1': 'newest first', 1: 'oldest first', def: 1 },
@@ -2233,7 +2234,7 @@ function toggleTimelineFilter(set, value, checked) {
 }
 function tlRows() {
   const s = state.tl;
-  const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : (e.disclosureKnown ? e.main.d : null);
+  const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : s.sort === 'updated' ? DATA.catalogUpdated?.[e.id]?.timestamp : (e.disclosureKnown ? e.main.d : null);
   return INC.filter(e => (!s.reporters.size || s.reporters.has(e.main.by)) && TL_FEATURES.every(f => !s.features.has(f.id) || f.test(e)) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
     .sort((a, b) => {
       const ka = key(a), kb = key(b);
@@ -2794,6 +2795,7 @@ function renderTimelineTable() {
       { label: 'Incident' },
       { label: 'Started', cls: 'm-when', sort: sorter('start'), on: s.sort === 'start', dir: s.dir, tip: 'First known agent activity. Click to sort.' },
       { label: 'Disclosed', sort: sorter('public'), on: s.sort === 'public', dir: s.dir, tip: `First public report tying it to ${devTo()}. Click to sort.` },
+      { label: 'Updated', sort: sorter('updated'), on: s.sort === 'updated', dir: s.dir, tip: 'Latest published catalog addition, update or correction on this site. Click to sort.' },
       { label: 'Delay', cls: 'num', sort: sorter('delay'), on: s.sort === 'delay', dir: s.dir, tip: 'Days from the first known activity to disclosure. Click to sort.' },
       { label: 'Disclosed by' }, { label: 'Status' }, { label: 'Sites', cls: 'num', tip: 'Affected sites and organizations' },
     ]),
@@ -2801,11 +2803,12 @@ function renderTimelineTable() {
       h('td', { class: 'ttl' }, e.title, labTags(e), datasetMark(e), e.id === WIKI_INC ? [' ', h('button', { class: 'mini-link', type: 'button', text: 'posts ↘', 'data-tip': 'Inside this incident: the agents’ posts, with the shorthand explained', onclick: ev => { ev.stopPropagation(); enterInside(WIKI_INC); } })] : null),
       h('td', { class: 'mono m-when m-inline', text: e.first ? (e.approx ? '~' : '') + fmtA(e.first) : '—' }),
       h('td', { class: 'mono m-inline', text: e.disclosureKnown ? fmtA(e.main.d) : 'Unknown', 'data-tip': e.disclosureKnown ? null : `Report updated ${fmtY(e.main.d)}; first disclosure date unknown` }),
+      h('td', { class: 'mono m-inline', text: DATA.catalogUpdated?.[e.id] ? fmtA(DATA.catalogUpdated[e.id].date) : '—' }),
       h('td', { class: 'mono num m-inline', text: e.delay != null ? `${e.delay} d` : '—', 'data-tip': delayTxt(e) }),
       h('td', { class: 'm-inline' }, e.disclosureKnown ? h('span', { class: 'who' }, h('span', { class: `dot g-${e.main.by}` }), incWho(e, e.main.by)) : 'Unknown'),
       h('td', { class: 'sub-cell', text: e.status }),
       h('td', { class: 'mono num m-inline', text: String(sites(e.id)) })))
-      : h('tr', {}, h('td', { colspan: 7, class: 'empty', text: noneTxt('incidents', INC) })))));
+      : h('tr', {}, h('td', { colspan: 8, class: 'empty', text: noneTxt('incidents', INC) })))));
   markSelected(); renderFoot();
 }
 function renderAffected() {
@@ -3652,13 +3655,16 @@ function pickNative(o) {
 }
 const pick = o => (typeof picker === 'function' ? picker(o) : pickNative(o));
 /* ---- the tab row: three views at the top level, a breadcrumb inside an incident */
-/* the two sections of the site: every incident, or one incident from the inside */
+/* Overview has no section row; retain breadcrumbs on existing inside routes. */
 function renderNav() {
   $('#latest-updates').hidden = UPDATES_PAGE || state.view !== 'timeline';
   const updatesLink=document.querySelector('.updates-link');if(updatesLink)updatesLink.href='/updates.html';
 
   if (UPDATES_PAGE) { renderUpdateNav(); return; }
-  const inside = state.view === 'wiki', e = inside && state.inside && BY_ID.get(state.inside);
+  const inside = state.view === 'wiki';
+  $('#lvl').hidden = !inside;
+  if (!inside) { put($('#lvl')); return; }
+  const e = state.inside && BY_ID.get(state.inside);
   const thread = e && e.id === WIKI_INC && W ? threadCrumb() : null, sep = () => h('span', { class: 'lvl-sep', 'aria-hidden': 'true', text: '›' });
   put($('#lvl'),
     h('button', { class: 'lvl-l', type: 'button', 'aria-current': String(!inside), 'data-tip': 'Every incident: the timeline, the affected sites and the responses', onclick: () => { if (inside) leaveInside(); } }, 'Overview'),

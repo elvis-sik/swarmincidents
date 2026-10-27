@@ -105,7 +105,12 @@ test('nearby dates group by screen space, list every date, and separate when zoo
   for(const report of data.incidents.find(e=>e.id==='amap-fleet').reveals)await expect(page.locator('#det .event-focused').filter({hasText:report.text})).toHaveCount(1);
   await page.getByRole('button',{name:'Close details',exact:true}).click();
  }else{
+  // Updated ordering places older listings below the fold. Settle the scroll before hovering:
+  // the page deliberately dismisses tooltips on scroll.
+  await cluster.scrollIntoViewIfNeeded();
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   await cluster.locator(':scope > .hit').hover();
+  await expect(page.locator('#tip')).toBeVisible();
   await expect(page.locator('#tip .tip-day')).toHaveText(['Oct 4, 2026','Oct 5, 2026','Oct 9, 2026','Oct 14, 2026']);
   await expect.poll(()=>page.locator('#tip').evaluate(e=>{const r=e.getBoundingClientRect();return r.left>=7&&r.top>=7&&r.right<=innerWidth-7&&r.bottom<=innerHeight-7;})).toBe(true);
   for(const report of data.incidents.find(e=>e.id==='amap-fleet').reveals)await expect(page.locator('#tip')).toContainText(report.text);
