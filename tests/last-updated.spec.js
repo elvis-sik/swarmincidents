@@ -18,7 +18,7 @@ test('Updated defaults to newest catalog publications and reverses on click', as
   await page.reload();
   await expect(page.getByRole('button',{name:'Sort by updated, newest first',exact:true})).toHaveAttribute('aria-pressed','true');
   await page.setViewportSize({width:320,height:812});
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const box=await page.getByRole('group',{name:'Sort incidents',exact:true}).boundingBox();
   expect(box.x+box.width).toBeLessThanOrEqual(320);
 });
