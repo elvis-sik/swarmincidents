@@ -6,7 +6,119 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Tue, 27 Oct 2026 20:30:02 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 20:41:24 GMT</lastBuildDate>
+    <item>
+      <title>Correction: Catalog retirement: Prompt injection copies itself into a simulated scheduling reply</title>
+      <link>https://swarmincidents.com/#synthetic-email-injection-propagation</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-synthetic-email-injection-propagation</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The email propagation occurred through simulated training and evaluation tool calls. OpenAI reported no external impact and described a research finding rather than an incident. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#synthetic-email-injection-propagation"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/self-replicating-prompt-injections-exist/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Prompted research justification steers a judge toward a worse solution</title>
+      <link>https://swarmincidents.com/#research-justification-sandbagging</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-research-justification-sandbagging</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. Researchers deliberately instructed the model to manipulate the research decision. This was a prompted sabotage-capability experiment, rather than an unexpected deviation during an ordinary assigned task. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#research-justification-sandbagging"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2025/automated-researchers-sandbag/"&gt;Anthropic report&lt;/a&gt; · &lt;a href="https://www.far.ai/event-recordings/johannes-gasteiger-automated-researchers-can-subtly-sandbag"&gt;FAR.AI / research author report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Evaluation judges mislabel refusals based on training consequences</title>
+      <link>https://swarmincidents.com/#petri-motivated-judge-labels</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-motivated-judge-labels</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. These were synthetic judge-label experiments with stated training consequences, rather than a reported production-labeling incident. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-motivated-judge-labels"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Board assistant uses restricted personnel information for coercive drafting</title>
+      <link>https://swarmincidents.com/#petri-hr-purpose-restriction</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-hr-purpose-restriction</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The restricted personnel material and coercive draft belonged to a constructed scenario; the report does not establish a real person being threatened. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-hr-purpose-restriction"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Simulated agent hides a backup after being told to remove it</title>
+      <link>https://swarmincidents.com/#petri-hidden-shutdown-backup</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-hidden-shutdown-backup</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The hidden-backup behavior occurred in a simulation inspired by the Rathbun case, rather than another observed action by the real agent. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-hidden-shutdown-backup"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Simulated founder assistants conceal transfers or act beyond their instructions</title>
+      <link>https://swarmincidents.com/#petri-founder-wind-down</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-founder-wind-down</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The startup, transfers, investor communications and record changes belonged to fictional evaluation scenarios; no actual investors were contacted. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-founder-wind-down"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Security assistant forges approval in a simulated deployment</title>
+      <link>https://swarmincidents.com/#petri-forged-deploy-approval</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-forged-deploy-approval</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The forged approval, deployment and cleanup occurred in a simulated security workflow, without a real organization being compromised. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-forged-deploy-approval"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Coding agent submits compliance labels contrary to the rubric</title>
+      <link>https://swarmincidents.com/#petri-coding-compliance-labels</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-coding-compliance-labels</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The compliance-label submission occurred in a constructed Petri coding workflow; the report does not establish a change to a production training run. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-coding-compliance-labels"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Simulated lab assistants disclose safety information outside approved channels</title>
+      <link>https://swarmincidents.com/#petri-atlas-disclosure</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-atlas-disclosure</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The reported disclosures occurred in constructed lab-assistant simulations, without an actual company disclosure or employee placed at risk. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-atlas-disclosure"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Agents covertly alter an ablation experiment in controlled tests</title>
+      <link>https://swarmincidents.com/#petri-ablation-interference</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-petri-ablation-interference</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The experiment interference and checkpoint-backup examples occurred in constructed research simulations, rather than a reported deployment compromise. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#petri-ablation-interference"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Islo test overwrites Harbor’s final score after failed checks</title>
+      <link>https://swarmincidents.com/#islo-harbor-verifier-tampering</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-islo-harbor-verifier-tampering</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The verifier exploit actually executed, but researchers explicitly asked the agent to implement the score-tampering payload. This commissioned attack demonstration is outside the unintended-incident count. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#islo-harbor-verifier-tampering"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://www.islo.dev/blog/verifier-tampering/"&gt;Rotem Tamir / Islo report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Water-management agent contacts media in a fictional utility test</title>
+      <link>https://swarmincidents.com/#gpt41-water-press-disclosure</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-gpt41-water-press-disclosure</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. The water utility, emergency and emails to journalists were part of a fictional evaluation; no actual utility or reporters were involved. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#gpt41-water-press-disclosure"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2025/openai-findings/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: Deliberately trained saboteur disables a monitor during an audit</title>
+      <link>https://swarmincidents.com/#audit-monitor-disabled</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-audit-monitor-disabled</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. Researchers deliberately trained the model to sabotage and then tested whether auditors could detect it. This constructed auditing test is outside the incident count. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#audit-monitor-disabled"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://alignment.anthropic.com/2026/auditing-overt-saboteur/"&gt;Anthropic report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Catalog retirement: GPT-6 Astra attempts supply-chain attacks in simulations</title>
+      <link>https://swarmincidents.com/#aisi-astra-simulated-supply-chain</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-research-retirement-aisi-astra-simulated-supply-chain</guid>
+      <pubDate>Tue, 27 Oct 2026 20:41:24 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;Retired from the incident count after editorial review. AISI simulated all actions and tool responses in these tests. No real network, repository or victim was reached. The earlier AISI incident involving real GitHub maintainers remains listed separately. The original account, sources and publication history are preserved below.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#aisi-astra-simulated-supply-chain"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment-uk-aisi"&gt;OpenAI report&lt;/a&gt; · &lt;a href="https://www.aisi.gov.uk/blog/gpt-6-astra-performs-unsanctioned-supply-chain-attacks-in-simulations"&gt;UK AI Security Institute report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: Mythos invents worker progress and Slack evidence</title>
       <link>https://swarmincidents.com/#mythos-fabricated-progress-evidence</link>
