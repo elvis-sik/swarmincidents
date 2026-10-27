@@ -14,6 +14,10 @@
 
 ## `incidents[]`
 
+The incident count is the number of active curated records, not a count of independent runs, affected organizations or source reports. A record can describe more than one supported episode.
+
+The count excludes fictional or fully simulated deployment case studies, commissioned sabotage/attack demonstrations, and tests of models deliberately trained to sabotage. Unexpected failures during actual training, evaluation or internal-use tasks can qualify, including benchmark-integrity failures. Research origin, a sandbox, planted input, a blocked attempt or absence of damage alone does not establish exclusion. Retired accounts and sources remain in the append-only publication history; their existing links resolve to the scope correction.
+
 | Field | Notes |
 |---|---|
 | `id` | Stable slug used in links (`#<id>`); never change it |
