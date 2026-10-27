@@ -1,6 +1,5 @@
 const { test, expect } = require('@playwright/test');
 const updates = require('../updates.json').updates;
-test.beforeEach(async({page})=>{await page.route('https://fonts.googleapis.com/**',r=>r.abort());await page.route('https://fonts.gstatic.com/**',r=>r.abort());});
 
 test('RSS is discoverable in the header and About, with approved new and update entries', async ({page, request}) => {
   await page.goto('/', {waitUntil:'domcontentloaded'});

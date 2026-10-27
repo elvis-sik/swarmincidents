@@ -14,6 +14,8 @@ async function inFolder(page, baseURL) {
   await page.route(url => url.origin === origin, async route => {
     const url = new URL(route.request().url());
     if (!url.pathname.startsWith(FOLDER)) { outside.push(url.pathname); return route.abort(); }
+    // The fonts' stylesheet is left to fixtures.js, which answers it empty (fonts.spec.js loads the real fonts).
+    if (url.pathname === FOLDER + 'fonts/fonts.css') return route.fallback();
     // Fetch and fulfill rather than continue with a new URL: Firefox then treats the page as being at the root.
     return route.fulfill({ response: await route.fetch({ url: origin + '/' + url.pathname.slice(FOLDER.length) + url.search }) });
   });
@@ -30,7 +32,7 @@ test('the timeline, its links and its files stay inside the folder', async ({ pa
   const follow = page.getByRole('navigation', { name: 'Follow updates' });
   expect(await resolved(follow.getByRole('link', { name: 'Updates', exact: true }))).toBe(at('updates.html'));
   expect(await resolved(follow.getByRole('link', { name: 'Subscribe via RSS' }))).toBe(at('feed.xml'));
-  for (const sel of ['link[rel="icon"][type="image/svg+xml"]', 'link[rel="apple-touch-icon"]', 'link[rel="manifest"]'])
+  for (const sel of ['link[rel="icon"][type="image/svg+xml"]', 'link[rel="apple-touch-icon"]', 'link[rel="manifest"]', 'link[rel="stylesheet"][href$="fonts.css"]'])
     expect(await resolved(page.locator(sel))).toMatch(new RegExp('^' + at('')));
   const manifest = await (await page.request.get(origin + '/site.webmanifest')).json();
   expect(manifest.start_url).toBe('./');
