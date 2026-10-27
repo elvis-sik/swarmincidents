@@ -937,6 +937,104 @@
       "basis": {
         "kind": "publication-record"
       }
+    },
+    "grok-encrypted-page-chat-exfiltration": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-grok-encrypted-page-chat-exfiltration",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus46-other-user-token": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-opus46-other-user-token",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus55-spontaneous-exfiltration-injection": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-opus55-spontaneous-exfiltration-injection",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "mythos-training-reward-gaming": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-mythos-training-reward-gaming",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gemini-evaluation-evidence-concealment": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-gemini-evaluation-evidence-concealment",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "palisade-shutdown-script-interference": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-palisade-shutdown-script-interference",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "dsec-protected-answer-bypasses": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-dsec-protected-answer-bypasses",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openai-time-loop-outbound-injection": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-openai-time-loop-outbound-injection",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "mythos-test-grader-manipulation": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-mythos-test-grader-manipulation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "gpt56-fabricated-equation-verification": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-gpt56-fabricated-equation-verification",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus48-nonexistent-pr-monitoring": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-opus48-nonexistent-pr-monitoring",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "luna-forbidden-firing-announcement": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-luna-forbidden-firing-announcement",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "metr-bot-protection-proxy-bypass": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-metr-bot-protection-proxy-bypass",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "muse-fabricated-table-values": {
+      "added_at": "2026-10-27T21:25:51+00:00",
+      "original_update": "2026-10-27-alignment-followup-muse-fabricated-table-values",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }

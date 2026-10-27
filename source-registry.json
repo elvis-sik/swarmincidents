@@ -862,7 +862,12 @@
       "title": "Internal OpenAI agent bypasses Slack MCP authentication",
       "publisher": "OpenAI",
       "aliases": [],
-      "labels": []
+      "labels": [
+        {
+          "title": "How we monitor internal coding agents for misalignment: Prompt injecting user",
+          "publisher": "OpenAI"
+        }
+      ]
     },
     "src-58c7ad6bc1bf40d063a7": {
       "url": "https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations",
@@ -901,6 +906,10 @@
         {
           "title": "System Card: Claude Fable 5.1 & Claude Mythos 5.1",
           "publisher": "Anthropic"
+        },
+        {
+          "title": "Anthropic reports Fable 5.1’s saved classifier-outage workaround",
+          "publisher": "Anthropic"
         }
       ]
     },
@@ -927,6 +936,14 @@
         {
           "title": "Mythos 5 agents interfere with colocated math workers",
           "publisher": "Anthropic"
+        },
+        {
+          "title": "Anthropic reports Mythos 5’s blocked human-authorship claim",
+          "publisher": "Anthropic"
+        },
+        {
+          "title": "Anthropic reports Mythos 5’s fabricated checksum verification",
+          "publisher": "Anthropic"
         }
       ]
     },
@@ -945,6 +962,10 @@
       "labels": [
         {
           "title": "Opus 4.8 floods stop-grader context",
+          "publisher": "Anthropic"
+        },
+        {
+          "title": "Claude Opus 4.8 system card, §2.3.3.1",
           "publisher": "Anthropic"
         }
       ]
@@ -1447,7 +1468,12 @@
       "title": "Implementing and evaluating a basic per-action monitor for safer evals",
       "publisher": "METR",
       "aliases": [],
-      "labels": []
+      "labels": [
+        {
+          "title": "Implementing a basic blocking action monitor",
+          "publisher": "METR"
+        }
+      ]
     },
     "src-bab7ebb67eb96a3ace36": {
       "url": "https://www.myfloridalegal.com/sites/default/files/plaintiffs_motion_for_temporary_injunction.pdf",
@@ -2024,14 +2050,24 @@
       "title": "System Card: Claude Opus 5.5",
       "publisher": "Anthropic",
       "aliases": [],
-      "labels": []
+      "labels": [
+        {
+          "title": "Claude Opus 5.5 system card, §6.3.1.1",
+          "publisher": "Anthropic"
+        }
+      ]
     },
     "src-bac05932b08421ee18a7": {
       "url": "https://www.anthropic.com/claude-opus-4-7-system-card",
       "title": "System Card: Claude Opus 4.7",
       "publisher": "Anthropic",
       "aliases": [],
-      "labels": []
+      "labels": [
+        {
+          "title": "Anthropic describes the stopped force-push bypass",
+          "publisher": "Anthropic"
+        }
+      ]
     },
     "src-1f65ac2ddd9c10ed93f7": {
       "url": "https://github.com/FailproofAI/claude-hackernews/pull/34",
@@ -2142,6 +2178,93 @@
       "url": "https://github.com/anthropics/claude-code/issues/27715",
       "title": "Benchmark restarts after repeated stop requests",
       "publisher": "SgtMorgan / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2a64bad82b9fe860b289": {
+      "url": "https://deploymentsafety.openai.com/gpt-5-6-preview/",
+      "title": "OpenAI reports unauthorized cached-credential transfer",
+      "publisher": "OpenAI",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "GPT-5.6 Preview system card, internal deployment examples",
+          "publisher": "OpenAI"
+        }
+      ]
+    },
+    "src-a34f0eb394495ff7e8a9": {
+      "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+      "title": "Anthropic describes additional permission and process-level workarounds",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Mythos Preview system card, §§4.2.1.2, 4.4.2 and 4.5.5.3",
+          "publisher": "Anthropic"
+        }
+      ]
+    },
+    "src-e09c5ad96c1f522d38a8": {
+      "url": "https://andonlabs.com/blog/ai-bosses-1",
+      "title": "Andon reports the invented delivery arrangements",
+      "publisher": "Andon Labs",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7e748f9fe846f9154543": {
+      "url": "https://adversa.ai/blog/cryptographic-context-injection-grok-data-theft/",
+      "title": "Cryptographic Context Injection: Grok data theft",
+      "publisher": "Adversa AI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9eff230a85dbce501da3": {
+      "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+      "title": "Claude Opus 4.6 system card, internal-use observations",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6c20810f6d90adf92db3": {
+      "url": "https://www.anthropic.com/news/claude-opus-4-6",
+      "title": "Opus 4.6 release and system-card publication",
+      "publisher": "Anthropic",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b78dc1338f077a832447": {
+      "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf",
+      "title": "Gemini 4 safety report, cheating in capability evaluations",
+      "publisher": "Google DeepMind",
+      "aliases": [],
+      "labels": []
+    },
+    "src-52de36f18ee0fc7f112b": {
+      "url": "https://palisaderesearch.org/research/shutdown-resistance",
+      "title": "Shutdown resistance in reasoning models",
+      "publisher": "Palisade Research",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e21b1a157dc5cfe4be4b": {
+      "url": "https://arxiv.org/abs/2609.22978",
+      "title": "DeepSeek Elastic Compute, §6.4–6.5",
+      "publisher": "DeepSeek researchers",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0336b163cb15ee2ce3f9": {
+      "url": "https://andonlabs.com/blog/ai-bosses-2",
+      "title": "AI bosses are slow to fire and quick to hire",
+      "publisher": "Andon Labs",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8feab8edbe924fd380ef": {
+      "url": "https://research.meta.ai/static/muse-spark-1-3-evaluation-report",
+      "title": "Muse Spark 1.3 evaluation report, p.99",
+      "publisher": "Meta",
       "aliases": [],
       "labels": []
     }
@@ -3809,7 +3932,8 @@
     },
     "internal-codex-access": {
       "curated": [
-        "src-b4b340379768876cac65"
+        "src-b4b340379768876cac65",
+        "src-2a64bad82b9fe860b289"
       ],
       "additional": [],
       "reveals": [
@@ -3819,6 +3943,14 @@
           "text": "The developer reports the behavior",
           "source_ids": [
             "src-b4b340379768876cac65"
+          ]
+        },
+        {
+          "d": "2026-06-26",
+          "by": "lab",
+          "text": "OpenAI reports unauthorized cached-credential transfer",
+          "source_ids": [
+            "src-2a64bad82b9fe860b289"
           ]
         }
       ],
@@ -3912,42 +4044,69 @@
     "mythos-internal-permissions": {
       "curated": [
         "src-8365daac58ea3a83175b",
-        "src-e05b98eb9c5930b478ee"
+        "src-e05b98eb9c5930b478ee",
+        "src-a34f0eb394495ff7e8a9",
+        "src-bac05932b08421ee18a7"
       ],
       "additional": [],
       "reveals": [
         {
           "d": "2026-04-07",
           "by": "lab",
-          "text": "Mythos Preview report documents internal examples",
+          "text": "Mythos Preview report documents internal examples; Anthropic describes additional permission and process-level workarounds",
           "source_ids": [
-            "src-8365daac58ea3a83175b"
+            "src-a34f0eb394495ff7e8a9"
           ]
         },
         {
           "d": "2026-04-16",
           "by": "lab",
-          "text": "Later system card adds Mythos Preview sessions",
+          "text": "Later system card adds Mythos Preview sessions; Anthropic describes the stopped force-push bypass",
           "source_ids": [
-            "src-e05b98eb9c5930b478ee"
+            "src-bac05932b08421ee18a7"
           ]
         }
       ],
-      "activity": []
+      "activity": [],
+      "timeline_history": [
+        {
+          "kind": "reveals",
+          "association": {
+            "d": "2026-04-07",
+            "by": "lab",
+            "text": "Mythos Preview report documents internal examples",
+            "source_ids": [
+              "src-8365daac58ea3a83175b"
+            ]
+          }
+        },
+        {
+          "kind": "reveals",
+          "association": {
+            "d": "2026-04-16",
+            "by": "lab",
+            "text": "Later system card adds Mythos Preview sessions",
+            "source_ids": [
+              "src-e05b98eb9c5930b478ee"
+            ]
+          }
+        }
+      ]
     },
     "claude-later-permissions": {
       "curated": [
         "src-62e81ca8e899a0dd2992",
         "src-e961e540833434aff6fc",
         "src-e3783fada3f61ec4a987",
-        "src-9e7091939d4986c91f78"
+        "src-9e7091939d4986c91f78",
+        "src-d01ddd4901865d8d9bef"
       ],
       "additional": [],
       "reveals": [
         {
           "d": "2026-05-28",
           "by": "lab",
-          "text": "Opus 4.8 report describes proxy workarounds",
+          "text": "Opus 4.8 report describes proxy workarounds; The Opus 4.8 report also describes root-access attempts",
           "source_ids": [
             "src-e3783fada3f61ec4a987"
           ]
@@ -3975,9 +4134,30 @@
           "source_ids": [
             "src-e961e540833434aff6fc"
           ]
+        },
+        {
+          "d": "2026-09-01",
+          "by": "lab",
+          "text": "Anthropic reports Fable 5.1’s saved classifier-outage workaround",
+          "source_ids": [
+            "src-d01ddd4901865d8d9bef"
+          ]
         }
       ],
-      "activity": []
+      "activity": [],
+      "timeline_history": [
+        {
+          "kind": "reveals",
+          "association": {
+            "d": "2026-05-28",
+            "by": "lab",
+            "text": "Opus 4.8 report describes proxy workarounds",
+            "source_ids": [
+              "src-e3783fada3f61ec4a987"
+            ]
+          }
+        }
+      ]
     },
     "opus-stop-grader": {
       "curated": [
@@ -5247,7 +5427,8 @@
     },
     "andon-mona-employee-impersonation": {
       "curated": [
-        "src-08f7af9298c0ecae1869"
+        "src-08f7af9298c0ecae1869",
+        "src-e09c5ad96c1f522d38a8"
       ],
       "additional": [],
       "reveals": [
@@ -5257,6 +5438,14 @@
           "text": "Andon Labs reports repeated employee impersonation during café licensing",
           "source_ids": [
             "src-08f7af9298c0ecae1869"
+          ]
+        },
+        {
+          "d": "2026-08-04",
+          "by": "research",
+          "text": "Andon reports the invented delivery arrangements",
+          "source_ids": [
+            "src-e09c5ad96c1f522d38a8"
           ]
         }
       ],
@@ -5292,10 +5481,19 @@
     "claude-invented-user-approvals": {
       "curated": [
         "src-d01ddd4901865d8d9bef",
-        "src-b473df8343ee14147808"
+        "src-b473df8343ee14147808",
+        "src-62e81ca8e899a0dd2992"
       ],
       "additional": [],
       "reveals": [
+        {
+          "d": "2026-06-09",
+          "by": "lab",
+          "text": "Anthropic reports Mythos 5’s blocked human-authorship claim",
+          "source_ids": [
+            "src-62e81ca8e899a0dd2992"
+          ]
+        },
         {
           "d": "2026-09-01",
           "by": "lab",
@@ -5317,20 +5515,42 @@
     },
     "mythos-fabricated-progress-evidence": {
       "curated": [
-        "src-bac05932b08421ee18a7"
+        "src-bac05932b08421ee18a7",
+        "src-62e81ca8e899a0dd2992"
       ],
       "additional": [],
       "reveals": [
         {
           "d": "2026-04-16",
           "by": "lab",
-          "text": "Anthropic describes Mythos Preview’s fabricated progress and Slack findings",
+          "text": "Anthropic describes Mythos Preview’s fabricated progress and Slack findings; The report also documents the false prior-warning claim",
           "source_ids": [
             "src-bac05932b08421ee18a7"
           ]
+        },
+        {
+          "d": "2026-06-09",
+          "by": "lab",
+          "text": "Anthropic reports Mythos 5’s fabricated checksum verification",
+          "source_ids": [
+            "src-62e81ca8e899a0dd2992"
+          ]
         }
       ],
-      "activity": []
+      "activity": [],
+      "timeline_history": [
+        {
+          "kind": "reveals",
+          "association": {
+            "d": "2026-04-16",
+            "by": "lab",
+            "text": "Anthropic describes Mythos Preview’s fabricated progress and Slack findings",
+            "source_ids": [
+              "src-bac05932b08421ee18a7"
+            ]
+          }
+        }
+      ]
     },
     "codex-windows-deletion-shell-retry": {
       "curated": [
@@ -5571,6 +5791,255 @@
           "text": "Jeongho Nam publishes the account.",
           "source_ids": [
             "src-8e01062ece1eb42713f8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "grok-encrypted-page-chat-exfiltration": {
+      "curated": [
+        "src-7e748f9fe846f9154543"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-20",
+          "by": "research",
+          "text": "Adversa AI reports the behavior",
+          "source_ids": [
+            "src-7e748f9fe846f9154543"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus46-other-user-token": {
+      "curated": [
+        "src-9eff230a85dbce501da3",
+        "src-6c20810f6d90adf92db3"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-05",
+          "by": "lab",
+          "text": "Anthropic reports the behavior",
+          "source_ids": [
+            "src-9eff230a85dbce501da3",
+            "src-6c20810f6d90adf92db3"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus55-spontaneous-exfiltration-injection": {
+      "curated": [
+        "src-b473df8343ee14147808"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-22",
+          "by": "lab",
+          "text": "Anthropic reports the behavior",
+          "source_ids": [
+            "src-b473df8343ee14147808"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "mythos-training-reward-gaming": {
+      "curated": [
+        "src-8ed1599eb95bc766b101"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-31",
+          "by": "lab",
+          "text": "Anthropic reports the behavior",
+          "source_ids": [
+            "src-8ed1599eb95bc766b101"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-02-01",
+          "e": "2026-02-28",
+          "label": "Training rollback reported in February",
+          "source_ids": [
+            "src-8ed1599eb95bc766b101"
+          ]
+        }
+      ]
+    },
+    "gemini-evaluation-evidence-concealment": {
+      "curated": [
+        "src-b78dc1338f077a832447"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-13",
+          "by": "lab",
+          "text": "Google DeepMind reports the behavior",
+          "source_ids": [
+            "src-b78dc1338f077a832447"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "palisade-shutdown-script-interference": {
+      "curated": [
+        "src-52de36f18ee0fc7f112b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-07-05",
+          "by": "research",
+          "text": "Palisade Research reports the behavior",
+          "source_ids": [
+            "src-52de36f18ee0fc7f112b"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "dsec-protected-answer-bypasses": {
+      "curated": [
+        "src-e21b1a157dc5cfe4be4b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-19",
+          "by": "research",
+          "text": "DeepSeek researchers reports the behavior",
+          "source_ids": [
+            "src-e21b1a157dc5cfe4be4b"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openai-time-loop-outbound-injection": {
+      "curated": [
+        "src-b4b340379768876cac65"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-19",
+          "by": "lab",
+          "text": "OpenAI reports the behavior",
+          "source_ids": [
+            "src-b4b340379768876cac65"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "mythos-test-grader-manipulation": {
+      "curated": [
+        "src-a34f0eb394495ff7e8a9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-07",
+          "by": "lab",
+          "text": "Anthropic reports the behavior",
+          "source_ids": [
+            "src-a34f0eb394495ff7e8a9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "gpt56-fabricated-equation-verification": {
+      "curated": [
+        "src-2a64bad82b9fe860b289"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-26",
+          "by": "lab",
+          "text": "OpenAI reports the behavior",
+          "source_ids": [
+            "src-2a64bad82b9fe860b289"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus48-nonexistent-pr-monitoring": {
+      "curated": [
+        "src-e3783fada3f61ec4a987"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-28",
+          "by": "lab",
+          "text": "Anthropic reports the behavior",
+          "source_ids": [
+            "src-e3783fada3f61ec4a987"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "luna-forbidden-firing-announcement": {
+      "curated": [
+        "src-0336b163cb15ee2ce3f9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-14",
+          "by": "research",
+          "text": "Andon Labs reports the behavior",
+          "source_ids": [
+            "src-0336b163cb15ee2ce3f9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "metr-bot-protection-proxy-bypass": {
+      "curated": [
+        "src-3fed499d21b6b1c89288"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-09-27",
+          "by": "research",
+          "text": "METR reports the behavior",
+          "source_ids": [
+            "src-3fed499d21b6b1c89288"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "muse-fabricated-table-values": {
+      "curated": [
+        "src-8feab8edbe924fd380ef"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-10-23",
+          "by": "lab",
+          "text": "Meta reports the behavior",
+          "source_ids": [
+            "src-8feab8edbe924fd380ef"
           ]
         }
       ],
