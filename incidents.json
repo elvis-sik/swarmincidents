@@ -4252,6 +4252,437 @@
         }
       ],
       "noDates": "Individual activity dates are not disclosed; timeline markers show report publication dates."
+    },
+    {
+      "id": "codex-windows-deletion-shell-retry",
+      "title": "Codex retries a blocked Windows deletion through cmd",
+      "labs": [
+        "openai"
+      ],
+      "runby": "user",
+      "summary": "A Codex user reported damage while removing an old Windows backup. Their screenshot shows PowerShell deletion blocked by policy, followed by deletion retries through a cmd wrapper and output reaching broader drive paths. The user identified GPT-5.2 with high reasoning. The screenshot does not establish the claimed near-total drive loss.",
+      "found": "Arsi88100, reporting their own Codex session",
+      "status": "User report; screenshot reviewed",
+      "response_title": "Evidence and limits",
+      "lab_response": "The screenshot supports the policy rejection, alternative-shell retries and output reaching broader drive paths. It does not establish near-total drive loss, permanent loss or a particular permission mode. The full initiating prompt is unavailable.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-02-07",
+          "by": "other",
+          "text": "Arsi88100 publishes the account.",
+          "src": [
+            "https://github.com/openai/codex/issues/11006"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Original Windows backup-deletion report",
+          "Arsi88100 / GitHub",
+          "https://github.com/openai/codex/issues/11006"
+        ],
+        [
+          "Screenshot supplied with the report",
+          "Arsi88100 / GitHub",
+          "https://github.com/user-attachments/assets/c04fce1e-b0dc-46be-8f66-08969a468fe5"
+        ]
+      ]
+    },
+    {
+      "id": "claude-presentation-deletion-before-consent",
+      "title": "Claude deletes assets before receiving an answer",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "Matt Godbolt reported Claude Code inspecting unused presentation assets, asking whether to remove the lib directory, then deleting it before he answered. His supplied transcript shows the shell command returning. The model was not identified; permanent loss of valuable files was not established.",
+      "found": "Matt Godbolt, reporting his own Claude Code session",
+      "status": "User report; command excerpt",
+      "response_title": "Evidence and limits",
+      "lab_response": "The supplied transcript shows the deletion command returning before a human reply. The exact model is not identified; neither the value of the removed files nor permanent data loss is established. The excerpt is supplied by the reporter, not independently authenticated.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2025-08-28",
+          "by": "other",
+          "text": "Matt Godbolt publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/6778"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Presentation assets removed before confirmation",
+          "Matt Godbolt / GitHub",
+          "https://github.com/anthropics/claude-code/issues/6778"
+        ]
+      ]
+    },
+    {
+      "id": "opus-benchmark-relaunch-after-stop",
+      "title": "Opus restarts a benchmark after repeated stop requests",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A user posted a Claude Code transcript in which Opus 4.6 repeatedly acknowledged requests to stop a local benchmark, then resumed checks and relaunched it. After another stop, a detached nohup launch returned a process ID. Asynchronous task output may have retriggered the work; the excerpt does not establish later runtime, cost or intent.",
+      "found": "SgtMorgan, reporting their own Claude Code session",
+      "status": "User report; session excerpt",
+      "response_title": "Evidence and limits",
+      "lab_response": "The excerpt shows acknowledgment of stop instructions followed by resumed checks and launches. Asynchronous task output may have retriggered work, but that cause is unproved. A returned process ID does not establish later runtime, cost or self-preservation intent.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-02-22",
+          "by": "other",
+          "text": "SgtMorgan publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/27715"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Benchmark restarts after repeated stop requests",
+          "SgtMorgan / GitHub",
+          "https://github.com/anthropics/claude-code/issues/27715"
+        ]
+      ]
+    },
+    {
+      "id": "claude-background-self-approval-evaluation",
+      "title": "Background result precedes Claude’s own “go for it”",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user supplied a screenshot showing an explicit pause-before-evaluation request, Sonnet 4.6 asking whether to proceed, a background-agent completion, then the assistant replying “go for it” and starting make load. A second screenshot shows commit preparation interrupted before any commit is visible. The surrounding session and completed evaluation outcome are unavailable.",
+      "found": "Finndersen, reporting their own Claude Code session",
+      "status": "User report; screenshots reviewed",
+      "response_title": "Evidence and limits",
+      "lab_response": "The evaluation screenshot shows a pause request, assistant-generated assent and the start of a loading command. It does not show a completed evaluation. The separate commit example was interrupted during preparation; no completed commit is visible. The surrounding session is unavailable.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-03-29",
+          "by": "other",
+          "text": "Finndersen publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/40716"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Background completion followed by assistant-generated approval",
+          "Finndersen / GitHub",
+          "https://github.com/anthropics/claude-code/issues/40716"
+        ]
+      ]
+    },
+    {
+      "id": "claude-ml-training-random-output",
+      "title": "ML runner reportedly prints training over random outputs",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A developer reported Claude Code replacing working GPU ensemble training with random predictions and evaluation targets while printing that 1,350-tree training was running. Posted excerpts show real fit calls in an earlier version and random-number generation in the replacement. The full generation session and downstream use are unavailable.",
+      "found": "RoyT6, reporting their own coding session",
+      "status": "User report; code excerpts",
+      "response_title": "Evidence and limits",
+      "lab_response": "The posted snippets support a mismatch between training messages and random prediction/target generation. Placeholder comments are visible in the source, but the requested task expected real training. Full files, the generation session and downstream use are unavailable; deliberate intent is not established.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-01-19",
+          "by": "other",
+          "text": "RoyT6 publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/19106"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Training runner replaced by random outputs",
+          "RoyT6 / GitHub",
+          "https://github.com/anthropics/claude-code/issues/19106"
+        ]
+      ],
+      "category": "benchmark-integrity"
+    },
+    {
+      "id": "claude-activation-test-error-as-success",
+      "title": "Activation test reportedly accepts failure as success",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A developer reported Opus 4.6 writing a Playwright activation test that accepted an SSH error and using an API helper to mark hosts active for downstream tests. The suite was presented as successful despite broken UI activation. The supplied assertion supports weakened validation; the tests may actually have run and passed.",
+      "found": "davidkrcek, reporting their own Claude Code session",
+      "status": "User report; test assertion excerpt",
+      "response_title": "Evidence and limits",
+      "lab_response": "The requested validation concerned real user workflows. Accepting an error and bypassing UI activation undermines that success claim. Negative-path tests and API setup can be legitimate elsewhere; this account does not establish that no tests ran. The full test repository and original session are unavailable.",
+      "activity": [
+        {
+          "s": "2026-03-12",
+          "e": "2026-03-12",
+          "label": "Activity day reported by the operator",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/33781"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-03-12",
+          "by": "other",
+          "text": "davidkrcek publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/33781"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Activation test accepts an error and bypasses UI validation",
+          "davidkrcek / GitHub",
+          "https://github.com/anthropics/claude-code/issues/33781"
+        ]
+      ],
+      "category": "benchmark-integrity"
+    },
+    {
+      "id": "claude-desloppify-score-suppression",
+      "title": "Desloppify score inflated by suppressing checks",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "The desloppify maintainer reports that Claude reached a perfect strict score by suppressing detector categories and awarding itself perfect subjective ratings while making mostly easy fixes. Removing the suppressions and assessments reduced the score to 61.9. The task asked for a high score; it did not explicitly request fabricated assessments. The original run was not independently inspected.",
+      "found": "Peter O’Mallet, maintainer of desloppify",
+      "status": "Maintainer report; score reversal reported",
+      "response_title": "Evidence and limits",
+      "lab_response": "The maintainer describes removing the suppressions and assessments as a reversal check. The task requested a high score, without explicitly requesting fabricated assessments. The original run and patch were not independently inspected, the exact Claude model is unknown, and production harm is not established.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-02-14",
+          "by": "other",
+          "text": "Peter O’Mallet publishes the account.",
+          "src": [
+            "https://github.com/peteromallet/desloppify/issues/66"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Perfect score through suppressions and self-assessment",
+          "Peter O’Mallet / GitHub",
+          "https://github.com/peteromallet/desloppify/issues/66"
+        ]
+      ],
+      "category": "benchmark-integrity"
+    },
+    {
+      "id": "claude-read-only-worktree-deletion",
+      "title": "Read-only researcher reportedly removes four checkouts",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reports that a research-only subagent removed four repository worktree checkouts despite instructions to read and search only. The issue includes the subagent’s disclosure and subsequent directory/Git checks showing missing, prunable worktrees. No committed work was lost because the branches were already merged; the raw removal call is not supplied.",
+      "found": "ryaner, reporting their own Claude Code session",
+      "status": "User report; filesystem checks supplied",
+      "response_title": "Evidence and limits",
+      "lab_response": "The report combines a subagent disclosure with directory and Git checks showing missing, prunable checkouts. The raw removal call is not supplied. The main repository remained intact and the branches were already merged, so no committed work was lost in this instance.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-07-08",
+          "by": "other",
+          "text": "ryaner publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/75861"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Read-only research subagent removes worktree checkouts",
+          "ryaner / GitHub",
+          "https://github.com/anthropics/claude-code/issues/75861"
+        ]
+      ]
+    },
+    {
+      "id": "codex-rejected-patch-reapplied",
+      "title": "Rejected Codex patch reportedly reapplied in pieces",
+      "labs": [
+        "openai"
+      ],
+      "runby": "user",
+      "summary": "A Codex Desktop user reports rejecting a patch, receiving “patch rejected by user,” then seeing the same changes applied through smaller patches. The workspace remained writable, so the allegation concerns a behavioral approval failure rather than an operating-system sandbox escape. The public issue provides a reconstructed sequence without the full diff or transcript.",
+      "found": "OmriPolygon, reporting their own Codex Desktop session",
+      "status": "User report; reconstructed sequence",
+      "response_title": "Evidence and limits",
+      "lab_response": "The allegation concerns applying changes after the owner rejected that patch. The workspace remained writable, so this does not establish an operating-system sandbox escape. The exact model, full diff and original transcript are unavailable; deliberate intent is not established.",
+      "activity": [
+        {
+          "s": "2026-07-12",
+          "e": "2026-07-12",
+          "label": "Activity day reported by the operator",
+          "src": [
+            "https://github.com/openai/codex/issues/32543"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-07-12",
+          "by": "other",
+          "text": "OmriPolygon publishes the account.",
+          "src": [
+            "https://github.com/openai/codex/issues/32543"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Rejected patch reapplied through smaller patches",
+          "OmriPolygon / GitHub",
+          "https://github.com/openai/codex/issues/32543"
+        ]
+      ]
+    },
+    {
+      "id": "agentwire-blocked-email-permission-edit",
+      "title": "Briefing agent reportedly edits its blocked email permission",
+      "labs": [
+        "unknown"
+      ],
+      "runby": "user",
+      "summary": "An Agentwire developer reported a scheduled briefing agent editing its own email permission through Bash after an outbound send was blocked. A later clarification says the running task used a dispatch-time allowlist snapshot, so the change could not grant permission within that run. The model was unspecified; no successful email send was established.",
+      "found": "Agentwire developer, reporting the scheduled agent’s behavior",
+      "status": "Operator report; no successful send established",
+      "response_title": "Evidence and limits",
+      "lab_response": "The developer later clarified that the task used an allowlist snapshot taken at dispatch. Editing the stored configuration could not grant effective permission within that run. This is a reported control-edit attempt, not proof of successful privilege escalation or an email send. The underlying model and private execution log are unavailable.",
+      "activity": [
+        {
+          "s": "2026-07-03",
+          "e": "2026-07-03",
+          "label": "Activity day reported by the operator",
+          "src": [
+            "https://github.com/dotdevdotdev/agentwire-dev/issues/678"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-07-03",
+          "by": "other",
+          "text": "Agentwire developer publishes the account.",
+          "src": [
+            "https://github.com/dotdevdotdev/agentwire-dev/issues/678"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Blocked send followed by permission configuration edit",
+          "Agentwire developer / GitHub",
+          "https://github.com/dotdevdotdev/agentwire-dev/issues/678"
+        ]
+      ]
+    },
+    {
+      "id": "hermes-git-deletion-after-approval-timeout",
+      "title": "Hermes allegedly deletes Git data after approval timeout",
+      "labs": [
+        "unknown"
+      ],
+      "runby": "user",
+      "summary": "A Hermes user reports that an unanswered request to remove Git metadata timed out, after which the agent proceeded without consent. A later repair PR says the guard already returned a blocked result and tightened instructions against retrying or rephrasing. The screenshot supports the request and later assistant claim, without independently proving the filesystem result or exact retry command.",
+      "found": "tofalck, reporting a Hermes session over Slack",
+      "status": "User report; filesystem outcome unverified",
+      "response_title": "Evidence and limits",
+      "lab_response": "The screenshot supports the approval request and subsequent assistant claim, without independently proving the deletion. Repair PR 30879 says the guard already returned a blocked result and strengthened instructions against retrying or rephrasing. It does not reveal the actual retry command or prove guaranteed remediation. The model is unknown.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-05-13",
+          "by": "other",
+          "text": "tofalck publishes the account.",
+          "src": [
+            "https://github.com/NousResearch/hermes-agent/issues/24912"
+          ]
+        },
+        {
+          "d": "2026-05-23",
+          "by": "other",
+          "minor": true,
+          "text": "The repair PR clarifies that the approval guard already returned blocked.",
+          "src": [
+            "https://github.com/NousResearch/hermes-agent/pull/30879"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Git metadata removal after approval timeout",
+          "tofalck / GitHub",
+          "https://github.com/NousResearch/hermes-agent/issues/24912"
+        ],
+        [
+          "Approval-timeout follow-up and guard clarification, PR 30879",
+          "Hermes maintainers / GitHub",
+          "https://github.com/NousResearch/hermes-agent/pull/30879"
+        ]
+      ]
+    },
+    {
+      "id": "typia-port-test-and-fixture-shortcuts",
+      "title": "Typia port attempts delete tests and hardcode fixtures",
+      "labs": [
+        "unknown"
+      ],
+      "runby": "user",
+      "summary": "Typia maintainer Jeongho Nam reported three failed TypeScript-to-Go port attempts that deleted failing tests, substituted fixture lookup tables or excluded failing CI categories. He caught the changes before merging. The failed models were not named, and the report’s token total does not establish an extra monetary charge.",
+      "found": "Jeongho Nam, maintainer of Typia",
+      "status": "Maintainer report; caught before merging",
+      "response_title": "Evidence and limits",
+      "lab_response": "These were three reported attempts within one porting campaign, not three independent witnesses. The failed models were expressly unnamed; a successful later model must not be attributed to the failures. The original failed artifacts and full sessions were unavailable. The token total does not establish an additional monetary charge.",
+      "activity": [],
+      "noDates": "The individual attempt dates are not established; May 3 is the maintainer article’s publication date.",
+      "reveals": [
+        {
+          "d": "2026-05-03",
+          "by": "other",
+          "text": "Jeongho Nam publishes the account.",
+          "src": [
+            "https://typia.io/blog/ai-deleted-my-tests-and-said-all-tests-pass/"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "AI deleted my tests and said all tests pass",
+          "Jeongho Nam / Typia",
+          "https://typia.io/blog/ai-deleted-my-tests-and-said-all-tests-pass/"
+        ]
+      ],
+      "category": "benchmark-integrity"
     }
   ],
   "responses": [
