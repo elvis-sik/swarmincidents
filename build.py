@@ -26,6 +26,7 @@ site_data = dict(data, catalogAdded=catalog_additions(metadata, updates, data), 
 js = "const DATA = " + json.dumps(site_data, ensure_ascii=False) + ";"
 page = (here / "template.html").read_text().replace("/*__DATA__*/", js.replace("</", "<\\/"))
 page = page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
+page = page.replace("/*__CARD_HISTORY__*/", (here / "card-history.js").read_text())
 page = page.replace("__UPDATED__", updated).replace("__VERSION__", version)
 wiki = json.loads((here / "wiki-data.js").read_text(encoding="utf-8").split("=", 1)[1].rstrip().rstrip(";"))
 page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
@@ -48,6 +49,7 @@ update_data["responses"] = [dict(
 ) for u in updates["updates"]]
 updates_page = (here / "template.html").read_text().replace("/*__DATA__*/", ("const DATA = " + json.dumps(update_data, ensure_ascii=False) + ";").replace("</", "<\\/"))
 updates_page = updates_page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
+updates_page = updates_page.replace("/*__CARD_HISTORY__*/", (here / "card-history.js").read_text())
 updates_page = updates_page.replace("const UPDATES_PAGE = false;", "const UPDATES_PAGE = true;")
 updates_page = updates_page.replace("__UPDATED__", updated).replace("__VERSION__", version).replace("__WIKI_N__", str(len(wiki["posts"])))
 updates_page = updates_page.replace("<title>Swarm Incidents: a timeline of AI agent incidents</title>", "<title>Updates · Swarm Incidents</title>")
