@@ -38,7 +38,7 @@ test('known first disclosure retains its label and delay as a positive control',
   await page.getByRole('button',{name:'Close details',exact:true}).click();
   await page.getByRole('button',{name:'Table',exact:true}).click();
   await expect(page.locator('tr[data-inc-row="aisi-cyber-range"] td').nth(2)).toHaveText('Aug 4');
-  await expect(page.locator('tr[data-inc-row="aisi-cyber-range"] td').nth(3)).toHaveText('10 d');
+  await expect(page.locator('tr[data-inc-row="aisi-cyber-range"] td.num').first()).toHaveText('10 d');
   await page.locator('#foot button[data-filter="gap"]').click();
   await expect(page.locator('[data-inc-row="aisi-cyber-range"]')).toHaveCount(1);
 });
