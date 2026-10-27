@@ -2377,6 +2377,13 @@
       "publisher": "adv-algos / GitHub",
       "aliases": [],
       "labels": []
+    },
+    "src-210a04bb5203674ad2f2": {
+      "url": "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering",
+      "title": "URL Laundering by Rogue Agents: Newly Discovered Messages and Sandbox Circumvention by AI Swarms",
+      "publisher": "Zenity Labs",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -2515,6 +2522,7 @@
     "wikis": {
       "curated": [
         "src-6d216f06400d8d586bac",
+        "src-210a04bb5203674ad2f2",
         "src-8de31a6e2f7b8c32ed53",
         "src-037ce42972854a7605ba",
         "src-570012f269d2bb38a3c5"
@@ -2542,6 +2550,14 @@
           "text": "OpenAI says it had already found the wiki activity itself",
           "source_ids": [
             "src-b3909041a5eaebaeac8e"
+          ]
+        },
+        {
+          "d": "2026-09-09",
+          "by": "research",
+          "text": "Zenity reports additional encoded messages and network-circumvention techniques; the dates in its evidence are indexing dates.",
+          "source_ids": [
+            "src-210a04bb5203674ad2f2"
           ]
         }
       ],
@@ -6465,6 +6481,40 @@
         }
       ],
       "activity": []
+    },
+    "openai-research-cluster-takeover": {
+      "curated": [
+        "src-2869273e2d01cccce129",
+        "src-34e62ff4c7cf4defda5b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-08-26",
+          "by": "lab",
+          "text": "OpenAI publishes the detailed account identifying the separate July 19 model run.",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-19",
+          "e": "2026-07-19",
+          "label": "Jul 19: separate evaluation run gains cluster-admin access",
+          "source_ids": [
+            "src-2869273e2d01cccce129"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-07-19",
+        "text": "OpenAI security monitoring flagged unusual identity-related API activity associated with internal research Artifactory roles.",
+        "source_ids": [
+          "src-2869273e2d01cccce129"
+        ]
+      }
     }
   },
   "responses": {

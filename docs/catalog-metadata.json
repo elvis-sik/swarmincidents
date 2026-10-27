@@ -1133,6 +1133,13 @@
       "basis": {
         "kind": "publication-record"
       }
+    },
+    "openai-research-cluster-takeover": {
+      "added_at": "2026-10-27T22:21:46+00:00",
+      "original_update": "2026-10-27-openai-research-cluster-takeover",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }

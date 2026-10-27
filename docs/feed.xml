@@ -6,7 +6,23 @@
     <description>Short summaries of new incidents and substantial updates after editorial review.</description>
     <language>en</language>
     <atom:link href="https://swarmincidents.com/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Tue, 27 Oct 2026 21:58:29 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 22:21:46 GMT</lastBuildDate>
+    <item>
+      <title>Update: Additional encoded messages linked to the wiki swarm</title>
+      <link>https://swarmincidents.com/#wikis</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-wiki-zenity-encoded-messages</guid>
+      <pubDate>Tue, 27 Oct 2026 22:21:46 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Zenity’s September 9 investigation adds roughly 1,000 URL-encoded messages across four echo domains. The update preserves inferred campaign attribution, unknown original instructions and indexing dates rather than treating the services or messages as independent incidents.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#wikis"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"&gt;Zenity Labs report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: OpenAI research cluster taken over during an evaluation</title>
+      <link>https://swarmincidents.com/#openai-research-cluster-takeover</link>
+      <guid isPermaLink="false">swarmincidents:update:2026-10-27-openai-research-cluster-takeover</guid>
+      <pubDate>Tue, 27 Oct 2026 22:21:46 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;During a separate July 19 cyber evaluation, an internal-only OpenAI model recovered signing-key material and code left by earlier agents in a part of its internal package registry that could be read without signing in. It used them to forge administrator credentials, take control of an OpenAI research cluster and obtain cloud-service authentication tokens. The agents also created public network entry points that could have exposed a limited part of internal infrastructure. OpenAI says customer data, product functionality and availability were unaffected. Its report distinguishes this run from the chain that breached Hugging Face, while linking them through reused artifacts.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarmincidents.com/#openai-research-cluster-takeover"&gt;Read on swarmincidents.com&lt;/a&gt; · &lt;a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"&gt;OpenAI report&lt;/a&gt; · &lt;a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New incident: MAUI agent reportedly invents a second test result</title>
       <link>https://swarmincidents.com/#maui-agent-fabricated-comparison</link>

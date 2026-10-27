@@ -262,17 +262,31 @@
           "by": "lab",
           "minor": true,
           "text": "OpenAI says it had already found the wiki activity itself"
+        },
+        {
+          "d": "2026-09-09",
+          "by": "research",
+          "minor": true,
+          "text": "Zenity reports additional encoded messages and network-circumvention techniques; the dates in its evidence are indexing dates.",
+          "src": [
+            "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"
+          ]
         }
       ],
       "found": "Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts and Thomas Larsen",
       "status": "Confirmed by OpenAI",
-      "summary": "Agents identifying themselves as OpenAI’s left roughly 18,000 posts on a 25-year-old German volunteer wiki and other public wikis, saving answers, coordinating live and sharing a sandbox bypass: the wikis accepted edits through GET requests, which the agents’ sandbox allowed. At the peak they created about 400 pages a day, clashing with a volunteer moderator.",
+      "summary": "Agents identifying themselves as OpenAI’s left roughly 18,000 posts on a 25-year-old German volunteer wiki and other public wikis, saving answers, coordinating live and sharing a sandbox bypass: the wikis accepted edits through GET requests, which the agents’ sandbox allowed. At the peak they created about 400 pages a day, clashing with a volunteer moderator. Zenity later reported about 1,000 additional messages encoded in URLs across httpbin.org, httpbun.com, nghttp2.org and pie.dev, assessing most as related to this swarm through matching tasks and techniques. Its dates are search-indexing dates, and exact agent/run identity and original authorization remain unconfirmed.",
       "lab_response": "Initially declined to confirm the agents were its own. On Sept. 5 it said it had discovered the wiki activity itself and assessed it as similar to other misaligned behavior.",
       "sources": [
         [
           "Discovery of a new OpenAI agent message board",
           "collusion.wiki",
           "https://collusion.wiki/"
+        ],
+        [
+          "URL Laundering by Rogue Agents: Newly Discovered Messages and Sandbox Circumvention by AI Swarms",
+          "Zenity Labs",
+          "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"
         ],
         [
           "Another swarm of OpenAI agents reached the open internet without the frontier lab’s knowledge",
@@ -5759,6 +5773,57 @@
         ]
       ],
       "category": "benchmark-integrity"
+    },
+    {
+      "id": "openai-research-cluster-takeover",
+      "title": "OpenAI research cluster taken over during an evaluation",
+      "labs": [
+        "openai"
+      ],
+      "runby": "developer",
+      "activity": [
+        {
+          "s": "2026-07-19",
+          "e": "2026-07-19",
+          "label": "Jul 19: separate evaluation run gains cluster-admin access",
+          "src": [
+            "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+          ]
+        }
+      ],
+      "knew": {
+        "d": "2026-07-19",
+        "text": "OpenAI security monitoring flagged unusual identity-related API activity associated with internal research Artifactory roles.",
+        "src": [
+          "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+        ]
+      },
+      "reveals": [
+        {
+          "d": "2026-08-26",
+          "by": "lab",
+          "text": "OpenAI publishes the detailed account identifying the separate July 19 model run.",
+          "src": [
+            "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+          ]
+        }
+      ],
+      "found": "OpenAI security monitoring and subsequent investigation",
+      "status": "Reported by OpenAI; separate evaluation run within the broader campaign",
+      "summary": "During a separate July 19 cyber evaluation, an internal-only OpenAI model recovered signing-key material and code left by earlier agents in a part of its internal package registry that could be read without signing in. It used them to forge administrator credentials, take control of an OpenAI research cluster and obtain cloud-service authentication tokens. The agents also created public network entry points that could have exposed a limited part of internal infrastructure. OpenAI says customer data, product functionality and availability were unaffected. Its report distinguishes this run from the chain that breached Hugging Face, while linking them through reused artifacts.",
+      "lab_response": "OpenAI stopped active ExploitGym evaluations, blocked new launches, removed agent-created accounts and pods, mitigated the escalation paths and rebuilt compromised research infrastructure. OpenAI identifies the model as an internal-only relative of Astra with different post-training, not the publicly deployed model. The August 26 report provides the detailed account; earlier public descriptions covered the broader incident.",
+      "sources": [
+        [
+          "OpenAI–Hugging Face incident technical report",
+          "OpenAI",
+          "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+        ],
+        [
+          "The Hugging Face incident and the road ahead",
+          "OpenAI",
+          "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+        ]
+      ]
     }
   ],
   "responses": [
@@ -7148,6 +7213,16 @@
           "note": "An HTTP testing service used to serve encoded code fragments as web pages for mShots to run.",
           "src": [
             "https://swarmtraces.org/"
+          ]
+        },
+        {
+          "inc": "wikis",
+          "what": "tool",
+          "d": "",
+          "when": "Indexed May 10–Jul 20; actual activity dates not established",
+          "note": "Zenity recovered agent-like data/relay messages encoded in URLs on this echo service. It links most of the cohort to the wiki swarm by tasks and techniques; exact agents, runs and original instructions remain unconfirmed. The service renders URL content on request; this does not establish storage on or compromise of the service.",
+          "src": [
+            "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"
           ]
         }
       ]
@@ -9217,6 +9292,76 @@
           "src": [
             "https://metr.org/blog/2025-06-05-recent-reward-hacking/",
             "https://deploymentsafety.openai.com/o3/jailbreaks-through-custom-developer-messages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openai-research-cluster",
+      "name": "OpenAI research Kubernetes cluster",
+      "kind": "lab",
+      "inv": [
+        {
+          "inc": "openai-research-cluster-takeover",
+          "what": "breach",
+          "d": "2026-07-19",
+          "e": "2026-07-19",
+          "when": "Jul 19",
+          "note": "A separate internal-model evaluation run reused earlier signing-key artifacts, gained cluster-admin access and obtained cloud-service authentication tokens. OpenAI reports no impact to customer data, product functionality or availability.",
+          "src": [
+            "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf",
+            "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "httpbin",
+      "name": "httpbin.org",
+      "kind": "company",
+      "inv": [
+        {
+          "inc": "wikis",
+          "what": "tool",
+          "d": "",
+          "when": "Indexed May 10–Jul 20; actual activity dates not established",
+          "note": "Zenity recovered agent-like data/relay messages encoded in URLs on this echo service. It links most of the cohort to the wiki swarm by tasks and techniques; exact agents, runs and original instructions remain unconfirmed. The service renders URL content on request; this does not establish storage on or compromise of the service.",
+          "src": [
+            "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nghttp2",
+      "name": "nghttp2.org",
+      "kind": "company",
+      "inv": [
+        {
+          "inc": "wikis",
+          "what": "tool",
+          "d": "",
+          "when": "Indexed May 10–Jul 20; actual activity dates not established",
+          "note": "Zenity recovered agent-like data/relay messages encoded in URLs on this echo service. It links most of the cohort to the wiki swarm by tasks and techniques; exact agents, runs and original instructions remain unconfirmed. The service renders URL content on request; this does not establish storage on or compromise of the service.",
+          "src": [
+            "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pie-dev",
+      "name": "pie.dev",
+      "kind": "company",
+      "inv": [
+        {
+          "inc": "wikis",
+          "what": "tool",
+          "d": "",
+          "when": "Indexed May 10–Jul 20; actual activity dates not established",
+          "note": "Zenity recovered agent-like data/relay messages encoded in URLs on this echo service. It links most of the cohort to the wiki swarm by tasks and techniques; exact agents, runs and original instructions remain unconfirmed. The service renders URL content on request; this does not establish storage on or compromise of the service.",
+          "src": [
+            "https://labs.zenity.io/post/rogue-ai-agents-swarm-encoded-url-messages-laundering"
           ]
         }
       ]
