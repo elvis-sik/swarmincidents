@@ -1049,6 +1049,90 @@
       "basis": {
         "kind": "publication-record"
       }
+    },
+    "claude-passing-only-safe-tests": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-passing-only-safe-tests",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-yfevents-public-credentials": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-yfevents-public-credentials",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-completion-tracker-false-commits": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-completion-tracker-false-commits",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-vue-advice-source-reset": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-vue-advice-source-reset",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-django-migration-before-review": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-django-migration-before-review",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-component-test-weakening": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-component-test-weakening",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-refactor-unapproved-firestore-writes": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-refactor-unapproved-firestore-writes",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-salesforce-invented-query-results": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-salesforce-invented-query-results",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-gygax-manual-pipeline-output": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-gygax-manual-pipeline-output",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-new-fix-reused-push-approval": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-new-fix-reused-push-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-branch-request-unapproved-pr": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-claude-branch-request-unapproved-pr",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "maui-agent-fabricated-comparison": {
+      "added_at": "2026-10-27T21:58:29+00:00",
+      "original_update": "2026-10-27-maui-agent-fabricated-comparison",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }

@@ -2286,6 +2286,97 @@
       "publisher": "Microsoft Research",
       "aliases": [],
       "labels": []
+    },
+    "src-0d053c63f7496d083356": {
+      "url": "https://github.com/anthropics/claude-code/issues/2142",
+      "title": "YFEvents credentials reportedly committed publicly",
+      "publisher": "r0bug / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7ca1b21bfaa776d7539f": {
+      "url": "https://github.com/anthropics/claude-code/issues/21226",
+      "title": "Branch request reportedly expands to a push and PR",
+      "publisher": "teseo / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c0f606596eee369710a2": {
+      "url": "https://github.com/anthropics/claude-code/issues/5320",
+      "title": "Claude tracker supplied incorrect commit references",
+      "publisher": "keithcorcoran / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-752c028433b5c751aea2": {
+      "url": "https://github.com/anthropics/claude-code/issues/20401",
+      "title": "Claude reportedly pushes a fix using an earlier approval",
+      "publisher": "paultyrrell-bourne / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2d1261a853fe3be3e511": {
+      "url": "https://github.com/dotnet/maui/pull/33733",
+      "title": "Reviewed PR and later discussion (original January run unavailable)",
+      "publisher": ".NET MAUI / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-13a4402c368a3ac843a5": {
+      "url": "https://github.com/anthropics/claude-code/issues/18420",
+      "title": "Gygax pipeline success allegedly uses manual output",
+      "publisher": "MauveAvenger / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b8122f00dda90daa5fd6": {
+      "url": "https://github.com/anthropics/claude-code/issues/10235",
+      "title": "Component tests reportedly weakened after failures",
+      "publisher": "ajbmachon / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1c621c61a07fc46f8207": {
+      "url": "https://github.com/anthropics/claude-code/issues/7090",
+      "title": "Vue architecture discussion reportedly resets source",
+      "publisher": "mlusas / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7ceadd2ac2914e64b5ec": {
+      "url": "https://github.com/anthropics/claude-code/issues/8059",
+      "title": "Django migration reportedly applied before review",
+      "publisher": "Jackstrummer / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-34d9c7cd893f4965fb61": {
+      "url": "https://github.com/anthropics/claude-code/issues/15819",
+      "title": "Salesforce report allegedly uses invented query results",
+      "publisher": "vaultedai / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cd6be9c6ed886e825507": {
+      "url": "https://github.com/dotnet/maui/pull/33806",
+      "title": "Maintainer report and proposed review-workflow repair",
+      "publisher": "PureWeen / .NET MAUI / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4afa20e240d609e3bd96": {
+      "url": "https://github.com/anthropics/claude-code/issues/11255",
+      "title": "Refactor reportedly adds unapproved Firestore writes",
+      "publisher": "nalarius / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fa3865e41de17eff22c3": {
+      "url": "https://github.com/anthropics/claude-code/issues/319",
+      "title": "Claude reportedly runs only passing “safe-tests”",
+      "publisher": "adv-algos / GitHub",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -6129,6 +6220,247 @@
           "text": "The technical report describes the unsuccessful outreach attempts and mitigations",
           "source_ids": [
             "src-d73c8302ae717c73cfac"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-passing-only-safe-tests": {
+      "curated": [
+        "src-fa3865e41de17eff22c3"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-03-04",
+          "by": "other",
+          "text": "adv-algos publishes the account.",
+          "source_ids": [
+            "src-fa3865e41de17eff22c3"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-yfevents-public-credentials": {
+      "curated": [
+        "src-0d053c63f7496d083356"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-06-16",
+          "by": "other",
+          "text": "r0bug publishes the account.",
+          "source_ids": [
+            "src-0d053c63f7496d083356"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-completion-tracker-false-commits": {
+      "curated": [
+        "src-c0f606596eee369710a2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-08-07",
+          "by": "other",
+          "text": "keithcorcoran publishes the account.",
+          "source_ids": [
+            "src-c0f606596eee369710a2"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-vue-advice-source-reset": {
+      "curated": [
+        "src-1c621c61a07fc46f8207"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-09-03",
+          "by": "other",
+          "text": "mlusas publishes the account.",
+          "source_ids": [
+            "src-1c621c61a07fc46f8207"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2025-09-03",
+          "e": "2025-09-03",
+          "label": "Approximate activity day reported by the operator",
+          "source_ids": [
+            "src-1c621c61a07fc46f8207"
+          ]
+        }
+      ]
+    },
+    "claude-django-migration-before-review": {
+      "curated": [
+        "src-7ceadd2ac2914e64b5ec"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-09-23",
+          "by": "other",
+          "text": "Jackstrummer publishes the account.",
+          "source_ids": [
+            "src-7ceadd2ac2914e64b5ec"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2025-09-23",
+          "e": "2025-09-23",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-7ceadd2ac2914e64b5ec"
+          ]
+        }
+      ]
+    },
+    "claude-component-test-weakening": {
+      "curated": [
+        "src-b8122f00dda90daa5fd6"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-11-01",
+          "by": "other",
+          "text": "ajbmachon describes the test-removal episode in a follow-up.",
+          "source_ids": [
+            "src-b8122f00dda90daa5fd6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-refactor-unapproved-firestore-writes": {
+      "curated": [
+        "src-4afa20e240d609e3bd96"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-11-08",
+          "by": "other",
+          "text": "nalarius publishes the account.",
+          "source_ids": [
+            "src-4afa20e240d609e3bd96"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2025-11-08",
+          "e": "2025-11-08",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-4afa20e240d609e3bd96"
+          ]
+        }
+      ]
+    },
+    "claude-salesforce-invented-query-results": {
+      "curated": [
+        "src-34d9c7cd893f4965fb61"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-12-30",
+          "by": "other",
+          "text": "vaultedai publishes the account.",
+          "source_ids": [
+            "src-34d9c7cd893f4965fb61"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-gygax-manual-pipeline-output": {
+      "curated": [
+        "src-13a4402c368a3ac843a5"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-15",
+          "by": "other",
+          "text": "MauveAvenger publishes the account.",
+          "source_ids": [
+            "src-13a4402c368a3ac843a5"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-new-fix-reused-push-approval": {
+      "curated": [
+        "src-752c028433b5c751aea2"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-23",
+          "by": "other",
+          "text": "paultyrrell-bourne publishes the account.",
+          "source_ids": [
+            "src-752c028433b5c751aea2"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-01-23",
+          "e": "2026-01-23",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-752c028433b5c751aea2"
+          ]
+        }
+      ]
+    },
+    "claude-branch-request-unapproved-pr": {
+      "curated": [
+        "src-7ca1b21bfaa776d7539f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-27",
+          "by": "other",
+          "text": "teseo publishes the account.",
+          "source_ids": [
+            "src-7ca1b21bfaa776d7539f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "maui-agent-fabricated-comparison": {
+      "curated": [
+        "src-cd6be9c6ed886e825507",
+        "src-2d1261a853fe3be3e511"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-30",
+          "by": "other",
+          "text": "PureWeen publishes the account.",
+          "source_ids": [
+            "src-cd6be9c6ed886e825507"
           ]
         }
       ],

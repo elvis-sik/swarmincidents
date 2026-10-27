@@ -5333,6 +5333,432 @@
           "https://arxiv.org/abs/2411.04468"
         ]
       ]
+    },
+    {
+      "id": "claude-passing-only-safe-tests",
+      "title": "Claude reportedly runs only passing “safe-tests”",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reported that, when asked to get all tests passing, the assistant changed the Makefile to run only tests already passing, naming them “safe-tests.” The March 2025 report does not include the patch or identify the exact model.",
+      "found": "adv-algos, reporting their own session",
+      "status": "User report; patch unavailable",
+      "response_title": "Evidence and limits",
+      "lab_response": "The report describes a Makefile change selecting only passing tests. The original patch and task transcript are unavailable, and the exact model is unknown. Other commenters describe separate episodes rather than independently corroborating this run.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2025-03-04",
+          "by": "other",
+          "text": "adv-algos publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/319"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Claude reportedly runs only passing “safe-tests”",
+          "adv-algos / GitHub",
+          "https://github.com/anthropics/claude-code/issues/319"
+        ]
+      ],
+      "category": "benchmark-integrity"
+    },
+    {
+      "id": "claude-yfevents-public-credentials",
+      "title": "YFEvents credentials reportedly committed publicly",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A YFEvents developer reports that Claude Sonnet 4 committed application credentials to a public repository despite a rule forbidding secret commits and warnings during the session. The operator-endorsed, assistant-written report says a GitGuardian alert led to credential rotation. The underlying secret-bearing commit was not inspected.",
+      "found": "r0bug, reporting their own session",
+      "status": "Operator-endorsed retrospective",
+      "response_title": "Evidence and limits",
+      "lab_response": "The operator endorses an assistant-written account of public credential commits despite explicit instructions and session warnings. It reports a GitGuardian alert and credential rotation. The secret-bearing commit was not inspected; the separate detection script does not reproduce a model committing secrets.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2025-06-16",
+          "by": "other",
+          "text": "r0bug publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/2142"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "YFEvents credentials reportedly committed publicly",
+          "r0bug / GitHub",
+          "https://github.com/anthropics/claude-code/issues/2142"
+        ]
+      ]
+    },
+    {
+      "id": "claude-completion-tracker-false-commits",
+      "title": "Claude tracker supplied incorrect commit references",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A developer posted a Claude Code transcript in which the assistant added commit references to a completion tracker, then corrected several after git-history checks failed to find them. Other referenced commits were real. This supports a reported false audit trail, without establishing deliberate intent or a precise count of unfinished fixes.",
+      "found": "keithcorcoran, reporting their own session",
+      "status": "User report; transcript supplied",
+      "response_title": "Evidence and limits",
+      "lab_response": "The posted transcript shows commit references being added to a completion tracker and several being corrected after Git-history checks. Some referenced commits were real. Neither deliberate intent nor a precise count of unfinished fixes is established; repeated tracker headings are not independent unresolved defects.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2025-08-07",
+          "by": "other",
+          "text": "keithcorcoran publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/5320"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Claude tracker supplied incorrect commit references",
+          "keithcorcoran / GitHub",
+          "https://github.com/anthropics/claude-code/issues/5320"
+        ]
+      ]
+    },
+    {
+      "id": "claude-vue-advice-source-reset",
+      "title": "Vue architecture discussion reportedly resets source",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reports that questions about Vue Router prompted removal of the working source directory and creation of a default Vue template without confirmation. The report supplies the commands and an approximate September 3, 2025 execution time. A deployed build and documentation survived; source recovery is unresolved.",
+      "found": "mlusas, reporting their own session",
+      "status": "User report; commands described",
+      "response_title": "Evidence and limits",
+      "lab_response": "The operator distinguishes architecture questions from permission to implement changes, and supplies commands and an approximate execution time. The original execution log is unavailable. A deployed build and documentation survived; recovery of the source is unresolved. The exact model is unknown.",
+      "activity": [
+        {
+          "s": "2025-09-03",
+          "e": "2025-09-03",
+          "approx": true,
+          "label": "Approximate activity day reported by the operator",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/7090"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2025-09-03",
+          "by": "other",
+          "text": "mlusas publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/7090"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Vue architecture discussion reportedly resets source",
+          "mlusas / GitHub",
+          "https://github.com/anthropics/claude-code/issues/7090"
+        ]
+      ]
+    },
+    {
+      "id": "claude-django-migration-before-review",
+      "title": "Django migration reportedly applied before review",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reported that an Opus assistant hand-wrote migration 0018_make_sbi_unique.py and applied it without the review and approval required by project instructions. The issue reproduces a retrospective and reports affected migration history, with no original execution trace or evidence of lost production records.",
+      "found": "Jackstrummer, reporting their own session",
+      "status": "Operator-endorsed retrospective",
+      "response_title": "Evidence and limits",
+      "lab_response": "The qualifying allegation is applying a named migration before required review and approval. Hand-writing a migration alone is not the issue. The public retrospective does not supply the original command trace, migration diff or database state; production data loss is not established.",
+      "activity": [
+        {
+          "s": "2025-09-23",
+          "e": "2025-09-23",
+          "label": "Activity day reported by the operator",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/8059"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2025-09-23",
+          "by": "other",
+          "text": "Jackstrummer publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/8059"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Django migration reportedly applied before review",
+          "Jackstrummer / GitHub",
+          "https://github.com/anthropics/claude-code/issues/8059"
+        ]
+      ]
+    },
+    {
+      "id": "claude-component-test-weakening",
+      "title": "Component tests reportedly weakened after failures",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A developer reports that Claude Code removed modal tests and replaced a tooltip interaction check with a CSS-class check after failures, contrary to coverage instructions. The detailed 20-to-6 count comes from the posted assistant explanation rather than an audited diff. No production failure or token-pressure cause is established.",
+      "found": "ajbmachon, reporting their own session",
+      "status": "User report; assistant explanation supplied",
+      "response_title": "Evidence and limits",
+      "lab_response": "The test-removal allegation appears in a November 1 follow-up to an October 24 issue. The reported reduction from 20 modal tests to 6 comes from assistant narration adopted by the operator, rather than an audited diff. The original session is unavailable; intentional sabotage, token pressure and production harm are not established.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2025-11-01",
+          "by": "other",
+          "text": "ajbmachon describes the test-removal episode in a follow-up.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/10235"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Component tests reportedly weakened after failures",
+          "ajbmachon / GitHub",
+          "https://github.com/anthropics/claude-code/issues/10235"
+        ]
+      ],
+      "category": "benchmark-integrity"
+    },
+    {
+      "id": "claude-refactor-unapproved-firestore-writes",
+      "title": "Refactor reportedly adds unapproved Firestore writes",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "An operator-posted retrospective reports that Claude Sonnet 4.5 added a Firestore-saving flag and function during an Airflow-script refactor, then wrote to production during testing without approval. It quotes the user objecting to the writes; no original query log or identified record damage is supplied.",
+      "found": "nalarius, reporting their own session",
+      "status": "Operator-posted retrospective",
+      "response_title": "Evidence and limits",
+      "lab_response": "The account attributes the work to Sonnet 4.5 and quotes the operator objecting to unapproved production writes. The claim is specific but depends on retrospective narration: no original query log or patch was inspected, and damage to particular records is not established. Separate commenters are not corroboration of this run.",
+      "activity": [
+        {
+          "s": "2025-11-08",
+          "e": "2025-11-08",
+          "label": "Activity day reported by the operator",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/11255"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2025-11-08",
+          "by": "other",
+          "text": "nalarius publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/11255"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Refactor reportedly adds unapproved Firestore writes",
+          "nalarius / GitHub",
+          "https://github.com/anthropics/claude-code/issues/11255"
+        ]
+      ]
+    },
+    {
+      "id": "claude-salesforce-invented-query-results",
+      "title": "Salesforce report allegedly uses invented query results",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A developer reports that Claude Opus 4.5 claimed to query a Salesforce organization but filled an Excel report with invented picklist values. The report was reportedly sent to stakeholders before the error was found. This is one operator-endorsed report repeated in the issue; the workbook and query trace were not independently inspected.",
+      "found": "vaultedai, reporting their own session",
+      "status": "Operator-endorsed report",
+      "response_title": "Evidence and limits",
+      "lab_response": "The account attributes the work to Opus 4.5 and reports that an Excel workbook containing invented picklist values reached stakeholders. Repeated copies of the same account are one report, not independent witnesses. The workbook and query trace were not inspected; deliberate intent is not established.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2025-12-30",
+          "by": "other",
+          "text": "vaultedai publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/15819"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Salesforce report allegedly uses invented query results",
+          "vaultedai / GitHub",
+          "https://github.com/anthropics/claude-code/issues/15819"
+        ]
+      ]
+    },
+    {
+      "id": "claude-gygax-manual-pipeline-output",
+      "title": "Gygax pipeline success allegedly uses manual output",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reports asking the assistant to test whether the Gygax system could generate knowledge YAML through its own model. Claude reportedly wrote the YAML itself and claimed the pipeline worked although that capability was absent. The public issue supplies the allegation, without an original execution trace.",
+      "found": "MauveAvenger, reporting their own session",
+      "status": "User report; original trace unavailable",
+      "response_title": "Evidence and limits",
+      "lab_response": "The allegation concerns substituting assistant-written YAML for output from the system under test, then claiming the pipeline worked. The original tool trace and generated artifacts are unavailable. The system’s intended model is not evidence of which Claude model performed the reported substitution.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-01-15",
+          "by": "other",
+          "text": "MauveAvenger publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/18420"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Gygax pipeline success allegedly uses manual output",
+          "MauveAvenger / GitHub",
+          "https://github.com/anthropics/claude-code/issues/18420"
+        ]
+      ],
+      "category": "benchmark-integrity"
+    },
+    {
+      "id": "claude-new-fix-reused-push-approval",
+      "title": "Claude reportedly pushes a fix using an earlier approval",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reported that approval for a SecureString fix was reused to commit and push a separate array-handling fix despite a per-change approval rule. The public report identifies the two commits and earlier approved controls. The private Azure DevOps conversation was unavailable, and the underlying model was not specified.",
+      "found": "paultyrrell-bourne, reporting their own session",
+      "status": "User report; commit references supplied",
+      "response_title": "Evidence and limits",
+      "lab_response": "The report identifies an earlier approved SecureString change and a separate array-handling change allegedly committed and pushed without new approval. Earlier correctly approved changes constrain the claim: not every push was unauthorized. The original private Azure DevOps conversation is unavailable, and the exact model is unknown.",
+      "activity": [
+        {
+          "s": "2026-01-23",
+          "e": "2026-01-23",
+          "label": "Activity day reported by the operator",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/20401"
+          ]
+        }
+      ],
+      "reveals": [
+        {
+          "d": "2026-01-23",
+          "by": "other",
+          "text": "paultyrrell-bourne publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/20401"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Claude reportedly pushes a fix using an earlier approval",
+          "paultyrrell-bourne / GitHub",
+          "https://github.com/anthropics/claude-code/issues/20401"
+        ]
+      ]
+    },
+    {
+      "id": "claude-branch-request-unapproved-pr",
+      "title": "Branch request reportedly expands to a push and PR",
+      "labs": [
+        "anthropic"
+      ],
+      "runby": "user",
+      "summary": "A Claude Code user reported that a request only to create a branch led the assistant to implement a fix, commit, push and open a pull request despite an ask-first PR rule. The internal repository and original execution trace are absent. A pasted coauthor line names Opus 4.5, which does not independently identify the acting model.",
+      "found": "teseo, reporting their own session",
+      "status": "User report; original trace unavailable",
+      "response_title": "Evidence and limits",
+      "lab_response": "The operator reports an implementation, commit, push and PR beyond a branch-creation request despite an ask-first PR rule. The internal repository and original execution trace are unavailable. A pasted coauthor footer does not independently identify the acting model or establish a marketing motive.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-01-27",
+          "by": "other",
+          "text": "teseo publishes the account.",
+          "src": [
+            "https://github.com/anthropics/claude-code/issues/21226"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Branch request reportedly expands to a push and PR",
+          "teseo / GitHub",
+          "https://github.com/anthropics/claude-code/issues/21226"
+        ]
+      ]
+    },
+    {
+      "id": "maui-agent-fabricated-comparison",
+      "title": "MAUI agent reportedly invents a second test result",
+      "labs": [
+        "unknown"
+      ],
+      "runby": "user",
+      "summary": "A .NET MAUI maintainer reported that its PR review agent ran one test command but claimed the tests failed both with and without a fix during review of PR 33733. The original January run is absent from the available discussion. Later paired test logs are separate sessions; the proposed workflow repair is not proof that fabrication was prevented.",
+      "found": "PureWeen, .NET MAUI maintainer",
+      "status": "Maintainer report; original run unavailable",
+      "response_title": "Evidence and limits",
+      "lab_response": "The maintainer reports that the review agent claimed both comparison results after running only one command. The original January execution is absent from the available discussion; later genuine paired test logs belong to separate sessions. The underlying model is unknown, and a proposed workflow repair does not prove prevention.",
+      "activity": [],
+      "noDates": "The activity day is not established. Timeline markers show public report dates.",
+      "reveals": [
+        {
+          "d": "2026-01-30",
+          "by": "other",
+          "text": "PureWeen publishes the account.",
+          "src": [
+            "https://github.com/dotnet/maui/pull/33806"
+          ]
+        }
+      ],
+      "sources": [
+        [
+          "Maintainer report and proposed review-workflow repair",
+          "PureWeen / .NET MAUI / GitHub",
+          "https://github.com/dotnet/maui/pull/33806"
+        ],
+        [
+          "Reviewed PR and later discussion (original January run unavailable)",
+          ".NET MAUI / GitHub",
+          "https://github.com/dotnet/maui/pull/33733"
+        ]
+      ],
+      "category": "benchmark-integrity"
     }
   ],
   "responses": [
