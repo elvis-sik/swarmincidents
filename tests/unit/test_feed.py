@@ -15,7 +15,7 @@ spec.loader.exec_module(feed)
 class FeedTests(unittest.TestCase):
     def setUp(self):
         self.data = {"updated": "2026-10-14", "incidents": [{"id": "old", "title": "Incident", "summary": "Card summary", "sources": [["Report", "Publisher", "https://example.com/report"]]}]}
-        self.entry = {"id": "first", "incident": "old", "type": "New incident", "published": "2026-10-14T12:00:00-07:00", "title": "A & B <test>", "summary": '<script>alert("x")</script> & café', "source": "https://example.com/report", "publisher": "A & B"}
+        self.entry = {"id": "first", "incident": "old", "type": "New incident", "published": "2026-10-14T12:00:00-07:00", "title": "A & B <test>", "summary": '''An operator's <script>alert("x")</script> & café''', "source": "https://example.com/report", "publisher": "A & B"}
         self.log = {"updates": [self.entry]}
 
     def test_routine_card_edits_do_not_change_feed(self):
