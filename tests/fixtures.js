@@ -6,25 +6,29 @@ const path = require('path');
 
 const test = base.test.extend({
   expectedHttpError: [null, {option:true}],
-  page: async ({ page, baseURL, expectedHttpError }, use) => {
+  realFonts: [false, {option:true}],
+  page: async ({ page, baseURL, expectedHttpError, realFonts }, use) => {
     const errors = [];
     page.on('console', m => {
       if (m.type() !== 'error') return;
-      // Preconnect bypasses Playwright routing. These font hosts are deliberately mocked/offline below.
-      if (/^Failed to preconnect to https:\/\/fonts\.(?:googleapis|gstatic)\.com\//.test(m.text())) return;
       // Error-path tests explicitly opt in to their mocked endpoint's HTTP error;
       // application exceptions and every unrelated console error still fail.
       if (expectedHttpError && m.location().url === expectedHttpError && /^Failed to load resource:.*502/.test(m.text())) return;
       errors.push(`console.error: ${m.text()}`);
     });
     page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
-    // The page asks Google Fonts for Inter and JetBrains Mono. Answer locally with an empty stylesheet so the run is
-    // deterministic and offline (fulfilling, not aborting: an aborted request would log a console error).
     // The reader's explainer opens by itself on a first visit; tests start as a returning reader (one test clears this).
     await page.addInitScript(() => { try { localStorage.setItem('wikiIntro', 'seen'); } catch (e) { /* storage unavailable */ } });
     const origin = new URL(baseURL || 'http://127.0.0.1:8799/').origin;
+    // Anything outside the site is answered locally with an empty body, so the run is offline (fulfilling, not
+    // aborting: an aborted request would log a console error).
     await page.route(url => url.origin !== origin && /^https?:$/.test(url.protocol), route =>
       route.fulfill({ status: 200, contentType: route.request().resourceType() === 'stylesheet' ? 'text/css' : 'text/plain', body: '' }));
+    // Inter and JetBrains Mono come from the site's own fonts/ (October 27; Google Fonts before). The screenshot
+    // baselines were made with Google's stylesheet answered empty, so the fonts' stylesheet still is, unless a test
+    // asks for the real fonts (fonts.spec.js).
+    if (!realFonts) await page.route(url => url.origin === origin && url.pathname.endsWith('/fonts/fonts.css'), route =>
+      route.fulfill({ status: 200, contentType: 'text/css', body: '' }));
     await use(page);
     base.expect(errors, 'console errors and page errors').toEqual([]);
   },

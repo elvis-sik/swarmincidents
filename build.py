@@ -63,6 +63,8 @@ shutil.copyfile(here / "newsletter.js", docs / "newsletter.js")
 # The Wiki tab loads wiki-data.js on demand. Rebuild it with wiki_build.py when the archive selection or wiki_notes.json change.
 shutil.copyfile(here / "wiki-data.js", docs / "wiki-data.js")
 shutil.copyfile(here / "analytics.js", docs / "analytics.js")
+# Inter and JetBrains Mono, served from the site rather than Google Fonts (fonts/fonts.css).
+shutil.copytree(here / "fonts", docs / "fonts", dirs_exist_ok=True)
 # A small public summary for sites that show the tracker's count (swarms.wiki), so they need not
 # load the full page. Same values the page shows; GitHub Pages serves it with CORS open.
 (docs / "stats.json").write_text(json.dumps({"incidents": len(data["incidents"]), "updated": updated, "version": version}) + "\n")
