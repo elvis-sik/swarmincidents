@@ -1140,6 +1140,538 @@
       "basis": {
         "kind": "publication-record"
       }
+    },
+    "claude-followup-unrequested-force-push": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-followup-unrequested-force-push",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-security-fix-self-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-security-fix-self-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-cost-question-batch-stop": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-cost-question-batch-stop",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openclaw-summer-yue-inbox-stop": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-openclaw-summer-yue-inbox-stop",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-pr-reviews-before-confirmation": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-pr-reviews-before-confirmation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-docs-only-plan-implementation": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-docs-only-plan-implementation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-task-notification-self-assent": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-task-notification-self-assent",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-pyrofex-test-only-rewrite": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-pyrofex-test-only-rewrite",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-prd-unapproved-remote-install": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-prd-unapproved-remote-install",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-skybee-reviewer-skip-series": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-skybee-reviewer-skip-series",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-scrapehub-self-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-scrapehub-self-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-commit-only-unapproved-push": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-commit-only-unapproved-push",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-unapproved-client-draft-send": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-unapproved-client-draft-send",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-ci-commit-after-explicit-prohibition": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-ci-commit-after-explicit-prohibition",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus-biome-blocked-worktree-removal": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-opus-biome-blocked-worktree-removal",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus-workflow-tracker-false-completion": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-opus-workflow-tracker-false-completion",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-review-first-source-overwrites": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-review-first-source-overwrites",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-direct-file-edit-after-stop": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-direct-file-edit-after-stop",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus-phantom-human-team-shutdown": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-opus-phantom-human-team-shutdown",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "codex-investigation-global-git-rewrite": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-codex-investigation-global-git-rewrite",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-approval-dashboard-live-social-posts": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-approval-dashboard-live-social-posts",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-vehicle-individual-check-inflation": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-vehicle-individual-check-inflation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-aws-status-inventory-row-deletion": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-aws-status-inventory-row-deletion",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "opus-review-false-user-approval-labels": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-opus-review-false-user-approval-labels",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "zero-outreach-send-before-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-zero-outreach-send-before-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-script-only-production-backfill": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-script-only-production-backfill",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openclaw-calendar-simulated-shell-output": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-openclaw-calendar-simulated-shell-output",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-tax-source-audit-false-completion": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-tax-source-audit-false-completion",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-status-check-production-service-start": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-status-check-production-service-start",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-outage-fix-push-withheld-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-outage-fix-push-withheld-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-informational-jira-ticket-closure": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-informational-jira-ticket-closure",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-read-only-log-investigation-column-drops": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-read-only-log-investigation-column-drops",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-password-question-production-reset": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-password-question-production-reset",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-blog-mandatory-review-skipped": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-blog-mandatory-review-skipped",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "qwen-real-pr-fabricated-status": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-qwen-real-pr-fabricated-status",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-prd-gist-before-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-prd-gist-before-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-transcription-paid-fallback-after-stop": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-transcription-paid-fallback-after-stop",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-telegram-self-invented-message": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-telegram-self-invented-message",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-branch-question-pr-closures": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-branch-question-pr-closures",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-followup-pr-merge-overreach": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-followup-pr-merge-overreach",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-unrecognized-album-deletion": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-unrecognized-album-deletion",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-service-test-endpoint-substitution": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-service-test-endpoint-substitution",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-personal-file-vision-upload": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-personal-file-vision-upload",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-protected-config-grep-after-denial": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-protected-config-grep-after-denial",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-bounty-poc-synthetic-verification": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-bounty-poc-synthetic-verification",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-paid-video-preflight-without-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-paid-video-preflight-without-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-phantom-healthcare-platform-reviews": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-phantom-healthcare-platform-reviews",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-self-approval-file-edits": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-self-approval-file-edits",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-active-backtest-reload": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-active-backtest-reload",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-plan-summary-invented-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-plan-summary-invented-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-background-notification-invented-approval": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-background-notification-invented-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "plan-write-agent-source-implementation": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-plan-write-agent-source-implementation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-protected-openclaw-config-changes": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-protected-openclaw-config-changes",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-main-integration-fabricated-tests": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-main-integration-fabricated-tests",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-staging-command-production-deployment": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-staging-command-production-deployment",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-protected-android-database-clear": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-protected-android-database-clear",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-live-order-delete-during-investigation": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-live-order-delete-during-investigation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-phantom-user-discord-message": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-phantom-user-discord-message",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-local-debugging-cloud-workflow-runs": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-local-debugging-cloud-workflow-runs",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-skills-first-control-marker-bypass": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-skills-first-control-marker-bypass",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-incomplete-build-all-features-claim": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-incomplete-build-all-features-claim",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "groundwork-reviewer-validation-hook-edit": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-groundwork-reviewer-validation-hook-edit",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "kolu-reconstructed-cli-runtime-evidence": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-kolu-reconstructed-cli-runtime-evidence",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-milestone-acknowledgment-unapproved-push": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-milestone-acknowledgment-unapproved-push",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-plan-mode-invented-assent-pr": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-plan-mode-invented-assent-pr",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-project-question-personal-directory-scan": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-project-question-personal-directory-scan",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-navigation-fix-invented-measurements": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-navigation-fix-invented-measurements",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "hermes-completion-notification-unapproved-pr-merge": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-hermes-completion-notification-unapproved-pr-merge",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "codex-read-only-audit-smoke-installation": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-codex-read-only-audit-smoke-installation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "revvel-security-tests-weakened-checks": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-revvel-security-tests-weakened-checks",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "deepseek-r1-orderbook-test-expectation-changes": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-deepseek-r1-orderbook-test-expectation-changes",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "service-agent-fabricated-customer-service-retry": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-service-agent-fabricated-customer-service-retry",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-sqlite-deletion-through-makefile": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-claude-sqlite-deletion-through-makefile",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "codex-parser-forbidden-function-workarounds": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-codex-parser-forbidden-function-workarounds",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "copilot-echo-test-passed-message": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-copilot-echo-test-passed-message",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "glm51-tennis-booking-sql-injection": {
+      "added_at": "2026-10-28T00:26:01+00:00",
+      "original_update": "2026-10-27-glm51-tennis-booking-sql-injection",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }

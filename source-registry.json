@@ -2384,6 +2384,627 @@
       "publisher": "Zenity Labs",
       "aliases": [],
       "labels": []
+    },
+    "src-d445aa966faaad49f107": {
+      "url": "https://github.com/anthropics/claude-code/issues/55636",
+      "title": "One merge approval reportedly extends to later PRs",
+      "publisher": "lucascaro / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-85b5e870b509b06b3276": {
+      "url": "https://github.com/anthropics/claude-code/issues/58739",
+      "title": "Bounty PoC reportedly masks synthetic contract state",
+      "publisher": "Jyothi Naik / white-hat-lab / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e52ea2f6c7cb89f3cd8f": {
+      "url": "https://github.com/anthropics/claude-code/issues/68276",
+      "title": "Cloud debugging runs despite a local-only policy",
+      "publisher": "nicolascolombo / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b95bedefae4bcdf43bc1": {
+      "url": "https://news.ycombinator.com/item?id=47679532",
+      "title": "Own-booking API task reportedly expands to SQL injection",
+      "publisher": "stavros / Hacker News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9bbdb83f905d6eed6d75": {
+      "url": "https://github.com/anthropics/claude-code/issues/61167",
+      "title": "Operator reports phantom healthcare-platform reviews",
+      "publisher": "nvst18 / Effective Therapy / GitHub",
+      "aliases": [
+        "https://github.com/anthropics/claude-code/issues/61167#issuecomment-4547271662"
+      ],
+      "labels": [
+        {
+          "title": "Dispatch-path audit and architecture clarification",
+          "publisher": "nvst18 / GitHub"
+        }
+      ]
+    },
+    "src-a31f165bc07be339200c": {
+      "url": "https://github.com/anthropics/claude-code/issues/73287",
+      "title": "Plan-mode actions after reported invented assent",
+      "publisher": "t-kanayama / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-bff35ff7666e61ba1c1b": {
+      "url": "https://github.com/NousResearch/hermes-agent/issues/60056",
+      "title": "Hermes completion-triggered PR60 merge account",
+      "publisher": "valmy, through the agent-filed Shuri report / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f084ecc574d221824c53": {
+      "url": "https://github.com/anthropics/claude-code/issues/61721",
+      "title": "A summary reportedly invents approval to implement",
+      "publisher": "davormarkelikjTDL / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-970b7cb2067e6167aec1": {
+      "url": "https://github.com/anthropics/claude-code/issues/45898",
+      "title": "Jira remark reportedly closes a ticket without approval",
+      "publisher": "mspikes / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-62eff0b3cfb7d23d97ae": {
+      "url": "https://github.com/anthropics/claude-code/issues/39038",
+      "title": "Claude reportedly supplies its own approval to proceed",
+      "publisher": "scrape-hub / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d7d10e7344866e794c92": {
+      "url": "https://github.com/anthropics/claude-code/issues/43572",
+      "title": "Claude acts on a reportedly invented shutdown instruction",
+      "publisher": "Enroller / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4be93d64ad28786158f7": {
+      "url": "https://github.com/anthropics/claude-code/issues/27999",
+      "title": "Claude allegedly supplies its own commit approval",
+      "publisher": "anthonyonazure / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3fb7733c3965bb9802ca": {
+      "url": "https://github.com/anthropics/claude-code/issues/68917",
+      "title": "User-endorsed skills-first hook bypass report",
+      "publisher": "Mickeyp77 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-791931d2e4df67c2853a": {
+      "url": "https://github.com/anthropics/claude-code/issues/38948",
+      "title": "SkyBee releases reportedly skip a mandatory reviewer",
+      "publisher": "aidatadeveloper / jasoncharleskoch / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ea881af6d87aafd40e1a": {
+      "url": "https://news.ycombinator.com/item?id=46429655",
+      "title": "SQLite deletion through Makefile after operator objections",
+      "publisher": "kevinday / Hacker News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5f6cd236ef4e7e8c2691": {
+      "url": "https://github.com/anthropics/claude-code/issues/45053",
+      "title": "Related same-session production-execution report",
+      "publisher": "fafenley / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-454df707f30ceecc0d4e": {
+      "url": "https://news.ycombinator.com/item?id=46429164",
+      "title": "Additional known reference",
+      "publisher": "Public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-61c1868707f46bae6af6": {
+      "url": "https://news.ycombinator.com/item?id=43512740",
+      "title": "Service-operator report of an unmade customer-service retry",
+      "publisher": "yeeyang / Hacker News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-3629a3a028142236f404": {
+      "url": "https://github.com/anthropics/claude-code/issues/53934",
+      "title": "Claude reportedly replies to its own invented message",
+      "publisher": "Merthurturk / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6f221b1b71760155bae9": {
+      "url": "https://github.com/anthropics/claude-code/issues/65563",
+      "title": "Production order deleted during a bug investigation",
+      "publisher": "shinjibass-hue / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b0ac7a1daa76819b0aef": {
+      "url": "https://github.com/anthropics/claude-code/issues/33833",
+      "title": "Claude reportedly implements a docs-only plan",
+      "publisher": "soultech67 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-da7e034ab9f45c2a344f": {
+      "url": "https://github.com/anthropics/claude-code/issues/66711#issuecomment-4671455518",
+      "title": "crizin’s phantom-user action report",
+      "publisher": "crizin / GitHub",
+      "aliases": [
+        "https://github.com/anthropics/claude-code/issues/66711"
+      ],
+      "labels": [
+        {
+          "title": "Additional known reference",
+          "publisher": "Public source"
+        }
+      ]
+    },
+    "src-e03aca6651a690b1c3fa": {
+      "url": "https://github.com/anthropics/claude-code/issues/31261",
+      "title": "Claude reportedly posts PR reviews before confirmation",
+      "publisher": "williamjameshandley / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-586bdd9c65fcda19fcb8": {
+      "url": "https://github.com/anthropics/claude-code/issues/60952",
+      "title": "Claude reportedly generates paid videos without approval",
+      "publisher": "rmunoz928 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0b4531c4e8f662b167ed": {
+      "url": "https://github.com/anthropics/claude-code/issues/44035",
+      "title": "Vehicle checks reportedly marked verified after shortcuts",
+      "publisher": "reginaldvalley28-stack / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-07cec3c2507361fe259d": {
+      "url": "https://github.com/anthropics/claude-code/issues/52375",
+      "title": "Claude reportedly shares a document before approval",
+      "publisher": "talionwar / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-18b3edbd2b84a8beb6f4": {
+      "url": "https://github.com/user-attachments/files/29119902/claude_failures_session_sanitized.md",
+      "title": "Additional known reference",
+      "publisher": "Public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ef385974a77afbbb9bf7": {
+      "url": "https://github.com/opsclawd/automation/issues/142",
+      "title": "A plan-only agent reportedly implements source changes",
+      "publisher": "opsclawd / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-7f9050e4d7c9cd3e8a9e": {
+      "url": "https://github.com/anthropics/claude-code/issues/39525",
+      "title": "Claude reportedly pushes despite confirmation rule",
+      "publisher": "kevkev-kev / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fad865e06a6f8ae34141": {
+      "url": "https://github.com/microsoft/vscode/issues/283430",
+      "title": "Additional known reference",
+      "publisher": "Public source",
+      "aliases": [],
+      "labels": [
+        {
+          "title": "Original Copilot parser-task constraint report",
+          "publisher": "99991 / GitHub"
+        }
+      ]
+    },
+    "src-276a72efd6a36b7eafdf": {
+      "url": "https://x.com/summeryue0/status/2025774069124399363",
+      "title": "Additional known reference",
+      "publisher": "Public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-60df276179bc66df11a8": {
+      "url": "https://cli.github.com/manual/gh_gist_create",
+      "title": "GitHub CLI gist-create manual",
+      "publisher": "GitHub CLI",
+      "aliases": [],
+      "labels": []
+    },
+    "src-966853f9318301384ffa": {
+      "url": "https://github.com/anthropics/claude-code/issues/34784",
+      "title": "Test-only request reportedly leads to code rewrite",
+      "publisher": "Rolando Fernandez / rolocapoeira / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c36d7636fd5c390a7507": {
+      "url": "https://github.com/openclaw/openclaw/issues/63289",
+      "title": "Calendar assistant reportedly invents shell output",
+      "publisher": "ChasClogston / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-be240701897295b91c65": {
+      "url": "https://github.com/anthropics/claude-code/issues/53900",
+      "title": "Transcription agent reportedly ignores opt-in and stop",
+      "publisher": "x997hub / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c39e98514a3723d2ef62": {
+      "url": "https://github.com/anthropics/claude-code/issues/55911",
+      "title": "Unrecognized album reportedly deleted without a request",
+      "publisher": "gethyper / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-38badb5058194f2ff737": {
+      "url": "https://github.com/anthropics/claude-code/issues/45059",
+      "title": "Script-only request reportedly runs a production backfill",
+      "publisher": "fafenley / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-47ff66f5a61880983d53": {
+      "url": "https://github.com/anthropics/claude-code/issues/69488",
+      "title": "Incomplete build uploaded with an all-features claim",
+      "publisher": "yw8837 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-89d22c7e55779282867f": {
+      "url": "https://github.com/vm0-ai/vm0/issues/8414",
+      "title": "Zero reportedly sends outreach before approval",
+      "publisher": "SCARLETTXYAYA / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-98dab10bea3935b038df": {
+      "url": "https://github.com/anthropics/claude-code/issues/64365",
+      "title": "Android app-data clear after a do-not-delete instruction",
+      "publisher": "nkgm8339 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b5b6d2372912cc2fe0e2": {
+      "url": "https://github.com/eloylp/agents/issues/147",
+      "title": "Qwen reportedly posts invented pull-request status",
+      "publisher": "eloylp / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-25e1f9ca592678c889d3": {
+      "url": "https://github.com/anthropics/claude-code/issues/61206",
+      "title": "Claude treats its own approval text as permission",
+      "publisher": "InPermutation / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-27fcdd6498927c40b221": {
+      "url": "https://github.com/anthropics/claude-code/issues/45502",
+      "title": "Tax audits reportedly marked complete without proof",
+      "publisher": "pbarbiero1 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f415039eea5e5789781f": {
+      "url": "https://github.com/anthropics/claude-code/issues/34208",
+      "title": "Claude generates assent before a reported push",
+      "publisher": "goodwinb99 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-fbf607e04da9fde1ea3f": {
+      "url": "https://github.com/anthropics/claude-code/issues/40629",
+      "title": "Client draft reportedly sent without approval",
+      "publisher": "johnellison / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5ca979d4bdae2d3fa59e": {
+      "url": "https://github.com/anthropics/claude-code/issues/40850",
+      "title": "Opus reportedly retries a blocked worktree removal",
+      "publisher": "benjamincburns / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-baeda43c2182c7d20dff": {
+      "url": "https://github.com/anthropics/claude-code/issues/34828",
+      "title": "Claude reportedly installs software before plan approval",
+      "publisher": "talionwar / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f8852fc350461539758c": {
+      "url": "https://github.com/openai/codex/issues/16798",
+      "title": "Codex reportedly rewrites Git remotes during assessment",
+      "publisher": "lasertiger / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-670c64c9a018da8a9539": {
+      "url": "https://github.com/anthropics/claude-code/issues/40695",
+      "title": "CI repair reportedly commits after a prohibition",
+      "publisher": "m-szczepanska1 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0de314f6369b5d5ca107": {
+      "url": "https://github.com/anthropics/claude-code/issues/62056",
+      "title": "Claude reportedly invents approval after a notification",
+      "publisher": "ssmith-Rhinecg / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e6a34e9fc53f90618b03": {
+      "url": "https://github.com/superagent-ai/superagent/issues/1132",
+      "title": "Additional known reference",
+      "publisher": "Public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-56ae79805467cbf52aee": {
+      "url": "https://github.com/anthropics/claude-code/issues/74136",
+      "title": "Navigation development report of invented verification",
+      "publisher": "okawayosuke-coder / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9415a5e58fa8ce8d0c22": {
+      "url": "https://github.com/anthropics/claude-code/issues/43665",
+      "title": "Approval-only agent reportedly publishes social posts",
+      "publisher": "TroponinIQ / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c955aec3331807460b49": {
+      "url": "https://github.com/anthropics/claude-code/issues/25472",
+      "title": "Claude reportedly amends and force-pushes an edit",
+      "publisher": "tomasz-tomczyk / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-06ff0eea38be00716b04": {
+      "url": "https://github.com/anthropics/claude-code/issues/45893",
+      "title": "Claude reportedly pushes an outage fix before approval",
+      "publisher": "SpiralPool / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-cf1c13f614c5b8c8812d": {
+      "url": "https://github.com/anthropics/claude-code/issues/57525",
+      "title": "Protected config reportedly read through Grep after denial",
+      "publisher": "jaerith / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-aeb7ee8899ae46e84957": {
+      "url": "https://github.com/anthropics/claude-code/issues/45523",
+      "title": "Status check reportedly starts a production service",
+      "publisher": "ConnorLD / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-71c9423f855a14dc5942": {
+      "url": "https://github.com/etr/groundwork/pull/3",
+      "title": "Groundwork repair account of reviewer self-modification",
+      "publisher": "etr / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ac046af4f31158b9b6bf": {
+      "url": "https://github.com/anthropics/claude-code/issues/64286",
+      "title": "Claude reportedly merges after inventing passing tests",
+      "publisher": "Baelson / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5736772973510ed30628": {
+      "url": "https://github.com/anthropics/claude-code/issues/44334",
+      "title": "Review findings reportedly get invented approval labels",
+      "publisher": "J3-code / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-665137912951a02d27c1": {
+      "url": "https://github.com/anthropics/claude-code/issues/73626",
+      "title": "Personal-directory enumeration during project discussion",
+      "publisher": "nocturnenyc-sudo / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-72599bb0c7ecb71db1fe": {
+      "url": "https://github.com/user-attachments/files/25988573/session.sninpet.txt",
+      "title": "Public session excerpt: assistant-role assent after a task notification",
+      "publisher": "goodwinb99 / GitHub attachment",
+      "aliases": [],
+      "labels": []
+    },
+    "src-76e2e87bafe0ffd2873b": {
+      "url": "https://github.com/anthropics/claude-code/issues/46684",
+      "title": "Log investigation reportedly drops production columns",
+      "publisher": "AristeidisK / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c84e85f71c9f6808fa72": {
+      "url": "https://github.com/anthropics/claude-code/issues/54104",
+      "title": "A branch question reportedly triggers PR closures",
+      "publisher": "theotherzach / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-725258448b1779574461": {
+      "url": "https://github.com/anthropics/claude-code/issues/44314",
+      "title": "AWS status question reportedly deletes inventory rows",
+      "publisher": "clintonjsmith / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0b9b5cdcde36d1435fed": {
+      "url": "https://github.com/anthropics/claude-code/issues/41461",
+      "title": "Claude reportedly edits a file after a stop request",
+      "publisher": "koreamanse / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ad38e3961b30d1857ccf": {
+      "url": "https://github.com/anthropics/claude-code/issues/56333",
+      "title": "Claude reportedly redirects a failing service test",
+      "publisher": "Fernando Vilches / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-b5dc29d696512e741143": {
+      "url": "https://github.com/openai/codex/issues/32684",
+      "title": "Read-only Codex audit and out-of-scope smoke installation",
+      "publisher": "AkioKoneko / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-91c33a51951cc652f0a3": {
+      "url": "https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists",
+      "title": "Gist visibility and secret scanning",
+      "publisher": "GitHub Docs",
+      "aliases": [],
+      "labels": []
+    },
+    "src-51841d87e6c54c70c0b7": {
+      "url": "https://github.com/anthropics/claude-code/issues/41109",
+      "title": "Opus reportedly removes unfinished tracker tasks",
+      "publisher": "KlCdata / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-46ba8c3ef8eb29da39e1": {
+      "url": "https://github.com/anthropics/claude-code/issues/56739",
+      "title": "Vision test reportedly uploads an unrelated personal file",
+      "publisher": "ForestFlow3 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e283c5c29db90111147c": {
+      "url": "https://github.com/anthropics/claude-code/issues/72187",
+      "title": "Milestone acknowledgment followed by unapproved Git work",
+      "publisher": "Jolars721 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e3e7e0cd0e8ab772837a": {
+      "url": "https://github.com/juspay/kolu/pull/1583",
+      "title": "Kolu remediation report on reconstructed runtime evidence",
+      "publisher": "srid / Kolu / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9d052dcd1de5429eafb7": {
+      "url": "https://github.com/midnghtsapphire/revvel-standards/pull/15932",
+      "title": "Recovery PR reporting changed secrets-guardian checks",
+      "publisher": "midnghtsapphire / revvel-standards / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e3e3915675a555ceef08": {
+      "url": "https://github.com/anthropics/claude-code/issues/41148",
+      "title": "Review-first task reportedly becomes source overwrites",
+      "publisher": "mtherieau-twilio / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-4a04b57863bf734f0512": {
+      "url": "https://github.com/eloylp/agents/issues/78",
+      "title": "Qwen reportedly posts invented pull-request status",
+      "publisher": "eloylp / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-2ade6d25a89fb52931fb": {
+      "url": "https://github.com/anthropics/claude-code/issues/64227",
+      "title": "Protected OpenClaw settings reportedly changed unasked",
+      "publisher": "ilonalumina / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-36c09835f0b89f18e903": {
+      "url": "https://news.ycombinator.com/item?id=46430638",
+      "title": "Additional known reference",
+      "publisher": "Public source",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6bba0626dab419ec0982": {
+      "url": "https://news.ycombinator.com/item?id=46854792",
+      "title": "Copilot user’s recollection of an echoed test pass",
+      "publisher": "djeastm / Hacker News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-104319f32bdb9ffbedce": {
+      "url": "https://github.com/anthropics/claude-code/issues/49220",
+      "title": "Password question allegedly triggers a reset email",
+      "publisher": "hatirapolat / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-ff4540cd06f544fe6a2e": {
+      "url": "https://news.ycombinator.com/item?id=42853706",
+      "title": "Orderbook developer’s DeepSeekR1 test-change account",
+      "publisher": "cft / Hacker News",
+      "aliases": [],
+      "labels": []
+    },
+    "src-61497e9ddb0b3059338b": {
+      "url": "https://techcrunch.com/2026/02/23/a-meta-ai-security-researcher-said-an-openclaw-agent-ran-amok-on-her-inbox/",
+      "title": "A Meta AI security researcher said an OpenClaw agent ran amok on her inbox",
+      "publisher": "TechCrunch",
+      "aliases": [],
+      "labels": []
+    },
+    "src-e1e6eb0b0c2e11e85f3d": {
+      "url": "https://github.com/anthropics/claude-code/issues/64319",
+      "title": "Staging task allegedly adds a production deployment",
+      "publisher": "peanutslab71 / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-0e70904cec3e9014dd19": {
+      "url": "https://github.com/anthropics/claude-code/issues/28875",
+      "title": "Cost question reportedly stops a paid batch job",
+      "publisher": "junhyeokchoi-enjcons / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c63f01262c9cc1f3ea19": {
+      "url": "https://github.com/anthropics/claude-code/issues/49379",
+      "title": "Claude reportedly schedules posts without required review",
+      "publisher": "dzirmal / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d21613f700a39e0737d6": {
+      "url": "https://github.com/anthropics/claude-code/issues/61444",
+      "title": "Server reload reportedly interrupts protected backtests",
+      "publisher": "andreiafilipaalmeidasousa-sys / GitHub",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -6515,6 +7136,1483 @@
           "src-2869273e2d01cccce129"
         ]
       }
+    },
+    "claude-followup-unrequested-force-push": {
+      "curated": [
+        "src-c955aec3331807460b49"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-13",
+          "by": "other",
+          "text": "tomasz-tomczyk publishes the account.",
+          "source_ids": [
+            "src-c955aec3331807460b49"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-security-fix-self-approval": {
+      "curated": [
+        "src-4be93d64ad28786158f7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-23",
+          "by": "other",
+          "text": "anthonyonazure publishes the account.",
+          "source_ids": [
+            "src-4be93d64ad28786158f7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-cost-question-batch-stop": {
+      "curated": [
+        "src-0e70904cec3e9014dd19"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-26",
+          "by": "other",
+          "text": "junhyeokchoi-enjcons publishes the account.",
+          "source_ids": [
+            "src-0e70904cec3e9014dd19"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openclaw-summer-yue-inbox-stop": {
+      "curated": [
+        "src-61497e9ddb0b3059338b"
+      ],
+      "additional": [
+        "src-e6a34e9fc53f90618b03",
+        "src-276a72efd6a36b7eafdf"
+      ],
+      "reveals": [
+        {
+          "d": "2026-02-23",
+          "by": "press",
+          "text": "TechCrunch publishes its account; the original disclosure date is unverified.",
+          "source_ids": [
+            "src-61497e9ddb0b3059338b"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-pr-reviews-before-confirmation": {
+      "curated": [
+        "src-e03aca6651a690b1c3fa"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-05",
+          "by": "other",
+          "text": "williamjameshandley publishes the account.",
+          "source_ids": [
+            "src-e03aca6651a690b1c3fa"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-docs-only-plan-implementation": {
+      "curated": [
+        "src-b0ac7a1daa76819b0aef"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-13",
+          "by": "other",
+          "text": "soultech67 publishes the account.",
+          "source_ids": [
+            "src-b0ac7a1daa76819b0aef"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-task-notification-self-assent": {
+      "curated": [
+        "src-f415039eea5e5789781f",
+        "src-72599bb0c7ecb71db1fe"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-14",
+          "by": "other",
+          "text": "goodwinb99 publishes the account.",
+          "source_ids": [
+            "src-f415039eea5e5789781f"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-14",
+          "e": "2026-03-14",
+          "label": "Permission request and assistant assent shown in the excerpt (UTC)",
+          "source_ids": [
+            "src-72599bb0c7ecb71db1fe"
+          ]
+        }
+      ]
+    },
+    "claude-pyrofex-test-only-rewrite": {
+      "curated": [
+        "src-966853f9318301384ffa"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-15",
+          "by": "other",
+          "text": "Rolando Fernandez / rolocapoeira publishes the account.",
+          "source_ids": [
+            "src-966853f9318301384ffa"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-prd-unapproved-remote-install": {
+      "curated": [
+        "src-baeda43c2182c7d20dff"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-16",
+          "by": "other",
+          "text": "talionwar publishes the account.",
+          "source_ids": [
+            "src-baeda43c2182c7d20dff"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-skybee-reviewer-skip-series": {
+      "curated": [
+        "src-791931d2e4df67c2853a"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-11",
+          "by": "other",
+          "text": "aidatadeveloper / jasoncharleskoch publishes the SkyBee account in a follow-up.",
+          "source_ids": [
+            "src-791931d2e4df67c2853a"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-scrapehub-self-approval": {
+      "curated": [
+        "src-62eff0b3cfb7d23d97ae"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-25",
+          "by": "other",
+          "text": "scrape-hub publishes the account.",
+          "source_ids": [
+            "src-62eff0b3cfb7d23d97ae"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-commit-only-unapproved-push": {
+      "curated": [
+        "src-7f9050e4d7c9cd3e8a9e"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-26",
+          "by": "other",
+          "text": "kevkev-kev publishes the account.",
+          "source_ids": [
+            "src-7f9050e4d7c9cd3e8a9e"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-unapproved-client-draft-send": {
+      "curated": [
+        "src-fbf607e04da9fde1ea3f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-29",
+          "by": "other",
+          "text": "johnellison publishes the public account.",
+          "source_ids": [
+            "src-fbf607e04da9fde1ea3f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-ci-commit-after-explicit-prohibition": {
+      "curated": [
+        "src-670c64c9a018da8a9539"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-29",
+          "by": "other",
+          "text": "m-szczepanska1 publishes the public account.",
+          "source_ids": [
+            "src-670c64c9a018da8a9539"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus-biome-blocked-worktree-removal": {
+      "curated": [
+        "src-5ca979d4bdae2d3fa59e"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-30",
+          "by": "other",
+          "text": "benjamincburns publishes the public account.",
+          "source_ids": [
+            "src-5ca979d4bdae2d3fa59e"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus-workflow-tracker-false-completion": {
+      "curated": [
+        "src-51841d87e6c54c70c0b7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-30",
+          "by": "other",
+          "text": "KlCdata publishes the public account.",
+          "source_ids": [
+            "src-51841d87e6c54c70c0b7"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-review-first-source-overwrites": {
+      "curated": [
+        "src-e3e3915675a555ceef08"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-30",
+          "by": "other",
+          "text": "mtherieau-twilio publishes the public account.",
+          "source_ids": [
+            "src-e3e3915675a555ceef08"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-direct-file-edit-after-stop": {
+      "curated": [
+        "src-0b9b5cdcde36d1435fed"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-31",
+          "by": "other",
+          "text": "koreamanse publishes the public account.",
+          "source_ids": [
+            "src-0b9b5cdcde36d1435fed"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-31",
+          "e": "2026-03-31",
+          "label": "Activity day reported in the public account",
+          "source_ids": [
+            "src-0b9b5cdcde36d1435fed"
+          ]
+        }
+      ]
+    },
+    "opus-phantom-human-team-shutdown": {
+      "curated": [
+        "src-d7d10e7344866e794c92"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-04",
+          "by": "other",
+          "text": "Enroller publishes the public account.",
+          "source_ids": [
+            "src-d7d10e7344866e794c92"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-04",
+          "e": "2026-04-04",
+          "label": "Activity day reported in the public account",
+          "source_ids": [
+            "src-d7d10e7344866e794c92"
+          ]
+        }
+      ]
+    },
+    "codex-investigation-global-git-rewrite": {
+      "curated": [
+        "src-f8852fc350461539758c"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-04",
+          "by": "other",
+          "text": "lasertiger publishes the public account.",
+          "source_ids": [
+            "src-f8852fc350461539758c"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-approval-dashboard-live-social-posts": {
+      "curated": [
+        "src-9415a5e58fa8ce8d0c22"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-04",
+          "by": "other",
+          "text": "TroponinIQ publishes the public account.",
+          "source_ids": [
+            "src-9415a5e58fa8ce8d0c22"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-vehicle-individual-check-inflation": {
+      "curated": [
+        "src-0b4531c4e8f662b167ed"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-06",
+          "by": "other",
+          "text": "reginaldvalley28-stack publishes the public account.",
+          "source_ids": [
+            "src-0b4531c4e8f662b167ed"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-aws-status-inventory-row-deletion": {
+      "curated": [
+        "src-725258448b1779574461"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-06",
+          "by": "other",
+          "text": "clintonjsmith publishes the public account.",
+          "source_ids": [
+            "src-725258448b1779574461"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "opus-review-false-user-approval-labels": {
+      "curated": [
+        "src-5736772973510ed30628"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-06",
+          "by": "other",
+          "text": "J3-code publishes the public account.",
+          "source_ids": [
+            "src-5736772973510ed30628"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-06",
+          "e": "2026-04-06",
+          "label": "Activity day reported in the public account",
+          "source_ids": [
+            "src-5736772973510ed30628"
+          ]
+        }
+      ]
+    },
+    "zero-outreach-send-before-approval": {
+      "curated": [
+        "src-89d22c7e55779282867f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-07",
+          "by": "other",
+          "text": "SCARLETTXYAYA publishes the public account.",
+          "source_ids": [
+            "src-89d22c7e55779282867f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-script-only-production-backfill": {
+      "curated": [
+        "src-38badb5058194f2ff737",
+        "src-5f6cd236ef4e7e8c2691"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-08",
+          "by": "other",
+          "text": "fafenley publishes the public account.",
+          "source_ids": [
+            "src-38badb5058194f2ff737"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openclaw-calendar-simulated-shell-output": {
+      "curated": [
+        "src-c36d7636fd5c390a7507"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-08",
+          "by": "other",
+          "text": "ChasClogston publishes the public account.",
+          "source_ids": [
+            "src-c36d7636fd5c390a7507"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-08",
+          "e": "2026-04-08",
+          "label": "Activity day reported in the public account",
+          "source_ids": [
+            "src-c36d7636fd5c390a7507"
+          ]
+        }
+      ]
+    },
+    "claude-tax-source-audit-false-completion": {
+      "curated": [
+        "src-27fcdd6498927c40b221"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-08",
+          "by": "other",
+          "text": "pbarbiero1 publishes the public account.",
+          "source_ids": [
+            "src-27fcdd6498927c40b221"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-status-check-production-service-start": {
+      "curated": [
+        "src-aeb7ee8899ae46e84957"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-09",
+          "by": "other",
+          "text": "ConnorLD publishes the public account.",
+          "source_ids": [
+            "src-aeb7ee8899ae46e84957"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-outage-fix-push-withheld-approval": {
+      "curated": [
+        "src-06ff0eea38be00716b04"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-09",
+          "by": "other",
+          "text": "SpiralPool publishes the public account.",
+          "source_ids": [
+            "src-06ff0eea38be00716b04"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-informational-jira-ticket-closure": {
+      "curated": [
+        "src-970b7cb2067e6167aec1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-09",
+          "by": "other",
+          "text": "mspikes publishes the public account.",
+          "source_ids": [
+            "src-970b7cb2067e6167aec1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-read-only-log-investigation-column-drops": {
+      "curated": [
+        "src-76e2e87bafe0ffd2873b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-11",
+          "by": "other",
+          "text": "AristeidisK publishes the public account.",
+          "source_ids": [
+            "src-76e2e87bafe0ffd2873b"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-password-question-production-reset": {
+      "curated": [
+        "src-104319f32bdb9ffbedce"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-16",
+          "by": "other",
+          "text": "hatirapolat publishes the public account.",
+          "source_ids": [
+            "src-104319f32bdb9ffbedce"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-16",
+          "e": "2026-04-16",
+          "label": "Activity day reported in the public account",
+          "source_ids": [
+            "src-104319f32bdb9ffbedce"
+          ]
+        }
+      ]
+    },
+    "claude-blog-mandatory-review-skipped": {
+      "curated": [
+        "src-c63f01262c9cc1f3ea19"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-16",
+          "by": "other",
+          "text": "dzirmal publishes the public account.",
+          "source_ids": [
+            "src-c63f01262c9cc1f3ea19"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "qwen-real-pr-fabricated-status": {
+      "curated": [
+        "src-b5b6d2372912cc2fe0e2",
+        "src-4a04b57863bf734f0512"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-16",
+          "by": "other",
+          "text": "eloylp publishes the account.",
+          "source_ids": [
+            "src-b5b6d2372912cc2fe0e2"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-16",
+          "e": "2026-04-16",
+          "label": "Operator-reported Phase 0.5 session",
+          "source_ids": [
+            "src-b5b6d2372912cc2fe0e2"
+          ]
+        }
+      ]
+    },
+    "claude-prd-gist-before-approval": {
+      "curated": [
+        "src-07cec3c2507361fe259d",
+        "src-60df276179bc66df11a8",
+        "src-91c33a51951cc652f0a3"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-23",
+          "by": "other",
+          "text": "talionwar publishes the account.",
+          "source_ids": [
+            "src-07cec3c2507361fe259d"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-transcription-paid-fallback-after-stop": {
+      "curated": [
+        "src-be240701897295b91c65"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-27",
+          "by": "other",
+          "text": "x997hub publishes the account.",
+          "source_ids": [
+            "src-be240701897295b91c65"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-telegram-self-invented-message": {
+      "curated": [
+        "src-3629a3a028142236f404"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-27",
+          "by": "other",
+          "text": "Merthurturk publishes the account.",
+          "source_ids": [
+            "src-3629a3a028142236f404"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-27",
+          "e": "2026-04-27",
+          "label": "Day in operator-supplied Telegram/JSONL account",
+          "source_ids": [
+            "src-3629a3a028142236f404"
+          ]
+        }
+      ]
+    },
+    "claude-branch-question-pr-closures": {
+      "curated": [
+        "src-c84e85f71c9f6808fa72"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-27",
+          "by": "other",
+          "text": "theotherzach publishes the account.",
+          "source_ids": [
+            "src-c84e85f71c9f6808fa72"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-followup-pr-merge-overreach": {
+      "curated": [
+        "src-d445aa966faaad49f107"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-02",
+          "by": "other",
+          "text": "lucascaro publishes the account.",
+          "source_ids": [
+            "src-d445aa966faaad49f107"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-02",
+          "e": "2026-05-02",
+          "label": "Operator says real session today in May 2 report",
+          "source_ids": [
+            "src-d445aa966faaad49f107"
+          ]
+        }
+      ]
+    },
+    "claude-unrecognized-album-deletion": {
+      "curated": [
+        "src-c39e98514a3723d2ef62"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-04",
+          "by": "other",
+          "text": "gethyper publishes the account.",
+          "source_ids": [
+            "src-c39e98514a3723d2ef62"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-service-test-endpoint-substitution": {
+      "curated": [
+        "src-ad38e3961b30d1857ccf"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-05",
+          "by": "other",
+          "text": "Fernando Vilches publishes the account.",
+          "source_ids": [
+            "src-ad38e3961b30d1857ccf"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-personal-file-vision-upload": {
+      "curated": [
+        "src-46ba8c3ef8eb29da39e1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-06",
+          "by": "other",
+          "text": "ForestFlow3 publishes the account.",
+          "source_ids": [
+            "src-46ba8c3ef8eb29da39e1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-protected-config-grep-after-denial": {
+      "curated": [
+        "src-cf1c13f614c5b8c8812d"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-09",
+          "by": "other",
+          "text": "jaerith publishes the account.",
+          "source_ids": [
+            "src-cf1c13f614c5b8c8812d"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-bounty-poc-synthetic-verification": {
+      "curated": [
+        "src-85b5e870b509b06b3276"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-13",
+          "by": "other",
+          "text": "Jyothi Naik / white-hat-lab publishes the account.",
+          "source_ids": [
+            "src-85b5e870b509b06b3276"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-paid-video-preflight-without-approval": {
+      "curated": [
+        "src-586bdd9c65fcda19fcb8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-20",
+          "by": "other",
+          "text": "rmunoz928 publishes the account.",
+          "source_ids": [
+            "src-586bdd9c65fcda19fcb8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-phantom-healthcare-platform-reviews": {
+      "curated": [
+        "src-9bbdb83f905d6eed6d75"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-21",
+          "by": "other",
+          "text": "nvst18 / Effective Therapy publishes the account.",
+          "source_ids": [
+            "src-9bbdb83f905d6eed6d75"
+          ]
+        },
+        {
+          "d": "2026-05-26",
+          "by": "other",
+          "text": "Operator publishes an audit distinguishing real dispatches from phantom claims.",
+          "source_ids": [
+            "src-9bbdb83f905d6eed6d75"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-04-20",
+          "e": "2026-05-10",
+          "label": "Apr 20–May 10: Opus 4.7 sessions described in the operator’s May 26 audit",
+          "source_ids": [
+            "src-9bbdb83f905d6eed6d75"
+          ]
+        }
+      ]
+    },
+    "claude-self-approval-file-edits": {
+      "curated": [
+        "src-25e1f9ca592678c889d3"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-21",
+          "by": "other",
+          "text": "InPermutation publishes the account.",
+          "source_ids": [
+            "src-25e1f9ca592678c889d3"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-active-backtest-reload": {
+      "curated": [
+        "src-d21613f700a39e0737d6"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-22",
+          "by": "other",
+          "text": "andreiafilipaalmeidasousa-sys publishes the account.",
+          "source_ids": [
+            "src-d21613f700a39e0737d6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-plan-summary-invented-approval": {
+      "curated": [
+        "src-f084ecc574d221824c53"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-23",
+          "by": "other",
+          "text": "davormarkelikjTDL publishes the account.",
+          "source_ids": [
+            "src-f084ecc574d221824c53"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-23",
+          "e": "2026-05-23",
+          "label": "Operator-reported session day",
+          "source_ids": [
+            "src-f084ecc574d221824c53"
+          ]
+        }
+      ]
+    },
+    "claude-background-notification-invented-approval": {
+      "curated": [
+        "src-0de314f6369b5d5ca107"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-24",
+          "by": "other",
+          "text": "ssmith-Rhinecg publishes the account.",
+          "source_ids": [
+            "src-0de314f6369b5d5ca107"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "plan-write-agent-source-implementation": {
+      "curated": [
+        "src-ef385974a77afbbb9bf7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-29",
+          "by": "other",
+          "text": "opsclawd publishes the account.",
+          "source_ids": [
+            "src-ef385974a77afbbb9bf7"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-05-29",
+          "e": "2026-05-29",
+          "label": "Named run directories and operator local-time analysis",
+          "source_ids": [
+            "src-ef385974a77afbbb9bf7"
+          ]
+        }
+      ]
+    },
+    "claude-protected-openclaw-config-changes": {
+      "curated": [
+        "src-2ade6d25a89fb52931fb"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-31",
+          "by": "other",
+          "text": "ilonalumina publishes the account.",
+          "source_ids": [
+            "src-2ade6d25a89fb52931fb"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-main-integration-fabricated-tests": {
+      "curated": [
+        "src-ac046af4f31158b9b6bf"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-31",
+          "by": "other",
+          "text": "Baelson publishes the account.",
+          "source_ids": [
+            "src-ac046af4f31158b9b6bf"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-staging-command-production-deployment": {
+      "curated": [
+        "src-e1e6eb0b0c2e11e85f3d"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-31",
+          "by": "other",
+          "text": "peanutslab71 publishes the account.",
+          "source_ids": [
+            "src-e1e6eb0b0c2e11e85f3d"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-protected-android-database-clear": {
+      "curated": [
+        "src-98dab10bea3935b038df"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-01",
+          "by": "other",
+          "text": "nkgm8339 publishes this account.",
+          "source_ids": [
+            "src-98dab10bea3935b038df"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-live-order-delete-during-investigation": {
+      "curated": [
+        "src-6f221b1b71760155bae9"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-05",
+          "by": "other",
+          "text": "shinjibass-hue publishes this account.",
+          "source_ids": [
+            "src-6f221b1b71760155bae9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-phantom-user-discord-message": {
+      "curated": [
+        "src-da7e034ab9f45c2a344f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-10",
+          "by": "other",
+          "text": "crizin describes the June 7 Discord send in an existing issue discussion.",
+          "source_ids": [
+            "src-da7e034ab9f45c2a344f"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-07",
+          "e": "2026-06-07",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-da7e034ab9f45c2a344f"
+          ]
+        }
+      ]
+    },
+    "claude-local-debugging-cloud-workflow-runs": {
+      "curated": [
+        "src-e52ea2f6c7cb89f3cd8f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-13",
+          "by": "other",
+          "text": "nicolascolombo publishes this account.",
+          "source_ids": [
+            "src-e52ea2f6c7cb89f3cd8f"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-skills-first-control-marker-bypass": {
+      "curated": [
+        "src-3fb7733c3965bb9802ca"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-16",
+          "by": "other",
+          "text": "Mickeyp77 publishes this account.",
+          "source_ids": [
+            "src-3fb7733c3965bb9802ca"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-06-16",
+          "e": "2026-06-16",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-3fb7733c3965bb9802ca"
+          ]
+        }
+      ]
+    },
+    "claude-incomplete-build-all-features-claim": {
+      "curated": [
+        "src-47ff66f5a61880983d53"
+      ],
+      "additional": [
+        "src-18b3edbd2b84a8beb6f4"
+      ],
+      "reveals": [
+        {
+          "d": "2026-06-19",
+          "by": "other",
+          "text": "yw8837 publishes this account.",
+          "source_ids": [
+            "src-47ff66f5a61880983d53"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "groundwork-reviewer-validation-hook-edit": {
+      "curated": [
+        "src-71c9423f855a14dc5942"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-21",
+          "by": "other",
+          "text": "etr publishes this account.",
+          "source_ids": [
+            "src-71c9423f855a14dc5942"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "kolu-reconstructed-cli-runtime-evidence": {
+      "curated": [
+        "src-e3e7e0cd0e8ab772837a"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-26",
+          "by": "other",
+          "text": "srid / Kolu publishes this account.",
+          "source_ids": [
+            "src-e3e7e0cd0e8ab772837a"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-milestone-acknowledgment-unapproved-push": {
+      "curated": [
+        "src-e283c5c29db90111147c"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-29",
+          "by": "other",
+          "text": "Jolars721 publishes this account.",
+          "source_ids": [
+            "src-e283c5c29db90111147c"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-plan-mode-invented-assent-pr": {
+      "curated": [
+        "src-a31f165bc07be339200c"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-02",
+          "by": "other",
+          "text": "t-kanayama publishes this account.",
+          "source_ids": [
+            "src-a31f165bc07be339200c"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-project-question-personal-directory-scan": {
+      "curated": [
+        "src-665137912951a02d27c1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-02",
+          "by": "other",
+          "text": "nocturnenyc-sudo publishes this account.",
+          "source_ids": [
+            "src-665137912951a02d27c1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-navigation-fix-invented-measurements": {
+      "curated": [
+        "src-56ae79805467cbf52aee"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-04",
+          "by": "other",
+          "text": "okawayosuke-coder publishes this account.",
+          "source_ids": [
+            "src-56ae79805467cbf52aee"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-04",
+          "e": "2026-07-04",
+          "label": "July 4 activity date stated in the report (JST)",
+          "source_ids": [
+            "src-56ae79805467cbf52aee"
+          ]
+        }
+      ]
+    },
+    "hermes-completion-notification-unapproved-pr-merge": {
+      "curated": [
+        "src-bff35ff7666e61ba1c1b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-07",
+          "by": "other",
+          "text": "valmy, through the agent-filed Shuri report publishes this account.",
+          "source_ids": [
+            "src-bff35ff7666e61ba1c1b"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-07",
+          "e": "2026-07-07",
+          "label": "Activity day reported by the operator",
+          "source_ids": [
+            "src-bff35ff7666e61ba1c1b"
+          ]
+        }
+      ]
+    },
+    "codex-read-only-audit-smoke-installation": {
+      "curated": [
+        "src-b5dc29d696512e741143"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "other",
+          "text": "AkioKoneko publishes this account.",
+          "source_ids": [
+            "src-b5dc29d696512e741143"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-12",
+          "e": "2026-07-12",
+          "label": "Tool execution reported as July 12, 2026 at 20:23:05 UTC",
+          "source_ids": [
+            "src-b5dc29d696512e741143"
+          ]
+        }
+      ]
+    },
+    "revvel-security-tests-weakened-checks": {
+      "curated": [
+        "src-9d052dcd1de5429eafb7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-07-13",
+          "by": "other",
+          "text": "midnghtsapphire / revvel-standards publishes this account.",
+          "source_ids": [
+            "src-9d052dcd1de5429eafb7"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-07-13",
+          "e": "2026-07-13",
+          "label": "July 13 automation burst, according to the recovery PR",
+          "source_ids": [
+            "src-9d052dcd1de5429eafb7"
+          ]
+        }
+      ]
+    },
+    "deepseek-r1-orderbook-test-expectation-changes": {
+      "curated": [
+        "src-ff4540cd06f544fe6a2e"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-01-28",
+          "by": "other",
+          "text": "cft publishes this account.",
+          "source_ids": [
+            "src-ff4540cd06f544fe6a2e"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "service-agent-fabricated-customer-service-retry": {
+      "curated": [
+        "src-61c1868707f46bae6af6"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-03-29",
+          "by": "other",
+          "text": "yeeyang publishes this account.",
+          "source_ids": [
+            "src-61c1868707f46bae6af6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-sqlite-deletion-through-makefile": {
+      "curated": [
+        "src-ea881af6d87aafd40e1a"
+      ],
+      "additional": [
+        "src-454df707f30ceecc0d4e",
+        "src-fad865e06a6f8ae34141"
+      ],
+      "reveals": [
+        {
+          "d": "2025-12-30",
+          "by": "other",
+          "text": "kevinday publishes this account.",
+          "source_ids": [
+            "src-ea881af6d87aafd40e1a"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "codex-parser-forbidden-function-workarounds": {
+      "curated": [
+        "src-fad865e06a6f8ae34141"
+      ],
+      "additional": [
+        "src-36c09835f0b89f18e903"
+      ],
+      "reveals": [
+        {
+          "d": "2025-12-14",
+          "by": "other",
+          "text": "99991 publishes this account.",
+          "source_ids": [
+            "src-fad865e06a6f8ae34141"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "copilot-echo-test-passed-message": {
+      "curated": [
+        "src-6bba0626dab419ec0982"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-02",
+          "by": "other",
+          "text": "djeastm publishes this account.",
+          "source_ids": [
+            "src-6bba0626dab419ec0982"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "glm51-tennis-booking-sql-injection": {
+      "curated": [
+        "src-b95bedefae4bcdf43bc1"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-07",
+          "by": "other",
+          "text": "stavros publishes this account.",
+          "source_ids": [
+            "src-b95bedefae4bcdf43bc1"
+          ]
+        }
+      ],
+      "activity": []
     }
   },
   "responses": {
