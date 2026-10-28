@@ -9,14 +9,14 @@
 <link rel="alternate" type="application/rss+xml" title="Swarm Incidents" href="https://swarmincidents.com/feed.xml">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script>if(/(?:^|\/)subscribe(?:\.html)?\/?$/.test(location.pathname)){const captureNewsletterIntent=event=>{const intent=location.hash.slice(1);if(event&&!/^(confirm|manage|unsubscribe)=/.test(intent))return;window.__newsletterIntent=intent;history.replaceState(null,'',location.pathname);event?.stopImmediatePropagation();document.dispatchEvent(new CustomEvent('newsletter-intent',{detail:intent}))};captureNewsletterIntent();window.addEventListener('hashchange',captureNewsletterIntent);window.addEventListener('popstate',captureNewsletterIntent)}</script>
-<script defer src="/newsletter.js"></script>
+<script defer src="newsletter.js"></script>
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A0C10" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Swarm Incidents">
 <meta property="og:locale" content="en_US">
@@ -39,9 +39,7 @@
 {"@type":"Dataset","name":"Swarm Incidents: a timeline of AI agent incidents","description":"A sourced timeline of incidents in which AI agents reached systems and websites beyond what they were permitted, starting with the agents OpenAI ran during training and evaluation.","url":"https://swarmincidents.com/","isPartOf":{"@id":"https://swarmincidents.com/#site"},"dateModified":"2026-10-27","version":"2.2","isAccessibleForFree":true,"keywords":["AI incidents","AI agents","OpenAI","AI safety"]}
 ]}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
 <script>try { const t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
 <style>
 :root{
@@ -1224,7 +1222,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
 
 <div class="wrap">
   <header class="top" id="top">
-    <div class="top-l"><div class="brand-group"><h1 class="wordmark"><a href="/" aria-label="Swarm Incidents home">Swarm Incidents</a></h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><a class="follow-label updates-link" href="/updates.html">Updates</a><a class="follow-channel" href="/feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a><button type="button" class="follow-email" data-newsletter-open aria-haspopup="dialog">Email updates</button></nav></div></div>
+    <div class="top-l"><div class="brand-group"><h1 class="wordmark"><a href="./" aria-label="Swarm Incidents home">Swarm Incidents</a></h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">Explore swarms.wiki <span aria-hidden="true">↗</span></a><nav class="follow-nav" aria-label="Follow updates"><a class="follow-label updates-link" href="updates.html">Updates</a><a class="follow-channel" href="feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a><button type="button" class="follow-email" data-newsletter-open aria-haspopup="dialog">Email updates</button></nav></div></div>
     <div class="top-r">
       <span class="meta" id="meta"></span>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
@@ -1243,7 +1241,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
       <div class="bar-row">
         <div class="tabsrow" id="tabs"></div>
         <span class="count" id="count" aria-live="polite"></span>
-        <a class="mini-link latest-updates" id="latest-updates" href="/updates.html" hidden>Latest updates</a>
+        <a class="mini-link latest-updates" id="latest-updates" href="updates.html" hidden>Latest updates</a>
         <div class="view-controls" id="view-controls"></div>
       </div>
       <div class="bar-row bar-controls">
@@ -1286,8 +1284,8 @@ html.updates-modal-page{scrollbar-gutter:stable}
    <p class="report-note" id="newsletter-consent">We’ll email a confirmation link. No account needed. Change your preferences or unsubscribe at any time.</p>
   </form>
   <div id="newsletter-link-view" hidden><p id="newsletter-link-summary" class="newsletter-confirm-summary"></p><div class="report-actions"><button class="btn primary" type="button" id="newsletter-confirm">Confirm subscription</button><button class="btn" type="button" id="newsletter-new-link" hidden>Request a new link</button></div></div>
-  <p id="newsletter-status" class="report-status newsletter-notice" role="status" aria-live="polite"></p><p id="newsletter-manage" hidden><a class="btn" href="/subscribe.html">Change email preferences</a></p>
-  <p class="newsletter-footer">Prefer a feed? <a href="/feed.xml">Subscribe via RSS</a>. Questions: <a href="mailto:hello@swarmincidents.com">hello@swarmincidents.com</a>.</p>
+  <p id="newsletter-status" class="report-status newsletter-notice" role="status" aria-live="polite"></p><p id="newsletter-manage" hidden><a class="btn" href="subscribe.html">Change email preferences</a></p>
+  <p class="newsletter-footer">Prefer a feed? <a href="feed.xml">Subscribe via RSS</a>. Questions: <a href="mailto:hello@swarmincidents.com">hello@swarmincidents.com</a>.</p>
  </div>
 </dialog>
 
@@ -1318,7 +1316,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
     <p>Find related research, tools and projects at <a href="https://swarms.wiki/" target="_blank" rel="noopener noreferrer">swarms.wiki</a>; other incident trackers similar to Swarm Incidents can be found <a href="https://docs.google.com/document/d/1bkI5SxOVK0lClq8B7CouZhHmeUZcjYWWGOT1t3yr-YY/edit?tab=t.mh8y4www7n4j#heading=h.nqx9sq7hb2zf" aria-label="Other incident trackers on swarms.wiki" target="_blank" rel="noopener noreferrer">there</a>.</p>
     <p><a href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer">Support the project on Manifund</a>.</p>
     <h3>Follow updates</h3>
-    <p><a href="/updates.html">Read the Updates page</a> or <a href="/feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
+    <p><a href="updates.html">Read the Updates page</a> or <a href="feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
     <p><button type="button" class="mini-link" data-newsletter-open>Email updates</button>: daily or weekly, with the coverage you choose.</p>
     <div id="contact-sec" hidden>
 <h3>Contact</h3>
@@ -3686,7 +3684,7 @@ const pick = o => (typeof picker === 'function' ? picker(o) : pickNative(o));
 /* Overview has no section row; retain breadcrumbs on existing inside routes. */
 function renderNav() {
   $('#latest-updates').hidden = UPDATES_PAGE || state.view !== 'timeline';
-  const updatesLink=document.querySelector('.updates-link');if(updatesLink)updatesLink.href='/updates.html';
+  const updatesLink=document.querySelector('.updates-link');if(updatesLink)updatesLink.href='updates.html';
 
   if (UPDATES_PAGE) { renderUpdateNav(); return; }
   const inside = state.view === 'wiki';
@@ -4274,7 +4272,7 @@ function renderUpdateTabs() {
   put($('#tabs'), h('div', {class:'bar-row updates-title-row'},
     h('h2', {class:'tab update-heading', id:'updates-heading', text:'Updates'}),
     h('button', {type:'button',class:'mini-link update-subscribe','data-newsletter-open':'',text:'Email updates'}),
-    h('a', {class:'mini-link update-subscribe', href:'/feed.xml', 'aria-label':'Subscribe to updates via RSS'}, 'Subscribe via RSS ↗'),
+    h('a', {class:'mini-link update-subscribe', href:'feed.xml', 'aria-label':'Subscribe to updates via RSS'}, 'Subscribe via RSS ↗'),
     h('span', {class:'update-type-controls'}, h('span', {class:'flabel', text:'Type'}),
       h('span', {class:'seg update-types', role:'group', 'aria-label':'Update type'},
         [{id:'all',label:'All'}, ...Object.entries(RESP_WHO).map(([id,label])=>({id,label}))].map(t=>
@@ -4509,7 +4507,7 @@ put($('#impact-help'), ...LEVELS.map(l => h('li', {}, h('b', { text: l.label }),
   l.cats.map(c => h('span', { class: 'what ' + c, text: WHAT[c], 'data-tip': WHAT_TIP[c] })).reduce((acc, el, k) => (k ? [...acc, ' ', el] : [el]), []))));
 function route(hash = decodeURIComponent(location.hash.slice(1))) {
   if (!UPDATES_PAGE && Object.hasOwn(DATA.retiredIncidents || {}, hash)) {
-    location.replace('/updates.html#' + encodeURIComponent(DATA.retiredIncidents[hash]));
+    location.replace('updates.html#' + encodeURIComponent(DATA.retiredIncidents[hash]));
     return;
   }
   if (UPDATES_PAGE) {

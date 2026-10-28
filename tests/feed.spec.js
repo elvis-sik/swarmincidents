@@ -1,18 +1,17 @@
 const { test, expect } = require('@playwright/test');
 const updates = require('../updates.json').updates;
-test.beforeEach(async({page})=>{await page.route('https://fonts.googleapis.com/**',r=>r.abort());await page.route('https://fonts.gstatic.com/**',r=>r.abort());});
 
 test('RSS is discoverable in the header and About, with approved new and update entries', async ({page, request}) => {
   await page.goto('/', {waitUntil:'domcontentloaded'});
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', 'https://swarmincidents.com/feed.xml');
   const header = page.getByRole('navigation', {name:'Follow updates'});
   await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toBeVisible();
-  await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toHaveAttribute('href', '/feed.xml');
-  await expect(header.getByRole('link', {name:'Updates', exact:true})).toHaveAttribute('href', '/updates.html');
+  await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toHaveAttribute('href', 'feed.xml');
+  await expect(header.getByRole('link', {name:'Updates', exact:true})).toHaveAttribute('href', 'updates.html');
   await page.getByRole('button', {name:'About', exact:true}).click();
   const link = page.getByRole('dialog').getByRole('link', {name:'Subscribe via RSS'});
   await expect(link).toBeVisible();
-  await expect(link).toHaveAttribute('href', '/feed.xml');
+  await expect(link).toHaveAttribute('href', 'feed.xml');
   const response = await request.get('/feed.xml');
   expect(response.ok()).toBeTruthy();
   expect(response.headers()['content-type']).toContain('xml');

@@ -10,7 +10,7 @@ function renderUpdateTabs() {
   put($('#tabs'), h('div', {class:'bar-row updates-title-row'},
     h('h2', {class:'tab update-heading', id:'updates-heading', text:'Updates'}),
     h('button', {type:'button',class:'mini-link update-subscribe','data-newsletter-open':'',text:'Email updates'}),
-    h('a', {class:'mini-link update-subscribe', href:'/feed.xml', 'aria-label':'Subscribe to updates via RSS'}, 'Subscribe via RSS ↗'),
+    h('a', {class:'mini-link update-subscribe', href:'feed.xml', 'aria-label':'Subscribe to updates via RSS'}, 'Subscribe via RSS ↗'),
     h('span', {class:'update-type-controls'}, h('span', {class:'flabel', text:'Type'}),
       h('span', {class:'seg update-types', role:'group', 'aria-label':'Update type'},
         [{id:'all',label:'All'}, ...Object.entries(RESP_WHO).map(([id,label])=>({id,label}))].map(t=>
