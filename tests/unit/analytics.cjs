@@ -36,9 +36,15 @@ function harness({ host = 'swarmincidents.com', disabled = false, visible = true
 }
 
 test('local previews and opted-out browsers do not load or send analytics', () => {
-  for (const options of [{ host: 'localhost' }, { host: 'elvis-sik.github.io' }, { disabled: true }]) {
+  for (const options of [{ host: 'localhost' }, { host: 'elvis-sik.github.io' }, { host: 'pages.swarmincidents.com' }, { disabled: true }]) {
     const h = harness(options); h.event('incident-open', 'wikis');
     assert.equal(h.scripts.length, 0); assert.equal(h.sent.length, 0);
+  }
+});
+test('swarms.wiki and the old domain both count', () => {
+  for (const host of ['swarms.wiki', 'swarmincidents.com']) {
+    const h = harness({ host }); h.load();
+    assert.equal(h.scripts.length, 1); assert.deepEqual(h.sent.map(x => x.p), ['/']);
   }
 });
 test('landing counts once; queued SPA events remain events and repeated actions are deduplicated', () => {

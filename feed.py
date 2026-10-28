@@ -8,7 +8,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 
-SITE = "https://swarmincidents.com/"
+SITE = "https://swarms.wiki/incidents/"
 ATOM = "http://www.w3.org/2005/Atom"
 ET.register_namespace("atom", ATOM)
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")

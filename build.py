@@ -53,11 +53,11 @@ updates_page = updates_page.replace("/*__CARD_HISTORY__*/", (here / "card-histor
 updates_page = updates_page.replace("const UPDATES_PAGE = false;", "const UPDATES_PAGE = true;")
 updates_page = updates_page.replace("__UPDATED__", updated).replace("__VERSION__", version).replace("__WIKI_N__", str(len(wiki["posts"])))
 updates_page = updates_page.replace("<title>A timeline of AI agent incidents · swarms.wiki</title>", "<title>Incident updates · swarms.wiki</title>")
-updates_page = updates_page.replace('<link rel="canonical" href="https://swarmincidents.com/">', '<link rel="canonical" href="https://swarmincidents.com/updates.html">')
+updates_page = updates_page.replace('<link rel="canonical" href="https://swarms.wiki/incidents/">', '<link rel="canonical" href="https://swarms.wiki/incidents/updates.html">')
 (docs / "updates.html").write_text(updates_page)
 (docs / "index.html").write_text(page)
 subscribe_page = page.replace('<title>A timeline of AI agent incidents · swarms.wiki</title>', '<title>Incident email updates · swarms.wiki</title>')
-subscribe_page = subscribe_page.replace('<link rel="canonical" href="https://swarmincidents.com/">', '<meta name="robots" content="noindex"><link rel="canonical" href="https://swarmincidents.com/subscribe.html">')
+subscribe_page = subscribe_page.replace('<link rel="canonical" href="https://swarms.wiki/incidents/">', '<meta name="robots" content="noindex"><link rel="canonical" href="https://swarms.wiki/incidents/subscribe.html">')
 (docs / "subscribe.html").write_text(subscribe_page)
 shutil.copyfile(here / "newsletter.js", docs / "newsletter.js")
 # The Wiki tab loads wiki-data.js on demand. Rebuild it with wiki_build.py when the archive selection or wiki_notes.json change.
@@ -70,8 +70,8 @@ shutil.copytree(here / "fonts", docs / "fonts", dirs_exist_ok=True)
 (docs / "stats.json").write_text(json.dumps({"incidents": len(data["incidents"]), "updated": updated, "version": version}) + "\n")
 (docs / "sitemap.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://swarmincidents.com/</loc><lastmod>{updated}</lastmod></url>
-  <url><loc>https://swarmincidents.com/updates.html</loc><lastmod>{updated}</lastmod></url>
+  <url><loc>https://swarms.wiki/incidents/</loc><lastmod>{updated}</lastmod></url>
+  <url><loc>https://swarms.wiki/incidents/updates.html</loc><lastmod>{updated}</lastmod></url>
 </urlset>
 """)
 print(f"built openai-agent-swarm.html and docs/ ({len(page) // 1024} KB, updated {updated}, v{version})")
