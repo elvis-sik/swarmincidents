@@ -19,8 +19,14 @@ test('RSS is discoverable in the header and About, with approved new and update 
   const feed = await page.evaluate(xml => {
     const doc = new DOMParser().parseFromString(xml, 'application/xml');
     return {errors:doc.querySelectorAll('parsererror').length,
-      items:[...doc.querySelectorAll('item')].map(i=>({title:i.querySelector('title').textContent,
-        guid:i.querySelector('guid').textContent, summary:i.querySelector('description').textContent}))};
+      items:[...doc.querySelectorAll('item')].map(i=>{
+        // RSS descriptions contain escaped HTML. Compare the rendered text and
+        // decoded links, not that HTML serialization with plain update prose.
+        const body = new DOMParser().parseFromString(i.querySelector('description').textContent, 'text/html');
+        return {title:i.querySelector('title').textContent, guid:i.querySelector('guid').textContent,
+          summary:body.querySelector('p').textContent,
+          links:[...body.querySelectorAll('a')].map(a=>a.getAttribute('href'))};
+      })};
   }, await response.text());
   expect(feed.errors).toBe(0);
   expect(feed.items).toHaveLength(updates.length);
@@ -28,8 +34,8 @@ test('RSS is discoverable in the header and About, with approved new and update 
   for (const update of updates) {
     const item = feed.items.find(i=>i.guid === 'swarmincidents:update:' + update.id);
     expect(item.title).toBe(update.type + ': ' + update.title);
-    expect(item.summary).toContain(update.summary);
-    expect(item.summary).toContain(update.source);
+    expect(item.summary).toBe(update.summary);
+    expect(item.links).toContain(update.source);
   }
 });
 
