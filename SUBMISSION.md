@@ -1,6 +1,6 @@
 # Swarm Incidents: submission to the AI Swarm Dynamics Hackathon
 
-**Live:** https://swarmincidents.com · **Code:** https://github.com/elvis-sik/swarmincidents · **Team:** Elvis Sikora
+**Live:** https://swarmincidents.com · **Team:** Elvis Sikora
 
 ## Short write-up
 

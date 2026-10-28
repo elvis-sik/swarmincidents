@@ -10,3 +10,7 @@ blob-report/
 
 # Python build/feed modules
 __pycache__/
+
+# Local Cloudflare preview state
+.wrangler/
+.dev.vars
