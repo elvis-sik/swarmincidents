@@ -51,7 +51,7 @@ test('dashboard and Updates have identical width header theme and timeline card 
  const read=()=>page.evaluate(()=>{const props=(selector,names)=>{const s=getComputedStyle(document.querySelector(selector));return Object.fromEntries(names.map(n=>[n,s[n]]))};return {wrap:props('.wrap',['maxWidth','paddingLeft','paddingRight']),header:props('#top',['paddingTop','paddingBottom','fontSize']),card:props('.r-card',['padding','fontSize','maxWidth','borderRadius']),icon:document.querySelector('#theme-btn').innerHTML}});
  const home=await read();await page.getByRole('navigation',{name:'Follow updates'}).getByRole('link',{name:'Updates',exact:true}).click();await expect(row(page)).toHaveCount(entries.length);await page.getByRole('button',{name:'Timeline',exact:true}).click();expect(await read()).toEqual(home);
  const old=await page.locator('#theme-btn').getAttribute('aria-label');await page.locator('#theme-btn').click();await expect(page.locator('#theme-btn')).not.toHaveAttribute('aria-label',old);
- await page.getByRole('link',{name:'Swarm Incidents home',exact:true}).click();await expect(page.locator('#theme-btn')).not.toHaveAttribute('aria-label',old);
+ await page.getByRole('link',{name:'swarms.wiki incidents home',exact:true}).click();await expect(page.locator('#theme-btn')).not.toHaveAttribute('aria-label',old);
 });
 
 test('modal card list and narrow layouts remain usable',async({page})=>{

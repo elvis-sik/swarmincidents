@@ -160,7 +160,7 @@ test('legacy scope links remain valid and outside-tag deep links widen scope',as
  await page.goto('/?tags=swarms#dns-chatbot');await expect(page.locator('#det-title')).toHaveText('DNS tunnel to an outside chatbot');
  expect(new URL(page.url()).searchParams.get('tags')).toBe('all');
  if(await page.locator('#scrim').evaluate(el=>getComputedStyle(el).pointerEvents==='auto'))await page.getByRole('button',{name:'Close details',exact:true}).click();
- await page.getByRole('link',{name:'Swarm Incidents home'}).click();await checkIds(page,swarm);
+ await page.getByRole('link',{name:'swarms.wiki incidents home'}).click();await checkIds(page,swarm);
 });
 
 test('legend uses compact icon buttons and Responses headings contain no colored key',async({page},info)=>{
