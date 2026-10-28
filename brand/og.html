@@ -10,7 +10,7 @@ body{background:#0A0C10;color:#E8EBEF;font-family:Inter,system-ui,sans-serif;-we
 .brand img{width:40px;height:40px}
 h1{font-size:68px;line-height:1.04;letter-spacing:-.025em;font-weight:700;margin:52px 0 0;max-width:900px}
 p{font-size:26px;line-height:1.4;color:#8B929C;margin:22px 0 0;max-width:860px}
-svg.tl{position:absolute;left:72px;right:72px;bottom:56px;width:1056px;height:120px}
+svg.tl{position:absolute;left:72px;right:72px;bottom:48px;width:1056px;height:150px}
 </style></head><body>
 <div class="glow"></div>
 <div class="in">
@@ -18,26 +18,38 @@ svg.tl{position:absolute;left:72px;right:72px;bottom:56px;width:1056px;height:12
   <h1>A timeline of AI agent incidents</h1>
   <p>When AI agents reached systems and websites beyond what they were permitted, with sources.</p>
 </div>
-<svg class="tl" id="tl" viewBox="0 0 1056 120"></svg>
+<svg class="tl" id="tl" viewBox="0 0 1056 150"></svg>
 <script src="data.js"></script>
 <script>
 // Decorative strip drawn from the real data: one thin bar per activity window, disclosures as dots.
-const t0 = Date.parse('2026-03-01'), t1 = Date.parse('2026-10-01'), W = 1056;
-const x = d => (Date.parse(d) - t0) / (t1 - t0) * W;
-const rows = DATA.incidents.filter(i => i.activity.length).sort((a, b) => a.activity[0].s.localeCompare(b.activity[0].s));
-const gap = 120 / rows.length;
+// The time window follows the data (first activity to last disclosure), and the rows share the
+// strip's height, so it keeps working as incidents are added; past ~30 rows only the latest show.
+const W = 1056, H = 150, MIN_ROW = 5;
+const day = 864e5, t = d => Date.parse(d);
+const reveal = inc => inc.reveals.filter(v => !v.minor)[0];
+let rows = DATA.incidents.filter(i => i.activity.length).sort((a, b) => a.activity[0].s.localeCompare(b.activity[0].s));
+rows = rows.slice(-Math.floor(H / MIN_ROW));
+const first = new Date(Math.min(...rows.map(i => t(i.activity[0].s))));
+const t0 = Date.UTC(first.getUTCFullYear(), first.getUTCMonth(), 1);
+const t1 = Math.max(...rows.flatMap(i => [...i.activity.map(a => t(a.e || a.s)), reveal(i) ? t(reveal(i).d) : 0])) + 12 * day;
+const x = d => (t(d) - t0) / (t1 - t0) * W;
+const gap = H / rows.length, bar = Math.min(5, Math.max(2, gap * 0.42)), dot = Math.min(5, Math.max(2.2, gap * 0.4));
 let s = '';
-['2026-04-01','2026-05-01','2026-06-01','2026-07-01','2026-08-01','2026-09-01'].forEach(d => s += `<line x1="${x(d)}" x2="${x(d)}" y1="0" y2="120" stroke="#22272E" stroke-width="1"/>`);
+for (let m = new Date(t0); m.getTime() <= t1; m.setUTCMonth(m.getUTCMonth() + 1)) {
+  if (m.getTime() === t0) continue;
+  const at = (m.getTime() - t0) / (t1 - t0) * W;
+  s += `<line x1="${at}" x2="${at}" y1="0" y2="${H}" stroke="#22272E" stroke-width="1"/>`;
+}
 rows.forEach((inc, r) => {
   const y = r * gap + gap / 2;
   inc.activity.filter(a => !a.sub).forEach(a => {
-    const a0 = x(a.s), a1 = Math.max(x(a.e || a.s), a0 + 6);
-    s += `<rect x="${a0}" y="${y - 2.5}" width="${a1 - a0}" height="5" rx="2.5" fill="#5A616B"/>`;
+    const a0 = x(a.s), a1 = Math.max(x(a.e || a.s), a0 + bar + 1);
+    s += `<rect x="${a0}" y="${y - bar / 2}" width="${a1 - a0}" height="${bar}" rx="${bar / 2}" fill="#5A616B"/>`;
   });
-  const rev = inc.reveals.filter(v => !v.minor)[0];
+  const rev = reveal(inc);
   const end = Math.max(...inc.activity.map(a => x(a.e || a.s)));
-  if (rev && x(rev.d) - end > 12) s += `<line x1="${end + 6}" x2="${x(rev.d) - 8}" y1="${y}" y2="${y}" stroke="#3A414B" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/>`;
-  if (rev) s += `<circle cx="${x(rev.d)}" cy="${y}" r="5" fill="#EB6834"/>`;
+  if (rev && x(rev.d) - end > 12) s += `<line x1="${end + 5}" x2="${x(rev.d) - dot - 3}" y1="${y}" y2="${y}" stroke="#3A414B" stroke-width="1.2" stroke-dasharray="2 4" stroke-linecap="round"/>`;
+  if (rev) s += `<circle cx="${x(rev.d)}" cy="${y}" r="${dot}" fill="#EB6834"/>`;
 });
 document.getElementById('tl').innerHTML = s;
 </script>

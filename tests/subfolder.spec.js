@@ -28,7 +28,9 @@ test('the timeline, its links and its files stay inside the folder', async ({ pa
   await page.goto(FOLDER);
   await expect(page.locator('#view')).not.toBeEmpty();
   const at = file => origin + FOLDER + file;
-  expect(await resolved(page.getByRole('link', { name: 'Swarm Incidents home' }))).toBe(at(''));
+  expect(await resolved(page.getByRole('link', { name: 'swarms.wiki incidents home' }))).toBe(at(''));
+  // The wordmark's swarms.wiki half opens the wiki's home, the folder's parent.
+  expect(await resolved(page.getByRole('link', { name: 'swarms.wiki home' }))).toBe(origin + '/');
   const follow = page.getByRole('navigation', { name: 'Follow updates' });
   expect(await resolved(follow.getByRole('link', { name: 'Updates', exact: true }))).toBe(at('updates.html'));
   expect(await resolved(follow.getByRole('link', { name: 'Subscribe via RSS' }))).toBe(at('feed.xml'));

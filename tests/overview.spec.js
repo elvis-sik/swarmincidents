@@ -4,7 +4,7 @@ const { test, expect, load } = require('./fixtures');
 test('timeline loads with stats and three tabs, without the section row', async ({ page }) => {
   await load(page);
   await expect(page).toHaveTitle(/.+/);
-  await expect(page.locator('header')).toContainText('Swarm Incidents');
+  await expect(page.locator('header')).toContainText('swarms.wiki incidents');
   await expect(page.locator('#stats')).not.toBeEmpty();
   const lvl = page.locator('#lvl');
   await expect(lvl).toBeHidden();
