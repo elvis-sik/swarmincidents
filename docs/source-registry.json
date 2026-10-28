@@ -3005,6 +3005,111 @@
       "publisher": "andreiafilipaalmeidasousa-sys / GitHub",
       "aliases": [],
       "labels": []
+    },
+    "src-9f04b004c626969d2082": {
+      "url": "https://github.com/user-attachments/files/26863096/claude_api_tokens_2026_04.csv",
+      "title": "Public API token-usage attachment",
+      "publisher": "seeumara / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-9c822b21d39bf237c4c7": {
+      "url": "https://github.com/NousResearch/hermes-agent/issues/50734",
+      "title": "Original Hermes environment-file report",
+      "publisher": "tecnocat / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-55481df4d9b5e35ed03c": {
+      "url": "https://github.com/user-attachments/files/26863093/session_6_run_20260414_172208.log",
+      "title": "Public ingestion log attachment",
+      "publisher": "seeumara / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-c46d486be47960d315b9": {
+      "url": "https://github.com/anthropics/claude-code/issues/50589",
+      "title": "Original archive-ingestion abort report",
+      "publisher": "seeumara / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d0bbd439a0dd810ac880": {
+      "url": "https://github.com/cline/cline/issues/679",
+      "title": "Original Cline cleanup report and discussion",
+      "publisher": "stuinfla / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5289cf66ab45b69cc993": {
+      "url": "https://github.com/anthropics/claude-code/issues/15796",
+      "title": "Original Supabase stop and backup-session report",
+      "publisher": "Derrick / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-922afbb4218d81fd3a24": {
+      "url": "https://github.com/anthropics/claude-code/issues/21393",
+      "title": "Original Clawdbot configuration-handoff report",
+      "publisher": "koltyj / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-d5415261b0022760e978": {
+      "url": "https://github.com/anthropics/claude-code/issues/27128",
+      "title": "Apparent Human shutdown instructions during a team session",
+      "publisher": "Meme-Theory / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-504e93ca688b1f881986": {
+      "url": "https://github.com/user-attachments/files/26863089/session_6_run_pid.txt",
+      "title": "Public PID attachment",
+      "publisher": "seeumara / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-6499d638ccf13d43edd6": {
+      "url": "https://github.com/openclaw/openclaw/issues/87353",
+      "title": "Second folder deletion after stated ask-first rules",
+      "publisher": "douwenxian0-lang / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-a81fdf0c0429267241dd": {
+      "url": "https://github.com/openclaw/openclaw/issues/25021",
+      "title": "Fabricated Telegram turns followed by file/status/group actions",
+      "publisher": "ksylvan / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-f5e14087f529e481549b": {
+      "url": "https://github.com/anthropics/claude-code/issues/44065",
+      "title": "Original Vercel removal and careful-mode report",
+      "publisher": "nathangrotticelli / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-1befab552e773ffae80f": {
+      "url": "https://github.com/anthropics/claude-code/issues/48324",
+      "title": "Original Vultr server and approval-rule report",
+      "publisher": "GoR-XarraY / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-8d680c4588b56ab580b8": {
+      "url": "https://github.com/anthropics/claude-code/issues/13146",
+      "title": "Per-change permission rules and reported unapproved Git operations",
+      "publisher": "shanmoon / GitHub",
+      "aliases": [],
+      "labels": []
+    },
+    "src-5c79710a7a4f0acccb72": {
+      "url": "https://github.com/anthropics/claude-code/issues/36673",
+      "title": "Gestly checkout work pushed before required review",
+      "publisher": "aefdigitalbr / GitHub",
+      "aliases": [],
+      "labels": []
     }
   },
   "incidents": {
@@ -8609,6 +8714,231 @@
           "text": "stavros publishes this account.",
           "source_ids": [
             "src-b95bedefae4bcdf43bc1"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "cline-cleanup-before-requested-approval": {
+      "curated": [
+        "src-d0bbd439a0dd810ac880"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2024-11-02",
+          "by": "other",
+          "text": "stuinfla publishes the cleanup and approval account.",
+          "source_ids": [
+            "src-d0bbd439a0dd810ac880"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-design-question-unapproved-push-series": {
+      "curated": [
+        "src-8d680c4588b56ab580b8"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-12-05",
+          "by": "other",
+          "text": "shanmoon publishes the account.",
+          "source_ids": [
+            "src-8d680c4588b56ab580b8"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-supabase-stop-before-required-permission": {
+      "curated": [
+        "src-5289cf66ab45b69cc993"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2025-12-30",
+          "by": "other",
+          "text": "The operator publishes the Supabase account.",
+          "source_ids": [
+            "src-5289cf66ab45b69cc993"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-clawdbot-handoff-direct-config-apply": {
+      "curated": [
+        "src-922afbb4218d81fd3a24"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-01-28",
+          "by": "other",
+          "text": "koltyj reports the Clawdbot communication and config.apply sequence.",
+          "source_ids": [
+            "src-922afbb4218d81fd3a24"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-meme-theory-false-human-team-shutdown": {
+      "curated": [
+        "src-d5415261b0022760e978"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-20",
+          "by": "other",
+          "text": "Meme-Theory publishes the account.",
+          "source_ids": [
+            "src-d5415261b0022760e978"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openclaw-fabricated-telegram-turn-actions": {
+      "curated": [
+        "src-a81fdf0c0429267241dd"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-02-24",
+          "by": "other",
+          "text": "ksylvan publishes the account.",
+          "source_ids": [
+            "src-a81fdf0c0429267241dd"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-02-23",
+          "e": "2026-02-23",
+          "label": "Session day reported by the operator",
+          "source_ids": [
+            "src-a81fdf0c0429267241dd"
+          ]
+        }
+      ]
+    },
+    "claude-gestly-required-review-before-push": {
+      "curated": [
+        "src-5c79710a7a4f0acccb72"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-03-20",
+          "by": "other",
+          "text": "aefdigitalbr publishes the Sprint 14 account.",
+          "source_ids": [
+            "src-5c79710a7a4f0acccb72"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-vercel-removals-careful-confirmation": {
+      "curated": [
+        "src-f5e14087f529e481549b"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-06",
+          "by": "other",
+          "text": "nathangrotticelli reports the Vercel removals and omitted confirmations.",
+          "source_ids": [
+            "src-f5e14087f529e481549b"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "claude-vultr-server-deletion-ask-first-rule": {
+      "curated": [
+        "src-1befab552e773ffae80f"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-15",
+          "by": "other",
+          "text": "GoR-XarraY publishes the Vultr server account.",
+          "source_ids": [
+            "src-1befab552e773ffae80f"
+          ]
+        }
+      ],
+      "activity": [
+        {
+          "s": "2026-03-15",
+          "e": "2026-03-15",
+          "label": "March 15 server deletion, according to the operator",
+          "source_ids": [
+            "src-1befab552e773ffae80f"
+          ]
+        }
+      ]
+    },
+    "claude-archive-job-false-abort-summary": {
+      "curated": [
+        "src-c46d486be47960d315b9",
+        "src-504e93ca688b1f881986",
+        "src-55481df4d9b5e35ed03c",
+        "src-9f04b004c626969d2082"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-04-19",
+          "by": "other",
+          "text": "seeumara publishes the aborted-job account and public attachments.",
+          "source_ids": [
+            "src-c46d486be47960d315b9"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "openclaw-article-folders-ask-first-deletion": {
+      "curated": [
+        "src-6499d638ccf13d43edd6"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-05-27",
+          "by": "other",
+          "text": "douwenxian0-lang publishes the two-episode account; its second activity date conflicts with this timestamp.",
+          "source_ids": [
+            "src-6499d638ccf13d43edd6"
+          ]
+        }
+      ],
+      "activity": []
+    },
+    "hermes-forbidden-environment-file-read": {
+      "curated": [
+        "src-9c822b21d39bf237c4c7"
+      ],
+      "additional": [],
+      "reveals": [
+        {
+          "d": "2026-06-22",
+          "by": "other",
+          "text": "tecnocat publishes the owner-directed Hermes account.",
+          "source_ids": [
+            "src-9c822b21d39bf237c4c7"
           ]
         }
       ],

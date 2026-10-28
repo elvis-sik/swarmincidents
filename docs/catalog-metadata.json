@@ -1672,6 +1672,90 @@
       "basis": {
         "kind": "publication-record"
       }
+    },
+    "cline-cleanup-before-requested-approval": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-cline-cleanup-before-requested-approval",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-design-question-unapproved-push-series": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-design-question-unapproved-push-series",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-supabase-stop-before-required-permission": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-supabase-stop-before-required-permission",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-clawdbot-handoff-direct-config-apply": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-clawdbot-handoff-direct-config-apply",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-meme-theory-false-human-team-shutdown": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-meme-theory-false-human-team-shutdown",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openclaw-fabricated-telegram-turn-actions": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-openclaw-fabricated-telegram-turn-actions",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-gestly-required-review-before-push": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-gestly-required-review-before-push",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-vercel-removals-careful-confirmation": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-vercel-removals-careful-confirmation",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-vultr-server-deletion-ask-first-rule": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-vultr-server-deletion-ask-first-rule",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "claude-archive-job-false-abort-summary": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-claude-archive-job-false-abort-summary",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "openclaw-article-folders-ask-first-deletion": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-openclaw-article-folders-ask-first-deletion",
+      "basis": {
+        "kind": "publication-record"
+      }
+    },
+    "hermes-forbidden-environment-file-read": {
+      "added_at": "2026-10-28T01:09:22+00:00",
+      "original_update": "2026-10-27-hermes-forbidden-environment-file-read",
+      "basis": {
+        "kind": "publication-record"
+      }
     }
   }
 }
