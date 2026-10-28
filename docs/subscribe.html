@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Email updates · Swarm Incidents</title>
+<title>Incident email updates · swarms.wiki</title>
 <meta name="description" content="A sourced timeline of incidents in which AI agents reached systems and websites beyond what they were permitted, starting with the agents OpenAI ran during training and evaluation.">
 <meta name="robots" content="noindex"><link rel="canonical" href="https://swarmincidents.com/subscribe.html">
-<link rel="alternate" type="application/rss+xml" title="Swarm Incidents" href="https://swarmincidents.com/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="swarms.wiki incidents" href="https://swarmincidents.com/feed.xml">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script>if(location.pathname.endsWith('/subscribe.html')){const captureNewsletterIntent=event=>{const intent=location.hash.slice(1);if(event&&!/^(confirm|manage|unsubscribe)=/.test(intent))return;window.__newsletterIntent=intent;history.replaceState(null,'',location.pathname);event?.stopImmediatePropagation();document.dispatchEvent(new CustomEvent('newsletter-intent',{detail:intent}))};captureNewsletterIntent();window.addEventListener('hashchange',captureNewsletterIntent);window.addEventListener('popstate',captureNewsletterIntent)}</script>
 <script defer src="newsletter.js"></script>
@@ -18,25 +18,25 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Swarm Incidents">
+<meta property="og:site_name" content="swarms.wiki">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://swarmincidents.com/">
-<meta property="og:title" content="Swarm Incidents: a timeline of AI agent incidents">
+<meta property="og:title" content="A timeline of AI agent incidents · swarms.wiki">
 <meta property="og:description" content="A sourced timeline of incidents in which AI agents reached systems and websites beyond what they were permitted, starting with the agents OpenAI ran during training and evaluation.">
 <meta property="og:image" content="https://swarmincidents.com/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Swarm Incidents, a timeline of AI agent incidents, swarmincidents.com">
+<meta property="og:image:alt" content="swarms.wiki incidents, a timeline of AI agent incidents">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Swarm Incidents: a timeline of AI agent incidents">
+<meta name="twitter:title" content="A timeline of AI agent incidents · swarms.wiki">
 <meta name="twitter:description" content="A sourced timeline of incidents in which AI agents reached systems and websites beyond what they were permitted, starting with the agents OpenAI ran during training and evaluation.">
 <meta name="twitter:image" content="https://swarmincidents.com/og.png">
-<meta name="twitter:image:alt" content="Swarm Incidents, a timeline of AI agent incidents, swarmincidents.com">
+<meta name="twitter:image:alt" content="swarms.wiki incidents, a timeline of AI agent incidents">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"WebSite","@id":"https://swarmincidents.com/#site","url":"https://swarmincidents.com/","name":"Swarm Incidents","inLanguage":"en"},
-{"@type":"Dataset","name":"Swarm Incidents: a timeline of AI agent incidents","description":"A sourced timeline of incidents in which AI agents reached systems and websites beyond what they were permitted, starting with the agents OpenAI ran during training and evaluation.","url":"https://swarmincidents.com/","isPartOf":{"@id":"https://swarmincidents.com/#site"},"dateModified":"2026-10-27","version":"2.2","isAccessibleForFree":true,"keywords":["AI incidents","AI agents","OpenAI","AI safety"]}
+{"@type":"WebSite","@id":"https://swarmincidents.com/#site","url":"https://swarmincidents.com/","name":"swarms.wiki","inLanguage":"en"},
+{"@type":"Dataset","name":"swarms.wiki incidents: a timeline of AI agent incidents","description":"A sourced timeline of incidents in which AI agents reached systems and websites beyond what they were permitted, starting with the agents OpenAI ran during training and evaluation.","url":"https://swarmincidents.com/","isPartOf":{"@id":"https://swarmincidents.com/#site"},"dateModified":"2026-10-27","version":"2.2","isAccessibleForFree":true,"keywords":["AI incidents","AI agents","OpenAI","AI safety"]}
 ]}
 </script>
 <link rel="stylesheet" href="fonts/fonts.css">
@@ -1313,7 +1313,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
     <p>Benchmark-integrity cases are labeled on their cards. They can invalidate a test even when the model did not break an access rule. We include observed actions supported by credible sources; ordinary wrong answers, product defects and capability demonstrations are outside this scope.</p>
     <p>The incident count excludes fictional or fully simulated deployment case studies, deliberately requested sabotage or attack demonstrations, and tests of models deliberately trained to sabotage. Unexpected failures during actual training, evaluation or internal-use tasks can qualify, including benchmark-integrity failures.</p>
     <h3>Explore and support</h3>
-    <p>Find related research, tools and projects at <a href="../">swarms.wiki</a>; other incident trackers similar to Swarm Incidents can be found <a href="../resources#trackers" aria-label="Other incident trackers on swarms.wiki">there</a>.</p>
+    <p>Find related research, tools and projects at <a href="../">swarms.wiki</a>; other incident trackers are listed in its <a href="../resources#trackers">Trackers section</a>.</p>
     <p><a href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer">Support the project on Manifund</a>.</p>
     <h3>Follow updates</h3>
     <p><a href="updates.html">Read the Updates page</a> or <a href="feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
@@ -4352,7 +4352,7 @@ function selectUpdate(id,opts={}){
     h('h3',{text:'What changed'}),updateChanges(u),
     h('p',{class:'sub'},u.history?.reconstructed
       ? ['Reconstructed from the public repository on '+fmtY(r.d)+'. This is the commit date, not a verified deployment time or the event date. ',extA('https://github.com/elvis-sik/swarmincidents/commit/'+u.history.commit,'View historical revision ↗')]
-      : 'Published on Swarm Incidents '+fmtY(r.d)+'. These are site-publication dates, not event dates.')));
+      : 'Published here '+fmtY(r.d)+'. These are site-publication dates, not event dates.')));
   finishCard(id,document.querySelector(`[data-rsp-row="${id}"]`),opts,hadCard);
 }
 function renderUpdatesList(){

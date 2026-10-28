@@ -90,7 +90,7 @@ function selectUpdate(id,opts={}){
     h('h3',{text:'What changed'}),updateChanges(u),
     h('p',{class:'sub'},u.history?.reconstructed
       ? ['Reconstructed from the public repository on '+fmtY(r.d)+'. This is the commit date, not a verified deployment time or the event date. ',extA('https://github.com/elvis-sik/swarmincidents/commit/'+u.history.commit,'View historical revision ↗')]
-      : 'Published on Swarm Incidents '+fmtY(r.d)+'. These are site-publication dates, not event dates.')));
+      : 'Published here '+fmtY(r.d)+'. These are site-publication dates, not event dates.')));
   finishCard(id,document.querySelector(`[data-rsp-row="${id}"]`),opts,hadCard);
 }
 function renderUpdatesList(){

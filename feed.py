@@ -68,7 +68,7 @@ def render(data: dict, log: dict) -> bytes:
     channel = ET.SubElement(root, "channel")
     def field(parent, name, text, **attrs):
         ET.SubElement(parent, name, attrs).text = text
-    field(channel, "title", "Swarm Incidents")
+    field(channel, "title", "swarms.wiki incidents")
     field(channel, "link", SITE)
     field(channel, "description", "Short summaries of new incidents and substantial updates after editorial review.")
     field(channel, "language", "en")
@@ -87,7 +87,7 @@ def render(data: dict, log: dict) -> bytes:
         field(item, "category", entry["type"])
         resources = entry.get("resources") or [{"url":entry["source"], "publisher":entry["publisher"]}]
         links = ' · '.join(f'<a href="{escape(r["url"], quote=True)}">{escape(r["publisher"])} report</a>' for r in resources)
-        body = f'<p>{escape(entry["summary"])}</p><p><a href="{escape(url, quote=True)}">Read on swarmincidents.com</a> · {links}</p>'
+        body = f'<p>{escape(entry["summary"])}</p><p><a href="{escape(url, quote=True)}">Read on swarms.wiki</a> · {links}</p>'
         if entry.get("history", {}).get("reconstructed"):
             body += '<p><em>Reconstructed site history. Publication date is the public repository commit time, not a verified deployment time or the event date.</em></p>'
         field(item, "description", body)

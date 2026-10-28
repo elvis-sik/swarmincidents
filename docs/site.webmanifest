@@ -1,6 +1,6 @@
 {
-  "name": "Swarm Incidents: a timeline of AI agent incidents",
-  "short_name": "Swarm Incidents",
+  "name": "swarms.wiki incidents",
+  "short_name": "Incidents",
   "start_url": "./",
   "display": "browser",
   "background_color": "#0A0C10",
