@@ -121,7 +121,8 @@ test('Dates leads flowing filters, and Latest updates opens the full history',as
 test('historical launch and corrections expose provenance and original snapshots',async({page})=>{
  await page.goto('/updates.html#history-b0218e4-hugging-face');const detail=page.locator('#det');
  await expect(detail).toContainText('Reconstructed history');await expect(detail).toContainText('not a verified deployment time');
- await expect(detail.getByRole('link',{name:'View historical revision ↗'})).toHaveAttribute('href',/github.com\/elvis-sik\/swarmincidents\/commit\/b0218e4/);
+ await expect(detail).toContainText('Reconstructed from catalog version history');
+ await expect(detail.locator('a[href^="https://github.com/elvis-sik/swarmincidents"]')).toHaveCount(0);
  await expect(detail).toContainText('Not yet listed');await expect(detail.locator('.update-after').first()).toContainText('During a cyber-capability evaluation');
 });
 
@@ -172,4 +173,13 @@ test('modal keeps cards stationary, restores focus and has a primary incident ac
 test('modal backdrop closes details without moving or scrolling the list',async({page})=>{
  await page.goto('/updates.html');const card=page.locator('.update-list-card').first();await card.click();await expect(page.locator('#update-dialog')).toBeVisible();
  await page.mouse.click(2,2);await expect(page.locator('#update-dialog')).not.toBeVisible();await expect(card).toBeFocused();
+});
+
+
+test('released catalog remains public without repository links',async({page,request})=>{
+ const response=await request.get('/incidents.json');expect(response.ok()).toBeTruthy();
+ expect(await response.json()).toEqual(JSON.parse(require('node:fs').readFileSync(require('node:path').join(__dirname,'../incidents.json'),'utf8')));
+ for(const path of ['/','/updates.html#history-b0218e4-hugging-face','/subscribe.html']){
+  await page.goto(path);await expect(page.locator('a[href^="https://github.com/elvis-sik/swarmincidents"]')).toHaveCount(0);
+ }
 });

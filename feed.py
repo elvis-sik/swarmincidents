@@ -89,7 +89,7 @@ def render(data: dict, log: dict) -> bytes:
         links = ' · '.join(f'<a href="{escape(r["url"], quote=True)}">{escape(r["publisher"])} report</a>' for r in resources)
         body = f'<p>{escape(entry["summary"])}</p><p><a href="{escape(url, quote=True)}">Read on swarms.wiki</a> · {links}</p>'
         if entry.get("history", {}).get("reconstructed"):
-            body += '<p><em>Reconstructed site history. Publication date is the public repository commit time, not a verified deployment time or the event date.</em></p>'
+            body += '<p><em>Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.</em></p>'
         field(item, "description", body)
     ET.indent(root, space="  ")
     return ET.tostring(root, encoding="utf-8", xml_declaration=True) + b"\n"

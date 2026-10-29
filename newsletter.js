@@ -60,5 +60,5 @@
   }catch(e){form.hidden=true;q('#newsletter-link-view').hidden=false;q('#newsletter-confirm').hidden=true;q('#newsletter-new-link').hidden=false;message(e.message)}
  }
  document.addEventListener('newsletter-intent',e=>loadLink(e.detail));
- if(location.pathname.endsWith('/subscribe.html'))loadLink(window.__newsletterIntent);
+ if(/(?:^|\/)subscribe(?:\.html)?\/?$/.test(location.pathname))loadLink(window.__newsletterIntent);
 })();

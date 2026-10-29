@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://swarms.wiki/incidents/">
 <link rel="alternate" type="application/rss+xml" title="swarms.wiki incidents" href="https://swarms.wiki/incidents/feed.xml">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<script>if(location.pathname.endsWith('/subscribe.html')){const captureNewsletterIntent=event=>{const intent=location.hash.slice(1);if(event&&!/^(confirm|manage|unsubscribe)=/.test(intent))return;window.__newsletterIntent=intent;history.replaceState(null,'',location.pathname);event?.stopImmediatePropagation();document.dispatchEvent(new CustomEvent('newsletter-intent',{detail:intent}))};captureNewsletterIntent();window.addEventListener('hashchange',captureNewsletterIntent);window.addEventListener('popstate',captureNewsletterIntent)}</script>
+<script>if(/(?:^|\/)subscribe(?:\.html)?\/?$/.test(location.pathname)){const captureNewsletterIntent=event=>{const intent=location.hash.slice(1);if(event&&!/^(confirm|manage|unsubscribe)=/.test(intent))return;window.__newsletterIntent=intent;history.replaceState(null,'',location.pathname);event?.stopImmediatePropagation();document.dispatchEvent(new CustomEvent('newsletter-intent',{detail:intent}))};captureNewsletterIntent();window.addEventListener('hashchange',captureNewsletterIntent);window.addEventListener('popstate',captureNewsletterIntent)}</script>
 <script defer src="newsletter.js"></script>
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
