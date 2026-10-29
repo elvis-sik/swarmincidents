@@ -35,6 +35,9 @@ page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
 docs = here / "docs"
 docs.mkdir(exist_ok=True)
 build_feed(data, here)
+# The full catalog as published, for the pipeline and anyone who wants the data (October 29, Elvis chose
+# this over a token reading the private repo). Byte-for-byte the approved incidents.json.
+shutil.copyfile(here / "incidents.json", docs / "incidents.json")
 shutil.copyfile(here / "catalog-metadata.json", docs / "catalog-metadata.json")
 shutil.copyfile(here / "source-registry.json", docs / "source-registry.json")
 (docs / "updates.json").write_text(json.dumps(updates, ensure_ascii=False, indent=2) + "\n")
