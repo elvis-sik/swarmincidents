@@ -3,7 +3,7 @@ const updates = require('../updates.json').updates;
 
 test('RSS is discoverable in the header and About, with approved new and update entries', async ({page, request}) => {
   await page.goto('/', {waitUntil:'domcontentloaded'});
-  await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', 'https://swarmincidents.com/feed.xml');
+  await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', 'https://swarms.wiki/incidents/feed.xml');
   const header = page.getByRole('navigation', {name:'Follow updates'});
   await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toBeVisible();
   await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toHaveAttribute('href', 'feed.xml');

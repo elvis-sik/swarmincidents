@@ -1,7 +1,7 @@
 /* Aggregate GoatCounter telemetry. No accounts, persistent visitor IDs, or search text. */
 (() => {
   'use strict';
-  const enabled = location.protocol === 'https:' && ['swarmincidents.com', 'www.swarmincidents.com'].includes(location.hostname);
+  const enabled = location.protocol === 'https:' && ['swarms.wiki', 'swarmincidents.com', 'www.swarmincidents.com'].includes(location.hostname);
   const labels = {
     'engaged-30s': '30 seconds of attention', 'engaged-2m': '2 minutes of attention',
     'incident-open': 'Incident opened', 'reader-open': 'Agent post reader opened',
