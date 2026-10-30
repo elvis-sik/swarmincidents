@@ -56,4 +56,22 @@ function siteData() {
 
 const isMobile = testInfo => !!testInfo.project.use.isMobile;
 
-module.exports = { test, expect: base.expect, load, wikiData, siteData, isMobile };
+/** Opens the Updates page from the header (October 29: the header's Updates link is gone): its "Updated" date on
+ *  wide screens, Latest updates in its menu where the date is hidden. */
+async function openUpdates(page) {
+  const date = page.locator('#top #meta');
+  if (await date.isVisible()) return date.click();
+  await page.locator('#top .menu-btn').click();
+  await page.locator('#site-menu').getByRole('link', { name: 'Latest updates', exact: true }).click();
+}
+
+/** Opens About from the header: its button, or About in its menu where the button is hidden (October 29: 900px
+ *  wide and narrower, to make room for the wordmark). */
+async function openAbout(page) {
+  const button = page.locator('#about-btn');
+  if (await button.isVisible()) return button.click();
+  await page.locator('#top .menu-btn').click();
+  await page.locator('#site-menu').getByRole('button', { name: 'About', exact: true }).click();
+}
+
+module.exports = { test, expect: base.expect, load, wikiData, siteData, isMobile, openUpdates, openAbout };

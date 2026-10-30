@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the agent-incident timeline: inject incidents.json into template.html, write docs/ (the GitHub Pages site)."""
 import json
+import os
 import shutil
 from pathlib import Path
 from datetime import datetime
@@ -20,6 +21,20 @@ if json.loads((here / "updates.json").read_text(encoding="utf-8")) != updates:
 # Persisted provenance is separate from the append-only editorial catalog.
 metadata = json.loads((here / "catalog-metadata.json").read_text(encoding="utf-8"))
 registry = validate_sources(json.loads((here / "source-registry.json").read_text(encoding="utf-8")), data)
+# Draft labels for a local preview only (October 29, reviews/2026-10-29-labels-feeds): SWARM_LABELS names a
+# draft-labels.json whose severity and swarm/fleet categories go into the page and the feeds, in memory, after the
+# publication checks above. They are proposals: never build docs/ for publication with it set. Unset, the build is
+# unchanged, and docs/incidents.json is always the approved catalog.
+if os.environ.get("SWARM_LABELS"):
+    drafts = {r["id"]: r for r in json.loads(Path(os.environ["SWARM_LABELS"]).read_text(encoding="utf-8"))["labels"]}
+    data = json.loads(json.dumps(data))
+    for e in data["incidents"]:
+        if e["id"] in drafts:
+            r = drafts[e["id"]]
+            e["severity"] = r["severity"]
+            e["categories"] = [c for c, on in (("swarm", r["swarm"]), ("fleet", r["fleet"]),
+                                                ("benchmark-integrity", "benchmark-integrity" in (e.get("categories") or [])
+                                                 or e.get("category") == "benchmark-integrity")) if on]
 # Keep retired permalink IDs pointing at the exact correction and before snapshot.
 # Derive from journal removals, never from absent search/filter results.
 site_data = dict(data, catalogAdded=catalog_additions(metadata, updates, data), catalogUpdated=catalog_updates(updates, data), publicSources=registry, retiredIncidents=retired_incidents(data, updates))
@@ -27,6 +42,11 @@ js = "const DATA = " + json.dumps(site_data, ensure_ascii=False) + ";"
 page = (here / "template.html").read_text().replace("/*__DATA__*/", js.replace("</", "<\\/"))
 page = page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
 page = page.replace("/*__CARD_HISTORY__*/", (here / "card-history.js").read_text())
+# The incident search's link rules, shared word for word with the swarms.wiki Worker (tests/unit/link-key.cjs).
+link_key = (here / "link-key.js").read_text()
+if "</script" in link_key.lower():
+    raise ValueError("link-key.js can't be inlined: it contains </script")
+page = page.replace("/*__LINK_KEY__*/", link_key)
 page = page.replace("__UPDATED__", updated).replace("__VERSION__", version)
 wiki = json.loads((here / "wiki-data.js").read_text(encoding="utf-8").split("=", 1)[1].rstrip().rstrip(";"))
 page = page.replace("__WIKI_N__", str(len(wiki["posts"])))
@@ -53,6 +73,7 @@ update_data["responses"] = [dict(
 updates_page = (here / "template.html").read_text().replace("/*__DATA__*/", ("const DATA = " + json.dumps(update_data, ensure_ascii=False) + ";").replace("</", "<\\/"))
 updates_page = updates_page.replace("/*__UPDATES_VIEW__*/", (here / "updates-view.js").read_text())
 updates_page = updates_page.replace("/*__CARD_HISTORY__*/", (here / "card-history.js").read_text())
+updates_page = updates_page.replace("/*__LINK_KEY__*/", link_key)
 updates_page = updates_page.replace("const UPDATES_PAGE = false;", "const UPDATES_PAGE = true;")
 updates_page = updates_page.replace("__UPDATED__", updated).replace("__VERSION__", version).replace("__WIKI_N__", str(len(wiki["posts"])))
 updates_page = updates_page.replace("<title>A timeline of AI agent incidents · swarms.wiki</title>", "<title>Incident updates · swarms.wiki</title>")

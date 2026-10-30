@@ -1,4 +1,4 @@
-const {test, expect, load} = require('./fixtures');
+const {test, expect, load, openAbout} = require('./fixtures');
 test.use({expectedHttpError:'https://analytics.swarmincidents.com/api/report'});
 
 async function mockService(page, status = 200) {
@@ -34,6 +34,6 @@ test('failed submission preserves draft and retry uses the same id', async ({pag
   expect(attempts.length).toBe(2); expect(attempts[0].id).toBe(attempts[1].id);
 });
 test('About opens the report form', async ({page}) => {
-  await mockService(page); await load(page); await page.locator('#about-btn').click(); await page.locator('#about-report').click();
+  await mockService(page); await load(page); await openAbout(page); await page.locator('#about-report').click();
   await expect(page.locator('#about')).not.toBeVisible(); await expect(page.locator('#report')).toBeVisible();
 });

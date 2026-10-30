@@ -89,7 +89,7 @@ function selectUpdate(id,opts={}){
     r.src?.length?srcSection(r.src):null,
     h('h3',{text:'What changed'}),updateChanges(u),
     h('p',{class:'sub'},u.history?.reconstructed
-      ? ['Reconstructed from the public repository on '+fmtY(r.d)+'. This is the commit date, not a verified deployment time or the event date. ',extA('https://github.com/elvis-sik/swarmincidents/commit/'+u.history.commit,'View historical revision ↗')]
+      ? 'Reconstructed from catalog version history on '+fmtY(r.d)+'. This is the revision date, not a verified deployment time or the event date.'
       : 'Published here '+fmtY(r.d)+'. These are site-publication dates, not event dates.')));
   finishCard(id,document.querySelector(`[data-rsp-row="${id}"]`),opts,hadCard);
 }

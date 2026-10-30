@@ -15,8 +15,9 @@ test.describe('visual @visual', () => {
     await page.mouse.move(0, 0);
     await page.waitForTimeout(150);
   };
+  // The category toggles' counts (October 29) change with the catalog, as the tab counts do.
   const data = page => [page.locator('#meta'), page.locator('#ver'), page.locator('#stats'), page.locator('#count'),
-    page.locator('#tabs .n'), page.locator('#foot .lg', { hasText: /^Updated/ })];
+    page.locator('#tabs .n'), page.locator('.f-tags .n'), page.locator('#foot .lg', { hasText: /^Updated/ })];
   const mask = page => [...data(page), page.locator('#view')];
 
   test('overview header, nav, tabs and filters', async ({ page }) => {

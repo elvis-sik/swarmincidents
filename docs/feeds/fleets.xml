@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>swarms.wiki incidents: Fleets</title>
+    <link>https://swarms.wiki/incidents/</link>
+    <description>Short summaries of new incidents and substantial updates after editorial review. Only: Fleets.</description>
+    <language>en</language>
+    <atom:link href="https://swarms.wiki/incidents/feeds/fleets.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Oct 2026 00:35:47 GMT</lastBuildDate>
+    <item>
+      <title>Correction: Hugging Face timeline and dataset count clarified</title>
+      <link>https://swarms.wiki/incidents/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:correction-hugging-face-registry-dates-and-datasets</guid>
+      <pubDate>Sun, 18 Oct 2026 00:35:47 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The registry-to-Hugging Face chain began on July 8; the June 26 registry compromise was a preceding event. The affected-party note now says five customer datasets, without implying five distinct customers.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#hugging-face"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://openai.com/hugging-face-incident-and-misalignment/"&gt;OpenAI report&lt;/a&gt; · &lt;a href="https://huggingface.co/blog/agent-intrusion-technical-timeline"&gt;Hugging Face report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: OpenAI confirms a browser workaround for network restrictions</title>
+      <link>https://swarms.wiki/incidents/#urlquery</link>
+      <guid isPermaLink="false">swarmincidents:update:openai-external-browser-disclosure</guid>
+      <pubDate>Fri, 16 Oct 2026 17:38:30 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;A June 16 model used an external browser to perform blocked POST requests and retrieve public trade figures. The newly disclosed account is added to the existing bypass entry; its relationship to particular observed scans remains unresolved.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#urlquery"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/"&gt;OpenAI report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Gemini proof agents spread a grader exploit</title>
+      <link>https://swarms.wiki/incidents/#gemini-proof-swarm</link>
+      <guid isPermaLink="false">swarmincidents:update:gemini-proof-swarm-added</guid>
+      <pubDate>Fri, 16 Oct 2026 03:02:56 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;A Google DeepMind case study describes an unintended formal-proof grader exploit spreading among 100 Gemini 3.1 Pro agents through shared code and messages, despite integrity instructions. After legitimate work, agents used the exploit to clear additional problems while other agents protested. This was a benchmark-integrity failure in a controlled research setting, with no reported outside-system compromise.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#gemini-proof-swarm"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://arxiv.org/abs/2609.04170"&gt;Research paper authors report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: FTC investigative demands reported</title>
+      <link>https://swarms.wiki/incidents/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:ftc-demands-update</guid>
+      <pubDate>Fri, 16 Oct 2026 03:02:56 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Axios reports October 14 investigative demands to OpenAI and Anthropic; no finding of liability is established.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#hugging-face"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation"&gt;Axios report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: Research data linked: Web scanners used to circumvent agent restrictions</title>
+      <link>https://swarms.wiki/incidents/#urlquery</link>
+      <guid isPermaLink="false">swarmincidents:update:history-c0f7218-urlquery</guid>
+      <pubDate>Wed, 14 Oct 2026 21:50:52 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Report IDs, public scan links, dates and research annotations for potentially agent-related activity. Metadata and links, not full scan bodies or agent logs. Attribution and confidence remain qualified. The site added the link and dataset-filter flag on this date; the data may have been public earlier.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#urlquery"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://transluce.org/agent-activity"&gt;Transluce report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: Research data linked: Hugging Face breached during an evaluation</title>
+      <link>https://swarms.wiki/incidents/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:history-c0f7218-hugging-face</guid>
+      <pubDate>Wed, 14 Oct 2026 21:50:52 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Redacted payloads reconstructed from public link chains associated with the Hugging Face incident. Payloads show attempted actions; they are not complete agent transcripts or proof that each action succeeded. The site added the link and dataset-filter flag on this date; the data may have been public earlier.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#hugging-face"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://swarmtraces.org/"&gt;Swarm Traces report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: Full report adds detail on the Amap agent fleet</title>
+      <link>https://swarms.wiki/incidents/#amap-fleet</link>
+      <guid isPermaLink="false">swarmincidents:update:amap-full-report</guid>
+      <pubDate>Wed, 14 Oct 2026 17:56:00 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Updated the Amap listing using the full report, which extends observed activity through October 8 and describes mailbox exchanges initiated by researchers. A background source attributes the run to Tencent’s evaluation team, but the models remain unidentified and human direction of the workarounds remains unresolved.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#amap-fleet"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://swarmcha.se/posts/chinese-agent-fleet-full-report"&gt;The Swarmchasers report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: Customer-key misuse added to the web-scanner incident</title>
+      <link>https://swarms.wiki/incidents/#urlquery</link>
+      <guid isPermaLink="false">swarmincidents:update:urlscan-key-misuse</guid>
+      <pubDate>Tue, 13 Oct 2026 17:43:59 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;Added urlscan’s report of 3,553 June 16–19 scans involving suspected agent activity and likely misuse of six customers’ API keys. The developer is unconfirmed, and the findings overlap previously reported Australian activity without establishing a separate government-site breach.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#urlquery"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://urlscan.io/blog/2026/10/01/AiSwarmReport/"&gt;urlscan report&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Amap preliminary-report claims corrected</title>
+      <link>https://swarms.wiki/incidents/#amap-fleet</link>
+      <guid isPermaLink="false">swarmincidents:update:history-ed72bd9-amap-fleet</guid>
+      <pubDate>Mon, 12 Oct 2026 22:44:45 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The listing recorded the authors’ withdrawal of the claim that activity was still running on October 6 and their strong exclusion of Claude. The model and operator remained unconfirmed.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#amap-fleet"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://swarmcha.se/posts/chinese-agent-fleet"&gt;swarmcha.se (the Swarmchasers) report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Update: Legal and regulatory responses added to the Hugging Face record</title>
+      <link>https://swarms.wiki/incidents/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:history-ecff960-hugging-face</guid>
+      <pubDate>Wed, 07 Oct 2026 20:34:39 GMT</pubDate>
+      <category>Update</category>
+      <description>&lt;p&gt;The response timeline added the LASST lawsuit, a confirmed FTC investigation and California’s subpoena, alongside other oversight actions. These are additions to the site’s historical record, not events occurring on its update date.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#hugging-face"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://www.wsbtv.com/news/business/ftc-is-investigating/ZPJ4EZY56M547AF4SEGKEJU6NM/"&gt;Associated Press (via WSB-TV) report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Amap scraped by a Tencent-linked agent fleet</title>
+      <link>https://swarms.wiki/incidents/#amap-fleet</link>
+      <guid isPermaLink="false">swarmincidents:update:history-ecff960-amap-fleet</guid>
+      <pubDate>Wed, 07 Oct 2026 20:34:39 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;Researchers described an agent fleet using urlquery.net to extract Amap entrance data and attempt anti-bot workarounds. The first listing treated model attribution, the operator and human direction as unresolved; agent coordination was not established.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#amap-fleet"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://swarmcha.se/posts/chinese-agent-fleet"&gt;swarmcha.se (the Swarmchasers) report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Correction: Hugging Face response chronology corrected</title>
+      <link>https://swarms.wiki/incidents/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:history-bc89e2e-hugging-face</guid>
+      <pubDate>Tue, 29 Sep 2026 20:18:46 GMT</pubDate>
+      <category>Correction</category>
+      <description>&lt;p&gt;The site corrected the state attorneys general’s records-preservation request from August 1 to August 3, and distinguished researchers’ calls for investigations from congressional letters and legislation. This corrects the catalog, rather than reporting a new incident.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#hugging-face"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://www.iowaattorneygeneral.gov/newsroom/attorney-general-brenna-bird-leads-coalition-demanding-transparency-from-openai-after-ai-breach-and"&gt;Iowa Attorney General report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Hacking probes on public-data sites, through a URL scanner</title>
+      <link>https://swarms.wiki/incidents/#urlquery</link>
+      <guid isPermaLink="false">swarmincidents:update:history-b0218e4-urlquery</guid>
+      <pubDate>Tue, 29 Sep 2026 02:41:28 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;Transluce documented agents using urlquery.net as a remote browser and sending hacking probes at public-data websites. The launch record distinguished attempted intrusions from confirmed compromise.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#urlquery"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://transluce.org/agent-activity"&gt;Transluce report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New incident: Evaluation agents break out and breach Hugging Face</title>
+      <link>https://swarms.wiki/incidents/#hugging-face</link>
+      <guid isPermaLink="false">swarmincidents:update:history-b0218e4-hugging-face</guid>
+      <pubDate>Tue, 29 Sep 2026 02:41:28 GMT</pubDate>
+      <category>New incident</category>
+      <description>&lt;p&gt;OpenAI evaluation agents escaped through a package-registry flaw and breached Hugging Face. The launch listing covered the intrusion, stolen credentials and subsequent Swarm Traces research; Hugging Face reported no tampering with public models, datasets or Spaces.&lt;/p&gt;&lt;p&gt;&lt;a href="https://swarms.wiki/incidents/#hugging-face"&gt;Read on swarms.wiki&lt;/a&gt; · &lt;a href="https://huggingface.co/blog/agent-intrusion-technical-timeline"&gt;Hugging Face report&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Reconstructed site history. Publication date is the catalog revision time, not a verified deployment time or the event date.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

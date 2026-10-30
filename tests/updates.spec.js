@@ -1,6 +1,7 @@
-const {test,expect}=require('./fixtures');
+const {test,expect,openUpdates}=require('./fixtures');
 const entries=require('../updates.json').updates;
 const catalog=require('../incidents.json');
+const catsOf=e=>e.categories||[({coordination:'swarm','multi-agent':'swarm',fleet:'fleet'})[e.agent_group?.kind],e.category].filter(Boolean);
 const developments=entries.filter(u=>u.type==='Update');
 const archiveDevelopments=developments.filter(u=>u.freshness==='archive');
 const row=page=>page.locator('#rows [data-rsp-row]');
@@ -49,7 +50,7 @@ test('shared custom date range filters publication dates and persists',async({pa
 test('dashboard and Updates have identical width header theme and timeline card styles',async({page})=>{
  await page.goto('/',{waitUntil:'domcontentloaded'});await page.getByRole('tab',{name:/Responses/}).click();
  const read=()=>page.evaluate(()=>{const props=(selector,names)=>{const s=getComputedStyle(document.querySelector(selector));return Object.fromEntries(names.map(n=>[n,s[n]]))};return {wrap:props('.wrap',['maxWidth','paddingLeft','paddingRight']),header:props('#top',['paddingTop','paddingBottom','fontSize']),card:props('.r-card',['padding','fontSize','maxWidth','borderRadius']),icon:document.querySelector('#theme-btn').innerHTML}});
- const home=await read();await page.getByRole('navigation',{name:'Follow updates'}).getByRole('link',{name:'Updates',exact:true}).click();await expect(row(page)).toHaveCount(entries.length);await page.getByRole('button',{name:'Timeline',exact:true}).click();expect(await read()).toEqual(home);
+ const home=await read();await openUpdates(page);await expect(row(page)).toHaveCount(entries.length);await page.getByRole('button',{name:'Timeline',exact:true}).click();expect(await read()).toEqual(home);
  const old=await page.locator('#theme-btn').getAttribute('aria-label');await page.locator('#theme-btn').click();await expect(page.locator('#theme-btn')).not.toHaveAttribute('aria-label',old);
  await page.getByRole('link',{name:'swarms.wiki incidents home',exact:true}).click();await expect(page.locator('#theme-btn')).not.toHaveAttribute('aria-label',old);
 });
@@ -68,14 +69,14 @@ test('modal card list and narrow layouts remain usable',async({page})=>{
 test('stats and shell anchors stay in place while Updates defaults to all tags',async({page},testInfo)=>{
  const anchors=()=>page.evaluate(()=>Object.fromEntries(['#top','#stats','#lvl','#app'].map(s=>{const r=document.querySelector(s).getBoundingClientRect();return[s,{top:r.top,height:r.height}]})));
  await page.goto('/?tags=all');const overview=await anchors();const text=await page.locator('#stats').innerText();
- await page.getByRole('navigation',{name:'Follow updates'}).getByRole('link',{name:'Updates',exact:true}).click();
+ await openUpdates(page);
  await expect(page).toHaveURL(/\/updates.html$/);await expect(row(page)).toHaveCount(entries.length);
  await expect(page.locator('#lvl')).toBeHidden();await expect(page.locator('#lvl')).toBeEmpty();
- await expect.poll(()=>page.locator('#stats').innerText()).toBe(text);await expect(page.locator('.f-tags .pk-btn')).toHaveAccessibleName('Categories: All incidents');
+ await expect.poll(()=>page.locator('#stats').innerText()).toBe(text);await expect(page.locator('.f-tags [aria-pressed="true"]')).toHaveCount(0);
  const updates=await anchors();for(const s of ['#top','#stats','#app']){expect(Math.abs(updates[s].top-overview[s].top),s+' top').toBeLessThanOrEqual(1);if(s!=='#app')expect(Math.abs(updates[s].height-overview[s].height),s+' height').toBeLessThanOrEqual(1);}
- await page.goto('/');await expect(page.locator('.f-tags .pk-btn')).toHaveAccessibleName('Categories: Swarms / fleets');
- await page.getByRole('navigation',{name:'Follow updates'}).getByRole('link',{name:'Updates',exact:true}).click();
- await expect(row(page)).toHaveCount(entries.length);await expect(page.locator('.f-tags .pk-btn')).toHaveAccessibleName('Categories: All incidents');
+ await page.goto('/');await expect(page.locator('.f-tags [aria-pressed="true"]')).toHaveCount(2);await expect(page.locator('.f-tags [data-tag="benchmark"]')).toHaveAttribute('aria-pressed','false');
+ await openUpdates(page);
+ await expect(row(page)).toHaveCount(entries.length);await expect(page.locator('.f-tags [aria-pressed="true"]')).toHaveCount(0);
 });
 
 test('all update type filters are at the top, keyboard accessible and persistent',async({page})=>{
@@ -97,7 +98,7 @@ test('all top type options fit at narrow widths and explicit tag scope still wor
   await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const fits=await page.locator('.update-types').evaluate(el=>{const r=el.getBoundingClientRect();return [...el.querySelectorAll('button')].every(b=>{const x=b.getBoundingClientRect();return x.left>=r.left&&x.right<=r.right+1&&b.scrollWidth<=b.clientWidth+1;});});expect(fits).toBe(true);
  }
- await page.goto('/updates.html?tags=benchmark');const n=entries.filter(u=>catalog.incidents.find(i=>i.id===u.incident)?.category==='benchmark-integrity').length;await expect(row(page)).toHaveCount(n);
+ await page.goto('/updates.html?tags=benchmark');const n=entries.filter(u=>catsOf(catalog.incidents.find(i=>i.id===u.incident)||{}).includes('benchmark-integrity')).length;await expect(row(page)).toHaveCount(n);
  await page.reload();await expect(row(page)).toHaveCount(n);
 });
 
@@ -112,7 +113,8 @@ test('Dates leads flowing filters, and Latest updates opens the full history',as
    return {overflow:document.documentElement.scrollWidth>innerWidth,tops:items.map(x=>x.top)};
   });
   expect(flow.overflow).toBe(false);
-  if(width>=1280)expect(Math.max(...flow.tops)-Math.min(...flow.tops)).toBeLessThanOrEqual(3);
+  // Three category toggles (October 29 prototype) need more room than the old dropdown: one row from 1440 px, wrapping below.
+  if(width>=1440)expect(Math.max(...flow.tops)-Math.min(...flow.tops)).toBeLessThanOrEqual(3);
  }
  await page.goto('/');await expect(page.getByRole('link',{name:'Latest updates',exact:true})).toBeVisible();
  await page.getByRole('link',{name:'Latest updates',exact:true}).click();await expect(page).toHaveURL(/updates.html$/);await expect(row(page)).toHaveCount(entries.length);
@@ -121,7 +123,8 @@ test('Dates leads flowing filters, and Latest updates opens the full history',as
 test('historical launch and corrections expose provenance and original snapshots',async({page})=>{
  await page.goto('/updates.html#history-b0218e4-hugging-face');const detail=page.locator('#det');
  await expect(detail).toContainText('Reconstructed history');await expect(detail).toContainText('not a verified deployment time');
- await expect(detail.getByRole('link',{name:'View historical revision ↗'})).toHaveAttribute('href',/github.com\/elvis-sik\/swarmincidents\/commit\/b0218e4/);
+ // No link to the old public repository, which is to go private (October 29, tracker hosting decision 4).
+ await expect(detail).toContainText('Reconstructed from catalog version history');await expect(detail.locator('a[href*="github.com/elvis-sik"]')).toHaveCount(0);
  await expect(detail).toContainText('Not yet listed');await expect(detail.locator('.update-after').first()).toContainText('During a cyber-capability evaluation');
 });
 

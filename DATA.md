@@ -25,7 +25,8 @@ The count excludes fictional or fully simulated deployment case studies, commiss
 | `labs` | Developer slugs (keys of `labs`) whose models were involved, e.g. `["openai"]` or `["anthropic", "openai"]` |
 | `response_title` | Optional heading for `lab_response`, used when the account concerns an operator rather than an identified model developer |
 | `runby` | Who ran the agents: `developer`, `evaluator` (name it in the summary), `user` (a user-operated assistant) or `unknown` (swarms in the wild) |
-| `category` | Optional `benchmark-integrity`: observed answer retrieval or scoring manipulation, shown as a label on the incident card. It does not assert an attack, access violation or alignment failure |
+| `categories` | Optional list, in this order, of `swarm` (several agents interacting or coordinating: messages, shared work, or one agent directing or checking another when that is part of what went wrong), `fleet` (many instances of an agent acting in one campaign, whether or not they interact) and `benchmark-integrity` (observed answer retrieval or scoring manipulation; it does not assert an attack, access violation or alignment failure). Leave the field out when none applies. Shown as labels on the card; drives the category toggles and the filtered feeds. Replaced `agent_group.kind` and `category` on October 29, 2026 (`swarmops.categories.derive()` converts an older draft) |
+| `agents_note` | Required with `swarm` or `fleet`, absent otherwise: one line, shown on the card after "Swarm:" or "Fleet:", on what the agents did together and what the sources don't establish. Replaced `agent_group.note` |
 | `summary`, `lab_response`, `found`, `status` | Text shown on the card; `lab_response` is what the developer said or did |
 | `activity[]` | `{s, e, label}`: when agents were active. `approx: true` for loosely reported windows; `sub: true` for notable sub-windows |
 | `knew` | `{d, text}`: when the developer is documented as knowing |

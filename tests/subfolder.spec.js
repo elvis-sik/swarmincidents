@@ -2,7 +2,7 @@
 // and every file the pages load is relative to the page, so the same build works at the root and in a folder.
 // These tests serve the site at /incidents/ by mapping that folder onto the root, and fail on any request that
 // escapes it. The rest of the suite is the positive control: the same build, served at the root.
-const { test, expect, siteData } = require('./fixtures');
+const { test, expect, siteData, openUpdates, openAbout } = require('./fixtures');
 const fs = require('fs');
 const path = require('path');
 
@@ -32,17 +32,19 @@ test('the timeline, its links and its files stay inside the folder', async ({ pa
   // The wordmark's swarms.wiki half opens the wiki's home, the folder's parent.
   expect(await resolved(page.getByRole('link', { name: 'swarms.wiki home' }))).toBe(origin + '/');
   const follow = page.getByRole('navigation', { name: 'Follow updates' });
-  expect(await resolved(follow.getByRole('link', { name: 'Updates', exact: true }))).toBe(at('updates.html'));
+  // The header's ways to Updates (October 29): its "Updated" date, and Latest updates in its menu.
+  expect(await resolved(page.locator('#top #meta'))).toBe(at('updates.html'));
+  expect(await resolved(page.locator('#site-menu a', { hasText: 'Latest updates' }))).toBe(at('updates.html'));
   expect(await resolved(follow.getByRole('link', { name: 'Subscribe via RSS' }))).toBe(at('feed.xml'));
   for (const sel of ['link[rel="icon"][type="image/svg+xml"]', 'link[rel="apple-touch-icon"]', 'link[rel="manifest"]', 'link[rel="stylesheet"][href$="fonts.css"]'])
     expect(await resolved(page.locator(sel))).toMatch(new RegExp('^' + at('')));
   const manifest = await (await page.request.get(origin + '/site.webmanifest')).json();
   expect(manifest.start_url).toBe('./');
   expect(manifest.icons.every(i => !i.src.startsWith('/'))).toBe(true);
-  await page.getByRole('button', { name: 'About', exact: true }).click();
+  await openAbout(page);
   expect(await resolved(page.getByRole('dialog').getByRole('link', { name: 'Read the Updates page' }))).toBe(at('updates.html'));
   await page.keyboard.press('Escape');
-  await follow.getByRole('link', { name: 'Updates', exact: true }).click();
+  await openUpdates(page);
   await expect(page).toHaveURL(at('updates.html'));
   await expect(page.getByRole('heading', { name: 'Updates', exact: true })).toBeVisible();
   expect(await resolved(page.getByRole('link', { name: 'Subscribe to updates via RSS' }))).toBe(at('feed.xml'));

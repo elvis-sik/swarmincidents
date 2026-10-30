@@ -1,36 +1,38 @@
 const {test,expect,load,siteData,isMobile}=require('./fixtures');
 const data=siteData();
-const swarm=data.incidents.filter(e=>e.agent_group);
+const catsOf=e=>e.categories||[({coordination:'swarm','multi-agent':'swarm',fleet:'fleet'})[e.agent_group?.kind],e.category].filter(Boolean);
+const swarm=data.incidents.filter(e=>catsOf(e).some(c=>c==='swarm'||c==='fleet'));
 const main=e=>e.reveals.find(r=>!r.minor);
 const rows=p=>p.locator('#view [data-inc-row]');
 const ids=p=>rows(p).evaluateAll(es=>es.map(e=>e.dataset.incRow).sort());
-const tag=p=>p.locator('.f-tags .pk-btn');
-async function openTags(p){if(await tag(p).getAttribute('aria-expanded')!=='true')await tag(p).click();}
-async function choose(p,id,on){await openTags(p);const o=p.locator(`.pk-pop[data-picker="Categories"] .pk-opt[data-value="${id}"]`);if((await o.getAttribute('aria-selected')==='true')!==on)await o.click();}
+// Categories are independent toggles (October 29): swarms and fleets are separate, any combination can be on.
+const toggle=(p,id)=>p.locator(`.f-tags [data-tag="${id}"]`);
 async function checkIds(p,entries){await expect(rows(p)).toHaveCount(entries.length);expect(await ids(p)).toEqual(entries.map(e=>e.id).sort());}
 
-test('tags default to swarms, combine with OR, persist on reload, and can be cleared',async({page})=>{
+test('categories default to swarms and fleets, combine with OR, persist on reload, and all off shows everything',async({page})=>{
  await load(page);await checkIds(page,swarm);
- await expect(tag(page)).toContainText('Swarms / fleets');
- await choose(page,'benchmark',true);
- await expect(tag(page)).toHaveAttribute('aria-expanded','true');
- await expect(page.getByRole('listbox',{name:'Categories',exact:true})).toBeFocused();
- const union=data.incidents.filter(e=>e.agent_group||e.category==='benchmark-integrity');
- await checkIds(page,union);await expect(tag(page)).toHaveAccessibleName('Categories: Swarms / fleets, Benchmark integrity');await expect(tag(page)).toContainText('+1');
+ for(const [id,on] of [['swarm','true'],['fleet','true'],['benchmark','false']])await expect(toggle(page,id)).toHaveAttribute('aria-pressed',on);
+ await toggle(page,'fleet').click();await expect(toggle(page,'fleet')).toBeFocused();
+ await checkIds(page,data.incidents.filter(e=>catsOf(e).includes('swarm')));
+ await toggle(page,'benchmark').click();
+ const union=data.incidents.filter(e=>catsOf(e).includes('swarm')||catsOf(e).includes('benchmark-integrity'));
+ await checkIds(page,union);expect(new URL(page.url()).searchParams.get('tags').split(',').sort()).toEqual(['benchmark','swarm']);
  await page.reload();await checkIds(page,union);
- await openTags(page);await page.locator('.pk-pop[data-picker="Categories"] .pk-opt[data-value=""]').click();await page.keyboard.press('Escape');
+ await toggle(page,'swarm').click();await toggle(page,'benchmark').click();
  await checkIds(page,data.incidents);await page.reload();await checkIds(page,data.incidents);
  expect(new URL(page.url()).searchParams.get('tags')).toBe('all');
 });
 
-test('tag picker matches the existing dropdown and supports multi-select keyboard, Escape and outside dismissal',async({page})=>{
- await load(page);await tag(page).focus();await page.keyboard.press('Enter');
- const list=page.getByRole('listbox',{name:'Categories',exact:true});await expect(list).toHaveAttribute('aria-multiselectable','true');
- await page.keyboard.press('End');await page.keyboard.press('Space');
- await expect(page.locator('.pk-pop[data-picker="Categories"] .pk-opt[data-value="benchmark"]')).toHaveAttribute('aria-selected','true');
- await expect(list).toBeFocused();await page.keyboard.press('Escape');
- await expect(tag(page)).toHaveAttribute('aria-expanded','false');await expect(tag(page)).toBeFocused();
- await tag(page).click();await page.locator('h1').click();await expect(page.locator('.pk-pop')).toHaveCount(0);
+test('category toggles work from the keyboard and name their counts',async({page})=>{
+ await load(page);await toggle(page,'benchmark').focus();await page.keyboard.press('Space');
+ await expect(toggle(page,'benchmark')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'benchmark')).toBeFocused();
+ await page.keyboard.press('Enter');await expect(toggle(page,'benchmark')).toHaveAttribute('aria-pressed','false');
+ const fleets=data.incidents.filter(e=>catsOf(e).includes('fleet')).length;
+ await expect(toggle(page,'fleet')).toHaveAccessibleName(`Fleets, ${fleets} incident${fleets===1?'':'s'}`);
+ await expect(page.getByRole('group',{name:'Categories',exact:true})).toBeVisible();
+ // Each toggle carries its one-line definition, so swarms and fleets read as different things.
+ await expect(toggle(page,'swarm')).toHaveAttribute('data-tip',/^Several agents interacting or coordinating/);
+ await expect(toggle(page,'fleet')).toHaveAttribute('data-tip',/^Many instances of an agent acting in one campaign/);
 });
 
 test('tags apply across overview tabs and compose with models, dates and data',async({page})=>{

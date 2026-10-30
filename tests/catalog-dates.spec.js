@@ -20,7 +20,7 @@ test('incident card exposes original catalog addition with honest provenance', a
   await expect(page).toHaveURL(/updates\.html#history-ecff960-aisi-cyber-range$/);
   await expect(page.locator('#update-dialog')).toContainText('New listings');
   await expect(page.locator('#update-dialog')).toContainText('Reconstructed history');
-  await expect(page.locator('#update-dialog')).toContainText('commit date, not a verified deployment time');
+  await expect(page.locator('#update-dialog')).toContainText('revision date, not a verified deployment time');
   await expect(page.locator('#det-title')).toHaveText('UK AISI cyber test: agents target a GitHub project');
 });
 

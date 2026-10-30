@@ -1,7 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 
-const PORT = 8799;
+const PORT = Number(process.env.PORT || 8799);
 const CI = !!process.env.CI;
 // Screenshot baselines are Linux-only (made in the Playwright Docker image), so visual tests run only when VISUAL=1:
 // in CI and through `npm run test:visual` / `npm run test:update-visual`.

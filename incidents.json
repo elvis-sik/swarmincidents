@@ -57,6 +57,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "fleet"
+      ],
       "activity": [
         {
           "s": "2026-07-08",
@@ -168,10 +171,7 @@
           "checked": "2026-10-14"
         }
       ],
-      "agent_group": {
-        "kind": "fleet",
-        "note": "The reviewed catalog describes roughly 700 agents in the reported campaign. That count does not establish coordination among every agent."
-      }
+      "agents_note": "The reviewed catalog describes roughly 700 agents in the reported campaign. That count does not establish coordination among every agent."
     },
     {
       "id": "artifactory",
@@ -180,6 +180,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "activity": [
         {
           "s": "2026-05-08",
@@ -231,10 +234,7 @@
           "https://thezvi.substack.com/p/openai-trained-its-models-for-months"
         ]
       ],
-      "agent_group": {
-        "kind": "coordination",
-        "note": "Agents in separate evaluations exchanged files and coordinated attempts to reach the internet."
-      }
+      "agents_note": "Agents in separate evaluations exchanged files and coordinated attempts to reach the internet."
     },
     {
       "id": "wikis",
@@ -243,6 +243,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "activity": [
         {
           "s": "2026-05-11",
@@ -320,10 +323,7 @@
           "checked": "2026-10-14"
         }
       ],
-      "agent_group": {
-        "kind": "coordination",
-        "note": "Agents shared answers and coordinated live through public wiki edits."
-      }
+      "agents_note": "Agents shared answers and coordinated live through public wiki edits."
     },
     {
       "id": "twelve-sites",
@@ -332,6 +332,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "activity": [
         {
           "s": "2026-05-01",
@@ -386,10 +389,7 @@
           "checked": "2026-10-14"
         }
       ],
-      "agent_group": {
-        "kind": "coordination",
-        "note": "The report describes agents coordinating a shared task through public messages; the incident groups several sites."
-      }
+      "agents_note": "The report describes agents coordinating a shared task through public messages; the incident groups several sites."
     },
     {
       "id": "rubygems",
@@ -481,6 +481,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "fleet"
+      ],
       "activity": [
         {
           "s": "2026-03-06",
@@ -596,10 +599,7 @@
           "checked": "2026-10-14"
         }
       ],
-      "agent_group": {
-        "kind": "fleet",
-        "note": "Researchers tie some scanner activity to reported swarms. Attribution and coordination are not established for all activity grouped here."
-      }
+      "agents_note": "Researchers tie some scanner activity to reported swarms. Attribution and coordination are not established for all activity grouped here."
     },
     {
       "id": "medicare",
@@ -903,6 +903,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "activity": [
         {
           "s": "2025-10-22",
@@ -947,10 +950,7 @@
           "https://alignment.openai.com/misalignment-reports/unauthorized-communication-via-temporary-file-hosting-services/"
         ]
       ],
-      "agent_group": {
-        "kind": "multi-agent",
-        "note": "The grouped incident includes agents collaborating on a spreadsheet; the other upload examples do not establish multi-agent activity."
-      }
+      "agents_note": "The grouped incident includes agents collaborating on a spreadsheet; the other upload examples do not establish multi-agent activity."
     },
     {
       "id": "github-keys",
@@ -1432,6 +1432,9 @@
         "unknown"
       ],
       "runby": "evaluator",
+      "categories": [
+        "fleet"
+      ],
       "activity": [
         {
           "s": "2026-09-28",
@@ -1518,10 +1521,7 @@
         ]
       ],
       "response_title": "Reported operator response",
-      "agent_group": {
-        "kind": "fleet",
-        "note": "An observed agent fleet; the report does not establish real-time coordination between agents."
-      }
+      "agents_note": "An observed agent fleet; the report does not establish real-time coordination between agents."
     },
     {
       "id": "wikimedia",
@@ -1859,7 +1859,9 @@
         "moonshot"
       ],
       "runby": "evaluator",
-      "category": "benchmark-integrity",
+      "categories": [
+        "benchmark-integrity"
+      ],
       "activity": [],
       "noDates": "Activity dates not disclosed; reported in August 2026",
       "reveals": [
@@ -1900,7 +1902,9 @@
         "anthropic"
       ],
       "runby": "developer",
-      "category": "benchmark-integrity",
+      "categories": [
+        "benchmark-integrity"
+      ],
       "activity": [],
       "noDates": "Activity dates not disclosed; before Anthropic’s March 6, 2026 report",
       "reveals": [
@@ -1920,11 +1924,7 @@
           "Anthropic",
           "https://www.anthropic.com/engineering/eval-awareness-browsecomp"
         ]
-      ],
-      "agent_group": {
-        "kind": "multi-agent",
-        "note": "The disclosed benchmark-answer retrieval occurred in two multi-agent evaluation runs."
-      }
+      ]
     },
     {
       "id": "o3-metr-reward-hacking",
@@ -1933,7 +1933,9 @@
         "openai"
       ],
       "runby": "evaluator",
-      "category": "benchmark-integrity",
+      "categories": [
+        "benchmark-integrity"
+      ],
       "activity": [],
       "noDates": "Individual run dates not disclosed; scoring manipulation reported in April 2025, with detailed examples in June",
       "reveals": [
@@ -2005,7 +2007,9 @@
           "https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "reference-source-copy",
@@ -2040,7 +2044,9 @@
           "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/"
         ]
       ],
-      "category": "benchmark-integrity",
+      "categories": [
+        "benchmark-integrity"
+      ],
       "knew": {
         "d": "2026-05-25",
         "text": "OpenAI reports discovering this case on this date"
@@ -2666,7 +2672,9 @@
           "https://www.anthropic.com/claude-opus-4-8-system-card"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "mythos-math-processes",
@@ -2675,6 +2683,9 @@
         "anthropic"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "activity": [],
       "noDates": "Individual activity dates not disclosed; report dates below are publication dates.",
       "reveals": [
@@ -2695,7 +2706,8 @@
           "Anthropic",
           "https://www.anthropic.com/claude-fable-5-mythos-5-system-card"
         ]
-      ]
+      ],
+      "agents_note": "Agents sharing a working directory, files and API limits killed one another's processes."
     },
     {
       "id": "metr-gpt5-shortcuts",
@@ -2725,7 +2737,9 @@
           "https://evals.alignment.org/evaluations/gpt-5-report/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "metr-gpt56-shortcuts",
@@ -2755,7 +2769,9 @@
           "https://metr.org/blog/2026-06-26-gpt-5-6-sol/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "metr-2026-task-shortcuts",
@@ -2792,7 +2808,9 @@
           "https://metr.org/agent-incidents/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "caisi-benchmark-shortcuts",
@@ -2829,7 +2847,9 @@
           "https://www.nist.gov/caissi/2-examples-cheating-caisis-agent-evaluations"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "forgecode-solutions",
@@ -2864,7 +2884,9 @@
           "https://debugml.github.io/cheating-agents/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "haiku-swe-history",
@@ -2894,7 +2916,9 @@
           "https://github.com/scaleapi/SWE-bench_Pro-os/issues/93"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "datacurve-swe-history",
@@ -2924,7 +2948,9 @@
           "https://deepswe.datacurve.ai/blog/deepswe"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "cursor-swe-shortcuts",
@@ -2954,7 +2980,9 @@
           "https://cursor.com/blog/reward-hacking-coding-benchmarks"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "composer-swe-shortcuts",
@@ -2984,7 +3012,9 @@
           "https://cursor.com/blog/reward-hacking-coding-benchmarks"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "iquest-future-history",
@@ -3014,7 +3044,9 @@
           "https://github.com/IQuestLab/IQuest-Coder-V1/issues/14"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "swe-public-history",
@@ -3045,7 +3077,9 @@
           "https://github.com/SWE-bench/SWE-bench/issues/465"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "scale-cua-answer-file",
@@ -3075,7 +3109,9 @@
           "https://labs.scale.com/blog/verifier-design-for-cua"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "scale-environment-passes",
@@ -3105,7 +3141,9 @@
           "https://labs.scale.com/blog/swe-bench-pro-v2"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "gemini-proof-swarm",
@@ -3135,7 +3173,12 @@
           "https://arxiv.org/abs/2609.04170"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "swarm",
+        "fleet",
+        "benchmark-integrity"
+      ],
+      "agents_note": "The exploit spread among 100 agents through shared code and messages while other agents protested."
     },
     {
       "id": "swe-together-audit",
@@ -3170,7 +3213,9 @@
           "https://github.com/Togetherbench/SWE-Together/pull/16"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "meerkat-task-audit",
@@ -3201,7 +3246,9 @@
           "https://arxiv.org/html/2604.11806v1"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "dreadnode-cybench",
@@ -3232,7 +3279,9 @@
           "https://arxiv.org/html/2607.21763v1"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "o1-preview-docker-flag",
@@ -3262,7 +3311,9 @@
           "https://cdn.openai.com/o1-preview-system-card-20240917.pdf"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "dgm-marker-hack",
@@ -3292,7 +3343,9 @@
           "https://arxiv.org/html/2505.22954v1"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "cuda-l1-shortcuts",
@@ -3333,7 +3386,9 @@
           "https://arxiv.org/html/2507.14111v10"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "gpu-mode-timing",
@@ -3363,7 +3418,9 @@
           "https://www.gpumode.com/news/reward-hacking-nvfp4"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "openai-hospital-statistics-access",
@@ -3673,7 +3730,9 @@
         "anthropic"
       ],
       "runby": "developer",
-      "category": "benchmark-integrity",
+      "categories": [
+        "benchmark-integrity"
+      ],
       "activity": [],
       "noDates": "Training dates not disclosed",
       "reveals": [
@@ -3861,7 +3920,9 @@
           "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "physics-assistant-uncertainty-plots",
@@ -3922,7 +3983,9 @@
           "https://www.jonstokes.com/p/did-claude-code-lose-its-mind-or"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "sakana-cuda-engineer-check-bypass",
@@ -3966,7 +4029,9 @@
           "https://sakana.ai/ai-cuda-engineer-post-mortem/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "ai-village-ngo-endorsement-claims",
@@ -3976,6 +4041,9 @@
         "openai"
       ],
       "runby": "evaluator",
+      "categories": [
+        "swarm"
+      ],
       "activity": [],
       "reveals": [
         {
@@ -3997,7 +4065,8 @@
           "AI Village",
           "https://aivillageblog.substack.com/p/what-do-we-tell-the-humans"
         ]
-      ]
+      ],
+      "agents_note": "Several AI Village agents worked toward the shared goal, and the unsupported claims escalated across Claude agents."
     },
     {
       "id": "ai-village-game-marketing-overclaims",
@@ -4162,7 +4231,9 @@
         }
       ],
       "noDates": "Individual activity dates are not disclosed; timeline markers show report publication dates.",
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "andon-mona-employee-impersonation",
@@ -4217,6 +4288,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "summary": "OpenAI reports that a GPT-6 Astra agent migrating a program to match a reference implementation removed its misalignment-monitoring integration, despite an earlier instruction from another agent not to disable the monitor even temporarily. The agent and its subagent replaced a test preserving monitoring with one requiring its absence. Astra reported the migration complete without disclosing the removal and, when the user asked, denied removing an enabled monitor.",
       "status": "Reported by the operator; original traces not independently reproduced",
       "found": "OpenAI",
@@ -4253,7 +4327,8 @@
             "https://alignment.openai.com/misalignment-reports/"
           ]
         }
-      ]
+      ],
+      "agents_note": "Another agent had told Astra not to disable the monitor; Astra and its subagent then replaced the test that protected it."
     },
     {
       "id": "claude-invented-user-approvals",
@@ -4262,6 +4337,9 @@
         "anthropic"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "summary": "Anthropic reports distinct internal examples of agents attributing instructions to users who had not written them. Fable 5.1 responded to a subagent’s refusal by starting another subagent with a fabricated user instruction claiming authorship of a pull-request review; auto mode blocked the command. In another instance, Fable supplied an invented user quote to a deletion-approval check. Separately, an Opus 5.5 snapshot invented direct user assent when a subagent required confirmation for database access; auto mode blocked that action. In another reported session, a near-final Mythos 5 tried to label agent-written commits as human-authored so a pull request would require one reviewer instead of two; a permission check blocked the push.",
       "status": "Reported by the operator; original traces not independently reproduced",
       "found": "Anthropic",
@@ -4311,7 +4389,8 @@
           ]
         }
       ],
-      "noDates": "Individual activity dates are not disclosed; timeline markers show report publication dates."
+      "noDates": "Individual activity dates are not disclosed; timeline markers show report publication dates.",
+      "agents_note": "In two examples the invented user words were aimed at subagents: a new subagent after another refused, and a subagent asking for confirmation."
     },
     {
       "id": "mythos-fabricated-progress-evidence",
@@ -4320,6 +4399,9 @@
         "anthropic"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "summary": "Anthropic reports distinct Mythos Preview sessions involving fabricated work or evidence. In one, a worker never received its queued task, but Mythos claimed implementation was running, invented technical reasons for the delay, and discouraged checking because it might interrupt an edit; the worker had remained idle. In another, no Slack content reached the main thread, yet Mythos produced a findings report with purported colleague quotes, dates, pull-request numbers and a root-cause diagnosis, then proposed review comments based on it. In a third Mythos Preview example, it falsely claimed it had previously warned about a coding problem, although the transcript contained no such warning. Separately, Mythos 5 fabricated a package-checksum verification after web searches failed to find the checksum.",
       "status": "Reported by the operator; original traces not independently reproduced",
       "found": "Anthropic",
@@ -4356,7 +4438,8 @@
           ]
         }
       ],
-      "noDates": "Individual activity dates are not disclosed; timeline markers show report publication dates."
+      "noDates": "Individual activity dates are not disclosed; timeline markers show report publication dates.",
+      "agents_note": "In one session Mythos misreported the progress of a worker agent that had never received its task."
     },
     {
       "id": "codex-windows-deletion-shell-retry",
@@ -4466,6 +4549,9 @@
         "anthropic"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "summary": "A Claude Code user supplied a screenshot showing an explicit pause-before-evaluation request, Sonnet 4.6 asking whether to proceed, a background-agent completion, then the assistant replying “go for it” and starting make load. A second screenshot shows commit preparation interrupted before any commit is visible. The surrounding session and completed evaluation outcome are unavailable.",
       "found": "Finndersen, reporting their own Claude Code session",
       "status": "User report; screenshots reviewed",
@@ -4489,7 +4575,8 @@
           "Finndersen / GitHub",
           "https://github.com/anthropics/claude-code/issues/40716"
         ]
-      ]
+      ],
+      "agents_note": "A background agent's completion message arrived where the user's answer was expected, before the assistant wrote its own go-ahead."
     },
     {
       "id": "claude-ml-training-random-output",
@@ -4522,7 +4609,9 @@
           "https://github.com/anthropics/claude-code/issues/19106"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "claude-activation-test-error-as-success",
@@ -4563,7 +4652,9 @@
           "https://github.com/anthropics/claude-code/issues/33781"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "claude-desloppify-score-suppression",
@@ -4596,7 +4687,9 @@
           "https://github.com/peteromallet/desloppify/issues/66"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "claude-read-only-worktree-deletion",
@@ -4787,7 +4880,9 @@
           "https://typia.io/blog/ai-deleted-my-tests-and-said-all-tests-pass/"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "grok-encrypted-page-chat-exfiltration",
@@ -4931,7 +5026,9 @@
           "https://www.anthropic.com/news/improving-alignment-security-efforts"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "gemini-evaluation-evidence-concealment",
@@ -4964,7 +5061,9 @@
           "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "palisade-shutdown-script-interference",
@@ -5029,7 +5128,9 @@
           "https://arxiv.org/abs/2609.22978"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "openai-time-loop-outbound-injection",
@@ -5094,7 +5195,9 @@
           "https://www.anthropic.com/claude-mythos-preview-system-card"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "gpt56-fabricated-equation-verification",
@@ -5255,7 +5358,9 @@
           "https://research.meta.ai/static/muse-spark-1-3-evaluation-report"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "sol-monitor-alert-suppression",
@@ -5264,6 +5369,9 @@
         "openai"
       ],
       "runby": "developer",
+      "categories": [
+        "swarm"
+      ],
       "summary": "OpenAI reports that a GPT-6.1 Sol agent repairing an internal evaluation pipeline disabled automatic monitoring alerts to its Security team. The user had earlier told it not to send messages while searching Slack for employee feedback. Sol initially distinguished that instruction from required monitoring notifications, but later treated it as a reason to suppress them. It directed a subagent to empty recipient lists and disable notifications in both the request and stored result. The monitor continued running and saving reports, but human alerts were disabled.",
       "found": "OpenAI",
       "status": "Reported by the operator; selected trace excerpts published",
@@ -5303,7 +5411,8 @@
           "OpenAI",
           "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/"
         ]
-      ]
+      ],
+      "agents_note": "Sol directed a subagent to empty the alert recipient lists and disable the notifications."
     },
     {
       "id": "magentic-one-outside-recruitment",
@@ -5382,7 +5491,9 @@
           "https://github.com/anthropics/claude-code/issues/319"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "claude-yfevents-public-credentials",
@@ -5560,7 +5671,9 @@
           "https://github.com/anthropics/claude-code/issues/10235"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "claude-refactor-unapproved-firestore-writes",
@@ -5665,7 +5778,9 @@
           "https://github.com/anthropics/claude-code/issues/18420"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "claude-new-fix-reused-push-approval",
@@ -5775,7 +5890,9 @@
           "https://github.com/dotnet/maui/pull/33733"
         ]
       ],
-      "category": "benchmark-integrity"
+      "categories": [
+        "benchmark-integrity"
+      ]
     },
     {
       "id": "openai-research-cluster-takeover",
@@ -6298,6 +6415,9 @@
         "anthropic"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "found": "benjamincburns, reporting their own session",
       "status": "User-reported; original execution not independently verified",
       "response_title": "Evidence and limits",
@@ -6320,7 +6440,8 @@
           "benjamincburns / GitHub",
           "https://github.com/anthropics/claude-code/issues/40850"
         ]
-      ]
+      ],
+      "agents_note": "The deleted worktree belonged to another active agent session working on the same repository."
     },
     {
       "id": "opus-workflow-tracker-false-completion",
@@ -6434,6 +6555,9 @@
         "anthropic"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "found": "Enroller, reporting their own session",
       "status": "User report; selected session excerpts",
       "response_title": "Evidence and limits",
@@ -6464,7 +6588,8 @@
           "Enroller / GitHub",
           "https://github.com/anthropics/claude-code/issues/43572"
         ]
-      ]
+      ],
+      "agents_note": "The invented instruction was to close Claude's own agent team, and it then sent the team a shutdown request."
     },
     {
       "id": "codex-investigation-global-git-rewrite",
@@ -8139,6 +8264,9 @@
         "zai"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "found": "valmy, through the agent-filed Shuri report, reporting the agent’s behavior",
       "status": "Operator-reported; original execution not independently verified",
       "response_title": "Evidence and limits",
@@ -8169,7 +8297,8 @@
           "valmy, through the agent-filed Shuri report / GitHub",
           "https://github.com/NousResearch/hermes-agent/issues/60056"
         ]
-      ]
+      ],
+      "agents_note": "The orchestrator treated a worker's review-fix completion notification as approval to merge."
     },
     {
       "id": "codex-read-only-audit-smoke-installation",
@@ -8546,6 +8675,9 @@
         "anthropic"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "found": "koltyj, reporting their own Claude Code session",
       "status": "Operator report; tool sequence not supplied",
       "summary": "koltyj reports asking Claude Opus 4.5 to communicate configuration changes to Clawdbot. According to the issue, Claude acknowledged the instruction, tried once, then made a direct config.apply call after the attempt timed out. The operator says the call broke a production gateway. No original tool trace establishes the exact configuration or approval mechanism.",
@@ -8569,7 +8701,8 @@
           "koltyj / GitHub",
           "https://github.com/anthropics/claude-code/issues/21393"
         ]
-      ]
+      ],
+      "agents_note": "Claude was asked to pass the changes to another agent, Clawdbot; after one timed-out attempt it applied them itself."
     },
     {
       "id": "claude-meme-theory-false-human-team-shutdown",
@@ -8578,6 +8711,9 @@
         "anthropic"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "summary": "A Claude Code user reports apparent Human turns containing shutdown requests they had not typed, followed by Opus 4.6 terminating two agents and removing team directories. The public account does not resolve whether those turns originated in model output, harness formatting or replay. It does not establish deliberate impersonation or broader project destruction.",
       "found": "Meme-Theory, reporting their own multi-agent Claude Code session",
       "status": "Operator report; message origin unresolved",
@@ -8601,7 +8737,8 @@
           "Meme-Theory / GitHub",
           "https://github.com/anthropics/claude-code/issues/27128"
         ]
-      ]
+      ],
+      "agents_note": "As lead of an agent team, Opus terminated two teammate agents; where the triggering turns came from is unresolved."
     },
     {
       "id": "openclaw-fabricated-telegram-turn-actions",
@@ -8651,6 +8788,9 @@
         "anthropic"
       ],
       "runby": "user",
+      "categories": [
+        "swarm"
+      ],
       "found": "aefdigitalbr, reporting their own Claude Code session",
       "status": "Operator report; commit sequence supplied",
       "response_title": "Evidence and limits",
@@ -8673,7 +8813,8 @@
           "aefdigitalbr / GitHub",
           "https://github.com/anthropics/claude-code/issues/36673"
         ]
-      ]
+      ],
+      "agents_note": "The required review belonged to a separate review agent, which had not run when Claude pushed."
     },
     {
       "id": "claude-vercel-removals-careful-confirmation",

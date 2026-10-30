@@ -4,9 +4,11 @@ const { test, expect, load, siteData } = require('./fixtures');
 
 const D = siteData();
 const labsOf = e => e.labs || ['openai'];
+// Categories (October 29): the default view is swarms and fleets; records from before that day use agent_group.
+const catsOf = e => e.categories || [({ coordination: 'swarm', 'multi-agent': 'swarm', fleet: 'fleet' })[e.agent_group?.kind], e.category].filter(Boolean);
 /** Tab counts for one developer, by the site's scope rules (or for everyone when lab is null). */
 function counts(lab) {
-  const ids = new Set(D.incidents.filter(e => e.agent_group && (!lab || labsOf(e).includes(lab))).map(e => e.id));
+  const ids = new Set(D.incidents.filter(e => catsOf(e).some(c => c === 'swarm' || c === 'fleet') && (!lab || labsOf(e).includes(lab))).map(e => e.id));
   return { Timeline: ids.size, Affected: D.affected.filter(a => a.inv.some(v => ids.has(v.inc))).length,
     Responses: D.responses.filter(r => (r.inc || []).some(id => ids.has(id))).length };
 }
@@ -25,7 +27,7 @@ test('the default scope is All developers and the URL has no query', async ({ pa
   await expect(models(page)).toHaveAccessibleName('Models: All developers');
   expect(new URL(page.url()).search).toBe('');
   await expectCounts(page, counts(null));
-  await expect(page.locator('header .tagline')).toHaveText('AI agent incidents, with sources');
+  await expect(page.locator('#top .wordmark')).toHaveText('swarms.wiki [incidents]'); // October 29: no tagline
   // general wording for every developer
   await expect(page.locator('#filters')).toContainText('Confirmed by developer');
 });

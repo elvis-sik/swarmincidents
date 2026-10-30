@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { openAbout } = require('./fixtures');
 const updates = require('../updates.json').updates;
 
 test('RSS is discoverable in the header and About, with approved new and update entries', async ({page, request}) => {
@@ -7,8 +8,9 @@ test('RSS is discoverable in the header and About, with approved new and update 
   const header = page.getByRole('navigation', {name:'Follow updates'});
   await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toBeVisible();
   await expect(header.getByRole('link', {name:'Subscribe via RSS'})).toHaveAttribute('href', 'feed.xml');
-  await expect(header.getByRole('link', {name:'Updates', exact:true})).toHaveAttribute('href', 'updates.html');
-  await page.getByRole('button', {name:'About', exact:true}).click();
+  // October 29: the header's Updates link is its "Updated" date (Latest updates in its menu on narrow screens).
+  await expect(page.locator('#top #meta')).toHaveAttribute('href', 'updates.html');
+  await openAbout(page);
   const link = page.getByRole('dialog').getByRole('link', {name:'Subscribe via RSS'});
   await expect(link).toBeVisible();
   await expect(link).toHaveAttribute('href', 'feed.xml');

@@ -102,15 +102,118 @@ html,*{scrollbar-width:thin;scrollbar-color:var(--grip) transparent}
 ::-webkit-scrollbar-corner{background:transparent}
 .wrap{max-width:1480px;margin:0 auto;padding:0 16px 16px}
 
-/* top */
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;padding:14px 2px 12px}
-.top-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;min-width:0}
+/* top: the site's header, as swarms.wiki draws it (swarm-research-site/assets/head.css, October 29): the
+   wordmark, Getting started solid, Incidents and Resources as pills, the account button round; this timeline's
+   own controls after them. One line from 1180px; Incidents and Resources go into the menu below that; on phones
+   the timeline's controls take a second line. Not sticky: the timeline's bar sticks instead. */
 h1{font-size:17px;font-weight:700;letter-spacing:-.015em;margin:0}
-.tagline{font-size:12.5px;color:var(--muted)}
-.wiki-link{font-size:12.5px;color:var(--ink-2);padding:3px 0;text-decoration-color:var(--line-2);text-underline-offset:.22em;white-space:nowrap}
-.wiki-link:hover{color:var(--ink);text-decoration-color:currentColor}
-.top-r{display:flex;align-items:center;gap:8px;flex:none}
-.meta{font-size:12.5px;color:var(--muted);margin-right:6px}
+.top.site-head{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 0}
+.top .wordmark{margin-right:12px;font-size:21px;font-weight:800;letter-spacing:-.05em;line-height:1;white-space:nowrap}
+.top .wordmark a:hover{text-decoration:none}
+/* [incidents], after a space: the wordmark's size and spacing in Inter Light and the second ink, as the logo
+   idea has it (measured from its PDF: #434A55, three quarters of swarms.wiki's width). fonts/fonts.css declares
+   Inter 400-800; the file is variable, so the light weight comes from its axis. */
+.top .wordmark .wm-sec{color:var(--ink-2);font-weight:300;font-variation-settings:'wght' 300}
+.top .wordmark .wm-sec:hover{color:var(--ink)}
+.top .head-nav{display:flex;align-items:center;gap:6px}
+.top .start{display:inline-flex;align-items:center;height:36px;margin-right:8px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap}
+.top .start:hover{opacity:.9}
+.top .chip,.top .hbtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;box-sizing:border-box;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);background:var(--panel);color:var(--ink);font:500 13.5px/1 var(--sans);text-decoration:none;white-space:nowrap;cursor:pointer}
+.top .chip{padding:0 13px 0 5px}
+.top .chip:hover,.top .hbtn:hover{border-color:var(--ink-2)}
+.top .chip[aria-current="page"]{border-color:var(--ink)}
+.top .chip-icon,.menu-item .chip-icon{display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg)}
+.top .chip-icon svg{width:17px;height:17px}
+.top .split{display:inline-flex}
+.top .split .res-link{padding-right:12px;border-radius:999px 0 0 999px}
+.top .split .res-caret{margin-left:-1px;padding:0 11px 0 9px;border-radius:0 999px 999px 0;color:var(--ink-2)}
+.top .split .chip:hover{position:relative;z-index:1}
+.top .res-caret svg{width:14px;height:14px;transition:transform .15s}
+.top .res-caret[aria-expanded="true"]{border-color:var(--ink-2);color:var(--ink)}
+.top .res-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
+.top .head-end{display:flex;align-items:center;gap:8px;margin-left:auto}
+.top .meta{margin-right:4px;color:var(--muted);font-size:12.5px;text-decoration:none;white-space:nowrap}
+.top .meta:hover{color:var(--ink);text-decoration:underline;text-underline-offset:.2em}
+.top .follow-nav{display:flex;align-items:center;gap:6px}
+.top .hbtn svg{width:16px;height:16px;flex:none}
+.top .hbtn.round{width:36px;padding:0}
+.top .hbtn.raised,.top .account{border:0;background:#FFFFFF;color:#0E1116;box-shadow:0 1px 2px rgba(14,17,22,.08),0 6px 18px -10px rgba(14,17,22,.35)}
+.top .hbtn.raised{height:40px;padding:0 18px 0 15px;font-size:14px;font-weight:600}
+.top .hbtn.raised:hover,.top .account:hover{box-shadow:0 1px 2px rgba(14,17,22,.1),0 10px 22px -10px rgba(14,17,22,.45)}
+.top .account{display:inline-grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%;cursor:pointer}
+.top .account svg{width:17px;height:17px}
+.top .account[aria-expanded="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--ink)}
+.top .av,.acct-menu .av{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:50%;font-size:13.5px;font-weight:700}
+.top .menu-btn{display:none}
+.top .menu-btn[aria-expanded="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.top .row-break{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .top .hbtn.raised,:root:not([data-theme="light"]) .top .account{border:1px solid var(--line-2);background:var(--soft);color:var(--ink);box-shadow:none}}
+:root[data-theme="dark"] .top .hbtn.raised,:root[data-theme="dark"] .top .account{border:1px solid var(--line-2);background:var(--soft);color:var(--ink);box-shadow:none}
+/* Resources' menu, the phone menu and the account menu: cards under the header. */
+.res-menu,.menu-panel,.acct-menu{position:absolute;z-index:40;padding:8px;border-radius:18px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow)}
+.res-menu{width:min(420px,calc(100vw - 24px))}
+.menu-panel{left:0;right:0;display:grid;gap:8px}
+.acct-menu{right:0;width:270px;padding:6px;font-size:14px}
+.res-menu .menu-item,.menu-panel .menu-item{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:start;gap:12px;padding:10px 12px;border-radius:12px;color:var(--ink);text-decoration:none}
+.res-menu .menu-item:hover,.menu-panel .menu-item:hover,.menu-panel .menu-item[aria-current]{background:var(--hover)}
+.mi-text{display:grid;gap:3px;min-width:0}
+.mi-text b{font-size:14.5px;font-weight:600;line-height:1.35}
+.mi-text small{color:var(--muted);font-size:13px;line-height:1.4}
+.menu-item .chip-icon{margin-top:1px}
+.menu-item .chip-icon svg{width:17px;height:17px}
+.menu-panel .menu-item{align-items:center;min-height:44px;box-sizing:border-box;padding:8px 10px}
+.menu-panel .menu-item small{display:none}
+.menu-panel .menu-item b{font-size:15px;font-weight:500}
+.menu-add{display:flex;align-items:center;gap:12px;margin-top:4px;padding:12px 12px 8px;border-top:1px solid var(--line);color:var(--ink-2);font-size:14px;font-weight:500;text-decoration:none}
+.menu-add:hover{color:var(--ink)}
+.menu-add .plus{display:grid;place-items:center;width:26px;font-size:18px;line-height:1}
+.menu-more{display:flex;gap:22px;padding:12px 10px 4px;border-top:1px solid var(--line);font-size:14.5px}
+.menu-more a,.menu-more button{padding:0;border:0;background:none;color:var(--ink-2);font:inherit;text-decoration:none;cursor:pointer}
+.menu-more a:hover,.menu-more button:hover{color:var(--ink)}
+.acct-menu a,.acct-menu button{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;box-sizing:border-box;width:100%;min-height:40px;padding:8px 10px;border:0;border-radius:9px;background:none;color:var(--ink);font:inherit;text-align:left;text-decoration:none;cursor:pointer}
+.acct-menu a:hover,.acct-menu button:hover{background:var(--hover)}
+.acct-menu small{color:var(--muted);font-size:12.5px;line-height:1.35}
+.acct-menu hr{margin:6px 4px;border:0;border-top:1px solid var(--line)}
+.acct-menu .who{display:flex;align-items:center;gap:10px;padding:8px 10px}
+.acct-menu .who > span{display:flex;flex-direction:column;gap:1px}
+.acct-menu .who b{font-weight:650}
+.acct-menu .intro{margin:0;padding:8px 10px 4px;color:var(--ink-2);font-size:13.5px;line-height:1.45}
+@media (max-width:1239px){.top .meta{display:none}}
+@media (max-width:1179px){
+  .top .head-nav .chip,.top .head-nav .split{display:none}
+  .top .menu-btn{display:inline-flex}
+}
+/* From here About is in the menu, so the rest keeps one line down to phones. */
+@media (max-width:900px){.top #about-btn{display:none}}
+/* Phones: the wordmark with the theme, the menu and the account button; Getting started and the timeline's
+   controls on the line below (with [incidents], the wordmark leaves no room for Getting started beside it). */
+@media (max-width:820px){
+  .top.site-head{gap:8px 6px;padding:10px 0 8px}
+  .top .wordmark{margin-right:auto;font-size:19px}
+  .top .start{height:34px;margin-right:0;padding:0 13px;font-size:13px}
+  .top .head-end{display:contents}
+  .top #theme-btn{order:2}
+  .top .menu-btn{order:3}
+  .top .account{order:4;width:34px;height:34px}
+  .top .account .av{width:28px;height:28px;font-size:12.5px}
+  .top .row-break{display:block;order:5;flex:0 0 100%;height:0}
+  .top .head-nav{order:6}
+  .top .follow-nav{order:7;margin-left:auto}
+  .top #report-btn{order:8}
+  .top .hbtn{height:34px;padding:0 12px;font-size:13px}
+  .top .hbtn.round{width:34px}
+  .top .hbtn.raised{height:34px;padding:0 13px 0 11px;font-size:13px}
+}
+/* Narrow phones: RSS waits in the menu; below 340px everything a little smaller. */
+@media (max-width:370px){.top .follow-nav .round{display:none}}
+@media (max-width:340px){
+  .top .wordmark{font-size:17px}
+  .top .start{padding:0 11px;font-size:12.5px}
+  .top .hbtn{padding:0 10px}
+  .top .hbtn.raised{padding:0 11px 0 9px}
+}
+/* Touch: the round buttons keep their size but take taps 44px wide. */
+@media (pointer:coarse){.top .hbtn.round,.top .account{position:relative}.top .hbtn.round::after,.top .account::after{content:"";position:absolute;inset:-5px}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line-2);background:var(--panel);border-radius:7px;padding:4px 10px;font-size:12.5px;cursor:pointer;color:var(--ink-2);text-decoration:none;min-height:30px}
 .btn:hover{background:var(--hover);color:var(--ink)}
 .btn svg{width:15px;height:15px}
@@ -279,7 +382,7 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .pane{position:sticky;top:var(--barH,52px);height:min(100%,calc(100dvh - var(--barH,52px) - var(--footH,36px)));overflow:auto;overscroll-behavior:contain}
 
 /* A compact key stays beside the timeline controls; detail and source filters remain below. */
-.wordmark{font-size:18px;font-weight:800;letter-spacing:-.05em;line-height:1}.wordmark a{text-decoration:none;color:var(--ink)}.wm-dot{display:inline-block;width:.2em;height:.2em;margin:0 .06em;border-radius:.04em;background:var(--ink);color:transparent;overflow:hidden;line-height:0}.wordmark .wm-sec{margin-left:.1em;font-weight:500;letter-spacing:-.03em;color:var(--ink-2)}.wordmark a:hover{text-decoration:underline;text-underline-offset:4px}
+.wordmark{font-size:18px;font-weight:800;letter-spacing:-.05em;line-height:1}.wordmark a{text-decoration:none;color:var(--ink)}.wm-dot{display:inline-block;width:.2em;height:.2em;margin:0 .06em;border-radius:.04em;background:var(--ink);color:transparent;overflow:hidden;line-height:0}.wordmark a:hover{text-decoration:underline;text-underline-offset:4px}
 .timeline-key{display:flex;flex-wrap:wrap;align-items:center;gap:5px 20px;padding:8px 2px 3px;color:var(--ink-2);font-size:11.5px;border-top:1px solid var(--line);margin-top:7px}
 .timeline-key .key-label{color:var(--muted)}
 .timeline-key .lg{gap:5px}
@@ -601,7 +704,7 @@ dialog::backdrop{background:rgba(8,10,14,.5)}
 .report-status{color:var(--ink);overflow-wrap:anywhere}
 .report-honey{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 #report a{overflow-wrap:anywhere}
-@media(max-width:600px){.top{flex-wrap:wrap}.top-l{flex:1 0 100%}.top-r{margin-left:auto}.report-field input,.report-field textarea{font-size:16px}.dlg{padding:16px}}
+@media(max-width:600px){.report-field input,.report-field textarea{font-size:16px}.dlg{padding:16px}}
 
 .scrim{display:none}
 .grab{display:none}
@@ -1129,9 +1232,6 @@ dialog{transform-origin:center}
   .inside-filters .flabel{display:none}
 }
 
-.top{align-items:center;flex-wrap:wrap}.top-l{flex:1 1 420px;align-items:center;gap:4px clamp(16px,calc(16px + (100vw - 1100px)*.015),26px)}.brand-group{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;min-width:0}.wordmark{white-space:nowrap}.intro-links{display:contents}.top-r{max-width:100%;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.follow-nav{display:inline-flex;align-items:center;gap:1px;font-size:12.5px;color:var(--ink-2)}.follow-label{color:var(--muted);white-space:nowrap}.updates-link{color:var(--ink-2);text-decoration-color:var(--line-2);margin-right:3px}.updates-link:hover{color:var(--ink)}.follow-channel{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:30px;border:0;background:transparent;color:var(--ink-2);border-radius:5px;text-decoration:none;cursor:pointer}.follow-channel:hover{color:var(--ink);background:var(--hover)}.follow-channel:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-@media(pointer:coarse){.follow-channel{min-width:44px;min-height:44px}}
-@media(max-width:600px){.top-l{flex:1 0 100%;gap:4px 12px}.follow-nav{gap:1px}.top-r{gap:6px}}
 @media(max-width:360px){#tabs .tab{padding-inline:5px}}
 
 /* Natural control flow, self-contained checkboxes and a compact timeline key. */
@@ -1142,6 +1242,7 @@ dialog{transform-origin:center}
 .check-control:hover{color:var(--ink)}
 .pk-note{padding:3px 6px 5px;font-size:11px;color:var(--muted)}
 .f-tags .pk{justify-self:start;max-width:100%}
+.bar-r>.fgroup.f-tags{align-items:baseline}.cat-toggles{display:inline-flex;flex-wrap:wrap;gap:5px;min-width:0}.cat-toggle{padding:3px 9px 3px 7px;gap:6px}.cat-toggle .n{margin-left:0}
 .timeline-foot{display:flex;flex-direction:row;align-items:center;gap:2px 18px;padding:5px 12px;overflow:visible;flex-wrap:wrap}
 .legend-row{display:flex;align-items:center;gap:2px 10px;min-width:0;flex-wrap:wrap;font-size:11.5px}
 .legend-reporters{gap:2px 10px}.legend-reporters>.legend-label{display:inline-flex;align-items:center;gap:5px}
@@ -1210,8 +1311,43 @@ html.updates-modal-page{scrollbar-gutter:stable}
 /* Newsletter controls reuse the dashboard's modal, form and button styles. */
 .follow-email{border:0;border-bottom:1px solid var(--line-2);background:none;color:var(--ink-2);font:inherit;font-size:12px;padding:2px 0;cursor:pointer;margin-left:5px}.follow-email:hover{color:var(--ink);border-color:currentColor}
 .newsletter-form{display:grid;gap:17px;margin-top:18px}.newsletter-form fieldset{border:0;padding:0;margin:0;min-width:0}.newsletter-form legend{font-weight:500;color:var(--ink);margin-bottom:7px}.newsletter-options{display:flex;flex-wrap:wrap;gap:7px}.newsletter-choice{display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line-2);border-radius:7px;cursor:pointer;flex:1 1 auto;color:var(--ink-2);white-space:nowrap}.newsletter-choice:has(:checked){background:var(--soft);border-color:var(--ink-2);color:var(--ink)}.newsletter-choice input{accent-color:var(--ink);margin:0}#newsletter-challenge:empty{display:none}.newsletter-help{display:block;color:var(--muted);font-size:12px;margin-top:6px}.newsletter-archive{align-items:flex-start;white-space:normal}.newsletter-archive input{margin-top:3px;accent-color:var(--ink)}.newsletter-footer{border-top:1px solid var(--line);padding-top:12px;margin-top:16px!important;font-size:12px;color:var(--muted)}.newsletter-success{padding:12px;border:1px solid var(--line);border-radius:7px;background:var(--soft);margin-top:14px}.newsletter-form [hidden],#newsletter [hidden]{display:none!important}.newsletter-notice{margin-top:12px!important}.newsletter-confirm-summary{border:1px solid var(--line);background:var(--soft);border-radius:7px;padding:12px;margin:14px 0!important}.newsletter-confirm-summary strong{display:block;color:var(--ink);margin-bottom:4px}.newsletter-cancel{margin-left:auto}.newsletter-form .report-field input{font-size:16px}
+.follow-tabs{display:flex;margin-top:14px;width:max-content;max-width:100%}.follow-tabs button{padding:6px 14px;font-size:13px}.follow-tabs button[aria-selected="true"]{background:var(--on);color:var(--on-ink)}
+.follow-filters{border:0;padding:14px 0 0;margin:14px 0 0;min-width:0;display:grid;gap:12px;border-top:1px solid var(--line)}.follow-filters legend{float:left;width:100%;padding:0;font-weight:500;color:var(--ink);margin-bottom:-4px}
+.follow-filters>.newsletter-help{margin-top:-6px}.follow-cats{display:flex;flex-wrap:wrap;gap:6px}.follow-cats .chip{padding:6px 11px 6px 9px;font-size:13px}.follow-cats .chip .n{margin-left:0}
+.follow-legend{display:block;font-weight:500;color:var(--ink);margin-bottom:7px}.follow-lab{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:500}.follow-lab select{flex:0 1 auto;min-width:0;max-width:100%;font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:7px;padding:6px 8px}
+.follow-count{margin:0!important;font-size:12.5px;color:var(--muted)}.follow-count b{color:var(--ink);font-weight:600}
+.follow-rss{display:grid;gap:12px;margin-top:18px}.follow-rss[hidden]{display:none}.report-field #follow-url{font-family:var(--mono);font-size:12px;color:var(--ink);min-height:0;resize:none;word-break:break-all}.follow-rss .mini-link{font-size:inherit}
+@media(max-width:600px){.follow-filters{gap:10px}.follow-cats .chip{min-height:40px}.follow-lab select{font-size:16px;flex:1 1 auto}#follow-url{font-size:12px!important}}
 @media(max-width:600px){.newsletter-form{gap:12px;margin-top:14px}.newsletter-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.newsletter-choice{white-space:normal;min-height:42px;box-sizing:border-box;padding:7px 9px;font-size:12.5px}.newsletter-help{font-size:11.5px}.newsletter-footer{margin-top:12px!important;padding-top:10px}}
 @media(max-width:400px){.newsletter-choice{padding:8px}.newsletter-options{gap:6px}.follow-email{font-size:12px}}
+/* Incident search (October 29): words or a pasted link, in the timeline's filter row; answers for links in the empty rows. */
+.f-find{flex-wrap:wrap;gap:6px 12px}
+.find-field{position:relative;display:inline-flex;min-width:0}
+.find-field svg{position:absolute;left:9px;top:50%;width:13px;height:13px;transform:translateY(-50%);color:var(--faint);pointer-events:none}
+.find-field .search{width:300px;max-width:100%;padding-left:28px}
+.find-field .search:focus-visible{outline:2px solid var(--g-research);outline-offset:-1px}
+.find-note{display:inline-flex;align-items:center;gap:4px 10px;flex-wrap:wrap;font-size:12px;color:var(--ink-2)}
+.find-note:empty{display:none}
+.find-note .mini-link{font-size:12px}
+.find-empty{display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:540px;margin:0 auto;text-align:left;font-size:13px;line-height:1.5;color:var(--ink-2)}
+.find-empty p{margin:0}
+.find-h{font-size:14px;font-weight:600;color:var(--ink)}
+.find-url{max-width:100%;padding:5px 9px;border:1px solid var(--line);border-radius:6px;background:var(--soft);font-family:var(--mono);font-size:12px;color:var(--ink-2);overflow-wrap:anywhere}
+.find-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.find-list .inc-link{font-size:13.5px;font-weight:550}
+.find-sub{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
+.find-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:2px}
+.find-fine{font-size:12px;color:var(--muted)}
+.find-ok{font-weight:550;color:var(--ink)}
+.find-err{color:var(--ink)}
+.find-turnstile{position:fixed;z-index:70;left:16px;bottom:16px}
+.find-turnstile:empty{display:none}
+@media(max-width:820px){
+  .filters>.f-find{flex:1 1 100%;order:-1}
+  .find-field{flex:1 1 100%}
+  .find-field .search{width:100%;min-height:36px}
+}
+@media(max-width:820px) and (pointer:coarse){.find-field .search{font-size:16px}}
 </style>
 </head>
 <body>
@@ -1221,17 +1357,97 @@ html.updates-modal-page{scrollbar-gutter:stable}
 </defs></svg>
 
 <div class="wrap">
-  <header class="top" id="top">
-    <div class="top-l"><div class="brand-group"><h1 class="wordmark"><a class="wm-site" href="../" aria-label="swarms.wiki home">swarms<span class="wm-dot">.</span>wiki</a> <a class="wm-sec" href="./" aria-label="swarms.wiki incidents home">incidents</a></h1><span class="tagline">AI agent incidents, with sources</span></div><div class="intro-links"><a class="wiki-link" href="../">Explore swarms.wiki</a><nav class="follow-nav" aria-label="Follow updates"><a class="follow-label updates-link" href="updates.html">Updates</a><a class="follow-channel" href="feed.xml" aria-label="Subscribe via RSS" title="RSS feed"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a><button type="button" class="follow-email" data-newsletter-open aria-haspopup="dialog">Email updates</button></nav></div></div>
-    <div class="top-r">
-      <span class="meta" id="meta"></span>
+  <!-- The site's header, as on every swarms.wiki page (October 29, Elvis: "a header that feels more similar
+       to the rest of the website"): the wordmark, Getting started, Incidents (here) and Resources with its
+       menu, drawn as swarm-research-site/assets/shared.js (pillHeader) and head.css draw the wiki's, so keep
+       the two alike. Then this timeline's own: when it was updated, Subscribe and RSS, Report, About, the
+       theme, and the account button (Donate left the header the same day, Elvis: "drop donate button from
+       incidents"; About still links Manifund). Links to the wiki are relative: the timeline is
+       swarms.wiki/incidents/. The wordmark is swarms.wiki's own followed by [incidents] (Elvis's logo ideas,
+       page 7, chosen October 29), which opens this timeline's home. -->
+  <header class="top site-head" id="top">
+    <h1 class="wordmark"><a class="wm-site" href="../" aria-label="swarms.wiki home">swarms<span class="wm-dot">.</span>wiki</a> <a class="wm-sec" href="./" aria-label="swarms.wiki incidents home">[incidents]</a></h1>
+    <nav class="head-nav" aria-label="Site">
+      <a class="start" href="../start">Getting started</a>
+      <a class="chip" href="./" aria-current="page"><span class="chip-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 47l7-5.6 7 5.6M29 47l7-5.6 7 5.6M21 34l7-5.6 7 5.6M40 21l7-5.6 7 5.6"/></g></svg></span>Incidents</a>
+      <span class="split"><a class="chip res-link" href="../resources"><span class="chip-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="currentColor"><circle cx="14" cy="14" r="3"/><circle cx="24" cy="14" r="3"/><circle cx="34" cy="14" r="3"/><circle cx="14" cy="24" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="34" cy="24" r="3"/><circle cx="14" cy="34" r="3"/><circle cx="24" cy="34" r="3"/><circle cx="34" cy="34" r="3"/></g></svg></span>Resources</a><button class="chip res-caret" type="button" aria-expanded="false" aria-controls="res-menu" aria-label="Resource sections" data-tip="Resource sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button></span>
+    </nav>
+    <div class="head-end">
+      <a class="meta" id="meta" href="updates.html"></a>
+      <nav class="follow-nav" aria-label="Follow updates"><button type="button" class="hbtn raised" id="subscribe-btn" data-newsletter-open aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2.5 4.5 8 9l5.5-4.5"/></svg>Subscribe</button><a class="hbtn round" href="feed.xml" data-feed-open aria-haspopup="dialog" aria-label="Subscribe via RSS" data-tip="RSS feeds"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M4.5 9.5a6 6 0 0 1 6 6M4.5 3.5a12 12 0 0 1 12 12"/></svg></a></nav>
       <button class="btn" type="button" id="stats-btn" aria-label="Show key numbers" data-tip="Show key numbers" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 13V8M8 13V3M13 13V6"/></svg><span class="btn-txt">Key numbers</span></button>
-      <a class="btn" href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer" data-tip="Support the project on Manifund">Donate</a>
-      <button class="btn" type="button" id="report-btn" aria-haspopup="dialog">Report</button>
-      <button class="btn" type="button" id="about-btn">About</button>
-      <button class="btn icon" type="button" id="theme-btn"></button>
+      <button class="hbtn" type="button" id="report-btn" aria-haspopup="dialog">Report</button>
+      <button class="hbtn" type="button" id="about-btn">About</button>
+      <button class="hbtn round" type="button" id="theme-btn"></button>
+      <button class="hbtn round menu-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menu" data-tip="Menu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4.25h11M2.5 8h11M2.5 11.75h11"/></svg></button>
+      <button class="account" type="button" id="account-btn" aria-expanded="false" aria-controls="account-menu" aria-label="Account menu" data-tip="Account menu" hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="5.6" r="2.6"/><path d="M3 13.6c.8-2.4 2.7-3.6 5-3.6s4.2 1.2 5 3.6"/></svg></button>
+      <span class="row-break" aria-hidden="true"></span>
     </div>
+    <!-- Resources' menu: the wiki's sections and their lines (swarm-research-site/data/directory.js, with
+         the icons of assets/icons.js), copied here; the phone menu lists them too. -->
+    <div class="res-menu" id="res-menu" hidden>
+      <a class="menu-item" href="../resources"><span class="chip-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="currentColor"><circle cx="14" cy="14" r="3"/><circle cx="24" cy="14" r="3"/><circle cx="34" cy="14" r="3"/><circle cx="14" cy="24" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="34" cy="24" r="3"/><circle cx="14" cy="34" r="3"/><circle cx="24" cy="34" r="3"/><circle cx="34" cy="34" r="3"/></g></svg></span><span class="mi-text"><b>All resources</b></span></a>
+      <a class="menu-item" href="../resources#people"><span class="chip-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 15 24 29M35 13 24 29M24 29l12 6M13 15l22-2M11 36l13-7" opacity=".55"/><g fill="currentColor" stroke="none"><circle cx="13" cy="15" r="3.4"/><circle cx="35" cy="13" r="3.4"/><circle cx="24" cy="29" r="3.8"/><circle cx="36" cy="35" r="3.4"/><circle cx="11" cy="36" r="2.4"/></g></svg></span><span class="mi-text"><b>People &amp; groups</b><small>Researchers and teams working on agent swarms.</small></span></a>
+      <a class="menu-item" href="../resources#tools"><span class="chip-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="21" cy="21" r="11.5"/><path d="M29.5 29.5 39 39" stroke-width="3.2"/><g fill="currentColor" stroke="none"><circle cx="17" cy="23" r="2.2"/><circle cx="23.5" cy="18" r="2.2"/><circle cx="24" cy="25" r="2.2"/></g></svg></span><span class="mi-text"><b>Tools</b><small>Software for looking at what agents did: transcript analysis, evaluation frameworks and benchmarks.</small></span></a>
+      <a class="menu-item" href="../resources#data"><span class="chip-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 8 40 16 24 24 8 16Z"/><path d="M8 23.5 24 31.5 40 23.5" opacity=".75"/><path d="M8 31 24 39 40 31" opacity=".5"/></svg></span><span class="mi-text"><b>Datasets</b><small>Records of what agents already did: archives, catalogs and redacted traces.</small></span></a>
+      <a class="menu-item" href="../resources#environments"><span class="chip-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="16" stroke-dasharray="2.5 3.2"/><g fill="currentColor" stroke="none"><circle cx="19" cy="20" r="2.6"/><circle cx="28" cy="18" r="2.6"/><circle cx="24" cy="27" r="2.6"/><circle cx="31" cy="28" r="2.6"/><circle cx="17" cy="29" r="2.2"/></g></svg></span><span class="mi-text"><b>Environments</b><small>Places where agents act: live venues you can watch, and sandboxes you run experiments in.</small></span></a>
+      <a class="menu-item" href="../resources#trackers"><span class="chip-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 14h20M18 24h16M18 34h19"/><g fill="currentColor" stroke="none"><circle cx="11" cy="14" r="2.4"/><circle cx="11" cy="24" r="2.4"/><circle cx="11" cy="34" r="2.4"/></g></svg></span><span class="mi-text"><b>Incident trackers</b><small>Other registries of AI incidents, from swarm-specific timelines to general databases.</small></span></a>
+      <a class="menu-add" href="../resources#suggest-new"><span class="plus" aria-hidden="true">+</span>Suggest a resource</a>
+    </div>
+    <div class="menu-panel" id="site-menu" hidden>
+      <div class="menu-list"><a class="menu-item" href="./" aria-current="page"><span class="chip-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 47l7-5.6 7 5.6M29 47l7-5.6 7 5.6M21 34l7-5.6 7 5.6M40 21l7-5.6 7 5.6"/></g></svg></span><span class="mi-text"><b>Incidents</b></span></a></div>
+      <nav class="menu-more" aria-label="More"><a href="updates.html">Latest updates</a><a href="feed.xml" data-feed-open aria-haspopup="dialog">RSS feed</a><button type="button" data-same="about-btn">About</button></nav>
+    </div>
+    <div class="acct-menu" id="account-menu" hidden></div>
   </header>
+  <script>
+  /* The header's menus and account button (October 29). One menu open at a time; Escape or a click elsewhere
+     closes it. The account button shows only where this timeline is part of swarms.wiki (under /incidents/),
+     whose account it is, and asks the wiki for your avatar only if you have posted or signed in there (the wiki
+     keeps that as sw-sg-known), so reading sends nothing. Wording is Claude's draft. */
+  (() => {
+    const $ = id => document.getElementById(id), top = $('top');
+    const caret = top.querySelector('.res-caret'), menuBtn = top.querySelector('.menu-btn'), account = $('account-btn');
+    const res = $('res-menu'), panel = $('site-menu'), acct = $('account-menu');
+    const el = (tag, attrs = {}, ...kids) => { const n = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) k === 'onclick' ? n.addEventListener('click', v) : n.setAttribute(k, v); n.append(...kids.filter(Boolean)); return n; };
+    panel.querySelector('.menu-list').append(...[...res.querySelectorAll('.menu-item')].map(item => item.cloneNode(true)));
+    const menus = [[caret, res], [menuBtn, panel], [account, acct]];
+    const open = (button, box, state) => {
+      box.hidden = !state; button.setAttribute('aria-expanded', String(state));
+      if (!state) return;
+      const at = top.getBoundingClientRect(), from = button.getBoundingClientRect();
+      box.style.top = `${from.bottom - at.top + 8}px`;
+      if (box === res) box.style.left = `${Math.max(0, Math.min(top.querySelector('.split').getBoundingClientRect().left - at.left, at.width - box.offsetWidth))}px`;
+    };
+    const shut = () => { for (const [button, box] of menus) open(button, box, false); };
+    for (const [button, box] of menus) {
+      button.addEventListener('click', event => { event.stopPropagation(); const opening = box.hidden; shut(); if (box === acct) paintMenu(); if (opening) open(button, box, true); });
+      box.addEventListener('click', event => { if (event.target.closest('a, button')) shut(); });
+    }
+    panel.querySelector('[data-same]').addEventListener('click', event => $(event.currentTarget.dataset.same).click());
+    addEventListener('keydown', event => { const shown = menus.find(([, box]) => !box.hidden); if (event.key === 'Escape' && shown) { shut(); shown[0].focus(); } });
+    addEventListener('click', event => { if (!top.contains(event.target)) shut(); });
+
+    let me = null;
+    account.hidden = !location.pathname.startsWith('/incidents/');
+    let known = false; try { known = JSON.parse(localStorage.getItem('sw-sg-known')) === true; } catch (e) { /* storage unavailable */ }
+    const initial = p => (p.name.startsWith('Anonymous ') ? p.name.split(' ').pop() : p.name).trim()[0]?.toUpperCase() || '?';
+    const avatar = p => el('span', { class: 'av', 'aria-hidden': 'true', style: `background:hsl(${p.hue} 70% 90%);color:hsl(${p.hue} 45% 30%)` }, initial(p));
+    if (!account.hidden && known) fetch('../api/session', { headers: { accept: 'application/json' } }).then(r => r.ok ? r.json() : null).then(session => {
+      me = session?.me ?? null;
+      if (!me) return;
+      account.replaceChildren(avatar(me)); account.classList.add('in');
+      account.setAttribute('aria-label', `Account menu (${me.name})`);
+    }).catch(() => { /* the wiki's API isn't reachable: the plain button stays */ });
+    const item = (href, label, note) => el('a', { href }, el('span', {}, label), note && el('small', {}, note));
+    function paintMenu() {
+      const signOut = el('button', { type: 'button', onclick: () => fetch('../api/auth/logout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' }).finally(() => location.reload()) }, 'Sign out');
+      acct.replaceChildren(...(me?.account ? [el('div', { class: 'who' }, avatar(me), el('b', {}, me.name)), el('hr'), item('../account', 'Account settings'), item('../suggestions?show=yours', 'Your suggestions'), el('hr'), signOut]
+        : me ? [el('div', { class: 'who' }, avatar(me), el('span', {}, el('b', {}, me.name), el('small', {}, 'Your name on this browser'))), el('hr'), item('../suggestions?show=yours', 'Your suggestions'), item('../account', 'Sign in', 'To keep your suggestions on every device')]
+          : [el('p', { class: 'intro' }, 'Anyone can suggest changes to swarms.wiki. An account keeps your suggestions under your name.'), el('hr'), item('../account', 'Sign in', 'Or create an account')]));
+    }
+  })();
+  </script>
 
   <section class="stats" id="stats" aria-label="Key numbers"></section>
   <nav class="lvl" id="lvl" aria-label="Sections" hidden></nav>
@@ -1269,11 +1485,30 @@ html.updates-modal-page{scrollbar-gutter:stable}
 </div>
 
 
+<!-- Follow updates (October 29, reviews/2026-10-29-labels-feeds): an Email tab and an RSS feed tab. The RSS tab turns
+     the choices in #follow-filters into a feed address. The Email tab is today's signup, against today's backend
+     (newsletter.js) and with today's choices: email filters wait for the email move, which will point data-api at
+     swarms.wiki's own endpoint and let the same choices drive both (October 30 merge). -->
 <dialog id="newsletter" aria-labelledby="newsletter-h" aria-describedby="newsletter-intro">
  <div class="dlg">
-  <div class="dlg-top"><h2 id="newsletter-h">Email updates</h2><button class="btn icon" type="button" id="newsletter-close" aria-label="Close email updates">&#x2715;</button></div>
-  <p id="newsletter-intro">Short, sourced updates when we publish new findings.</p>
-  <form id="newsletter-form" class="newsletter-form">
+  <div class="dlg-top"><h2 id="newsletter-h">Follow updates</h2><button class="btn icon" type="button" id="newsletter-close" aria-label="Close follow updates">&#x2715;</button></div>
+  <p id="newsletter-intro">Short, sourced updates when we publish new findings. Choose what you want, then get it by email or in a feed reader.</p>
+  <div class="seg follow-tabs" id="follow-tabs" role="tablist" aria-label="How to follow"><button type="button" role="tab" id="follow-tab-email" aria-selected="true" aria-controls="newsletter-form">Email</button><button type="button" role="tab" id="follow-tab-rss" aria-selected="false" aria-controls="follow-rss" tabindex="-1">RSS feed</button></div>
+  <fieldset class="follow-filters" id="follow-filters" hidden>
+   <legend>Which incidents?</legend>
+   <div class="follow-cats" id="follow-cats" role="group" aria-label="Categories"></div>
+   <small class="newsletter-help">None ticked means every category; several means any of them.</small>
+   <label class="follow-lab" for="follow-lab">Developer<select id="follow-lab"></select></label>
+   <div id="follow-severity" hidden><span class="follow-legend" id="follow-severity-h">How serious?</span><div class="newsletter-options" role="radiogroup" aria-labelledby="follow-severity-h"><label class="newsletter-choice"><input type="radio" name="severity" value="" checked>Any</label><label class="newsletter-choice"><input type="radio" name="severity" value="medium">Medium and high</label><label class="newsletter-choice"><input type="radio" name="severity" value="high">High only</label></div><small class="newsletter-help">High: serious harm to people or systems beyond whoever ran the agent. Medium: limited harm beyond them, or serious harm to their own systems. Low: the rest, including most tests.</small></div>
+   <div><span class="follow-legend" id="follow-type-h">What to send</span><div class="newsletter-options" role="radiogroup" aria-labelledby="follow-type-h"><label class="newsletter-choice"><input type="radio" name="kinds" value="" checked>New incidents and updates</label><label class="newsletter-choice"><input type="radio" name="kinds" value="new">New incidents only</label></div></div>
+   <p class="follow-count" id="follow-count" aria-live="polite"></p>
+  </fieldset>
+  <div class="follow-rss" id="follow-rss" role="tabpanel" aria-labelledby="follow-tab-rss" hidden>
+   <label class="report-field" for="follow-url">Your feed address<textarea id="follow-url" rows="2" readonly spellcheck="false"></textarea></label>
+   <div class="report-actions"><button class="btn primary" type="button" id="follow-copy">Copy address</button><a class="btn" id="follow-open" href="feed.xml">Open feed</a></div>
+   <p class="report-note">Paste the address into your feed reader. Ready-made feeds: <span id="follow-presets"></span>.</p>
+  </div>
+  <form id="newsletter-form" class="newsletter-form" role="tabpanel" aria-labelledby="follow-tab-email">
    <label class="report-field" for="newsletter-email">Email address<input id="newsletter-email" type="email" name="email" autocomplete="email" maxlength="254" required autofocus placeholder="you@example.com"></label>
    <fieldset><legend>How often?</legend><div class="newsletter-options"><label class="newsletter-choice"><input type="radio" name="frequency" value="daily" checked>Daily</label><label class="newsletter-choice"><input type="radio" name="frequency" value="weekly">Weekly</label></div><small class="newsletter-help">A digest only when there’s something to share.</small></fieldset>
    <fieldset><legend>What would you like?</legend><div class="newsletter-options"><label class="newsletter-choice"><input type="radio" name="coverage" value="all">All substantive updates</label><label class="newsletter-choice"><input type="radio" name="coverage" value="major" checked>Major news only</label></div><small class="newsletter-help">Material changes to the evidence, impact or response, reviewed by our editor.</small></fieldset>
@@ -1285,7 +1520,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
   </form>
   <div id="newsletter-link-view" hidden><p id="newsletter-link-summary" class="newsletter-confirm-summary"></p><div class="report-actions"><button class="btn primary" type="button" id="newsletter-confirm">Confirm subscription</button><button class="btn" type="button" id="newsletter-new-link" hidden>Request a new link</button></div></div>
   <p id="newsletter-status" class="report-status newsletter-notice" role="status" aria-live="polite"></p><p id="newsletter-manage" hidden><a class="btn" href="subscribe.html">Change email preferences</a></p>
-  <p class="newsletter-footer">Prefer a feed? <a href="feed.xml">Subscribe via RSS</a>. Questions: <a href="mailto:hello@swarmincidents.com">hello@swarmincidents.com</a>.</p>
+  <p class="newsletter-footer">Everything, unfiltered: <a href="feed.xml">the full RSS feed</a>. Questions: <a href="mailto:hello@swarmincidents.com">hello@swarmincidents.com</a>.</p>
  </div>
 </dialog>
 
@@ -1316,7 +1551,7 @@ html.updates-modal-page{scrollbar-gutter:stable}
     <p>Find related research, tools and projects at <a href="../">swarms.wiki</a>; other incident trackers are listed in its <a href="../resources#trackers">Trackers section</a>.</p>
     <p><a href="https://manifund.org/projects/dashboard-tracking-ai-swarm-incidents" target="_blank" rel="noopener noreferrer">Support the project on Manifund</a>.</p>
     <h3>Follow updates</h3>
-    <p><a href="updates.html">Read the Updates page</a> or <a href="feed.xml">Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
+    <p><a href="updates.html">Read the Updates page</a> or <a href="feed.xml" data-feed-open>Subscribe via RSS</a> for short summaries of new incidents and substantial updates added to the site after editorial review. Copy the feed link into your RSS reader.</p>
     <p><button type="button" class="mini-link" data-newsletter-open>Email updates</button>: daily or weekly, with the coverage you choose.</p>
     <div id="contact-sec" hidden>
 <h3>Contact</h3>
@@ -1489,17 +1724,29 @@ const DATES = [...DATA.incidents.flatMap(e => [...e.activity.flatMap(a => [a.s, 
    choice is kept in the URL (?models=openai) so links can be shared, and an old ?models=all link still opens */
 const DEFAULT_SCOPE = 'all';
 const SCOPES = new Set(['all', ...Object.keys(LABS)]);
+/* categories (October 29, Elvis: swarms and fleets are not one thing, and any combination can be on or off): an
+   incident's `categories`, or for a record from before that day its agent_group kind and category */
+const LEGACY_CATS = { coordination: 'swarm', 'multi-agent': 'swarm', fleet: 'fleet' };
+const catsOf = e => e.categories || [LEGACY_CATS[e.agent_group && e.agent_group.kind], e.category].filter(Boolean);
+/* the card's line on what the agents did together: "Swarm: …", "Fleet: …" or "Swarm and fleet: …" */
+const agentsNote = e => e.agents_note || (e.agent_group && e.agent_group.note) || '';
+const agentsLabel = e => ['swarm', 'fleet'].filter(c => catsOf(e).includes(c)).join(' and ').replace(/^./, c => c.toUpperCase()) || 'Agents';
 const TAGS = [
-  { id: 'swarms', label: 'Swarms / fleets', test: e => !!e.agent_group, note: 'Documented coordination, multi-agent runs or fleets. Coordination is not established for every fleet; some grouped incidents contain other runs.' },
-  { id: 'benchmark', label: 'Benchmark integrity', test: e => e.category === 'benchmark-integrity', note: 'Documented benchmark-answer retrieval or scoring manipulation. This does not assert an outside-system breach.' }
+  { id: 'swarm', label: 'Swarms', test: e => catsOf(e).includes('swarm'), note: 'Several agents interacting or coordinating: messages, shared work, or one agent directing or checking another when that is part of what went wrong.' },
+  { id: 'fleet', label: 'Fleets', test: e => catsOf(e).includes('fleet'), note: 'Many instances of an agent acting in one campaign, whether or not they interact.' },
+  { id: 'benchmark', label: 'Benchmark integrity', test: e => catsOf(e).includes('benchmark-integrity'), note: 'Documented benchmark-answer retrieval or scoring manipulation. This does not assert an outside-system breach.' }
 ];
-const DEFAULT_TAGS = UPDATES_PAGE ? [] : ['swarms'];
+/* links from before the split: ?tags=swarms meant both */
+const OLD_TAGS = { swarms: ['swarm', 'fleet'] };
+/* what the Follow updates dialog (newsletter.js) needs to count matches and list developers */
+window.followData = { labs: LABS, incidents: DATA.incidents.map(e => ({ labs: e.labs, cats: catsOf(e), severity: e.severity || null })) };
+const DEFAULT_TAGS = UPDATES_PAGE ? [] : ['swarm', 'fleet'];
 let scope = DEFAULT_SCOPE, activeTags = [...DEFAULT_TAGS], datasetOnly = false, initialFeatures = [], initialReporters = [];
 try {
   const params = new URLSearchParams(location.search), v = params.get('models');
   if (v && SCOPES.has(v)) scope = v;
   datasetOnly = params.get('datasets') === 'available';
-  if (params.has('tags')) activeTags = [...new Set(params.get('tags').split(',').filter(id => TAGS.some(t => t.id === id)))];
+  if (params.has('tags')) activeTags = [...new Set(params.get('tags').split(',').flatMap(id => OLD_TAGS[id] || [id]).filter(id => TAGS.some(t => t.id === id)))];
   else if (params.get('agents') === 'all') activeTags = [];
   initialFeatures = (params.get('has') || '').split(',').filter(v => ['activity','approx','knew','gap','additional'].includes(v));
   initialReporters = (params.get('by') || '').split(',').filter(v => ['lab','research','press','gov','other'].includes(v));
@@ -2035,12 +2282,9 @@ function modelsPicker() {
 function setScope(v, tags = activeTags) {
   if (!SCOPES.has(v) || (v === scope && sameTags(tags, activeTags))) return;
   track('models', v);
-  const tagPop = document.querySelector('.pk-pop[data-picker="Categories"]');
-  const tagsOpen = !!tagPop;
-  const tagFocus = tagPop?.querySelector('.pk-opt.act')?.getAttribute('data-value');
-  const focusTags = !!document.activeElement?.closest('.f-tags') || tagsOpen;
+  const tagFocus = document.activeElement?.closest('.f-tags [data-tag]')?.getAttribute('data-tag');
+  const focusTags = !!tagFocus;
   const refocus = focusTags || !!document.activeElement?.closest('.f-models');
-  if (tagsOpen && picker.openOne) picker.openOne(false);
   scope = v; activeTags = [...tags]; derive();
   if (state.aff.inc && !BY_ID.has(state.aff.inc)) state.aff.inc = null;
   if (state.resp.inc && !BY_ID.has(state.resp.inc)) state.resp.inc = null;
@@ -2052,9 +2296,8 @@ function setScope(v, tags = activeTags) {
   hideTip();
   setHash(location.hash.slice(1));
   renderStats(); renderTabs(); renderBarR(); renderFilters(); renderView();
-  if (tagsOpen) $('.f-tags .pk')?.pickerOpen(true, tagFocus);
-  else if (refocus) {
-    const b = $(focusTags ? '.f-tags .pk-btn' : '.f-models .pk-btn');
+  if (refocus) {
+    const b = $(focusTags ? `.f-tags [data-tag="${tagFocus}"]` : '.f-models .pk-btn');
     if (b) b.focus({ preventScroll: true });
   }
 }
@@ -2072,13 +2315,21 @@ const ICON_CARDS = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" s
 const ICON_TABLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2.75" width="12" height="10.5" rx="1.5"/><path d="M2 6.25h12M2 9.75h12M6 6.25v7"/></svg>';
 const PRESETS = [{ v: 0, label: 'All' }, { v: 90, label: '90 days' }, { v: 30, label: '30 days' }];
 function setRange(r) { focusedIncidentEvents = null; expandedEventIncident = null; state.range = r; renderBarR(); renderFilters(); renderView(); if (UPDATES_PAGE) setHash(state.rsp || ''); }
+/* categories are independent toggles (October 29): an incident shows when it is in any category that is on, and with
+   none on every incident shows. Each toggle counts its incidents in the current model scope, except on the Updates
+   page, which counts updates elsewhere and has less room in its filter row. */
+const ICON_CHECK = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>';
 function tagsPicker() {
-  return h('span', { class: 'fgroup f-tags' }, h('span', { class: 'flabel', text: 'Categories' }),
-    picker({ label: 'Categories', hideLabel: true, multiple: true, searchable: false, value: activeTags,
-      options: [
-        { v: '', label: 'All incidents', tip: 'Clear the category selection; other filters still apply.' },
-        ...TAGS.map(t => ({ v: t.id, label: t.label, sub: nInc(DATA.incidents.filter(e => (allScope() || e.labs.includes(scope)) && t.test(e)).length), tip: t.note }))
-      ], onPick: tags => setScope(scope, tags) }));
+  const pool = DATA.incidents.filter(e => allScope() || e.labs.includes(scope));
+  return h('span', { class: 'fgroup f-tags' }, h('span', { class: 'flabel', id: 'cat-label', text: 'Categories' }),
+    h('span', { class: 'cat-toggles', role: 'group', 'aria-labelledby': 'cat-label' },
+      TAGS.map(t => {
+        const on = activeTags.includes(t.id), n = pool.filter(t.test).length;
+        return h('button', { type: 'button', class: 'chip cat-toggle', 'aria-pressed': String(on), 'data-tag': t.id, 'aria-label': UPDATES_PAGE ? t.label : `${t.label}, ${nInc(n)}`,
+            'data-tip': `${t.note} ${on ? 'Click to hide this category.' : activeTags.length ? 'Click to add it.' : 'Click to show only this category.'}`,
+            onclick: () => setScope(scope, on ? activeTags.filter(x => x !== t.id) : [...activeTags, t.id]) },
+          h('span', { class: 'box', html: ICON_CHECK }), t.label, UPDATES_PAGE ? null : h('span', { class: 'n', text: String(n) }));
+      })));
 }
 function renderBarR() {
   put($('#view-controls'));
@@ -2197,7 +2448,7 @@ function renderFilters0() {
   const chart = isChart();
   if (state.view === 'timeline') {
     const s = state.tl;
-    put(f,
+    put(f, findBox(),
       h('span', { class: 'fgroup f-status' },
         checkControl(`Confirmed by ${scopeName() || 'developer'}`, s.conf, ev => { s.conf = ev.target.checked; redo(); }, { tip: `Only incidents ${devThe()} has confirmed, fully or in part` })),
       h('span', { class: 'fgroup f-data' },
@@ -2256,7 +2507,7 @@ function toggleTimelineFilter(set, value, checked) {
 function tlRows() {
   const s = state.tl;
   const key = e => s.sort === 'start' ? e.first : s.sort === 'delay' ? e.delay : s.sort === 'updated' ? DATA.catalogUpdated?.[e.id]?.timestamp : (e.disclosureKnown ? e.main.d : null);
-  return INC.filter(e => (!s.reporters.size || s.reporters.has(e.main.by)) && TL_FEATURES.every(f => !s.features.has(f.id) || f.test(e)) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
+  return INC.filter(findKeep).filter(e => (!s.reporters.size || s.reporters.has(e.main.by)) && TL_FEATURES.every(f => !s.features.has(f.id) || f.test(e)) && (!s.conf || confirmed(e)) && (!s.datasets || hasDataset(e)) && inRange(e.a, e.b))
     .sort((a, b) => {
       const ka = key(a), kb = key(b);
       if (ka == null || kb == null) return (ka == null) - (kb == null) || a.n - b.n;
@@ -2296,6 +2547,222 @@ const noneTxt = (noun, all) => (all.length ? `No ${noun} match these filters.` :
 function setCount(n, total, noun) {
   $('#count').textContent = n === total ? `${total} ${noun}` : `${n} of ${total} ${noun}`;
   $('#count').classList.toggle('on', n !== total);
+  if (state.view === 'timeline' && !UPDATES_PAGE) findStatus(n);
+}
+/* ---------------------------------------------------------------- search (October 29)
+   One box over the incidents (Elvis: "people could paste URLs there, any source they want"). Words narrow the rows to
+   incidents whose text, sources, developers and affected sites contain them all; a pasted link narrows them to the
+   incidents that cite it, by LinkKey's rules for when two links are the same report. Either way the search combines with
+   the developer, categories and filters that are on: matches they hide are named in the empty rows, with a way to show
+   them. A link nothing cites can be suggested for review (the Worker's /api/incidents/leads, or else the Report form).
+   Nothing is fetched from the pasted link, and the search text never leaves the page. */
+/*__LINK_KEY__*/
+const find = { q: '', mode: null, link: null, ids: new Set(), retired: [], how: '' };
+const fold = s => String(s || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[‘’ʼ]/g, "'").replace(/[‐-―]/g, '-');
+const findKeep = e => !find.mode || find.ids.has(e.id);
+let FIND_TEXT = null, FIND_LINKS = null;
+/* each incident's text, folded, and again without spaces or punctuation (so "huggingface" finds Hugging Face) */
+function findText() {
+  if (FIND_TEXT) return FIND_TEXT;
+  const more = new Map(), push = (id, v) => (more.get(id) || more.set(id, []).get(id)).push(v);
+  DATA.affected.forEach(a => a.inv.forEach(v => push(v.inc, a.name)));
+  DATA.responses.forEach(r => r.inc.forEach(id => push(id, r.title)));
+  const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
+  FIND_TEXT = new Map(DATA.incidents.map(e => {
+    const t = fold([e.id, e.title, e.summary, e.found, e.status, e.lab_response, e.response_title, e.noDates, e.labs.map(labName),
+      e.sources.map(s => [s[0], s[1], host(s[2])]), e.reveals.map(r => r.text), e.activity.map(a => a.label), e.knew && e.knew.text,
+      (e.datasets || []).map(d => [d.title, d.publisher]), more.get(e.id)].flat(Infinity).filter(Boolean).join('\n'));
+    return [e.id, [t, t.replace(/[^a-z0-9]+/g, '')]];
+  }));
+  return FIND_TEXT;
+}
+/* every link the page holds, by key, with the incidents citing it: sources, report, activity, awareness and dataset links,
+   responses' and affected sites' sources (through their incidents), and the source registry with its other spellings,
+   which also keeps the sources of incidents retired from the count */
+function findLinks() {
+  if (FIND_LINKS) return FIND_LINKS;
+  FIND_LINKS = new Map();
+  const add = (inc, url) => {
+    const p = typeof url === 'string' ? LinkKey.parse(url) : null; if (!p || !p.ok) return;
+    const l = FIND_LINKS.get(p.key) || FIND_LINKS.set(p.key, []).get(p.key);
+    if (!l.some(x => x.inc === inc && x.url === url)) l.push({ inc, url });
+  };
+  DATA.incidents.forEach(e => {
+    e.sources.forEach(s => add(e.id, s[2]));
+    [...e.reveals, ...e.activity, e.knew || {}].forEach(x => (x.src || []).forEach(u => add(e.id, u)));
+    (e.datasets || []).forEach(d => { add(e.id, d.url); add(e.id, d.download); });
+  });
+  DATA.responses.forEach(r => (r.src || []).forEach(s => r.inc.forEach(id => add(id, s[2]))));
+  DATA.affected.forEach(a => a.inv.forEach(v => (v.src || []).forEach(u => add(v.inc, u))));
+  const reg = DATA.publicSources || {}, regUrls = sid => (reg.sources && reg.sources[sid] ? [reg.sources[sid].url, ...(reg.sources[sid].aliases || [])] : []);
+  Object.entries(reg.incidents || {}).forEach(([id, v]) => [...(v.curated || []), ...(v.additional || [])].forEach(sid => regUrls(sid).forEach(u => add(id, u))));
+  Object.entries(reg.responses || {}).forEach(([rid, sids]) => { const r = DATA.responses.find(x => x.id === rid); if (r) sids.forEach(sid => regUrls(sid).forEach(u => r.inc.forEach(id => add(id, u)))); });
+  return FIND_LINKS;
+}
+/* a link to this site: the incidents its address names (#id, #response/id, #affected/id) */
+function findSelf(p) {
+  const [a, b] = p.hash.split('/');
+  if (!/^\/(incidents)?$/.test(p.path)) return [];
+  if (a === 'response') { const r = DATA.responses.find(x => x.id === b); return r ? r.inc : []; }
+  if (a === 'affected') { const s = DATA.affected.find(x => x.id === b); return s ? [...new Set(s.inv.map(v => v.inc))] : []; }
+  return [a];
+}
+/* how a cited link differs from the pasted one, when it isn't the same address */
+const loose = u => u.replace(/^https?:\/\/(www\.)?/i, '').replace(/[?#].*$/, '').replace(/\/+$/, '').toLowerCase();
+function findHow(p, cited) {
+  if (!cited.length || cited.some(c => loose(c.url) === loose(p.url))) return '';
+  if (p.via.some(v => /archive|webcache/.test(v))) return 'an archived copy of a cited link';
+  if (p.kind === 'arxiv') return cited.some(c => LinkKey.parse(c.url).version === p.version) ? 'same paper' : 'same paper, another version';
+  return { x: 'same post on X', doi: 'same DOI', video: 'same video', reddit: 'same Reddit thread', github: 'same GitHub page', post: 'same post' }[p.kind] || 'same page';
+}
+function findRun(q) {
+  Object.assign(find, { q, mode: null, link: null, ids: new Set(), retired: [], how: '' });
+  const t = q.trim(); if (!t) return;
+  const p = LinkKey.parse(t);
+  if (!p.ok && (p.reason === 'not-a-link' || p.reason === 'too-long')) {
+    find.mode = 'text';
+    const words = fold(t).split(/\s+/).filter(Boolean).map(w => [w, w.replace(/[^a-z0-9]+/g, '')]);
+    for (const [id, [text, flat]] of findText()) if (words.every(([w, f]) => text.includes(w) || (f.length >= 3 && flat.includes(f)))) find.ids.add(id);
+    return;
+  }
+  find.mode = 'link'; find.link = p;
+  if (!p.ok) return;
+  const cited = p.kind === 'self' ? findSelf(p).map(inc => ({ inc, url: p.url })) : findLinks().get(p.key) || [];
+  cited.forEach(c => { if (ALL_IDS.inc.has(c.inc)) find.ids.add(c.inc); else if (Object.hasOwn(DATA.retiredIncidents || {}, c.inc) && !find.retired.includes(c.inc)) find.retired.push(c.inc); });
+  if (p.kind !== 'self') find.how = findHow(p, cited.filter(c => find.ids.has(c.inc)));
+}
+/* typing re-renders the rows only: the box itself stays, with the caret where it was */
+let findOpened = null;
+function findInput(q) {
+  findRun(q);
+  if (findOpened !== state.sel) findOpened = null;
+  renderView();
+  /* one cited incident in view: open it beside the rows (on a phone the card would cover the box), in place of a card the
+     search opened, never of one the reader opened. Replacing keeps the card's one history entry. */
+  const only = find.mode === 'link' && find.ids.size === 1 && [...find.ids][0];
+  if (only && !mobileMQ.matches && (!hasCard() || findOpened) && tlRows().some(e => e.id === only)) { if (state.sel !== only) select(only); findOpened = only; }
+  /* otherwise a card the search opened closes with its match */
+  else if (findOpened && !find.ids.has(findOpened)) { clearSel(); findOpened = null; }
+}
+const ICON_FIND = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="m10.5 10.5 3.6 3.6"/></svg>';
+function findBox() {
+  return h('span', { class: 'fgroup f-find' },
+    h('span', { class: 'find-field', html: ICON_FIND },
+      h('input', { class: 'search', id: 'find-q', type: 'search', placeholder: 'Search incidents or paste a link', 'aria-label': 'Search incidents, or paste a link to a report',
+        autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'search', maxlength: '2048', value: find.q, oninput: ev => findInput(ev.target.value) })),
+    h('span', { class: 'find-note', id: 'find-note', role: 'status' }));
+}
+/* the note beside the box: which incidents cite a link, and matches the filters hide while others show */
+function findStatus(n) {
+  const note = document.getElementById('find-note'); if (!note) return;
+  const total = find.ids.size, hidden = total - n;
+  put(note, find.mode === 'link' && total ? (find.link.kind === 'self' ? `Links to ${nInc(total)} here` : `Cited by ${nInc(total)}${find.how ? ' · ' + find.how : ''}`) : null,
+    find.mode && hidden > 0 && n > 0 ? h('button', { type: 'button', class: 'mini-link', text: `${hidden} more outside these filters`, 'data-tip': 'Show every match: clears the developer, category, date and evidence filters', onclick: findShowAll }) : null);
+}
+/* show every match: all developers and categories, no date or evidence filters */
+function findShowAll() {
+  const s = state.tl; s.conf = false; s.datasets = false; s.features.clear(); s.reporters.clear(); state.range = null;
+  if (scope !== 'all' || activeTags.length) setScope('all', []);
+  else { setHash(location.hash.slice(1)); renderBarR(); renderFilters(); renderView(); }
+  const box = $('#find-q'); if (box) box.focus({ preventScroll: true });
+}
+function findInc(id) {
+  const e = DATA.incidents.find(x => x.id === id), main = e.reveals.filter(r => !r.minor)[0];
+  return h('li', {}, h('button', { class: 'inc-link', type: 'button', text: e.title, onclick: () => { if (reach('inc', id)) select(id, { focus: true }); } }),
+    h('span', { class: 'find-sub', text: [joinNames(e.labs.map(labName)), main && main.date_basis !== 'report-updated' ? 'disclosed ' + fmtY(main.d) : null].filter(Boolean).join(' · ') }));
+}
+const FIND_REFUSED = {
+  short: p => `That’s a short link (${p.host}). Short links hide where they lead, so they can’t be checked here. Open it, then paste the full address.`,
+  private: () => 'That address only works inside a private network, so it can’t be a public report.',
+  port: () => 'That link uses an unusual port, so it can’t be checked here.',
+  credentials: () => 'That link has a password in it. Remove it and paste the link again.',
+  scheme: () => 'Only web links (http or https) can be checked.',
+};
+/* what the empty rows say while searching; null when not searching */
+function findEmpty() {
+  if (!find.mode) return null;
+  const box = (...kids) => h('div', { class: 'find-empty' }, ...kids), ids = [...find.ids], p = find.link;
+  if (ids.length) return box(
+    h('p', { class: 'find-h', text: find.mode === 'text' ? `No matches with these filters, ${ids.length} in all incidents`
+      : `This link ${p.kind === 'self' ? 'opens' : 'is cited by'} ${nInc(ids.length)} outside these filters` }),
+    h('ul', { class: 'find-list' }, ids.slice(0, 5).map(findInc)),
+    ids.length > 5 ? h('p', { class: 'find-fine', text: `and ${ids.length - 5} more` }) : null,
+    h('div', { class: 'find-actions' }, h('button', { type: 'button', class: 'btn', text: ids.length === 1 ? 'Show it in the timeline' : `Show all ${ids.length}`, onclick: findShowAll })));
+  if (find.mode === 'text') return box(h('p', { class: 'find-h', text: `No incidents match “${find.q.trim()}”` }),
+    h('p', { class: 'find-fine', text: 'The search covers titles, summaries, sources, developers and affected sites. To check whether we cover a report, paste its link.' }));
+  if (find.retired.length) return box(h('p', { class: 'find-h', text: 'Reviewed and retired' }),
+    h('p', { text: find.retired.length === 1 ? 'An incident that cited this link was removed from the count after editorial review.' : `${find.retired.length} incidents that cited this link were removed from the count after editorial review.` }),
+    h('div', { class: 'find-actions' }, find.retired.map(id => h('a', { class: 'btn', href: 'updates.html#' + encodeURIComponent(DATA.retiredIncidents[id]), text: find.retired.length === 1 ? 'Read the correction' : `Correction: ${id}` }))),
+    h('p', { class: 'find-fine' }, 'New information about it? ', h('button', { type: 'button', class: 'mini-link', text: 'Use the Report form', onclick: () => reportLink(p.url) })));
+  if (!p.ok) return box(h('p', { class: 'find-h', text: 'This link can’t be checked' }), h('p', { text: FIND_REFUSED[p.reason](p) }));
+  if (p.kind === 'self') return box(h('p', { class: 'find-h', text: 'That’s a page on swarms.wiki' }), h('p', { text: 'Paste a link to a report about an incident, such as a post, article or paper, to see whether an incident here cites it.' }));
+  return leadOffer(p);
+}
+
+/* suggesting a link nothing cites (October 29). The Worker takes it when it runs beside the page (swarms.wiki) and has
+   suggestions on; elsewhere (GitHub Pages, local previews, before launch) the Report form takes it to the editor. The
+   link is sent once someone asks, without the tracking parts; a Turnstile check first for anyone without a name yet. */
+const LEADS_API = '/api/incidents/leads';
+let leadsCfg, leadsAsk, turnstileJs;
+const leadSent = new Map();
+/* only the copy the Worker serves, at /incidents/, has the API beside it */
+function leadsProbe() {
+  if (!/^\/incidents\//.test(location.pathname)) return Promise.resolve(leadsCfg = { enabled: false });
+  return leadsAsk ||= fetch(LEADS_API, { credentials: 'same-origin', signal: AbortSignal.timeout(8000) })
+    .then(r => (r.ok && /json/.test(r.headers.get('content-type') || '') ? r.json() : null))
+    .catch(() => null).then(c => (leadsCfg = c && c.enabled ? c : { enabled: false }));
+}
+function leadOffer(p) {
+  if (leadsCfg === undefined) leadsProbe().then(() => { if (find.link === p) renderView(); });
+  const st = leadSent.get(p.key) || {}, queue = !!(leadsCfg && leadsCfg.enabled);
+  return h('div', { class: 'find-empty' },
+    h('p', { class: 'find-h', text: 'Not in the catalog yet' }),
+    h('p', { text: 'No incident here cites this link:' }),
+    h('p', { class: 'find-url', text: p.url.replace(/^https?:\/\//, '') }),
+    st.status === 'sent' ? h('p', { class: 'find-ok', role: 'status', text: 'Thanks. The link is in the review queue.' })
+      : h('div', { class: 'find-actions' },
+        h('button', { type: 'button', class: 'btn primary', disabled: st.status === 'sending' || undefined, text: st.status === 'sending' ? 'Sending…' : 'Suggest it for review', onclick: () => suggestLead(p) }),
+        queue ? h('button', { type: 'button', class: 'mini-link', text: 'Add context with the Report form', onclick: () => reportLink(p.url) }) : null),
+    st.status === 'error' ? h('p', { class: 'find-err', role: 'alert', text: st.msg }) : null,
+    /* what happens to the link (Elvis, October 29: "update terms to explain how we will use this info"): /privacy has the
+       details; the terms already cover suggestions, so they don't change */
+    h('p', { class: 'find-fine' }, queue ? ['Suggested links wait in a review queue as unverified leads; nothing is published before the editor checks it. Who sent a link is forgotten after 30 days (',
+      h('a', { href: '/privacy#incident-links', target: '_blank', rel: 'noopener', text: 'privacy' }), '). Suggesting means you agree to the ', h('a', { href: '/terms', target: '_blank', rel: 'noopener', text: 'terms' }), '.']
+      : 'This opens the Report form with the link filled in, for the editor’s review.'));
+}
+function reportLink(url) {
+  openReport();
+  const f = $('#report-sources');
+  if (!f.value.includes(url)) { f.value = f.value.trim() ? f.value.trim() + '\n' + url : url; reportAttempt = undefined; }
+}
+function leadToken(sitekey) {
+  turnstileJs ||= window.turnstile ? Promise.resolve() : new Promise((ok, no) => {
+    const s = h('script', { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', async: '' });
+    s.onload = ok; s.onerror = () => { turnstileJs = null; s.remove(); no(Object.assign(new Error('turnstile'), { code: 'turnstile' })); };
+    document.head.append(s);
+  });
+  return turnstileJs.then(() => new Promise((ok, no) => {
+    const box = h('div', { class: 'find-turnstile' }); document.body.append(box);
+    const end = f => v => { box.remove(); f(v); }, refused = () => Object.assign(new Error('turnstile'), { code: 'turnstile' });
+    window.turnstile.render(box, { sitekey, action: 'lead', appearance: 'interaction-only', callback: end(ok), 'error-callback': end(() => no(refused())), 'expired-callback': end(() => no(refused())) });
+  }));
+}
+const LEAD_PROBLEM = { turnstile: 'We couldn’t confirm you’re a person. Please try again.', blocked: 'This browser can’t suggest links.', url: 'This link can’t be suggested.' };
+async function suggestLead(p) {
+  const was = leadSent.get(p.key); if (was && (was.status === 'sending' || was.status === 'sent')) return;
+  const cfg = await leadsProbe();
+  if (!cfg.enabled) { reportLink(p.url); return; }
+  leadSent.set(p.key, { status: 'sending' }); renderView();
+  try {
+    const turnstile = cfg.turnstileSiteKey && !cfg.known ? await leadToken(cfg.turnstileSiteKey) : undefined;
+    const res = await fetch(LEADS_API, { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ url: p.url, turnstile }), signal: AbortSignal.timeout(20000) });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || out.ok !== true) throw Object.assign(new Error(out.error || 'failed'), { code: res.status === 429 ? 'busy' : out.error });
+    leadSent.set(p.key, { status: 'sent' });
+  } catch (error) {
+    leadSent.set(p.key, { status: 'error', msg: LEAD_PROBLEM[error.code] || (error.code === 'busy' ? 'That’s a lot of suggestions from here for now. Please try again later, or use the Report form.' : 'We couldn’t send it. Please try again, or use the Report form.') });
+  }
+  if (find.link && find.link.key === p.key) renderView();
 }
 /* ---------------------------------------------------------------- chart engine */
 const ms = t => (typeof t === 'number' ? t : D(t));
@@ -2533,7 +3000,7 @@ function renderTimeline() {
   const mob = mobileMQ.matches;
   const x = makeX(W, 76, mob ? 14 : 22), M = mob ? 10 : 12, tk = ticks(x);
   const axis = axisEl(x, tk); head.append(axis); attachBrush(axis, tl, x, 0);
-  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty', text: noneTxt('incidents', INC) })); renderFoot(); return; }
+  if (!rows.length) { rowsWrap.replaceChildren(h('div', { class: 'empty' }, findEmpty() || noneTxt('incidents', INC))); renderFoot(); return; }
   const lanes = rows.map(e => {
     const grid = gridSvg(x, tk);
     const { svg, mid } = trackSvg(W);
@@ -2829,7 +3296,7 @@ function renderTimelineTable() {
       h('td', { class: 'm-inline' }, e.disclosureKnown ? h('span', { class: 'who' }, h('span', { class: `dot g-${e.main.by}` }), incWho(e, e.main.by)) : 'Unknown'),
       h('td', { class: 'sub-cell', text: e.status }),
       h('td', { class: 'mono num m-inline', text: String(sites(e.id)) })))
-      : h('tr', {}, h('td', { colspan: 8, class: 'empty', text: noneTxt('incidents', INC) })))));
+      : h('tr', {}, h('td', { colspan: 8, class: 'empty' }, findEmpty() || noneTxt('incidents', INC))))));
   markSelected(); renderFoot();
 }
 function renderAffected() {
@@ -3258,12 +3725,12 @@ function select(id, opts = {}) {
     catalogUpdated(e),
     h('div', { class: 'tags' },
       h('span', { class: 'tag' }, h('span', { class: `dot g-${e.main.by}` }), e.disclosureKnown ? `Disclosed by ${incWhoBy(e, e.main.by)}` : 'First disclosure date unknown'),
-      e.category === 'benchmark-integrity' ? h('span', { class: 'tag', text: 'Benchmark integrity' }) : null,
+      TAGS.filter(t => t.test(e)).map(t => h('span', { class: 'tag', text: t.id === 'benchmark' ? t.label : t.label.slice(0, -1), 'data-tip': t.note })),
       hasDataset(e) ? h('span', { class: 'tag dataset-tag', text: 'Dataset available' }) : null,
       h('span', { class: 'tag', text: e.status }),
       e.delay != null ? h('span', { class: 'tag', text: `${e.delay}-day delay`, 'data-tip': delayTxt(e) }) : null),
     h('p', { text: e.summary }),
-    e.agent_group ? h('p', { class: 'agent-context', text: `Swarm / multi-agent: ${e.agent_group.note}` }) : null,
+    agentsNote(e) ? h('p', { class: 'agent-context', text: `${agentsLabel(e)}: ${agentsNote(e)}` }) : null,
     srcStrip(e.sources, e),
     INSIDE[e.id] && !(state.view === 'wiki' && state.inside === e.id) ? h('div', { class: 'inwiki' }, insideBtn(e.id, INSIDE[e.id].cta)) : null,
     datasetSection(e),
@@ -4307,9 +4774,13 @@ function route(hash = decodeURIComponent(location.hash.slice(1))) {
   else { if (hasCard()) clearSel({ fromRoute: true }); const v = hash === 'affected' || hash === 'responses' ? hash : 'timeline'; if (state.view !== v) setView(v); }
 }
 let hash0=''; try { hash0=decodeURIComponent(location.hash.slice(1)); } catch(e) {}
+/* ?q= arrives from elsewhere (swarms.wiki's search can link here); it starts the search, then leaves the address, so
+   the search text isn't kept in history or passed on in links */
+try { const u = new URLSearchParams(location.search); if (!UPDATES_PAGE && u.has('q')) { findRun(u.get('q').slice(0, 2048)); u.delete('q'); history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u : '') + location.hash); } } catch (e) { /* no URL API */ }
 if (UPDATES_PAGE) { const q=new URLSearchParams(location.search); if (Object.keys(RESP_WHO).includes(q.get('type'))) state.resp.who=q.get('type'); if (['recent','archive','correction'].includes(q.get('reporting'))) state.resp.freshness=q.get('reporting'); if (BY_ID.has(q.get('incident'))) state.resp.inc=q.get('incident'); const a=q.get('from'),b=q.get('to'); if (/^\d{4}-\d{2}-\d{2}$/.test(a||'') && /^\d{4}-\d{2}-\d{2}$/.test(b||'') && a<=b) state.range={a,b}; }
 setView(UPDATES_PAGE ? 'responses' : hash0 === 'affected' || hash0.startsWith('affected/') ? 'affected' : hash0 === 'responses' || hash0.startsWith('response/') ? 'responses' : 'timeline');
 route(hash0);
+if (find.mode === 'link' && !hasCard()) findInput(find.q);
 window.addEventListener('popstate', () => {
   if (!state.popping) return;
   state.popping = false; state.pushed = false;
